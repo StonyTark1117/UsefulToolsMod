@@ -24,6 +24,8 @@ public final class UsefultoolsMod {
     public static void init() {
         LOGGER.info("Initialising {} on {}", MOD_ID, PlatformHelper.platformName());
 
+        Config.load();
+
         // Order matters:
         //   1. Blocks first — registering them adds matching BlockItems to ModItems.ITEMS
         //   2. Entities — SpawnEggItem ctors call ModEntities.GHOST.get() at item creation

@@ -1,5 +1,40 @@
 # UsefulToolsMod test pipeline — install + extend
 
+**Multi-loader update (Architectury):** since the consolidation, the pipeline
+needs to be invoked per loader subproject:
+
+```bash
+# Phase-1 GameTest only (no GUI):
+./1.21.1/gradlew -p 1.21.1 :fabric:runGametest        # Fabric variant
+./1.21.1/gradlew -p 1.21.1 :neoforge:runGameTestServer # NeoForge variant
+```
+
+The pipeline runner under `test-pipeline/run.sh` was written for the
+pre-Architectury single-loader trees and still expects to live at the
+project root. To re-enable it on the 1.21.1 multi-loader project:
+
+1. Pick a loader (e.g. `1.21.1/neoforge/`) as the host for the pipeline.
+2. Copy `test-pipeline/` under it: `cp -r _scaffolding/test-pipeline 1.21.1/neoforge/`
+3. The runner's `build.gradle` grep won't match — replace the loader-detection
+   block with a hardcoded `LOADER=neoforge` (or `fabric`) and the matching
+   gametest task.
+4. The GameTest class itself can live in `1.21.1/common/src/main/java/...`
+   so both loader runs exercise it — but each subproject's `build.gradle`
+   needs `loom { runs { server { defaultMods.add ... } } }` or the equivalent
+   gametest-task configuration.
+5. The test structure NBT (`src/main/resources/data/usefultoolsmod/structure/empty_3x3.nbt`)
+   must be generated once via `./gradlew :neoforge:runClient`, a creative
+   world with cheats, and `/test create empty_3x3 3 3 3`. Commit the resulting NBT.
+
+Status as of consolidation: pipeline is **not yet wired into 1.21.1/**.
+The above is the to-do for whoever picks it up.
+
+The pre-Architectury single-loader instructions below are retained for
+reference. Apply the loader-subproject prefix to gradlew calls in any
+copy-paste from them.
+
+---
+
 You're a Claude session working on **either** the NeoForge or Fabric copy of
 UsefulToolsMod. This scaffolding lives at `../_scaffolding/` relative to your
 project. Goal: install the two-phase pipeline (GameTest → ydotool/grim visual)

@@ -1,16 +1,91 @@
 package com.stonytark.usefultoolsmod;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import dev.architectury.platform.Platform;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 /**
- * Stub configuration class.
+ * Persistent configuration via plain JSON.
  *
- * Holds the same 116 public-static fields that gameplay code reads, all
- * initialised to their NeoForge defaults so the mod runs "all features enabled".
+ * Loaded from {@code <gamedir>/config/usefultoolsmod.json}. All 116 public-static
+ * fields (declared below) are written/read by reflection — adding a new field
+ * needs no boilerplate. Missing keys in the file are left at their default values.
  *
- * Phase 3.5 will replace this with a Cloth Config–backed implementation that
- * persists to disk and exposes a config screen (ModMenu on Fabric, NeoForge's
- * mod config screen on NeoForge). The public field names will not change.
+ * A full Cloth Config UI integration (ModMenu on Fabric, NeoForge config screen)
+ * is the next deferred phase. Today users edit the JSON file directly and reload.
  */
 public class Config {
+
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static Path configPath() {
+        return Platform.getConfigFolder().resolve("usefultoolsmod.json");
+    }
+
+    /** Called from UsefultoolsMod.init() — loads from disk, writes defaults if absent. */
+    public static void load() {
+        Path path = configPath();
+        try {
+            if (!Files.exists(path)) {
+                save();
+                return;
+            }
+            JsonObject root = JsonParser.parseString(Files.readString(path)).getAsJsonObject();
+            for (Field f : Config.class.getDeclaredFields()) {
+                if (!isConfigField(f) || !root.has(f.getName())) continue;
+                try {
+                    Class<?> type = f.getType();
+                    if (type == boolean.class) f.setBoolean(null, root.get(f.getName()).getAsBoolean());
+                    else if (type == int.class) f.setInt(null, root.get(f.getName()).getAsInt());
+                    else if (type == double.class) f.setDouble(null, root.get(f.getName()).getAsDouble());
+                    else if (type == float.class) f.setFloat(null, root.get(f.getName()).getAsFloat());
+                    else if (type == long.class) f.setLong(null, root.get(f.getName()).getAsLong());
+                    else if (type == String.class) f.set(null, root.get(f.getName()).getAsString());
+                } catch (Exception e) {
+                    UsefultoolsMod.LOGGER.warn("Config load failed for {}: {}", f.getName(), e.toString());
+                }
+            }
+        } catch (Exception e) {
+            UsefultoolsMod.LOGGER.warn("Config load failed: {}", e.toString());
+        }
+    }
+
+    public static void save() {
+        JsonObject root = new JsonObject();
+        for (Field f : Config.class.getDeclaredFields()) {
+            if (!isConfigField(f)) continue;
+            try {
+                Class<?> type = f.getType();
+                if (type == boolean.class) root.addProperty(f.getName(), f.getBoolean(null));
+                else if (type == int.class) root.addProperty(f.getName(), f.getInt(null));
+                else if (type == double.class) root.addProperty(f.getName(), f.getDouble(null));
+                else if (type == float.class) root.addProperty(f.getName(), f.getFloat(null));
+                else if (type == long.class) root.addProperty(f.getName(), f.getLong(null));
+                else if (type == String.class) root.addProperty(f.getName(), (String) f.get(null));
+            } catch (Exception e) {
+                UsefultoolsMod.LOGGER.warn("Config save failed for {}: {}", f.getName(), e.toString());
+            }
+        }
+        try {
+            Path path = configPath();
+            Files.createDirectories(path.getParent());
+            Files.writeString(path, GSON.toJson(root));
+        } catch (Exception e) {
+            UsefultoolsMod.LOGGER.warn("Config save failed: {}", e.toString());
+        }
+    }
+
+    private static boolean isConfigField(Field f) {
+        int m = f.getModifiers();
+        return Modifier.isPublic(m) && Modifier.isStatic(m) && !Modifier.isFinal(m);
+    }
+
 
     // === Toggleable item sets ===
     public static boolean explosivesEnabled = true;
