@@ -2,11 +2,14 @@ package com.stonytark.usefultoolsmod;
 
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
+import com.stonytark.usefultoolsmod.entity.ModEntityAttributes;
+import com.stonytark.usefultoolsmod.entity.ModSpawnPlacements;
 import com.stonytark.usefultoolsmod.event.ModEvents;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.platform.PlatformHelper;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import com.stonytark.usefultoolsmod.worldgen.ModBiomeModifications;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +33,9 @@ public final class UsefultoolsMod {
         ModItems.register();
         ModCreativeModeTabs.register();
         ModTriggers.register();
+        ModEntityAttributes.register();
+        ModSpawnPlacements.register();
+        ModBiomeModifications.register();
         ModEvents.init();
     }
 }
