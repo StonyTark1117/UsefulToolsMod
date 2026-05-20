@@ -52,6 +52,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 
+import com.stonytark.usefultoolsmod.platform.CombatHooks;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.client.ClientTooltipEvent;
 import dev.architectury.event.events.common.EntityEvent;
@@ -73,6 +74,11 @@ public class ModEvents {
      * relevant handler methods below.
      */
     public static void init() {
+        // Platform-bridged hooks for damage mutation, target gating, and
+        // FireBlock burn-odds — see CombatHooks.
+        CombatHooks.registerDamageModifier(DamageModifier::compute);
+        CombatHooks.registerTargetPredicate(TargetPredicate::allow);
+
         TickEvent.PLAYER_POST.register(ModEvents::onPlayerTick);
         TickEvent.SERVER_LEVEL_POST.register(ModEvents::onLevelTick);
         EntityEvent.ADD.register(ModEvents::onEntityAdd);
@@ -833,11 +839,8 @@ public class ModEvents {
         BlockPos feetPos = player.blockPosition();
         BlockState floorState = level.getBlockState(feetPos.below());
 
-        // TODO(platform-helper): FireBlock.getBurnOdds(BlockState) is private in vanilla;
-        // NeoForge has an accessor but Architectury common can't reach it. Behaviour
-        // currently relies on the 4% random chance only — fire may spawn on non-
-        // flammable surfaces (functionally similar but slightly broader than the original).
-        if (level.random.nextFloat() < 0.04f) {
+        if (CombatHooks.getBurnOdds(floorState) > 0
+                && level.random.nextFloat() < 0.04f) {
             Direction[] dirs = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
             Direction randDir = dirs[level.random.nextInt(4)];
             BlockPos firePos = feetPos.relative(randDir);
