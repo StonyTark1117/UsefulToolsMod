@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "CC0-1.0"
+
+[[mods]]
+modId = "usefultoolsmod"
+version = "${version}"
+displayName = "The Useful Tools Mod"
+authors = "stonytark_mkii"
+description = '''
+A simple mod adding various tools and armor based on reinforced versions of common materials.
+'''
+
+[[dependencies.usefultoolsmod]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.usefultoolsmod]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,1.22)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.usefultoolsmod]]
+modId = "architectury"
+type = "required"
+versionRange = "[13.0.0,)"
+ordering = "AFTER"
+side = "BOTH"
