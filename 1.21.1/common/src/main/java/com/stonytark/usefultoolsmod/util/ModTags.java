@@ -2,8 +2,7 @@ package com.stonytark.usefultoolsmod.util;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -39,10 +38,10 @@ public class ModTags {
 
      // Magnetization addon: blocks the Magnetic Excavator tears out of the ground.
      public static TagKey<Block> MAGNETIZATION_FERROMAGNETIC =
-             BlockTags.create(ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "ferromagnetic_blocks"));
+             TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "ferromagnetic_blocks"));
 
      private static TagKey<Block> createTag(String name) {
-         return BlockTags.create(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
      }
  }
 
@@ -52,14 +51,14 @@ public class ModTags {
      // Magnetization mod's magnet field interactions when that mod is loaded;
      // when it isn't loaded, the tags simply don't resolve and have no effect.
      public static TagKey<Item> MAGNETIZATION_FERROMAGNETIC =
-             ItemTags.create(ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "ferromagnetic"));
+             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "ferromagnetic"));
      public static TagKey<Item> MAGNETIZATION_METAL_ARMOR =
-             ItemTags.create(ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "metal_armor"));
+             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "metal_armor"));
      public static TagKey<Item> MAGNETIZATION_METAL_TOOLS =
-             ItemTags.create(ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "metal_tools"));
+             TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MAGNETIZATION_ID, "metal_tools"));
 
      private static TagKey<Item> createTag(String name) {
-         return ItemTags.create(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
      }
  }
 }
