@@ -4,4 +4,11 @@ architectury {
 
 dependencies {
     modImplementation "dev.architectury:architectury:${rootProject.architectury_version}"
+
+    // Compile-only compat APIs — common references the API classes, runtime impl
+    // ships only with the loader subprojects that include the compat mods.
+    // modCompileOnly applies loom's remap pass so the intermediary-named
+    // API classes appear under Mojang mappings to common code.
+    modCompileOnly "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
+    modCompileOnly "mcp.mobius.waila:wthit-api:fabric-${rootProject.wthit_version}"
 }

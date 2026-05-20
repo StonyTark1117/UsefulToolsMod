@@ -14,5 +14,13 @@ public final class UsefultoolsModNeoForge {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             UsefultoolsModClient.initClient();
         }
+        // JER plugin — NeoForge-only artifact, gated on jeresources being loaded.
+        if (dev.architectury.platform.Platform.isModLoaded("jeresources")) {
+            try {
+                com.stonytark.usefultoolsmod.compat.jer.UsefulToolsJerPlugin.register();
+            } catch (Throwable t) {
+                UsefultoolsMod.LOGGER.warn("JER plugin registration skipped: {}", t.toString());
+            }
+        }
     }
 }

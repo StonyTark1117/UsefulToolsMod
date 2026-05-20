@@ -26,6 +26,13 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     modImplementation "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
+    // Compat (Fabric)
+    modCompileOnly  "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
+    modCompileOnly  "mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}"
+    modLocalRuntime "mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}"
+    modCompileOnly  "mcp.mobius.waila:wthit-api:fabric-${rootProject.wthit_version}"
+    modLocalRuntime "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowBundle(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }

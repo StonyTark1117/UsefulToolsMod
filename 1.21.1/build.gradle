@@ -18,6 +18,13 @@ subprojects {
         maven { url "https://maven.parchmentmc.org" }
         maven { url "https://maven.neoforged.net/releases" }
         maven { url "https://maven.architectury.dev/" }
+        maven { url "https://maven.blamejared.com/"; content { includeGroup "mezz.jei" } }
+        maven { url "https://maven2.bai.lol";        content { includeGroup "mcp.mobius.waila"; includeGroup "lol.bai" } }
+        maven { url "https://maven.shedaniel.me/";   content { includeGroup "me.shedaniel.cloth" } }
+        exclusiveContent {
+            forRepository { maven { url "https://api.modrinth.com/maven" } }
+            filter { includeGroup "maven.modrinth" }
+        }
     }
 
     dependencies {
