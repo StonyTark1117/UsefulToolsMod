@@ -459,12 +459,9 @@ public class ModCreativeModeTabs {
                             output.accept(ModItems.ECTOPLASM.get());
                         }
 
-                        // SPECTRAL_INFUSER currently omitted from common ModBlocks pending
-                        // platform abstraction for its NeoForge-specific block entity
-                        // (planned for Phase 4). Re-enable this branch once the block lands.
-                        // if (Config.spectralInfuserEnabled) {
-                        //     output.accept(ModBlocks.SPECTRAL_INFUSER.get());
-                        // }
+                        if (Config.spectralInfuserEnabled) {
+                            output.accept(ModBlocks.SPECTRAL_INFUSER.get());
+                        }
 
                         if (Config.ectoplasmSetEnabled) {
                             output.accept(ModBlocks.ECTOPLASM_BLOCK.get());

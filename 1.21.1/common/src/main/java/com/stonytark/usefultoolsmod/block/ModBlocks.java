@@ -1,6 +1,7 @@
 package com.stonytark.usefultoolsmod.block;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
+import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -99,9 +100,12 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    // SPECTRAL_INFUSER omitted from common — SpectralInfuserBlock+BlockEntity+Menu depend on
-    // NeoForge's ItemStackHandler/SlotItemHandler. Re-add once we ship a platform helper for
-    // those (planned for Phase 4).
+    public static final RegistrySupplier<Block> SPECTRAL_INFUSER = registerBlock("spectral_infuser",
+            () -> new SpectralInfuserBlock(BlockBehaviour.Properties.of()
+                    .strength(3.5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)
+                    .lightLevel(state -> state.getValue(SpectralInfuserBlock.LIT) ? 13 : 0)));
 
     private static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block) {
         RegistrySupplier<T> toReturn = BLOCKS.register(name, block);

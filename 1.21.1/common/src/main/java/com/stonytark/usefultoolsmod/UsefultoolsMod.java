@@ -1,6 +1,8 @@
 package com.stonytark.usefultoolsmod;
 
 import com.stonytark.usefultoolsmod.block.ModBlocks;
+import com.stonytark.usefultoolsmod.block.entity.ModBlockEntityTypes;
+import com.stonytark.usefultoolsmod.block.entity.ModMenuTypes;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.ModEntityAttributes;
 import com.stonytark.usefultoolsmod.entity.ModSpawnPlacements;
@@ -29,6 +31,8 @@ public final class UsefultoolsMod {
         //   4. Creative tab — its icon supplier references ModItems.RGOLD
         //   5. Triggers — independent ordering, last for clarity
         ModBlocks.register();
+        ModBlockEntityTypes.register();
+        ModMenuTypes.register();
         ModEntities.register();
         ModItems.register();
         ModCreativeModeTabs.register();
