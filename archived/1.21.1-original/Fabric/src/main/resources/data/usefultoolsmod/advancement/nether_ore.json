@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:ore_found",
+  "criteria": {
+    "has_nether_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:rgold_nether_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.nether_ore.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:rgold_nether_ore"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.nether_ore.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_nether_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:grenade",
+  "criteria": {
+    "has_dynamite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:dynamite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.dynamite.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:dynamite"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.dynamite.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dynamite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

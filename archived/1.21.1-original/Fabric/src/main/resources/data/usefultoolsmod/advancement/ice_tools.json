@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:glacial_shard",
+  "criteria": {
+    "has_ice_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:ice_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.ice_tools.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:ice_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.ice_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ice_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

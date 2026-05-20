@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rlapis": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:rlapis"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.rlapis.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:rlapis"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.rlapis.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rlapis"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

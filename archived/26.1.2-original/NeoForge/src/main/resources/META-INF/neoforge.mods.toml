@@ -1,0 +1,89 @@
+# This is the NeoForge mods.toml file for NeoForge 26.1+
+# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for NeoForge 26.1 FML version is 5.x
+loaderVersion="${loader_version_range}" #mandatory
+# The license for your mod
+license="${mod_license}"
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+# The modid of the mod
+modId="${mod_id}" #mandatory
+# The version number of the mod
+version="${mod_version}" #mandatory
+# A display name for the mod
+displayName="${mod_name}" #mandatory
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile="grenade.png" #optional
+# A text field displayed in the mod UI
+authors="${mod_authors}" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL="https://www.curseforge.com/minecraft/mc-mods/the-useful-tools-mod" #optional
+# A URL to refer people to when problems occur with this mod
+issueTrackerURL="https://github.com/StonyTark1117/UsefulToolsMod-2.X-26.X-Neoforge/issues" #optional
+# The description text for the mod (multi line!)
+description='''${mod_description}'''
+
+# Dependencies for this mod
+[[dependencies.${mod_id}]] #optional
+    # the modid of the dependency
+    modId="neoforge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the NeoForge dependency
+    versionRange="${neo_version_range}" #mandatory
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Optional integration: JEI (26.1 line — older JEI builds are MC-1.21.1-only)
+[[dependencies.${mod_id}]]
+    modId="jei"
+    type="optional"
+    versionRange="[29.0.0,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+# Optional integration: WTHIT (mod id is "waila"; 19.x is the NeoForge 26.1 line)
+[[dependencies.${mod_id}]]
+    modId="waila"
+    type="optional"
+    versionRange="[19.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Optional integration: Cloth Config (in-game config screen; 26.1.x line)
+[[dependencies.${mod_id}]]
+    modId="cloth_config"
+    type="optional"
+    versionRange="[26.1.0,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+# Optional integration: Just Enough Resources (JER). Registers this mod's
+# ore worldgen distributions with JER's WorldGen tab. Plugin class is
+# loaded only when the mod is present (lazy classload behind ModList).
+[[dependencies.${mod_id}]]
+    modId="jeresources"
+    type="optional"
+    versionRange="[${jer_mod_version},)"
+    ordering="AFTER"
+    side="CLIENT"
+
+# Optional integration: Magnetization addon. When loaded, this mod's metal
+# ingots, raw materials, ores, blocks, armor, and tools opt into the
+# magnetization:* item/block tags so they participate in magnetic field
+# interactions. Tag JSONs are emitted unconditionally and are inert when
+# Magnetization isn't installed.
+[[dependencies.${mod_id}]]
+    modId="magnetization"
+    type="optional"
+    versionRange="[0.1.0,)"
+    ordering="AFTER"
+    side="BOTH"

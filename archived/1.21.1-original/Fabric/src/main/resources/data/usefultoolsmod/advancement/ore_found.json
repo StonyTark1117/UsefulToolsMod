@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rgold_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:rgoldore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.ore_found.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:rgoldore"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.ore_found.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rgold_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

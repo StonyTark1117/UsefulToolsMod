@@ -1,0 +1,19 @@
+## Apply this delta to UsefulToolsMod-2.X-Neoforge/build.gradle
+##
+## The existing `runs { gameTestServer { ... } }` block already enables the
+## namespace. The only change is adding a junit-style report file so run.sh
+## can parse pass/fail without scraping log text.
+
+# inside `runs { gameTestServer { ... } }`, add the argument line:
+
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', mod_id
++       argument '-gameTestReport=build/gametest-report.xml'
+    }
+
+# (optional) at the bottom of build.gradle, register a short alias so
+# test-pipeline/run.sh can stay loader-agnostic if you ever rename the task:
+
++ tasks.register('gametest') {
++     dependsOn 'runGameTestServer'
++ }

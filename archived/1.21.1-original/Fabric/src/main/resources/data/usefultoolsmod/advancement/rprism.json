@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rprism_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:rprism_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.rprism.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:rprism_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.rprism.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rprism_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

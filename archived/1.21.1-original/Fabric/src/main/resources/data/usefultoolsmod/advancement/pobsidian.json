@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:obingot",
+  "criteria": {
+    "has_pobsidian_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:pobsidian_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.pobsidian.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:pobsidian_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.pobsidian.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pobsidian_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

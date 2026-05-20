@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:obshard",
+  "criteria": {
+    "has_obingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:obingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.obingot.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:obingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.obingot.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_obingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

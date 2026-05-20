@@ -1,0 +1,30 @@
+## Apply this delta to UsefulToolsMod-2.X-Fabric/build.gradle
+##
+## Loom doesn't ship a gametest run config by default; we add one inside the
+## existing `loom { runs { ... } }` block, alongside `datagen`.
+
+  loom {
+      accessWidenerPath = file("src/main/resources/usefultoolsmod.accesswidener")
+
+      runs {
+          datagen {
+              inherit server
+              name "Data Generation"
+              vmArg "-Dfabric-api.datagen"
+              vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+              vmArg "-Dfabric-api.datagen.modid=usefultoolsmod"
+              runDir "build/datagen"
+          }
++
++         gametest {
++             server()
++             name "GameTest Server"
++             vmArg "-Dfabric-api.gametest"
++             vmArg "-Dfabric-api.gametest.report-file=${project.buildDir}/gametest-report.xml"
++             runDir "build/gametest"
++         }
+      }
+  }
+
+## Run with:  ./gradlew runGametest
+## Reports to: build/gametest-report.xml  (test-pipeline/run.sh reads this)

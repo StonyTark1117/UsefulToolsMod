@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_hred": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:hred"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.hred.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:hred"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.hred.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hred"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

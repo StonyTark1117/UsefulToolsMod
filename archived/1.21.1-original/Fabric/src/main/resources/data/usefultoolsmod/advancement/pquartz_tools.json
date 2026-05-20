@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:polished_quartz",
+  "criteria": {
+    "has_pquartz_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:pquartz_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.pquartz_tools.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:pquartz_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.pquartz_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pquartz_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

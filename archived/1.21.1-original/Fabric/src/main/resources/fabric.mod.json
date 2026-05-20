@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "usefultoolsmod",
+  "version": "${version}",
+  "name": "Useful Tools Mod",
+  "description": "A simple mod adding various tools and armor based on reinforced versions of common materials.",
+  "authors": [
+    "stonytark_mkii"
+  ],
+  "contact": {
+    "homepage": "https://github.com/StonyTark1117/UsefulToolsMod-2.X-Fabric",
+    "sources": "https://github.com/StonyTark1117/UsefulToolsMod-2.X-Fabric",
+    "issues": "https://github.com/StonyTark1117/UsefulToolsMod-2.X-Fabric/issues"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/usefultoolsmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.stonytark.usefultoolsmod.UsefultoolsMod"
+    ],
+    "client": [
+      "com.stonytark.usefultoolsmod.UsefultoolsModClient"
+    ],
+    "fabric-datagen": [
+      "com.stonytark.usefultoolsmod.datagen.DataGenerators"
+    ],
+    "jei_mod_plugin": [
+      "com.stonytark.usefultoolsmod.compat.jei.UsefulToolsJeiPlugin"
+    ]
+  },
+  "accessWidener": "usefultoolsmod.accesswidener",
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.1",
+    "java": ">=21"
+  },
+  "suggests": {
+    "wthit": "*",
+    "jei": "*"
+  },
+  "custom": {}
+}

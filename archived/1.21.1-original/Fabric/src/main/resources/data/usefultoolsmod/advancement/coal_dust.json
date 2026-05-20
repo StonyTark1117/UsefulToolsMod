@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_coal_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:coal_dust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.coal_dust.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:coal_dust"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.coal_dust.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_coal_dust"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

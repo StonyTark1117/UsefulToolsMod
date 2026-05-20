@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:hglow",
+  "criteria": {
+    "has_hglowstone_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:hglowstone_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.hglowstone_tools.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:hglowstone_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.hglowstone_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hglowstone_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

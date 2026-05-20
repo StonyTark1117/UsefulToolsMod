@@ -1,0 +1,15 @@
+## Add to UsefulToolsMod-2.X-Fabric/src/main/resources/fabric.mod.json
+##
+## Inside the existing top-level "entrypoints" object, register the gametest
+## class so fabric-gametest-api-v1 picks it up at -Dfabric-api.gametest time.
+
+  "entrypoints": {
+      "main": [ "com.stonytark.usefultoolsmod.UsefultoolsMod" ],
+      "client": [ "..." ],
++     "fabric-gametest": [
++         "com.stonytark.usefultoolsmod.gametest.UsefulToolsGameTests"
++     ]
+  }
+
+## Note: fabric-gametest-api-v1 is part of the fabric-api jar already declared
+## in build.gradle, so no new dependency is required.

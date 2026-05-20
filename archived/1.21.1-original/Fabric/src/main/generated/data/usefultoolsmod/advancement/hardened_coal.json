@@ -1,0 +1,33 @@
+{
+  "parent": "usefultoolsmod:coal_dust",
+  "criteria": {
+    "has_hardened_coal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:hardened_coal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.hardened_coal.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "usefultoolsmod:hardened_coal"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.hardened_coal.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hardened_coal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

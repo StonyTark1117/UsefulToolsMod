@@ -1,0 +1,52 @@
+# --- Build outputs ---
+build/
+**/build/
+out/
+**/out/
+
+# --- Gradle ---
+.gradle/
+**/.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# --- Minecraft dev environment ---
+run/
+runs/
+run-data/
+**/run/
+**/runs/
+**/run-data/
+**/saves/
+logs/
+*.log
+*.log.gz
+crash-reports/
+
+# --- Datagen scratch (checksum caches, not the generated output itself) ---
+**/src/generated/**/.cache/
+**/src/main/generated/**/.cache/
+**/.cache/
+
+# --- IDE: IntelliJ ---
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# --- IDE: Eclipse ---
+.classpath
+.project
+.settings/
+bin/
+
+# --- IDE: VSCode ---
+.vscode/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Claude Code session state ---
+.claude/scheduled_tasks.lock
+.claude/local/

@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:ectoplasm",
+  "criteria": {
+    "has_refined_ectoplasm": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:refined_ectoplasm"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.refined_ectoplasm.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:refined_ectoplasm"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.refined_ectoplasm.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_refined_ectoplasm"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

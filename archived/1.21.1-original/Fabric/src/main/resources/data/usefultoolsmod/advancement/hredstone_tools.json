@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:hred",
+  "criteria": {
+    "has_hredstone_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:hredstone_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.hredstone_tools.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:hredstone_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.hredstone_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hredstone_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "usefultoolsmod:sem",
+  "criteria": {
+    "has_remerald_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:remerald_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.remerald.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "usefultoolsmod:remerald_sword"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.remerald.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_remerald_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

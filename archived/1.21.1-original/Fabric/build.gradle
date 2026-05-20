@@ -1,0 +1,86 @@
+plugins {
+	id 'fabric-loom' version '1.15-SNAPSHOT'
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+loom {
+	accessWidenerPath = file("src/main/resources/usefultoolsmod.accesswidener")
+
+	runs {
+		datagen {
+			inherit server
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			vmArg "-Dfabric-api.datagen.modid=usefultoolsmod"
+			runDir "build/datagen"
+		}
+	}
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDirs += ["src/main/generated"]
+		}
+	}
+}
+
+repositories {
+	maven { url "https://maven.terraformersmc.com/" }
+	maven { url "https://maven.shedaniel.me/" }
+	maven { url "https://maven.bai.lol" }
+	maven { url "https://maven.blamejared.com" }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// JEI — compile against the fabric jar (which transitively brings the api modules)
+	modCompileOnly  "mezz.jei:jei-1.21.1-fabric:19.27.0.340"
+	modLocalRuntime "mezz.jei:jei-1.21.1-fabric:19.27.0.340"
+
+	// WTHIT — compile against the API, full mod in dev runtime
+	modCompileOnly  "mcp.mobius.waila:wthit-api:fabric-12.10.2"
+	modLocalRuntime "mcp.mobius.waila:wthit:fabric-12.10.2"
+}
+
+processResources {
+	inputs.property "version", project.version
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+	// src/main/generated is added to resources after src/main/resources;
+	// when both contain the same path, prefer the generated (datagen) output.
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}" }
+	}
+}

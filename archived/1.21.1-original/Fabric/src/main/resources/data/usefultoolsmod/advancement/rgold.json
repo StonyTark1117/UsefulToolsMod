@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_rgold": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:rgold"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.rgold.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:rgold"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.rgold.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rgold"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

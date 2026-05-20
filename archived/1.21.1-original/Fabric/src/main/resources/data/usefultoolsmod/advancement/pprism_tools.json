@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:polished_prismarine",
+  "criteria": {
+    "has_pprism_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:pprism_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.pprism_tools.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:pprism_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.pprism_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_pprism_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

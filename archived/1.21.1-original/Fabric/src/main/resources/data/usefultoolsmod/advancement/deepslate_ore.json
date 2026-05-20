@@ -1,0 +1,38 @@
+{
+  "parent": "usefultoolsmod:ore_found",
+  "criteria": {
+    "has_deepslate_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:rgold_deepslate_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.deepslate_ore.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "usefultoolsmod:rgold_deepslate_ore"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.deepslate_ore.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_deepslate_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
