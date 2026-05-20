@@ -2,6 +2,7 @@ package com.stonytark.usefultoolsmod;
 
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
+import com.stonytark.usefultoolsmod.event.ModEvents;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.platform.PlatformHelper;
@@ -29,5 +30,6 @@ public final class UsefultoolsMod {
         ModItems.register();
         ModCreativeModeTabs.register();
         ModTriggers.register();
+        ModEvents.init();
     }
 }
