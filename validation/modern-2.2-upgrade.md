@@ -2,10 +2,6 @@
 
 Date: 2026-08-25
 
-> The original 1.21.1 Fabric upgrade run used the former Architectury build.
-> Its world/config observations are retained for provenance but are superseded
-> by the loader-native 1.21.1 migration and must be revalidated on that target.
-
 ## Result
 
 PASS. Three worlds created by published 2.2.2 artifacts were reopened by the
@@ -71,6 +67,23 @@ missing model/texture diagnostics, mod-loading exceptions, crash markers, or
 startup failures. The final Forge and NeoForge runs report `BUILD SUCCESSFUL`;
 Fabric completed all dimension saves and released both ports before exact
 cleanup of the known Architectury transformer launcher orphan.
+
+## Loader-native Fabric revalidation
+
+The published-2.2.2 Fabric fixture was copied again from its untouched source,
+its old mod JAR was disabled, and commit `fb6603e` loaded it through the
+independent Fabric project. The native build retained the Spectral Infuser and
+its empty three-slot block-entity data at `0 100 0`; RCON block predicates
+passed for the Ferrous Gold block and all three ore variants at `1..4 100 0`;
+and the persistent `UpgradeGhost` retained its UUID and custom name.
+
+The native JSON config still contained exactly 116 controls and preserved
+`explosivesEnabled=false`, `ghostSpawnChance=0.42`, and the historical
+`pointedDripstoneEffects=false` alias. The server loaded without missing
+mappings, recipe/model/texture failures, mod-load exceptions, or Architectury;
+saved all three dimensions; stopped its RCON listener; released both ports;
+and exited with `BUILD SUCCESSFUL`. Machine-readable shutdown evidence is in
+`validation/architectury-removal/native-upgrade/1.21.1-fabric.json`.
 
 The first Forge upgrade run exposed a project-owned shutdown race: a filesystem
 reload event could arrive after Forge unloaded the config spec, and `Config`

@@ -68,7 +68,7 @@ Logical version is `2.3.0`. Loader metadata uses `2.3.0+mc.<minecraft>.<loader>`
 
 ### Automated/runtime acceptance
 
-- [x] Unit tests: 56 dependency-free tests cover catalog generation/audit, every persistence/config contract, damage and target bridges, recipe generation, classic adapters/migration, runner ownership, integration profiles, RCON framing, and the WTHIT tier-order regression. The classic Gradle suite adds eight Java-8 semantic tests.
+- [x] Unit tests: 60 dependency-free tests cover catalog generation/audit, Architectury removal, every persistence/config contract, damage and target bridges, recipe generation, classic adapters/migration, runner ownership, integration profiles, RCON framing, and the WTHIT tier-order regression. The classic Gradle suite adds eight Java-8 semantic tests.
 - [x] GameTests on every modern loader for representative tiers, Spectral Infuser processing, Ghost lifecycle/armor, explosives, config, effects, and worldgen. All 15 targets pass 96 required invocations; published 2.2.2 legacy-world loading is covered by separate Forge/Fabric/NeoForge upgrade acceptance.
 - [x] Complete 1.7.10 automated Forge integration. The reusable matrix runners cover the Java-8 dedicated server and Xvfb client; the client joins a world, opens the 116-option config GUI and Infuser, renders a stable Ghost, and exits cleanly. Eight Java-8 semantic tests cover the behavior paths unavailable to GameTest.
 - [x] For all 16 binaries: applicable zero-drift datagen, dedicated-server boot, client boot/world join, config-screen smoke, and confirmed shutdown/port cleanup. The strict clean build and JAR/source audit also pass.
