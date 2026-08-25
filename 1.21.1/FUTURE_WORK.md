@@ -106,6 +106,12 @@ Requires:
 Estimated effort: 1-2 hours of focused work plus the interactive NBT
 generation step.
 
+## Phase 8 - 26.2 ##
+
+Feature completeness across 1.7.10, 1.20.1, 1.20.2, 1.21.1, 26.1.2, and 26.2 on Forge, Neoforge, Fabric/Quilt as version appropriate
+
+1.21.1 Neoforge should maintain optional integration with magnetization as found in 2.2.3
+
 ## Already done in earlier sessions
 
 Everything above the deferral line. Recap:
