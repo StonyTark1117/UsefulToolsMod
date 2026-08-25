@@ -12,8 +12,8 @@ jobs:
   catalog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
       - run: python -m unittest discover -s tests -v
@@ -43,8 +43,8 @@ jobs:
     runs-on: ubuntu-latest
     name: ${{ matrix.name }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: ${{ matrix.java }}
@@ -59,8 +59,14 @@ jobs:
           if [[ "${{ matrix.name }}" != "1.7.10-forge" ]]; then
             lint_args=(-I "$GITHUB_WORKSPACE/scripts/strict-warnings.gradle")
           fi
+          # NeoGradle treats CI=true as a request for its binary-patch pipeline.
+          # Minecraft 26.x is unobfuscated and its bundle has no patches.lzma,
+          # so use NeoGradle's normal decompiler pipeline for these two builds.
+          if [[ "${{ matrix.name }}" == 26.*-neoforge ]]; then
+            export CI=false
+          fi
           ./gradlew --no-daemon --max-workers=1 --no-build-cache "${lint_args[@]}" clean build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.name }}
           path: ${{ matrix.dir }}/**/build/libs/*.jar
