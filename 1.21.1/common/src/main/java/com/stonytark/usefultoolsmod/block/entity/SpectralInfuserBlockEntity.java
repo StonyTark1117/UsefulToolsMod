@@ -1,5 +1,6 @@
 package com.stonytark.usefultoolsmod.block.entity;
 
+import com.stonytark.usefultoolsmod.Config;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.item.custom.EctoplasmInfusionHelper;
@@ -138,6 +139,12 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
 
     public static void tick(Level level, BlockPos pos, BlockState state,
                             SpectralInfuserBlockEntity be) {
+        if (!Config.spectralInfuserEnabled) {
+            if (be.progress > 0) be.resetProgress();
+            if (state.getValue(SpectralInfuserBlock.LIT))
+                level.setBlock(pos, state.setValue(SpectralInfuserBlock.LIT, false), 3);
+            return;
+        }
         boolean powered = level.hasNeighborSignal(pos);
 
         if (!powered && be.hasRecipe()) {

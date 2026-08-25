@@ -9,6 +9,9 @@ import net.minecraft.world.item.ItemStack;
  * Utility for checking if a player is protected from ghost detection
  * by wearing ectoplasm armor or ectoplasm-infused armor.
  */
+// Holder#is(Holder) is the 1.21.1 identity-safe comparison. It is deprecated
+// only for later Minecraft lines, which have version-native source trees.
+@SuppressWarnings("deprecation")
 public final class EctoplasmArmorHelper {
 
     private EctoplasmArmorHelper() {}

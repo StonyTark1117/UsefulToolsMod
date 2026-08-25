@@ -1,0 +1,10 @@
+accessWidener	v2	named
+
+# FireBlock.getBurnChance(BlockState) - needed for FNI boots fire mechanic
+accessible	method	net/minecraft/block/FireBlock	getBurnChance	(Lnet/minecraft/block/BlockState;)I
+
+# Criteria.register - needed for custom advancement triggers
+accessible	method	net/minecraft/advancement/criterion/Criteria	register	(Lnet/minecraft/advancement/criterion/Criterion;)Lnet/minecraft/advancement/criterion/Criterion;
+
+# ItemModelGenerator.writer - needed for datagen of armor trim overrides
+accessible	field	net/minecraft/data/client/ItemModelGenerator	writer	Ljava/util/function/BiConsumer;

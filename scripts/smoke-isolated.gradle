@@ -1,0 +1,32 @@
+// Override development-run working directories for isolated smoke worlds.
+// The path is supplied by scripts/smoke-server.py and contains no credentials.
+def smokeGameDir = gradle.startParameter.projectProperties['usefulToolsSmokeGameDir']
+if (smokeGameDir != null) {
+    allprojects {
+        tasks.matching { it.name in ['runServer', 'runGameTestServer', 'runClient'] }.configureEach { task ->
+            if (task.hasProperty('gameDirectory')) {
+                task.gameDirectory = file(smokeGameDir)
+            }
+            if (task.hasProperty('workingDirectory')) {
+                task.workingDirectory = file(smokeGameDir)
+            }
+            if (task.hasProperty('workingDir')) {
+                task.workingDir = file(smokeGameDir)
+            }
+            if (task instanceof JavaExec) {
+                task.workingDir = file(smokeGameDir)
+            }
+            task.doFirst {
+                if (task instanceof JavaExec) {
+                    def runArgs = task.args == null ? [] : new ArrayList(task.args)
+                    def gameDirIndex = runArgs.indexOf('--gameDir')
+                    if (gameDirIndex >= 0 && gameDirIndex + 1 < runArgs.size()) {
+                        runArgs[gameDirIndex + 1] = smokeGameDir
+                        task.setArgs(runArgs)
+                    }
+                }
+                logger.lifecycle("Useful Tools isolated game directory: ${smokeGameDir}; task=${task.class.name}; workingDir=${task.hasProperty('workingDir') ? task.workingDir : 'n/a'}")
+            }
+        }
+    }
+}

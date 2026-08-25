@@ -1,0 +1,150 @@
+plugins {
+	id 'fabric-loom' version '1.15.5'
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+loom {
+	accessWidenerPath = file("src/main/resources/usefultoolsmod.accesswidener")
+
+	runs {
+		client {
+			client()
+			runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+					.map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+					.getOrElse('run')
+		}
+		server {
+			server()
+			runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+					.map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+					.getOrElse('run')
+		}
+		gameTestServer {
+			inherit server
+			name "GameTest Server"
+			vmArg "-Dfabric-api.gametest"
+			vmArg "-Dfabric-api.gametest.report-file=${file('build/gametest-report.xml')}"
+			runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+					.map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+					.getOrElse('build/gametest')
+		}
+		datagen {
+			inherit server
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			vmArg "-Dfabric-api.datagen.modid=usefultoolsmod"
+			runDir "build/datagen"
+		}
+	}
+}
+
+tasks.withType(JavaExec).configureEach {
+	if (name in ['runServer', 'runGameTestServer']) standardInput = System.in
+}
+
+sourceSets {
+	main {
+		resources {
+			srcDirs += ["src/main/generated"]
+		}
+	}
+}
+
+repositories {
+	maven { url "https://maven.terraformersmc.com/" }
+	maven { url "https://maven.shedaniel.me/" }
+	maven { url "https://maven.bai.lol" }
+	maven { url "https://maven.blamejared.com" }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// JEI — optional; compile against the fabric jar (excludes avoid unmapped transitive deps)
+	modCompileOnly("mezz.jei:jei-1.20.1-fabric:15.2.0.27") {
+		exclude group: "mezz.jei", module: "jei-1.20.1-common-api"
+		exclude group: "mezz.jei", module: "jei-1.20.1-common"
+		exclude group: "mezz.jei", module: "jei-1.20.1-core"
+		exclude group: "mezz.jei", module: "jei-1.20.1-lib"
+		exclude group: "mezz.jei", module: "jei-1.20.1-gui"
+	}
+	// Opt-in runtimes let the default launch prove both integrations are optional.
+	if (providers.gradleProperty("usefulToolsJeiRuntime").orElse("false").get().toBoolean()) {
+		modLocalRuntime("mezz.jei:jei-1.20.1-fabric:15.2.0.27")
+	}
+
+	// WTHIT — optional; compile against the API, full mod in dev runtime for testing
+	modCompileOnly  "mcp.mobius.waila:wthit-api:fabric-8.16.3"
+	if (providers.gradleProperty("usefulToolsWthitRuntime").orElse("false").get().toBoolean()) {
+		modLocalRuntime "mcp.mobius.waila:wthit:fabric-8.16.3"
+	}
+	modCompileOnly "com.terraformersmc:modmenu:${modmenu_version}"
+	if (providers.gradleProperty("usefulToolsModMenuRuntime").orElse("false").get().toBoolean()) {
+		modLocalRuntime "com.terraformersmc:modmenu:${modmenu_version}"
+	}
+
+	testImplementation platform("org.junit:junit-bom:5.12.2")
+	testImplementation "org.junit.jupiter:junit-jupiter"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+test {
+	useJUnitPlatform()
+}
+
+processResources {
+	inputs.property "version", project.version
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+// Loom itself currently needs Java 21, but Minecraft 1.20.x is a Java 17
+// target. Keep the Gradle JVM and the launched game JVM independent so runtime
+// validation exercises the same Java major advertised to users.
+def minecraftJavaLauncher = javaToolchains.launcherFor {
+	languageVersion = JavaLanguageVersion.of(17)
+}
+tasks.withType(JavaExec).configureEach {
+	javaLauncher = minecraftJavaLauncher
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}" }
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact jar
+		}
+	}
+	repositories {
+		maven {
+			url "file://${project.projectDir}/mcmodsrepo"
+		}
+	}
+}

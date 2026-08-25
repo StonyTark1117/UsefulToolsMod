@@ -1,0 +1,39 @@
+{
+  "parent": "usefultoolsmod:calcified_amethyst",
+  "criteria": {
+    "has_camethyst_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:camethyst_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.usefultoolsmod.camethyst_tools.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "usefultoolsmod:camethyst_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.usefultoolsmod.camethyst_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_camethyst_sword"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

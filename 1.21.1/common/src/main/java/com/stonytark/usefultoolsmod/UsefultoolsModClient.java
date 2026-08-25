@@ -5,6 +5,7 @@ import com.stonytark.usefultoolsmod.client.SpectralInfuserScreen;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.client.GhostModel;
 import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
+import com.stonytark.usefultoolsmod.event.ModEvents;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
@@ -21,6 +22,7 @@ public final class UsefultoolsModClient {
     private UsefultoolsModClient() {}
 
     public static void initClient() {
+        ModEvents.initClient();
         EntityRendererRegistry.register(ModEntities.GHOST, GhostRenderer::new);
         EntityRendererRegistry.register(ModEntities.GRENADE, ThrownItemRenderer::new);
         EntityModelLayerRegistry.register(GhostModel.LAYER_LOCATION, GhostModel::createBodyLayer);

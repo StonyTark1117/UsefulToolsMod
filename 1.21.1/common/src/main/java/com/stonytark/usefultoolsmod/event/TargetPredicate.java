@@ -24,6 +24,9 @@ import net.minecraft.world.item.ItemStack;
  * NeoForge it fires inside a LivingChangeTargetEvent listener; on Fabric it
  * fires inside a Mob#setTarget @Inject mixin.
  */
+// Holder#is(Holder) is the 1.21.1 identity-safe comparison. It is deprecated
+// only for later Minecraft lines, which have version-native source trees.
+@SuppressWarnings("deprecation")
 public final class TargetPredicate {
     private TargetPredicate() {}
 

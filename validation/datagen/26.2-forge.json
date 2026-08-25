@@ -1,0 +1,52 @@
+{
+  "target": "26.2-forge",
+  "tasks": [
+    {
+      "task": "runClientData",
+      "command": [
+        "./gradlew",
+        "--no-daemon",
+        "--max-workers=1",
+        "runClientData"
+      ],
+      "completed": true,
+      "forced_launcher_cleanup": false,
+      "timed_out": false,
+      "fatal_error": false,
+      "exit_code": 0,
+      "remaining_owned_pids": [],
+      "log": "validation/datagen/26.2-forge-runClientData.log",
+      "success": true
+    },
+    {
+      "task": "runData",
+      "command": [
+        "./gradlew",
+        "--no-daemon",
+        "--max-workers=1",
+        "runData"
+      ],
+      "completed": true,
+      "forced_launcher_cleanup": false,
+      "timed_out": false,
+      "fatal_error": false,
+      "exit_code": 0,
+      "remaining_owned_pids": [],
+      "log": "validation/datagen/26.2-forge-runData.log",
+      "success": true
+    }
+  ],
+  "resource_roots": [
+    "src/generated/resources/client",
+    "src/generated/resources/server"
+  ],
+  "generated_roots": [],
+  "generated_file_count": 2920,
+  "drift": {
+    "added": [],
+    "removed": [],
+    "changed": []
+  },
+  "stable": true,
+  "success": true
+}

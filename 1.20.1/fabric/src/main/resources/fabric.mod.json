@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "usefultoolsmod",
+  "version": "${version}",
+  "name": "Useful Tools Mod",
+  "description": "Adds many useful tools, weapons, and armor sets to Minecraft.",
+  "authors": ["stonytark"],
+  "contact": {},
+  "license": "CC0-1.0",
+  "icon": "assets/usefultoolsmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.stonytark.usefultoolsmod.UsefultoolsMod"
+    ],
+    "client": [
+      "com.stonytark.usefultoolsmod.UsefultoolsModClient"
+    ],
+    "fabric-datagen": [
+      "com.stonytark.usefultoolsmod.datagen.DataGenerators"
+    ],
+    "fabric-gametest": [
+      "com.stonytark.usefultoolsmod.gametest.UsefulToolsGameTests"
+    ],
+    "jei_mod_plugin": [
+      "com.stonytark.usefultoolsmod.compat.jei.UsefulToolsJeiPlugin"
+    ],
+    "modmenu": [
+      "com.stonytark.usefultoolsmod.compat.modmenu.UsefulToolsModMenuPlugin"
+    ]
+  },
+  "accessWidener": "usefultoolsmod.accesswidener",
+  "mixins": [
+    "usefultoolsmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  },
+  "suggests": {
+    "wthit": "*",
+    "jei": "*",
+    "modmenu": "*"
+  }
+}

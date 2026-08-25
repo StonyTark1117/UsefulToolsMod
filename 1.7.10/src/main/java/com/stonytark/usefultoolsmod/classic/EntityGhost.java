@@ -1,0 +1,132 @@
+package com.stonytark.usefultoolsmod.classic;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
+
+/** Forge 1.7.10 equivalent of the modern Ghost lifecycle and damage contract. */
+public class EntityGhost extends EntityAnimal {
+    private static final int MAX_LIFETIME = 5 * 60 * 20;
+    private int lifetime;
+
+    public EntityGhost(World world) {
+        super(world);
+        setSize(0.9F, 1.1F);
+        noClip = true;
+        isImmuneToFire = true;
+        tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
+    }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
+        getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(32.0D);
+    }
+
+    @Override
+    protected boolean isAIEnabled() {
+        return true;
+    }
+
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        noClip = true;
+        // EntityLivingBase applies vanilla gravity during super.onLivingUpdate().
+        // Replace its accumulated vertical velocity with a bounded hover wave.
+        motionY = Math.sin(ticksExisted * 0.12D) * 0.01D;
+        fallDistance = 0.0F;
+        extinguish();
+        if (!worldObj.isRemote && ++lifetime > MAX_LIFETIME) {
+            setDead();
+            return;
+        }
+        if (rand.nextFloat() < 0.04F) {
+            motionX += (rand.nextDouble() - 0.5D) * 0.08D;
+            motionZ += (rand.nextDouble() - 0.5D) * 0.08D;
+        }
+        motionX *= 0.92D;
+        motionZ *= 0.92D;
+    }
+
+    @Override
+    public void fall(float distance) {
+        // Ghosts have no gravity or fall damage.
+    }
+
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        if (source == DamageSource.outOfWorld) {
+            return super.attackEntityFrom(source, amount);
+        }
+        Entity attacker = source.getEntity();
+        if (attacker instanceof EntityPlayer) {
+            ItemStack held = ((EntityPlayer) attacker).getHeldItem();
+            if (ClassicInfusion.isInfused(held)) {
+                String id = held.getItem().getUnlocalizedName();
+                if (!(id.endsWith("_sword") || id.endsWith("_axe"))) {
+                    amount = 1.0F;
+                }
+                return super.attackEntityFrom(source, amount);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    protected void dropFewItems(boolean recentlyHit, int looting) {
+        net.minecraft.item.Item ectoplasm = ClassicGeneratedCatalog.ITEMS.get("ectoplasm");
+        int count = isChild() ? rand.nextInt(2) : 1 + rand.nextInt(3);
+        if (ectoplasm != null && count > 0) {
+            entityDropItem(new ItemStack(ectoplasm, count), 0.0F);
+        }
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack != null && stack.getItem() == ClassicGeneratedCatalog.ITEMS.get("ectoplasm");
+    }
+
+    @Override
+    public EntityAgeable createChild(EntityAgeable mate) {
+        return new EntityGhost(worldObj);
+    }
+
+    @Override
+    public boolean getCanSpawnHere() {
+        if (!ClassicGeneratedConfig.booleanValue("ghostEnabled")) return false;
+        if (rand.nextDouble() > ClassicGeneratedConfig.doubleValue("ghostSpawnChance")) return false;
+        int light = worldObj.getBlockLightValue((int) posX, (int) posY, (int) posZ);
+        return light <= 3 || rand.nextInt(3) == 0;
+    }
+
+    @Override
+    protected String getLivingSound() { return "mob.ghast.moan"; }
+
+    @Override
+    protected String getHurtSound() { return "mob.ghast.scream"; }
+
+    @Override
+    protected String getDeathSound() { return "mob.ghast.death"; }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound tag) {
+        super.writeEntityToNBT(tag);
+        tag.setInteger("UsefulToolsLifetime", lifetime);
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound tag) {
+        super.readEntityFromNBT(tag);
+        lifetime = tag.getInteger("UsefulToolsLifetime");
+    }
+}

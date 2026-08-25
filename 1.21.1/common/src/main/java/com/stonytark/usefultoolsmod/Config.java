@@ -8,8 +8,13 @@ import dev.architectury.platform.Platform;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Persistent configuration via plain JSON.
@@ -18,8 +23,8 @@ import java.nio.file.Path;
  * fields (declared below) are written/read by reflection — adding a new field
  * needs no boilerplate. Missing keys in the file are left at their default values.
  *
- * A full Cloth Config UI integration (ModMenu on Fabric, NeoForge config screen)
- * is the next deferred phase. Today users edit the JSON file directly and reload.
+ * The built-in config screen is generated from the same reflected field list, so
+ * persistence and UI cannot silently drift apart.
  */
 public class Config {
 
@@ -30,23 +35,35 @@ public class Config {
 
     /** Called from UsefultoolsMod.init() — loads from disk, writes defaults if absent. */
     public static void load() {
-        Path path = configPath();
+        load(configPath());
+    }
+
+    static void load(Path path) {
         try {
             if (!Files.exists(path)) {
-                save();
+                save(path);
                 return;
             }
             JsonObject root = JsonParser.parseString(Files.readString(path)).getAsJsonObject();
             for (Field f : Config.class.getDeclaredFields()) {
-                if (!isConfigField(f) || !root.has(f.getName())) continue;
+                if (!isConfigField(f)) continue;
+                String key = f.getName();
+                // The Fabric 2.2.x line used the longer pointedDripstone names.
+                // Accept them forever, but save only the canonical names.
+                if (!root.has(key) && key.equals("dripstoneEnabled") && root.has("pointedDripstoneEnabled")) {
+                    key = "pointedDripstoneEnabled";
+                } else if (!root.has(key) && key.equals("dripstoneEffects") && root.has("pointedDripstoneEffects")) {
+                    key = "pointedDripstoneEffects";
+                }
+                if (!root.has(key)) continue;
                 try {
                     Class<?> type = f.getType();
-                    if (type == boolean.class) f.setBoolean(null, root.get(f.getName()).getAsBoolean());
-                    else if (type == int.class) f.setInt(null, root.get(f.getName()).getAsInt());
-                    else if (type == double.class) f.setDouble(null, root.get(f.getName()).getAsDouble());
-                    else if (type == float.class) f.setFloat(null, root.get(f.getName()).getAsFloat());
-                    else if (type == long.class) f.setLong(null, root.get(f.getName()).getAsLong());
-                    else if (type == String.class) f.set(null, root.get(f.getName()).getAsString());
+                    if (type == boolean.class) f.setBoolean(null, root.get(key).getAsBoolean());
+                    else if (type == int.class) f.setInt(null, root.get(key).getAsInt());
+                    else if (type == double.class) f.setDouble(null, validatedDouble(f.getName(), root.get(key).getAsDouble()));
+                    else if (type == float.class) f.setFloat(null, root.get(key).getAsFloat());
+                    else if (type == long.class) f.setLong(null, root.get(key).getAsLong());
+                    else if (type == String.class) f.set(null, root.get(key).getAsString());
                 } catch (Exception e) {
                     UsefultoolsMod.LOGGER.warn("Config load failed for {}: {}", f.getName(), e.toString());
                 }
@@ -57,6 +74,10 @@ public class Config {
     }
 
     public static void save() {
+        save(configPath());
+    }
+
+    static void save(Path path) {
         JsonObject root = new JsonObject();
         for (Field f : Config.class.getDeclaredFields()) {
             if (!isConfigField(f)) continue;
@@ -73,9 +94,14 @@ public class Config {
             }
         }
         try {
-            Path path = configPath();
             Files.createDirectories(path.getParent());
-            Files.writeString(path, GSON.toJson(root));
+            Path temporary = path.resolveSibling(path.getFileName() + ".tmp");
+            Files.writeString(temporary, GSON.toJson(root));
+            try {
+                Files.move(temporary, path, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+            } catch (AtomicMoveNotSupportedException ignored) {
+                Files.move(temporary, path, StandardCopyOption.REPLACE_EXISTING);
+            }
         } catch (Exception e) {
             UsefultoolsMod.LOGGER.warn("Config save failed: {}", e.toString());
         }
@@ -84,6 +110,68 @@ public class Config {
     private static boolean isConfigField(Field f) {
         int m = f.getModifiers();
         return Modifier.isPublic(m) && Modifier.isStatic(m) && !Modifier.isFinal(m);
+    }
+
+    private static double validatedDouble(String name, double value) {
+        if (name.equals("ghostSpawnChance")) return Math.max(0.0, Math.min(1.0, value));
+        return value;
+    }
+
+    /** Stable descriptor consumed by the built-in screen and validation tests. */
+    public record Option(Field field, String category, String label, double minimum, double maximum) {
+        public Object get() {
+            try {
+                return field.get(null);
+            } catch (IllegalAccessException e) {
+                throw new IllegalStateException("Cannot read config option " + field.getName(), e);
+            }
+        }
+
+        public void set(Object value) {
+            try {
+                if (field.getType() == double.class) {
+                    field.setDouble(null, validatedDouble(field.getName(), ((Number) value).doubleValue()));
+                } else {
+                    field.set(null, value);
+                }
+            } catch (IllegalAccessException e) {
+                throw new IllegalStateException("Cannot write config option " + field.getName(), e);
+            }
+        }
+    }
+
+    private static final List<Option> OPTIONS = buildOptions();
+
+    public static List<Option> options() {
+        return OPTIONS;
+    }
+
+    private static List<Option> buildOptions() {
+        List<Option> result = new ArrayList<>();
+        for (Field field : Config.class.getDeclaredFields()) {
+            if (!isConfigField(field)) continue;
+            String name = field.getName();
+            double min = name.equals("ghostSpawnChance") ? 0.0 : -Double.MAX_VALUE;
+            double max = name.equals("ghostSpawnChance") ? 1.0 : Double.MAX_VALUE;
+            result.add(new Option(field, category(name), prettify(name), min, max));
+        }
+        return Collections.unmodifiableList(result);
+    }
+
+    private static String category(String name) {
+        if (name.equals("ghostSpawnChance") || name.endsWith("Effects") || name.endsWith("Avoidance")
+                || name.endsWith("Phasing") || name.endsWith("Drain") || name.endsWith("Sticky")
+                || name.endsWith("Thorns") || name.endsWith("Teleport")) return "Effects";
+        if (name.contains("bread") || name.contains("Kelp") || name.contains("Flesh") || name.contains("Melon")
+                || name.contains("Berry") || name.contains("Pie") || name.contains("mushroom")
+                || name.contains("pufferfish") || name.contains("honey") || name.contains("Fruit")
+                || name.contains("Apple") || name.startsWith("cake")) return "Food Sets";
+        return "Content Sets";
+    }
+
+    private static String prettify(String raw) {
+        String spaced = raw.replaceAll("([a-z0-9])([A-Z])", "$1 $2").replace('_', ' ');
+        return Character.toUpperCase(spaced.charAt(0)) + spaced.substring(1);
     }
 
 

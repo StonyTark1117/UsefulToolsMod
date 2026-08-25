@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.block;
 
+import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
 import com.stonytark.usefultoolsmod.item.ModItems;
@@ -20,87 +22,87 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(UsefultoolsMod.MOD_ID, Registries.BLOCK);
 
-    public static final RegistrySupplier<Block> RGOLDBLOCK = registerBlock("rgoldblock",
+    public static final RegistrySupplier<Block> RGOLDBLOCK = registerBlock(GeneratedRegistrationIds.Blocks.RGOLDBLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
-    public static final RegistrySupplier<Block> HRBLOCK = registerBlock("hrblock",
+    public static final RegistrySupplier<Block> HRBLOCK = registerBlock(GeneratedRegistrationIds.Blocks.HRBLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.NETHER_BRICKS)));
 
-    public static final RegistrySupplier<Block> RGOLDORE = registerBlock("rgoldore",
+    public static final RegistrySupplier<Block> RGOLDORE = registerBlock(GeneratedRegistrationIds.Blocks.RGOLDORE,
             () -> new DropExperienceBlock(UniformInt.of(2,4), BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    public static final RegistrySupplier<Block> RGOLD_NETHER_ORE = registerBlock("rgold_nether_ore",
+    public static final RegistrySupplier<Block> RGOLD_NETHER_ORE = registerBlock(GeneratedRegistrationIds.Blocks.RGOLD_NETHER_ORE,
             () -> new DropExperienceBlock(UniformInt.of(2,4), BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE)));
 
-    public static final RegistrySupplier<Block> RGOLD_END_ORE = registerBlock("rgold_end_ore",
+    public static final RegistrySupplier<Block> RGOLD_END_ORE = registerBlock(GeneratedRegistrationIds.Blocks.RGOLD_END_ORE,
             () -> new DropExperienceBlock(UniformInt.of(2,4), BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.ROOTED_DIRT)));
 
-    public static final RegistrySupplier<Block> RGOLD_DEEPSLATE_ORE = registerBlock("rgold_deepslate_ore",
+    public static final RegistrySupplier<Block> RGOLD_DEEPSLATE_ORE = registerBlock(GeneratedRegistrationIds.Blocks.RGOLD_DEEPSLATE_ORE,
             () -> new DropExperienceBlock(UniformInt.of(2,4), BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
-    public static final RegistrySupplier<Block> SEMBLOCK = registerBlock("semblock",
+    public static final RegistrySupplier<Block> SEMBLOCK = registerBlock(GeneratedRegistrationIds.Blocks.SEMBLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
-    public static final RegistrySupplier<Block> SOBLOCK = registerBlock("soblock",
+    public static final RegistrySupplier<Block> SOBLOCK = registerBlock(GeneratedRegistrationIds.Blocks.SOBLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
-    public static final RegistrySupplier<Block> LBLOCK = registerBlock("lblock",
+    public static final RegistrySupplier<Block> LBLOCK = registerBlock(GeneratedRegistrationIds.Blocks.LBLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
-    public static final RegistrySupplier<Block> HGLOW_BLOCK = registerBlock("hglow_block",
+    public static final RegistrySupplier<Block> HGLOW_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.HGLOW_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
-    public static final RegistrySupplier<Block> RAW_RGOLD_BLOCK = registerBlock("raw_rgold_block",
+    public static final RegistrySupplier<Block> RAW_RGOLD_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.RAW_RGOLD_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    public static final RegistrySupplier<Block> ECTOPLASM_BLOCK = registerBlock("ectoplasm_block",
+    public static final RegistrySupplier<Block> ECTOPLASM_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.ECTOPLASM_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(2.5f).requiresCorrectToolForDrops().sound(SoundType.SLIME_BLOCK)));
 
-    public static final RegistrySupplier<Block> REFINED_ECTOPLASM_BLOCK = registerBlock("refined_ectoplasm_block",
+    public static final RegistrySupplier<Block> REFINED_ECTOPLASM_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.REFINED_ECTOPLASM_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.SLIME_BLOCK)));
 
-    public static final RegistrySupplier<Block> HARDENED_COAL_BLOCK = registerBlock("hardened_coal_block",
+    public static final RegistrySupplier<Block> HARDENED_COAL_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.HARDENED_COAL_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    public static final RegistrySupplier<Block> COAL_DUST_BLOCK = registerBlock("coal_dust_block",
+    public static final RegistrySupplier<Block> COAL_DUST_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.COAL_DUST_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(2f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
 
-    public static final RegistrySupplier<Block> OBSHARD_BLOCK = registerBlock("obshard_block",
+    public static final RegistrySupplier<Block> OBSHARD_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.OBSHARD_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
-    public static final RegistrySupplier<Block> CALCIFIED_AMETHYST_BLOCK = registerBlock("calcified_amethyst_block",
+    public static final RegistrySupplier<Block> CALCIFIED_AMETHYST_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.CALCIFIED_AMETHYST_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
-    public static final RegistrySupplier<Block> GLACIAL_SHARD_BLOCK = registerBlock("glacial_shard_block",
+    public static final RegistrySupplier<Block> GLACIAL_SHARD_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.GLACIAL_SHARD_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.GLASS)));
 
-    public static final RegistrySupplier<Block> POLISHED_QUARTZ_BLOCK = registerBlock("polished_quartz_block",
+    public static final RegistrySupplier<Block> POLISHED_QUARTZ_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.POLISHED_QUARTZ_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    public static final RegistrySupplier<Block> POLISHED_PRISMARINE_BLOCK = registerBlock("polished_prismarine_block",
+    public static final RegistrySupplier<Block> POLISHED_PRISMARINE_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.POLISHED_PRISMARINE_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(3.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
-    public static final RegistrySupplier<Block> SPECTRAL_INFUSER = registerBlock("spectral_infuser",
+    public static final RegistrySupplier<Block> SPECTRAL_INFUSER = registerBlock(GeneratedRegistrationIds.Blocks.SPECTRAL_INFUSER,
             () -> new SpectralInfuserBlock(BlockBehaviour.Properties.of()
                     .strength(3.5f)
                     .requiresCorrectToolForDrops()

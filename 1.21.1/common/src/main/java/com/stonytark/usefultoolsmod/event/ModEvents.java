@@ -57,21 +57,24 @@ import dev.architectury.event.EventResult;
 import dev.architectury.event.events.client.ClientTooltipEvent;
 import dev.architectury.event.events.common.EntityEvent;
 import dev.architectury.event.events.common.InteractionEvent;
+import dev.architectury.event.events.common.LifecycleEvent;
 import dev.architectury.event.events.common.TickEvent;
 import dev.architectury.registry.fuel.FuelRegistry;
 import net.minecraft.world.entity.Entity;
 
 import java.util.*;
 
+// Holder#is(Holder) is the 1.21.1 identity-safe comparison. It is deprecated
+// only for later Minecraft lines, which have version-native source trees.
+@SuppressWarnings("deprecation")
 public class ModEvents {
 
     /**
      * Wires every event handler to its Architectury equivalent. Called from
      * {@link com.stonytark.usefultoolsmod.UsefultoolsMod#init()}.
      *
-     * Three handlers from the legacy NeoForge tree have no direct Architectury
-     * equivalent on Architectury 13.0.8 and are deferred — see TODOs on the
-     * relevant handler methods below.
+     * Loader-specific gaps are bridged through CombatHooks: NeoForge uses native
+     * events and Fabric uses narrowly-scoped mixins.
      */
     public static void init() {
         // Platform-bridged hooks for damage mutation, target gating, and
@@ -85,9 +88,14 @@ public class ModEvents {
         EntityEvent.LIVING_DEATH.register(ModEvents::onLivingDeath);
         EntityEvent.LIVING_CHECK_SPAWN.register(ModEvents::onLivingCheckSpawn);
         InteractionEvent.RIGHT_CLICK_BLOCK.register(ModEvents::onFniRightClickBlock);
-        ClientTooltipEvent.ITEM.register(ModEvents::onItemTooltip);
         EntityEvent.LIVING_HURT.register(ModEvents::onLivingHurt);
-        // FurnaceFuelBurnTimeEvent → declarative FuelRegistry calls:
+        // NeoForge's deferred registries are not populated during mod
+        // construction. Resolve item suppliers only in Architectury's common
+        // setup phase, after registrations have completed on every loader.
+        LifecycleEvent.SETUP.register(ModEvents::registerFuels);
+    }
+
+    private static void registerFuels() {
         FuelRegistry.register(200,  ModItems.COAL_DUST.get());
         FuelRegistry.register(400,  ModItems.HARDENED_COAL.get());
         FuelRegistry.register(800,  ModItems.COAL_SWORD.get());
@@ -99,8 +107,11 @@ public class ModEvents {
         FuelRegistry.register(3200, ModItems.COAL_CHESTPLATE.get());
         FuelRegistry.register(2800, ModItems.COAL_LEGGINGS.get());
         FuelRegistry.register(1600, ModItems.COAL_BOOTS.get());
-        // LivingChangeTargetEvent has no Architectury equivalent — see onLivingChangeTarget
-        // below for the original logic, preserved for future restoration.
+    }
+
+    /** Register client-only events from the loader's client entrypoint. */
+    public static void initClient() {
+        ClientTooltipEvent.ITEM.register(ModEvents::onItemTooltip);
     }
 
     // -----------------------------------------------------------------------
@@ -1607,7 +1618,7 @@ public class ModEvents {
     }
 
     private static boolean isFoodSetEnabled(ItemStack stack) {
-        if (isCakeTool(stack) || isCakeArmor(stack)) return Config.cakeEnabled;
+        if (isCakeTool(stack) || isCakeArmor(stack)) return Config.cakeEnabled && Config.cakeHungerEffects;
         if (isBreadTool(stack) || isBreadArmor(stack)) return Config.breadEnabled;
         if (isDriedKelpTool(stack) || isDriedKelpArmor(stack)) return Config.driedKelpEnabled;
         if (isRottenFleshTool(stack) || isRottenFleshArmor(stack)) return Config.rottenFleshEnabled;
@@ -2002,18 +2013,8 @@ public class ModEvents {
     // Food tool-hit effects + armor reactive events (LivingIncomingDamageEvent)
     // =======================================================================
 
-    /**
-     * NOTE on Architectury LIVING_HURT vs NeoForge LivingIncomingDamageEvent:
-     * Architectury's EventResult can only cancel the event, not mutate the damage
-     * amount. The original NeoForge tree used event.setAmount(...) extensively for
-     * effects like "Sweet Berry +1", "Glass +2", "Dripstone *1.3". Those mutations
-     * are temporarily disabled here and tagged with TODO(damage-mutation). The
-     * on-hit MobEffect applications and cancellations are preserved.
-     *
-     * Restoring full damage-mutation behaviour will need a platform helper that
-     * wraps NeoForge's LivingIncomingDamageEvent#setAmount and Fabric's mixin into
-     * a unified API.
-     */
+    /** Non-damage hit effects and cancellable armor reactions. Damage amount
+     * changes are applied once, earlier in the pipeline, by DamageModifier. */
     public static EventResult onLivingHurt(LivingEntity hurtEntity, DamageSource source, float amount) {
         boolean cancel = false;
 
@@ -2025,9 +2026,6 @@ public class ModEvents {
             }
             if (Config.pufferfishEnabled && isPufferfishTool(held)) {
                 hurtEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 0));
-            }
-            if (Config.sweetBerryEnabled && isSweetBerryTool(held)) {
-                /* TODO(damage-mutation): originally event.setAmount(amount + 1.0f) */ ;
             }
             if (Config.rottenFleshEnabled && isRottenFleshTool(held)) {
                 hurtEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 0));
@@ -2054,7 +2052,6 @@ public class ModEvents {
                 target.hurtMarked = true;
             }
             if (Config.glassEnabled && Config.glassEffects && isGlassTool(held)) {
-                /* TODO(damage-mutation): originally event.setAmount(amount + 2.0f) */ ;
                 if (held.getDamageValue() >= held.getMaxDamage() - 1 && attacker.level() instanceof ServerLevel sl) {
                     for (LivingEntity nearby : sl.getEntitiesOfClass(LivingEntity.class,
                             attacker.getBoundingBox().inflate(3.0), e -> e != attacker)) {
@@ -2063,22 +2060,12 @@ public class ModEvents {
                     sl.sendParticles(ParticleTypes.CRIT, attacker.getX(), attacker.getY() + 1, attacker.getZ(), 20, 1, 1, 1, 0.2);
                 }
             }
-            if (Config.spongeEnabled && Config.spongeEffects && isSpongeTool(held)) {
-                if (hurtEntity.isInWater()) /* TODO(damage-mutation): originally event.setAmount(amount + 3.0f) */ ;
-            }
             if (Config.netherWartEnabled && Config.netherWartEffects && isNetherWartTool(held)) {
                 hurtEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 60, 0));
             }
-            if (Config.dripstoneEnabled && Config.dripstoneEffects && isDripstoneTool(held)) {
-                /* TODO(damage-mutation): originally event.setAmount(amount * 1.3f) */ ;                if (attacker.fallDistance > 0 && !attacker.onGround())
-                    /* TODO(damage-mutation): originally event.setAmount(amount * 1.5f) */ ;            }
             if (Config.cactusEnabled && Config.cactusEffects && isCactusTool(held)) {
-                /* TODO(damage-mutation): originally event.setAmount(amount + 1.0f) */ ;
                 hurtEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 40, 0));
             }
-            if (Config.boneEnabled && Config.boneEffects && isBoneTool(held)) {
-                if (hurtEntity instanceof Mob mob && mob.isInvertedHealAndHarm())
-                    /* TODO(damage-mutation): originally event.setAmount(amount * 1.5f) */ ;            }
             if (Config.netherBrickEnabled && Config.netherBrickEffects && isNetherBrickTool(held)) {
                 hurtEntity.setRemainingFireTicks(80);
             }
@@ -2126,9 +2113,6 @@ public class ModEvents {
                     cloud.setOwner(attacker);
                     sl.addFreshEntity(cloud);
                 }
-            }
-            if (Config.phantomEnabled && Config.phantomEffects && isPhantomTool(held)) {
-                if (!attacker.level().isDay()) /* TODO(damage-mutation): originally event.setAmount(amount + 2.0f) */ ;
             }
             if (Config.nautilusEnabled && Config.nautilusEffects && isNautilusTool(held)) {
                 // Nautilus tool on-hit: nothing special, passive effects only
@@ -2210,97 +2194,6 @@ public class ModEvents {
         }
         return cancel ? EventResult.interruptTrue() : EventResult.pass();
     }
-
-    // =======================================================================
-    // Targeting events (LivingChangeTargetEvent)
-    //
-    // TODO(no-architectury-equivalent): Architectury 13.0.8 does not expose a
-    // cross-loader equivalent for NeoForge's LivingChangeTargetEvent. This method
-    // is preserved as dead code for future restoration — it is NOT registered with
-    // any Architectury event. The behaviours it gated (Rotten Flesh undead-neutral,
-    // Pumpkin Pie enderman avoidance, Bone reduced undead detection, Phantom
-    // membrane phantom ignore) will not fire until a platform helper is added.
-    // =======================================================================
-
-    /*
-    @SuppressWarnings("unused")
-    public static void onLivingChangeTarget_DISABLED(Object event) {
-        if (!(event.getNewAboutToBeSetTarget() instanceof Player player)) return;
-
-        // Rotten Flesh full set — undead mobs ignore player
-        if (Config.rottenFleshEnabled && Config.rottenFleshUndeadNeutral
-                && isWearingFullSet(player, ModEvents::isRottenFleshArmor)) {
-            if (event.getEntity() instanceof Zombie || event.getEntity() instanceof AbstractSkeleton
-                    || event.getEntity() instanceof Phantom) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
-        // Pumpkin Pie helmet — endermen ignore player
-        if (Config.pumpkinPieEnabled && Config.pumpkinPieEndermanAvoidance
-                && isPumpkinPieArmor(player.getItemBySlot(EquipmentSlot.HEAD))) {
-            if (event.getEntity() instanceof EnderMan) {
-                event.setCanceled(true);
-            }
-        }
-
-        // Bone helmet — undead reduced detection
-        if (Config.boneEnabled && Config.boneEffects
-                && isBoneArmor(player.getItemBySlot(EquipmentSlot.HEAD))) {
-            if ((event.getEntity() instanceof Zombie || event.getEntity() instanceof AbstractSkeleton)
-                    && event.getEntity().distanceTo(player) > 16) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
-        // Phantom membrane full set — phantoms ignore
-        if (Config.phantomEnabled && Config.phantomEffects
-                && isWearingFullSet(player, ModEvents::isPhantomArmor)) {
-            if (event.getEntity() instanceof Phantom) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
-        // Nautilus full set — aquatic mobs ignore
-        if (Config.nautilusEnabled && Config.nautilusEffects
-                && isWearingFullSet(player, ModEvents::isNautilusArmor)) {
-            if (event.getEntity() instanceof Guardian || event.getEntity() instanceof Drowned) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
-        // Eye of Ender full set — endermen neutral
-        if (Config.eyeOfEnderEnabled && Config.eyeOfEnderEffects
-                && isWearingFullSet(player, ModEvents::isEyeOfEnderArmor)) {
-            if (event.getEntity() instanceof EnderMan) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
-        // Echo Shard full set — warden neutral
-        if (Config.echoShardEnabled && Config.echoShardEffects
-                && isWearingFullSet(player, ModEvents::isEchoShardArmor)) {
-            if (event.getEntity() instanceof Warden) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-
-        // Turtle Scute full set — guardians ignore
-        if (Config.turtleScuteEnabled && Config.turtleScuteEffects
-                && isWearingFullSet(player, ModEvents::isTurtleScuteArmor)) {
-            if (event.getEntity() instanceof Guardian) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-    }
-    */
 
     // =======================================================================
     // Utility — random teleport

@@ -1,6 +1,6 @@
 package com.stonytark.usefultoolsmod.fabric.mixin;
 
-import com.stonytark.usefultoolsmod.fabric.platform.CombatHooksImpl;
+import com.stonytark.usefultoolsmod.platform.fabric.CombatHooksImpl;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import org.jetbrains.annotations.Nullable;

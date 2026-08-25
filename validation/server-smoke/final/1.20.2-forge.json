@@ -1,0 +1,36 @@
+{
+  "target": "1.20.2-forge",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-q945d_z4",
+    "runServer"
+  ],
+  "java_home": "/usr/lib/jvm/java-17-openjdk",
+  "isolated_game_dir": true,
+  "kept_isolated_game_dir": false,
+  "game_dir": "/dev/shm/usefultools-smoke-q945d_z4",
+  "game_process_cwds": {
+    "2435742": "/dev/shm/usefultools-smoke-q945d_z4"
+  },
+  "run_id": "7cc9e72816b641f79d30df91fd71d2ec",
+  "started_at_epoch": 1787675091.392237,
+  "ready": true,
+  "ready_seconds": 20.398,
+  "stop_sent": true,
+  "stop_method": "stdin+sigint",
+  "term_fallback_pids": [
+    2435742
+  ],
+  "clean_shutdown": false,
+  "failure": "server crash marker after readiness",
+  "crash_marker": "FAILURE: Build failed with an exception.",
+  "thread_dump_pids": [],
+  "remaining_owned_pids": [],
+  "port_free_after": true,
+  "launcher_exit_code": 1,
+  "log": "validation/server-smoke/final/1.20.2-forge.log"
+}

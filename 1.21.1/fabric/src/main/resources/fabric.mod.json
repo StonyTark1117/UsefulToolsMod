@@ -12,7 +12,9 @@
     "main": ["com.stonytark.usefultoolsmod.fabric.UsefultoolsModFabric"],
     "client": ["com.stonytark.usefultoolsmod.fabric.UsefultoolsModFabricClient"],
     "fabric-datagen": ["com.stonytark.usefultoolsmod.fabric.datagen.UsefulToolsFabricDataGen"],
-    "jei_mod_plugin": ["com.stonytark.usefultoolsmod.compat.jei.UsefulToolsJeiPlugin"]
+    "fabric-gametest": ["com.stonytark.usefultoolsmod.fabric.gametest.UsefulToolsGameTests"],
+    "jei_mod_plugin": ["com.stonytark.usefultoolsmod.compat.jei.UsefulToolsJeiPlugin"],
+    "modmenu": ["com.stonytark.usefultoolsmod.fabric.compat.UsefulToolsModMenuPlugin"]
   },
   "mixins": [
     "usefultoolsmod.mixins.json"
@@ -23,5 +25,16 @@
     "architectury": ">=13.0.0",
     "minecraft": "~1.21.1",
     "java": ">=21"
+  },
+  "suggests": {
+    "jei": ">=19.0.0",
+    "wthit": ">=12.0.0",
+    "modmenu": ">=11.0.0",
+    "magnetization": "*"
+  },
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/the-useful-tools-mod",
+    "sources": "https://github.com/StonyTark1117/UsefulToolsMod",
+    "issues": "https://github.com/StonyTark1117/UsefulToolsMod/issues"
   }
 }

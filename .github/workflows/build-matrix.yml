@@ -1,0 +1,67 @@
+name: Build matrix
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m unittest discover -s tests -v
+      - run: scripts/audit_catalog.py
+
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # RFG 1.4 runs Gradle on 21; the build toolchain emits Java 8 bytecode.
+          - { name: 1.7.10-forge, dir: 1.7.10, java: 21 }
+          - { name: 1.20.1-forge, dir: 1.20.1/forge, java: 17 }
+          - { name: 1.20.1-fabric, dir: 1.20.1/fabric, java: 21 }
+          - { name: 1.20.1-neoforge, dir: 1.20.1/neoforge, java: 17 }
+          - { name: 1.20.2-forge, dir: 1.20.2/forge, java: 17 }
+          - { name: 1.20.2-fabric, dir: 1.20.2/fabric, java: 21 }
+          - { name: 1.20.2-neoforge, dir: 1.20.2/neoforge, java: 17 }
+          - { name: 1.21.1-fabric-neoforge, dir: 1.21.1, java: 21 }
+          - { name: 1.21.1-forge, dir: 1.21.1/forge-standalone, java: 21 }
+          - { name: 26.1.2-forge, dir: 26.1.2/forge, java: 25 }
+          - { name: 26.1.2-fabric, dir: 26.1.2/fabric, java: 25 }
+          - { name: 26.1.2-neoforge, dir: 26.1.2/neoforge, java: 25 }
+          - { name: 26.2-forge, dir: 26.2/forge, java: 25 }
+          - { name: 26.2-fabric, dir: 26.2/fabric, java: 25 }
+          - { name: 26.2-neoforge, dir: 26.2/neoforge, java: 25 }
+    runs-on: ubuntu-latest
+    name: ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: gradle
+      - name: Build
+        working-directory: ${{ matrix.dir }}
+        # ForgeGradle's build/sourceSets output is not safely restored from the
+        # shared Gradle build cache; a cache hit can otherwise yield a jar with
+        # resources but no classes.
+        run: |
+          lint_args=()
+          if [[ "${{ matrix.name }}" != "1.7.10-forge" ]]; then
+            lint_args=(-I "$GITHUB_WORKSPACE/scripts/strict-warnings.gradle")
+          fi
+          ./gradlew --no-daemon --max-workers=1 --no-build-cache "${lint_args[@]}" clean build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: ${{ matrix.dir }}/**/build/libs/*.jar
+          if-no-files-found: error

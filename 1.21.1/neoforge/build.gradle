@@ -2,9 +2,44 @@ plugins {
     id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
+version = "${rootProject.mod_version}+mc.${rootProject.minecraft_version}.neoforge"
+
 architectury {
     platformSetupLoomIde()
     neoForge()
+}
+
+loom {
+    runs {
+        client {
+            client()
+            runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+                    .map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+                    .getOrElse('run')
+        }
+        server {
+            server()
+            runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+                    .map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+                    .getOrElse('run')
+        }
+        data {
+            data()
+            name "Data Generation"
+            programArgs "--mod", project.rootProject.mod_id,
+                    "--all",
+                    "--output", file('build/datagen-output').absolutePath,
+                    "--existing", file('../common/src/main/resources').absolutePath
+            runDir "build/datagen"
+        }
+        gameTestServer {
+            environment "gameTestServer"
+            forgeTemplate "gameTestServer"
+            name "GameTest Server"
+            vmArg "-Dneoforge.enabledGameTestNamespaces=${project.rootProject.mod_id}"
+            runDir "build/gametest"
+        }
+    }
 }
 
 configurations {
@@ -28,14 +63,21 @@ dependencies {
     // Compat (NeoForge)
     modCompileOnly  "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
     modCompileOnly  "mezz.jei:jei-${rootProject.minecraft_version}-neoforge-api:${rootProject.jei_version}"
-    modLocalRuntime "mezz.jei:jei-${rootProject.minecraft_version}-neoforge:${rootProject.jei_version}"
+    if (providers.gradleProperty("usefulToolsJeiRuntime").orElse("false").get().toBoolean()
+            || providers.gradleProperty("usefulToolsJerRuntime").orElse("false").get().toBoolean()) {
+        modLocalRuntime "mezz.jei:jei-${rootProject.minecraft_version}-neoforge:${rootProject.jei_version}"
+    }
     modCompileOnly  "mcp.mobius.waila:wthit-api:neo-${rootProject.wthit_version}"
-    modLocalRuntime "mcp.mobius.waila:wthit:neo-${rootProject.wthit_version}"
+    if (providers.gradleProperty("usefulToolsWthitRuntime").orElse("false").get().toBoolean()) {
+        modLocalRuntime "mcp.mobius.waila:wthit:neo-${rootProject.wthit_version}"
+    }
     modCompileOnly  "maven.modrinth:just-enough-resources-jer:${rootProject.jer_version}"
-    modLocalRuntime "maven.modrinth:just-enough-resources-jer:${rootProject.jer_version}"
+    if (providers.gradleProperty("usefulToolsJerRuntime").orElse("false").get().toBoolean()) {
+        modLocalRuntime "maven.modrinth:just-enough-resources-jer:${rootProject.jer_version}"
+    }
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowBundle(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive false }
+    common(project(path: ":common", configuration: "namedElements")) { transitive = false }
+    shadowBundle(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 processResources {
@@ -54,4 +96,8 @@ remapJar {
     inputFile.set shadowJar.archiveFile
     dependsOn shadowJar
     archiveClassifier = null
+}
+
+tasks.named("sourcesJar", Jar) {
+    from project(":common").sourceSets.main.allSource
 }

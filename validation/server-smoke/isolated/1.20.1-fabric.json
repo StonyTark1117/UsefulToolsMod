@@ -1,0 +1,34 @@
+{
+  "target": "1.20.1-fabric",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-_p7vwu4v",
+    "runServer"
+  ],
+  "java_home": "/usr/lib/jvm/java-21-openjdk",
+  "isolated_game_dir": true,
+  "kept_isolated_game_dir": false,
+  "game_dir": "/dev/shm/usefultools-smoke-_p7vwu4v",
+  "game_process_cwds": {
+    "2434341": "/dev/shm/usefultools-smoke-_p7vwu4v"
+  },
+  "run_id": "da7e062f6b464fc79dc58d625bd500ec",
+  "started_at_epoch": 1787675023.1235018,
+  "ready": true,
+  "ready_seconds": 18.4,
+  "stop_sent": true,
+  "stop_method": "stdin",
+  "term_fallback_pids": [],
+  "clean_shutdown": true,
+  "failure": null,
+  "crash_marker": null,
+  "thread_dump_pids": [],
+  "remaining_owned_pids": [],
+  "port_free_after": true,
+  "launcher_exit_code": 0,
+  "log": "validation/server-smoke/isolated/1.20.1-fabric.log"
+}

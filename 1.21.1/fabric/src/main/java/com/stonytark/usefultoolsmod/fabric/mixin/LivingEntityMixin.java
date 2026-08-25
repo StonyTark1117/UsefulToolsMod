@@ -1,7 +1,7 @@
 package com.stonytark.usefultoolsmod.fabric.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import com.stonytark.usefultoolsmod.fabric.platform.CombatHooksImpl;
+import com.stonytark.usefultoolsmod.platform.fabric.CombatHooksImpl;
 import com.stonytark.usefultoolsmod.platform.CombatHooks;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;

@@ -1,0 +1,10 @@
+allprojects {
+    tasks.withType(JavaCompile).configureEach {
+        // NeoGradle recompiles patched Minecraft/loader sources as part of its
+        // toolchain setup. Those are upstream inputs, not project compilation
+        // units, and older 1.20.1 sources contain their own deprecations.
+        if (!name.toLowerCase().contains('neoformrecompile')) {
+            options.compilerArgs += ['-Xlint:deprecation,unchecked,-classfile', '-Werror']
+        }
+    }
+}

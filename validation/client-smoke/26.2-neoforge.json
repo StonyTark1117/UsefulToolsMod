@@ -1,0 +1,22 @@
+{
+  "target": "26.2-neoforge",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-client-5uu7fln6",
+    "runClient"
+  ],
+  "config_opened": true,
+  "joined_world": true,
+  "clean_exit": true,
+  "remaining_owned_pids": [],
+  "failure": null,
+  "log": "validation/client-smoke/26.2-neoforge.log",
+  "config_screenshot": "validation/client-smoke/26.2-neoforge-config.png",
+  "world_screenshot": "validation/client-smoke/26.2-neoforge-world.png",
+  "pause_screenshot": "validation/client-smoke/26.2-neoforge-pause.png",
+  "success": true
+}

@@ -1,0 +1,22 @@
+{
+  "target": "1.20.1-forge",
+  "required_tests": 6,
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-gametest-dr6eaa73",
+    "runGameTestServer"
+  ],
+  "game_dir": "/dev/shm/usefultools-gametest-dr6eaa73",
+  "passed": true,
+  "failed_marker": false,
+  "timed_out": false,
+  "forced_launcher_cleanup": false,
+  "exit_code": 0,
+  "remaining_owned_pids": [],
+  "log": "validation/gametests/1.20.1-forge.log",
+  "success": true
+}

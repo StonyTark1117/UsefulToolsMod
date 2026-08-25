@@ -2,9 +2,47 @@ plugins {
     id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
+version = "${rootProject.mod_version}+mc.${rootProject.minecraft_version}.fabric"
+
 architectury {
     platformSetupLoomIde()
     fabric()
+}
+
+loom {
+    runs {
+        client {
+            client()
+            runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+                    .map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+                    .getOrElse('run')
+        }
+        server {
+            server()
+            runDir providers.gradleProperty('usefulToolsSmokeGameDir')
+                    .map { projectDir.toPath().relativize(file(it).toPath()).toString() }
+                    .getOrElse('run')
+        }
+        datagen {
+            inherit server
+            name "Data Generation"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file('build/datagen-output')}"
+            vmArg "-Dfabric-api.datagen.modid=${project.rootProject.mod_id}"
+            runDir "build/datagen"
+        }
+        gameTestServer {
+            server()
+            name "GameTest Server"
+            vmArg "-Dfabric-api.gametest"
+            vmArg "-Dfabric-api.gametest.report-file=${file('build/gametest-report.xml')}"
+            runDir "build/gametest"
+        }
+    }
+}
+
+tasks.withType(JavaExec).configureEach {
+    if (name == 'runServer') standardInput = System.in
 }
 
 configurations {
@@ -29,12 +67,20 @@ dependencies {
     // Compat (Fabric)
     modCompileOnly  "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
     modCompileOnly  "mezz.jei:jei-${rootProject.minecraft_version}-fabric-api:${rootProject.jei_version}"
-    modLocalRuntime "mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}"
+    if (providers.gradleProperty("usefulToolsJeiRuntime").orElse("false").get().toBoolean()) {
+        modLocalRuntime "mezz.jei:jei-${rootProject.minecraft_version}-fabric:${rootProject.jei_version}"
+    }
     modCompileOnly  "mcp.mobius.waila:wthit-api:fabric-${rootProject.wthit_version}"
-    modLocalRuntime "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+    if (providers.gradleProperty("usefulToolsWthitRuntime").orElse("false").get().toBoolean()) {
+        modLocalRuntime "mcp.mobius.waila:wthit:fabric-${rootProject.wthit_version}"
+    }
+    modCompileOnly  "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
+    if (providers.gradleProperty("usefulToolsModMenuRuntime").orElse("false").get().toBoolean()) {
+        modLocalRuntime "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
+    }
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowBundle(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    common(project(path: ":common", configuration: "namedElements")) { transitive = false }
+    shadowBundle(project(path: ":common", configuration: "transformProductionFabric")) { transitive = false }
 }
 
 processResources {
@@ -53,4 +99,8 @@ remapJar {
     inputFile.set shadowJar.archiveFile
     dependsOn shadowJar
     archiveClassifier = null
+}
+
+tasks.named("sourcesJar", Jar) {
+    from project(":common").sourceSets.main.allSource
 }

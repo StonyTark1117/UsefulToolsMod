@@ -1,0 +1,33 @@
+{
+  "target": "1.20.2-neoforge",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-gf02y467",
+    "runServer"
+  ],
+  "java_home": "/usr/lib/jvm/java-17-openjdk",
+  "isolated_game_dir": true,
+  "kept_isolated_game_dir": false,
+  "game_dir": "/dev/shm/usefultools-smoke-gf02y467",
+  "game_process_cwds": {},
+  "run_id": "08b699ef9f954bf09b6654d3983a6ae4",
+  "started_at_epoch": 1787675138.209243,
+  "ready": false,
+  "ready_seconds": null,
+  "stop_sent": false,
+  "stop_method": null,
+  "term_fallback_pids": [],
+  "clean_shutdown": false,
+  "failure": "output closed before readiness with code 1",
+  "crash_marker": null,
+  "saved_dimension_lines": [],
+  "thread_dump_pids": [],
+  "remaining_owned_pids": [],
+  "port_free_after": true,
+  "launcher_exit_code": 1,
+  "log": "validation/server-smoke/final/1.20.2-neoforge.log"
+}

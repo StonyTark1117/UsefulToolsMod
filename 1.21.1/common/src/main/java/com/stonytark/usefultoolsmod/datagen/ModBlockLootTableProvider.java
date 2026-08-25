@@ -19,9 +19,10 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Set;
+import java.util.List;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
-    protected ModBlockLootTableProvider(HolderLookup.Provider pRegistries) {
+    public ModBlockLootTableProvider(HolderLookup.Provider pRegistries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pRegistries);
     }
 
@@ -67,8 +68,20 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
 
     protected Iterable<Block> getKnownBlocks() {
-        java.util.List<Block> blocks = new java.util.ArrayList<>();
-        ModBlocks.BLOCKS.forEach(supplier -> blocks.add(supplier.get()));
-        return blocks;
+        // Architectury's DeferredRegister iterator delegates to the backing
+        // vanilla registry on Fabric, so iterating it here would incorrectly
+        // require loot tables for every Minecraft block. Keep this explicit
+        // until the catalog generator emits the registration table.
+        return List.of(
+                ModBlocks.RGOLDBLOCK.get(), ModBlocks.HRBLOCK.get(), ModBlocks.RGOLDORE.get(),
+                ModBlocks.RGOLD_NETHER_ORE.get(), ModBlocks.RGOLD_END_ORE.get(),
+                ModBlocks.RGOLD_DEEPSLATE_ORE.get(), ModBlocks.SEMBLOCK.get(), ModBlocks.SOBLOCK.get(),
+                ModBlocks.LBLOCK.get(), ModBlocks.HGLOW_BLOCK.get(), ModBlocks.RAW_RGOLD_BLOCK.get(),
+                ModBlocks.ECTOPLASM_BLOCK.get(), ModBlocks.REFINED_ECTOPLASM_BLOCK.get(),
+                ModBlocks.HARDENED_COAL_BLOCK.get(), ModBlocks.COAL_DUST_BLOCK.get(),
+                ModBlocks.OBSHARD_BLOCK.get(), ModBlocks.CALCIFIED_AMETHYST_BLOCK.get(),
+                ModBlocks.GLACIAL_SHARD_BLOCK.get(), ModBlocks.POLISHED_QUARTZ_BLOCK.get(),
+                ModBlocks.POLISHED_PRISMARINE_BLOCK.get(), ModBlocks.SPECTRAL_INFUSER.get()
+        );
     }
 }
