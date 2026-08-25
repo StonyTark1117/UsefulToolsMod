@@ -1,0 +1,44 @@
+{
+  "target": "1.21.1-forge",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-skbt88an",
+    "-PusefulToolsWthitRuntime=true",
+    "runServer"
+  ],
+  "java_home": "/usr/lib/jvm/java-21-openjdk",
+  "isolated_game_dir": true,
+  "external_game_dir": false,
+  "kept_isolated_game_dir": false,
+  "game_dir": "/dev/shm/usefultools-smoke-skbt88an",
+  "game_process_cwds": {
+    "4028109": "/dev/shm/usefultools-smoke-skbt88an"
+  },
+  "run_id": "9a726d1a55b94992b3cc956585af3c28",
+  "started_at_epoch": 1787698064.30944,
+  "ready": true,
+  "ready_seconds": 14.898,
+  "stop_sent": true,
+  "stop_method": "stdin+sigint",
+  "term_fallback_pids": [
+    4028109
+  ],
+  "forced_launcher_cleanup": false,
+  "clean_shutdown": true,
+  "failure": null,
+  "crash_marker": null,
+  "saved_dimension_lines": [
+    "[15:48:02] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
+    "[15:48:02] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
+    "[15:48:02] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether"
+  ],
+  "thread_dump_pids": [],
+  "remaining_owned_pids": [],
+  "port_free_after": true,
+  "launcher_exit_code": 1,
+  "log": "validation/architectury-removal/integrations/1.21.1-forge-wthit/1.21.1-forge.log"
+}

@@ -68,7 +68,7 @@ def main() -> None:
         for message in errors:
             print(f"catalog audit: {message}", file=sys.stderr)
         raise SystemExit(1)
-    print("catalog audit: OK (manifest authoritative; 14 generated registration tables current)")
+    print("catalog audit: OK (manifest authoritative; 15 generated registration tables current)")
 
 
 if __name__ == "__main__":

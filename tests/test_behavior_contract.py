@@ -11,8 +11,9 @@ LOADER_ROOTS = tuple(
     for loader in ("forge", "fabric", "neoforge")
 )
 BEHAVIOR_ROOTS = LOADER_ROOTS + (
-    ROOT / "1.21.1/common",
-    ROOT / "1.21.1/forge-standalone",
+    ROOT / "1.21.1/forge",
+    ROOT / "1.21.1/fabric",
+    ROOT / "1.21.1/neoforge",
 )
 
 
@@ -96,8 +97,12 @@ class BehaviorContractTests(unittest.TestCase):
 
     def test_high_tier_incorrect_tag_remains_comparable_for_viewers(self):
         resources = (
-            ROOT / "1.21.1/common/src/main/resources/data/usefultoolsmod/tags/block/incorrect_sob_tool.json",
-            ROOT / "1.21.1/forge-standalone/src/generated/resources/data/usefultoolsmod/tags/block/incorrect_sob_tool.json",
+            *(ROOT / "1.21.1" / loader / relative
+              for loader, relative in (
+                  ("fabric", "src/main/generated/data/usefultoolsmod/tags/block/incorrect_sob_tool.json"),
+                  ("forge", "src/generated/resources/data/usefultoolsmod/tags/block/incorrect_sob_tool.json"),
+                  ("neoforge", "src/generated/resources/data/usefultoolsmod/tags/block/incorrect_sob_tool.json"),
+              )),
             *(ROOT / version / loader / relative
               for version in ("26.1.2", "26.2")
               for loader, relative in (

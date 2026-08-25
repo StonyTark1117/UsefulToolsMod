@@ -35,7 +35,7 @@ class IntegrationProfileTests(unittest.TestCase):
             for directory in (
                 "1.20.1/forge", "1.20.1/fabric", "1.20.1/neoforge",
                 "1.20.2/forge", "1.20.2/fabric", "1.20.2/neoforge",
-                "1.21.1/forge-standalone", "1.21.1/fabric", "1.21.1/neoforge",
+                "1.21.1/forge", "1.21.1/fabric", "1.21.1/neoforge",
                 "26.1.2/forge", "26.1.2/fabric", "26.1.2/neoforge",
                 "26.2/forge", "26.2/fabric", "26.2/neoforge",
             )

@@ -49,9 +49,9 @@ TARGETS = {
     "1.20.2-forge": ("1.20.2/forge", "runServer", "/usr/lib/jvm/java-17-openjdk", "run"),
     "1.20.2-fabric": ("1.20.2/fabric", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
     "1.20.2-neoforge": ("1.20.2/neoforge", "runServer", "/usr/lib/jvm/java-17-openjdk", "runs/server"),
-    "1.21.1-fabric": ("1.21.1", ":fabric:runServer", "/usr/lib/jvm/java-21-openjdk", "fabric/run"),
-    "1.21.1-forge": ("1.21.1/forge-standalone", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
-    "1.21.1-neoforge": ("1.21.1", ":neoforge:runServer", "/usr/lib/jvm/java-21-openjdk", "neoforge/run"),
+    "1.21.1-fabric": ("1.21.1/fabric", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
+    "1.21.1-forge": ("1.21.1/forge", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
+    "1.21.1-neoforge": ("1.21.1/neoforge", "runServer", "/usr/lib/jvm/java-21-openjdk", "runs/server"),
     "26.1.2-forge": ("26.1.2/forge", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
     "26.1.2-fabric": ("26.1.2/fabric", "runServer", "/usr/lib/jvm/java-26-openjdk", "run"),
     "26.1.2-neoforge": ("26.1.2/neoforge", "runServer", "/usr/lib/jvm/java-21-openjdk", "runs/server"),
@@ -427,8 +427,8 @@ def main() -> int:
                     ):
                         save_complete_grace = time.monotonic() + 10
                     if save_complete_grace is not None and time.monotonic() >= save_complete_grace:
-                        # Architectury and some development launchers retain a
-                        # transformer JVM after Minecraft has completed every
+                        # Some development launchers retain a JVM after Minecraft
+                        # has completed every
                         # dimension save and released its listener. Exact marker
                         # cleanup closes that launcher lifecycle without
                         # weakening the game-layer shutdown assertion.

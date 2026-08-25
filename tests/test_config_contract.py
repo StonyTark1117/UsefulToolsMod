@@ -20,8 +20,9 @@ CONFIG_SOURCES = (
     "1.20.2/fabric/src/main/java/com/stonytark/usefultoolsmod/Config.java",
     "1.20.2/forge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
     "1.20.2/neoforge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
-    "1.21.1/common/src/main/java/com/stonytark/usefultoolsmod/Config.java",
-    "1.21.1/forge-standalone/src/main/java/com/stonytark/usefultoolsmod/Config.java",
+    "1.21.1/fabric/src/main/java/com/stonytark/usefultoolsmod/Config.java",
+    "1.21.1/forge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
+    "1.21.1/neoforge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
     "26.1.2/fabric/src/main/java/com/stonytark/usefultoolsmod/Config.java",
     "26.1.2/forge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
     "26.1.2/neoforge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
@@ -30,13 +31,11 @@ CONFIG_SOURCES = (
     "26.2/neoforge/src/main/java/com/stonytark/usefultoolsmod/Config.java",
 )
 
-JSON_CONFIG_SOURCES = tuple(path for path in CONFIG_SOURCES if "/fabric/" in path) + (
-    "1.21.1/common/src/main/java/com/stonytark/usefultoolsmod/Config.java",
-)
+JSON_CONFIG_SOURCES = tuple(path for path in CONFIG_SOURCES if "/fabric/" in path)
 
 SPEC_CONFIG_SOURCES = tuple(
     path for path in CONFIG_SOURCES
-    if "/forge/" in path or "/neoforge/" in path or "forge-standalone" in path
+    if "/forge/" in path or "/neoforge/" in path
 )
 
 FABRIC_SCREEN_ROOTS = {
@@ -50,7 +49,7 @@ FABRIC_SCREEN_ROOTS = {
 MODERN_SOURCE_ROOTS = (
     "1.20.1/fabric", "1.20.1/forge", "1.20.1/neoforge",
     "1.20.2/fabric", "1.20.2/forge", "1.20.2/neoforge",
-    "1.21.1/common", "1.21.1/forge-standalone",
+    "1.21.1/forge", "1.21.1/fabric", "1.21.1/neoforge",
     "26.1.2/fabric", "26.1.2/forge", "26.1.2/neoforge",
     "26.2/fabric", "26.2/forge", "26.2/neoforge",
 )
@@ -68,7 +67,8 @@ class ConfigContractTests(unittest.TestCase):
             "1.20.1/neoforge",
             "1.20.2/forge",
             "1.20.2/neoforge",
-            "1.21.1/forge-standalone",
+            "1.21.1/forge",
+            "1.21.1/neoforge",
             "26.1.2/forge",
             "26.1.2/neoforge",
             "26.2/forge",
@@ -188,7 +188,7 @@ class ConfigContractTests(unittest.TestCase):
                 self.assertIn(".reloadRequired()", text)
 
     def test_standalone_forge_1211_registers_its_builtin_screen(self) -> None:
-        root = ROOT / "1.21.1/forge-standalone/src/main/java/com/stonytark/usefultoolsmod"
+        root = ROOT / "1.21.1/forge/src/main/java/com/stonytark/usefultoolsmod"
         main = (root / "UsefultoolsMod.java").read_text(encoding="utf-8")
         registration = (root / "client/ClientConfigRegistration.java").read_text(encoding="utf-8")
         self.assertIn("ClientConfigRegistration.register(context.getContainer())", main)
@@ -239,10 +239,7 @@ class ConfigContractTests(unittest.TestCase):
                 plugin_path = root / "src/main/java" / Path(*plugin.split(".")).with_suffix(".java")
                 self.assertTrue(plugin_path.is_file(), plugin_path)
                 self.assertIn("UsefulToolsConfigScreen", plugin_path.read_text(encoding="utf-8"))
-                if relative == "1.21.1/fabric":
-                    screen = ROOT / "1.21.1/common/src/main/java/com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java"
-                else:
-                    screen = root / "src/main/java/com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java"
+                screen = root / "src/main/java/com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java"
                 self.assertTrue(screen.is_file(), screen)
                 if pinned_version is not None:
                     properties = (root / "gradle.properties").read_text(encoding="utf-8")

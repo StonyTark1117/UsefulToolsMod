@@ -24,7 +24,7 @@ MODERN_BUILD_FILES = (
     "1.20.2/forge/build.gradle",
     "1.20.2/fabric/build.gradle",
     "1.20.2/neoforge/build.gradle",
-    "1.21.1/forge-standalone/build.gradle",
+    "1.21.1/forge/build.gradle",
     "1.21.1/fabric/build.gradle",
     "1.21.1/neoforge/build.gradle",
     "26.1.2/forge/build.gradle",

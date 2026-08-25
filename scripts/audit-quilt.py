@@ -78,6 +78,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    args.output_dir = args.output_dir.resolve()
     server_root = args.server_root.resolve()
     launcher = server_root / "quilt-server-launch.jar"
     mods = server_root / "mods"

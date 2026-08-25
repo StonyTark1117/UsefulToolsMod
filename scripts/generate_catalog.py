@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the version-neutral Useful Tools catalog from the canonical 1.21.1 tree."""
+"""Generate the version-neutral Useful Tools catalog from native 1.21.1 sources."""
 
 from __future__ import annotations
 
@@ -8,7 +8,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-COMMON = ROOT / "1.21.1/common"
+COMMON = ROOT / "1.21.1/forge"
+FABRIC = ROOT / "1.21.1/fabric"
 OUT = ROOT / "catalog/useful_tools_catalog.json"
 
 
@@ -42,30 +43,31 @@ def registered_ids(path: Path, method: str = "register") -> list[str]:
 
 
 def resource_ids(kind: str, common: Path = COMMON) -> list[str]:
-    data_root = common / "src/main/resources/data"
-    result = []
-    for namespace in ("usefultoolsmod", "minecraft"):
-        base = data_root / namespace / kind
-        if not base.exists():
-            continue
-        for path in base.rglob("*.json"):
-            resource = path.relative_to(base).with_suffix("").as_posix()
-            result.append(resource if namespace == "usefultoolsmod" else f"{namespace}:{resource}")
+    result = set()
+    for data_root in (common / "src/main/resources/data", common / "src/generated/resources/data"):
+        for namespace in ("usefultoolsmod", "minecraft"):
+            base = data_root / namespace / kind
+            if not base.exists():
+                continue
+            for path in base.rglob("*.json"):
+                resource = path.relative_to(base).with_suffix("").as_posix()
+                result.add(resource if namespace == "usefultoolsmod" else f"{namespace}:{resource}")
     return sorted(result)
 
 
 def resource_definitions(kind: str, common: Path = COMMON) -> list[dict[str, object]]:
     data_root = common / "src/main/resources/data"
-    result = []
-    for namespace in ("usefultoolsmod", "minecraft"):
-        base = data_root / namespace / kind
-        if not base.exists():
-            continue
-        for path in base.rglob("*.json"):
-            resource = path.relative_to(base).with_suffix("").as_posix()
-            resource_id = resource if namespace == "usefultoolsmod" else f"{namespace}:{resource}"
-            result.append({"id": resource_id, "payload": json.loads(path.read_text(encoding="utf-8"))})
-    return sorted(result, key=lambda entry: entry["id"])
+    result = {}
+    for data_root in (common / "src/generated/resources/data", common / "src/main/resources/data"):
+        for namespace in ("usefultoolsmod", "minecraft"):
+            base = data_root / namespace / kind
+            if not base.exists():
+                continue
+            for path in base.rglob("*.json"):
+                resource = path.relative_to(base).with_suffix("").as_posix()
+                resource_id = resource if namespace == "usefultoolsmod" else f"{namespace}:{resource}"
+                result[resource_id] = {"id": resource_id, "payload": json.loads(path.read_text(encoding="utf-8"))}
+    return [result[key] for key in sorted(result)]
 
 
 def parse_config_options(text: str) -> list[dict[str, object]]:
@@ -93,14 +95,27 @@ def parse_config_options(text: str) -> list[dict[str, object]]:
     return result
 
 
-def config_options(common: Path = COMMON) -> list[dict[str, object]]:
+def config_options(common: Path = FABRIC) -> list[dict[str, object]]:
     path = common / "src/main/java/com/stonytark/usefultoolsmod/Config.java"
     return parse_config_options(path.read_text(encoding="utf-8"))
 
 
 def parse_tier_definitions(text: str) -> list[dict[str, str]]:
     pattern = re.compile(r"public static final Tier\s+(\w+)\s*=\s*new\s+\w+\((.*?)\);", re.S)
-    return [{"key": key, "definition": " ".join(definition.split())} for key, definition in pattern.findall(text)]
+    result = []
+    forge_pattern = re.compile(
+        r"^\s*(\d+),\s*([\d.]+f?),\s*([\d.]+f?),\s*(\d+),\s*.*?,\s*"
+        r"(\(\)\s*->\s*Ingredient\.of\(.*?\)),\s*(.*?)\s*$",
+        re.S,
+    )
+    for key, definition in pattern.findall(text):
+        normalized = " ".join(definition.split())
+        forge = forge_pattern.match(normalized)
+        if forge:
+            uses, speed, attack, enchantment, repair, incorrect = forge.groups()
+            normalized = f"{incorrect}, {uses}, {speed}, {attack}, {enchantment}, {repair}"
+        result.append({"key": key, "definition": normalized})
+    return result
 
 
 def tier_definitions(common: Path = COMMON) -> list[dict[str, str]]:
@@ -144,9 +159,9 @@ def _item_declarations(common: Path = COMMON) -> dict[str, str]:
     path = common / "src/main/java/com/stonytark/usefultoolsmod/item/ModItems.java"
     text = path.read_text(encoding="utf-8")
     pattern = re.compile(
-        r"public static final RegistrySupplier<Item>\s+\w+\s*=\s*ITEMS\.register\("
+        r"public static final RegistryObject<Item>\s+\w+\s*=\s*ITEMS\.register\("
         r'("[a-z0-9_]+"|GeneratedRegistrationIds\.Items\.\w+),(.*?)'
-        r"(?=\n\s*public static final RegistrySupplier<Item>|\n\s*public static void register\(|\Z)",
+        r"(?=\n\s*public static final RegistryObject<Item>|\n\s*public static void register\(|\Z)",
         re.S,
     )
     constants = _generated_constants(path)
@@ -221,7 +236,7 @@ def build_catalog(common: Path = COMMON) -> dict[str, object]:
         "schema": 2,
         "mod_id": "usefultoolsmod",
         "logical_version": "2.3.0",
-        "canonical_source": "1.21.1/common",
+        "canonical_source": "1.21.1/forge",
         "compatibility_aliases": {
             "pointedDripstoneEnabled": "dripstoneEnabled",
             "pointedDripstoneEffects": "dripstoneEffects",

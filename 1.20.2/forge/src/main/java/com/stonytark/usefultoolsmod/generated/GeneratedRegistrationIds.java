@@ -1276,6 +1276,29 @@ public final class GeneratedRegistrationIds {
             WARPED_SHOVEL,
             WARPED_SWORD,
         };
+
+        public static String[] toolSet(String prefix) {
+            return group(prefix, "_sword", "_pickaxe", "_shovel", "_axe", "_hoe");
+        }
+
+        public static String[] armorSet(String prefix) {
+            return group(prefix, "_helmet", "_chestplate", "_leggings", "_boots");
+        }
+
+        private static String[] group(String prefix, String... suffixes) {
+            String[] result = new String[suffixes.length];
+            for (int index = 0; index < suffixes.length; index++) {
+                result[index] = require(prefix + suffixes[index]);
+            }
+            return result;
+        }
+
+        private static String require(String identifier) {
+            for (String candidate : ALL) {
+                if (candidate.equals(identifier)) return candidate;
+            }
+            throw new IllegalArgumentException("Unknown generated item ID: " + identifier);
+        }
     }
 
     public static final class Blocks {

@@ -50,15 +50,9 @@ TARGETS = {
     "1.20.2-forge": Target("1.20.2/forge", "/usr/lib/jvm/java-17-openjdk", ("runData",), ("src/generated/resources",)),
     "1.20.2-fabric": Target("1.20.2/fabric", "/usr/lib/jvm/java-21-openjdk", ("runDatagen",), ("src/main/generated",)),
     "1.20.2-neoforge": Target("1.20.2/neoforge", "/usr/lib/jvm/java-17-openjdk", ("runData",), ("src/generated/resources",)),
-    "1.21.1-fabric": Target(
-        "1.21.1", "/usr/lib/jvm/java-21-openjdk", (":fabric:runDatagen",),
-        ("common/src/main/resources",), ("fabric/build/datagen-output",), "common/src/main/resources",
-    ),
-    "1.21.1-forge": Target("1.21.1/forge-standalone", "/usr/lib/jvm/java-21-openjdk", ("runData",), ("src/generated/resources",)),
-    "1.21.1-neoforge": Target(
-        "1.21.1", "/usr/lib/jvm/java-21-openjdk", (":neoforge:runData",),
-        ("common/src/main/resources",), ("neoforge/build/datagen-output",), "common/src/main/resources",
-    ),
+    "1.21.1-fabric": Target("1.21.1/fabric", "/usr/lib/jvm/java-21-openjdk", ("runDatagen",), ("src/main/generated",)),
+    "1.21.1-forge": Target("1.21.1/forge", "/usr/lib/jvm/java-21-openjdk", ("runData",), ("src/generated/resources",)),
+    "1.21.1-neoforge": Target("1.21.1/neoforge", "/usr/lib/jvm/java-21-openjdk", ("runData",), ("src/generated/resources",)),
     "26.1.2-forge": Target(
         "26.1.2/forge", "/usr/lib/jvm/java-21-openjdk", ("runClientData", "runData"),
         ("src/generated/resources/client", "src/generated/resources/server"),
@@ -207,8 +201,8 @@ def run_task(
                 if fatal_grace is not None and time.monotonic() >= fatal_grace:
                     break
                 if completion_grace is not None and time.monotonic() >= completion_grace:
-                    # Architectury's transformer can retain a launcher JVM after
-                    # Minecraft's datagen main has completed. The unique marker
+                    # A development launcher can retain a JVM after Minecraft's
+                    # datagen main has completed. The unique marker
                     # keeps this cleanup exact and makes the gate non-leaking.
                     forced_cleanup = True
                     break

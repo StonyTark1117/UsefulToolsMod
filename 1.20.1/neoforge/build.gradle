@@ -123,18 +123,11 @@ dependencies {
         modLocalRuntime "maven.modrinth:jade:${jade_version}"
     }
 
-    // REI — compile against API + transitive deps, full jar at runtime for testing
+    // REI — source compatibility only. REI 12 publishes no NeoForge 1.20.1
+    // runtime, and its Forge/Architectury mixins are incompatible with NeoForge.
     compileOnly "me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}"
     compileOnly "me.shedaniel.cloth:basic-math:0.6.1"
     compileOnly "dev.architectury:architectury-forge:9.2.14"
-    // REI 12 only publishes a Forge runtime for 1.20.1. It is retained as a
-    // compile-time API contract, but its Forge Architectury mixins cannot load
-    // on NeoForge 47.1. An explicit opt-in remains available for diagnosing a
-    // future upstream-compatible build without breaking the base dev launch.
-    if (providers.gradleProperty('usefulToolsReiRuntime').orNull == 'true') {
-        modLocalRuntime "me.shedaniel:RoughlyEnoughItems-forge:${rei_version}"
-        modLocalRuntime "dev.architectury:architectury-forge:9.2.14"
-    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

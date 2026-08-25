@@ -1,0 +1,33 @@
+{
+  "parent": "usefultoolsmod:ghost_companion",
+  "criteria": {
+    "has_ectoplasm": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:ectoplasm"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.ectoplasm.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "usefultoolsmod:ectoplasm"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.ectoplasm.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ectoplasm"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

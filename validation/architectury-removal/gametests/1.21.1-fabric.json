@@ -1,0 +1,22 @@
+{
+  "target": "1.21.1-fabric",
+  "required_tests": 6,
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-gametest-933gsbb0",
+    "runGameTestServer"
+  ],
+  "game_dir": "/dev/shm/usefultools-gametest-933gsbb0",
+  "passed": true,
+  "failed_marker": false,
+  "timed_out": false,
+  "forced_launcher_cleanup": false,
+  "exit_code": 0,
+  "remaining_owned_pids": [],
+  "log": "validation/architectury-removal/gametests/1.21.1-fabric.log",
+  "success": true
+}

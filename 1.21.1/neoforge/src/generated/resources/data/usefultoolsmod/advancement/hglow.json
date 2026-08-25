@@ -1,0 +1,33 @@
+{
+  "parent": "usefultoolsmod:root",
+  "criteria": {
+    "has_hglow": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:hglow"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.hglow.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "usefultoolsmod:hglow"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.hglow.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hglow"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -21,7 +21,7 @@ MODERN_ROOTS = tuple(
     ROOT / version / loader
     for version in ("1.20.1", "1.20.2", "26.1.2", "26.2")
     for loader in ("forge", "fabric", "neoforge")
-) + (ROOT / "1.21.1/common", ROOT / "1.21.1/forge-standalone")
+) + tuple(ROOT / "1.21.1" / loader for loader in ("forge", "fabric", "neoforge"))
 JAVA_RELATIVE = Path(
     "src/main/java/com/stonytark/usefultoolsmod/generated/GeneratedRegistrationIds.java"
 )
@@ -64,7 +64,34 @@ def render(data: dict) -> str:
         lines.append("        public static final String[] ALL = {")
         for identifier in identifiers:
             lines.append(f"            {java_name(identifier)},")
-        lines.extend(("        };", "    }"))
+        lines.append("        };")
+        if section == "Items":
+            lines.extend((
+                "",
+                "        public static String[] toolSet(String prefix) {",
+                '            return group(prefix, "_sword", "_pickaxe", "_shovel", "_axe", "_hoe");',
+                "        }",
+                "",
+                "        public static String[] armorSet(String prefix) {",
+                '            return group(prefix, "_helmet", "_chestplate", "_leggings", "_boots");',
+                "        }",
+                "",
+                "        private static String[] group(String prefix, String... suffixes) {",
+                "            String[] result = new String[suffixes.length];",
+                "            for (int index = 0; index < suffixes.length; index++) {",
+                "                result[index] = require(prefix + suffixes[index]);",
+                "            }",
+                "            return result;",
+                "        }",
+                "",
+                "        private static String require(String identifier) {",
+                "            for (String candidate : ALL) {",
+                "                if (candidate.equals(identifier)) return candidate;",
+                "            }",
+                '            throw new IllegalArgumentException("Unknown generated item ID: " + identifier);',
+                "        }",
+            ))
+        lines.append("    }")
     lines.extend(("}", ""))
     return "\n".join(lines)
 
@@ -77,6 +104,31 @@ def adopt_source(path: Path, section: str, identifiers: list[str]) -> bool:
             f'"{identifier}"',
             f"GeneratedRegistrationIds.{section}.{java_name(identifier)}",
         )
+    if section == "Items" and "regStdToolSet(" in updated:
+        updated = re.sub(
+            r'(reg(?:Std|Edible)ToolSet)\("([a-z0-9_]+)",',
+            r'\1(GeneratedRegistrationIds.Items.toolSet("\2"),',
+            updated,
+        )
+        updated = re.sub(
+            r'(regEdibleArmorSet)\("([a-z0-9_]+)",',
+            r'\1(GeneratedRegistrationIds.Items.armorSet("\2"),',
+            updated,
+        )
+        updated = updated.replace(
+            "regStdToolSet(String prefix,",
+            "regStdToolSet(String[] ids,",
+        ).replace(
+            "regEdibleToolSet(String prefix,",
+            "regEdibleToolSet(String[] ids,",
+        ).replace(
+            "regEdibleArmorSet(String prefix,",
+            "regEdibleArmorSet(String[] ids,",
+        )
+        for index, suffix in enumerate(("sword", "pickaxe", "shovel", "axe", "hoe")):
+            updated = updated.replace(f'prefix + "_{suffix}"', f"ids[{index}]")
+        for index, suffix in enumerate(("helmet", "chestplate", "leggings", "boots")):
+            updated = updated.replace(f'prefix + "_{suffix}"', f"ids[{index}]")
     if updated == text:
         return False
     import_line = "import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;\n"
@@ -107,6 +159,11 @@ def adoption_errors(data: dict) -> list[str]:
             referenced = set(re.findall(
                 rf"GeneratedRegistrationIds\.{section}\.([A-Z0-9_]+)", text
             ))
+            if section == "Items":
+                for prefix in re.findall(r'GeneratedRegistrationIds\.Items\.toolSet\("([a-z0-9_]+)"\)', text):
+                    referenced.update(java_name(prefix + suffix) for suffix in ("_sword", "_pickaxe", "_shovel", "_axe", "_hoe"))
+                for prefix in re.findall(r'GeneratedRegistrationIds\.Items\.armorSet\("([a-z0-9_]+)"\)', text):
+                    referenced.update(java_name(prefix + suffix) for suffix in ("_helmet", "_chestplate", "_leggings", "_boots"))
             expected = {java_name(identifier) for identifier in sections[section]}
             if referenced != expected:
                 missing = sorted(expected - referenced)
@@ -127,6 +184,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail instead of writing stale tables")
     parser.add_argument("--adopt", action="store_true", help="replace registry ID literals in loader factories")
+    parser.add_argument(
+        "--source-root",
+        action="append",
+        default=[],
+        help="limit writes/adoption to a repository-relative source root (repeatable)",
+    )
     args = parser.parse_args()
     data = json.loads(CATALOG.read_text(encoding="utf-8"))
     expected = render(data)
@@ -141,10 +204,18 @@ def main() -> int:
         print(f"registration table audit: OK ({len(MODERN_ROOTS)} source roots)")
         return 0
 
+    selected_roots = MODERN_ROOTS
+    if args.source_root:
+        requested = {(ROOT / value).resolve() for value in args.source_root}
+        unknown = requested - {path.resolve() for path in MODERN_ROOTS}
+        if unknown:
+            parser.error("unknown source root: " + ", ".join(sorted(str(path) for path in unknown)))
+        selected_roots = tuple(path for path in MODERN_ROOTS if path.resolve() in requested)
+
     sections = catalog_ids(data)
     changed = 0
     adopted = 0
-    for source_root in MODERN_ROOTS:
+    for source_root in selected_roots:
         output = source_root / JAVA_RELATIVE
         output.parent.mkdir(parents=True, exist_ok=True)
         if not output.exists() or output.read_text(encoding="utf-8") != expected:

@@ -1,0 +1,33 @@
+{
+  "parent": "usefultoolsmod:rgold_tools",
+  "criteria": {
+    "has_rgold_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "usefultoolsmod:rgold_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.usefultoolsmod.rgold_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "usefultoolsmod:rgold_helmet"
+    },
+    "title": {
+      "translate": "advancements.usefultoolsmod.rgold_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rgold_helmet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

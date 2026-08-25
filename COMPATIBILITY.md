@@ -37,8 +37,14 @@ JEI, WTHIT/Jade, REI, JER, Magnetization, and Mod Menu are declared or compiled 
 
 NeoForge 1.20.1 has no compatible REI runtime: REI 12 publishes a Forge jar
 whose Architectury mixins target fields absent from NeoForge 47.1. Useful Tools
-therefore keeps the REI API compile-only on that one line and does not load the
-incompatible viewer by default. Jade 11.13.3 is the supported overlay profile.
+therefore keeps the REI and Architectury APIs compile-only on that one line and
+offers no incompatible runtime opt-in. Jade 11.13.3 is the supported overlay
+profile.
+
+Useful Tools itself has no Architectury runtime dependency. Minecraft 1.21.1
+uses three independent native projects; the 1.20.x Forge/NeoForge source sets
+retain compile-only Architectury solely because their optional REI APIs expose
+Architectury types. Base runtime profiles and packaged metadata exclude it.
 
 ## Release status
 

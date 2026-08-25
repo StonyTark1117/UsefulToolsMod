@@ -23,7 +23,7 @@ TARGETS = [
     ("1.20.2", "forge", "17", "1.20.2/forge/build/libs"),
     ("1.20.2", "fabric", "17", "1.20.2/fabric/build/libs"),
     ("1.20.2", "neoforge", "17", "1.20.2/neoforge/build/libs"),
-    ("1.21.1", "forge", "21", "1.21.1/forge-standalone/build/libs"),
+    ("1.21.1", "forge", "21", "1.21.1/forge/build/libs"),
     ("1.21.1", "fabric", "21", "1.21.1/fabric/build/libs"),
     ("1.21.1", "neoforge", "21", "1.21.1/neoforge/build/libs"),
     ("26.1.2", "forge", "25", "26.1.2/forge/build/libs"),
@@ -49,6 +49,16 @@ def digest(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def assert_architectury_free(path: Path, bounds: dict[str, dict[str, object]]) -> None:
+    """Reject runtime coupling or bundled Architectury classes in release jars."""
+    if any("architectury" in dependency.lower() for group in bounds.values() for dependency in group):
+        raise SystemExit(f"Architectury dependency leaked into metadata: {path}")
+    with zipfile.ZipFile(path) as jar:
+        leaked = [name for name in jar.namelist() if "architectury" in name.lower()]
+    if leaked:
+        raise SystemExit(f"Architectury content leaked into {path}: {leaked[:5]}")
 
 
 def metadata_name(minecraft: str, loader: str) -> str:
@@ -98,6 +108,7 @@ def main() -> None:
         binary = choose(source_dir, False)
         sources = choose(source_dir, True)
         bounds = dependency_bounds(binary, minecraft, loader)
+        assert_architectury_free(binary, bounds)
         base = f"usefultoolsmod-2.3.0-{minecraft}-{loader}"
         for source, suffix, kind in ((binary, ".jar", "binary"), (sources, "-sources.jar", "sources")):
             destination = RELEASE / f"{base}{suffix}"

@@ -41,14 +41,14 @@ class GameTestContractTests(unittest.TestCase):
 
     def test_1_21_1_loader_tests_cover_tiers_worldgen_and_infused_armor(self) -> None:
         sources = {
-            "forge": ROOT / "1.21.1/forge-standalone/src/main/java/com/stonytark/usefultoolsmod/gametest/UsefulToolsGameTests.java",
-            "fabric": ROOT / "1.21.1/fabric/src/main/java/com/stonytark/usefultoolsmod/fabric/gametest/UsefulToolsGameTests.java",
-            "neoforge": ROOT / "1.21.1/neoforge/src/main/java/com/stonytark/usefultoolsmod/neoforge/gametest/UsefulToolsGameTests.java",
+            "forge": ROOT / "1.21.1/forge/src/main/java/com/stonytark/usefultoolsmod/gametest/UsefulToolsGameTests.java",
+            "fabric": ROOT / "1.21.1/fabric/src/main/java/com/stonytark/usefultoolsmod/gametest/UsefulToolsGameTests.java",
+            "neoforge": ROOT / "1.21.1/neoforge/src/main/java/com/stonytark/usefultoolsmod/gametest/UsefulToolsGameTests.java",
         }
         for loader, path in sources.items():
             source = path.read_text(encoding="utf-8")
             self.assertIn("ModItems.RGOLD_PICKAXE", source, loader)
-            self.assertIn("Registries.PLACED_FEATURE", source, loader)
+            self.assertIn("PLACED_FEATURE", source, loader)
             self.assertIn("EctoplasmArmorHelper.isGhostInvisible(player)", source, loader)
 
     def test_all_mode_writes_an_aggregate_summary(self) -> None:

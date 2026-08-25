@@ -2,6 +2,10 @@
 
 Date: 2026-08-25
 
+> The original 1.21.1 Fabric upgrade run used the former Architectury build.
+> Its world/config observations are retained for provenance but are superseded
+> by the loader-native 1.21.1 migration and must be revalidated on that target.
+
 ## Result
 
 PASS. Three worlds created by published 2.2.2 artifacts were reopened by the

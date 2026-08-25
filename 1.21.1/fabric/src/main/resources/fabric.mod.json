@@ -9,12 +9,12 @@
   "icon": "assets/usefultoolsmod/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.stonytark.usefultoolsmod.fabric.UsefultoolsModFabric"],
-    "client": ["com.stonytark.usefultoolsmod.fabric.UsefultoolsModFabricClient"],
-    "fabric-datagen": ["com.stonytark.usefultoolsmod.fabric.datagen.UsefulToolsFabricDataGen"],
-    "fabric-gametest": ["com.stonytark.usefultoolsmod.fabric.gametest.UsefulToolsGameTests"],
+    "main": ["com.stonytark.usefultoolsmod.UsefultoolsMod"],
+    "client": ["com.stonytark.usefultoolsmod.UsefultoolsModClient"],
+    "fabric-datagen": ["com.stonytark.usefultoolsmod.datagen.DataGenerators"],
+    "fabric-gametest": ["com.stonytark.usefultoolsmod.gametest.UsefulToolsGameTests"],
     "jei_mod_plugin": ["com.stonytark.usefultoolsmod.compat.jei.UsefulToolsJeiPlugin"],
-    "modmenu": ["com.stonytark.usefultoolsmod.fabric.compat.UsefulToolsModMenuPlugin"]
+    "modmenu": ["com.stonytark.usefultoolsmod.compat.modmenu.UsefulToolsModMenuPlugin"]
   },
   "mixins": [
     "usefultoolsmod.mixins.json"
@@ -22,7 +22,6 @@
   "depends": {
     "fabricloader": ">=0.16.0",
     "fabric-api": "*",
-    "architectury": ">=13.0.0",
     "minecraft": "~1.21.1",
     "java": ">=21"
   },

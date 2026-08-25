@@ -22,7 +22,7 @@ Every Fabric binary is tested unchanged under Quilt Loader 0.30.0; no separate Q
 - `catalog/` — authoritative schema-2 version-neutral content/config/material/recipe manifest plus classic substitution data.
 - `1.7.10/` — Java 8 Forge 10.13.4.1614 build retaining the published classic implementation and generated 2.3.0 catalog adapters.
 - `1.20.1/`, `1.20.2/`, `26.1.2/`, `26.2/` — loader-specific active roots.
-- `1.21.1/` — Architectury Fabric/NeoForge shared build plus `forge-standalone/`.
+- `1.21.1/` — independent loader-native `forge/`, `fabric/`, and `neoforge/` projects.
 - `scripts/` — catalog audit, complete matrix runner, and local release assembler.
 - `archived/` — historical source snapshots retained for provenance only.
 
@@ -87,10 +87,9 @@ scripts/audit-datagen.py 1.21.1-fabric
 ```
 
 Use `all` in place of the target for the full modern matrix. In-place generator
-roots must remain byte-for-byte stable. The shared 1.21.1 Architectury runs
-generate into isolated build directories and compare their output to common
-resources; the audit treats Fabric's omitted default recipe result count and
-NeoForge's explicit `count: 1` as the same decoded JSON value.
+roots must remain byte-for-byte stable. Each 1.21.1 loader now runs its own
+native providers; the audit treats Fabric's omitted default recipe result count
+and NeoForge's explicit `count: 1` as the same decoded JSON value.
 
 Fresh GameTest, optional-integration, Java-warning, Quilt, and release evidence
 is stored under `validation/`. See `validation/visual-audit.md` for the reviewed

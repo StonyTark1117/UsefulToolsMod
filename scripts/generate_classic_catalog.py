@@ -11,8 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalog/useful_tools_catalog.json"
-MODERN_JAVA = ROOT / "1.21.1/common/src/main/java/com/stonytark/usefultoolsmod/item"
-MODERN_ASSETS = ROOT / "1.21.1/common/src/main/resources/assets/usefultoolsmod"
+MODERN_JAVA = ROOT / "1.21.1/forge/src/main/java/com/stonytark/usefultoolsmod/item"
+MODERN_ASSETS = ROOT / "1.21.1/forge/src/main/resources/assets/usefultoolsmod"
 CLASSIC = ROOT / "1.7.10"
 OUTPUT = CLASSIC / "src/main/java/com/stonytark/usefultoolsmod/classic/ClassicGeneratedCatalog.java"
 RECIPE_OUTPUT = CLASSIC / "src/main/java/com/stonytark/usefultoolsmod/classic/ClassicGeneratedRecipes.java"

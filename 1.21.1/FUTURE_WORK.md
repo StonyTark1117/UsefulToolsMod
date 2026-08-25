@@ -29,10 +29,10 @@ Logical version is `2.3.0`. Loader metadata uses `2.3.0+mc.<minecraft>.<loader>`
 - [x] Catalog uniqueness/count audit and CI matrix.
 - [x] Dependency-free unit tests for catalog source parsing, namespace/resource discovery, config/tier extraction, canonical output, and audit failure modes.
 - [x] Matrix-wide static config contract tests: all active modern config implementations expose the canonical 116 options, JSON formats retain atomic/bounded alias migration, and spec formats bound ghost spawning.
-- [x] 1.21.1 common config hardening: atomic writes, malformed-value handling, ghost-spawn bounds, and `pointedDripstone*` aliases.
+- [x] 1.21.1 Fabric JSON config hardening: atomic writes, malformed-value handling, ghost-spawn bounds, and `pointedDripstone*` aliases.
 - [x] Dependency-free vanilla-widget config screens for every modern loader; Cloth Config is no longer required.
 - [x] Cake config gating fix and removal of stale 1.21.1 no-op event handlers.
-- [x] Correct Architectury `@ExpectPlatform` namespaces and keep client tooltip registration out of dedicated-server initialization.
+- [x] Replace the 1.21.1 Architectury layer and `@ExpectPlatform` adapters with independent loader-native projects and keep client registration out of dedicated-server initialization.
 - [x] Path-independent 1.21.1 JSON config tests for legacy aliases, malformed per-key values, disk-level bounds, complete default creation, and atomic temp-file cleanup.
 - [x] Loader-native GameTests on all 15 modern targets (96 required invocations), including exact registry counts, representative recipe/tier/worldgen registration, live Spectral Infuser processing, Ghost/Grenade construction, Ghost breeding/feeding/immunity/infused-armor/spawn gating, exactly-once representative damage mutation, and disabled-explosives behavior.
 - [x] Remove 1.21.1 Gradle/NeoForge deprecations under project control; document the intentional version-native Holder and fire-table compatibility calls.
@@ -41,8 +41,8 @@ Logical version is `2.3.0`. Loader metadata uses `2.3.0+mc.<minecraft>.<loader>`
 - [x] Local artifact collection, JAR validation, packaged dependency-bound and byte-size manifest, and SHA-256 generation.
 - [x] Clean build gate for every target plus a 32-artifact release audit covering ZIP integrity, metadata versions, byte sizes, hashes, Java class levels, assets/data, exact 682/848 recipe/advancement payloads, and non-empty source jars.
 - [x] Bounded 16-target dedicated-server smoke runner with readiness detection, JSON/log evidence, thread dumps on timeout, TCP cleanup checks, and exact environment-marked process cleanup.
-- [x] Modern-matrix datagen audit runner with hash drift reports, isolated 1.21.1 Architectury output comparison, and exact cleanup for retained transformer JVMs.
-- [x] Complete 1.21.1 Architectury datagen coverage for loot, block/item tags, configured/placed worldgen, registry-driven blockstates/models, recipes, and advancements; Fabric and NeoForge each reproduce all 3,606 shared files.
+- [x] Modern-matrix datagen audit runner with hash drift reports, independent 1.21.1 loader targets, and exact process cleanup.
+- [x] Complete native 1.21.1 datagen coverage for loot, block/item tags, configured/placed worldgen, registry-driven blockstates/models, recipes, and advancements.
 - [x] Root CC0 license, changelog, compatibility guide, contribution guide, and corrected README.
 - [x] Published 1.7.10 v1.6 source recovery into a reproducible Forge 10.13.4.1614/Java 8 RetroFuturaGradle 1.4.9 build. The originally requested 1.4.0 plugin marker was never published; 1.4.9 is the final resolvable 1.x release and runs under pinned Gradle 8.8/Java 21 while emitting Java 8 classes.
 
@@ -50,8 +50,8 @@ Logical version is `2.3.0`. Loader metadata uses `2.3.0+mc.<minecraft>.<loader>`
 
 ### Shared behavior and data
 
-- [x] Replace duplicated loader/version registration ID tables with catalog-generated tables. All 14 unique modern source roots reference the same generated 633 item, 21 block, and two entity constants; loader-native factory expressions remain hand-written. The catalog audit rejects stale tables, missing/extra references, or reintroduced ID literals.
-- [x] Normalize config descriptors across standalone 1.20.x and 26.x Forge/NeoForge lines, including tooltips and reload-required labels. A catalog-driven generator now emits the same 116 runtime descriptors into all 14 unique modern source roots; every built-in screen consumes those labels, categories, tooltips, and reload metadata. The missing 1.21.1 standalone Forge Mods-screen registration was restored.
+- [x] Replace duplicated loader/version registration ID tables with catalog-generated tables. All 15 unique modern source roots consume the same generated 633 item, 21 block, and two entity constants; loader-native factory expressions remain hand-written. The catalog audit rejects stale tables, missing/extra references, or reintroduced ID literals.
+- [x] Normalize config descriptors across all native modern roots, including tooltips and reload-required labels. A catalog-driven generator emits the same 116 runtime descriptors into all 15 roots; every built-in screen consumes those labels, categories, tooltips, and reload metadata.
 - [x] Audit every effect and bridge for exactly-once damage mutation, target suppression, burn odds, spawn control, and cancellation. The audit found and fixed 1.20.x Fabric's extra-hit damage emulation, incorrect dripstone math, delayed-only targeting suppression, and the ignored `cakeHungerEffects` toggle across 13 roots. Contract tests now require all 50 effect controls to reach behavior code and every modern line to expose its damage, targeting, spawn, and burn bridge; the 1.21.1 GameTests exercise representative mutation/cancellation paths live.
 - [x] Verify Spectral Infuser inventory/menu/screen transforms, Ghost AI/spawning/breeding/feeding/damage rules, explosives, tiers, all effects, config gating, and worldgen on every modern loader. Static behavior/config contracts cover every source root and all 50 effect controls; 96 loader-native GameTest invocations plus 16 client scenarios cover representative live behavior. (Ghosts are breedable animals in the recovered implementations, not tameable pets.)
 - [x] Run clean datagen for every modern loader and require a zero-diff committed resource tree. All 15 modern targets pass the registered-provider matrix with zero file drift; 26.x Forge uses isolated client/server outputs so one HashCache cannot delete the other side.
