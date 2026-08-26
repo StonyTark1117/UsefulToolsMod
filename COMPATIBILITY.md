@@ -21,7 +21,7 @@ coremods in a named development runtime.
 
 - Namespace: `usefultoolsmod`
 - Logical release: `2.3.0`
-- Canonical catalog: 633 direct item definitions, 21 block items/blocks, two entities, 87 tool materials, 45 armor materials, 682 recipe definitions, and 116 config descriptors.
+- Canonical catalog: 638 direct item definitions, 23 block items/blocks, four entities, 87 tool materials, 45 armor materials, 688 recipe definitions, 854 advancements, and 126 config descriptors.
 - Renamed config keys migrate from `pointedDripstoneEnabled` and `pointedDripstoneEffects` to `dripstoneEnabled` and `dripstoneEffects` where the persistence format supports aliases.
 - Existing registry IDs are retained and documented in [CLASSIC_MIGRATION.md](CLASSIC_MIGRATION.md); prefix-free variants are explicitly remapped. An independently captured published-v1.6 world passes the migration gate with zero missing mappings.
 
@@ -34,6 +34,11 @@ RetroFuturaGradle `1.4.0` was requested in the original plan but has no publishe
 ## Optional integrations
 
 JEI, WTHIT/Jade, REI, JER, Magnetization, and Mod Menu are declared or compiled only on lines where compatible upstream APIs exist. Their absence must not prevent the base mod from loading. Mod Menu is only a route to Fabric's built-in config screen; it is not required for configuration persistence.
+
+Create: Ore Excavation 1.20.1 support is data-driven on the Forge and Fabric
+targets: an optional r-gold vein and drilling recipe are supplied in the
+`createoreexcavation` namespace. No Create or Ore Excavation dependency is
+required to load Useful Tools.
 
 NeoForge 1.20.1 has no compatible REI runtime: REI 12 publishes a Forge jar
 whose Architectury mixins target fields absent from NeoForge 47.1. Useful Tools
