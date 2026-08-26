@@ -19,6 +19,7 @@ class Profile:
     target: str
     integration: str
     gradle_property: str | None = None
+    mod_urls: tuple[str, ...] = ()
 
     @property
     def name(self) -> str:
@@ -32,6 +33,9 @@ MODERN_TARGETS = tuple(
 )
 
 PRESENT_PROFILES = (
+    Profile("1.20.1-forge", "createoreexcavation", mod_urls=("https://cdn.modrinth.com/data/ResbpANg/versions/eJi1oefO/createoreexcavation-1.20-1.5.3.jar", "https://cdn.modrinth.com/data/LNytGWDc/versions/6R069CcK/create-1.20.1-0.5.1.j.jar")),
+    Profile("1.20.1-fabric", "createoreexcavation", mod_urls=("https://cdn.modrinth.com/data/ResbpANg/versions/sHml8IJO/createoreexcavation-fabric-1.20-1.6.1.jar", "https://cdn.modrinth.com/data/Xbc0uyRg/versions/HAqwA6X1/create-fabric-6.0.8.1%2Bbuild.1744-mc1.20.1.jar")),
+    Profile("1.21.1-neoforge", "createoreexcavation", mod_urls=("https://cdn.modrinth.com/data/ResbpANg/versions/CNLjZPEs/createoreexcavation-1.21-1.6.8.jar", "https://cdn.modrinth.com/data/LNytGWDc/versions/UjX6dr61/create-1.21.1-6.0.10.jar")),
     Profile("1.20.1-forge", "jei", "usefulToolsJeiRuntime=true"),
     Profile("1.20.1-fabric", "jei", "usefulToolsJeiRuntime=true"),
     Profile("1.20.1-fabric", "wthit", "usefulToolsWthitRuntime=true"),
@@ -113,6 +117,8 @@ def run(profile: Profile, args: argparse.Namespace) -> dict[str, object]:
     ]
     if profile.gradle_property:
         command.extend(("--gradle-property", profile.gradle_property))
+    for url in profile.mod_urls:
+        command.extend(("--extra-mod-url", url))
     print(f"==> integration profile: {profile.name}", flush=True)
     completed = subprocess.run(command, cwd=ROOT, check=False)
     report_path = profile_dir / f"{profile.target}.json"

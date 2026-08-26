@@ -21,6 +21,7 @@ import sys
 import threading
 import time
 import tempfile
+import urllib.request
 import uuid
 
 
@@ -90,6 +91,8 @@ def parse_args() -> argparse.Namespace:
         help="repeatable non-secret Gradle property used to select a runtime profile",
     )
     parser.add_argument("--verbose", action="store_true", help="also stream the complete server log")
+    parser.add_argument("--extra-mod-url", action="append", default=[], metavar="URL",
+                        help="download an additional mod jar into the isolated mods directory")
     parser.add_argument(
         "--output-dir",
         type=Path,
@@ -278,6 +281,15 @@ def main() -> int:
         (launch_directory / "eula.txt").write_text(
             "# Local Useful Tools release validation\neula=true\n", encoding="utf-8"
         )
+    if args.extra_mod_url:
+        for launch_directory in launch_directories:
+            mods_dir = launch_directory / "mods"
+            mods_dir.mkdir(parents=True, exist_ok=True)
+            for index, url in enumerate(args.extra_mod_url):
+                filename = url.rsplit("/", 1)[-1].split("?", 1)[0]
+                if not filename.endswith(".jar"):
+                    filename = f"external-{index}.jar"
+                urllib.request.urlretrieve(url, mods_dir / filename)
 
     run_id = uuid.uuid4().hex
     env = os.environ.copy()
