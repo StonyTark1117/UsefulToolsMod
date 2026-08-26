@@ -30,6 +30,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     private int progress = 0;
     private int maxProgress = 200;
+    private int fuelUses = 0;
 
     private final PropertyDelegate propertyDelegate = new PropertyDelegate() {
         @Override
@@ -37,6 +38,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
             return switch (index) {
                 case 0 -> progress;
                 case 1 -> maxProgress;
+                case 2 -> fuelUses;
                 default -> 0;
             };
         }
@@ -46,12 +48,13 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
             switch (index) {
                 case 0 -> progress = value;
                 case 1 -> maxProgress = value;
+                case 2 -> fuelUses = value;
             }
         }
 
         @Override
         public int size() {
-            return 2;
+            return 3;
         }
     };
 
@@ -96,6 +99,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
         super.readNbt(tag);
         Inventories.readNbt(tag, inventory);
         progress = tag.getInt("progress");
+        fuelUses = tag.getInt("fuelUses");
     }
 
     @Override
@@ -103,6 +107,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
         super.writeNbt(tag);
         Inventories.writeNbt(tag, inventory);
         tag.putInt("progress", progress);
+        tag.putInt("fuelUses", fuelUses);
     }
 
     @Override
@@ -151,8 +156,8 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
         ItemStack input = inventory.get(0);
         ItemStack fuel = inventory.get(1);
         ItemStack output = inventory.get(2);
-        return isInfusable(input) && fuel.isOf(ModItems.ECTOPLASM)
-                && !fuel.isEmpty() && output.isEmpty();
+        boolean hasFuel = fuelUses > 0 || fuel.isOf(ModItems.ECTOPLASM) || fuel.isOf(ModItems.CONDENSED_ECTOPLASM);
+        return isInfusable(input) && hasFuel && output.isEmpty();
     }
 
     private void craftItem() {
@@ -170,7 +175,10 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements ExtendedS
 
         inventory.set(2, result);
         inventory.set(0, ItemStack.EMPTY);
-        inventory.get(1).decrement(1);
+        if (fuelUses <= 0) {
+            ItemStack fuel = inventory.get(1); fuelUses = fuel.isOf(ModItems.CONDENSED_ECTOPLASM) ? 8 : 1; fuel.decrement(1);
+        }
+        fuelUses--; markDirty();
     }
 
     private void resetProgress() {

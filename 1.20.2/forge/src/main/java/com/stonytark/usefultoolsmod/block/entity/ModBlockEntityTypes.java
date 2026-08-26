@@ -17,6 +17,11 @@ public class ModBlockEntityTypes {
                     () -> BlockEntityType.Builder.of(SpectralInfuserBlockEntity::new,
                             ModBlocks.SPECTRAL_INFUSER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<MiningChargeBlockEntity>> MINING_CHARGE =
+            BLOCK_ENTITY_TYPES.register("mining_charge",
+                    () -> BlockEntityType.Builder.of(MiningChargeBlockEntity::new,
+                            ModBlocks.MINING_CHARGE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

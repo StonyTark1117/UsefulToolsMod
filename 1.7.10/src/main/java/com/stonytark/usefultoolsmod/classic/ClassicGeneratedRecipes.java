@@ -149,6 +149,7 @@ public final class ClassicGeneratedRecipes {
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("coal_pickaxe"), 1), new Object[] {"AAA", " B ", " B ", 'A', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("hardened_coal"), 1), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("coal_shovel"), 1), new Object[] {" A ", " B ", " B ", 'A', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("hardened_coal"), 1), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("coal_sword"), 1), new Object[] {" A ", " A ", " B ", 'A', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("hardened_coal"), 1), 'B', new ItemStack(Items.stick)});
+        GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("condensed_ectoplasm"), 1), new Object[] {"EEE", "EEE", "EEE", 'E', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("ectoplasm"), 1)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("copper_axe"), 1), new Object[] {"AA ", "AB ", " B ", 'A', new ItemStack(Items.iron_ingot), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("copper_boots"), 1), new Object[] {"   ", "A A", "A A", 'A', new ItemStack(Items.iron_ingot)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("copper_chestplate"), 1), new Object[] {"A A", "AAA", "AAA", 'A', new ItemStack(Items.iron_ingot)});
@@ -363,6 +364,7 @@ public final class ClassicGeneratedRecipes {
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("melon_shovel"), 1), new Object[] {" A ", " B ", " B ", 'A', new ItemStack(Items.melon), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("melon_sword"), 1), new Object[] {" A ", " A ", " B ", 'A', new ItemStack(Items.melon), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(Blocks.ice), new Object[] {"SSS", "SSS", "SSS", 'S', new ItemStack(Items.snowball)});
+        GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("mining_charge"), 1), new Object[] {"IRI", "IDI", "IRI", 'D', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("dynamite"), 1), 'I', new ItemStack(Items.iron_ingot), 'R', new ItemStack(Items.redstone)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("mushroom_axe"), 1), new Object[] {"AA ", "AB ", " B ", 'A', new ItemStack(Blocks.red_mushroom), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("mushroom_boots"), 1), new Object[] {"   ", "A A", "A A", 'A', new ItemStack(Blocks.red_mushroom)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("mushroom_chestplate"), 1), new Object[] {"A A", "AAA", "AAA", 'A', new ItemStack(Blocks.red_mushroom)});
@@ -526,6 +528,7 @@ public final class ClassicGeneratedRecipes {
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("remerald_pickaxe"), 1), new Object[] {"AAA", " B ", " B ", 'A', new ItemStack(Items.emerald), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("remerald_shovel"), 1), new Object[] {" A ", " B ", " B ", 'A', new ItemStack(Items.emerald), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("remerald_sword"), 1), new Object[] {" A ", " A ", " B ", 'A', new ItemStack(Items.emerald), 'B', new ItemStack(Items.stick)});
+        GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("remote_detonator"), 1), new Object[] {" R ", "GCG", " G ", 'C', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("condensed_ectoplasm"), 1), 'G', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("rgold"), 1), 'R', new ItemStack(Items.redstone)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("rgold_deepslate_ore"), 1), new Object[] {"AAA", "ABA", "AAA", 'A', new ItemStack(Blocks.cobblestone), 'B', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("rgold"), 1)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("rgold_end_ore"), 1), new Object[] {"AAA", "ABA", "AAA", 'A', new ItemStack(Blocks.end_stone), 'B', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("rgold"), 1)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("rgold_nether_ore"), 1), new Object[] {"AAA", "ABA", "AAA", 'A', new ItemStack(Blocks.netherrack), 'B', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("rgold"), 1)});
@@ -650,7 +653,9 @@ public final class ClassicGeneratedRecipes {
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("snow_sword"), 1), new Object[] {" A ", " A ", " B ", 'A', new ItemStack(Items.snowball), 'B', new ItemStack(Items.stick)});
         GameRegistry.addShapelessRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("obingot"), 9), new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("soblock"), 1));
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("soblock"), 1), new Object[] {"AAA", "AAA", "AAA", 'A', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("obingot"), 1)});
+        GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("soul_lantern"), 1), new Object[] {"GGG", "ETE", "GRG", 'E', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("ectoplasm"), 1), 'G', new ItemStack(Blocks.glass), 'R', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("rgold"), 1), 'T', new ItemStack(Blocks.torch)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.BLOCKS.get("spectral_infuser"), 1), new Object[] {"EEE", "EBE", "SSS", 'B', new ItemStack(Items.blaze_rod), 'E', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("ectoplasm"), 1), 'S', new ItemStack(Blocks.stone)});
+        GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("spectral_resonator"), 1), new Object[] {" A ", "ECE", " R ", 'A', new ItemStack(Items.quartz), 'C', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("condensed_ectoplasm"), 1), 'E', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("ectoplasm"), 1), 'R', new ItemStack(ClassicGeneratedCatalog.ITEMS.get("rgold"), 1)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sponge_axe"), 1), new Object[] {"AA ", "AB ", " B ", 'A', new ItemStack(Blocks.sponge), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sponge_hoe"), 1), new Object[] {"AA ", " B ", " B ", 'A', new ItemStack(Blocks.sponge), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sponge_pickaxe"), 1), new Object[] {"AAA", " B ", " B ", 'A', new ItemStack(Blocks.sponge), 'B', new ItemStack(Items.stick)});
@@ -661,6 +666,7 @@ public final class ClassicGeneratedRecipes {
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("spruce_pickaxe"), 1), new Object[] {"AAA", " B ", " B ", 'A', new ItemStack(Blocks.planks, 1, 1), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("spruce_shovel"), 1), new Object[] {" A ", " B ", " B ", 'A', new ItemStack(Blocks.planks, 1, 1), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("spruce_sword"), 1), new Object[] {" A ", " A ", " B ", 'A', new ItemStack(Blocks.planks, 1, 1), 'B', new ItemStack(Items.stick)});
+        GameRegistry.addShapelessRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sticky_dynamite"), 1), new ItemStack(ClassicGeneratedCatalog.ITEMS.get("dynamite"), 1), new ItemStack(Items.slime_ball));
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sweet_berry_axe"), 1), new Object[] {"AA ", "AB ", " B ", 'A', new ItemStack(Items.apple), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sweet_berry_boots"), 1), new Object[] {"   ", "A A", "A A", 'A', new ItemStack(Items.apple)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("sweet_berry_chestplate"), 1), new Object[] {"A A", "AAA", "AAA", 'A', new ItemStack(Items.apple)});
@@ -689,7 +695,7 @@ public final class ClassicGeneratedRecipes {
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("warped_pickaxe"), 1), new Object[] {"AAA", " B ", " B ", 'A', new ItemStack(Items.netherbrick), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("warped_shovel"), 1), new Object[] {" A ", " B ", " B ", 'A', new ItemStack(Items.netherbrick), 'B', new ItemStack(Items.stick)});
         GameRegistry.addRecipe(new ItemStack(ClassicGeneratedCatalog.ITEMS.get("warped_sword"), 1), new Object[] {" A ", " A ", " B ", 'A', new ItemStack(Items.netherbrick), 'B', new ItemStack(Items.stick)});
-        FMLLog.info("[Useful Tools] Classic recipe adapter registered: 672 crafting, 5 furnace recipes");
+        FMLLog.info("[Useful Tools] Classic recipe adapter registered: 678 crafting, 5 furnace recipes");
     }
 
     private static ItemStack withCount(ItemStack stack, int count) {

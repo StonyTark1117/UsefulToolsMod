@@ -116,6 +116,72 @@
       "type": "boolean"
     },
     {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "wraithEnabled",
+      "label": "Wraith",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls wraith behavior.",
+      "type": "boolean"
+    },
+    {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "soulLanternEnabled",
+      "label": "Soul Lantern",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls soul lantern behavior.",
+      "type": "boolean"
+    },
+    {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "spectralResonatorEnabled",
+      "label": "Spectral Resonator",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls spectral resonator behavior.",
+      "type": "boolean"
+    },
+    {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "miningChargeEnabled",
+      "label": "Mining Charge",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls mining charge behavior.",
+      "type": "boolean"
+    },
+    {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "stickyDynamiteEnabled",
+      "label": "Sticky Dynamite",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls sticky dynamite behavior.",
+      "type": "boolean"
+    },
+    {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "remoteDetonationEnabled",
+      "label": "Remote Detonation",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls remote detonation behavior.",
+      "type": "boolean"
+    },
+    {
       "category": "Effects",
       "default": "true",
       "key": "infusedToolEffects",
@@ -1184,6 +1250,50 @@
     },
     {
       "category": "Effects",
+      "default": "0.0375",
+      "key": "wraithSpawnChance",
+      "label": "Wraith Spawn Chance",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "reload_required": false,
+      "tooltip": "Controls wraith spawn chance behavior.",
+      "type": "double"
+    },
+    {
+      "category": "Content Sets",
+      "default": "true",
+      "key": "controlledDrops",
+      "label": "Controlled Drops",
+      "maximum": null,
+      "minimum": null,
+      "reload_required": false,
+      "tooltip": "Controls controlled drops behavior.",
+      "type": "boolean"
+    },
+    {
+      "category": "Effects",
+      "default": "8.0",
+      "key": "controlledEntityDamage",
+      "label": "Controlled Entity Damage",
+      "maximum": 8.0,
+      "minimum": 0.0,
+      "reload_required": false,
+      "tooltip": "Controls controlled entity damage behavior.",
+      "type": "double"
+    },
+    {
+      "category": "Effects",
+      "default": "128.0",
+      "key": "remoteRange",
+      "label": "Remote Range",
+      "maximum": 1024.0,
+      "minimum": 16.0,
+      "reload_required": false,
+      "tooltip": "Controls remote range behavior.",
+      "type": "double"
+    },
+    {
+      "category": "Effects",
       "default": "true",
       "key": "snowMeltEffects",
       "label": "Snow Melt",
@@ -1324,6 +1434,8 @@
       "ectoplasm",
       "emerald_armor",
       "end_ore",
+      "explosives/precision_excavation",
+      "explosives/remote_fire",
       "eye_of_ender_craft",
       "eye_of_ender_set",
       "feather_craft",
@@ -2121,6 +2233,10 @@
       "slime_set",
       "snow_set",
       "snow_tools",
+      "spectral/encounter_wraith",
+      "spectral/locate_spirit",
+      "spectral/obtain_condensed_ectoplasm",
+      "spectral/stabilize_ghost",
       "spectral_infuser",
       "sponge_craft",
       "sponge_set",
@@ -2142,6 +2258,7 @@
       "hglow_block",
       "hrblock",
       "lblock",
+      "mining_charge",
       "obshard_block",
       "polished_prismarine_block",
       "polished_quartz_block",
@@ -2154,6 +2271,7 @@
       "rgoldore",
       "semblock",
       "soblock",
+      "soul_lantern",
       "spectral_infuser"
     ],
     "blocks": [
@@ -2165,6 +2283,7 @@
       "hglow_block",
       "hrblock",
       "lblock",
+      "mining_charge",
       "obshard_block",
       "polished_prismarine_block",
       "polished_quartz_block",
@@ -2177,11 +2296,14 @@
       "rgoldore",
       "semblock",
       "soblock",
+      "soul_lantern",
       "spectral_infuser"
     ],
     "entities": [
       "ghost",
-      "grenade"
+      "grenade",
+      "sticky_dynamite",
+      "wraith"
     ],
     "items": [
       "acacia_axe",
@@ -2316,6 +2438,7 @@
       "coal_pickaxe",
       "coal_shovel",
       "coal_sword",
+      "condensed_ectoplasm",
       "copper_axe",
       "copper_boots",
       "copper_chestplate",
@@ -2671,6 +2794,7 @@
       "remerald_pickaxe",
       "remerald_shovel",
       "remerald_sword",
+      "remote_detonator",
       "rflint_axe",
       "rflint_hoe",
       "rflint_pickaxe",
@@ -2779,6 +2903,7 @@
       "snow_pickaxe",
       "snow_shovel",
       "snow_sword",
+      "spectral_resonator",
       "sponge_axe",
       "sponge_hoe",
       "sponge_pickaxe",
@@ -2789,6 +2914,7 @@
       "spruce_pickaxe",
       "spruce_shovel",
       "spruce_sword",
+      "sticky_dynamite",
       "sweet_berry_axe",
       "sweet_berry_boots",
       "sweet_berry_chestplate",
@@ -2816,7 +2942,8 @@
       "warped_hoe",
       "warped_pickaxe",
       "warped_shovel",
-      "warped_sword"
+      "warped_sword",
+      "wraith_spawn_egg"
     ],
     "recipes": [
       "acacia_axe",
@@ -2956,6 +3083,7 @@
       "coal_pickaxe",
       "coal_shovel",
       "coal_sword",
+      "condensed_ectoplasm",
       "copper_axe",
       "copper_boots",
       "copper_chestplate",
@@ -3170,6 +3298,7 @@
       "melon_shovel",
       "melon_sword",
       "minecraft:ice",
+      "mining_charge",
       "mushroom_axe",
       "mushroom_boots",
       "mushroom_chestplate",
@@ -3333,6 +3462,7 @@
       "remerald_pickaxe",
       "remerald_shovel",
       "remerald_sword",
+      "remote_detonator",
       "reverse_rgold_deepslate_ore",
       "reverse_rgold_end_ore",
       "reverse_rgold_nether_ore",
@@ -3462,7 +3592,9 @@
       "snow_sword",
       "sobingot_from_block",
       "soblock",
+      "soul_lantern",
       "spectral_infuser",
+      "spectral_resonator",
       "sponge_axe",
       "sponge_hoe",
       "sponge_pickaxe",
@@ -3473,6 +3605,7 @@
       "spruce_pickaxe",
       "spruce_shovel",
       "spruce_sword",
+      "sticky_dynamite",
       "sweet_berry_axe",
       "sweet_berry_boots",
       "sweet_berry_chestplate",
@@ -4430,6 +4563,10 @@
         "material": "rock"
       },
       {
+        "id": "mining_charge",
+        "material": "rock"
+      },
+      {
         "id": "obshard_block",
         "material": "rock"
       },
@@ -4475,6 +4612,10 @@
       },
       {
         "id": "soblock",
+        "material": "rock"
+      },
+      {
+        "id": "soul_lantern",
         "material": "rock"
       },
       {
@@ -5180,6 +5321,10 @@
         "id": "coal_sword",
         "kind": "sword",
         "material": "COAL_TOOL"
+      },
+      {
+        "id": "condensed_ectoplasm",
+        "kind": "item"
       },
       {
         "id": "copper_axe",
@@ -7055,6 +7200,10 @@
         "material": "REMERALD"
       },
       {
+        "id": "remote_detonator",
+        "kind": "item"
+      },
+      {
         "id": "rflint_axe",
         "kind": "axe",
         "material": "RFLINT"
@@ -7612,6 +7761,10 @@
         "material": "SNOW_TOOL"
       },
       {
+        "id": "spectral_resonator",
+        "kind": "item"
+      },
+      {
         "id": "sponge_axe",
         "kind": "axe",
         "material": "SPONGE"
@@ -7660,6 +7813,10 @@
         "id": "spruce_sword",
         "kind": "sword",
         "material": "WOOD_SPRUCE"
+      },
+      {
+        "id": "sticky_dynamite",
+        "kind": "item"
       },
       {
         "id": "sweet_berry_axe",
@@ -7808,6 +7965,10 @@
         "id": "warped_sword",
         "kind": "sword",
         "material": "WOOD_WARPED"
+      },
+      {
+        "id": "wraith_spawn_egg",
+        "kind": "item"
       }
     ],
     "recipes": [
@@ -10937,6 +11098,27 @@
           "result": {
             "count": 1,
             "id": "usefultoolsmod:coal_sword"
+          },
+          "type": "minecraft:crafting_shaped"
+        }
+      },
+      {
+        "id": "condensed_ectoplasm",
+        "payload": {
+          "category": "misc",
+          "key": {
+            "E": {
+              "item": "usefultoolsmod:ectoplasm"
+            }
+          },
+          "pattern": [
+            "EEE",
+            "EEE",
+            "EEE"
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:condensed_ectoplasm"
           },
           "type": "minecraft:crafting_shaped"
         }
@@ -15848,6 +16030,33 @@
         }
       },
       {
+        "id": "mining_charge",
+        "payload": {
+          "category": "redstone",
+          "key": {
+            "D": {
+              "item": "usefultoolsmod:dynamite"
+            },
+            "I": {
+              "item": "minecraft:iron_ingot"
+            },
+            "R": {
+              "item": "minecraft:redstone"
+            }
+          },
+          "pattern": [
+            "IRI",
+            "IDI",
+            "IRI"
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:mining_charge"
+          },
+          "type": "minecraft:crafting_shaped"
+        }
+      },
+      {
         "id": "mushroom_axe",
         "payload": {
           "category": "equipment",
@@ -19614,6 +19823,33 @@
         }
       },
       {
+        "id": "remote_detonator",
+        "payload": {
+          "category": "tools",
+          "key": {
+            "C": {
+              "item": "usefultoolsmod:condensed_ectoplasm"
+            },
+            "G": {
+              "item": "usefultoolsmod:rgold"
+            },
+            "R": {
+              "item": "minecraft:redstone"
+            }
+          },
+          "pattern": [
+            " R ",
+            "GCG",
+            " G "
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:remote_detonator"
+          },
+          "type": "minecraft:crafting_shaped"
+        }
+      },
+      {
         "id": "reverse_rgold_deepslate_ore",
         "payload": {
           "category": "misc",
@@ -22529,6 +22765,36 @@
         }
       },
       {
+        "id": "soul_lantern",
+        "payload": {
+          "category": "misc",
+          "key": {
+            "E": {
+              "item": "usefultoolsmod:ectoplasm"
+            },
+            "G": {
+              "item": "minecraft:glass"
+            },
+            "R": {
+              "item": "usefultoolsmod:rgold"
+            },
+            "T": {
+              "item": "minecraft:torch"
+            }
+          },
+          "pattern": [
+            "GGG",
+            "ETE",
+            "GRG"
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:soul_lantern"
+          },
+          "type": "minecraft:crafting_shaped"
+        }
+      },
+      {
         "id": "spectral_infuser",
         "payload": {
           "category": "misc",
@@ -22551,6 +22817,36 @@
           "result": {
             "count": 1,
             "id": "usefultoolsmod:spectral_infuser"
+          },
+          "type": "minecraft:crafting_shaped"
+        }
+      },
+      {
+        "id": "spectral_resonator",
+        "payload": {
+          "category": "tools",
+          "key": {
+            "A": {
+              "item": "minecraft:amethyst_shard"
+            },
+            "C": {
+              "item": "usefultoolsmod:condensed_ectoplasm"
+            },
+            "E": {
+              "item": "usefultoolsmod:ectoplasm"
+            },
+            "R": {
+              "item": "usefultoolsmod:rgold"
+            }
+          },
+          "pattern": [
+            " A ",
+            "ECE",
+            " R "
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:spectral_resonator"
           },
           "type": "minecraft:crafting_shaped"
         }
@@ -22793,6 +23089,25 @@
             "id": "usefultoolsmod:spruce_sword"
           },
           "type": "minecraft:crafting_shaped"
+        }
+      },
+      {
+        "id": "sticky_dynamite",
+        "payload": {
+          "category": "combat",
+          "ingredients": [
+            {
+              "item": "usefultoolsmod:dynamite"
+            },
+            {
+              "item": "minecraft:slime_ball"
+            }
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:sticky_dynamite"
+          },
+          "type": "minecraft:crafting_shapeless"
         }
       },
       {
@@ -24144,12 +24459,23 @@
     ]
   },
   "intent": {
+    "controlled_explosives": [
+      "mining_charge",
+      "sticky_dynamite",
+      "remote_detonator"
+    ],
     "explosives": [
       "dynamite",
       "grenade"
     ],
     "ghost": "Night-spawning hostile mob with ectoplasm drops and armor interactions.",
     "spectral_infuser": "Transforms supported vanilla equipment with ectoplasm and creates ghost spawn eggs.",
+    "spectral_progression": [
+      "wraith",
+      "condensed_ectoplasm",
+      "soul_lantern",
+      "spectral_resonator"
+    ],
     "worldgen": [
       "rgoldore",
       "rgold_deepslate_ore",

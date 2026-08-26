@@ -76,7 +76,8 @@ public class SpectralInfuserRecipeCategory implements IRecipeCategory<SpectralIn
 
         // Ectoplasm fuel — full texture: (56,53) → relative: (13, 39)
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 39)
-                .addItemStack(recipe.ectoplasmFuel());
+                .addItemStacks(java.util.List.of(recipe.ectoplasmFuel(),
+                        new ItemStack(com.stonytark.usefultoolsmod.item.ModItems.CONDENSED_ECTOPLASM)));
 
         // Output — full texture: (116,35) → relative: (73, 21)
         builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 21)

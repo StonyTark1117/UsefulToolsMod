@@ -17,11 +17,13 @@ public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
             new ModelLayerLocation(new ResourceLocation(UsefultoolsMod.MOD_ID, "ghost"), "main");
     private final ModelPart body;
     private final ModelPart head;
+    private final ModelPart babyFace;
 
 
     public GhostModel(ModelPart root) {
         this.body = root.getChild("body");
         this.head = body.getChild("head");
+        this.babyFace = body.getChild("baby_face");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -30,17 +32,29 @@ public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
 
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -23.0F, -13.0F, 10.0F, 10.0F, 10.0F, new CubeDeformation(2.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0)
+                .addBox(-5.0F, -22.0F, -5.0F, 10.0F, 9.0F, 9.0F, new CubeDeformation(0.25F)), PartPose.ZERO);
+
+        body.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(38, 0)
+                .addBox(0, -1, -1.5F, 3, 8, 3), PartPose.offset(4.5F, -18, 0));
+        body.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(38, 0).mirror()
+                .addBox(-3, -1, -1.5F, 3, 8, 3), PartPose.offset(-4.5F, -18, 0));
+        body.addOrReplaceChild("baby_face", CubeListBuilder.create().texOffs(50, 12)
+                .addBox(-3.0F, -20.0F, -5.6F, 6.0F, 3.0F, 1.0F), PartPose.ZERO);
 
         PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition tail_start = tail.addOrReplaceChild("tail_start", CubeListBuilder.create().texOffs(0, 20).addBox(-1.0F, -18.0F, 3.0F, 4.0F, 4.0F, 1.0F, new CubeDeformation(2.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition tail_start = tail.addOrReplaceChild("tail_start", CubeListBuilder.create().texOffs(0, 20)
+                .addBox(-4.0F, -14.0F, -3.0F, 8.0F, 6.0F, 6.0F, new CubeDeformation(0)), PartPose.ZERO);
 
-        PartDefinition tail_second = tail.addOrReplaceChild("tail_second", CubeListBuilder.create().texOffs(18, 20).addBox(0.0F, -16.0F, 9.0F, 2.0F, 2.0F, 1.0F, new CubeDeformation(1.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition tail_second = tail.addOrReplaceChild("tail_second", CubeListBuilder.create().texOffs(28, 20)
+                .addBox(-3.0F, -8.0F, -2.0F, 6.0F, 5.0F, 4.0F), PartPose.ZERO);
 
-        PartDefinition tail_third = tail.addOrReplaceChild("tail_third", CubeListBuilder.create().texOffs(18, 23).addBox(1.0F, -18.0F, 13.0F, 1.0F, 1.0F, 1.0F, new CubeDeformation(1.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition tail_third = tail.addOrReplaceChild("tail_third", CubeListBuilder.create().texOffs(0, 32)
+                .addBox(-2.0F, -3.0F, -1.0F, 4.0F, 4.0F, 2.0F), PartPose.ZERO);
 
-        PartDefinition tail_end = tail.addOrReplaceChild("tail_end", CubeListBuilder.create().texOffs(10, 20).addBox(-1.0F, -18.0F, 16.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition tail_end = tail.addOrReplaceChild("tail_end", CubeListBuilder.create().texOffs(12, 32)
+                .addBox(-1.0F, 1.0F, -0.5F, 2.0F, 4.0F, 1.0F), PartPose.ZERO);
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
@@ -49,6 +63,7 @@ public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
     public void setupAnim(GhostEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
+        this.babyFace.visible = entity.isBaby();
 
         this.animateWalk(GhostAnimations.ANIM_GHOST_WALKING, limbSwing, limbSwingAmount, 2f, 2.5f);
         this.animate(entity.idleAnimationState, GhostAnimations.ANIM_GHOST_IDLE, ageInTicks, 1f);

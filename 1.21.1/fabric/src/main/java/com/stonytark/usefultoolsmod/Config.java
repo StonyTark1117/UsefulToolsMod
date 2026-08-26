@@ -107,7 +107,10 @@ public class Config {
     }
 
     private static double validatedDouble(String name, double value) {
-        if (name.equals("ghostSpawnChance")) return Math.max(0.0, Math.min(1.0, value));
+        if (name.equals("ghostSpawnChance") || name.equals("wraithSpawnChance"))
+            return Math.max(0.0, Math.min(1.0, value));
+        if (name.equals("controlledEntityDamage")) return Math.max(0.0, Math.min(8.0, value));
+        if (name.equals("remoteRange")) return Math.max(16.0, Math.min(1024.0, value));
         return value;
     }
 
@@ -145,8 +148,12 @@ public class Config {
         for (Field field : Config.class.getDeclaredFields()) {
             if (!isConfigField(field)) continue;
             String name = field.getName();
-            double min = name.equals("ghostSpawnChance") ? 0.0 : -Double.MAX_VALUE;
-            double max = name.equals("ghostSpawnChance") ? 1.0 : Double.MAX_VALUE;
+            double min = name.equals("ghostSpawnChance") || name.equals("wraithSpawnChance")
+                    || name.equals("controlledEntityDamage") ? 0.0
+                    : name.equals("remoteRange") ? 16.0 : -Double.MAX_VALUE;
+            double max = name.equals("ghostSpawnChance") || name.equals("wraithSpawnChance") ? 1.0
+                    : name.equals("controlledEntityDamage") ? 8.0
+                    : name.equals("remoteRange") ? 1024.0 : Double.MAX_VALUE;
             result.add(new Option(field, category(name), prettify(name), min, max));
         }
         return Collections.unmodifiableList(result);
@@ -180,6 +187,12 @@ public class Config {
     public static boolean overpowerEnabled = true;
     public static boolean ghostEnabled = true;
     public static boolean spectralInfuserEnabled = true;
+    public static boolean wraithEnabled = true;
+    public static boolean soulLanternEnabled = true;
+    public static boolean spectralResonatorEnabled = true;
+    public static boolean miningChargeEnabled = true;
+    public static boolean stickyDynamiteEnabled = true;
+    public static boolean remoteDetonationEnabled = true;
     public static boolean infusedToolEffects = true;
     public static boolean rawMetalRoughEnabled = true;
     public static boolean roughCrystalEnabled = true;
@@ -279,6 +292,10 @@ public class Config {
 
     // === Numeric and effect tuning ===
     public static double ghostSpawnChance = 0.15;
+    public static double wraithSpawnChance = 0.0375;
+    public static boolean controlledDrops = true;
+    public static double controlledEntityDamage = 8.0;
+    public static double remoteRange = 128.0;
     public static boolean snowMeltEffects = true;
     public static boolean iceEffects = true;
     public static boolean pprismWaterEffects = true;

@@ -33,6 +33,11 @@ public class ModItems {
     // Throwables
     public static Item GRENADE;
     public static Item DYNAMITE;
+    public static Item CONDENSED_ECTOPLASM;
+    public static Item WRAITH_SPAWN_EGG;
+    public static Item SPECTRAL_RESONATOR;
+    public static Item STICKY_DYNAMITE;
+    public static Item REMOTE_DETONATOR;
 
     // Remerald (emerald rough)
     public static Item REMERALD_SWORD;
@@ -792,6 +797,12 @@ public class ModItems {
         // Throwables
         GRENADE = reg(GeneratedRegistrationIds.Items.GRENADE, new Grenade(new Item.Settings().maxCount(16)));
         DYNAMITE = reg(GeneratedRegistrationIds.Items.DYNAMITE, new Dynamite(new Item.Settings().maxCount(16).fireproof()));
+        CONDENSED_ECTOPLASM = reg(GeneratedRegistrationIds.Items.CONDENSED_ECTOPLASM, new Item(new Item.Settings().maxCount(64)));
+        WRAITH_SPAWN_EGG = reg(GeneratedRegistrationIds.Items.WRAITH_SPAWN_EGG,
+                new SpawnEggItem(ModEntities.WRAITH, 0x172132, 0x59d7cf, new Item.Settings()));
+        SPECTRAL_RESONATOR = reg(GeneratedRegistrationIds.Items.SPECTRAL_RESONATOR, new SpectralResonatorItem(new Item.Settings().maxCount(1)));
+        STICKY_DYNAMITE = reg(GeneratedRegistrationIds.Items.STICKY_DYNAMITE, new StickyDynamiteItem(new Item.Settings().maxCount(16)));
+        REMOTE_DETONATOR = reg(GeneratedRegistrationIds.Items.REMOTE_DETONATOR, new RemoteDetonatorItem(new Item.Settings().maxCount(1)));
 
         // Remerald
         REMERALD_SWORD = reg(GeneratedRegistrationIds.Items.REMERALD_SWORD, new SwordItem(ModToolTiers.REMERALD,

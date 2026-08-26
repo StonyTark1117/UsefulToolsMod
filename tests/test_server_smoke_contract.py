@@ -37,6 +37,14 @@ MODERN_BUILD_FILES = (
 
 
 class ServerSmokeContractTests(unittest.TestCase):
+    def test_26_2_recipes_use_current_crafting_categories(self) -> None:
+        for loader in ("forge", "fabric", "neoforge"):
+            recipe_root = ROOT / "26.2" / loader / "src/main/resources/data/usefultoolsmod/recipe"
+            for recipe in recipe_root.glob("*.json"):
+                source = recipe.read_text(encoding="utf-8")
+                self.assertNotIn('"category": "tools"', source, recipe)
+                self.assertNotIn('"category": "combat"', source, recipe)
+
     def test_runner_covers_the_complete_release_matrix(self) -> None:
         expected = {
             "1.7.10-forge",

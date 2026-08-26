@@ -4,6 +4,8 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
+import com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock;
+import com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -112,6 +114,14 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel(state -> state.getValue(SpectralInfuserBlock.LIT) ? 13 : 0)));
+
+    public static final RegistryObject<Block> SOUL_LANTERN = registerBlock(GeneratedRegistrationIds.Blocks.SOUL_LANTERN,
+            () -> new SoulLanternBlock(BlockBehaviour.Properties.of().strength(3.0F)
+                    .sound(SoundType.LANTERN).lightLevel(state -> 12)));
+
+    public static final RegistryObject<Block> MINING_CHARGE = registerBlock(GeneratedRegistrationIds.Blocks.MINING_CHARGE,
+            () -> new MiningChargeBlock(BlockBehaviour.Properties.of().strength(1.0F)
+                    .sound(SoundType.WOOL).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

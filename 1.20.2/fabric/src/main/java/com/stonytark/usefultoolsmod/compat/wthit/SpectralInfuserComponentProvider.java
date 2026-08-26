@@ -17,6 +17,9 @@ public class SpectralInfuserComponentProvider implements IBlockComponentProvider
 
         int progress = data.getInt("utm_progress");
         int maxProgress = data.getInt("utm_maxProgress");
+        int fuelUses = data.getInt("utm_fuelUses");
+        if (fuelUses > 0) tooltip.addLine(Text.translatable("gui.usefultoolsmod.infuser_fuel_uses", fuelUses)
+                .formatted(Formatting.AQUA));
 
         if (data.contains("utm_outputName")) {
             String outputName = data.getString("utm_outputName");

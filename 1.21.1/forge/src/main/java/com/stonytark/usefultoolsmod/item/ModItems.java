@@ -51,6 +51,17 @@ public class ModItems {
                     )
             );
 
+    public static final RegistryObject<Item> CONDENSED_ECTOPLASM = ITEMS.register(GeneratedRegistrationIds.Items.CONDENSED_ECTOPLASM,
+            () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> WRAITH_SPAWN_EGG = ITEMS.register(GeneratedRegistrationIds.Items.WRAITH_SPAWN_EGG,
+            () -> new ForgeSpawnEggItem(ModEntities.WRAITH, 0x172132, 0x59d7cf, new Item.Properties()));
+    public static final RegistryObject<Item> SPECTRAL_RESONATOR = ITEMS.register(GeneratedRegistrationIds.Items.SPECTRAL_RESONATOR,
+            () -> new SpectralResonatorItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> STICKY_DYNAMITE = ITEMS.register(GeneratedRegistrationIds.Items.STICKY_DYNAMITE,
+            () -> new StickyDynamiteItem(new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> REMOTE_DETONATOR = ITEMS.register(GeneratedRegistrationIds.Items.REMOTE_DETONATOR,
+            () -> new RemoteDetonatorItem(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> REMERALD_SWORD = ITEMS.register(GeneratedRegistrationIds.Items.REMERALD_SWORD,
             () -> new SwordItem(ModToolTiers.REMERALD, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.REMERALD, 3, -2.4f))));

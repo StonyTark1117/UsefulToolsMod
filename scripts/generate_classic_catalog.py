@@ -41,6 +41,7 @@ CLASSIC_EXPRESSIONS = {
     "minecraft:clay_ball": "new ItemStack(Items.clay_ball)",
     "minecraft:coal": "new ItemStack(Items.coal)",
     "minecraft:cobblestone": "new ItemStack(Blocks.cobblestone)",
+    "minecraft:compass": "new ItemStack(Items.compass)",
     "minecraft:dark_oak_planks": "new ItemStack(Blocks.planks, 1, 5)",
     "minecraft:diamond": "new ItemStack(Items.diamond)",
     "minecraft:diamond_block": "new ItemStack(Blocks.diamond_block)",
@@ -52,6 +53,7 @@ CLASSIC_EXPRESSIONS = {
     "minecraft:fish": "new ItemStack(Items.fish)",
     "minecraft:flint": "new ItemStack(Items.flint)",
     "minecraft:ghast_tear": "new ItemStack(Items.ghast_tear)",
+    "minecraft:glass": "new ItemStack(Blocks.glass)",
     "minecraft:glass_pane": "new ItemStack(Blocks.glass_pane)",
     "minecraft:glowstone_dust": "new ItemStack(Items.glowstone_dust)",
     "minecraft:gold_ingot": "new ItemStack(Items.gold_ingot)",
@@ -86,6 +88,7 @@ CLASSIC_EXPRESSIONS = {
     "minecraft:stick": "new ItemStack(Items.stick)",
     "minecraft:stone": "new ItemStack(Blocks.stone)",
     "minecraft:string": "new ItemStack(Items.string)",
+    "minecraft:torch": "new ItemStack(Blocks.torch)",
     "minecraft:sugar": "new ItemStack(Items.sugar)",
     "usefultoolsmod:legacy_iron_nugget": "new ItemStack(MItems.INugget)",
 }
@@ -253,7 +256,15 @@ def render_java() -> tuple[str, list[str], list[str]]:
             f'        ARMOR_MATERIALS.put("{key}", EnumHelper.addArmorMaterial("UT230_{key}", {material["durability"]}, new int[] {{{protection_text}}}, {material["enchantment_value"]}));'
         )
     for item_id in plain:
-        constructor = "new Dynamite()" if item_id == "dynamite" else "new Grenade()" if item_id == "grenade" else "new ClassicGhostSpawnEgg()" if item_id == "ghost_spawn_egg" else "new Item()"
+        constructor = {
+            "dynamite": "new Dynamite()",
+            "grenade": "new Grenade()",
+            "ghost_spawn_egg": "new ClassicGhostSpawnEgg()",
+            "wraith_spawn_egg": "new ClassicWraithSpawnEgg()",
+            "spectral_resonator": "new ClassicSpectralResonator()",
+            "sticky_dynamite": "new ClassicStickyDynamite()",
+            "remote_detonator": "new ClassicRemoteDetonator()",
+        }.get(item_id, "new Item()")
         lines.append(f'        registerItem("{item_id}", {constructor});')
     for entry in tools:
         item_id, material, kind = entry["id"], entry["material"], entry["kind"]
@@ -287,7 +298,7 @@ def render_java() -> tuple[str, list[str], list[str]]:
             "    }",
             "",
             "    private static void registerBlock(String id) {",
-            "        Block block = (id.equals(\"spectral_infuser\") ? new ClassicSpectralInfuserBlock() : new ClassicBlock()).setBlockName(id).setBlockTextureName(\"usefultoolsmod:\" + id).setCreativeTab(MCreativeTabs.tabToolsMod);",
+            "        Block block = (id.equals(\"spectral_infuser\") ? new ClassicSpectralInfuserBlock() : id.equals(\"soul_lantern\") ? new ClassicSoulLantern(Material.iron) : id.equals(\"mining_charge\") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName(\"usefultoolsmod:\" + id).setCreativeTab(MCreativeTabs.tabToolsMod);",
             "        GameRegistry.registerBlock(block, id);",
             "        BLOCKS.put(id, block);",
             "    }",

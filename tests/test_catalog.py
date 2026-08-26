@@ -79,7 +79,7 @@ class CatalogAuditTests(unittest.TestCase):
         data = copy.deepcopy(self.catalog)
         data["content"]["items"].append(data["content"]["items"][0])
         errors = audit_catalog.validation_errors(data)
-        self.assertIn("expected 633 items, found 634", errors)
+        self.assertIn("expected 638 items, found 639", errors)
         self.assertIn("duplicate items IDs", errors)
 
     def test_detects_block_item_mismatch_and_missing_ice_override(self) -> None:

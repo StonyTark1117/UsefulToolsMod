@@ -42,5 +42,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
 
         // Spectral Infuser drops itself
         addDrop(ModBlocks.SPECTRAL_INFUSER);
+        addDrop(ModBlocks.SOUL_LANTERN);
+        addDrop(ModBlocks.MINING_CHARGE);
     }
 }

@@ -12,6 +12,7 @@ import com.krazykid1117.Main.Mainregistry;
 import com.krazykid1117.entity.EntityGrenade;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import com.stonytark.usefultoolsmod.classic.EntityGhost;
+import com.stonytark.usefultoolsmod.classic.EntityWraith;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class MEntity {
             if (biome != null) biomes.add(biome);
         }
         EntityRegistry.addSpawn(EntityGhost.class, 4, 1, 2, EnumCreatureType.creature,
+                biomes.toArray(new BiomeGenBase[biomes.size()]));
+        EntityRegistry.addSpawn(EntityWraith.class, 1, 1, 1, EnumCreatureType.monster,
                 biomes.toArray(new BiomeGenBase[biomes.size()]));
     }
 }

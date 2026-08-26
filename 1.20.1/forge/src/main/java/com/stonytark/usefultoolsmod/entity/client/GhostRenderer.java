@@ -4,14 +4,22 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.Nullable;
 
 public class GhostRenderer extends MobRenderer<GhostEntity, GhostModel<GhostEntity>> {
 
     public GhostRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new GhostModel<>(pContext.bakeLayer(GhostModel.LAYER_LOCATION)), 0.85f);
+        super(pContext, new GhostModel<>(pContext.bakeLayer(GhostModel.LAYER_LOCATION)), 0.45f);
+    }
+
+    @Nullable
+    @Override
+    protected RenderType getRenderType(GhostEntity entity, boolean visible, boolean translucent, boolean glowing) {
+        return RenderType.entityTranslucentEmissive(getTextureLocation(entity));
     }
 
     @Override

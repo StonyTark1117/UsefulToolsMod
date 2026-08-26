@@ -9,10 +9,12 @@ import com.stonytark.usefultoolsmod.client.ClientConfigRegistration;
 import com.stonytark.usefultoolsmod.client.SpectralInfuserScreen;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
+import com.stonytark.usefultoolsmod.entity.client.WraithRenderer;
 import com.stonytark.usefultoolsmod.gametest.UsefulToolsGameTests;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import com.stonytark.usefultoolsmod.sound.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -60,6 +62,7 @@ public class UsefultoolsMod {
         ModBlockEntityTypes.register(modBusGroup);
         ModMenuTypes.register(modBusGroup);
         ModTriggers.register(modBusGroup);
+        ModSounds.register(modBusGroup);
 
         // Register the item to a creative tab. BuildCreativeModeTabContentsEvent fires on
         // the default (game) bus in Forge 26.1.2 — it has a static .BUS field, not getBus().
@@ -153,6 +156,7 @@ public class UsefultoolsMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.GHOST.get(), GhostRenderer::new);
+            EntityRenderers.register(ModEntities.WRAITH.get(), WraithRenderer::new);
             event.enqueueWork(() ->
                     MenuScreens.register(ModMenuTypes.SPECTRAL_INFUSER_MENU.get(), SpectralInfuserScreen::new));
         }

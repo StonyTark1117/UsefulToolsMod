@@ -5,6 +5,8 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
 import com.stonytark.usefultoolsmod.entity.custom.GrenadeEntity;
+import com.stonytark.usefultoolsmod.entity.custom.WraithEntity;
+import com.stonytark.usefultoolsmod.entity.custom.StickyDynamiteEntity;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -36,6 +38,12 @@ public class ModEntities {
                     .sized(1.5f, 1.5f)
                     .build(key(GeneratedRegistrationIds.Entities.GHOST))
     );
+    public static final EntityType<WraithEntity> WRAITH=Registry.register(BuiltInRegistries.ENTITY_TYPE,
+            Identifier.fromNamespaceAndPath(UsefultoolsMod.MOD_ID,GeneratedRegistrationIds.Entities.WRAITH),EntityType.Builder.<WraithEntity>of(WraithEntity::new,MobCategory.MONSTER)
+                    .sized(1.2F,2.25F).clientTrackingRange(8).build(key(GeneratedRegistrationIds.Entities.WRAITH)));
+    public static final EntityType<StickyDynamiteEntity> STICKY_DYNAMITE=Registry.register(BuiltInRegistries.ENTITY_TYPE,
+            Identifier.fromNamespaceAndPath(UsefultoolsMod.MOD_ID,GeneratedRegistrationIds.Entities.STICKY_DYNAMITE),EntityType.Builder.<StickyDynamiteEntity>of(StickyDynamiteEntity::new,MobCategory.MISC)
+                    .sized(.25F,.25F).clientTrackingRange(4).updateInterval(10).build(key(GeneratedRegistrationIds.Entities.STICKY_DYNAMITE)));
 
     public static void register() {
         // no-op; touching the class triggers static init

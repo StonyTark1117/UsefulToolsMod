@@ -28,6 +28,12 @@ public final class ClassicGeneratedConfig {
         VALUES.put("overpowerEnabled", configuration.get("Content Sets", "overpowerEnabled", true, "Controls overpower behavior.").getBoolean(true));
         VALUES.put("ghostEnabled", configuration.get("Content Sets", "ghostEnabled", true, "Controls ghost behavior.").getBoolean(true));
         VALUES.put("spectralInfuserEnabled", configuration.get("Content Sets", "spectralInfuserEnabled", true, "Controls spectral infuser behavior.").getBoolean(true));
+        VALUES.put("wraithEnabled", configuration.get("Content Sets", "wraithEnabled", true, "Controls wraith behavior.").getBoolean(true));
+        VALUES.put("soulLanternEnabled", configuration.get("Content Sets", "soulLanternEnabled", true, "Controls soul lantern behavior.").getBoolean(true));
+        VALUES.put("spectralResonatorEnabled", configuration.get("Content Sets", "spectralResonatorEnabled", true, "Controls spectral resonator behavior.").getBoolean(true));
+        VALUES.put("miningChargeEnabled", configuration.get("Content Sets", "miningChargeEnabled", true, "Controls mining charge behavior.").getBoolean(true));
+        VALUES.put("stickyDynamiteEnabled", configuration.get("Content Sets", "stickyDynamiteEnabled", true, "Controls sticky dynamite behavior.").getBoolean(true));
+        VALUES.put("remoteDetonationEnabled", configuration.get("Content Sets", "remoteDetonationEnabled", true, "Controls remote detonation behavior.").getBoolean(true));
         VALUES.put("infusedToolEffects", configuration.get("Effects", "infusedToolEffects", true, "Controls infused tool behavior.").getBoolean(true));
         VALUES.put("rawMetalRoughEnabled", configuration.get("Content Sets", "rawMetalRoughEnabled", true, "Controls raw metal rough behavior.").getBoolean(true));
         VALUES.put("roughCrystalEnabled", configuration.get("Content Sets", "roughCrystalEnabled", true, "Controls rough crystal behavior.").getBoolean(true));
@@ -125,6 +131,10 @@ public final class ClassicGeneratedConfig {
         VALUES.put("opToolEffectsEnabled", configuration.get("Content Sets", "opToolEffectsEnabled", true, "Controls op tool behavior.").getBoolean(true));
         VALUES.put("opArmorEffectsEnabled", configuration.get("Content Sets", "opArmorEffectsEnabled", true, "Controls op armor behavior.").getBoolean(true));
         VALUES.put("ghostSpawnChance", configuration.getFloat("ghostSpawnChance", "Effects", 0.15F, 0.0F, 1.0F, "Controls ghost spawn chance behavior."));
+        VALUES.put("wraithSpawnChance", configuration.getFloat("wraithSpawnChance", "Effects", 0.0375F, 0.0F, 1.0F, "Controls wraith spawn chance behavior."));
+        VALUES.put("controlledDrops", configuration.get("Content Sets", "controlledDrops", true, "Controls controlled drops behavior.").getBoolean(true));
+        VALUES.put("controlledEntityDamage", configuration.getFloat("controlledEntityDamage", "Effects", 8.0F, 0.0F, 8.0F, "Controls controlled entity damage behavior."));
+        VALUES.put("remoteRange", configuration.getFloat("remoteRange", "Effects", 128.0F, 16.0F, 1024.0F, "Controls remote range behavior."));
         VALUES.put("snowMeltEffects", configuration.get("Effects", "snowMeltEffects", true, "Controls snow melt behavior.").getBoolean(true));
         VALUES.put("iceEffects", configuration.get("Effects", "iceEffects", true, "Controls ice behavior.").getBoolean(true));
         VALUES.put("pprismWaterEffects", configuration.get("Effects", "pprismWaterEffects", true, "Controls pprism water behavior.").getBoolean(true));

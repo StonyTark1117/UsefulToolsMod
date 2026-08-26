@@ -56,7 +56,7 @@ MODERN_SOURCE_ROOTS = (
 
 
 def public_option_names(text: str) -> list[str]:
-    names = re.findall(r"public static (?:boolean|double)\s+([A-Za-z0-9_]+)\s*(?:=|;)", text)
+    names = re.findall(r"public static (?:boolean|double|int)\s+([A-Za-z0-9_]+)\s*(?:=|;)", text)
     return [ALIASES.get(name, name) for name in names]
 
 
@@ -102,6 +102,20 @@ class ConfigContractTests(unittest.TestCase):
                 if key in descriptors:
                     return key
                 for old, new in (
+                    ("spectralUtilitiesWraithEnabled", "wraithEnabled"),
+                    ("spectralUtilitiesWraithSpawnChance", "wraithSpawnChance"),
+                    ("spectralUtilitiesSoulLanternEnabled", "soulLanternEnabled"),
+                    ("spectralUtilitiesSpectralResonatorEnabled", "spectralResonatorEnabled"),
+                    ("controlledExplosivesMiningChargeEnabled", "miningChargeEnabled"),
+                    ("controlledExplosivesStickyDynamiteEnabled", "stickyDynamiteEnabled"),
+                    ("controlledExplosivesRemoteDetonationEnabled", "remoteDetonationEnabled"),
+                    ("controlledExplosivesPreserveDrops", "controlledDrops"),
+                    ("controlledExplosivesEntityDamageCap", "controlledEntityDamage"),
+                    ("controlledExplosivesRemoteRange", "remoteRange"),
+                ):
+                    if key == old:
+                        return new
+                for old, new in (
                     ("spectralInfuserInfused", "infused"),
                     ("pointedDripstone", "dripstone"),
                     ("foodSetsHunger", "foodHunger"),
@@ -126,12 +140,12 @@ class ConfigContractTests(unittest.TestCase):
         catalog = json.loads((ROOT / "catalog/useful_tools_catalog.json").read_text(encoding="utf-8"))
         cls.expected = {option["key"] for option in catalog["config"]}
 
-    def test_every_modern_config_exposes_the_canonical_116_options(self) -> None:
+    def test_every_modern_config_exposes_the_canonical_126_options(self) -> None:
         for relative in CONFIG_SOURCES:
             with self.subTest(source=relative):
                 names = public_option_names((ROOT / relative).read_text(encoding="utf-8"))
-                self.assertEqual(116, len(names))
-                self.assertEqual(116, len(set(names)), "duplicate runtime option")
+                self.assertEqual(126, len(names))
+                self.assertEqual(126, len(set(names)), "duplicate runtime option")
                 self.assertEqual(self.expected, set(names))
 
     def test_generated_runtime_descriptors_match_the_canonical_catalog(self) -> None:

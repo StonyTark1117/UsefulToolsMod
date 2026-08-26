@@ -6,6 +6,8 @@ import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.Identifier;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 
 /**
  * Renderer for {@link GhostEntity}. Migrated from the entity-typed MobRenderer to the
@@ -23,6 +25,11 @@ public class GhostRenderer extends MobRenderer<GhostEntity, GhostRenderState, Gh
     @Override
     public Identifier getTextureLocation(GhostRenderState state) {
         return TEXTURE;
+    }
+
+    @Override
+    protected RenderType getRenderType(GhostRenderState state, boolean visible, boolean translucent, boolean glowing) {
+        return RenderTypes.entityTranslucentEmissive(TEXTURE);
     }
 
     @Override

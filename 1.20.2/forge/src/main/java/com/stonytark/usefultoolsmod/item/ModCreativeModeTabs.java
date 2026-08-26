@@ -27,7 +27,14 @@ public class ModCreativeModeTabs {
                         if (Config.explosivesEnabled) {
                             output.accept(ModItems.DYNAMITE.get());
                             output.accept(ModItems.GRENADE.get());
+                            if (Config.stickyDynamiteEnabled) output.accept(ModItems.STICKY_DYNAMITE.get());
+                            if (Config.miningChargeEnabled) output.accept(ModBlocks.MINING_CHARGE.get());
+                            if (Config.remoteDetonationEnabled) output.accept(ModItems.REMOTE_DETONATOR.get());
                         }
+                        output.accept(ModItems.CONDENSED_ECTOPLASM.get());
+                        if (Config.wraithEnabled) output.accept(ModItems.WRAITH_SPAWN_EGG.get());
+                        if (Config.soulLanternEnabled) output.accept(ModBlocks.SOUL_LANTERN.get());
+                        if (Config.spectralResonatorEnabled) output.accept(ModItems.SPECTRAL_RESONATOR.get());
 
                         // =============================================================
                         //  VANILLA VARIANT TOOLS (wood & stone tier reskins)

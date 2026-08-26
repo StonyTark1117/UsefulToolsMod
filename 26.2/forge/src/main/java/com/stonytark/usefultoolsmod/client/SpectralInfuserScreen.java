@@ -36,4 +36,12 @@ public class SpectralInfuserScreen extends AbstractContainerScreen<SpectralInfus
             graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x + 79, y + 35, 176.0F, 0.0F, progressPx, 16, 256, 256);
         }
     }
+
+    @Override
+    protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        super.extractLabels(graphics, mouseX, mouseY);
+        if (menu.getFuelUses() > 0) graphics.text(font,
+                Component.translatable("gui.usefultoolsmod.infuser_fuel_uses", menu.getFuelUses()),
+                76, 58, 0x72E6E1, false);
+    }
 }

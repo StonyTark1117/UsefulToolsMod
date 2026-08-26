@@ -6,11 +6,13 @@ import com.stonytark.usefultoolsmod.block.entity.ModBlockEntityTypes;
 import com.stonytark.usefultoolsmod.block.entity.ModMenuTypes;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
+import com.stonytark.usefultoolsmod.entity.custom.WraithEntity;
 import com.stonytark.usefultoolsmod.event.ModEvents;
 import com.stonytark.usefultoolsmod.item.ModArmorMaterials;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import com.stonytark.usefultoolsmod.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -49,9 +51,11 @@ public class UsefultoolsMod implements ModInitializer {
         ModBlockEntityTypes.register();
         ModMenuTypes.register();
         ModTriggers.register();
+        ModSounds.register();
 
         // Entity attributes (must happen after ModEntities registers the EntityType)
         FabricDefaultAttributeRegistry.register(ModEntities.GHOST, GhostEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.WRAITH, WraithEntity.createAttributes());
 
         // Spawn placement rules — Ghosts spawn floating (NoGravity), so NO_RESTRICTIONS
         // (matches the 1.21.1-Fabric and 26.1.2-NeoForge ports).
@@ -59,6 +63,10 @@ public class UsefultoolsMod implements ModInitializer {
                 SpawnPlacementTypes.NO_RESTRICTIONS,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 GhostEntity::checkGhostSpawnRules);
+        SpawnPlacements.register(ModEntities.WRAITH,
+                SpawnPlacementTypes.NO_RESTRICTIONS,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                WraithEntity::checkSpawnRules);
 
         // Server-side event listeners (LivingEntity attacks, tick handlers, etc.)
         ModEvents.register();
@@ -95,6 +103,11 @@ public class UsefultoolsMod implements ModInitializer {
                 MobCategory.MONSTER,
                 ModEntities.GHOST,
                 5, 1, 3);
+        BiomeModifications.addSpawn(
+                BiomeSelectors.foundInOverworld(),
+                MobCategory.MONSTER,
+                ModEntities.WRAITH,
+                1, 1, 1);
         BiomeModifications.addSpawn(
                 BiomeSelectors.foundInTheNether(),
                 MobCategory.MONSTER,

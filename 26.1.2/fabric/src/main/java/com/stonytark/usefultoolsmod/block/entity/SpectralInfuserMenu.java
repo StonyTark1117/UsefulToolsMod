@@ -59,7 +59,7 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
 
     // Client-side constructor (Fabric ExtendedScreenHandlerType ships BlockPos at open time)
     public SpectralInfuserMenu(int containerId, Inventory inv, BlockPos pos) {
-        this(containerId, inv, getBlockEntity(inv, pos), new SimpleContainerData(2));
+        this(containerId, inv, getBlockEntity(inv, pos), new SimpleContainerData(3));
     }
 
     private static SpectralInfuserBlockEntity getBlockEntity(Inventory inv, BlockPos pos) {
@@ -73,6 +73,8 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
+
+    public int getFuelUses() { return data.get(2); }
 
     public int getScaledProgress() {
         int progress = data.get(0);

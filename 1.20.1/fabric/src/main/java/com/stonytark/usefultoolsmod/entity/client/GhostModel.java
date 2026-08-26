@@ -14,11 +14,13 @@ public class GhostModel<T extends GhostEntity> extends SinglePartEntityModel<T> 
 
     private final ModelPart root;
     private final ModelPart head;
+    private final ModelPart babyFace;
 
     public GhostModel(ModelPart root) {
         this.root = root.getChild("root");
         ModelPart body = this.root.getChild("body");
         this.head = body.getChild("head");
+        this.babyFace = body.getChild("baby_face");
     }
 
     public static TexturedModelData createBodyLayer() {
@@ -33,6 +35,9 @@ public class GhostModel<T extends GhostEntity> extends SinglePartEntityModel<T> 
 
         body.addChild("head",
                 ModelPartBuilder.create().uv(0, 0).cuboid(-5.0F, -23.0F, -13.0F, 10.0F, 10.0F, 10.0F, new Dilation(2.0F)),
+                ModelTransform.NONE);
+        body.addChild("baby_face",
+                ModelPartBuilder.create().uv(50, 12).cuboid(-3.0F, -20.0F, -5.6F, 6.0F, 3.0F, 1.0F),
                 ModelTransform.NONE);
 
         ModelPartData tail = body.addChild("tail",
@@ -61,6 +66,7 @@ public class GhostModel<T extends GhostEntity> extends SinglePartEntityModel<T> 
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.getPart().traverse().forEach(ModelPart::resetTransform);
         this.applyHeadRotation(headYaw, headPitch);
+        this.babyFace.visible = entity.isBaby();
 
         this.updateAnimation(entity.idleAnimationState, GhostAnimations.ANIM_GHOST_IDLE, animationProgress, 1f);
     }

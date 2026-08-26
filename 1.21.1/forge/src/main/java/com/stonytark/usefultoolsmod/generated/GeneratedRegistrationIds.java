@@ -139,6 +139,7 @@ public final class GeneratedRegistrationIds {
         public static final String COAL_PICKAXE = "coal_pickaxe";
         public static final String COAL_SHOVEL = "coal_shovel";
         public static final String COAL_SWORD = "coal_sword";
+        public static final String CONDENSED_ECTOPLASM = "condensed_ectoplasm";
         public static final String COPPER_AXE = "copper_axe";
         public static final String COPPER_BOOTS = "copper_boots";
         public static final String COPPER_CHESTPLATE = "copper_chestplate";
@@ -494,6 +495,7 @@ public final class GeneratedRegistrationIds {
         public static final String REMERALD_PICKAXE = "remerald_pickaxe";
         public static final String REMERALD_SHOVEL = "remerald_shovel";
         public static final String REMERALD_SWORD = "remerald_sword";
+        public static final String REMOTE_DETONATOR = "remote_detonator";
         public static final String RFLINT_AXE = "rflint_axe";
         public static final String RFLINT_HOE = "rflint_hoe";
         public static final String RFLINT_PICKAXE = "rflint_pickaxe";
@@ -602,6 +604,7 @@ public final class GeneratedRegistrationIds {
         public static final String SNOW_PICKAXE = "snow_pickaxe";
         public static final String SNOW_SHOVEL = "snow_shovel";
         public static final String SNOW_SWORD = "snow_sword";
+        public static final String SPECTRAL_RESONATOR = "spectral_resonator";
         public static final String SPONGE_AXE = "sponge_axe";
         public static final String SPONGE_HOE = "sponge_hoe";
         public static final String SPONGE_PICKAXE = "sponge_pickaxe";
@@ -612,6 +615,7 @@ public final class GeneratedRegistrationIds {
         public static final String SPRUCE_PICKAXE = "spruce_pickaxe";
         public static final String SPRUCE_SHOVEL = "spruce_shovel";
         public static final String SPRUCE_SWORD = "spruce_sword";
+        public static final String STICKY_DYNAMITE = "sticky_dynamite";
         public static final String SWEET_BERRY_AXE = "sweet_berry_axe";
         public static final String SWEET_BERRY_BOOTS = "sweet_berry_boots";
         public static final String SWEET_BERRY_CHESTPLATE = "sweet_berry_chestplate";
@@ -640,6 +644,7 @@ public final class GeneratedRegistrationIds {
         public static final String WARPED_PICKAXE = "warped_pickaxe";
         public static final String WARPED_SHOVEL = "warped_shovel";
         public static final String WARPED_SWORD = "warped_sword";
+        public static final String WRAITH_SPAWN_EGG = "wraith_spawn_egg";
 
         public static final String[] ALL = {
             ACACIA_AXE,
@@ -774,6 +779,7 @@ public final class GeneratedRegistrationIds {
             COAL_PICKAXE,
             COAL_SHOVEL,
             COAL_SWORD,
+            CONDENSED_ECTOPLASM,
             COPPER_AXE,
             COPPER_BOOTS,
             COPPER_CHESTPLATE,
@@ -1129,6 +1135,7 @@ public final class GeneratedRegistrationIds {
             REMERALD_PICKAXE,
             REMERALD_SHOVEL,
             REMERALD_SWORD,
+            REMOTE_DETONATOR,
             RFLINT_AXE,
             RFLINT_HOE,
             RFLINT_PICKAXE,
@@ -1237,6 +1244,7 @@ public final class GeneratedRegistrationIds {
             SNOW_PICKAXE,
             SNOW_SHOVEL,
             SNOW_SWORD,
+            SPECTRAL_RESONATOR,
             SPONGE_AXE,
             SPONGE_HOE,
             SPONGE_PICKAXE,
@@ -1247,6 +1255,7 @@ public final class GeneratedRegistrationIds {
             SPRUCE_PICKAXE,
             SPRUCE_SHOVEL,
             SPRUCE_SWORD,
+            STICKY_DYNAMITE,
             SWEET_BERRY_AXE,
             SWEET_BERRY_BOOTS,
             SWEET_BERRY_CHESTPLATE,
@@ -1275,6 +1284,7 @@ public final class GeneratedRegistrationIds {
             WARPED_PICKAXE,
             WARPED_SHOVEL,
             WARPED_SWORD,
+            WRAITH_SPAWN_EGG,
         };
 
         public static String[] toolSet(String prefix) {
@@ -1311,6 +1321,7 @@ public final class GeneratedRegistrationIds {
         public static final String HGLOW_BLOCK = "hglow_block";
         public static final String HRBLOCK = "hrblock";
         public static final String LBLOCK = "lblock";
+        public static final String MINING_CHARGE = "mining_charge";
         public static final String OBSHARD_BLOCK = "obshard_block";
         public static final String POLISHED_PRISMARINE_BLOCK = "polished_prismarine_block";
         public static final String POLISHED_QUARTZ_BLOCK = "polished_quartz_block";
@@ -1323,6 +1334,7 @@ public final class GeneratedRegistrationIds {
         public static final String RGOLDORE = "rgoldore";
         public static final String SEMBLOCK = "semblock";
         public static final String SOBLOCK = "soblock";
+        public static final String SOUL_LANTERN = "soul_lantern";
         public static final String SPECTRAL_INFUSER = "spectral_infuser";
 
         public static final String[] ALL = {
@@ -1334,6 +1346,7 @@ public final class GeneratedRegistrationIds {
             HGLOW_BLOCK,
             HRBLOCK,
             LBLOCK,
+            MINING_CHARGE,
             OBSHARD_BLOCK,
             POLISHED_PRISMARINE_BLOCK,
             POLISHED_QUARTZ_BLOCK,
@@ -1346,6 +1359,7 @@ public final class GeneratedRegistrationIds {
             RGOLDORE,
             SEMBLOCK,
             SOBLOCK,
+            SOUL_LANTERN,
             SPECTRAL_INFUSER,
         };
     }
@@ -1354,10 +1368,14 @@ public final class GeneratedRegistrationIds {
         private Entities() {}
         public static final String GHOST = "ghost";
         public static final String GRENADE = "grenade";
+        public static final String STICKY_DYNAMITE = "sticky_dynamite";
+        public static final String WRAITH = "wraith";
 
         public static final String[] ALL = {
             GHOST,
             GRENADE,
+            STICKY_DYNAMITE,
+            WRAITH,
         };
     }
 }

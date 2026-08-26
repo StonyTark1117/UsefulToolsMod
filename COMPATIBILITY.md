@@ -36,12 +36,12 @@ RetroFuturaGradle `1.4.0` was requested in the original plan but has no publishe
 JEI, WTHIT/Jade, REI, JER, Magnetization, and Mod Menu are declared or compiled only on lines where compatible upstream APIs exist. Their absence must not prevent the base mod from loading. Mod Menu is only a route to Fabric's built-in config screen; it is not required for configuration persistence.
 
 Create: Ore Excavation support is data-driven on 1.20.1 Fabric and 1.21.1
-NeoForge. 1.20.1 Forge is not runtime-certified in this release because the
-Forge development profile has not yet been aligned with Create 6's supported
-Forge mapping/runtime: the exact published Forge pair reaches Create's mixin
-stage but fails refmap translation (`m_21211_` versus `getUseItem`). This
-integration is intentionally untested and harmlessly data-only; no Create or
-Ore Excavation dependency is required to load Useful Tools.
+NeoForge. The 1.20.1 Forge integration is expected to work in a packaged
+runtime, but cannot be certified by the Forge development harness because
+Create's mixin/refmap translation is blocked by Forge's dev-environment
+limitation (`m_21211_` versus `getUseItem`). The integration remains harmlessly
+data-only and no Create or Ore Excavation dependency is required to load Useful
+Tools.
 
 NeoForge 1.20.1 has no compatible REI runtime: REI 12 publishes a Forge jar
 whose Architectury mixins target fields absent from NeoForge 47.1. Useful Tools
@@ -58,6 +58,5 @@ Architectury types. Base runtime profiles and packaged metadata exclude it.
 
 The runtime, GameTest, datagen-reproducibility, Quilt, visual, integration,
 world-upgrade, and full 1.7.10 semantic-backport gates in
-[FUTURE_WORK.md](1.21.1/FUTURE_WORK.md) are complete. Version 2.3.0 remains
-unreleased only because tagging and publication were explicitly excluded from
-this work.
+[FUTURE_WORK.md](1.21.1/FUTURE_WORK.md) are complete. Version 2.3.0 is being
+published from the audited release artifacts.

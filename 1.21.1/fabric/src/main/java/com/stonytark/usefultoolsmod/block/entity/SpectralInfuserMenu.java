@@ -43,7 +43,7 @@ public class SpectralInfuserMenu extends ScreenHandler {
         addSlot(new Slot(blockEntity, 1, 56, 53) {    // ectoplasm (bottom)
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.isOf(ModItems.ECTOPLASM);
+                return stack.isOf(ModItems.ECTOPLASM) || stack.isOf(ModItems.CONDENSED_ECTOPLASM);
             }
         });
         addSlot(new Slot(blockEntity, 2, 116, 35) {   // output (right)
@@ -67,7 +67,7 @@ public class SpectralInfuserMenu extends ScreenHandler {
             this.data = sibe.getPropertyDelegate();
         } else {
             this.blockEntity = new SimpleBlockEntityInventory();
-            this.data = new ArrayPropertyDelegate(2);
+            this.data = new ArrayPropertyDelegate(3);
         }
 
         addPlayerInventory(playerInv);
@@ -83,7 +83,7 @@ public class SpectralInfuserMenu extends ScreenHandler {
         addSlot(new Slot(blockEntity, 1, 56, 53) {    // ectoplasm (bottom)
             @Override
             public boolean canInsert(ItemStack stack) {
-                return stack.isOf(ModItems.ECTOPLASM);
+                return stack.isOf(ModItems.ECTOPLASM) || stack.isOf(ModItems.CONDENSED_ECTOPLASM);
             }
         });
         addSlot(new Slot(blockEntity, 2, 116, 35) {   // output (right)
@@ -99,6 +99,8 @@ public class SpectralInfuserMenu extends ScreenHandler {
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
+
+    public int getFuelUses() { return data.get(2); }
 
     public int getScaledProgress() {
         int progress = data.get(0);
@@ -132,7 +134,7 @@ public class SpectralInfuserMenu extends ScreenHandler {
                     if (!insertItem(original, INPUT_SLOT, INPUT_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (original.isOf(ModItems.ECTOPLASM)) {
+                } else if (original.isOf(ModItems.ECTOPLASM) || original.isOf(ModItems.CONDENSED_ECTOPLASM)) {
                     if (!insertItem(original, FUEL_SLOT, FUEL_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }

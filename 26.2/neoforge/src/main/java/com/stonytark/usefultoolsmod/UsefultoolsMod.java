@@ -9,10 +9,12 @@ import com.stonytark.usefultoolsmod.client.ClientConfigRegistration;
 import com.stonytark.usefultoolsmod.client.SpectralInfuserScreen;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
+import com.stonytark.usefultoolsmod.entity.client.WraithRenderer;
 import com.stonytark.usefultoolsmod.gametest.UsefulToolsGameTests;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import com.stonytark.usefultoolsmod.sound.ModSounds;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -55,6 +57,7 @@ public class UsefultoolsMod
         ModBlockEntityTypes.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModTriggers.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(this);
@@ -135,6 +138,7 @@ public class UsefultoolsMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.GHOST.get(), GhostRenderer::new);
+            EntityRenderers.register(ModEntities.WRAITH.get(),WraithRenderer::new);
         }
 
         @SubscribeEvent

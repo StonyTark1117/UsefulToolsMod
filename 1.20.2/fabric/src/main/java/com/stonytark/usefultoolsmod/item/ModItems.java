@@ -96,6 +96,11 @@ public class ModItems {
     public static Item OVERPOWER_BOOTS;
     public static Item GHOST_SPAWN_EGG;
     public static Item ECTOPLASM;
+    public static Item CONDENSED_ECTOPLASM;
+    public static Item WRAITH_SPAWN_EGG;
+    public static Item SPECTRAL_RESONATOR;
+    public static Item STICKY_DYNAMITE;
+    public static Item REMOTE_DETONATOR;
     public static Item RECTO_SWORD;
     public static Item RECTO_PICKAXE;
     public static Item RECTO_SHOVEL;
@@ -762,6 +767,11 @@ public class ModItems {
                     new Item.Settings()));
         GHOST_SPAWN_EGG = reg(GeneratedRegistrationIds.Items.GHOST_SPAWN_EGG, new SpawnEggItem(ModEntities.GHOST, 0xFFFFFF, 0x999999, new Item.Settings()));
         ECTOPLASM = reg(GeneratedRegistrationIds.Items.ECTOPLASM, new Item(new Item.Settings().maxCount(64)));
+        CONDENSED_ECTOPLASM = reg(GeneratedRegistrationIds.Items.CONDENSED_ECTOPLASM, new Item(new Item.Settings().maxCount(64)));
+        WRAITH_SPAWN_EGG = reg(GeneratedRegistrationIds.Items.WRAITH_SPAWN_EGG, new SpawnEggItem(ModEntities.WRAITH, 0x241833, 0xA95CFF, new Item.Settings()));
+        SPECTRAL_RESONATOR = reg(GeneratedRegistrationIds.Items.SPECTRAL_RESONATOR, new SpectralResonatorItem(new Item.Settings().maxDamage(128)));
+        STICKY_DYNAMITE = reg(GeneratedRegistrationIds.Items.STICKY_DYNAMITE, new StickyDynamiteItem(new Item.Settings().maxCount(16)));
+        REMOTE_DETONATOR = reg(GeneratedRegistrationIds.Items.REMOTE_DETONATOR, new RemoteDetonatorItem(new Item.Settings().maxCount(1)));
         RECTO_SWORD = reg(GeneratedRegistrationIds.Items.RECTO_SWORD, new EctoSwordItem(ModToolTiers.RECTO, new Item.Settings()));
         RECTO_PICKAXE = reg(GeneratedRegistrationIds.Items.RECTO_PICKAXE, new EctoPickaxeItem(ModToolTiers.RECTO, new Item.Settings()));
         RECTO_SHOVEL = reg(GeneratedRegistrationIds.Items.RECTO_SHOVEL, new EctoShovelItem(ModToolTiers.RECTO, 1.5f, -3f, new Item.Settings()));

@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.0 - Unreleased
+## 2.3.0 - 2026-08-25
 
 - Consolidated active, buildable sources for Forge, Fabric, and NeoForge across Minecraft 1.20.1, 1.20.2, 1.21.1, 26.1.2, and 26.2, plus Forge 1.7.10.
 - Replaced the 1.21.1 Architectury multiproject with independent native Forge, Fabric, and NeoForge builds. Useful Tools no longer requires Architectury at runtime; 1.20.x retains only the compile-time API needed by optional REI sources.
@@ -17,5 +17,4 @@
 - Corrected late Forge/NeoForge config-reload callbacks after spec unload and removed bedrock from the 1.21+/26.x SOB incorrect-mining tag so WTHIT can compare the custom tier hierarchy without error.
 - Replaced the 1.21.1 Forge metadata's ineffective `[0,)` Forge/JavaFML floors with the supported Forge 52 major range and verified the rebuilt target in a fresh isolated server world.
 
-No release has been published by this repository work.
-- Added optional Create: Ore Excavation r-gold vein recipes for 1.20.1 Fabric and 1.21.1 NeoForge. 1.20.1 Forge is not runtime-certified in this release because the current Forge development profile has not been aligned with Create 6's supported Forge mapping/runtime.
+- Added optional Create: Ore Excavation r-gold vein recipes for 1.20.1 Fabric and 1.21.1 NeoForge. The 1.20.1 Forge integration is expected to work in packaged runtimes, but Create's Forge mixin/refmap cannot be certified by the development harness.

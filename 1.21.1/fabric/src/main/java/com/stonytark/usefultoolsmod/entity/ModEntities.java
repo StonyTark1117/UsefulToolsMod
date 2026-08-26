@@ -5,6 +5,8 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
 import com.stonytark.usefultoolsmod.entity.custom.GrenadeEntity;
+import com.stonytark.usefultoolsmod.entity.custom.WraithEntity;
+import com.stonytark.usefultoolsmod.entity.custom.StickyDynamiteEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -14,6 +16,8 @@ import net.minecraft.util.Identifier;
 public class ModEntities {
     public static EntityType<GrenadeEntity> GRENADE;
     public static EntityType<GhostEntity> GHOST;
+    public static EntityType<WraithEntity> WRAITH;
+    public static EntityType<StickyDynamiteEntity> STICKY_DYNAMITE;
 
     public static void register() {
         GRENADE = Registry.register(Registries.ENTITY_TYPE,
@@ -31,5 +35,12 @@ public class ModEntities {
                         .maxTrackingRange(8)
                         .trackingTickInterval(3)
                         .build());
+        WRAITH = Registry.register(Registries.ENTITY_TYPE, Identifier.of(UsefultoolsMod.MOD_ID, GeneratedRegistrationIds.Entities.WRAITH),
+                EntityType.Builder.<WraithEntity>create(WraithEntity::new, SpawnGroup.MONSTER)
+                        .dimensions(1.2F, 2.25F).maxTrackingRange(8).trackingTickInterval(3).build());
+        STICKY_DYNAMITE = Registry.register(Registries.ENTITY_TYPE,
+                Identifier.of(UsefultoolsMod.MOD_ID, GeneratedRegistrationIds.Entities.STICKY_DYNAMITE),
+                EntityType.Builder.<StickyDynamiteEntity>create(StickyDynamiteEntity::new, SpawnGroup.MISC)
+                        .dimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10).build());
     }
 }

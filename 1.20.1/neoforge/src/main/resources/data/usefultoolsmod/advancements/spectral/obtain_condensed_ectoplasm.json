@@ -1,0 +1,32 @@
+{
+  "parent": "usefultoolsmod:spectral/encounter_wraith",
+  "display": {
+    "icon": {
+      "item": "usefultoolsmod:condensed_ectoplasm"
+    },
+    "title": {
+      "translate": "advancement.usefultoolsmod.obtain_condensed_ectoplasm.title"
+    },
+    "description": {
+      "translate": "advancement.usefultoolsmod.obtain_condensed_ectoplasm.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefultoolsmod:condensed_ectoplasm"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

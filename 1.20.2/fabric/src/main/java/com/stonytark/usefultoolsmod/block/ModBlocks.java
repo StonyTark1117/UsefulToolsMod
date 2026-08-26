@@ -4,6 +4,8 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
+import com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock;
+import com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.ExperienceDroppingBlock;
@@ -41,6 +43,8 @@ public class ModBlocks {
 
     // Spectral Infuser
     public static Block SPECTRAL_INFUSER;
+    public static Block SOUL_LANTERN;
+    public static Block MINING_CHARGE;
 
     public static void register() {
         RGOLDBLOCK = registerBlock(GeneratedRegistrationIds.Blocks.RGOLDBLOCK,
@@ -97,6 +101,10 @@ public class ModBlocks {
                         .requiresTool()
                         .sounds(BlockSoundGroup.STONE)
                         .luminance(state -> state.get(SpectralInfuserBlock.LIT) ? 13 : 0)));
+        SOUL_LANTERN = registerBlock(GeneratedRegistrationIds.Blocks.SOUL_LANTERN, new SoulLanternBlock(AbstractBlock.Settings.create()
+                .strength(3.0F).sounds(BlockSoundGroup.LANTERN).luminance(state -> 12)));
+        MINING_CHARGE = registerBlock(GeneratedRegistrationIds.Blocks.MINING_CHARGE, new MiningChargeBlock(AbstractBlock.Settings.create()
+                .strength(1.0F).sounds(BlockSoundGroup.WOOL).nonOpaque()));
     }
 
     private static <T extends Block> T registerBlock(String name, T block) {

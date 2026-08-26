@@ -57,6 +57,16 @@ public final class UsefulToolsConfigScreen extends Screen {
     private static String canonicalKey(String key) {
         if (ConfigDescriptors.values().containsKey(key)) return key;
         String normalized = key
+                .replaceFirst("^spectralUtilitiesWraithEnabled", "wraithEnabled")
+                .replaceFirst("^spectralUtilitiesWraithSpawnChance", "wraithSpawnChance")
+                .replaceFirst("^spectralUtilitiesSoulLanternEnabled", "soulLanternEnabled")
+                .replaceFirst("^spectralUtilitiesSpectralResonatorEnabled", "spectralResonatorEnabled")
+                .replaceFirst("^controlledExplosivesMiningChargeEnabled", "miningChargeEnabled")
+                .replaceFirst("^controlledExplosivesStickyDynamiteEnabled", "stickyDynamiteEnabled")
+                .replaceFirst("^controlledExplosivesRemoteDetonationEnabled", "remoteDetonationEnabled")
+                .replaceFirst("^controlledExplosivesPreserveDrops", "controlledDrops")
+                .replaceFirst("^controlledExplosivesEntityDamageCap", "controlledEntityDamage")
+                .replaceFirst("^controlledExplosivesRemoteRange", "remoteRange")
                 .replaceFirst("^spectralInfuserInfused", "infused")
                 .replaceFirst("^pointedDripstone", "dripstone")
                 .replaceFirst("^foodSetsHunger", "foodHunger")

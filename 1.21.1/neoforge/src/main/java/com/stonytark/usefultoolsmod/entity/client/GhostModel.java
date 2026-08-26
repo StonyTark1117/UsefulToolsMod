@@ -23,11 +23,13 @@ public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "ghost"), "main");
     private final ModelPart body;
     private final ModelPart head;
+    private final ModelPart babyFace;
 
 
     public GhostModel(ModelPart root) {
         this.body = root.getChild("body");
         this.head = body.getChild("head");
+        this.babyFace = body.getChild("baby_face");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -37,6 +39,8 @@ public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
         PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-5.0F, -23.0F, -13.0F, 10.0F, 10.0F, 10.0F, new CubeDeformation(2.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+        body.addOrReplaceChild("baby_face", CubeListBuilder.create().texOffs(50, 12)
+                .addBox(-3.0F, -20.0F, -15.1F, 6.0F, 3.0F, 1.0F), PartPose.ZERO);
 
         PartDefinition tail = body.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
@@ -55,6 +59,7 @@ public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
     public void setupAnim(GhostEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
+        this.babyFace.visible = entity.isBaby();
 
         this.animateWalk(GhostAnimations.ANIM_GHOST_WALKING, limbSwing, limbSwingAmount, 2f, 2.5f);
         this.animate(entity.idleAnimationState, GhostAnimations.ANIM_GHOST_IDLE, ageInTicks, 1f);

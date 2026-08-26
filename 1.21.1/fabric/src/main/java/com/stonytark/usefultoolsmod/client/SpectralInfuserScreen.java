@@ -34,4 +34,12 @@ public class SpectralInfuserScreen extends HandledScreen<SpectralInfuserMenu> {
             context.drawTexture(TEXTURE, x + 79, y + 35, 176, 0, handler.getScaledProgress(), 16);
         }
     }
+
+    @Override
+    protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
+        super.drawForeground(context, mouseX, mouseY);
+        if (handler.getFuelUses() > 0) context.drawText(textRenderer,
+                Text.translatable("gui.usefultoolsmod.infuser_fuel_uses", handler.getFuelUses()),
+                76, 58, 0x72E6E1, false);
+    }
 }

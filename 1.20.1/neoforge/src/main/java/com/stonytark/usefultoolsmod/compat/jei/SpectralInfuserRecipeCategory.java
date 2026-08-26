@@ -74,7 +74,8 @@ public class SpectralInfuserRecipeCategory implements IRecipeCategory<SpectralIn
                 .addItemStack(recipe.weaponInput());
 
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 39)
-                .addItemStack(recipe.ectoplasmFuel());
+                .addItemStacks(java.util.List.of(recipe.ectoplasmFuel(),
+                        new ItemStack(com.stonytark.usefultoolsmod.item.ModItems.CONDENSED_ECTOPLASM.get())));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 21)
                 .addItemStack(recipe.output());

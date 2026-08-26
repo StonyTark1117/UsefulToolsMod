@@ -21,6 +21,9 @@ public class ModBlockEntityTypes {
                     FabricBlockEntityTypeBuilder.create(SpectralInfuserBlockEntity::new,
                             ModBlocks.SPECTRAL_INFUSER).build()
             );
+    public static final BlockEntityType<MiningChargeBlockEntity> MINING_CHARGE=Registry.register(
+            BuiltInRegistries.BLOCK_ENTITY_TYPE,Identifier.fromNamespaceAndPath(UsefultoolsMod.MOD_ID,"mining_charge"),
+            FabricBlockEntityTypeBuilder.create(MiningChargeBlockEntity::new,ModBlocks.MINING_CHARGE).build());
 
     public static void register() {
         // no-op; touching the class triggers static init

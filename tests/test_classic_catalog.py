@@ -22,11 +22,11 @@ class ClassicCatalogGeneratorTests(unittest.TestCase):
     def test_manifest_contains_complete_version_neutral_definitions(self) -> None:
         definitions = self.catalog["definitions"]
         self.assertEqual(2, self.catalog["schema"])
-        self.assertEqual(633, len(definitions["items"]))
+        self.assertEqual(638, len(definitions["items"]))
         self.assertEqual(87, len(definitions["tool_materials"]))
         self.assertEqual(45, len(definitions["armor_materials"]))
-        self.assertEqual(21, len(definitions["blocks"]))
-        self.assertEqual(682, len(definitions["recipes"]))
+        self.assertEqual(23, len(definitions["blocks"]))
+        self.assertEqual(688, len(definitions["recipes"]))
         self.assertEqual(
             set(self.catalog["content"]["items"]),
             {entry["id"] for entry in definitions["items"]},
@@ -36,25 +36,25 @@ class ClassicCatalogGeneratorTests(unittest.TestCase):
         generated, items, blocks = generate_classic_catalog.render_java()
         checked_in = generate_classic_catalog.OUTPUT.read_text(encoding="utf-8")
         self.assertEqual(checked_in, generated)
-        self.assertEqual(633, len(items))
-        self.assertEqual(21, len(blocks))
-        self.assertEqual(633, generated.count('        registerItem("'))
-        self.assertEqual(21, generated.count('        registerBlock("'))
+        self.assertEqual(638, len(items))
+        self.assertEqual(23, len(blocks))
+        self.assertEqual(638, generated.count('        registerItem("'))
+        self.assertEqual(23, generated.count('        registerBlock("'))
 
     def test_generated_recipe_adapter_is_current_and_complete(self) -> None:
         generated, crafting, furnace = generate_classic_catalog.render_recipes()
         checked_in = generate_classic_catalog.RECIPE_OUTPUT.read_text(encoding="utf-8")
         self.assertEqual(checked_in, generated)
-        self.assertEqual(672, crafting)
+        self.assertEqual(678, crafting)
         self.assertEqual(5, furnace)
-        self.assertEqual(682, len(self.catalog["definitions"]["recipes"]))
+        self.assertEqual(688, len(self.catalog["definitions"]["recipes"]))
 
     def test_generated_classic_config_is_current_and_exposes_every_descriptor(self) -> None:
         generated = generate_classic_catalog.render_config()
         checked_in = generate_classic_catalog.CONFIG_OUTPUT.read_text(encoding="utf-8")
         self.assertEqual(checked_in, generated)
-        self.assertEqual(116, len(self.catalog["config"]))
-        self.assertEqual(116, generated.count('        VALUES.put("'))
+        self.assertEqual(126, len(self.catalog["config"]))
+        self.assertEqual(126, generated.count('        VALUES.put("'))
         for option in self.catalog["config"]:
             self.assertTrue(option["label"])
             self.assertTrue(option["tooltip"])

@@ -5,12 +5,15 @@ import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.block.entity.ModBlockEntityTypes;
 import com.stonytark.usefultoolsmod.block.entity.ModMenuTypes;
 import com.stonytark.usefultoolsmod.client.ClientConfigRegistration;
+import com.stonytark.usefultoolsmod.client.SpectralClientConfig;
 import com.stonytark.usefultoolsmod.client.SpectralInfuserScreen;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
+import com.stonytark.usefultoolsmod.entity.client.WraithRenderer;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import com.stonytark.usefultoolsmod.sound.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -38,6 +41,8 @@ public class UsefultoolsMod
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
+    /** Forge 47 exposes these contexts only through the static accessors it marks for future removal. */
+    @SuppressWarnings("removal")
     public UsefultoolsMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -54,6 +59,7 @@ public class UsefultoolsMod
         ModTriggers.register();
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -64,6 +70,8 @@ public class UsefultoolsMod
         // Register our ForgeConfigSpec so Forge can create and load the config file.
         // COMMON so the file is loaded outside a world (editable from the title-screen Mods menu).
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, SpectralClientConfig.SPEC,
+                "usefultoolsmod-client.toml");
 
         // Register the in-game config screen factory (client-only).
         if (FMLEnvironment.dist == Dist.CLIENT) {
@@ -125,6 +133,7 @@ public class UsefultoolsMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.GHOST.get(), GhostRenderer::new);
+            EntityRenderers.register(ModEntities.WRAITH.get(), WraithRenderer::new);
             event.enqueueWork(() ->
                     MenuScreens.register(ModMenuTypes.SPECTRAL_INFUSER_MENU.get(), SpectralInfuserScreen::new));
         }

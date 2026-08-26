@@ -31,9 +31,9 @@ public final class UsefulToolsGameTests implements FabricGameTest {
         long blocks = Registries.BLOCK.getIds().stream().filter(UsefulToolsGameTests::isOurs).count();
         long items = Registries.ITEM.getIds().stream().filter(UsefulToolsGameTests::isOurs).count();
         long entities = Registries.ENTITY_TYPE.getIds().stream().filter(UsefulToolsGameTests::isOurs).count();
-        context.assertTrue(blocks == 21L, "registered block count");
-        context.assertTrue(items == 654L, "registered item count including block items");
-        context.assertTrue(entities == 2L, "registered entity count");
+        context.assertTrue(blocks == 23L, "registered block count");
+        context.assertTrue(items == 661L, "registered item count including block items");
+        context.assertTrue(entities == 4L, "registered entity count");
         context.assertTrue(context.getWorld().getServer().getRecipeManager()
                 .get(new Identifier(UsefultoolsMod.MOD_ID, "spectral_infuser")).isPresent(),
                 "spectral_infuser recipe must load");
@@ -65,10 +65,12 @@ public final class UsefulToolsGameTests implements FabricGameTest {
         context.setBlockState(pos, ModBlocks.SPECTRAL_INFUSER);
         SpectralInfuserBlockEntity infuser = (SpectralInfuserBlockEntity) context.getBlockEntity(pos);
         infuser.getInventory().set(0, new ItemStack(Items.IRON_PICKAXE));
-        infuser.getInventory().set(1, new ItemStack(ModItems.ECTOPLASM));
+        infuser.getInventory().set(1, new ItemStack(ModItems.CONDENSED_ECTOPLASM));
         context.runAtTick(205, () -> {
             context.assertTrue(infuser.getInventory().get(0).isEmpty(), "input must be consumed");
-            context.assertTrue(infuser.getInventory().get(1).isEmpty(), "one ectoplasm must be consumed");
+            context.assertTrue(infuser.getInventory().get(1).isEmpty(), "one condensed ectoplasm must be consumed");
+            context.assertTrue(infuser.getPropertyDelegate().get(2) == 7,
+                    "condensed ectoplasm must retain seven fuel uses");
             context.assertTrue(infuser.getInventory().get(2).isOf(Items.IRON_PICKAXE), "tool must reach output");
             context.assertTrue(EctoplasmInfusionHelper.isInfused(infuser.getInventory().get(2)), "output must be infused");
             infuser.getInventory().set(2, ItemStack.EMPTY);

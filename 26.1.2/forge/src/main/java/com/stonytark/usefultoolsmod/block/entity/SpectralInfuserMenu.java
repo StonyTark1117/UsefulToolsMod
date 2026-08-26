@@ -59,7 +59,7 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
 
     // Client-side constructor (from network)
     public SpectralInfuserMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, getBlockEntity(inv, extraData), new SimpleContainerData(2));
+        this(containerId, inv, getBlockEntity(inv, extraData), new SimpleContainerData(3));
     }
 
     private static SpectralInfuserBlockEntity getBlockEntity(Inventory inv, FriendlyByteBuf data) {
@@ -73,6 +73,8 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
+
+    public int getFuelUses() { return data.get(2); }
 
     public int getScaledProgress() {
         int progress = data.get(0);
@@ -106,7 +108,7 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
                     if (!this.moveItemStackTo(original, INPUT_SLOT, INPUT_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (original.is(ModItems.ECTOPLASM.get())) {
+                } else if (original.is(ModItems.ECTOPLASM.get()) || original.is(ModItems.CONDENSED_ECTOPLASM.get())) {
                     if (!this.moveItemStackTo(original, FUEL_SLOT, FUEL_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }

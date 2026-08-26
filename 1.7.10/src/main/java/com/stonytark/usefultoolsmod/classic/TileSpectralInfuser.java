@@ -18,6 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileSpectralInfuser extends TileEntity implements IInventory {
     private final ItemStack[] inventory = new ItemStack[3];
     private int progress;
+    private int fuelUses;
     private static final int MAX_PROGRESS = 200;
 
     @Override
@@ -33,8 +34,8 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
 
     private boolean hasRecipe() {
         return isInfusable(inventory[0])
-                && inventory[1] != null
-                && inventory[1].getItem() == ClassicGeneratedCatalog.ITEMS.get("ectoplasm")
+                && (fuelUses > 0 || inventory[1] != null && (inventory[1].getItem() == ClassicGeneratedCatalog.ITEMS.get("ectoplasm")
+                || inventory[1].getItem() == ClassicFeatureRegistry.condensedEctoplasm))
                 && inventory[2] == null;
     }
 
@@ -43,7 +44,11 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
         ItemStack result = createResult(input, ClassicGeneratedCatalog.ITEMS.get("ghost_spawn_egg"), Items.egg);
         inventory[2] = result;
         inventory[0] = null;
-        if (--inventory[1].stackSize <= 0) inventory[1] = null;
+        if (fuelUses <= 0) {
+            fuelUses = inventory[1].getItem() == ClassicFeatureRegistry.condensedEctoplasm ? 8 : 1;
+            if (--inventory[1].stackSize <= 0) inventory[1] = null;
+        }
+        fuelUses--;
         progress = 0;
         markDirty();
     }
@@ -74,6 +79,7 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
 
     public int getProgress() { return progress; }
     public int getMaxProgress() { return MAX_PROGRESS; }
+    public int getFuelUses() { return fuelUses; }
     public void setProgress(int value) { progress = value; }
 
     @Override public int getSizeInventory() { return inventory.length; }
@@ -117,7 +123,8 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
     @Override public void closeInventory() {}
     @Override public boolean isItemValidForSlot(int slot, ItemStack stack) {
         if (slot == 0) return isInfusable(stack);
-        if (slot == 1) return stack != null && stack.getItem() == ClassicGeneratedCatalog.ITEMS.get("ectoplasm");
+        if (slot == 1) return stack != null && (stack.getItem() == ClassicGeneratedCatalog.ITEMS.get("ectoplasm")
+                || stack.getItem() == ClassicFeatureRegistry.condensedEctoplasm);
         return false;
     }
 
@@ -134,6 +141,7 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
         }
         tag.setTag("Items", list);
         tag.setInteger("Progress", progress);
+        tag.setInteger("FuelUses", fuelUses);
     }
 
     @Override
@@ -146,5 +154,6 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
             if (slot < inventory.length) inventory[slot] = ItemStack.loadItemStackFromNBT(item);
         }
         progress = tag.getInteger("Progress");
+        fuelUses = tag.getInteger("FuelUses");
     }
 }

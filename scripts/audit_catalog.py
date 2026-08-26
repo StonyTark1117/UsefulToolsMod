@@ -12,12 +12,12 @@ CATALOG = ROOT / "catalog/useful_tools_catalog.json"
 
 
 EXPECTED_COUNTS = {
-    "items": 633,
-    "blocks": 21,
-    "entities": 2,
-    "config": 116,
-    "recipes": 682,
-    "advancements": 848,
+    "items": 638,
+    "blocks": 23,
+    "entities": 4,
+    "config": 126,
+    "recipes": 688,
+    "advancements": 854,
 }
 
 

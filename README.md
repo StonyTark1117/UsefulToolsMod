@@ -2,7 +2,7 @@
 
 Useful Tools adds a large catalog of material-based tools and armor, the Spectral Infuser, Ghosts, explosives, reinforced-gold ore across dimensions, decorative/storage blocks, advancements, and optional recipe/viewer integrations.
 
-This repository is the consolidated home for every maintained source line. Version `2.3.0` is release-ready locally but remains unpublished: all target source trees and acceptance gates are complete, and publication/tagging is intentionally outside this repository work.
+This repository is the consolidated home for every maintained source line. Version `2.3.0` is the audited release published from the tagged source and the artifacts in `release/2.3.0/`.
 
 ## Target matrix
 
@@ -26,13 +26,13 @@ Every Fabric binary is tested unchanged under Quilt Loader 0.30.0; no separate Q
 - `scripts/` — catalog audit, complete matrix runner, and local release assembler.
 - `archived/` — historical source snapshots retained for provenance only.
 
-The canonical modern catalog currently contains 633 direct item definitions, 21 block items/blocks, two entities, 87 tool tiers, 682 data recipes, 848 advancements, and 116 config controls. The totals include the intentional `minecraft:ice` snowball recipe and its advancement as well as the mod namespace. `scripts/generate_registration_tables.py` emits the ID tables used by every modern loader/version factory; run `scripts/audit_catalog.py` after registration or config changes.
+The canonical modern catalog currently contains 638 direct item definitions, 23 block items/blocks, four entities, 87 tool tiers, 688 data recipes, 854 advancements, and 126 config controls. The totals include the intentional `minecraft:ice` snowball recipe and its advancement as well as the mod namespace. `scripts/generate_registration_tables.py` emits the ID tables used by every modern loader/version factory; run `scripts/audit_catalog.py` after registration or config changes.
 
 ## Configuration
 
 Every modern loader has a built-in vanilla-widget configuration screen. Fabric exposes it through optional Mod Menu integration; Forge and NeoForge use their native mod-list hooks. Cloth Config is not required. Config persistence remains version/loader native where necessary, and shared JSON lines save atomically and migrate the historical `pointedDripstone*` keys.
 
-Forge 1.7.10 exposes the same 116 descriptors through its native mod-list configuration GUI and `.cfg` persistence. Its complete catalog, material tables, language entries, textures, recipes, and config table are generated with `scripts/generate_classic_catalog.py`; rerun that command after changing the canonical manifest.
+Forge 1.7.10 exposes the same 126 descriptors through its native mod-list configuration GUI and `.cfg` persistence. Its complete catalog, material tables, language entries, textures, recipes, and config table are generated with `scripts/generate_classic_catalog.py`; rerun that command after changing the canonical manifest.
 
 ## Building
 

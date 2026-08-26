@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Canonical, loader-neutral metadata for all 116 persistent config options. */
+/** Canonical, loader-neutral metadata for all 126 persistent config options. */
 public final class ConfigDescriptors {
     public record Descriptor(String key, String category, String label, String tooltip,
                              boolean reloadRequired) {}
@@ -36,6 +36,12 @@ public final class ConfigDescriptors {
         add(values, "overpowerEnabled", "Content Sets", "Overpower", "Controls overpower behavior.", false);
         add(values, "ghostEnabled", "Content Sets", "Ghost", "Controls ghost behavior.", false);
         add(values, "spectralInfuserEnabled", "Content Sets", "Spectral Infuser", "Controls spectral infuser behavior.", false);
+        add(values, "wraithEnabled", "Content Sets", "Wraith", "Controls wraith behavior.", false);
+        add(values, "soulLanternEnabled", "Content Sets", "Soul Lantern", "Controls soul lantern behavior.", false);
+        add(values, "spectralResonatorEnabled", "Content Sets", "Spectral Resonator", "Controls spectral resonator behavior.", false);
+        add(values, "miningChargeEnabled", "Content Sets", "Mining Charge", "Controls mining charge behavior.", false);
+        add(values, "stickyDynamiteEnabled", "Content Sets", "Sticky Dynamite", "Controls sticky dynamite behavior.", false);
+        add(values, "remoteDetonationEnabled", "Content Sets", "Remote Detonation", "Controls remote detonation behavior.", false);
         add(values, "infusedToolEffects", "Effects", "Infused Tool", "Controls infused tool behavior.", false);
         add(values, "rawMetalRoughEnabled", "Content Sets", "Raw Metal Rough", "Controls raw metal rough behavior.", false);
         add(values, "roughCrystalEnabled", "Content Sets", "Rough Crystal", "Controls rough crystal behavior.", false);
@@ -133,6 +139,10 @@ public final class ConfigDescriptors {
         add(values, "opToolEffectsEnabled", "Content Sets", "Op Tool", "Controls op tool behavior.", false);
         add(values, "opArmorEffectsEnabled", "Content Sets", "Op Armor", "Controls op armor behavior.", false);
         add(values, "ghostSpawnChance", "Effects", "Ghost Spawn Chance", "Controls ghost spawn chance behavior.", false);
+        add(values, "wraithSpawnChance", "Effects", "Wraith Spawn Chance", "Controls wraith spawn chance behavior.", false);
+        add(values, "controlledDrops", "Content Sets", "Controlled Drops", "Controls controlled drops behavior.", false);
+        add(values, "controlledEntityDamage", "Effects", "Controlled Entity Damage", "Controls controlled entity damage behavior.", false);
+        add(values, "remoteRange", "Effects", "Remote Range", "Controls remote range behavior.", false);
         add(values, "snowMeltEffects", "Effects", "Snow Melt", "Controls snow melt behavior.", false);
         add(values, "iceEffects", "Effects", "Ice", "Controls ice behavior.", false);
         add(values, "pprismWaterEffects", "Effects", "Pprism Water", "Controls pprism water behavior.", false);
@@ -142,7 +152,7 @@ public final class ConfigDescriptors {
         add(values, "cakeArmorEffects", "Effects", "Cake Armor", "Controls cake armor behavior.", false);
         add(values, "ectoplasmGhostAvoidance", "Effects", "Ectoplasm Ghost Avoidance", "Controls ectoplasm ghost avoidance behavior.", false);
         add(values, "ectoplasmWallPhasing", "Effects", "Ectoplasm Wall Phasing", "Controls ectoplasm wall phasing behavior.", false);
-        if (values.size() != 116) throw new IllegalStateException("Expected 116 config descriptors");
+        if (values.size() != 126) throw new IllegalStateException("Expected 126 config descriptors");
         return Collections.unmodifiableMap(values);
     }
 

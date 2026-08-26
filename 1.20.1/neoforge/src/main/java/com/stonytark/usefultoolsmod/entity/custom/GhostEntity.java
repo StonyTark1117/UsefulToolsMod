@@ -10,6 +10,7 @@ import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.item.custom.EctoplasmInfusionHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -132,9 +133,23 @@ public class GhostEntity extends Animal {
             this.clearFire();
             constrainPosition();
 
-            lifetime++;
-            if (lifetime > MAX_LIFETIME) {
+            boolean stabilized = this.hasCustomName()
+                    || com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock.isStabilized(this);
+            if (stabilized && !this.hasCustomName() && this.tickCount % 20 == 0) {
+                for (net.minecraft.server.level.ServerPlayer player : this.level().getEntitiesOfClass(
+                        net.minecraft.server.level.ServerPlayer.class, this.getBoundingBox().inflate(12.0D)))
+                    com.stonytark.usefultoolsmod.util.ModAdvancements.award(player, "spectral/stabilize_ghost");
+            }
+            if (!stabilized) lifetime++;
+            if (lifetime > MAX_LIFETIME && !this.hasCustomName()) {
                 this.discard();
+            }
+            if (stabilized && !this.hasCustomName() && this.tickCount % 20 == 0 && this.getTarget() == null) {
+                BlockPos lantern = nearestActiveLantern();
+                if (lantern != null && lantern.distSqr(this.blockPosition()) > 9.0D) {
+                    this.moveControl.setWantedPosition(lantern.getX() + 0.5D, lantern.getY() + 1.5D,
+                            lantern.getZ() + 0.5D, 0.8D);
+                }
             }
         }
 
@@ -146,10 +161,41 @@ public class GhostEntity extends Animal {
                     (this.random.nextDouble() - 0.5D) * 0.05D
             ));
         }
+        this.setDeltaMovement(this.getDeltaMovement().add(0, Math.sin((tickCount + getId()) * 0.08D) * 0.0025D, 0));
 
         if (this.level().isClientSide()) {
             this.setupAnimationStates();
+            if (com.stonytark.usefultoolsmod.client.SpectralClientConfig.particlesEnabled
+                    && this.random.nextInt(5) == 0) {
+                this.level().addParticle(net.minecraft.core.particles.ParticleTypes.SOUL_FIRE_FLAME,
+                        getRandomX(0.7D), getRandomY(), getRandomZ(0.7D), 0, 0.01D, 0);
+            }
         }
+    }
+
+    private BlockPos nearestActiveLantern() {
+        BlockPos origin = blockPosition(); BlockPos best = null; double bestDistance = Double.MAX_VALUE;
+        int radius = com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock.INFLUENCE_RADIUS;
+        for (BlockPos pos : BlockPos.betweenClosed(origin.offset(-radius, -radius, -radius), origin.offset(radius, radius, radius))) {
+            if (level().getBlockState(pos).getBlock() instanceof com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock
+                    && !level().hasNeighborSignal(pos)) {
+                double distance = pos.distSqr(origin);
+                if (distance < bestDistance) { bestDistance = distance; best = pos.immutable(); }
+            }
+        }
+        return best;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putInt("UsefulToolsLifetime", lifetime);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        lifetime = tag.getInt("UsefulToolsLifetime");
     }
 
     /**
@@ -304,18 +350,18 @@ public class GhostEntity extends Animal {
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.GHAST_AMBIENT;
+        return com.stonytark.usefultoolsmod.sound.ModSounds.GHOST_AMBIENT.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SoundEvents.GHAST_HURT;
+        return com.stonytark.usefultoolsmod.sound.ModSounds.GHOST_HURT.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.GHAST_DEATH;
+        return com.stonytark.usefultoolsmod.sound.ModSounds.GHOST_DEATH.get();
     }
 }

@@ -5,11 +5,13 @@ import com.stonytark.usefultoolsmod.block.entity.ModBlockEntityTypes;
 import com.stonytark.usefultoolsmod.block.entity.ModMenuTypes;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
+import com.stonytark.usefultoolsmod.entity.custom.WraithEntity;
 import com.stonytark.usefultoolsmod.event.ModEvents;
 import com.stonytark.usefultoolsmod.item.ModArmorMaterials;
 import com.stonytark.usefultoolsmod.item.ModCreativeModeTabs;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import com.stonytark.usefultoolsmod.trigger.ModTriggers;
+import com.stonytark.usefultoolsmod.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -49,15 +51,19 @@ public class UsefultoolsMod implements ModInitializer {
 
         // Register triggers
         ModTriggers.register();
+        ModSounds.register();
 
         // Register entity attributes
         FabricDefaultAttributeRegistry.register(ModEntities.GHOST, GhostEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.WRAITH, WraithEntity.createAttributes());
 
         // Register spawn placements - NO_RESTRICTIONS allows ghosts to spawn floating
         SpawnRestriction.register(ModEntities.GHOST,
                 SpawnRestriction.Location.NO_RESTRICTIONS,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                 GhostEntity::checkGhostSpawnRules);
+        SpawnRestriction.register(ModEntities.WRAITH, SpawnRestriction.Location.NO_RESTRICTIONS,
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WraithEntity::checkSpawnRules);
 
         // Register events
         ModEvents.register();
@@ -97,5 +103,7 @@ public class UsefultoolsMod implements ModInitializer {
                 SpawnGroup.MONSTER,
                 ModEntities.GHOST,
                 5, 1, 3);
+        BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER,
+                ModEntities.WRAITH, 1, 1, 1);
     }
 }

@@ -36,7 +36,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
         public boolean isItemValid(int slot, ItemStack stack) {
             return switch (slot) {
                 case 0 -> isInfusable(stack);
-                case 1 -> stack.is(ModItems.ECTOPLASM.get());
+                case 1 -> stack.is(ModItems.ECTOPLASM.get()) || stack.is(ModItems.CONDENSED_ECTOPLASM.get());
                 case 2 -> false; // output only
                 default -> false;
             };
@@ -45,6 +45,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
 
     private int progress = 0;
     private int maxProgress = 200;
+    private int fuelUses = 0;
 
     private final ContainerData data = new ContainerData() {
         @Override
@@ -52,6 +53,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
             return switch (index) {
                 case 0 -> progress;
                 case 1 -> maxProgress;
+                case 2 -> fuelUses;
                 default -> 0;
             };
         }
@@ -61,12 +63,13 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
             switch (index) {
                 case 0 -> progress = value;
                 case 1 -> maxProgress = value;
+                case 2 -> fuelUses = value;
             }
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     };
 
@@ -151,6 +154,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
         super.saveAdditional(tag, provider);
         tag.put("inventory", itemHandler.serializeNBT(provider));
         tag.putInt("progress", progress);
+        tag.putInt("fuelUses", fuelUses);
     }
 
     @Override
@@ -158,6 +162,7 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
         super.loadAdditional(tag, provider);
         itemHandler.deserializeNBT(provider, tag.getCompound("inventory"));
         progress = tag.getInt("progress");
+        fuelUses = tag.getInt("fuelUses");
     }
 
     // ── Tick / Processing ───────────────────────────────────────────────────
@@ -196,8 +201,9 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
         ItemStack input = itemHandler.getStackInSlot(0);
         ItemStack fuel = itemHandler.getStackInSlot(1);
         ItemStack output = itemHandler.getStackInSlot(2);
-        return isInfusable(input) && fuel.is(ModItems.ECTOPLASM.get())
-                && !fuel.isEmpty() && output.isEmpty();
+        boolean hasFuel = fuelUses > 0 || fuel.is(ModItems.ECTOPLASM.get())
+                || fuel.is(ModItems.CONDENSED_ECTOPLASM.get());
+        return isInfusable(input) && hasFuel && output.isEmpty();
     }
 
     private void craftItem() {
@@ -218,7 +224,13 @@ public class SpectralInfuserBlockEntity extends BlockEntity implements MenuProvi
 
         itemHandler.setStackInSlot(2, result);
         itemHandler.setStackInSlot(0, ItemStack.EMPTY);
-        itemHandler.getStackInSlot(1).shrink(1);
+        if (fuelUses <= 0) {
+            ItemStack fuel = itemHandler.getStackInSlot(1);
+            fuelUses = fuel.is(ModItems.CONDENSED_ECTOPLASM.get()) ? 8 : 1;
+            fuel.shrink(1);
+        }
+        fuelUses--;
+        setChanged();
     }
 
     private void resetProgress() {

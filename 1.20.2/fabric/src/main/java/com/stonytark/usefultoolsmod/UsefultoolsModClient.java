@@ -3,9 +3,12 @@ package com.stonytark.usefultoolsmod;
 import com.stonytark.usefultoolsmod.Config;
 import com.stonytark.usefultoolsmod.block.entity.ModMenuTypes;
 import com.stonytark.usefultoolsmod.client.SpectralInfuserScreen;
+import com.stonytark.usefultoolsmod.client.SpectralClientConfig;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import com.stonytark.usefultoolsmod.entity.client.GhostModel;
 import com.stonytark.usefultoolsmod.entity.client.GhostRenderer;
+import com.stonytark.usefultoolsmod.entity.client.WraithModel;
+import com.stonytark.usefultoolsmod.entity.client.WraithRenderer;
 import com.stonytark.usefultoolsmod.item.ModArmorMaterials;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import net.fabricmc.api.ClientModInitializer;
@@ -23,12 +26,16 @@ import net.minecraft.particle.ParticleTypes;
 public class UsefultoolsModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        SpectralClientConfig.load();
         // Register entity model layers (defines geometry for baking)
         EntityModelLayerRegistry.registerModelLayer(GhostModel.LAYER_LOCATION, GhostModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(WraithModel.LAYER_LOCATION, WraithModel::createBodyLayer);
 
         // Register entity renderers
         EntityRendererRegistry.register(ModEntities.GHOST, GhostRenderer::new);
         EntityRendererRegistry.register(ModEntities.GRENADE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STICKY_DYNAMITE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.WRAITH, WraithRenderer::new);
 
         // Register screen handler screens
         HandledScreens.register(ModMenuTypes.SPECTRAL_INFUSER, SpectralInfuserScreen::new);

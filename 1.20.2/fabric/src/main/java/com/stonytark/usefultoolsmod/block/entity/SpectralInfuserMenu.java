@@ -50,6 +50,8 @@ public class SpectralInfuserMenu extends ScreenHandler {
         return propertyDelegate.get(0) > 0;
     }
 
+    public int getFuelUses() { return propertyDelegate.get(2); }
+
     public int getScaledProgress() {
         int progress = propertyDelegate.get(0);
         int maxProgress = propertyDelegate.get(1);
@@ -82,7 +84,7 @@ public class SpectralInfuserMenu extends ScreenHandler {
                     if (!this.insertItem(original, INPUT_SLOT, INPUT_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (original.isOf(ModItems.ECTOPLASM)) {
+                } else if (original.isOf(ModItems.ECTOPLASM) || original.isOf(ModItems.CONDENSED_ECTOPLASM)) {
                     if (!this.insertItem(original, FUEL_SLOT, FUEL_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }

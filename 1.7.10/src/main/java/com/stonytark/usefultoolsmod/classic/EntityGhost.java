@@ -46,9 +46,20 @@ public class EntityGhost extends EntityAnimal {
         motionY = Math.sin(ticksExisted * 0.12D) * 0.01D;
         fallDistance = 0.0F;
         extinguish();
-        if (!worldObj.isRemote && ++lifetime > MAX_LIFETIME) {
+        int[] lantern = ClassicSoulLantern.nearest(worldObj, posX, posY, posZ, ClassicSoulLantern.WARD_RADIUS);
+        boolean paused = hasCustomNameTag() || lantern != null;
+        if (!worldObj.isRemote && lantern != null && ticksExisted % 20 == 0) {
+            EntityPlayer player = worldObj.getClosestPlayerToEntity(this, ClassicSoulLantern.WARD_RADIUS);
+            if (player != null) player.addStat(ClassicAchievements.stabilizeGhost, 1);
+        }
+        if (!worldObj.isRemote && !paused && ++lifetime > MAX_LIFETIME) {
             setDead();
             return;
+        }
+        if (lantern != null) {
+            double dx = lantern[0] + .5D - posX, dy = lantern[1] + .7D - posY, dz = lantern[2] + .5D - posZ;
+            double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+            if (distance > 1D) { motionX += dx / distance * .015D; motionY += dy / distance * .01D; motionZ += dz / distance * .015D; }
         }
         if (rand.nextFloat() < 0.04F) {
             motionX += (rand.nextDouble() - 0.5D) * 0.08D;
@@ -110,13 +121,15 @@ public class EntityGhost extends EntityAnimal {
     }
 
     @Override
-    protected String getLivingSound() { return "mob.ghast.moan"; }
+    protected String getLivingSound() { return "usefultoolsmod:entity.ghost.ambient"; }
+
+    public void pauseLifetime() { if (!worldObj.isRemote && lifetime > 0) lifetime--; }
 
     @Override
-    protected String getHurtSound() { return "mob.ghast.scream"; }
+    protected String getHurtSound() { return "usefultoolsmod:entity.ghost.hurt"; }
 
     @Override
-    protected String getDeathSound() { return "mob.ghast.death"; }
+    protected String getDeathSound() { return "usefultoolsmod:entity.ghost.death"; }
 
     @Override
     public void writeEntityToNBT(NBTTagCompound tag) {

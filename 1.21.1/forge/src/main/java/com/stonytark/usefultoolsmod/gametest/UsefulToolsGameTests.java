@@ -39,9 +39,9 @@ public final class UsefulToolsGameTests {
                 .filter(id -> UsefultoolsMod.MOD_ID.equals(id.getNamespace())).count();
         long entities = BuiltInRegistries.ENTITY_TYPE.keySet().stream()
                 .filter(id -> UsefultoolsMod.MOD_ID.equals(id.getNamespace())).count();
-        helper.assertValueEqual(blocks, 21L, "registered block count");
-        helper.assertValueEqual(items, 654L, "registered item count including block items");
-        helper.assertValueEqual(entities, 2L, "registered entity count");
+        helper.assertValueEqual(blocks, 23L, "registered block count");
+        helper.assertValueEqual(items, 661L, "registered item count including block items");
+        helper.assertValueEqual(entities, 4L, "registered entity count");
         helper.assertTrue(helper.getLevel().getServer().getRecipeManager().byKey(
                 ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser")).isPresent(),
                 "spectral_infuser recipe must load");
@@ -80,10 +80,11 @@ public final class UsefulToolsGameTests {
         helper.setBlock(pos, ModBlocks.SPECTRAL_INFUSER.get());
         SpectralInfuserBlockEntity infuser = (SpectralInfuserBlockEntity) helper.getBlockEntity(pos);
         infuser.setItem(0, new ItemStack(Items.IRON_PICKAXE));
-        infuser.setItem(1, new ItemStack(ModItems.ECTOPLASM.get()));
+        infuser.setItem(1, new ItemStack(ModItems.CONDENSED_ECTOPLASM.get()));
         helper.runAfterDelay(205, () -> {
             helper.assertTrue(infuser.getItem(0).isEmpty(), "input must be consumed");
-            helper.assertTrue(infuser.getItem(1).isEmpty(), "one ectoplasm must be consumed");
+            helper.assertTrue(infuser.getItem(1).isEmpty(), "one condensed ectoplasm must be consumed");
+            helper.assertValueEqual(infuser.getData().get(2), 7, "condensed ectoplasm must retain seven fuel uses");
             helper.assertTrue(infuser.getItem(2).is(Items.IRON_PICKAXE), "tool must reach output");
             helper.assertTrue(EctoplasmInfusionHelper.isInfused(infuser.getItem(2)), "output must be infused");
             infuser.setItem(2, ItemStack.EMPTY);

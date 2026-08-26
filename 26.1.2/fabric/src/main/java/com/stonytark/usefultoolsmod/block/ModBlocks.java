@@ -4,6 +4,7 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
+import com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -107,6 +108,8 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel(state -> state.getValue(SpectralInfuserBlock.LIT) ? 13 : 0)));
+    public static final Block SOUL_LANTERN=registerBlock(GeneratedRegistrationIds.Blocks.SOUL_LANTERN,props->new Block(props.strength(3).sound(SoundType.LANTERN).lightLevel(state->12)));
+    public static final Block MINING_CHARGE=registerBlock(GeneratedRegistrationIds.Blocks.MINING_CHARGE,props->new MiningChargeBlock(props.strength(1).sound(SoundType.WOOL).noOcclusion()));
 
 
     private static <T extends Block> T registerBlock(String name, Function<BlockBehaviour.Properties, T> factory) {

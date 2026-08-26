@@ -232,6 +232,11 @@ public class ModItems {
 
     public static final Item ECTOPLASM = register(GeneratedRegistrationIds.Items.ECTOPLASM,
             p -> new Item(p.stacksTo(64)));
+    public static final Item CONDENSED_ECTOPLASM=register(GeneratedRegistrationIds.Items.CONDENSED_ECTOPLASM,p->new Item(p.stacksTo(64)));
+    public static final Item WRAITH_SPAWN_EGG=register(GeneratedRegistrationIds.Items.WRAITH_SPAWN_EGG,p->new SpawnEggItem(p.spawnEgg(ModEntities.WRAITH)));
+    public static final Item SPECTRAL_RESONATOR=register(GeneratedRegistrationIds.Items.SPECTRAL_RESONATOR,p->new SpectralResonatorItem(p.durability(128)));
+    public static final Item STICKY_DYNAMITE=register(GeneratedRegistrationIds.Items.STICKY_DYNAMITE,p->new StickyDynamiteItem(p.stacksTo(16)));
+    public static final Item REMOTE_DETONATOR=register(GeneratedRegistrationIds.Items.REMOTE_DETONATOR,p->new RemoteDetonatorItem(p.stacksTo(1)));
 
     // ── Rough Ectoplasm tools (RECTO, stone-tier) ──────────────────────────
     public static final Item RECTO_SWORD = register(GeneratedRegistrationIds.Items.RECTO_SWORD,

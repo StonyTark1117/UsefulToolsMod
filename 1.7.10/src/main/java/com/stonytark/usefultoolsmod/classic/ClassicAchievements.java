@@ -16,6 +16,12 @@ public class ClassicAchievements {
     public static Achievement ghostEgg;
     public static Achievement explosives;
     public static Achievement dimensionalOre;
+    public static Achievement encounterWraith;
+    public static Achievement condensedEctoplasm;
+    public static Achievement stabilizeGhost;
+    public static Achievement locateSpirit;
+    public static Achievement remoteFire;
+    public static Achievement precisionExcavation;
 
     public static void register() {
         ectoplasm = achievement("ectoplasm", -1, 2, "ectoplasm", null);
@@ -26,9 +32,16 @@ public class ClassicAchievements {
         ghostEgg = achievement("ghost_egg", -2, 3, "ghost_spawn_egg", ectoplasm);
         explosives = achievement("explosives", 3, 0, "grenade", canonicalTool);
         dimensionalOre = blockAchievement("dimensional_ore", -3, 0, "rgold_end_ore", null);
+        encounterWraith = achievement("encounter_wraith", -3, 5, "wraith_spawn_egg", ectoplasm);
+        condensedEctoplasm = achievement("condensed_ectoplasm", -1, 5, "condensed_ectoplasm", encounterWraith);
+        stabilizeGhost = blockAchievement("stabilize_ghost", 1, 5, "soul_lantern", ghostEgg);
+        locateSpirit = achievement("locate_spirit", 3, 5, "spectral_resonator", stabilizeGhost);
+        remoteFire = achievement("remote_fire", 5, 3, "remote_detonator", explosives);
+        precisionExcavation = blockAchievement("precision_excavation", 5, 1, "mining_charge", remoteFire);
         AchievementPage.registerAchievementPage(new AchievementPage("Useful Tools 2.3.0",
                 canonicalTool, canonicalArmor, spectralInfuser, infusedItem,
-                ectoplasm, ghostEgg, explosives, dimensionalOre));
+                ectoplasm, ghostEgg, explosives, dimensionalOre, encounterWraith, condensedEctoplasm,
+                stabilizeGhost, locateSpirit, remoteFire, precisionExcavation));
     }
 
     private static Achievement achievement(String id, int x, int y, String item, Achievement parent) {
@@ -55,6 +68,7 @@ public class ClassicAchievements {
     public void onPickup(PlayerEvent.ItemPickupEvent event) {
         String id = id(event.pickedUp.getEntityItem());
         if ("ectoplasm".equals(id)) event.player.addStat(ectoplasm, 1);
+        if ("condensed_ectoplasm".equals(id)) event.player.addStat(condensedEctoplasm, 1);
         if ("ghost_spawn_egg".equals(id)) event.player.addStat(ghostEgg, 1);
         if (id != null && (id.equals("rgoldore") || id.startsWith("rgold_") && id.endsWith("_ore")))
             event.player.addStat(dimensionalOre, 1);

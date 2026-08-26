@@ -42,6 +42,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import com.stonytark.usefultoolsmod.classic.ClassicMissingMappings;
+import com.stonytark.usefultoolsmod.classic.ClassicFeatureRegistry;
 
 @Mod(modid="usefultoolsmod", name="Useful Tools", version=BuildTags.VERSION,
         guiFactory="com.stonytark.usefultoolsmod.classic.client.ClassicGuiFactory")
@@ -59,6 +60,7 @@ public class Mainregistry {
         MEntity.mainRegistry();
         MItems.MainRegistry();
         ClassicGeneratedCatalog.register();
+        ClassicFeatureRegistry.register();
         ClassicSpectralInfuserBlock.registerTileEntity();
         NetworkRegistry.INSTANCE.registerGuiHandler(modInstance, new ClassicGuiHandler());
         MWorld.MainRegistry();

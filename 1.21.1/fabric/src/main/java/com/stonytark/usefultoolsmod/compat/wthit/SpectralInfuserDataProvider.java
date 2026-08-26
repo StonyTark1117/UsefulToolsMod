@@ -24,6 +24,7 @@ public class SpectralInfuserDataProvider implements IDataProvider<SpectralInfuse
         tag.putInt("utm_progress", containerData.get(0));
         tag.putInt("utm_maxProgress", containerData.get(1));
         tag.putBoolean("utm_hasFuel", !fuel.isEmpty());
+        tag.putInt("utm_fuelUses", containerData.get(2));
 
         if (!input.isEmpty()) {
             tag.putString("utm_inputName", input.getName().getString());

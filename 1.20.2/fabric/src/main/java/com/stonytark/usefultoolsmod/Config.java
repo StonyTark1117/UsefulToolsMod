@@ -52,6 +52,13 @@ public class Config {
 
     // --- Ghost + Ectoplasm ---
     public static boolean ghostEnabled = true;
+    public static boolean wraithEnabled = true;
+    public static boolean soulLanternEnabled = true;
+    public static boolean spectralResonatorEnabled = true;
+    public static boolean miningChargeEnabled = true;
+    public static boolean stickyDynamiteEnabled = true;
+    public static boolean remoteDetonationEnabled = true;
+    public static boolean controlledDrops = true;
 
     // --- Spectral Infuser ---
     public static boolean spectralInfuserEnabled = true;
@@ -139,6 +146,9 @@ public class Config {
     public static boolean opToolEffectsEnabled = true;
     public static boolean opArmorEffectsEnabled = true;
     public static double ghostSpawnChance = 0.15;
+    public static double wraithSpawnChance = 0.0375;
+    public static double controlledEntityDamage = 8.0;
+    public static double remoteRange = 128.0;
     public static boolean snowMeltEffects = true;
     public static boolean iceEffects = true;
     public static boolean pprismWaterEffects = true;
@@ -281,7 +291,10 @@ public class Config {
     }
 
     private static double validatedDouble(String name, double value) {
-        return name.equals("ghostSpawnChance") ? Math.max(0.0, Math.min(1.0, value)) : value;
+        if (name.equals("ghostSpawnChance") || name.equals("wraithSpawnChance")) return Math.max(0.0, Math.min(1.0, value));
+        if (name.equals("controlledEntityDamage")) return Math.max(0.0, Math.min(8.0, value));
+        if (name.equals("remoteRange")) return Math.max(16.0, Math.min(1024.0, value));
+        return value;
     }
 
     public record Option(Field field, String category, String label, double minimum, double maximum) {
@@ -317,8 +330,10 @@ public class Config {
         for (Field field : Config.class.getDeclaredFields()) {
             if (!isConfigField(field)) continue;
             String name = field.getName();
-            double minimum = name.equals("ghostSpawnChance") ? 0.0 : -Double.MAX_VALUE;
-            double maximum = name.equals("ghostSpawnChance") ? 1.0 : Double.MAX_VALUE;
+            double minimum = name.endsWith("SpawnChance") ? 0.0
+                    : name.equals("controlledEntityDamage") ? 0.0 : name.equals("remoteRange") ? 16.0 : -Double.MAX_VALUE;
+            double maximum = name.endsWith("SpawnChance") ? 1.0
+                    : name.equals("controlledEntityDamage") ? 8.0 : name.equals("remoteRange") ? 1024.0 : Double.MAX_VALUE;
             result.add(new Option(field, category(name), prettify(name), minimum, maximum));
         }
         return Collections.unmodifiableList(result);

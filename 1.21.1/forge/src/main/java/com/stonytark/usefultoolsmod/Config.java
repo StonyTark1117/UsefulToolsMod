@@ -43,6 +43,16 @@ public class Config {
     // --- Ghost + Ectoplasm ---
     private static final ForgeConfigSpec.BooleanValue GHOST_ENABLED;
     private static final ForgeConfigSpec.DoubleValue GHOST_SPAWN_CHANCE;
+    private static final ForgeConfigSpec.BooleanValue WRAITH_ENABLED;
+    private static final ForgeConfigSpec.DoubleValue WRAITH_SPAWN_CHANCE;
+    private static final ForgeConfigSpec.BooleanValue SOUL_LANTERN_ENABLED;
+    private static final ForgeConfigSpec.BooleanValue SPECTRAL_RESONATOR_ENABLED;
+    private static final ForgeConfigSpec.BooleanValue MINING_CHARGE_ENABLED;
+    private static final ForgeConfigSpec.BooleanValue STICKY_DYNAMITE_ENABLED;
+    private static final ForgeConfigSpec.BooleanValue REMOTE_DETONATION_ENABLED;
+    private static final ForgeConfigSpec.BooleanValue CONTROLLED_DROPS;
+    private static final ForgeConfigSpec.DoubleValue CONTROLLED_ENTITY_DAMAGE;
+    private static final ForgeConfigSpec.IntValue REMOTE_RANGE;
 
     // --- Spectral Infuser ---
     private static final ForgeConfigSpec.BooleanValue SPECTRAL_INFUSER_ENABLED;
@@ -190,6 +200,26 @@ public class Config {
         EXPLOSIVES_ENABLED = BUILDER
                 .comment("Enable the Explosives set (Dynamite, Grenade).")
                 .define("enabled", true);
+        BUILDER.pop();
+
+        BUILDER.push("spectralUtilities");
+        WRAITH_ENABLED = BUILDER.comment("Enable hostile Wraith spawning.").define("wraithEnabled", true);
+        WRAITH_SPAWN_CHANCE = BUILDER.comment("Fraction of eligible Wraith spawn attempts.")
+                .defineInRange("wraithSpawnChance", 0.0375, 0.0, 1.0);
+        SOUL_LANTERN_ENABLED = BUILDER.comment("Enable Soul Lantern wards.").define("soulLanternEnabled", true);
+        SPECTRAL_RESONATOR_ENABLED = BUILDER.comment("Enable Spectral Resonators.").define("spectralResonatorEnabled", true);
+        BUILDER.pop();
+
+        BUILDER.push("controlledExplosives");
+        MINING_CHARGE_ENABLED = BUILDER.comment("Enable directional Mining Charges.").define("miningChargeEnabled", true);
+        STICKY_DYNAMITE_ENABLED = BUILDER.comment("Enable throwable Sticky Dynamite.").define("stickyDynamiteEnabled", true);
+        REMOTE_DETONATION_ENABLED = BUILDER.comment("Enable Remote Detonators.").define("remoteDetonationEnabled", true);
+        CONTROLLED_DROPS = BUILDER.comment("Preserve normal block drops from controlled explosives.")
+                .define("preserveDrops", true);
+        CONTROLLED_ENTITY_DAMAGE = BUILDER.comment("Maximum damage dealt to an entity by a controlled explosive.")
+                .defineInRange("entityDamageCap", 8.0, 0.0, 8.0);
+        REMOTE_RANGE = BUILDER.comment("Maximum remote detonation range in blocks.")
+                .defineInRange("remoteRange", 128, 16, 1024);
         BUILDER.pop();
 
         BUILDER.push("obsidian");
@@ -702,6 +732,16 @@ public class Config {
     public static boolean opToolEffectsEnabled = true;
     public static boolean opArmorEffectsEnabled = true;
     public static double ghostSpawnChance = 0.15;
+    public static boolean wraithEnabled = true;
+    public static double wraithSpawnChance = 0.0375;
+    public static boolean soulLanternEnabled = true;
+    public static boolean spectralResonatorEnabled = true;
+    public static boolean miningChargeEnabled = true;
+    public static boolean stickyDynamiteEnabled = true;
+    public static boolean remoteDetonationEnabled = true;
+    public static boolean controlledDrops = true;
+    public static double controlledEntityDamage = 8.0;
+    public static int remoteRange = 128;
     public static boolean snowMeltEffects = true;
     public static boolean iceEffects = true;
     public static boolean pprismWaterEffects = true;
@@ -728,6 +768,12 @@ public class Config {
         hardenedGlowstoneEnabled = HARDENED_GLOWSTONE_ENABLED.get();
         overpowerEnabled         = OVERPOWER_ENABLED.get();
         ghostEnabled             = GHOST_ENABLED.get();
+        wraithEnabled            = WRAITH_ENABLED.get();
+        soulLanternEnabled       = SOUL_LANTERN_ENABLED.get();
+        spectralResonatorEnabled = SPECTRAL_RESONATOR_ENABLED.get();
+        miningChargeEnabled      = MINING_CHARGE_ENABLED.get();
+        stickyDynamiteEnabled    = STICKY_DYNAMITE_ENABLED.get();
+        remoteDetonationEnabled  = REMOTE_DETONATION_ENABLED.get();
         spectralInfuserEnabled   = SPECTRAL_INFUSER_ENABLED.get();
         infusedToolEffects       = INFUSED_TOOL_EFFECTS.get();
         rawMetalRoughEnabled     = RAW_METAL_ROUGH_ENABLED.get();
@@ -828,6 +874,10 @@ public class Config {
         opToolEffectsEnabled     = OVERPOWER_TOOL_EFFECTS.get();
         opArmorEffectsEnabled    = OVERPOWER_ARMOR_EFFECTS.get();
         ghostSpawnChance         = GHOST_SPAWN_CHANCE.get();
+        wraithSpawnChance        = WRAITH_SPAWN_CHANCE.get();
+        controlledDrops          = CONTROLLED_DROPS.get();
+        controlledEntityDamage   = CONTROLLED_ENTITY_DAMAGE.get();
+        remoteRange              = REMOTE_RANGE.get();
         snowMeltEffects          = SNOW_MELT_EFFECTS.get();
         iceEffects               = ICE_EFFECTS.get();
         pprismWaterEffects       = PPRISM_WATER_EFFECTS.get();

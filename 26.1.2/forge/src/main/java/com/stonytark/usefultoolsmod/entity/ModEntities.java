@@ -9,6 +9,8 @@ import net.minecraft.resources.ResourceKey;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.custom.GrenadeEntity;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
+import com.stonytark.usefultoolsmod.entity.custom.WraithEntity;
+import com.stonytark.usefultoolsmod.entity.custom.StickyDynamiteEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -37,6 +39,12 @@ public class ModEntities {
     public static final RegistryObject<EntityType<GhostEntity>> GHOST =
             ENTITY_TYPES.register(GeneratedRegistrationIds.Entities.GHOST, () -> EntityType.Builder.<GhostEntity>of(GhostEntity::new, MobCategory.MONSTER)
                     .sized(1.5f, 1.5f).build(key(GeneratedRegistrationIds.Entities.GHOST)));
+    public static final RegistryObject<EntityType<WraithEntity>> WRAITH =
+            ENTITY_TYPES.register(GeneratedRegistrationIds.Entities.WRAITH, () -> EntityType.Builder.<WraithEntity>of(WraithEntity::new, MobCategory.MONSTER)
+                    .sized(1.2F, 2.25F).clientTrackingRange(8).build(key(GeneratedRegistrationIds.Entities.WRAITH)));
+    public static final RegistryObject<EntityType<StickyDynamiteEntity>> STICKY_DYNAMITE=ENTITY_TYPES.register(GeneratedRegistrationIds.Entities.STICKY_DYNAMITE,
+            ()->EntityType.Builder.<StickyDynamiteEntity>of(StickyDynamiteEntity::new,MobCategory.MISC).sized(.25F,.25F)
+                    .clientTrackingRange(4).updateInterval(10).build(key(GeneratedRegistrationIds.Entities.STICKY_DYNAMITE)));
 
     public static void register(BusGroup busGroup) {
         ENTITY_TYPES.register(busGroup);

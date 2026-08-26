@@ -15,6 +15,11 @@ public class ModBlockEntityTypes {
                     BlockEntityType.Builder.create(SpectralInfuserBlockEntity::new,
                             ModBlocks.SPECTRAL_INFUSER).build(null));
 
+    public static final BlockEntityType<MiningChargeBlockEntity> MINING_CHARGE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE,
+                    new Identifier(UsefultoolsMod.MOD_ID, "mining_charge"),
+                    BlockEntityType.Builder.create(MiningChargeBlockEntity::new, ModBlocks.MINING_CHARGE).build(null));
+
     public static void register() {
         // Registration happens via the static initializer
     }

@@ -17,6 +17,9 @@ public class ModBlockEntityTypes {
             BLOCK_ENTITY_TYPES.register("spectral_infuser",
                     () -> new BlockEntityType<>(SpectralInfuserBlockEntity::new,
                             java.util.Set.of(ModBlocks.SPECTRAL_INFUSER.get())));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MiningChargeBlockEntity>> MINING_CHARGE=
+            BLOCK_ENTITY_TYPES.register("mining_charge",()->new BlockEntityType<>(MiningChargeBlockEntity::new,
+                    java.util.Set.of(ModBlocks.MINING_CHARGE.get())));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);

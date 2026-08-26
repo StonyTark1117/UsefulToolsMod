@@ -75,7 +75,8 @@ def parse_config_options(text: str) -> list[dict[str, object]]:
     result = []
     for value_type, key, default in fields:
         category = "Effects" if (
-            key == "ghostSpawnChance" or key.endswith(("Effects", "Avoidance", "Phasing", "Drain", "Sticky", "Thorns", "Teleport"))
+            key in {"ghostSpawnChance", "wraithSpawnChance", "controlledEntityDamage", "remoteRange"}
+            or key.endswith(("Effects", "Avoidance", "Phasing", "Drain", "Sticky", "Thorns", "Teleport"))
         ) else "Food Sets" if any(token in key for token in (
             "bread", "Kelp", "Flesh", "Melon", "Berry", "Pie", "mushroom", "pufferfish", "honey", "Fruit", "Apple", "cake"
         )) else "Content Sets"
@@ -85,8 +86,10 @@ def parse_config_options(text: str) -> list[dict[str, object]]:
             "key": key,
             "type": value_type,
             "default": default.strip(),
-            "minimum": 0.0 if key == "ghostSpawnChance" else None,
-            "maximum": 1.0 if key == "ghostSpawnChance" else None,
+            "minimum": 0.0 if key in {"ghostSpawnChance", "wraithSpawnChance", "controlledEntityDamage"}
+                    else 16.0 if key == "remoteRange" else None,
+            "maximum": 1.0 if key in {"ghostSpawnChance", "wraithSpawnChance"}
+                    else 8.0 if key == "controlledEntityDamage" else 1024.0 if key == "remoteRange" else None,
             "category": category,
             "label": label,
             "tooltip": f"Controls {label.lower()} behavior.",
@@ -257,11 +260,15 @@ def build_catalog(common: Path = COMMON) -> dict[str, object]:
             "blocks": [{"id": block_id, "material": "rock"} for block_id in sorted(blocks)],
             "recipes": resource_definitions("recipe", common),
         },
-        "config": config_options(common),
+        # Fabric's reflected JSON config is the loader-neutral source because it
+        # preserves numeric controls as ordinary public fields.
+        "config": config_options(),
         "intent": {
             "spectral_infuser": "Transforms supported vanilla equipment with ectoplasm and creates ghost spawn eggs.",
             "ghost": "Night-spawning hostile mob with ectoplasm drops and armor interactions.",
             "explosives": ["dynamite", "grenade"],
+            "spectral_progression": ["wraith", "condensed_ectoplasm", "soul_lantern", "spectral_resonator"],
+            "controlled_explosives": ["mining_charge", "sticky_dynamite", "remote_detonator"],
             "worldgen": ["rgoldore", "rgold_deepslate_ore", "rgold_nether_ore", "rgold_end_ore"],
         },
     }

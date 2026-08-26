@@ -54,7 +54,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Canonical, loader-neutral metadata for all 116 persistent config options. */
+/** Canonical, loader-neutral metadata for all 126 persistent config options. */
 public final class ConfigDescriptors {{
     public record Descriptor(String key, String category, String label, String tooltip,
                              boolean reloadRequired) {{}}
@@ -76,7 +76,7 @@ public final class ConfigDescriptors {{
     private static Map<String, Descriptor> build() {{
         Map<String, Descriptor> values = new LinkedHashMap<>();
 {rows}
-        if (values.size() != 116) throw new IllegalStateException("Expected 116 config descriptors");
+        if (values.size() != 126) throw new IllegalStateException("Expected 126 config descriptors");
         return Collections.unmodifiableMap(values);
     }}
 
@@ -93,8 +93,8 @@ public final class ConfigDescriptors {{
 def main() -> None:
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     options = catalog["config"]
-    if len(options) != 116:
-        raise SystemExit(f"expected 116 config options, found {len(options)}")
+    if len(options) != 126:
+        raise SystemExit(f"expected 126 config options, found {len(options)}")
     content = render(options)
     for root in SOURCE_ROOTS:
         target = ROOT / root / RELATIVE_OUTPUT

@@ -92,6 +92,21 @@ public class ClassicSemanticTest {
         assertEquals(-1, ClassicPlayerEffects.phaseExit(new boolean[] {false, false, false}));
     }
 
+    @Test
+    public void controlledExplosivesNeverExceedEightDamage() {
+        assertEquals(8.0D, ClassicControlledExplosion.damageAtDistance(100.0D, 0.0D, 4.0D), 0.0001D);
+        assertEquals(4.0D, ClassicControlledExplosion.damageAtDistance(8.0D, 2.0D, 4.0D), 0.0001D);
+        assertEquals(0.0D, ClassicControlledExplosion.damageAtDistance(8.0D, 5.0D, 4.0D), 0.0001D);
+    }
+
+    @Test
+    public void detonatorChannelsAndConfiguredRangeAreBounded() {
+        assertEquals(0, ClassicRemoteDetonator.normalizeChannel(8));
+        assertEquals(7, ClassicRemoteDetonator.normalizeChannel(-1));
+        assertTrue(ClassicRemoteDetonator.withinRemoteRange(96.0D * 96.0D, 96.0D));
+        assertFalse(ClassicRemoteDetonator.withinRemoteRange(96.0D * 96.0D + 1.0D, 96.0D));
+    }
+
     private static void assertOreRule(int dimension, String id, Object replacement,
                                       int minY, int maxY) {
         for (ClassicOreGeneration.Rule rule : ClassicOreGeneration.RULES) {

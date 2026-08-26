@@ -32,6 +32,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
@@ -138,11 +140,25 @@ public class GhostEntity extends Animal {
             this.clearFire();
             constrainPosition();
 
-            lifetime++;
-            if (lifetime > MAX_LIFETIME) {
+            boolean stabilized = hasCustomName()
+                    || com.stonytark.usefultoolsmod.block.custom.SoulLanternWard.activeWithin(this,
+                    com.stonytark.usefultoolsmod.block.custom.SoulLanternWard.RADIUS);
+            if (stabilized && !hasCustomName() && tickCount % 20 == 0) {
+                for (net.minecraft.server.level.ServerPlayer player : level().getEntitiesOfClass(
+                        net.minecraft.server.level.ServerPlayer.class, getBoundingBox().inflate(12.0D)))
+                    com.stonytark.usefultoolsmod.util.ModAdvancements.award(player, "spectral/stabilize_ghost");
+            }
+            if (!stabilized) lifetime++;
+            if (lifetime > MAX_LIFETIME && !hasCustomName()) {
                 this.discard();
             }
+            if (stabilized && !hasCustomName() && tickCount % 20 == 0 && getTarget() == null) {
+                BlockPos lantern = com.stonytark.usefultoolsmod.block.custom.SoulLanternWard.nearest(this);
+                if (lantern != null && lantern.distSqr(blockPosition()) > 9) moveControl.setWantedPosition(
+                        lantern.getX() + .5, lantern.getY() + 1.5, lantern.getZ() + .5, .8);
+            }
         }
+        setDeltaMovement(getDeltaMovement().add(0, Math.sin((tickCount + getId()) * .08) * .0025, 0));
 
         // Gentle hovering drift
         if (this.random.nextFloat() < 0.02F) {
@@ -156,6 +172,13 @@ public class GhostEntity extends Animal {
         if (this.level().isClientSide()) {
             this.setupAnimationStates();
         }
+    }
+
+    @Override protected void addAdditionalSaveData(ValueOutput out) {
+        super.addAdditionalSaveData(out); out.putInt("UsefulToolsLifetime", lifetime);
+    }
+    @Override protected void readAdditionalSaveData(ValueInput in) {
+        super.readAdditionalSaveData(in); lifetime = in.getIntOr("UsefulToolsLifetime", 0);
     }
 
     /**
@@ -319,18 +342,18 @@ public class GhostEntity extends Animal {
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.GHAST_AMBIENT;
+        return com.stonytark.usefultoolsmod.sound.ModSounds.ghostAmbient();
     }
 
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SoundEvents.GHAST_HURT;
+        return com.stonytark.usefultoolsmod.sound.ModSounds.ghostHurt();
     }
 
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.GHAST_DEATH;
+        return com.stonytark.usefultoolsmod.sound.ModSounds.ghostDeath();
     }
 }

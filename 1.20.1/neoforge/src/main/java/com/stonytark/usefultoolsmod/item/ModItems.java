@@ -247,6 +247,17 @@ public class ModItems {
     public static final RegistryObject<Item> ECTOPLASM = ITEMS.register(GeneratedRegistrationIds.Items.ECTOPLASM,
             () -> new Item(new Item.Properties().stacksTo(64)));
 
+    public static final RegistryObject<Item> CONDENSED_ECTOPLASM = ITEMS.register(GeneratedRegistrationIds.Items.CONDENSED_ECTOPLASM,
+            () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> WRAITH_SPAWN_EGG = ITEMS.register(GeneratedRegistrationIds.Items.WRAITH_SPAWN_EGG,
+            () -> new ForgeSpawnEggItem(() -> ModEntities.WRAITH.get(), 0x241833, 0xA95CFF, new Item.Properties()));
+    public static final RegistryObject<Item> SPECTRAL_RESONATOR = ITEMS.register(GeneratedRegistrationIds.Items.SPECTRAL_RESONATOR,
+            () -> new SpectralResonatorItem(new Item.Properties().durability(128)));
+    public static final RegistryObject<Item> STICKY_DYNAMITE = ITEMS.register(GeneratedRegistrationIds.Items.STICKY_DYNAMITE,
+            () -> new StickyDynamiteItem(new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> REMOTE_DETONATOR = ITEMS.register(GeneratedRegistrationIds.Items.REMOTE_DETONATOR,
+            () -> new RemoteDetonatorItem(new Item.Properties().stacksTo(1)));
+
     // -------------------------------------------------------------------------
     // Rough Ectoplasm tools (raw ectoplasm, stone-tier equivalent)
     // -------------------------------------------------------------------------

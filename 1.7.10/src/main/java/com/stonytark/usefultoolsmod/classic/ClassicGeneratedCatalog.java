@@ -169,6 +169,7 @@ public final class ClassicGeneratedCatalog {
         ARMOR_MATERIALS.put("TURTLE_SCUTE_ARMOR_MATERIAL", EnumHelper.addArmorMaterial("UT230_TURTLE_SCUTE_ARMOR_MATERIAL", 20, new int[] {3, 7, 5, 2}, 16));
         registerItem("calcified_amethyst", new Item());
         registerItem("coal_dust", new Item());
+        registerItem("condensed_ectoplasm", new Item());
         registerItem("dynamite", new Dynamite());
         registerItem("ectoplasm", new Item());
         registerItem("ghost_spawn_egg", new ClassicGhostSpawnEgg());
@@ -183,9 +184,13 @@ public final class ClassicGeneratedCatalog {
         registerItem("polished_quartz", new Item());
         registerItem("raw_rgold", new Item());
         registerItem("refined_ectoplasm", new Item());
+        registerItem("remote_detonator", new ClassicRemoteDetonator());
         registerItem("rgold", new Item());
         registerItem("rlapis", new Item());
         registerItem("sem", new Item());
+        registerItem("spectral_resonator", new ClassicSpectralResonator());
+        registerItem("sticky_dynamite", new ClassicStickyDynamite());
+        registerItem("wraith_spawn_egg", new ClassicWraithSpawnEgg());
         registerItem("acacia_axe", new ClassicAxe(TOOL_MATERIALS.get("WOOD_ACACIA")));
         registerItem("acacia_hoe", new ClassicHoe(TOOL_MATERIALS.get("WOOD_ACACIA")));
         registerItem("acacia_pickaxe", new ClassicPickaxe(TOOL_MATERIALS.get("WOOD_ACACIA")));
@@ -808,6 +813,7 @@ public final class ClassicGeneratedCatalog {
         registerBlock("hglow_block");
         registerBlock("hrblock");
         registerBlock("lblock");
+        registerBlock("mining_charge");
         registerBlock("obshard_block");
         registerBlock("polished_prismarine_block");
         registerBlock("polished_quartz_block");
@@ -820,6 +826,7 @@ public final class ClassicGeneratedCatalog {
         registerBlock("rgoldore");
         registerBlock("semblock");
         registerBlock("soblock");
+        registerBlock("soul_lantern");
         registerBlock("spectral_infuser");
         FMLLog.info("[Useful Tools] Canonical 2.3.0 classic catalog registered: %d items, %d blocks", ITEMS.size(), BLOCKS.size());
     }
@@ -831,7 +838,7 @@ public final class ClassicGeneratedCatalog {
     }
 
     private static void registerBlock(String id) {
-        Block block = (id.equals("spectral_infuser") ? new ClassicSpectralInfuserBlock() : new ClassicBlock()).setBlockName(id).setBlockTextureName("usefultoolsmod:" + id).setCreativeTab(MCreativeTabs.tabToolsMod);
+        Block block = (id.equals("spectral_infuser") ? new ClassicSpectralInfuserBlock() : id.equals("soul_lantern") ? new ClassicSoulLantern(Material.iron) : id.equals("mining_charge") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName("usefultoolsmod:" + id).setCreativeTab(MCreativeTabs.tabToolsMod);
         GameRegistry.registerBlock(block, id);
         BLOCKS.put(id, block);
     }
