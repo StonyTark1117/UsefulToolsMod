@@ -18,3 +18,4 @@
 - Replaced the 1.21.1 Forge metadata's ineffective `[0,)` Forge/JavaFML floors with the supported Forge 52 major range and verified the rebuilt target in a fresh isolated server world.
 
 No release has been published by this repository work.
+- Added optional Create: Ore Excavation r-gold vein recipes for 1.20.1 Fabric and 1.21.1 NeoForge. 1.20.1 Forge is excluded because available upstream builds are incompatible with Forge 47.x.

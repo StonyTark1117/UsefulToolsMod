@@ -35,9 +35,9 @@ RetroFuturaGradle `1.4.0` was requested in the original plan but has no publishe
 
 JEI, WTHIT/Jade, REI, JER, Magnetization, and Mod Menu are declared or compiled only on lines where compatible upstream APIs exist. Their absence must not prevent the base mod from loading. Mod Menu is only a route to Fabric's built-in config screen; it is not required for configuration persistence.
 
-Create: Ore Excavation 1.20.1 support is data-driven on the Forge and Fabric
-targets: an optional r-gold vein and drilling recipe are supplied in the
-`createoreexcavation` namespace. No Create or Ore Excavation dependency is
+Create: Ore Excavation support is data-driven on 1.20.1 Fabric and 1.21.1
+NeoForge. 1.20.1 Forge is excluded because available upstream builds are
+incompatible with Forge 47.x. No Create or Ore Excavation dependency is
 required to load Useful Tools.
 
 NeoForge 1.20.1 has no compatible REI runtime: REI 12 publishes a Forge jar
