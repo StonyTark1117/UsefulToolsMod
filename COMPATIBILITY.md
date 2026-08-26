@@ -38,8 +38,10 @@ JEI, WTHIT/Jade, REI, JER, Magnetization, and Mod Menu are declared or compiled 
 Create: Ore Excavation support is data-driven on 1.20.1 Fabric and 1.21.1
 NeoForge. 1.20.1 Forge is not runtime-certified in this release because the
 Forge development profile has not yet been aligned with Create 6's supported
-Forge mapping/runtime. No Create or Ore Excavation dependency is required to
-load Useful Tools.
+Forge mapping/runtime: the exact published Forge pair reaches Create's mixin
+stage but fails refmap translation (`m_21211_` versus `getUseItem`). This
+integration is intentionally untested and harmlessly data-only; no Create or
+Ore Excavation dependency is required to load Useful Tools.
 
 NeoForge 1.20.1 has no compatible REI runtime: REI 12 publishes a Forge jar
 whose Architectury mixins target fields absent from NeoForge 47.1. Useful Tools
