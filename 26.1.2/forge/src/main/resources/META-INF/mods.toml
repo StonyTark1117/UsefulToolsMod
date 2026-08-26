@@ -60,14 +60,3 @@ description='''${mod_description}'''
 #     versionRange="[1.9.0,)"
 #     ordering="AFTER"
 #     side="CLIENT"
-
-# Optional integration: Magnetization addon. When loaded, this mod's metal
-# ingots, raw materials, ores, blocks, armor, and tools opt into the
-# magnetization:* item/block tags. Tag JSONs are emitted unconditionally and
-# are inert when Magnetization isn't installed.
-[[dependencies.${mod_id}]]
-    modId="magnetization"
-    mandatory=false
-    versionRange="[0.1.0,)"
-    ordering="AFTER"
-    side="BOTH"
