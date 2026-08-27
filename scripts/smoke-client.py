@@ -84,6 +84,10 @@ def parse_args() -> argparse.Namespace:
         "--inventory-search", metavar="TEXT",
         help="type a recipe-viewer search before the inventory probe capture",
     )
+    parser.add_argument(
+        "--visual-showcase", action="store_true",
+        help="stage and capture the 2.3.1 block and WTHIT showcase (1.21.1 NeoForge)",
+    )
     parser.add_argument("--verbose", action="store_true")
     return parser.parse_args()
 
@@ -234,9 +238,13 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     log_path = output_dir / f"{name}.log"
     config_image = output_dir / f"{name}-config.png"
     title_image = output_dir / f"{name}-title.png"
+    creation_image = output_dir / f"{name}-world-creation.png"
     world_image = output_dir / f"{name}-world.png"
     pause_image = output_dir / f"{name}-pause.png"
     inventory_image = output_dir / f"{name}-inventory.png"
+    blocks_image = output_dir / f"{name}-blocks.png"
+    wraith_image = output_dir / f"{name}-wraith-wthit.png"
+    ghost_image = output_dir / f"{name}-ghost-wthit.png"
     display_number = free_display()
     display = f":{display_number}"
     game_temp = tempfile.TemporaryDirectory(prefix="usefultools-client-", dir="/dev/shm")
@@ -279,6 +287,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     joined = False
     config_opened = False
     clean_exit = False
+    showcase_commands_succeeded = False
     try:
         time.sleep(0.5)
         print(f"==> {name}: client smoke", flush=True)
@@ -443,6 +452,11 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                 for _ in range(3):
                     click(display, window, 427, singleplayer_y)
                     time.sleep(2)
+                if args.visual_showcase:
+                    screenshot(display, creation_image)
+                    # Vanilla 1.21.1's Allow Commands toggle on the Game tab.
+                    click(display, window, 427, 284)
+                    time.sleep(1)
                 create_world_x = 727 if target.loader == "classic" else 267
                 click(display, window, create_world_x, 443)
             if target.loader == "forge" and (
@@ -464,6 +478,88 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
             if joined:
                 time.sleep(2)
                 screenshot(display, world_image)
+                if args.visual_showcase:
+                    def chat_command(command: str, delay: float = 0.6) -> None:
+                        xdo(display, "key", "--window", window, "t")
+                        time.sleep(0.3)
+                        xdo(display, "type", "--window", window, "--delay", "2", f"/{command}")
+                        xdo(display, "key", "--window", window, "Return")
+                        time.sleep(delay)
+                        drain()
+
+                    commands = [
+                        "gamemode creative",
+                        "gamerule sendCommandFeedback false",
+                        "effect give @s minecraft:night_vision infinite 0 true",
+                        "weather clear",
+                        "time set midnight",
+                        "tp @s 0 205 -1 180 25",
+                        "fill -14 199 -14 14 199 14 minecraft:stone",
+                        "fill -14 200 -14 14 210 14 minecraft:air",
+                        "fill -7 199 6 7 199 6 minecraft:glass",
+                        "fill -7 199 -6 7 199 -6 minecraft:glass",
+                        "setblock 0 200 2 usefultoolsmod:ectoplasm_lantern",
+                        "setblock 0 200 -2 usefultoolsmod:ectoplasm_lantern",
+                        "setblock 1 200 2 minecraft:redstone_block",
+                        "setblock 1 200 -2 minecraft:redstone_block",
+                    ]
+                    directions = ("down", "up", "north", "south", "west", "east")
+                    for index, direction in enumerate(directions):
+                        x = -5 + index * 2
+                        commands.append(
+                            f"setblock {x} 200 4 usefultoolsmod:mining_charge"
+                            f"[facing={direction},lit=false]"
+                        )
+                        commands.append(
+                            f"setblock {x} 200 -4 usefultoolsmod:mining_charge"
+                            f"[facing={direction},lit=false]"
+                        )
+                        commands.append(
+                            f"setblock {x} 200 6 usefultoolsmod:mining_charge"
+                            f"[facing={direction},lit=true]"
+                        )
+                        commands.append(
+                            f"setblock {x} 200 -6 usefultoolsmod:mining_charge"
+                            f"[facing={direction},lit=true]"
+                        )
+                    for command in commands:
+                        chat_command(command)
+                    showcase_commands_succeeded = any(
+                        "Set own game mode to Creative Mode" in line for line in all_output
+                    )
+                    time.sleep(8)
+                    chat_command("tp @s 0 203 0 180 20", 0.2)
+                    time.sleep(1)
+                    screenshot(display, blocks_image)
+
+                    chat_command("tp @s 0 202 0 180 -3")
+                    chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
+                    chat_command(
+                        'summon usefultoolsmod:wraith 0 201 3 '
+                        '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
+                    , 0.1)
+                    chat_command(
+                        'summon usefultoolsmod:wraith 0 201 -3 '
+                        '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
+                    , 0.1)
+                    chat_command("setblock 1 200 2 minecraft:air", 0.1)
+                    chat_command("setblock 1 200 -2 minecraft:air", 0.1)
+                    time.sleep(0.4)
+                    screenshot(display, wraith_image)
+                    chat_command("setblock 1 200 2 minecraft:redstone_block", 0.1)
+                    chat_command("setblock 1 200 -2 minecraft:redstone_block", 0.1)
+                    chat_command("kill @e[type=usefultoolsmod:wraith,distance=..16]")
+                    chat_command(
+                        'summon usefultoolsmod:ghost 0 201 3 '
+                        '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
+                    , 0.1)
+                    chat_command(
+                        'summon usefultoolsmod:ghost 0 201 -3 '
+                        '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
+                    , 0.1)
+                    time.sleep(1)
+                    screenshot(display, ghost_image)
+                    chat_command("kill @e[type=usefultoolsmod:ghost,distance=..16]")
                 if args.inventory_probe:
                     xdo(display, "key", "--window", window, "e")
                     time.sleep(5)
@@ -529,6 +625,17 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     if args.inventory_probe and not image_is_substantial(inventory_image):
         success = False
         failure = failure or "inventory probe screenshot was empty"
+    if args.visual_showcase:
+        showcase_images = (blocks_image, wraith_image, ghost_image)
+        if name != "1.21.1-neoforge":
+            success = False
+            failure = failure or "visual showcase is supported only on 1.21.1-neoforge"
+        elif not all(image_is_substantial(path) for path in showcase_images):
+            success = False
+            failure = failure or "visual showcase screenshot was empty"
+        elif not showcase_commands_succeeded:
+            success = False
+            failure = failure or "visual showcase commands were not accepted by the server"
     report = {
         "target": name,
         "command": command,
@@ -542,6 +649,9 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         "log": str(log_path.relative_to(ROOT)),
         "config_screenshot": str(config_image.relative_to(ROOT)),
         "title_screenshot": str(title_image.relative_to(ROOT)),
+        "world_creation_screenshot": (
+            str(creation_image.relative_to(ROOT)) if args.visual_showcase else None
+        ),
         "world_screenshot": str(world_image.relative_to(ROOT)),
         "pause_screenshot": str(pause_image.relative_to(ROOT)),
         "inventory_probe_requested": args.inventory_probe,
@@ -549,6 +659,11 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         "inventory_screenshot": (
             str(inventory_image.relative_to(ROOT)) if args.inventory_probe else None
         ),
+        "visual_showcase_requested": args.visual_showcase,
+        "visual_showcase_commands_succeeded": showcase_commands_succeeded,
+        "blocks_screenshot": str(blocks_image.relative_to(ROOT)) if args.visual_showcase else None,
+        "wraith_wthit_screenshot": str(wraith_image.relative_to(ROOT)) if args.visual_showcase else None,
+        "ghost_wthit_screenshot": str(ghost_image.relative_to(ROOT)) if args.visual_showcase else None,
         "success": success,
     }
     (output_dir / f"{name}.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

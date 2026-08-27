@@ -37,7 +37,7 @@ public class ModCreativeModeTabs {
                             }
                             entries.add(ModItems.CONDENSED_ECTOPLASM);
                             if (Config.wraithEnabled) entries.add(ModItems.WRAITH_SPAWN_EGG);
-                            if (Config.soulLanternEnabled) entries.add(ModBlocks.SOUL_LANTERN);
+                            if (Config.ectoplasmLanternEnabled) entries.add(ModBlocks.ECTOPLASM_LANTERN);
                             if (Config.spectralResonatorEnabled) entries.add(ModItems.SPECTRAL_RESONATOR);
 
                             // =============================================================

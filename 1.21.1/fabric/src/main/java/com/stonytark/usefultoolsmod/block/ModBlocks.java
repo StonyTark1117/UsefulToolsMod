@@ -4,7 +4,7 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
-import com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock;
+import com.stonytark.usefultoolsmod.block.custom.EctoplasmLanternBlock;
 import com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -39,7 +39,8 @@ public class ModBlocks {
     public static Block POLISHED_QUARTZ_BLOCK;
     public static Block POLISHED_PRISMARINE_BLOCK;
     public static Block SPECTRAL_INFUSER;
-    public static Block SOUL_LANTERN;
+    public static Block ECTOPLASM_LANTERN;
+    public static Block LEGACY_SOUL_LANTERN;
     public static Block MINING_CHARGE;
 
     public static void register() {
@@ -97,8 +98,11 @@ public class ModBlocks {
                         .requiresTool()
                         .sounds(BlockSoundGroup.STONE)
                         .luminance(state -> state.get(SpectralInfuserBlock.LIT) ? 13 : 0)));
-        SOUL_LANTERN = registerBlock(GeneratedRegistrationIds.Blocks.SOUL_LANTERN, new SoulLanternBlock(AbstractBlock.Settings.create()
-                .strength(3.0F).sounds(BlockSoundGroup.LANTERN).luminance(state -> 12)));
+        ECTOPLASM_LANTERN = registerBlock(GeneratedRegistrationIds.Blocks.ECTOPLASM_LANTERN, new EctoplasmLanternBlock(AbstractBlock.Settings.create()
+                .strength(3.0F).sounds(BlockSoundGroup.LANTERN).luminance(state -> 12).nonOpaque()));
+        // Deprecated registry alias retained for pre-rename worlds and inventories.
+        LEGACY_SOUL_LANTERN = registerBlock("soul_lantern", new EctoplasmLanternBlock(AbstractBlock.Settings.create()
+                .strength(3.0F).sounds(BlockSoundGroup.LANTERN).luminance(state -> 12).nonOpaque()));
         MINING_CHARGE = registerBlock(GeneratedRegistrationIds.Blocks.MINING_CHARGE, new MiningChargeBlock(AbstractBlock.Settings.create()
                 .strength(1.0F).sounds(BlockSoundGroup.WOOL).nonOpaque()));
     }

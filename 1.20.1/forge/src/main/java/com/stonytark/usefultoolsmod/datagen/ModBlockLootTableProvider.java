@@ -24,7 +24,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SOBLOCK.get());
         dropSelf(ModBlocks.LBLOCK.get());
         dropSelf(ModBlocks.SPECTRAL_INFUSER.get());
-        dropSelf(ModBlocks.SOUL_LANTERN.get());
+        dropSelf(ModBlocks.ECTOPLASM_LANTERN.get());
+        dropSelf(ModBlocks.LEGACY_SOUL_LANTERN.get());
         dropSelf(ModBlocks.MINING_CHARGE.get());
         dropSelf(ModBlocks.HGLOW_BLOCK.get());
         dropSelf(ModBlocks.RAW_RGOLD_BLOCK.get());

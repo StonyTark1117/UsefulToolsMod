@@ -37,7 +37,7 @@ public final class ConfigDescriptors {
         add(values, "ghostEnabled", "Content Sets", "Ghost", "Controls ghost behavior.", false);
         add(values, "spectralInfuserEnabled", "Content Sets", "Spectral Infuser", "Controls spectral infuser behavior.", false);
         add(values, "wraithEnabled", "Content Sets", "Wraith", "Controls wraith behavior.", false);
-        add(values, "soulLanternEnabled", "Content Sets", "Soul Lantern", "Controls soul lantern behavior.", false);
+        add(values, "ectoplasmLanternEnabled", "Content Sets", "Ectoplasm Lantern", "Controls ectoplasm lantern behavior.", false);
         add(values, "spectralResonatorEnabled", "Content Sets", "Spectral Resonator", "Controls spectral resonator behavior.", false);
         add(values, "miningChargeEnabled", "Content Sets", "Mining Charge", "Controls mining charge behavior.", false);
         add(values, "stickyDynamiteEnabled", "Content Sets", "Sticky Dynamite", "Controls sticky dynamite behavior.", false);

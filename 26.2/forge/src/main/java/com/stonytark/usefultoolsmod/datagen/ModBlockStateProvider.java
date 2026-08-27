@@ -53,7 +53,8 @@ public class ModBlockStateProvider extends ModelProvider {
                 // because the datagen can't represent the multi-variant facing+lit
                 // matrix the block needs.
                 .filter(b -> b != ModBlocks.SPECTRAL_INFUSER.get()
-                        && b != ModBlocks.SOUL_LANTERN.get()
+                        && b != ModBlocks.ECTOPLASM_LANTERN.get()
+                        && b != ModBlocks.LEGACY_SOUL_LANTERN.get()
                         && b != ModBlocks.MINING_CHARGE.get());
     }
 

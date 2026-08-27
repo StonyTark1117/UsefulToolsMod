@@ -2,30 +2,28 @@
   "target": "1.21.1-neoforge",
   "tasks": [
     {
-      "task": ":neoforge:runData",
+      "task": "runData",
       "command": [
         "./gradlew",
         "--no-daemon",
         "--max-workers=1",
-        ":neoforge:runData"
+        "runData"
       ],
       "completed": true,
-      "forced_launcher_cleanup": true,
+      "forced_launcher_cleanup": false,
       "timed_out": false,
       "fatal_error": false,
-      "exit_code": 143,
+      "exit_code": 0,
       "remaining_owned_pids": [],
-      "log": "validation/datagen/1.21.1-neoforge-neoforge-runData.log",
+      "log": "validation/datagen/1.21.1-neoforge-runData.log",
       "success": true
     }
   ],
   "resource_roots": [
-    "common/src/main/resources"
+    "src/generated/resources"
   ],
-  "generated_roots": [
-    "neoforge/build/datagen-output"
-  ],
-  "generated_file_count": 3606,
+  "generated_roots": [],
+  "generated_file_count": 3613,
   "drift": {
     "added": [],
     "removed": [],

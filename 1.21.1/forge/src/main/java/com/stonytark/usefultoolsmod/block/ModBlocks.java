@@ -4,7 +4,7 @@ import com.stonytark.usefultoolsmod.generated.GeneratedRegistrationIds;
 
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
-import com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock;
+import com.stonytark.usefultoolsmod.block.custom.EctoplasmLanternBlock;
 import com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -113,9 +113,13 @@ public class ModBlocks {
                     .sound(SoundType.STONE)
                     .lightLevel(state -> state.getValue(SpectralInfuserBlock.LIT) ? 13 : 0)));
 
-    public static final RegistryObject<Block> SOUL_LANTERN = registerBlock(GeneratedRegistrationIds.Blocks.SOUL_LANTERN,
-            () -> new SoulLanternBlock(BlockBehaviour.Properties.of().strength(3.0F)
-                    .sound(SoundType.LANTERN).lightLevel(state -> 12)));
+    public static final RegistryObject<Block> ECTOPLASM_LANTERN = registerBlock(GeneratedRegistrationIds.Blocks.ECTOPLASM_LANTERN,
+            () -> new EctoplasmLanternBlock(BlockBehaviour.Properties.of().strength(3.0F)
+                    .sound(SoundType.LANTERN).lightLevel(state -> 12).noOcclusion()));
+    /** Deprecated registry alias retained for existing worlds. */
+    public static final RegistryObject<Block> LEGACY_SOUL_LANTERN = registerBlock("soul_lantern",
+            () -> new EctoplasmLanternBlock(BlockBehaviour.Properties.of().strength(3.0F)
+                    .sound(SoundType.LANTERN).lightLevel(state -> 12).noOcclusion()));
 
     public static final RegistryObject<Block> MINING_CHARGE = registerBlock(GeneratedRegistrationIds.Blocks.MINING_CHARGE,
             () -> new MiningChargeBlock(BlockBehaviour.Properties.of().strength(1.0F)

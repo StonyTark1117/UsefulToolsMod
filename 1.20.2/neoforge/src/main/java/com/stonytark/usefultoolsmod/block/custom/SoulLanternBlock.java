@@ -6,14 +6,18 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.Vec3;
 
 /** A spectral safe point: ghosts persist near it and wraiths are pushed away. */
 @SuppressWarnings("deprecation")
 public class SoulLanternBlock extends Block {
     public static final int INFLUENCE_RADIUS = 12;
+    public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 16, 12);
 
     public SoulLanternBlock(Properties properties) {
         super(properties);
@@ -28,7 +32,7 @@ public class SoulLanternBlock extends Block {
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!com.stonytark.usefultoolsmod.Config.soulLanternEnabled) {
+        if (!com.stonytark.usefultoolsmod.Config.ectoplasmLanternEnabled) {
             level.scheduleTick(pos, this, 10);
             return;
         }
@@ -49,7 +53,7 @@ public class SoulLanternBlock extends Block {
     }
 
     public static boolean isStabilized(Entity entity) {
-        if (!com.stonytark.usefultoolsmod.Config.soulLanternEnabled) return false;
+        if (!com.stonytark.usefultoolsmod.Config.ectoplasmLanternEnabled) return false;
         BlockPos origin = entity.blockPosition();
         int r = INFLUENCE_RADIUS;
         for (BlockPos pos : BlockPos.betweenClosed(origin.offset(-r, -r, -r), origin.offset(r, r, r))) {
@@ -57,5 +61,10 @@ public class SoulLanternBlock extends Block {
                     && !entity.level().hasNeighborSignal(pos)) return true;
         }
         return false;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 }

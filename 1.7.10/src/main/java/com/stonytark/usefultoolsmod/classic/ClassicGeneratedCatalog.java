@@ -808,6 +808,7 @@ public final class ClassicGeneratedCatalog {
         registerBlock("calcified_amethyst_block");
         registerBlock("coal_dust_block");
         registerBlock("ectoplasm_block");
+        registerBlock("ectoplasm_lantern");
         registerBlock("glacial_shard_block");
         registerBlock("hardened_coal_block");
         registerBlock("hglow_block");
@@ -826,9 +827,9 @@ public final class ClassicGeneratedCatalog {
         registerBlock("rgoldore");
         registerBlock("semblock");
         registerBlock("soblock");
-        registerBlock("soul_lantern");
         registerBlock("spectral_infuser");
-        FMLLog.info("[Useful Tools] Canonical 2.3.0 classic catalog registered: %d items, %d blocks", ITEMS.size(), BLOCKS.size());
+        registerLegacySoulLantern();
+        FMLLog.info("[Useful Tools] Canonical 2.3.1 classic catalog registered: %d items, %d blocks", ITEMS.size(), BLOCKS.size());
     }
 
     private static void registerItem(String id, Item item) {
@@ -838,9 +839,20 @@ public final class ClassicGeneratedCatalog {
     }
 
     private static void registerBlock(String id) {
-        Block block = (id.equals("spectral_infuser") ? new ClassicSpectralInfuserBlock() : id.equals("soul_lantern") ? new ClassicSoulLantern(Material.iron) : id.equals("mining_charge") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName("usefultoolsmod:" + id).setCreativeTab(MCreativeTabs.tabToolsMod);
-        GameRegistry.registerBlock(block, id);
+        Block block = (id.equals("spectral_infuser") ? new ClassicSpectralInfuserBlock() : id.equals("ectoplasm_lantern") ? new ClassicSoulLantern(Material.iron) : id.equals("mining_charge") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName("usefultoolsmod:" + id).setCreativeTab(MCreativeTabs.tabToolsMod);
+        if (id.equals("ectoplasm_lantern") || id.equals("mining_charge")) {
+            GameRegistry.registerBlock(block, ClassicFeatureItemBlock.class, id);
+        } else {
+            GameRegistry.registerBlock(block, id);
+        }
         BLOCKS.put(id, block);
+    }
+
+    /** Deprecated alias retained so pre-rename 1.7.10 worlds still load. */
+    private static void registerLegacySoulLantern() {
+        Block block = new ClassicSoulLantern(Material.iron).setBlockName("soul_lantern").setBlockTextureName("usefultoolsmod:ectoplasm_lantern");
+        GameRegistry.registerBlock(block, ClassicFeatureItemBlock.class, "soul_lantern");
+        BLOCKS.put("soul_lantern", block);
     }
 
     private static final class ClassicBlock extends Block {

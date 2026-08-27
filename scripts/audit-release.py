@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail unless the local 2.3.0 release is complete and internally coherent."""
+"""Fail unless the local 2.3.1 release is complete and internally coherent."""
 
 from __future__ import annotations
 
@@ -10,7 +10,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = ROOT / "release/2.3.0"
+VERSION = "2.3.1"
+RELEASE = ROOT / f"release/{VERSION}"
 MANIFEST = RELEASE / "artifacts.json"
 JAVA_MAJOR = {8: 52, 17: 61, 21: 65, 25: 69}
 
@@ -42,7 +43,7 @@ def metadata_name(minecraft: str, loader: str) -> str:
 def main() -> None:
     manifest = json.loads(MANIFEST.read_text())
     entries = manifest["artifacts"]
-    assert manifest["version"] == "2.3.0"
+    assert manifest["version"] == VERSION
     assert len(entries) == 32, f"expected 32 artifacts, found {len(entries)}"
     expected_files = {entry["file"] for entry in entries}
     actual_files = {path.name for path in RELEASE.glob("*.jar")}
@@ -94,7 +95,7 @@ def main() -> None:
                 continue
 
             metadata_text = jar.read(metadata).decode("utf-8")
-            assert "2.3.0" in metadata_text, f"stale embedded version: {path.name}"
+            assert VERSION in metadata_text, f"stale embedded version: {path.name}"
             classes = [name for name in names if name.endswith(".class")]
             assert classes, f"binary jar has no classes: {path.name}"
             majors = {class_major(jar.read(name), name) for name in classes}
@@ -105,6 +106,27 @@ def main() -> None:
             assert any(name.startswith("assets/usefultoolsmod/") for name in names), (
                 f"missing mod assets: {path.name}"
             )
+            if entry["minecraft"] == "1.7.10":
+                assert "assets/usefultoolsmod/textures/items/soul_lantern.png" in names
+                assert "assets/usefultoolsmod/textures/items/mining_charge.png" in names
+            else:
+                # The Ectoplasm Lantern is canonical in 2.3.1.  The old Soul
+                # Lantern model remains packaged as the world-compatibility
+                # alias, and both placed models must stay bounded and backed.
+                for model_name in (
+                    "ectoplasm_lantern",
+                    "soul_lantern",
+                    "mining_charge",
+                    "mining_charge_lit",
+                ):
+                    model_path = f"assets/usefultoolsmod/models/block/{model_name}.json"
+                    assert model_path in names, f"missing repaired model {model_path}: {path.name}"
+                    model = json.loads(jar.read(model_path))
+                    assert model.get("parent") != "minecraft:block/cube_all" and model.get("elements"), (
+                        f"unrepaired placed model {model_path}: {path.name}"
+                    )
+                charge_state = json.loads(jar.read("assets/usefultoolsmod/blockstates/mining_charge.json"))
+                assert len(charge_state.get("variants", {})) == 12, f"incomplete charge states: {path.name}"
             if entry["minecraft"] != "1.7.10":
                 assert any(name.startswith("data/usefultoolsmod/") for name in names), (
                     f"missing mod data: {path.name}"
@@ -122,10 +144,11 @@ def main() -> None:
                     name for name in data_json
                     if name.split("/")[2] in {"advancement", "advancements"}
                 ]
-                # Fabric data jars retain one additional recipe/advancement
-                # provider entry; the other modern loaders omit that generated
-                # duplicate while exposing the same gameplay content.
-                assert (len(recipes), len(advancements)) in {(688, 854), (690, 854)}, (
+                # 2.3.1 adds one migration recipe for the legacy Soul Lantern
+                # alias. Some data-provider combinations retain two additional
+                # generated recipe entries while exposing the same gameplay
+                # content, so the exact accepted totals are 689 and 691.
+                assert (len(recipes), len(advancements)) in {(689, 854), (691, 854)}, (
                     f"unexpected data counts ({len(recipes)}, {len(advancements)}): {path.name}"
                 )
 

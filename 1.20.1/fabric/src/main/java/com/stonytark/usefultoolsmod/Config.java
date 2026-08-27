@@ -53,7 +53,7 @@ public class Config {
     // --- Ghost + Ectoplasm ---
     public static boolean ghostEnabled = true;
     public static boolean wraithEnabled = true;
-    public static boolean soulLanternEnabled = true;
+    public static boolean ectoplasmLanternEnabled = true;
     public static boolean spectralResonatorEnabled = true;
     public static boolean miningChargeEnabled = true;
     public static boolean stickyDynamiteEnabled = true;
@@ -233,6 +233,9 @@ public class Config {
                 if (!isConfigField(field)) continue;
                 String canonical = canonicalKey(field.getName());
                 String key = root.has(canonical) ? canonical : field.getName();
+                if (!root.has(key) && canonical.equals("ectoplasmLanternEnabled") && root.has("soulLanternEnabled")) {
+                    key = "soulLanternEnabled";
+                }
                 if (!root.has(key)) continue;
                 try {
                     if (field.getType() == boolean.class) field.setBoolean(null, root.get(key).getAsBoolean());
@@ -285,6 +288,7 @@ public class Config {
     }
 
     private static String canonicalKey(String name) {
+        if (name.equals("ectoplasmLanternEnabled")) return "ectoplasmLanternEnabled";
         if (name.equals("pointedDripstoneEnabled")) return "dripstoneEnabled";
         if (name.equals("pointedDripstoneEffects")) return "dripstoneEffects";
         return name;

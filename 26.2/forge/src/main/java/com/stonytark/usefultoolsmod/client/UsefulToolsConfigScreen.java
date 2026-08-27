@@ -109,6 +109,7 @@ public class UsefulToolsConfigScreen extends Screen {
             String path = sectionPath + Character.toUpperCase(key.charAt(0)) + key.substring(1);
             Object val = e.getValue();
             if (val instanceof ForgeConfigSpec.ConfigValue<?> cv) {
+                if (isHiddenMigrationKey(path)) continue;
                 list.addRow(makeRow(cv, canonicalKey(path)));
             } else if (val instanceof UnmodifiableConfig sub) {
                 list.addHeader(Component.literal("§7" + prettify(key)));
@@ -117,12 +118,17 @@ public class UsefulToolsConfigScreen extends Screen {
         }
     }
 
+    private static boolean isHiddenMigrationKey(String key) {
+        return key.equals("spectralUtilitiesSoulLanternEnabled");
+    }
+
     private static String canonicalKey(String key) {
         if (ConfigDescriptors.values().containsKey(key)) return key;
         String normalized = key
                 .replaceFirst("^spectralUtilitiesWraithEnabled", "wraithEnabled")
                 .replaceFirst("^spectralUtilitiesWraithSpawnChance", "wraithSpawnChance")
-                .replaceFirst("^spectralUtilitiesSoulLanternEnabled", "soulLanternEnabled")
+                .replaceFirst("^spectralUtilitiesEctoplasmLanternEnabled", "ectoplasmLanternEnabled")
+                .replaceFirst("^spectralUtilitiesSoulLanternEnabled", "ectoplasmLanternEnabled")
                 .replaceFirst("^spectralUtilitiesSpectralResonatorEnabled", "spectralResonatorEnabled")
                 .replaceFirst("^controlledExplosivesMiningChargeEnabled", "miningChargeEnabled")
                 .replaceFirst("^controlledExplosivesStickyDynamiteEnabled", "stickyDynamiteEnabled")

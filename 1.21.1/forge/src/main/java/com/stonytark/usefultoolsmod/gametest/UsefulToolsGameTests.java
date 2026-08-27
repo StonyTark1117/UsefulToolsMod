@@ -39,8 +39,8 @@ public final class UsefulToolsGameTests {
                 .filter(id -> UsefultoolsMod.MOD_ID.equals(id.getNamespace())).count();
         long entities = BuiltInRegistries.ENTITY_TYPE.keySet().stream()
                 .filter(id -> UsefultoolsMod.MOD_ID.equals(id.getNamespace())).count();
-        helper.assertValueEqual(blocks, 23L, "registered block count");
-        helper.assertValueEqual(items, 661L, "registered item count including block items");
+        helper.assertValueEqual(blocks, 24L, "registered block count");
+        helper.assertValueEqual(items, 662L, "registered item count including block items");
         helper.assertValueEqual(entities, 4L, "registered entity count");
         helper.assertTrue(helper.getLevel().getServer().getRecipeManager().byKey(
                 ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser")).isPresent(),
@@ -68,8 +68,10 @@ public final class UsefulToolsGameTests {
     @GameTest(template = "usefultoolsmod:gametest_platform", timeoutTicks = 100)
     public static void entitiesInstantiate(GameTestHelper helper) {
         helper.spawnWithNoFreeWill(ModEntities.GHOST.get(), new BlockPos(1, 1, 1));
+        helper.spawnWithNoFreeWill(ModEntities.WRAITH.get(), new BlockPos(3, 1, 1));
         helper.spawn(ModEntities.GRENADE.get(), new BlockPos(2, 1, 1));
         helper.assertEntityPresent(ModEntities.GHOST.get());
+        helper.assertEntityPresent(ModEntities.WRAITH.get());
         helper.assertEntityPresent(ModEntities.GRENADE.get());
         helper.succeed();
     }
@@ -108,13 +110,16 @@ public final class UsefulToolsGameTests {
     @GameTest(template = "usefultoolsmod:gametest_platform", timeoutTicks = 100)
     public static void ghostAndDamageContracts(GameTestHelper helper) {
         GhostEntity ghost = (GhostEntity) helper.spawnWithNoFreeWill(ModEntities.GHOST.get(), new BlockPos(1, 1, 1));
+        var wraith = (com.stonytark.usefultoolsmod.entity.custom.WraithEntity) helper.spawnWithNoFreeWill(ModEntities.WRAITH.get(), new BlockPos(3, 1, 1));
         Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         var source = helper.getLevel().damageSources().playerAttack(player);
         helper.assertTrue(ghost.isInvulnerableTo(source), "ordinary weapons must not damage ghosts");
+        helper.assertTrue(wraith.isInvulnerableTo(source), "ordinary weapons must not damage wraiths");
         ItemStack infused = new ItemStack(Items.IRON_SWORD);
         EctoplasmInfusionHelper.setInfused(infused, true);
         player.setItemInHand(InteractionHand.MAIN_HAND, infused);
         helper.assertFalse(ghost.isInvulnerableTo(source), "infused weapons must damage ghosts");
+        helper.assertFalse(wraith.isInvulnerableTo(source), "infused weapons must damage wraiths");
         helper.assertTrue(ghost.isFood(new ItemStack(ModItems.ECTOPLASM.get())), "ectoplasm must breed ghosts");
         helper.assertTrue(ghost.getBreedOffspring(helper.getLevel(), ghost) instanceof GhostEntity,
                 "ghost breeding must create a ghost");

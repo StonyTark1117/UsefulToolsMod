@@ -104,7 +104,8 @@ class ConfigContractTests(unittest.TestCase):
                 for old, new in (
                     ("spectralUtilitiesWraithEnabled", "wraithEnabled"),
                     ("spectralUtilitiesWraithSpawnChance", "wraithSpawnChance"),
-                    ("spectralUtilitiesSoulLanternEnabled", "soulLanternEnabled"),
+                    ("spectralUtilitiesEctoplasmLanternEnabled", "ectoplasmLanternEnabled"),
+                    ("spectralUtilitiesSoulLanternEnabled", "ectoplasmLanternEnabled"),
                     ("spectralUtilitiesSpectralResonatorEnabled", "spectralResonatorEnabled"),
                     ("controlledExplosivesMiningChargeEnabled", "miningChargeEnabled"),
                     ("controlledExplosivesStickyDynamiteEnabled", "stickyDynamiteEnabled"),
@@ -199,6 +200,18 @@ class ConfigContractTests(unittest.TestCase):
                 text = (ROOT / relative).read_text(encoding="utf-8")
                 self.assertIn("ConfigDescriptors.get", text)
                 self.assertIn(".tooltip()", text)
+
+    def test_legacy_soul_lantern_migration_key_is_not_a_second_ui_control(self) -> None:
+        for root in MODERN_SOURCE_ROOTS:
+            if root.endswith("/fabric"):
+                continue
+            relative = (
+                f"{root}/src/main/java/com/stonytark/usefultoolsmod/client/UsefulToolsConfigScreen.java"
+            )
+            with self.subTest(source=relative):
+                text = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertIn("isHiddenMigrationKey", text)
+                self.assertIn('key.equals("spectralUtilitiesSoulLanternEnabled")', text)
                 self.assertIn(".reloadRequired()", text)
 
     def test_standalone_forge_1211_registers_its_builtin_screen(self) -> None:

@@ -1,8 +1,8 @@
 # Minecraft 1.7.10 v1.6 registry migration
 
-The published v1.6 implementation passed each unlocalized name to Forge as its registry path. Useful Tools 2.3.0 therefore retains every exact mixed-case `item.` and `tile.` path below. It also handles prefix-free variants through `FMLMissingMappingsEvent`; these aliases remap to the retained object and never discard world data.
+The published v1.6 implementation passed each unlocalized name to Forge as its registry path. Useful Tools 2.3.1 therefore retains every exact mixed-case `item.` and `tile.` path below. It also handles prefix-free variants through `FMLMissingMappingsEvent`; these aliases remap to the retained object and never discard world data.
 
-| Kind | Published/retained registry path | Accepted prefix-free alias | 2.3.0 status |
+| Kind | Published/retained registry path | Accepted prefix-free alias | 2.3.1 status |
 |---|---|---|---|
 | Item | `usefultoolsmod:item.rGold` | `usefultoolsmod:rGold` | retained legacy object |
 | Item | `usefultoolsmod:item.rGPick` | `usefultoolsmod:rGPick` | retained legacy object |

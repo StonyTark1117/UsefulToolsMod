@@ -10,6 +10,7 @@ import net.minecraft.resources.Identifier;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.custom.SpectralInfuserBlock;
 import com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock;
+import com.stonytark.usefultoolsmod.block.custom.EctoplasmLanternBlock;
 import com.stonytark.usefultoolsmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -115,8 +116,11 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)
                     .lightLevel(state -> state.getValue(SpectralInfuserBlock.LIT) ? 13 : 0)));
-    public static final DeferredHolder<Block, Block> SOUL_LANTERN=registerBlock(GeneratedRegistrationIds.Blocks.SOUL_LANTERN,
-            props->new Block(props.strength(3).sound(SoundType.LANTERN).lightLevel(state->12)));
+    public static final DeferredHolder<Block, Block> ECTOPLASM_LANTERN=registerBlock(GeneratedRegistrationIds.Blocks.ECTOPLASM_LANTERN,
+            props->new EctoplasmLanternBlock(props.strength(3).sound(SoundType.LANTERN).lightLevel(state->12).noOcclusion()));
+    /** Deprecated registry alias retained for pre-rename worlds and inventories. */
+    public static final DeferredHolder<Block, Block> LEGACY_SOUL_LANTERN=registerBlock("soul_lantern",
+            props->new EctoplasmLanternBlock(props.strength(3).sound(SoundType.LANTERN).lightLevel(state->12).noOcclusion()));
     public static final DeferredHolder<Block, Block> MINING_CHARGE=registerBlock(GeneratedRegistrationIds.Blocks.MINING_CHARGE,
             props->new MiningChargeBlock(props.strength(1).sound(SoundType.WOOL).noOcclusion()));
 

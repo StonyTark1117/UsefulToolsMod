@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.3.1 - unreleased
+
+- Renamed the former Soul Lantern to Ectoplasm Lantern. New content uses
+  `usefultoolsmod:ectoplasm_lantern`; `usefultoolsmod:soul_lantern` remains a
+  deprecated save-compatibility alias.
+- Replaced the transparent `cube_all` Ectoplasm Lantern and Mining Charge blocks with bounded, solid-backed models on all modern targets; added state-complete charge orientation and armed-indicator variants.
+- Split modern inventory sprites from placed-block geometry and restored bounded selection/collision plus non-occluding rendering, preventing adjacent floors and walls from being culled behind transparent pixels.
+- Added the equivalent Forge 1.7.10 repair with opaque generated block faces, bounded legacy blocks, and separate original inventory sprites.
+- Added Wraith WTHIT coverage wherever WTHIT is supported, including live Ectoplasm Lantern suppression and ectoplasm-infused weapon eligibility; WTHIT remains optional.
+- Added a 16-target static resolver gate and expanded release-JAR checks for blockstate, model, texture, and item-model completeness.
+- Preserved all registry IDs, recipes, configurations, save formats, and published compatibility bounds. No new 2.3.1 artifact is published until manual visual approval.
+
 ## 2.3.0 - 2026-08-25
 
 - Consolidated active, buildable sources for Forge, Fabric, and NeoForge across Minecraft 1.20.1, 1.20.2, 1.21.1, 26.1.2, and 26.2, plus Forge 1.7.10.
@@ -13,7 +25,7 @@
 - Added 60 dependency-free contract/unit gates, a full modern datagen reproducibility gate, and loader-native GameTests on all 15 modern targets (96 required invocations) for registration, recipes, tiers, Spectral Infuser processing/config gating, Ghost lifecycle and armor interaction, explosives, effects, and worldgen.
 - Verified every ordinary Fabric release JAR unchanged on Quilt Loader 0.30.0. The 26.2 metadata now distinguishes its 0.19.3 build dependency from the compatible 0.19.2 runtime floor.
 - Recovered the published 1.7.10 v1.6 implementation into a reproducible Java 8/Forge 10.13.4.1614 build, then added generated adapters for all 633 canonical items, 21 blocks, 87 tool materials, 45 armor materials, 672 crafting recipes, five furnace transforms, and 116 native config entries. Added the classic Ghost, spawn egg/renderer, Spectral Infuser tile/container/GUI, infusion NBT, damage/target bridges, passive effects, substitution manifest, achievements, Java-8 semantic tests, automated server/client scenarios, and published-v1.6 world migration acceptance.
-- Added 16/16 isolated server and client gates, 40 absent/present optional-integration profiles, representative 2.2.2 Forge/Fabric/NeoForge world/config upgrades, visual acceptance, and repeatable Quilt 0.30.0 certification for all five unchanged Fabric jars.
+- Added 16/16 isolated server and client gates, 42 absent/present optional-integration profiles, representative 2.2.2 Forge/Fabric/NeoForge world/config upgrades, visual acceptance, and repeatable Quilt 0.30.0 certification for all five unchanged Fabric jars.
 - Corrected late Forge/NeoForge config-reload callbacks after spec unload and removed bedrock from the 1.21+/26.x SOB incorrect-mining tag so WTHIT can compare the custom tier hierarchy without error.
 - Replaced the 1.21.1 Forge metadata's ineffective `[0,)` Forge/JavaFML floors with the supported Forge 52 major range and verified the rebuilt target in a fresh isolated server world.
 

@@ -28,7 +28,8 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.SOBLOCK);
         dropSelf(ModBlocks.LBLOCK);
         dropSelf(ModBlocks.SPECTRAL_INFUSER);
-        dropSelf(ModBlocks.SOUL_LANTERN);
+        dropSelf(ModBlocks.ECTOPLASM_LANTERN);
+        dropSelf(ModBlocks.LEGACY_SOUL_LANTERN);
         dropSelf(ModBlocks.MINING_CHARGE);
         dropSelf(ModBlocks.HGLOW_BLOCK);
         dropSelf(ModBlocks.RAW_RGOLD_BLOCK);

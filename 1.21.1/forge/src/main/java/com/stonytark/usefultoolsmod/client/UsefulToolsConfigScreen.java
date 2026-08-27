@@ -49,9 +49,14 @@ public final class UsefulToolsConfigScreen extends Screen {
                     : section + Character.toUpperCase(entry.getKey().charAt(0)) + entry.getKey().substring(1);
             if (entry.getValue() instanceof UnmodifiableConfig nested) flatten(key, nested);
             else if (entry.getValue() instanceof ForgeConfigSpec.ConfigValue<?> value) {
+                if (isHiddenMigrationKey(key)) continue;
                 options.add(new Option(ConfigDescriptors.get(canonicalKey(key)), value));
             }
         }
+    }
+
+    private static boolean isHiddenMigrationKey(String key) {
+        return key.equals("spectralUtilitiesSoulLanternEnabled");
     }
 
     private static String canonicalKey(String key) {
@@ -59,7 +64,8 @@ public final class UsefulToolsConfigScreen extends Screen {
         String normalized = key
                 .replaceFirst("^spectralUtilitiesWraithEnabled", "wraithEnabled")
                 .replaceFirst("^spectralUtilitiesWraithSpawnChance", "wraithSpawnChance")
-                .replaceFirst("^spectralUtilitiesSoulLanternEnabled", "soulLanternEnabled")
+                .replaceFirst("^spectralUtilitiesEctoplasmLanternEnabled", "ectoplasmLanternEnabled")
+                .replaceFirst("^spectralUtilitiesSoulLanternEnabled", "ectoplasmLanternEnabled")
                 .replaceFirst("^spectralUtilitiesSpectralResonatorEnabled", "spectralResonatorEnabled")
                 .replaceFirst("^controlledExplosivesMiningChargeEnabled", "miningChargeEnabled")
                 .replaceFirst("^controlledExplosivesStickyDynamiteEnabled", "stickyDynamiteEnabled")

@@ -51,6 +51,8 @@ public class Config {
                     key = "pointedDripstoneEnabled";
                 } else if (!root.has(key) && key.equals("dripstoneEffects") && root.has("pointedDripstoneEffects")) {
                     key = "pointedDripstoneEffects";
+                } else if (!root.has(key) && key.equals("ectoplasmLanternEnabled") && root.has("soulLanternEnabled")) {
+                    key = "soulLanternEnabled";
                 }
                 if (!root.has(key)) continue;
                 try {
@@ -184,7 +186,7 @@ public class Config {
     public static boolean overpowerEnabled = true;
     public static boolean ghostEnabled = true;
     public static boolean wraithEnabled = true;
-    public static boolean soulLanternEnabled = true;
+    public static boolean ectoplasmLanternEnabled = true;
     public static boolean spectralResonatorEnabled = true;
     public static boolean miningChargeEnabled = true;
     public static boolean stickyDynamiteEnabled = true;

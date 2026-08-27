@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Forge 1.7.10 canonical catalog adapter from the 2.3.0 manifest."""
+"""Generate the Forge 1.7.10 canonical catalog adapter from the 2.3.1 manifest."""
 
 from __future__ import annotations
 
@@ -168,6 +168,8 @@ def parse_armor_materials() -> dict[str, tuple[str, int, tuple[int, int, int, in
 
 
 def title(item_id: str) -> str:
+    if item_id == "ectoplasm_lantern":
+        return "Ectoplasm Lantern"
     replacements = {
         "ecto": "Ectoplasm",
         "fni": "Flint-Iron",
@@ -285,7 +287,9 @@ def render_java() -> tuple[str, list[str], list[str]]:
         )
     for block_id in block_ids:
         lines.append(f'        registerBlock("{block_id}");')
-    lines.append('        FMLLog.info("[Useful Tools] Canonical 2.3.0 classic catalog registered: %d items, %d blocks", ITEMS.size(), BLOCKS.size());')
+    if "ectoplasm_lantern" in block_ids:
+        lines.append("        registerLegacySoulLantern();")
+    lines.append('        FMLLog.info("[Useful Tools] Canonical 2.3.1 classic catalog registered: %d items, %d blocks", ITEMS.size(), BLOCKS.size());')
 
     lines.extend(
         [
@@ -298,9 +302,20 @@ def render_java() -> tuple[str, list[str], list[str]]:
             "    }",
             "",
             "    private static void registerBlock(String id) {",
-            "        Block block = (id.equals(\"spectral_infuser\") ? new ClassicSpectralInfuserBlock() : id.equals(\"soul_lantern\") ? new ClassicSoulLantern(Material.iron) : id.equals(\"mining_charge\") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName(\"usefultoolsmod:\" + id).setCreativeTab(MCreativeTabs.tabToolsMod);",
-            "        GameRegistry.registerBlock(block, id);",
+            "        Block block = (id.equals(\"spectral_infuser\") ? new ClassicSpectralInfuserBlock() : id.equals(\"ectoplasm_lantern\") ? new ClassicSoulLantern(Material.iron) : id.equals(\"mining_charge\") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName(\"usefultoolsmod:\" + id).setCreativeTab(MCreativeTabs.tabToolsMod);",
+            "        if (id.equals(\"ectoplasm_lantern\") || id.equals(\"mining_charge\")) {",
+            "            GameRegistry.registerBlock(block, ClassicFeatureItemBlock.class, id);",
+            "        } else {",
+            "            GameRegistry.registerBlock(block, id);",
+            "        }",
             "        BLOCKS.put(id, block);",
+            "    }",
+            "",
+            "    /** Deprecated alias retained so pre-rename 1.7.10 worlds still load. */",
+            "    private static void registerLegacySoulLantern() {",
+            "        Block block = new ClassicSoulLantern(Material.iron).setBlockName(\"soul_lantern\").setBlockTextureName(\"usefultoolsmod:ectoplasm_lantern\");",
+            "        GameRegistry.registerBlock(block, ClassicFeatureItemBlock.class, \"soul_lantern\");",
+            "        BLOCKS.put(\"soul_lantern\", block);",
             "    }",
             "",
             "    private static final class ClassicBlock extends Block {",
@@ -452,9 +467,16 @@ def render_config() -> str:
         comment = option["tooltip"].replace('"', '\\"')
         if option["type"] == "boolean":
             default = str(option["default"]).lower()
-            lines.append(
-                f'        VALUES.put("{key}", configuration.get("{category}", "{key}", {default}, "{comment}").getBoolean({default}));'
-            )
+            if key == "ectoplasmLanternEnabled":
+                lines.extend([
+                    f'        boolean ectoplasmLanternEnabled = configuration.get("{category}", "{key}", {default}, "{comment}").getBoolean({default});',
+                    f'        if (configuration.hasKey("{category}", "soulLanternEnabled")) ectoplasmLanternEnabled &= configuration.get("{category}", "soulLanternEnabled", true).getBoolean(true);',
+                    '        VALUES.put("ectoplasmLanternEnabled", ectoplasmLanternEnabled);',
+                ])
+            else:
+                lines.append(
+                    f'        VALUES.put("{key}", configuration.get("{category}", "{key}", {default}, "{comment}").getBoolean({default}));'
+                )
         else:
             default = option["default"]
             lines.append(
@@ -495,9 +517,9 @@ def render_migration_table() -> str:
     lines = [
         "# Minecraft 1.7.10 v1.6 registry migration",
         "",
-        "The published v1.6 implementation passed each unlocalized name to Forge as its registry path. Useful Tools 2.3.0 therefore retains every exact mixed-case `item.` and `tile.` path below. It also handles prefix-free variants through `FMLMissingMappingsEvent`; these aliases remap to the retained object and never discard world data.",
+        "The published v1.6 implementation passed each unlocalized name to Forge as its registry path. Useful Tools 2.3.1 therefore retains every exact mixed-case `item.` and `tile.` path below. It also handles prefix-free variants through `FMLMissingMappingsEvent`; these aliases remap to the retained object and never discard world data.",
         "",
-        "| Kind | Published/retained registry path | Accepted prefix-free alias | 2.3.0 status |",
+        "| Kind | Published/retained registry path | Accepted prefix-free alias | 2.3.1 status |",
         "|---|---|---|---|",
     ]
     lines.extend(
@@ -531,10 +553,22 @@ def sync_assets(item_ids: list[str], block_ids: list[str]) -> None:
             shutil.copyfile(source, item_target / source.name)
     for block_id in block_ids:
         source = MODERN_ASSETS / "textures/block" / f"{block_id}.png"
+        if not source.exists() and block_id == "ectoplasm_lantern":
+            # The old filename remains the compatibility fallback for the
+            # modern alias; the classic canonical asset is emitted under the
+            # new ID.
+            source = MODERN_ASSETS / "textures/block/soul_lantern.png"
         if not source.exists() and block_id == "spectral_infuser":
             source = MODERN_ASSETS / "textures/block/spectral_infuser_side.png"
         if not source.exists():
             raise FileNotFoundError(f"missing classic block texture source: {source}")
+        if block_id in {"ectoplasm_lantern", "mining_charge"}:
+            shutil.copyfile(source, item_target / f"{block_id}.png")
+            source = ROOT / "catalog/classic_block_textures" / f"{block_id}.png"
+            if not source.exists() and block_id == "ectoplasm_lantern":
+                source = ROOT / "catalog/classic_block_textures/soul_lantern.png"
+            if not source.exists():
+                raise FileNotFoundError(f"missing opaque classic block texture source: {source}")
         shutil.copyfile(source, block_target / f"{block_id}.png")
     for source in (MODERN_ASSETS / "textures/models/armor").glob("*.png"):
         shutil.copyfile(source, armor_target / source.name)
@@ -548,10 +582,13 @@ def sync_assets(item_ids: list[str], block_ids: list[str]) -> None:
 
 
 def sync_language(item_ids: list[str], block_ids: list[str]) -> None:
-    start = "# BEGIN GENERATED 2.3.0 CATALOG"
-    end = "# END GENERATED 2.3.0 CATALOG"
+    start = "# BEGIN GENERATED 2.3.1 CATALOG"
+    end = "# END GENERATED 2.3.1 CATALOG"
     existing = LANG.read_text(encoding="utf-8") if LANG.exists() else ""
-    existing = re.sub(rf"\n?{re.escape(start)}.*?{re.escape(end)}\n?", "\n", existing, flags=re.S).rstrip()
+    existing = re.sub(
+        r"\n?# BEGIN GENERATED [^\n]+ CATALOG.*?# END GENERATED [^\n]+ CATALOG\n?",
+        "\n", existing, flags=re.S,
+    ).rstrip()
     generated = [start]
     generated.extend(f"item.{item_id}.name={title(item_id)}" for item_id in item_ids)
     generated.extend(f"tile.{block_id}.name={title(block_id)}" for block_id in block_ids)

@@ -36,8 +36,8 @@ public final class UsefulToolsGameTests implements FabricGameTest {
         long blocks = Registries.BLOCK.getIds().stream().filter(UsefulToolsGameTests::isOurs).count();
         long items = Registries.ITEM.getIds().stream().filter(UsefulToolsGameTests::isOurs).count();
         long entities = Registries.ENTITY_TYPE.getIds().stream().filter(UsefulToolsGameTests::isOurs).count();
-        context.assertTrue(blocks == 23L, "registered block count");
-        context.assertTrue(items == 661L, "registered item count including block items");
+        context.assertTrue(blocks == 24L, "registered block count");
+        context.assertTrue(items == 662L, "registered item count including block items");
         context.assertTrue(entities == 4L, "registered entity count");
         context.assertTrue(context.getWorld().getServer().getRecipeManager()
                 .get(Identifier.of(UsefultoolsMod.MOD_ID, "spectral_infuser")).isPresent(),
@@ -64,8 +64,10 @@ public final class UsefulToolsGameTests implements FabricGameTest {
     @GameTest(templateName = TEMPLATE, tickLimit = 100)
     public void entitiesInstantiate(TestContext context) {
         context.spawnMob(ModEntities.GHOST, new BlockPos(1, 1, 1));
+        context.spawnMob(ModEntities.WRAITH, new BlockPos(3, 1, 1));
         context.spawnEntity(ModEntities.GRENADE, new BlockPos(2, 1, 1));
         context.expectEntity(ModEntities.GHOST);
+        context.expectEntity(ModEntities.WRAITH);
         context.expectEntity(ModEntities.GRENADE);
         context.complete();
     }
@@ -106,13 +108,16 @@ public final class UsefulToolsGameTests implements FabricGameTest {
     @GameTest(templateName = TEMPLATE, tickLimit = 100)
     public void ghostAndDamageContracts(TestContext context) {
         GhostEntity ghost = context.spawnMob(ModEntities.GHOST, new BlockPos(1, 1, 1));
+        var wraith = context.spawnMob(ModEntities.WRAITH, new BlockPos(3, 1, 1));
         PlayerEntity player = context.createMockPlayer(GameMode.SURVIVAL);
         DamageSource source = context.getWorld().getDamageSources().playerAttack(player);
         context.assertTrue(ghost.isInvulnerableTo(source), "ordinary weapons must not damage ghosts");
+        context.assertTrue(wraith.isInvulnerableTo(source), "ordinary weapons must not damage wraiths");
         ItemStack infused = new ItemStack(Items.IRON_SWORD);
         EctoplasmInfusionHelper.setInfused(infused, true);
         player.setStackInHand(Hand.MAIN_HAND, infused);
         context.assertFalse(ghost.isInvulnerableTo(source), "infused weapons must damage ghosts");
+        context.assertFalse(wraith.isInvulnerableTo(source), "infused weapons must damage wraiths");
         context.assertTrue(ghost.isBreedingItem(new ItemStack(ModItems.ECTOPLASM)), "ectoplasm must breed ghosts");
         context.assertTrue(ghost.createChild(context.getWorld(), ghost) instanceof GhostEntity,
                 "ghost breeding must create a ghost");

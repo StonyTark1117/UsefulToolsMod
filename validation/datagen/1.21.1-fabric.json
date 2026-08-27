@@ -2,30 +2,28 @@
   "target": "1.21.1-fabric",
   "tasks": [
     {
-      "task": ":fabric:runDatagen",
+      "task": "runDatagen",
       "command": [
         "./gradlew",
         "--no-daemon",
         "--max-workers=1",
-        ":fabric:runDatagen"
+        "runDatagen"
       ],
       "completed": true,
-      "forced_launcher_cleanup": true,
+      "forced_launcher_cleanup": false,
       "timed_out": false,
       "fatal_error": false,
-      "exit_code": 143,
+      "exit_code": 0,
       "remaining_owned_pids": [],
-      "log": "validation/datagen/1.21.1-fabric-fabric-runDatagen.log",
+      "log": "validation/datagen/1.21.1-fabric-runDatagen.log",
       "success": true
     }
   ],
   "resource_roots": [
-    "common/src/main/resources"
+    "src/main/generated"
   ],
-  "generated_roots": [
-    "fabric/build/datagen-output"
-  ],
-  "generated_file_count": 3606,
+  "generated_roots": [],
+  "generated_file_count": 3598,
   "drift": {
     "added": [],
     "removed": [],

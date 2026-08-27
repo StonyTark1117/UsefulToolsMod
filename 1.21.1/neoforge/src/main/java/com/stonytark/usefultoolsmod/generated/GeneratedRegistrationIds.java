@@ -1316,6 +1316,7 @@ public final class GeneratedRegistrationIds {
         public static final String CALCIFIED_AMETHYST_BLOCK = "calcified_amethyst_block";
         public static final String COAL_DUST_BLOCK = "coal_dust_block";
         public static final String ECTOPLASM_BLOCK = "ectoplasm_block";
+        public static final String ECTOPLASM_LANTERN = "ectoplasm_lantern";
         public static final String GLACIAL_SHARD_BLOCK = "glacial_shard_block";
         public static final String HARDENED_COAL_BLOCK = "hardened_coal_block";
         public static final String HGLOW_BLOCK = "hglow_block";
@@ -1334,13 +1335,13 @@ public final class GeneratedRegistrationIds {
         public static final String RGOLDORE = "rgoldore";
         public static final String SEMBLOCK = "semblock";
         public static final String SOBLOCK = "soblock";
-        public static final String SOUL_LANTERN = "soul_lantern";
         public static final String SPECTRAL_INFUSER = "spectral_infuser";
 
         public static final String[] ALL = {
             CALCIFIED_AMETHYST_BLOCK,
             COAL_DUST_BLOCK,
             ECTOPLASM_BLOCK,
+            ECTOPLASM_LANTERN,
             GLACIAL_SHARD_BLOCK,
             HARDENED_COAL_BLOCK,
             HGLOW_BLOCK,
@@ -1359,7 +1360,6 @@ public final class GeneratedRegistrationIds {
             RGOLDORE,
             SEMBLOCK,
             SOBLOCK,
-            SOUL_LANTERN,
             SPECTRAL_INFUSER,
         };
     }

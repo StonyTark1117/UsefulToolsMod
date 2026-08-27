@@ -12,7 +12,9 @@ public final class ClassicFeatureRegistry {
     public static Item spectralResonator;
     public static Item stickyDynamite;
     public static Item remoteDetonator;
-    public static Block soulLantern;
+    public static Block ectoplasmLantern;
+    /** Deprecated registry alias retained for worlds saved before the rename. */
+    public static Block legacySoulLantern;
     public static Block miningCharge;
 
     private ClassicFeatureRegistry() {}
@@ -23,7 +25,8 @@ public final class ClassicFeatureRegistry {
         spectralResonator = ClassicGeneratedCatalog.ITEMS.get("spectral_resonator");
         stickyDynamite = ClassicGeneratedCatalog.ITEMS.get("sticky_dynamite");
         remoteDetonator = ClassicGeneratedCatalog.ITEMS.get("remote_detonator");
-        soulLantern = ClassicGeneratedCatalog.BLOCKS.get("soul_lantern");
+        ectoplasmLantern = ClassicGeneratedCatalog.BLOCKS.get("ectoplasm_lantern");
+        legacySoulLantern = ClassicGeneratedCatalog.BLOCKS.get("soul_lantern");
         miningCharge = ClassicGeneratedCatalog.BLOCKS.get("mining_charge");
         cpw.mods.fml.common.registry.GameRegistry.registerTileEntity(TileMiningCharge.class, "usefultoolsmod:mining_charge");
 

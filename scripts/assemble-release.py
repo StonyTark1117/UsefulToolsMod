@@ -13,7 +13,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = ROOT / "release/2.3.0"
+VERSION = "2.3.1"
+RELEASE = ROOT / f"release/{VERSION}"
 
 TARGETS = [
     ("1.7.10", "forge", "8", "1.7.10/build/libs"),
@@ -109,7 +110,7 @@ def main() -> None:
         sources = choose(source_dir, True)
         bounds = dependency_bounds(binary, minecraft, loader)
         assert_architectury_free(binary, bounds)
-        base = f"usefultoolsmod-2.3.0-{minecraft}-{loader}"
+        base = f"usefultoolsmod-{VERSION}-{minecraft}-{loader}"
         for source, suffix, kind in ((binary, ".jar", "binary"), (sources, "-sources.jar", "sources")):
             destination = RELEASE / f"{base}{suffix}"
             shutil.copy2(source, destination)
@@ -125,7 +126,7 @@ def main() -> None:
                 "bytes": destination.stat().st_size,
                 "sha256": digest(destination),
             })
-    (RELEASE / "artifacts.json").write_text(json.dumps({"version": "2.3.0", "artifacts": entries}, indent=2) + "\n")
+    (RELEASE / "artifacts.json").write_text(json.dumps({"version": VERSION, "artifacts": entries}, indent=2) + "\n")
     (RELEASE / "SHA256SUMS").write_text("".join(f"{e['sha256']}  {e['file']}\n" for e in entries))
     print(f"assembled {len(entries)} files in {RELEASE}")
     subprocess.run([sys.executable, str(ROOT / "scripts/audit-release.py")], check=True)

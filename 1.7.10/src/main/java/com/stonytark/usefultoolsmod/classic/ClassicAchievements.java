@@ -34,11 +34,11 @@ public class ClassicAchievements {
         dimensionalOre = blockAchievement("dimensional_ore", -3, 0, "rgold_end_ore", null);
         encounterWraith = achievement("encounter_wraith", -3, 5, "wraith_spawn_egg", ectoplasm);
         condensedEctoplasm = achievement("condensed_ectoplasm", -1, 5, "condensed_ectoplasm", encounterWraith);
-        stabilizeGhost = blockAchievement("stabilize_ghost", 1, 5, "soul_lantern", ghostEgg);
+        stabilizeGhost = blockAchievement("stabilize_ghost", 1, 5, "ectoplasm_lantern", ghostEgg);
         locateSpirit = achievement("locate_spirit", 3, 5, "spectral_resonator", stabilizeGhost);
         remoteFire = achievement("remote_fire", 5, 3, "remote_detonator", explosives);
         precisionExcavation = blockAchievement("precision_excavation", 5, 1, "mining_charge", remoteFire);
-        AchievementPage.registerAchievementPage(new AchievementPage("Useful Tools 2.3.0",
+        AchievementPage.registerAchievementPage(new AchievementPage("Useful Tools 2.3.1",
                 canonicalTool, canonicalArmor, spectralInfuser, infusedItem,
                 ectoplasm, ghostEgg, explosives, dimensionalOre, encounterWraith, condensedEctoplasm,
                 stabilizeGhost, locateSpirit, remoteFire, precisionExcavation));

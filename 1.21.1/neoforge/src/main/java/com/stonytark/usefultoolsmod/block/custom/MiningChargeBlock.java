@@ -14,6 +14,7 @@ import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -26,6 +27,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import com.mojang.serialization.MapCodec;
 
@@ -34,6 +37,12 @@ public class MiningChargeBlock extends BaseEntityBlock {
     public static final MapCodec<MiningChargeBlock> CODEC = simpleCodec(MiningChargeBlock::new);
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
+    private static final VoxelShape DOWN_SHAPE = Block.box(3, 0, 3, 13, 5.5, 13);
+    private static final VoxelShape UP_SHAPE = Block.box(3, 10.5, 3, 13, 16, 13);
+    private static final VoxelShape NORTH_SHAPE = Block.box(3, 3, 0, 13, 13, 5.5);
+    private static final VoxelShape SOUTH_SHAPE = Block.box(3, 3, 10.5, 13, 13, 16);
+    private static final VoxelShape WEST_SHAPE = Block.box(0, 3, 3, 5.5, 13, 13);
+    private static final VoxelShape EAST_SHAPE = Block.box(10.5, 3, 3, 16, 13, 13);
 
     public MiningChargeBlock(Properties properties) {
         super(properties);
@@ -47,6 +56,16 @@ public class MiningChargeBlock extends BaseEntityBlock {
         return defaultBlockState().setValue(FACING, context.getClickedFace().getOpposite());
     }
     @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.MODEL; }
+    @Override public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return switch (state.getValue(FACING)) {
+            case UP -> UP_SHAPE;
+            case NORTH -> NORTH_SHAPE;
+            case SOUTH -> SOUTH_SHAPE;
+            case WEST -> WEST_SHAPE;
+            case EAST -> EAST_SHAPE;
+            default -> DOWN_SHAPE;
+        };
+    }
     @Nullable @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new MiningChargeBlockEntity(pos, state); }
 
     @Nullable @Override

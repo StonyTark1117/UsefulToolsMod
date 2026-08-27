@@ -29,7 +29,9 @@ public final class ClassicGeneratedConfig {
         VALUES.put("ghostEnabled", configuration.get("Content Sets", "ghostEnabled", true, "Controls ghost behavior.").getBoolean(true));
         VALUES.put("spectralInfuserEnabled", configuration.get("Content Sets", "spectralInfuserEnabled", true, "Controls spectral infuser behavior.").getBoolean(true));
         VALUES.put("wraithEnabled", configuration.get("Content Sets", "wraithEnabled", true, "Controls wraith behavior.").getBoolean(true));
-        VALUES.put("soulLanternEnabled", configuration.get("Content Sets", "soulLanternEnabled", true, "Controls soul lantern behavior.").getBoolean(true));
+        boolean ectoplasmLanternEnabled = configuration.get("Content Sets", "ectoplasmLanternEnabled", true, "Controls ectoplasm lantern behavior.").getBoolean(true);
+        if (configuration.hasKey("Content Sets", "soulLanternEnabled")) ectoplasmLanternEnabled &= configuration.get("Content Sets", "soulLanternEnabled", true).getBoolean(true);
+        VALUES.put("ectoplasmLanternEnabled", ectoplasmLanternEnabled);
         VALUES.put("spectralResonatorEnabled", configuration.get("Content Sets", "spectralResonatorEnabled", true, "Controls spectral resonator behavior.").getBoolean(true));
         VALUES.put("miningChargeEnabled", configuration.get("Content Sets", "miningChargeEnabled", true, "Controls mining charge behavior.").getBoolean(true));
         VALUES.put("stickyDynamiteEnabled", configuration.get("Content Sets", "stickyDynamiteEnabled", true, "Controls sticky dynamite behavior.").getBoolean(true));

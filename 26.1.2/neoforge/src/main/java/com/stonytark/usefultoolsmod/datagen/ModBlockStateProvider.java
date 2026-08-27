@@ -79,7 +79,8 @@ public class ModBlockStateProvider extends ModelProvider {
     @Override
     protected java.util.stream.Stream<? extends net.minecraft.core.Holder<Block>> getKnownBlocks() {
         return super.getKnownBlocks().filter(holder -> holder.value() != ModBlocks.SPECTRAL_INFUSER.get()
-                && holder.value() != ModBlocks.SOUL_LANTERN.get()
+                && holder.value() != ModBlocks.ECTOPLASM_LANTERN.get()
+                && holder.value() != ModBlocks.LEGACY_SOUL_LANTERN.get()
                 && holder.value() != ModBlocks.MINING_CHARGE.get());
     }
 

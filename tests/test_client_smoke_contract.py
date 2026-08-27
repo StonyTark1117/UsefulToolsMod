@@ -39,6 +39,9 @@ class ClientSmokeContractTests(unittest.TestCase):
         self.assertIn('"--inventory-probe"', source)
         self.assertIn('"--inventory-search"', source)
         self.assertIn("inventory_probe_requested", source)
+        self.assertIn('"--visual-showcase"', source)
+        self.assertIn("visual_showcase_commands_succeeded", source)
+        self.assertIn("wraith_wthit_screenshot", source)
 
     def test_classic_client_uses_java_8_and_native_config_screen(self) -> None:
         target = RUNNER.TARGETS["1.7.10-forge"]

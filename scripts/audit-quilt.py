@@ -82,7 +82,7 @@ def main() -> int:
     server_root = args.server_root.resolve()
     launcher = server_root / "quilt-server-launch.jar"
     mods = server_root / "mods"
-    source = ROOT / "release/2.3.0" / f"usefultoolsmod-2.3.0-{args.version}-fabric.jar"
+    source = ROOT / "release/2.3.1" / f"usefultoolsmod-2.3.1-{args.version}-fabric.jar"
     if not launcher.is_file() or not mods.is_dir() or not source.is_file():
         print("missing Quilt launcher, mods directory, or assembled Fabric jar", file=sys.stderr)
         return 4

@@ -38,7 +38,8 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.POLISHED_PRISMARINE_BLOCK);
 
         addDrop(ModBlocks.SPECTRAL_INFUSER);
-        addDrop(ModBlocks.SOUL_LANTERN);
+        addDrop(ModBlocks.ECTOPLASM_LANTERN);
+        addDrop(ModBlocks.LEGACY_SOUL_LANTERN);
         addDrop(ModBlocks.MINING_CHARGE);
     }
 }

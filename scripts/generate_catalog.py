@@ -82,6 +82,8 @@ def parse_config_options(text: str) -> list[dict[str, object]]:
         )) else "Content Sets"
         label = re.sub(r"(?<!^)(?=[A-Z])", " ", key)
         label = label.removesuffix(" Enabled").removesuffix(" Effects").strip().title()
+        if key == "soulLanternEnabled":
+            label = "Ectoplasm Lantern"
         result.append({
             "key": key,
             "type": value_type,
@@ -231,18 +233,23 @@ def build_catalog(common: Path = COMMON) -> dict[str, object]:
     item_source = common / "src/main/java/com/stonytark/usefultoolsmod/item/ModItems.java"
     block_source = common / "src/main/java/com/stonytark/usefultoolsmod/block/ModBlocks.java"
     entity_source = common / "src/main/java/com/stonytark/usefultoolsmod/entity/ModEntities.java"
-    blocks = registered_ids(block_source, "registerBlock")
+    # Compatibility registrations are deliberately present in source but are
+    # not canonical catalog content or creative-facing output.
+    legacy_ids = {"soul_lantern"}
+    blocks = [block_id for block_id in registered_ids(block_source, "registerBlock") if block_id not in legacy_ids]
     direct_items = registered_ids(item_source)
     items = sorted(set(direct_items))
 
     return {
         "schema": 2,
         "mod_id": "usefultoolsmod",
-        "logical_version": "2.3.0",
+        "logical_version": "2.3.1",
         "canonical_source": "1.21.1/forge",
         "compatibility_aliases": {
             "pointedDripstoneEnabled": "dripstoneEnabled",
             "pointedDripstoneEffects": "dripstoneEffects",
+            "soul_lantern": "ectoplasm_lantern",
+            "soulLanternEnabled": "ectoplasmLanternEnabled",
         },
         "content": {
             "items": items,
@@ -250,7 +257,7 @@ def build_catalog(common: Path = COMMON) -> dict[str, object]:
             "blocks": sorted(blocks),
             "entities": sorted(registered_ids(entity_source)),
             "tool_tiers": tier_definitions(common),
-            "recipes": resource_ids("recipe", common),
+            "recipes": [resource for resource in resource_ids("recipe", common) if resource not in legacy_ids],
             "advancements": resource_ids("advancement", common),
         },
         "definitions": {
@@ -258,7 +265,10 @@ def build_catalog(common: Path = COMMON) -> dict[str, object]:
             "tool_materials": normalized_tool_materials(common),
             "armor_materials": normalized_armor_materials(common),
             "blocks": [{"id": block_id, "material": "rock"} for block_id in sorted(blocks)],
-            "recipes": resource_definitions("recipe", common),
+            "recipes": [
+                definition for definition in resource_definitions("recipe", common)
+                if definition["id"] not in legacy_ids
+            ],
         },
         # Fabric's reflected JSON config is the loader-neutral source because it
         # preserves numeric controls as ordinary public fields.
@@ -267,7 +277,7 @@ def build_catalog(common: Path = COMMON) -> dict[str, object]:
             "spectral_infuser": "Transforms supported vanilla equipment with ectoplasm and creates ghost spawn eggs.",
             "ghost": "Night-spawning hostile mob with ectoplasm drops and armor interactions.",
             "explosives": ["dynamite", "grenade"],
-            "spectral_progression": ["wraith", "condensed_ectoplasm", "soul_lantern", "spectral_resonator"],
+            "spectral_progression": ["wraith", "condensed_ectoplasm", "ectoplasm_lantern", "spectral_resonator"],
             "controlled_explosives": ["mining_charge", "sticky_dynamite", "remote_detonator"],
             "worldgen": ["rgoldore", "rgold_deepslate_ore", "rgold_nether_ore", "rgold_end_ore"],
         },

@@ -11,7 +11,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class ClassicMiningCharge extends BlockContainer {
-    public ClassicMiningCharge(Material material) { super(material); }
+    public ClassicMiningCharge(Material material) {
+        super(material);
+        setBlockBounds(3F / 16F, 0F, 3F / 16F, 13F / 16F, 5.5F / 16F, 13F / 16F);
+    }
+    @Override public boolean isOpaqueCube() { return false; }
+    @Override public boolean renderAsNormalBlock() { return false; }
     @Override public TileEntity createNewTileEntity(World world, int meta) { return new TileMiningCharge(); }
 
     @Override public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase placer, ItemStack stack) {

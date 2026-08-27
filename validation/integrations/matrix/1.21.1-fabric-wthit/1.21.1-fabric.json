@@ -6,36 +6,37 @@
     "--max-workers=1",
     "--init-script",
     "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
-    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-k0ylxumj",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-yhqvtonv",
     "-PusefulToolsWthitRuntime=true",
-    ":fabric:runServer"
+    "runServer"
   ],
   "java_home": "/usr/lib/jvm/java-21-openjdk",
   "isolated_game_dir": true,
+  "external_game_dir": false,
   "kept_isolated_game_dir": false,
-  "game_dir": "/dev/shm/usefultools-smoke-k0ylxumj",
+  "game_dir": "/dev/shm/usefultools-smoke-yhqvtonv",
   "game_process_cwds": {
-    "2555407": "/dev/shm/usefultools-smoke-k0ylxumj"
+    "622200": "/dev/shm/usefultools-smoke-yhqvtonv"
   },
-  "run_id": "03f97bee5ee047ddba880c9132240e35",
-  "started_at_epoch": 1787679541.903358,
+  "run_id": "11cd8a78c3ed4e9183232c923b69ea1b",
+  "started_at_epoch": 1787793041.2961178,
   "ready": true,
-  "ready_seconds": 13.91,
+  "ready_seconds": 13.025,
   "stop_sent": true,
   "stop_method": "stdin",
   "term_fallback_pids": [],
-  "forced_launcher_cleanup": true,
+  "forced_launcher_cleanup": false,
   "clean_shutdown": true,
   "failure": null,
   "crash_marker": null,
   "saved_dimension_lines": [
-    "[10:39:16] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
-    "[10:39:16] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
-    "[10:39:16] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether"
+    "[18:10:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
+    "[18:10:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
+    "[18:10:54] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether"
   ],
   "thread_dump_pids": [],
   "remaining_owned_pids": [],
   "port_free_after": true,
-  "launcher_exit_code": 143,
+  "launcher_exit_code": 0,
   "log": "validation/integrations/matrix/1.21.1-fabric-wthit/1.21.1-fabric.log"
 }

@@ -2,7 +2,9 @@
   "canonical_source": "1.21.1/forge",
   "compatibility_aliases": {
     "pointedDripstoneEffects": "dripstoneEffects",
-    "pointedDripstoneEnabled": "dripstoneEnabled"
+    "pointedDripstoneEnabled": "dripstoneEnabled",
+    "soulLanternEnabled": "ectoplasmLanternEnabled",
+    "soul_lantern": "ectoplasm_lantern"
   },
   "config": [
     {
@@ -129,12 +131,12 @@
     {
       "category": "Content Sets",
       "default": "true",
-      "key": "soulLanternEnabled",
-      "label": "Soul Lantern",
+      "key": "ectoplasmLanternEnabled",
+      "label": "Ectoplasm Lantern",
       "maximum": null,
       "minimum": null,
       "reload_required": false,
-      "tooltip": "Controls soul lantern behavior.",
+      "tooltip": "Controls ectoplasm lantern behavior.",
       "type": "boolean"
     },
     {
@@ -2253,6 +2255,7 @@
       "calcified_amethyst_block",
       "coal_dust_block",
       "ectoplasm_block",
+      "ectoplasm_lantern",
       "glacial_shard_block",
       "hardened_coal_block",
       "hglow_block",
@@ -2271,13 +2274,13 @@
       "rgoldore",
       "semblock",
       "soblock",
-      "soul_lantern",
       "spectral_infuser"
     ],
     "blocks": [
       "calcified_amethyst_block",
       "coal_dust_block",
       "ectoplasm_block",
+      "ectoplasm_lantern",
       "glacial_shard_block",
       "hardened_coal_block",
       "hglow_block",
@@ -2296,7 +2299,6 @@
       "rgoldore",
       "semblock",
       "soblock",
-      "soul_lantern",
       "spectral_infuser"
     ],
     "entities": [
@@ -3153,6 +3155,7 @@
       "ectoplasm_block",
       "ectoplasm_from_block",
       "ectoplasm_from_membrane",
+      "ectoplasm_lantern",
       "emerald_boots",
       "emerald_chestplate",
       "emerald_helmet",
@@ -3592,7 +3595,6 @@
       "snow_sword",
       "sobingot_from_block",
       "soblock",
-      "soul_lantern",
       "spectral_infuser",
       "spectral_resonator",
       "sponge_axe",
@@ -4543,6 +4545,10 @@
         "material": "rock"
       },
       {
+        "id": "ectoplasm_lantern",
+        "material": "rock"
+      },
+      {
         "id": "glacial_shard_block",
         "material": "rock"
       },
@@ -4612,10 +4618,6 @@
       },
       {
         "id": "soblock",
-        "material": "rock"
-      },
-      {
-        "id": "soul_lantern",
         "material": "rock"
       },
       {
@@ -12704,6 +12706,36 @@
             "id": "usefultoolsmod:ectoplasm"
           },
           "type": "minecraft:crafting_shapeless"
+        }
+      },
+      {
+        "id": "ectoplasm_lantern",
+        "payload": {
+          "category": "misc",
+          "key": {
+            "E": {
+              "item": "usefultoolsmod:ectoplasm"
+            },
+            "G": {
+              "item": "minecraft:glass"
+            },
+            "R": {
+              "item": "usefultoolsmod:rgold"
+            },
+            "T": {
+              "item": "minecraft:torch"
+            }
+          },
+          "pattern": [
+            "GGG",
+            "ETE",
+            "GRG"
+          ],
+          "result": {
+            "count": 1,
+            "id": "usefultoolsmod:ectoplasm_lantern"
+          },
+          "type": "minecraft:crafting_shaped"
         }
       },
       {
@@ -22765,36 +22797,6 @@
         }
       },
       {
-        "id": "soul_lantern",
-        "payload": {
-          "category": "misc",
-          "key": {
-            "E": {
-              "item": "usefultoolsmod:ectoplasm"
-            },
-            "G": {
-              "item": "minecraft:glass"
-            },
-            "R": {
-              "item": "usefultoolsmod:rgold"
-            },
-            "T": {
-              "item": "minecraft:torch"
-            }
-          },
-          "pattern": [
-            "GGG",
-            "ETE",
-            "GRG"
-          ],
-          "result": {
-            "count": 1,
-            "id": "usefultoolsmod:soul_lantern"
-          },
-          "type": "minecraft:crafting_shaped"
-        }
-      },
-      {
         "id": "spectral_infuser",
         "payload": {
           "category": "misc",
@@ -24473,7 +24475,7 @@
     "spectral_progression": [
       "wraith",
       "condensed_ectoplasm",
-      "soul_lantern",
+      "ectoplasm_lantern",
       "spectral_resonator"
     ],
     "worldgen": [
@@ -24483,7 +24485,7 @@
       "rgold_end_ore"
     ]
   },
-  "logical_version": "2.3.0",
+  "logical_version": "2.3.1",
   "mod_id": "usefultoolsmod",
   "schema": 2
 }

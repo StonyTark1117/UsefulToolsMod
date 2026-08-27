@@ -45,7 +45,8 @@ public class Config {
     private static final ModConfigSpec.DoubleValue GHOST_SPAWN_CHANCE;
     private static final ModConfigSpec.BooleanValue WRAITH_ENABLED;
     private static final ModConfigSpec.DoubleValue WRAITH_SPAWN_CHANCE;
-    private static final ModConfigSpec.BooleanValue SOUL_LANTERN_ENABLED;
+    private static final ModConfigSpec.BooleanValue ECTOPLASM_LANTERN_ENABLED;
+    private static final ModConfigSpec.BooleanValue LEGACY_SOUL_LANTERN_ENABLED;
     private static final ModConfigSpec.BooleanValue SPECTRAL_RESONATOR_ENABLED;
     private static final ModConfigSpec.BooleanValue MINING_CHARGE_ENABLED;
     private static final ModConfigSpec.BooleanValue STICKY_DYNAMITE_ENABLED;
@@ -267,7 +268,8 @@ public class Config {
         WRAITH_ENABLED = BUILDER.comment("Enable hostile Wraith spawning.").define("wraithEnabled", true);
         WRAITH_SPAWN_CHANCE = BUILDER.comment("Fraction of eligible Wraith spawn attempts.")
                 .defineInRange("wraithSpawnChance", 0.0375, 0.0, 1.0);
-        SOUL_LANTERN_ENABLED = BUILDER.comment("Enable Soul Lantern wards.").define("soulLanternEnabled", true);
+        ECTOPLASM_LANTERN_ENABLED = BUILDER.comment("Enable Ectoplasm Lantern wards.").define("ectoplasmLanternEnabled", true);
+        LEGACY_SOUL_LANTERN_ENABLED = BUILDER.comment("Deprecated compatibility key; use ectoplasmLanternEnabled.").define("soulLanternEnabled", true);
         SPECTRAL_RESONATOR_ENABLED = BUILDER.comment("Enable Spectral Resonators.").define("spectralResonatorEnabled", true);
         BUILDER.pop();
 
@@ -732,7 +734,7 @@ public class Config {
     public static double ghostSpawnChance = 0.15;
     public static boolean wraithEnabled = true;
     public static double wraithSpawnChance = 0.0375;
-    public static boolean soulLanternEnabled = true;
+    public static boolean ectoplasmLanternEnabled = true;
     public static boolean spectralResonatorEnabled = true;
     public static boolean miningChargeEnabled = true;
     public static boolean stickyDynamiteEnabled = true;
@@ -767,7 +769,7 @@ public class Config {
         overpowerEnabled         = OVERPOWER_ENABLED.get();
         ghostEnabled             = GHOST_ENABLED.get();
         wraithEnabled            = WRAITH_ENABLED.get();
-        soulLanternEnabled       = SOUL_LANTERN_ENABLED.get();
+        ectoplasmLanternEnabled = ECTOPLASM_LANTERN_ENABLED.get() && LEGACY_SOUL_LANTERN_ENABLED.get();
         spectralResonatorEnabled = SPECTRAL_RESONATOR_ENABLED.get();
         miningChargeEnabled      = MINING_CHARGE_ENABLED.get();
         stickyDynamiteEnabled    = STICKY_DYNAMITE_ENABLED.get();

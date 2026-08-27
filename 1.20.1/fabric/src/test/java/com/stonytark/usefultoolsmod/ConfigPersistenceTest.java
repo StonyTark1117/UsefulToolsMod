@@ -52,6 +52,22 @@ class ConfigPersistenceTest {
     }
 
     @Test
+    void legacySoulLanternKeyMigratesToEctoplasmLanternKey() throws Exception {
+        Path path = temporaryDirectory.resolve("usefultoolsmod.json");
+        boolean enabled = Config.ectoplasmLanternEnabled;
+        try {
+            Files.writeString(path, "{\"soulLanternEnabled\":false}");
+            Config.load(path);
+            assertFalse(Config.ectoplasmLanternEnabled);
+            String saved = Files.readString(path);
+            assertTrue(saved.contains("\"ectoplasmLanternEnabled\""));
+            assertFalse(saved.contains("soulLanternEnabled"));
+        } finally {
+            Config.ectoplasmLanternEnabled = enabled;
+        }
+    }
+
+    @Test
     void diskValuesAreBoundedAndMissingParentsAreCreated() throws Exception {
         Path path = temporaryDirectory.resolve("nested/usefultoolsmod.json");
         double chance = Config.ghostSpawnChance;

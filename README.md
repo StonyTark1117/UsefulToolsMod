@@ -2,7 +2,11 @@
 
 Useful Tools adds a large catalog of material-based tools and armor, the Spectral Infuser, Ghosts, explosives, reinforced-gold ore across dimensions, decorative/storage blocks, advancements, and optional recipe/viewer integrations.
 
-This repository is the consolidated home for every maintained source line. Version `2.3.0` is the audited release published from the tagged source and the artifacts in `release/2.3.0/`.
+The former Soul Lantern feature is now the Ectoplasm Lantern, distinguishing it
+from Minecraft's vanilla Soul Lantern. `usefultoolsmod:ectoplasm_lantern` is the
+canonical ID; the old namespaced ID remains a legacy world-compatibility alias.
+
+This repository is the consolidated home for every maintained source line. Version `2.3.0` is the current published release. Version `2.3.1` is a local fix candidate and remains on manual visual-review hold; its tooling writes only to `release/2.3.1/`.
 
 ## Target matrix
 
@@ -20,7 +24,7 @@ Every Fabric binary is tested unchanged under Quilt Loader 0.30.0; no separate Q
 ## Repository layout
 
 - `catalog/` — authoritative schema-2 version-neutral content/config/material/recipe manifest plus classic substitution data.
-- `1.7.10/` — Java 8 Forge 10.13.4.1614 build retaining the published classic implementation and generated 2.3.0 catalog adapters.
+- `1.7.10/` — Java 8 Forge 10.13.4.1614 build retaining the published classic implementation and generated 2.3.1 catalog adapters.
 - `1.20.1/`, `1.20.2/`, `26.1.2/`, `26.2/` — loader-specific active roots.
 - `1.21.1/` — independent loader-native `forge/`, `fabric/`, and `neoforge/` projects.
 - `scripts/` — catalog audit, complete matrix runner, and local release assembler.
@@ -54,7 +58,7 @@ After successful builds, collect canonically named binaries/source jars, generat
 scripts/assemble-release.py
 ```
 
-This writes only to `release/2.3.0/`; it does not publish, tag, or upload anything. The audit checks ZIP integrity, embedded versions, class-file Java levels, loader metadata, assets/data, and source coverage.
+This writes only to `release/2.3.1/`; it does not publish, tag, or upload anything. The audit checks ZIP integrity, embedded versions, class-file Java levels, loader metadata, repaired block models, assets/data, and source coverage.
 
 Run a bounded dedicated-server smoke test with:
 
@@ -92,12 +96,13 @@ native providers; the audit treats Fabric's omitted default recipe result count
 and NeoForge's explicit `count: 1` as the same decoded JSON value.
 
 Fresh GameTest, optional-integration, Java-warning, Quilt, and release evidence
-is stored under `validation/`. See `validation/visual-audit.md` for the reviewed
-client captures and `release/2.3.0/artifacts.json` for the local artifact
-manifest, including the dependency bounds read back from each packaged binary.
+is stored under `validation/`. The 2.3.1 candidate is not publishable until its
+Ectoplasm Lantern, Mining Charge, and Wraith/WTHIT captures are manually approved.
+After a full local build, `release/2.3.1/artifacts.json` records the candidate
+artifact hashes and packaged dependency bounds.
 
 ## Compatibility and release status
 
-See [COMPATIBILITY.md](COMPATIBILITY.md) for loader notes, migration rules, optional integrations, and known blockers. [CHANGELOG.md](CHANGELOG.md) tracks 2.3.0 changes, and [FUTURE_WORK.md](1.21.1/FUTURE_WORK.md) is the authoritative acceptance checklist.
+See [COMPATIBILITY.md](COMPATIBILITY.md) for loader notes, migration rules, optional integrations, and known blockers. [CHANGELOG.md](CHANGELOG.md) tracks release changes, and [FUTURE_WORK.md](1.21.1/FUTURE_WORK.md) is the authoritative 2.3.1 acceptance checklist.
 
 License: [CC0-1.0](LICENSE).
