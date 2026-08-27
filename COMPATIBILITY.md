@@ -20,7 +20,7 @@ coremods in a named development runtime.
 ## Stable data
 
 - Namespace: `usefultoolsmod`
-- Candidate logical release: `2.3.1` (`2.3.0` remains the current public release)
+- Current logical release: `2.3.1`
 - Canonical catalog: 638 direct item definitions, 23 block items/blocks, four entities, 87 tool materials, 45 armor materials, 688 recipe definitions, 854 advancements, and 126 config descriptors.
 - Renamed config keys migrate from `pointedDripstoneEnabled` and `pointedDripstoneEffects` to `dripstoneEnabled` and `dripstoneEffects` where the persistence format supports aliases.
 - Existing registry IDs are retained and documented in [CLASSIC_MIGRATION.md](CLASSIC_MIGRATION.md); prefix-free variants are explicitly remapped. An independently captured published-v1.6 world passes the migration gate with zero missing mappings.
@@ -62,7 +62,6 @@ Architectury types. Base runtime profiles and packaged metadata exclude it.
 
 ## Release status
 
-Version 2.3.0 is published. Version 2.3.1 repairs the Ectoplasm Lantern and Mining
-Charge block rendering and adds Wraith WTHIT coverage. It remains unpublished
-until the matrix gates and manual visual review in
-[FUTURE_WORK.md](1.21.1/FUTURE_WORK.md) are complete.
+Version 2.3.1 repairs the Ectoplasm Lantern and Mining Charge block rendering
+and adds Wraith WTHIT coverage. Its matrix gates and manual visual review are
+recorded in [FUTURE_WORK.md](1.21.1/FUTURE_WORK.md).
