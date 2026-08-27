@@ -15,7 +15,7 @@ import java.util.Map;
 
 /** Vanilla-widget editor for all persistent Useful Tools options. */
 public final class UsefulToolsConfigScreen extends Screen {
-    private static final int ROWS_PER_PAGE = 9;
+    private static final int ROWS_PER_PAGE = 7;
     private final Screen parent;
     private final Map<Config.Option, Object> originals = new LinkedHashMap<>();
     private int page;

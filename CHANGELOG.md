@@ -6,9 +6,12 @@
   `usefultoolsmod:ectoplasm_lantern`; `usefultoolsmod:soul_lantern` remains a
   deprecated save-compatibility alias.
 - Replaced the transparent `cube_all` Ectoplasm Lantern and Mining Charge blocks with bounded, solid-backed models on all modern targets; added state-complete charge orientation and armed-indicator variants.
+- Made newly placed Mining Charges remain stable when their block-entity data has no saved fuse, and added dedicated unlit, lit, directional, and glass-platform visual evidence.
 - Split modern inventory sprites from placed-block geometry and restored bounded selection/collision plus non-occluding rendering, preventing adjacent floors and walls from being culled behind transparent pixels.
 - Added the equivalent Forge 1.7.10 repair with opaque generated block faces, bounded legacy blocks, and separate original inventory sprites.
+- Repaired the Forge 1.7.10 Wraith spawn egg to use Minecraft's complete two-pass egg texture with Wraith-specific colors instead of requesting a missing overlay texture.
 - Added Wraith WTHIT coverage wherever WTHIT is supported, including live Ectoplasm Lantern suppression and ectoplasm-infused weapon eligibility; WTHIT remains optional.
+- Reduced the paged 1.20.x/1.21.1 config layout to seven entries per page so loader-provided buttons no longer overlap Useful Tools navigation controls.
 - Added a 16-target static resolver gate and expanded release-JAR checks for blockstate, model, texture, and item-model completeness.
 - Preserved all registry IDs, recipes, configurations, save formats, and published compatibility bounds. No new 2.3.1 artifact is published until manual visual approval.
 

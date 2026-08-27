@@ -58,7 +58,7 @@ public class MiningChargeBlockEntity extends BlockEntity {
         if (owner != null) tag.putUUID("Owner", owner);
     }
     @Override public void load(CompoundTag tag) {
-        super.load(tag); fuse = tag.getInt("Fuse"); channel = tag.getInt("Channel");
+        super.load(tag); fuse = tag.contains("Fuse") ? tag.getInt("Fuse") : -1; channel = tag.getInt("Channel");
         owner = tag.hasUUID("Owner") ? tag.getUUID("Owner") : null;
     }
 }

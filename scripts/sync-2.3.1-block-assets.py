@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the 2.3.1 Soul Lantern and Mining Charge model contract."""
+"""Install the 2.3.1 Ectoplasm Lantern and Mining Charge model contract."""
 
 from __future__ import annotations
 
@@ -80,10 +80,13 @@ def mining_charge_model(lit: bool) -> dict[str, object]:
             cube([3, 0, 3], [13, 2, 13], "#metal"),
             cube([4, 2, 4], [12, 5, 12], "#casing"),
             cube([4, 3, 3.75], [12, 4, 12.25], "#metal"),
-            cube([5, 5, 5], [11, 5.25, 11], "#indicator", shade=False),
+            # Keep the armed-state indicator exposed around the smaller custom
+            # detail plate. The previous nearly full-size plate hid the only
+            # meaningful LIT difference from normal play distances.
+            cube([5, 5, 5], [11, 5.75, 11], "#indicator", shade=False),
             {
-                "from": [4.75, 5.26, 4.75],
-                "to": [11.25, 5.27, 11.25],
+                "from": [6.5, 5.76, 6.5],
+                "to": [9.5, 5.77, 9.5],
                 "shade": False,
                 "faces": {"up": {"texture": "#detail"}},
             },
@@ -151,11 +154,16 @@ def main() -> None:
     for version in VERSIONS:
         for loader in LOADERS:
             assets = ROOT / version / loader / "src/main/resources/assets/usefultoolsmod"
+            # The Ectoplasm Lantern is canonical. Keep the old Soul Lantern
+            # resource aliases in sync solely for existing-world migration.
+            write_json(assets / "models/block/ectoplasm_lantern.json", SOUL_LANTERN_MODEL)
             write_json(assets / "models/block/soul_lantern.json", SOUL_LANTERN_MODEL)
             write_json(assets / "models/block/mining_charge.json", mining_charge_model(False))
             write_json(assets / "models/block/mining_charge_lit.json", mining_charge_model(True))
+            write_json(assets / "models/item/ectoplasm_lantern.json", ITEM_MODELS["soul_lantern"])
             write_json(assets / "models/item/soul_lantern.json", ITEM_MODELS["soul_lantern"])
             write_json(assets / "models/item/mining_charge.json", ITEM_MODELS["mining_charge"])
+            write_json(assets / "blockstates/ectoplasm_lantern.json", {"variants": {"": {"model": "usefultoolsmod:block/ectoplasm_lantern"}}})
             write_json(assets / "blockstates/soul_lantern.json", {"variants": {"": {"model": "usefultoolsmod:block/soul_lantern"}}})
             write_json(assets / "blockstates/mining_charge.json", mining_charge_blockstate())
             lang_path = assets / "lang/en_us.json"

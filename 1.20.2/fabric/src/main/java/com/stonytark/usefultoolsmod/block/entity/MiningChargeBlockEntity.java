@@ -44,7 +44,7 @@ public class MiningChargeBlockEntity extends BlockEntity {
     }
 
     @Override public void readNbt(NbtCompound tag) {
-        super.readNbt(tag); fuse = tag.getInt("Fuse"); channel = tag.getInt("Channel");
+        super.readNbt(tag); fuse = tag.contains("Fuse") ? tag.getInt("Fuse") : -1; channel = tag.getInt("Channel");
         owner = tag.containsUuid("Owner") ? tag.getUuid("Owner") : null;
     }
     @Override protected void writeNbt(NbtCompound tag) {

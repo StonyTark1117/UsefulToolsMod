@@ -68,6 +68,16 @@ def audit_modern(version: str, loader: str) -> None:
         "usefultoolsmod:block/mining_charge", "usefultoolsmod:block/mining_charge_lit"
     }, f"{target}: Mining Charge state models are incomplete"
 
+    charge_entity = (
+        root / "src/main/java/com/stonytark/usefultoolsmod/block/entity/MiningChargeBlockEntity.java"
+    ).read_text(encoding="utf-8")
+    safe_missing_fuse = (
+        'getIntOr("Fuse",-1)' in charge_entity
+        or 'getIntOr("Fuse", -1)' in charge_entity
+        or ('contains("Fuse")' in charge_entity and ': -1' in charge_entity)
+    )
+    assert safe_missing_fuse, f"{target}: missing Fuse data arms the Mining Charge"
+
     for name in ("ectoplasm_lantern", "mining_charge"):
         item = load(assets / f"models/item/{name}.json")
         assert item.get("parent") == "minecraft:item/generated", f"{target}: {name} item reuses world geometry"
@@ -109,6 +119,16 @@ def audit_classic() -> None:
     classic_lang = (root / "src/main/resources/assets/usefultoolsmod/lang/en_US.lang").read_text(encoding="utf-8")
     assert "tile.ectoplasm_lantern.name=Ectoplasm Lantern" in classic_lang, (
         "1.7.10-forge: player-facing Ectoplasm Lantern rename missing"
+    )
+
+    wraith_egg = (
+        root / "src/main/java/com/stonytark/usefultoolsmod/classic/ClassicWraithSpawnEgg.java"
+    ).read_text(encoding="utf-8")
+    assert 'setTextureName("spawn_egg")' in wraith_egg, (
+        "1.7.10-forge: Wraith egg must use vanilla's complete base/overlay texture pair"
+    )
+    assert "getColorFromItemStack" in wraith_egg, (
+        "1.7.10-forge: Wraith egg is missing its two render-pass colors"
     )
 
 

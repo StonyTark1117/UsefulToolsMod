@@ -22,7 +22,7 @@ import java.util.Map;
 @OnlyIn(Dist.CLIENT)
 @SuppressWarnings("deprecation")
 public final class UsefulToolsConfigScreen extends Screen {
-    private static final int ROWS_PER_PAGE = 9;
+    private static final int ROWS_PER_PAGE = 7;
     private final Screen parent;
     private final List<Option> options = new ArrayList<>();
     private final Map<ModConfigSpec.ConfigValue<?>, Object> originals = new LinkedHashMap<>();

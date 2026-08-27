@@ -6,35 +6,36 @@
     "--max-workers=1",
     "--init-script",
     "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
-    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-kb87a7ee",
-    ":neoforge:runServer"
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-774hygeo",
+    "runServer"
   ],
   "java_home": "/usr/lib/jvm/java-21-openjdk",
   "isolated_game_dir": true,
+  "external_game_dir": false,
   "kept_isolated_game_dir": false,
-  "game_dir": "/dev/shm/usefultools-smoke-kb87a7ee",
+  "game_dir": "/dev/shm/usefultools-smoke-774hygeo",
   "game_process_cwds": {
-    "2448773": "/dev/shm/usefultools-smoke-kb87a7ee"
+    "1210390": "/dev/shm/usefultools-smoke-774hygeo"
   },
-  "run_id": "72bdca7e6eb04b8790092748ec2aa20a",
-  "started_at_epoch": 1787676004.75756,
+  "run_id": "0ccb4cc8fa1a4180bd8694a81d4be964",
+  "started_at_epoch": 1787803555.1414258,
   "ready": true,
-  "ready_seconds": 15.796,
+  "ready_seconds": 15.51,
   "stop_sent": true,
   "stop_method": "stdin",
   "term_fallback_pids": [],
-  "forced_launcher_cleanup": true,
+  "forced_launcher_cleanup": false,
   "clean_shutdown": true,
   "failure": null,
   "crash_marker": null,
   "saved_dimension_lines": [
-    "[09:40:20] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
-    "[09:40:20] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
-    "[09:40:20] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether"
+    "[21:06:11] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
+    "[21:06:11] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
+    "[21:06:11] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether"
   ],
   "thread_dump_pids": [],
   "remaining_owned_pids": [],
   "port_free_after": true,
-  "launcher_exit_code": 143,
+  "launcher_exit_code": 0,
   "log": "validation/server-smoke/final-matrix/1.21.1-neoforge.log"
 }

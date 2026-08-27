@@ -21,7 +21,7 @@ import java.util.Map;
 /** Dependency-free editor for every value in the Forge config spec. */
 @OnlyIn(Dist.CLIENT)
 public final class UsefulToolsConfigScreen extends Screen {
-    private static final int ROWS_PER_PAGE = 9;
+    private static final int ROWS_PER_PAGE = 7;
     private final Screen parent;
     private final List<Option> options = new ArrayList<>();
     private final Map<ForgeConfigSpec.ConfigValue<?>, Object> originals = new LinkedHashMap<>();

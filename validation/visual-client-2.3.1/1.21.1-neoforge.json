@@ -1,6 +1,16 @@
 {
   "target": "1.21.1-neoforge",
-  "command": "setblock 5 200 -6 usefultoolsmod:mining_charge[facing=east,lit=true]",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-client-2bw30y_6",
+    "-PusefulToolsJeiRuntime=true",
+    "-PusefulToolsWthitRuntime=true",
+    "runClient"
+  ],
   "gradle_java_home": "/usr/lib/jvm/java-21-openjdk",
   "runtime_java_home": "/usr/lib/jvm/java-21-openjdk",
   "config_opened": true,
@@ -20,6 +30,9 @@
   "visual_showcase_requested": true,
   "visual_showcase_commands_succeeded": true,
   "blocks_screenshot": "validation/visual-client-2.3.1/1.21.1-neoforge-blocks.png",
+  "mining_charge_unlit_screenshot": "validation/visual-client-2.3.1/1.21.1-neoforge-mining-charge-unlit.png",
+  "mining_charge_lit_screenshot": "validation/visual-client-2.3.1/1.21.1-neoforge-mining-charge-lit.png",
+  "mining_charge_glass_screenshot": "validation/visual-client-2.3.1/1.21.1-neoforge-mining-charge-glass.png",
   "wraith_wthit_screenshot": "validation/visual-client-2.3.1/1.21.1-neoforge-wraith-wthit.png",
   "ghost_wthit_screenshot": "validation/visual-client-2.3.1/1.21.1-neoforge-ghost-wthit.png",
   "success": true

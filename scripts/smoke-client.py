@@ -243,6 +243,9 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     pause_image = output_dir / f"{name}-pause.png"
     inventory_image = output_dir / f"{name}-inventory.png"
     blocks_image = output_dir / f"{name}-blocks.png"
+    mining_unlit_image = output_dir / f"{name}-mining-charge-unlit.png"
+    mining_lit_image = output_dir / f"{name}-mining-charge-lit.png"
+    mining_glass_image = output_dir / f"{name}-mining-charge-glass.png"
     wraith_image = output_dir / f"{name}-wraith-wthit.png"
     ghost_image = output_dir / f"{name}-ghost-wthit.png"
     display_number = free_display()
@@ -255,7 +258,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         # loader splash hands off to GLFW. Seed the vanilla completion flag so
         # automation begins deterministically on the title screen.
         (game_dir / "options.txt").write_text(
-            "onboardAccessibility:false\n", encoding="utf-8"
+            "onboardAccessibility:false\ntutorialStep:none\n", encoding="utf-8"
         )
     env = os.environ.copy()
     env.update(
@@ -396,6 +399,8 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     click(display, window, 130, 397)
             time.sleep(3)
             drain()
+            xdo(display, "mousemove", "--sync", "--window", window, "10", "10")
+            time.sleep(1)
             screenshot(display, config_image)
             config_opened = image_is_substantial(config_image) and not any(
                 CRASH_RE.search(line) for line in all_output
@@ -487,9 +492,35 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                         time.sleep(delay)
                         drain()
 
+                    def text_display_command(
+                        x: int, y: int, z: int, label: str, color: str = "white"
+                    ) -> str:
+                        text = json.dumps(
+                            {"text": label, "color": color}, separators=(",", ":")
+                        )
+                        return (
+                            f"summon minecraft:text_display {x} {y} {z} "
+                            "{Tags:[\"usefultools_visual_label\"],billboard:\"center\","
+                            f"background:1073741824,shadow:1b,text:'{text}'}}"
+                        )
+
+                    def ensure_world_view() -> None:
+                        """Close any screen without assuming its current state.
+
+                        Escape closes an inventory but opens pause from the
+                        world. The subsequent Back to Game coordinate is inert
+                        in-world and closes pause when it is present.
+                        """
+                        xdo(display, "key", "--window", window, "Escape")
+                        time.sleep(0.5)
+                        click(display, window, 427, 144)
+                        time.sleep(0.8)
+
                     commands = [
                         "gamemode creative",
                         "gamerule sendCommandFeedback false",
+                        "gamerule doMobSpawning false",
+                        "kill @e[type=!minecraft:player]",
                         "effect give @s minecraft:night_vision infinite 0 true",
                         "weather clear",
                         "time set midnight",
@@ -522,8 +553,8 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                             f"setblock {x} 200 -6 usefultoolsmod:mining_charge"
                             f"[facing={direction},lit=true]"
                         )
-                    for command in commands:
-                        chat_command(command)
+                    for showcase_command in commands:
+                        chat_command(showcase_command)
                     showcase_commands_succeeded = any(
                         "Set own game mode to Creative Mode" in line for line in all_output
                     )
@@ -532,32 +563,69 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     time.sleep(1)
                     screenshot(display, blocks_image)
 
-                    chat_command("tp @s 0 202 0 180 -3")
+                    # Dedicated Mining Charge proof. Each capture uses a clean
+                    # scene, labels all six facing states, and keeps vanilla
+                    # blocks out of the foreground so the subject is
+                    # unambiguous. The final close-up uses a glass support to
+                    # expose any unbounded transparency or floor-view leak.
+                    chat_command("kill @e[type=minecraft:text_display,tag=usefultools_visual_label]")
+                    chat_command("fill -14 200 -14 14 210 14 minecraft:air")
+                    chat_command("fill -7 199 3 7 199 7 minecraft:smooth_stone")
+                    for index, direction in enumerate(directions):
+                        x = -5 + index * 2
+                        chat_command(
+                            f"setblock {x} 200 5 usefultoolsmod:mining_charge"
+                            f"[facing={direction},lit=false]",
+                            0.1,
+                        )
+                        chat_command(text_display_command(x, 202, 5, direction.upper()), 0.1)
+                    chat_command("tp @s 0 201 11 180 8", 0.2)
+                    time.sleep(2)
+                    screenshot(display, mining_unlit_image)
+
+                    for index, direction in enumerate(directions):
+                        x = -5 + index * 2
+                        chat_command(
+                            f"setblock {x} 200 5 usefultoolsmod:mining_charge"
+                            f"[facing={direction},lit=true]",
+                            0.1,
+                        )
+                    time.sleep(2)
+                    screenshot(display, mining_lit_image)
+
+                    chat_command("kill @e[type=minecraft:text_display,tag=usefultools_visual_label]")
+                    chat_command("fill -7 199 3 7 203 7 minecraft:air")
+                    chat_command("fill -2 199 4 2 199 6 minecraft:glass")
+                    chat_command("setblock -1 200 5 usefultoolsmod:mining_charge[facing=down,lit=false]")
+                    chat_command("setblock 1 200 5 usefultoolsmod:mining_charge[facing=down,lit=true]")
+                    chat_command(text_display_command(-1, 202, 5, "UNLIT"), 0.1)
+                    chat_command(text_display_command(1, 202, 5, "LIT", "red"), 0.1)
+                    chat_command("tp @s 0 200 9 180 12", 0.2)
+                    time.sleep(2)
+                    screenshot(display, mining_glass_image)
+                    chat_command("kill @e[type=minecraft:text_display,tag=usefultools_visual_label]")
+                    chat_command("fill -7 199 3 7 203 7 minecraft:air")
+
+                    # Restore the spectral scene after the isolated Mining
+                    # Charge proof so the Wraith suppression capture remains
+                    # independent of the charge setup.
+                    chat_command("setblock 2 200 -3 usefultoolsmod:ectoplasm_lantern")
+                    chat_command("tp @s 0 202 0 180 0")
                     chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
-                    chat_command(
-                        'summon usefultoolsmod:wraith 0 201 3 '
-                        '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
-                    , 0.1)
                     chat_command(
                         'summon usefultoolsmod:wraith 0 201 -3 '
                         '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
-                    , 0.1)
-                    chat_command("setblock 1 200 2 minecraft:air", 0.1)
-                    chat_command("setblock 1 200 -2 minecraft:air", 0.1)
-                    time.sleep(0.4)
+                    , 0.3)
+                    ensure_world_view()
+                    time.sleep(2)
                     screenshot(display, wraith_image)
-                    chat_command("setblock 1 200 2 minecraft:redstone_block", 0.1)
-                    chat_command("setblock 1 200 -2 minecraft:redstone_block", 0.1)
                     chat_command("kill @e[type=usefultoolsmod:wraith,distance=..16]")
-                    chat_command(
-                        'summon usefultoolsmod:ghost 0 201 3 '
-                        '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
-                    , 0.1)
                     chat_command(
                         'summon usefultoolsmod:ghost 0 201 -3 '
                         '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
-                    , 0.1)
-                    time.sleep(1)
+                    , 0.3)
+                    ensure_world_view()
+                    time.sleep(2)
                     screenshot(display, ghost_image)
                     chat_command("kill @e[type=usefultoolsmod:ghost,distance=..16]")
                 if args.inventory_probe:
@@ -626,7 +694,10 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         success = False
         failure = failure or "inventory probe screenshot was empty"
     if args.visual_showcase:
-        showcase_images = (blocks_image, wraith_image, ghost_image)
+        showcase_images = (
+            blocks_image, mining_unlit_image, mining_lit_image,
+            mining_glass_image, wraith_image, ghost_image,
+        )
         if name != "1.21.1-neoforge":
             success = False
             failure = failure or "visual showcase is supported only on 1.21.1-neoforge"
@@ -662,6 +733,15 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         "visual_showcase_requested": args.visual_showcase,
         "visual_showcase_commands_succeeded": showcase_commands_succeeded,
         "blocks_screenshot": str(blocks_image.relative_to(ROOT)) if args.visual_showcase else None,
+        "mining_charge_unlit_screenshot": (
+            str(mining_unlit_image.relative_to(ROOT)) if args.visual_showcase else None
+        ),
+        "mining_charge_lit_screenshot": (
+            str(mining_lit_image.relative_to(ROOT)) if args.visual_showcase else None
+        ),
+        "mining_charge_glass_screenshot": (
+            str(mining_glass_image.relative_to(ROOT)) if args.visual_showcase else None
+        ),
         "wraith_wthit_screenshot": str(wraith_image.relative_to(ROOT)) if args.visual_showcase else None,
         "ghost_wthit_screenshot": str(ghost_image.relative_to(ROOT)) if args.visual_showcase else None,
         "success": success,
