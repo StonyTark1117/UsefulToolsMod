@@ -1,6 +1,6 @@
 # Useful Tools — Fabric 26.2
 
-This is the Fabric 26.2 target for the unpublished Useful Tools `2.3.1` fix candidate.
+This is the Fabric 26.2 target for the Useful Tools `2.3.1` release.
 It contains the full modern catalog: 633 direct items, 21 blocks/block items,
 two entities, 682 recipes across all namespaces, 848 advancements, the Spectral
 Infuser, Ghosts, explosives, effects, and reinforced-gold world generation.
