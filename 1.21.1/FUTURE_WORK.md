@@ -63,9 +63,9 @@ directories and summarize them in `validation/2.3.1-remediation.md`.
 
 ## Git and publication hold
 
-- [ ] Review the final diff and generated files for unrelated changes.
-- [ ] Commit the verified fix as a focused 2.3.1 commit on `main`.
-- [ ] Push `main`, create and push the 2.3.1 tag at that exact commit, then
+- [x] Review the final diff and generated files for unrelated changes.
+- [x] Commit the verified 2.3.1 implementation and certification evidence on `main`.
+- [x] Push `main`, create and push the 2.3.1 tag at that exact commit, then
   verify remote ancestry, tag target, and a clean worktree.
 - [ ] Provide the commit, artifact manifest, captures, test results, and
   issue-by-issue remediation report to the maintainer.
