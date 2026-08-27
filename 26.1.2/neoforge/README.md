@@ -1,6 +1,6 @@
 # Useful Tools — NeoForge 26.1.2
 
-This is the NeoForge 26.1.2 target for the unpublished Useful Tools `2.3.1`
+This is the NeoForge 26.1.2 target for the Useful Tools `2.3.1` release
 matrix. It contains the full modern catalog, Spectral Infuser, Ghosts,
 explosives, effects, and reinforced-gold world generation.
 
