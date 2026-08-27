@@ -1,8 +1,8 @@
 # Useful Tools 2.3.1 acceptance gate
 
-Version 2.3.1 is a fix candidate for all 16 published targets. It must not be
-uploaded to GitHub, Modrinth, or CurseForge until every automated gate below is
-green and the maintainer explicitly approves the visual captures.
+Version 2.3.1 is the approved fix release for all 16 published targets. Every
+automated gate below passed and the maintainer explicitly approved publication
+on 2026-08-27.
 
 ## Fixed in source
 
@@ -67,10 +67,8 @@ directories and summarize them in `validation/2.3.1-remediation.md`.
 - [x] Commit the verified 2.3.1 implementation and certification evidence on `main`.
 - [x] Push `main`, create and push the 2.3.1 tag at that exact commit, then
   verify remote ancestry, tag target, and a clean worktree.
-- [ ] Provide the commit, artifact manifest, captures, test results, and
+- [x] Provide the commit, artifact manifest, captures, test results, and
   issue-by-issue remediation report to the maintainer.
-- [ ] Obtain explicit maintainer approval of the visuals and fixes.
+- [x] Obtain explicit maintainer approval of the visuals and fixes.
 
-Do not create or upload a GitHub release, Modrinth version, or CurseForge file
-before that final approval. A pushed commit/tag and local artifacts are review
-inputs, not publication authorization.
+The explicit 2026-08-27 publication request satisfied the final approval gate.

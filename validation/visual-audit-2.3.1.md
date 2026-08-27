@@ -1,13 +1,12 @@
-# 2.3.1 visual acceptance candidate
+# 2.3.1 visual acceptance record
 
 Date: 2026-08-26
 
 ## Status
 
-AUTOMATED CAPTURE PASS; MANUAL APPROVAL PENDING. These are live 1.21.1
-NeoForge client captures from the 2.3.1 source tree with JEI 19.27.0.340 and
-WTHIT 12.10.1 loaded. No 2.3.1 release may be published until the user reviews
-and explicitly approves these visuals.
+AUTOMATED CAPTURE PASS; MANUALLY APPROVED FOR PUBLICATION ON 2026-08-27. These
+are live 1.21.1 NeoForge client captures from the 2.3.1 source tree with JEI
+19.27.0.340 and WTHIT 12.10.1 loaded.
 
 ## Block geometry
 

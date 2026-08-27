@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.1 - unreleased
+## 2.3.1 - 2026-08-27
 
 - Renamed the former Soul Lantern to Ectoplasm Lantern. New content uses
   `usefultoolsmod:ectoplasm_lantern`; `usefultoolsmod:soul_lantern` remains a
@@ -15,7 +15,7 @@
 - Fixed event-driven advancements, including the Wraith encounter advancement, to award their declared remaining criteria instead of assuming every advancement used a criterion named `trigger`.
 - Reduced the paged 1.20.x/1.21.1 config layout to seven entries per page so loader-provided buttons no longer overlap Useful Tools navigation controls.
 - Added a 16-target static resolver gate and expanded release-JAR checks for blockstate, model, texture, and item-model completeness.
-- Preserved all registry IDs, recipes, configurations, save formats, and published compatibility bounds. No new 2.3.1 artifact is published until manual visual approval.
+- Preserved all registry IDs, recipes, configurations, save formats, and published compatibility bounds.
 
 ## 2.3.0 - 2026-08-25
 

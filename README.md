@@ -6,7 +6,7 @@ The former Soul Lantern feature is now the Ectoplasm Lantern, distinguishing it
 from Minecraft's vanilla Soul Lantern. `usefultoolsmod:ectoplasm_lantern` is the
 canonical ID; the old namespaced ID remains a legacy world-compatibility alias.
 
-This repository is the consolidated home for every maintained source line. Version `2.3.0` is the current published release. Version `2.3.1` is a local fix candidate and remains on manual visual-review hold; its tooling writes only to `release/2.3.1/`.
+This repository is the consolidated home for every maintained source line. Version `2.3.1` is the current published release across all 16 supported Minecraft/loader targets.
 
 ## Target matrix
 
@@ -96,10 +96,10 @@ native providers; the audit treats Fabric's omitted default recipe result count
 and NeoForge's explicit `count: 1` as the same decoded JSON value.
 
 Fresh GameTest, optional-integration, Java-warning, Quilt, and release evidence
-is stored under `validation/`. The 2.3.1 candidate is not publishable until its
-Ectoplasm Lantern, Mining Charge, and Wraith/WTHIT captures are manually approved.
-After a full local build, `release/2.3.1/artifacts.json` records the candidate
-artifact hashes and packaged dependency bounds.
+is stored under `validation/`. The Ectoplasm Lantern, Mining Charge, and
+Wraith/WTHIT captures received manual approval before 2.3.1 publication. After
+a full local build, `release/2.3.1/artifacts.json` records the published artifact
+hashes and packaged dependency bounds.
 
 ## Compatibility and release status
 
