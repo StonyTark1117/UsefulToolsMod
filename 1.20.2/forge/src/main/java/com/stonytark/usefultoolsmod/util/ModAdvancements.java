@@ -10,6 +10,10 @@ public final class ModAdvancements {
     public static void award(ServerPlayer player, String path) {
         var advancement = player.server.getAdvancements().get(
                 new ResourceLocation("usefultoolsmod", path));
-        if (advancement != null) player.getAdvancements().award(advancement, "trigger");
+        if (advancement != null) {
+            for (String criterion : player.getAdvancements().getOrStartProgress(advancement)
+                    .getRemainingCriteria())
+                player.getAdvancements().award(advancement, criterion);
+        }
     }
 }

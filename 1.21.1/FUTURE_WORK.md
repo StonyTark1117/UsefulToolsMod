@@ -29,36 +29,37 @@ green and the maintainer explicitly approves the visual captures.
 
 ## Automated verification
 
-- [ ] `scripts/audit-2.3.1-fixes.py` passes 16/16 from a clean checkout.
-- [ ] Canonical catalog, generated registration/config tables, and classic
+- [x] `scripts/audit-2.3.1-fixes.py` passes 16/16 from a clean checkout.
+- [x] Canonical catalog, generated registration/config tables, and classic
   generation are reproducible with zero unintended diff.
-- [ ] All 16 binary and source builds complete under their pinned Java versions.
-- [ ] All 15 loader-native GameTest profiles pass and shut down cleanly.
-- [ ] All 15 modern datagen profiles reproduce the committed resource trees.
-- [ ] Optional integrations pass absent profiles and all supported present
+- [x] All 16 binary and source builds complete under their pinned Java versions.
+- [x] All 15 loader-native GameTest profiles pass and leave no owned process.
+  The 1.21.1 Forge Gradle launcher requires bounded post-pass termination.
+- [x] All 15 modern datagen profiles reproduce the committed resource trees.
+- [x] Optional integrations pass absent profiles and all supported present
   profiles, including WTHIT Wraith tooltips.
-- [ ] All five Fabric jars pass unchanged under the supported Quilt loader.
-- [ ] All 16 server and client smoke profiles reach readiness and cleanly release
+- [x] All five Fabric jars pass unchanged under the supported Quilt loader.
+- [x] All 16 server and client smoke profiles reach readiness and cleanly release
   owned processes and ports.
-- [ ] `scripts/assemble-release.py` produces 16 binaries and 16 source jars in
+- [x] `scripts/assemble-release.py` produces 16 binaries and 16 source jars in
   `release/2.3.1/`; `scripts/audit-release.py` verifies exact hashes, metadata,
   dependency bounds, assets, repaired models, and Java class levels.
 
 ## Required visual evidence
 
-- [ ] Ectoplasm Lantern placed over solid and transparent/non-solid floors, viewed
+- [x] Ectoplasm Lantern placed over solid and transparent/non-solid floors, viewed
   from the top, bottom, and all four sides with no world holes or z-fighting.
-- [ ] Mining Charge placed in all six directions in both unlit and lit states,
+- [x] Mining Charge placed in all six directions in both unlit and lit states,
   viewed over solid and transparent/non-solid neighbors.
-- [ ] Ectoplasm Lantern and Mining Charge inventory representations remain readable
+- [x] Ectoplasm Lantern and Mining Charge inventory representations remain readable
   and do not reuse the world model.
-- [ ] Ghost and Wraith render/model captures are correct.
-- [ ] WTHIT installed: Wraith hunting, ward-suppressed, ordinary-weapon, and
+- [x] Ghost and Wraith render/model captures are correct.
+- [x] WTHIT installed: Wraith hunting, ward-suppressed, ordinary-weapon, and
   infused-weapon tooltip states are captured and correct.
-- [ ] WTHIT absent: the same build reaches a world with no optional-API error.
+- [x] WTHIT absent: the same build reaches a world with no optional-API error.
 
-Store the reports and captures under `validation/2.3.1/` and summarize them in
-`validation/2.3.1-remediation.md`.
+Store the reports and captures in the versioned `validation/*-2.3.1/`
+directories and summarize them in `validation/2.3.1-remediation.md`.
 
 ## Git and publication hold
 

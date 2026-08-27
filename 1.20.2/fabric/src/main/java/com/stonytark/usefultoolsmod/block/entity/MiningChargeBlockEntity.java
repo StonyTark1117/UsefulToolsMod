@@ -20,15 +20,24 @@ public class MiningChargeBlockEntity extends BlockEntity {
     public MiningChargeBlockEntity(BlockPos pos, BlockState state) { super(ModBlockEntityTypes.MINING_CHARGE, pos, state); }
 
     public void prime(ServerPlayerEntity player) {
-        if (fuse >= 0) return; if (player != null) owner = player.getUuid(); fuse = 80;
+        primeOwner(player == null ? null : player.getUuid());
+    }
+    public void primeOwner(UUID playerId) {
+        if (fuse >= 0) return; if (playerId != null) owner = playerId; fuse = 80;
         if (world != null) world.setBlockState(pos, getCachedState().with(MiningChargeBlock.LIT, true), 3); markDirty();
     }
     public boolean link(ServerPlayerEntity player, int selectedChannel) {
-        if (owner != null && !owner.equals(player.getUuid())) return false;
-        owner = player.getUuid(); channel = selectedChannel; markDirty(); return true;
+        return linkOwner(player.getUuid(), selectedChannel);
+    }
+    public boolean linkOwner(UUID playerId, int selectedChannel) {
+        if (owner != null && !owner.equals(playerId)) return false;
+        owner = playerId; channel = selectedChannel; markDirty(); return true;
     }
     public boolean detonate(ServerPlayerEntity player, int selectedChannel) {
-        if (owner == null || !owner.equals(player.getUuid()) || channel != selectedChannel) return false;
+        return detonateOwner(player.getUuid(), selectedChannel);
+    }
+    public boolean detonateOwner(UUID playerId, int selectedChannel) {
+        if (owner == null || !owner.equals(playerId) || channel != selectedChannel) return false;
         fuse = 1; markDirty(); return true;
     }
     public UUID owner() { return owner; }

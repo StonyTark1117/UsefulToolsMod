@@ -77,6 +77,126 @@ def audit_modern(version: str, loader: str) -> None:
         or ('contains("Fuse")' in charge_entity and ': -1' in charge_entity)
     )
     assert safe_missing_fuse, f"{target}: missing Fuse data arms the Mining Charge"
+    for contract in ("primeOwner", "linkOwner", "detonateOwner"):
+        assert contract in charge_entity, f"{target}: Mining Charge {contract} contract is not directly testable"
+    for key in ('"Fuse"', '"Channel"', '"Owner"'):
+        assert charge_entity.count(key) >= 2, f"{target}: Mining Charge does not persist {key}"
+
+    wraith_entity = (
+        root / "src/main/java/com/stonytark/usefultoolsmod/entity/custom/WraithEntity.java"
+    ).read_text(encoding="utf-8")
+    assert "Config.ghostEnabled && Config.wraithEnabled" not in wraith_entity, (
+        f"{target}: Wraith natural spawning incorrectly depends on the Ghost toggle"
+    )
+    assert "Config.wraithEnabled" in wraith_entity and "Config.wraithSpawnChance" in wraith_entity, (
+        f"{target}: Wraith natural spawning is missing its own enable/chance controls"
+    )
+    # Each tuple is one required clause whose entries are mapping-specific
+    # alternatives (Mojmap vs Yarn).
+    wraith_contracts = {
+        "flight controller": (("FlyingMoveControl", "FlightMoveControl"),
+                              ("FlyingPathNavigation", "BirdNavigation"), ("setNoGravity(true)",)),
+        "hostile targeting": (("NearestAttackableTargetGoal", "ActiveTargetGoal"),
+                              ("Player.class", "PlayerEntity.class"), ("GhostEntity.class",)),
+        "lunge behavior": (("lungeCooldown",), ("setDeltaMovement(", "setVelocity(lunge)"),
+                           ("hasLineOfSight(target)", "canSee(target)")),
+        "lantern ward response": (("hasActiveLantern", "SoulLanternWard.activeWithin"),
+                                  ("level.hasNeighborSignal(pos)", "world.isReceivingRedstonePower(pos)",
+                                   "SoulLanternWard.nearest")),
+        "fire clearing": (("clearFire()", "extinguish()"),),
+        "damage rules": (("BYPASSES_INVULNERABILITY",), ("IS_EXPLOSION",),
+                         ("EctoplasmInfusionHelper.isInfused",)),
+        "loot drops": (("CONDENSED_ECTOPLASM",), ("ECTOPLASM",)),
+        "sounds": (("WRAITH_AMBIENT", "wraithAmbient()"),
+                   ("WRAITH_HURT", "wraithHurt()"), ("WRAITH_DEATH", "wraithDeath()")),
+        "encounter advancement": (('award(player, "spectral/encounter_wraith")',),),
+    }
+    for contract, clauses in wraith_contracts.items():
+        assert all(any(token in wraith_entity for token in alternatives) for alternatives in clauses), (
+            f"{target}: Wraith {contract} contract is incomplete"
+        )
+    assert "dropCustomDeathLoot" in wraith_entity or "dropLoot" in wraith_entity, (
+        f"{target}: Wraith custom loot hook missing"
+    )
+    # Mojmap Forge 1.20.x supplies the looting level as the override
+    # parameter; Yarn and newer Mojmap versions calculate it explicitly.
+    assert "int looting" in wraith_entity or "Enchantments.LOOTING" in wraith_entity, (
+        f"{target}: Wraith looting behavior missing"
+    )
+
+    java_root = root / "src/main/java/com/stonytark/usefultoolsmod"
+    entities_source = (java_root / "entity/ModEntities.java").read_text(encoding="utf-8")
+    items_source = (java_root / "item/ModItems.java").read_text(encoding="utf-8")
+    renderer_source = (java_root / "client/ModEntityRenderers.java").read_text(encoding="utf-8")
+    renderer_source += (java_root / "UsefultoolsMod.java").read_text(encoding="utf-8")
+    client_entrypoint = java_root / "UsefultoolsModClient.java"
+    if client_entrypoint.is_file():
+        renderer_source += client_entrypoint.read_text(encoding="utf-8")
+    assert "WRAITH" in entities_source and "WraithEntity" in entities_source, (
+        f"{target}: Wraith entity registration missing"
+    )
+    assert "WRAITH_SPAWN_EGG" in items_source, f"{target}: Wraith spawn egg registration missing"
+    assert "WRAITH" in renderer_source and "WraithRenderer" in renderer_source, (
+        f"{target}: Wraith renderer registration missing"
+    )
+    assert (java_root / "entity/client/WraithRenderer.java").is_file(), (
+        f"{target}: Wraith renderer implementation missing"
+    )
+    wraith_egg_model = assets / "models/item/wraith_spawn_egg.json"
+    if version.startswith("26."):
+        candidates = (
+            root / "src/generated/resources/client/assets/usefultoolsmod/models/item/wraith_spawn_egg.json",
+            root / "src/main/generated/assets/usefultoolsmod/models/item/wraith_spawn_egg.json",
+        )
+        wraith_egg_model = next((path for path in candidates if path.is_file()), candidates[0])
+    for asset in (
+        assets / "textures/entity/ghost/wraith.png",
+        assets / "sounds/entity/wraith_ambient.ogg",
+        assets / "sounds/entity/wraith_hurt.ogg",
+        assets / "sounds/entity/wraith_death.ogg",
+        wraith_egg_model,
+    ):
+        assert asset.is_file(), f"{target}: missing Wraith asset {asset.relative_to(root)}"
+
+    advancement_dir = "advancements" if version in ("1.20.1", "1.20.2") else "advancement"
+    encounter = root / f"src/main/resources/data/usefultoolsmod/{advancement_dir}/spectral/encounter_wraith.json"
+    assert encounter.is_file(), f"{target}: Wraith encounter advancement missing"
+    encounter_data = load(encounter)
+    assert encounter_data.get("criteria", {}).get("encountered", {}).get("trigger") == "minecraft:impossible", (
+        f"{target}: Wraith event-driven advancement criterion changed"
+    )
+    advancement_source = (java_root / "util/ModAdvancements.java").read_text(encoding="utf-8")
+    assert "getRemainingCriteria" in advancement_source or "getUnobtainedCriteria" in advancement_source, (
+        f"{target}: event-driven advancement awards do not use the advancement's actual criteria"
+    )
+    assert 'award(advancement, "trigger")' not in advancement_source, (
+        f"{target}: Mojmap advancement helper still hardcodes a nonexistent criterion"
+    )
+    assert 'grantCriterion(advancement, "trigger")' not in advancement_source, (
+        f"{target}: Yarn advancement helper still hardcodes a nonexistent criterion"
+    )
+
+    gametest_source = (java_root / "gametest/UsefulToolsGameTests.java").read_text(encoding="utf-8")
+    for runtime_contract in (
+        "assertWraithRuntimeContracts",
+        "Wraith must use flight rather than Ghost gravity",
+        "Wraith must clear fire every tick",
+        "Wraith must lunge toward a visible mid-range target",
+        "Wraith encounter award path must complete its advancement",
+    ):
+        assert runtime_contract in gametest_source, (
+            f"{target}: Wraith GameTest is missing {runtime_contract}"
+        )
+    for item in ("CONDENSED_ECTOPLASM", "ECTOPLASM"):
+        assert (
+            f"assertItemEntityPresent(ModItems.{item}" in gametest_source
+            or f"expectItemAt(ModItems.{item}" in gametest_source
+        ), f"{target}: Wraith GameTest does not assert the {item} loot drop"
+
+    resonator_source = (java_root / "item/custom/SpectralResonatorItem.java").read_text(encoding="utf-8")
+    assert "e instanceof GhostEntity || e instanceof WraithEntity" in resonator_source, (
+        f"{target}: Spectral Resonator does not target both spirit types"
+    )
 
     for name in ("ectoplasm_lantern", "mining_charge"):
         item = load(assets / f"models/item/{name}.json")

@@ -1,0 +1,22 @@
+{
+  "target": "26.1.2-neoforge",
+  "required_tests": 8,
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-gametest-rr86futh",
+    "runGameTestServer"
+  ],
+  "game_dir": "/dev/shm/usefultools-gametest-rr86futh",
+  "passed": true,
+  "failed_marker": false,
+  "timed_out": false,
+  "forced_launcher_cleanup": false,
+  "exit_code": 0,
+  "remaining_owned_pids": [],
+  "log": "validation/gametests-2.3.1/26.1.2-neoforge.log",
+  "success": true
+}

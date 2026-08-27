@@ -11,6 +11,8 @@
 - Added the equivalent Forge 1.7.10 repair with opaque generated block faces, bounded legacy blocks, and separate original inventory sprites.
 - Repaired the Forge 1.7.10 Wraith spawn egg to use Minecraft's complete two-pass egg texture with Wraith-specific colors instead of requesting a missing overlay texture.
 - Added Wraith WTHIT coverage wherever WTHIT is supported, including live Ectoplasm Lantern suppression and ectoplasm-infused weapon eligibility; WTHIT remains optional.
+- Decoupled natural Wraith spawning from the Ghost enable switch; Wraith spawning now follows its own enable and chance controls while retaining its distinct hostile behavior.
+- Fixed event-driven advancements, including the Wraith encounter advancement, to award their declared remaining criteria instead of assuming every advancement used a criterion named `trigger`.
 - Reduced the paged 1.20.x/1.21.1 config layout to seven entries per page so loader-provided buttons no longer overlap Useful Tools navigation controls.
 - Added a 16-target static resolver gate and expanded release-JAR checks for blockstate, model, texture, and item-model completeness.
 - Preserved all registry IDs, recipes, configurations, save formats, and published compatibility bounds. No new 2.3.1 artifact is published until manual visual approval.

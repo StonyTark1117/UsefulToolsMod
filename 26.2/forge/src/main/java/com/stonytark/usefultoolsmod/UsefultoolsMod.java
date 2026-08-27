@@ -104,6 +104,11 @@ public class UsefultoolsMod {
         UsefulToolsGameTests.entitiesInstantiate(helper);
     }
 
+    @GameTest(structure = "gametest_platform", maxTicks = 100)
+    public static void spectralBlocksAndChargeContracts(GameTestHelper helper) {
+        UsefulToolsGameTests.spectralBlocksAndChargeContracts(helper);
+    }
+
     @GameTest(structure = "gametest_platform", maxTicks = 260)
     public static void spectralInfuserProcesses(GameTestHelper helper) {
         UsefulToolsGameTests.spectralInfuserProcesses(helper);

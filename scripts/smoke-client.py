@@ -243,10 +243,20 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     pause_image = output_dir / f"{name}-pause.png"
     inventory_image = output_dir / f"{name}-inventory.png"
     blocks_image = output_dir / f"{name}-blocks.png"
+    lantern_south_image = output_dir / f"{name}-ectoplasm-lantern-south.png"
+    lantern_north_image = output_dir / f"{name}-ectoplasm-lantern-north.png"
+    lantern_east_image = output_dir / f"{name}-ectoplasm-lantern-east.png"
+    lantern_west_image = output_dir / f"{name}-ectoplasm-lantern-west.png"
+    lantern_top_image = output_dir / f"{name}-ectoplasm-lantern-top.png"
+    lantern_bottom_image = output_dir / f"{name}-ectoplasm-lantern-bottom.png"
     mining_unlit_image = output_dir / f"{name}-mining-charge-unlit.png"
     mining_lit_image = output_dir / f"{name}-mining-charge-lit.png"
     mining_glass_image = output_dir / f"{name}-mining-charge-glass.png"
     wraith_image = output_dir / f"{name}-wraith-wthit.png"
+    wraith_hunting_ordinary_image = output_dir / f"{name}-wraith-hunting-ordinary-wthit.png"
+    wraith_hunting_infused_image = output_dir / f"{name}-wraith-hunting-infused-wthit.png"
+    wraith_warded_ordinary_image = output_dir / f"{name}-wraith-warded-ordinary-wthit.png"
+    wraith_warded_infused_image = output_dir / f"{name}-wraith-warded-infused-wthit.png"
     ghost_image = output_dir / f"{name}-ghost-wthit.png"
     display_number = free_display()
     display = f":{display_number}"
@@ -258,7 +268,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         # loader splash hands off to GLFW. Seed the vanilla completion flag so
         # automation begins deterministically on the title screen.
         (game_dir / "options.txt").write_text(
-            "onboardAccessibility:false\ntutorialStep:none\n", encoding="utf-8"
+            "onboardAccessibility:false\ntutorialStep:none\nrenderClouds:false\n", encoding="utf-8"
         )
     env = os.environ.copy()
     env.update(
@@ -495,9 +505,11 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     def text_display_command(
                         x: int, y: int, z: int, label: str, color: str = "white"
                     ) -> str:
-                        text = json.dumps(
-                            {"text": label, "color": color}, separators=(",", ":")
-                        )
+                        # Text-display entity data stores a serialized component
+                        # string, not an inline SNBT compound. A JSON object here
+                        # is accepted by /summon but produces an empty display and
+                        # logs "Display entity Not a string" on 1.21.1.
+                        text = json.dumps(label)
                         return (
                             f"summon minecraft:text_display {x} {y} {z} "
                             "{Tags:[\"usefultools_visual_label\"],billboard:\"center\","
@@ -533,6 +545,11 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                         "setblock 0 200 -2 usefultoolsmod:ectoplasm_lantern",
                         "setblock 1 200 2 minecraft:redstone_block",
                         "setblock 1 200 -2 minecraft:redstone_block",
+                        # Trigger the inventory advancement and recipe toast well
+                        # before the Wraith screenshots, then restore the ordinary
+                        # weapon used by the first acceptance state.
+                        "item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword",
+                        "item replace entity @s weapon.mainhand with minecraft:iron_sword",
                     ]
                     directions = ("down", "up", "north", "south", "west", "east")
                     for index, direction in enumerate(directions):
@@ -563,6 +580,28 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     time.sleep(1)
                     screenshot(display, blocks_image)
 
+                    # Dedicated Ectoplasm Lantern proof from every face. The
+                    # invisible barrier support makes the lower cage and core
+                    # visible without hiding alpha leaks behind an opaque floor.
+                    # Spectator mode prevents the camera from falling between
+                    # teleports; creative mode alone does not enable flight.
+                    chat_command("gamemode spectator")
+                    chat_command("fill -14 199 -14 14 210 14 minecraft:air")
+                    chat_command("setblock 0 199 0 minecraft:barrier")
+                    chat_command("setblock 0 200 0 usefultoolsmod:ectoplasm_lantern")
+                    lantern_views = (
+                        ("tp @s 0.5 199.5 3 180 14", lantern_south_image),
+                        ("tp @s 0.5 199.5 -2 0 14", lantern_north_image),
+                        ("tp @s 3 199.5 0.5 90 14", lantern_east_image),
+                        ("tp @s -2 199.5 0.5 -90 14", lantern_west_image),
+                        ("tp @s 0.5 201.5 0.5 0 90", lantern_top_image),
+                        ("tp @s 0.5 197.5 0.5 0 -90", lantern_bottom_image),
+                    )
+                    for teleport, lantern_image in lantern_views:
+                        chat_command(teleport, 0.2)
+                        time.sleep(1)
+                        screenshot(display, lantern_image)
+
                     # Dedicated Mining Charge proof. Each capture uses a clean
                     # scene, labels all six facing states, and keeps vanilla
                     # blocks out of the foreground so the subject is
@@ -579,7 +618,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                             0.1,
                         )
                         chat_command(text_display_command(x, 202, 5, direction.upper()), 0.1)
-                    chat_command("tp @s 0 201 11 180 8", 0.2)
+                    chat_command("tp @s 0 200 11 180 11", 0.2)
                     time.sleep(2)
                     screenshot(display, mining_unlit_image)
 
@@ -600,26 +639,44 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     chat_command("setblock 1 200 5 usefultoolsmod:mining_charge[facing=down,lit=true]")
                     chat_command(text_display_command(-1, 202, 5, "UNLIT"), 0.1)
                     chat_command(text_display_command(1, 202, 5, "LIT", "red"), 0.1)
-                    chat_command("tp @s 0 200 9 180 12", 0.2)
+                    chat_command("tp @s 0 200 9 180 15", 0.2)
                     time.sleep(2)
                     screenshot(display, mining_glass_image)
                     chat_command("kill @e[type=minecraft:text_display,tag=usefultools_visual_label]")
                     chat_command("fill -7 199 3 7 203 7 minecraft:air")
 
-                    # Restore the spectral scene after the isolated Mining
-                    # Charge proof so the Wraith suppression capture remains
-                    # independent of the charge setup.
-                    chat_command("setblock 2 200 -3 usefultoolsmod:ectoplasm_lantern")
-                    chat_command("tp @s 0 202 0 180 0")
-                    chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
+                    # Capture every advertised Wraith overlay state separately:
+                    # hunting/warded crossed with ordinary/infused weapon.
+                    chat_command("gamemode creative")
+                    chat_command("fill -4 199 -6 4 199 2 minecraft:smooth_stone")
+                    chat_command("tp @s 0 200 0 180 0")
+                    chat_command("item replace entity @s weapon.mainhand with minecraft:iron_sword")
                     chat_command(
                         'summon usefultoolsmod:wraith 0 201 -3 '
                         '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
                     , 0.3)
                     ensure_world_view()
                     time.sleep(2)
+                    screenshot(display, wraith_hunting_ordinary_image)
+                    chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
+                    ensure_world_view()
+                    time.sleep(1)
+                    screenshot(display, wraith_hunting_infused_image)
+                    chat_command("setblock 2 200 -3 usefultoolsmod:ectoplasm_lantern")
+                    chat_command("item replace entity @s weapon.mainhand with minecraft:iron_sword")
+                    ensure_world_view()
+                    time.sleep(1)
+                    screenshot(display, wraith_warded_ordinary_image)
+                    chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
+                    ensure_world_view()
+                    time.sleep(1)
+                    screenshot(display, wraith_warded_infused_image)
+                    # Retain the original report field as a compatibility alias
+                    # for the strongest warded+infused acceptance state.
                     screenshot(display, wraith_image)
                     chat_command("kill @e[type=usefultoolsmod:wraith,distance=..16]")
+                    chat_command("kill @e[type=minecraft:item,distance=..16]")
+                    chat_command("setblock 2 200 -3 minecraft:air")
                     chat_command(
                         'summon usefultoolsmod:ghost 0 201 -3 '
                         '{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}'
@@ -695,8 +752,12 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         failure = failure or "inventory probe screenshot was empty"
     if args.visual_showcase:
         showcase_images = (
-            blocks_image, mining_unlit_image, mining_lit_image,
-            mining_glass_image, wraith_image, ghost_image,
+            blocks_image, lantern_south_image, lantern_north_image,
+            lantern_east_image, lantern_west_image, lantern_top_image,
+            lantern_bottom_image, mining_unlit_image, mining_lit_image,
+            mining_glass_image, wraith_hunting_ordinary_image,
+            wraith_hunting_infused_image, wraith_warded_ordinary_image,
+            wraith_warded_infused_image, wraith_image, ghost_image,
         )
         if name != "1.21.1-neoforge":
             success = False
@@ -733,6 +794,12 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         "visual_showcase_requested": args.visual_showcase,
         "visual_showcase_commands_succeeded": showcase_commands_succeeded,
         "blocks_screenshot": str(blocks_image.relative_to(ROOT)) if args.visual_showcase else None,
+        "ectoplasm_lantern_screenshots": (
+            [str(path.relative_to(ROOT)) for path in (
+                lantern_south_image, lantern_north_image, lantern_east_image,
+                lantern_west_image, lantern_top_image, lantern_bottom_image,
+            )] if args.visual_showcase else []
+        ),
         "mining_charge_unlit_screenshot": (
             str(mining_unlit_image.relative_to(ROOT)) if args.visual_showcase else None
         ),
@@ -743,6 +810,14 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
             str(mining_glass_image.relative_to(ROOT)) if args.visual_showcase else None
         ),
         "wraith_wthit_screenshot": str(wraith_image.relative_to(ROOT)) if args.visual_showcase else None,
+        "wraith_wthit_state_screenshots": (
+            {
+                "hunting_ordinary": str(wraith_hunting_ordinary_image.relative_to(ROOT)),
+                "hunting_infused": str(wraith_hunting_infused_image.relative_to(ROOT)),
+                "warded_ordinary": str(wraith_warded_ordinary_image.relative_to(ROOT)),
+                "warded_infused": str(wraith_warded_infused_image.relative_to(ROOT)),
+            } if args.visual_showcase else {}
+        ),
         "ghost_wthit_screenshot": str(ghost_image.relative_to(ROOT)) if args.visual_showcase else None,
         "success": success,
     }

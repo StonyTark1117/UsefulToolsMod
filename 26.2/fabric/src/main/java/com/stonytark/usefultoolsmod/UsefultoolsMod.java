@@ -33,7 +33,7 @@ public class UsefultoolsMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Initializing The Useful Tools Mod (Fabric, MC {})", "26.1.2");
+        LOGGER.info("Initializing The Useful Tools Mod (Fabric, MC {})", "26.2");
 
         // Config is plain Java; load before anything else can read it.
         Config.load();

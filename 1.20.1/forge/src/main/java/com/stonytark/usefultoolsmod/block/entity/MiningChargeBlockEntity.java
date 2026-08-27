@@ -23,20 +23,32 @@ public class MiningChargeBlockEntity extends BlockEntity {
     }
 
     public void prime(ServerPlayer player) {
+        primeOwner(player == null ? null : player.getUUID());
+    }
+
+    public void primeOwner(UUID playerId) {
         if (fuse >= 0) return;
-        if (player != null) owner = player.getUUID();
+        if (playerId != null) owner = playerId;
         fuse = 80;
         if (level != null) level.setBlock(worldPosition, getBlockState().setValue(MiningChargeBlock.LIT, true), 3);
         setChanged();
     }
 
     public boolean link(ServerPlayer player, int selectedChannel) {
-        if (owner != null && !owner.equals(player.getUUID())) return false;
-        owner = player.getUUID(); channel = selectedChannel; setChanged(); return true;
+        return linkOwner(player.getUUID(), selectedChannel);
+    }
+
+    public boolean linkOwner(UUID playerId, int selectedChannel) {
+        if (owner != null && !owner.equals(playerId)) return false;
+        owner = playerId; channel = selectedChannel; setChanged(); return true;
     }
 
     public boolean detonate(ServerPlayer player, int selectedChannel) {
-        if (owner == null || !owner.equals(player.getUUID()) || channel != selectedChannel) return false;
+        return detonateOwner(player.getUUID(), selectedChannel);
+    }
+
+    public boolean detonateOwner(UUID playerId, int selectedChannel) {
+        if (owner == null || !owner.equals(playerId) || channel != selectedChannel) return false;
         fuse = 1; setChanged(); return true;
     }
 

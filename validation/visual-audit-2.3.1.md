@@ -13,7 +13,18 @@ and explicitly approves these visuals.
 
 `validation/visual-client-2.3.1/1.21.1-neoforge-blocks.png` is contextual proof
 of the bounded Ectoplasm Lantern only; the nearby vanilla redstone block and
-background charges are not Mining Charge acceptance evidence.
+background charges are not Mining Charge acceptance evidence. Dedicated
+lantern captures cover all six viewing directions:
+
+- `1.21.1-neoforge-ectoplasm-lantern-south.png`
+- `1.21.1-neoforge-ectoplasm-lantern-north.png`
+- `1.21.1-neoforge-ectoplasm-lantern-east.png`
+- `1.21.1-neoforge-ectoplasm-lantern-west.png`
+- `1.21.1-neoforge-ectoplasm-lantern-top.png`
+- `1.21.1-neoforge-ectoplasm-lantern-bottom.png`
+
+Together they show the backed luminous core and bounded frame from the four
+sides, above, and below without a view through the block into the world.
 
 The dedicated Mining Charge evidence is:
 
@@ -34,9 +45,17 @@ and lit variant in all 16 targets, including the Java 8 classic assets.
 
 ## WTHIT and entity rendering
 
-`validation/visual-client-2.3.1/1.21.1-neoforge-wraith-wthit.png` shows the live
-Wraith renderer and its Useful Tools WTHIT body: hostile identity, active
-Ectoplasm Lantern repulsion, and the held infused weapon's effective status.
+Four dedicated Wraith captures exercise the independently varying provider
+states rather than relying on one tooltip:
+
+- `1.21.1-neoforge-wraith-hunting-ordinary-wthit.png`
+- `1.21.1-neoforge-wraith-hunting-infused-wthit.png`
+- `1.21.1-neoforge-wraith-warded-ordinary-wthit.png`
+- `1.21.1-neoforge-wraith-warded-infused-wthit.png`
+
+They show the live Wraith renderer, hostile/ward-suppressed state, active
+Ectoplasm Lantern repulsion, and ordinary versus infused held-weapon guidance.
+The older `1.21.1-neoforge-wraith-wthit.png` remains contextual evidence only.
 
 `validation/visual-client-2.3.1/1.21.1-neoforge-ghost-wthit.png` shows the live
 Ghost renderer and existing player-facing visibility and weapon guidance. The
@@ -58,4 +77,7 @@ spawn eggs, tools, materials, and other Useful Tools families.
 The client joined an isolated world, accepted the deterministic showcase
 commands, captured every view, saved all dimensions, exited through the UI,
 and left no owned process behind. The corresponding JSON report and complete
-client log are in the same directory.
+client log are in the same directory. A separate no-WTHIT launch in
+`validation/client-smoke-2.3.1-followup/1.21.1-neoforge.json` reached the title
+screen, opened the config screen, joined a world, exited normally, and left no
+owned process behind, proving that the optional provider is absent-safe.

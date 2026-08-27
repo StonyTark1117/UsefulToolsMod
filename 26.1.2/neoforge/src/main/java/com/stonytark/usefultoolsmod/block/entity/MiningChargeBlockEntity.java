@@ -18,11 +18,14 @@ import java.util.UUID;
 public class MiningChargeBlockEntity extends BlockEntity {
     private int fuse=-1,channel;private UUID owner;
     public MiningChargeBlockEntity(BlockPos pos,BlockState state){super(ModBlockEntityTypes.MINING_CHARGE.get(),pos,state);}
-    public void prime(ServerPlayer player){if(fuse>=0)return;if(player!=null)owner=player.getUUID();fuse=80;
+    public void prime(ServerPlayer player){primeOwner(player==null?null:player.getUUID());}
+    public void primeOwner(UUID playerId){if(fuse>=0)return;if(playerId!=null)owner=playerId;fuse=80;
         if(level!=null)level.setBlock(worldPosition,getBlockState().setValue(MiningChargeBlock.LIT,true),3);setChanged();}
-    public boolean link(ServerPlayer player,int selected){if(owner!=null&&!owner.equals(player.getUUID()))return false;
-        owner=player.getUUID();channel=selected;setChanged();return true;}
-    public boolean detonate(ServerPlayer player,int selected){if(owner==null||!owner.equals(player.getUUID())||channel!=selected)return false;
+    public boolean link(ServerPlayer player,int selected){return linkOwner(player.getUUID(),selected);}
+    public boolean linkOwner(UUID playerId,int selected){if(owner!=null&&!owner.equals(playerId))return false;
+        owner=playerId;channel=selected;setChanged();return true;}
+    public boolean detonate(ServerPlayer player,int selected){return detonateOwner(player.getUUID(),selected);}
+    public boolean detonateOwner(UUID playerId,int selected){if(owner==null||!owner.equals(playerId)||channel!=selected)return false;
         fuse=1;setChanged();return true;}
     public UUID owner(){return owner;}
     public int channel(){return channel;}

@@ -72,7 +72,7 @@ public class WraithEntity extends Monster {
 
     public static boolean checkSpawnRules(EntityType<? extends Monster> type, LevelAccessor level,
                                           MobSpawnType reason, BlockPos pos, RandomSource random) {
-        return Config.ghostEnabled && Config.wraithEnabled && random.nextDouble() <= Config.wraithSpawnChance
+        return Config.wraithEnabled && random.nextDouble() <= Config.wraithSpawnChance
                 && level.getMaxLocalRawBrightness(pos) <= 3
                 && level.getEntitiesOfClass(WraithEntity.class, new net.minecraft.world.phys.AABB(pos).inflate(1)).isEmpty()
                 && !hasActiveLantern(level, pos);
@@ -103,13 +103,19 @@ public class WraithEntity extends Monster {
                     net.minecraft.server.level.ServerPlayer.class, getBoundingBox().inflate(16.0D)))
                 com.stonytark.usefultoolsmod.util.ModAdvancements.award(player, "spectral/encounter_wraith");
         }
+        tryLungeAtTarget();
+    }
+
+    public boolean tryLungeAtTarget() {
         LivingEntity target = getTarget();
         if (!level().isClientSide && target != null && lungeCooldown == 0
                 && distanceToSqr(target) > 9.0D && distanceToSqr(target) < 144.0D && hasLineOfSight(target)) {
             Vec3 lunge = target.getEyePosition().subtract(position()).normalize().scale(0.85D);
             setDeltaMovement(lunge);
             lungeCooldown = 40;
+            return true;
         }
+        return false;
     }
 
     @Override

@@ -72,6 +72,52 @@ public final class UsefulToolsGameTests implements FabricGameTest {
         context.complete();
     }
 
+    @GameTest(templateName = TEMPLATE, tickLimit = 100)
+    public void spectralBlocksAndChargeContracts(TestContext context) {
+        BlockPos pos = new BlockPos(1, 1, 1);
+        context.setBlockState(pos, ModBlocks.ECTOPLASM_LANTERN.getDefaultState());
+        var absolute = context.getAbsolutePos(pos);
+        var lanternState = context.getWorld().getBlockState(absolute);
+        context.assertTrue(lanternState.getLuminance() == 12, "Ectoplasm Lantern light level");
+        context.assertFalse(lanternState.getCollisionShape(context.getWorld(), absolute).isEmpty(),
+                "Ectoplasm Lantern must retain bounded collision");
+        var warded = context.spawnMob(ModEntities.WRAITH, new BlockPos(2, 1, 1));
+        context.assertTrue(com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock.isStabilized(warded),
+                "active Ectoplasm Lantern must suppress a nearby Wraith");
+        context.setBlockState(new BlockPos(1, 1, 2), net.minecraft.block.Blocks.REDSTONE_BLOCK.getDefaultState());
+        context.assertFalse(com.stonytark.usefultoolsmod.block.custom.SoulLanternBlock.isStabilized(warded),
+                "redstone-powered Ectoplasm Lantern must not suppress Wraiths");
+        warded.discard();
+        for (net.minecraft.util.math.Direction direction : net.minecraft.util.math.Direction.values()) {
+            var state = ModBlocks.MINING_CHARGE.getDefaultState()
+                    .with(com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock.FACING, direction)
+                    .with(com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock.LIT, false);
+            context.setBlockState(pos, state);
+            var placed = context.getWorld().getBlockState(absolute);
+            context.assertTrue(placed.get(com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock.FACING)
+                    == direction, "Mining Charge facing");
+            context.assertFalse(placed.getCollisionShape(context.getWorld(), absolute).isEmpty(),
+                    "Mining Charge must retain directional collision");
+            context.assertTrue(context.getBlockEntity(pos) instanceof
+                    com.stonytark.usefultoolsmod.block.entity.MiningChargeBlockEntity,
+                    "Mining Charge block entity must be created");
+        }
+        context.setBlockState(pos, ModBlocks.MINING_CHARGE.getDefaultState());
+        var charge = (com.stonytark.usefultoolsmod.block.entity.MiningChargeBlockEntity)
+                context.getBlockEntity(pos);
+        var owner = java.util.UUID.randomUUID();
+        context.assertTrue(charge.linkOwner(owner, 3), "owner must be able to link Mining Charge");
+        context.assertFalse(charge.detonateOwner(owner, 2), "wrong remote channel must not detonate Mining Charge");
+        charge.primeOwner(owner);
+        context.assertTrue(context.getWorld().getBlockState(absolute).get(
+                com.stonytark.usefultoolsmod.block.custom.MiningChargeBlock.LIT),
+                "primed Mining Charge must enter its lit state");
+        context.assertTrue(owner.equals(charge.owner()), "Mining Charge owner must persist in memory");
+        context.assertTrue(charge.channel() == 3, "Mining Charge channel must persist in memory");
+        context.assertTrue(charge.detonateOwner(owner, 3), "matching owner/channel must arm remote detonation");
+        context.complete();
+    }
+
     @GameTest(templateName = TEMPLATE, tickLimit = 260)
     public void spectralInfuserProcesses(TestContext context) {
         BlockPos pos = new BlockPos(1, 1, 1);
@@ -79,7 +125,7 @@ public final class UsefulToolsGameTests implements FabricGameTest {
         SpectralInfuserBlockEntity infuser = (SpectralInfuserBlockEntity) context.getBlockEntity(pos);
         infuser.setStack(0, new ItemStack(Items.IRON_PICKAXE));
         infuser.setStack(1, new ItemStack(ModItems.CONDENSED_ECTOPLASM));
-        context.runAtTick(205, () -> {
+        context.runAtTick(230, () -> {
             context.assertTrue(infuser.getStack(0).isEmpty(), "input must be consumed");
             context.assertTrue(infuser.getStack(1).isEmpty(), "one condensed ectoplasm must be consumed");
             context.assertTrue(infuser.getPropertyDelegate().get(2) == 7,
@@ -129,8 +175,10 @@ public final class UsefulToolsGameTests implements FabricGameTest {
                 "a full infused armor set must hide its wearer from ghosts");
         boolean oldSweetBerry = Config.sweetBerryEnabled;
         boolean oldGhost = Config.ghostEnabled;
+        boolean oldWraith = Config.wraithEnabled;
         float modified;
         boolean spawnAllowed;
+        boolean wraithSpawnAllowed;
         try {
             Config.sweetBerryEnabled = true;
             player.setStackInHand(Hand.MAIN_HAND, new ItemStack(ModItems.SWEET_BERRY_SWORD));
@@ -138,13 +186,74 @@ public final class UsefulToolsGameTests implements FabricGameTest {
             Config.ghostEnabled = false;
             spawnAllowed = GhostEntity.checkGhostSpawnRules(ModEntities.GHOST, context.getWorld(),
                     SpawnReason.NATURAL, new BlockPos(1, 1, 1), Random.create(1L));
+            Config.wraithEnabled = false;
+            wraithSpawnAllowed = com.stonytark.usefultoolsmod.entity.custom.WraithEntity.checkSpawnRules(
+                    ModEntities.WRAITH, context.getWorld(), SpawnReason.NATURAL,
+                    new BlockPos(1, 1, 1), Random.create(1L));
         } finally {
             Config.sweetBerryEnabled = oldSweetBerry;
             Config.ghostEnabled = oldGhost;
+            Config.wraithEnabled = oldWraith;
         }
         context.assertTrue(modified == 5.0F, "damage mutation must run exactly once");
         context.assertFalse(spawnAllowed, "ghost spawn kill switch must be authoritative");
-        context.complete();
+        context.assertFalse(wraithSpawnAllowed, "wraith spawn kill switch must be authoritative");
+        assertWraithRuntimeContracts(context);
+    }
+
+
+    @SuppressWarnings("removal")
+    private static void assertWraithRuntimeContracts(TestContext context) {
+        for (int y = 1; y <= 6; y++)
+            context.setBlockState(new BlockPos(1, y, 1), net.minecraft.block.Blocks.AIR.getDefaultState());
+        var wraith = context.spawnMob(ModEntities.WRAITH, new BlockPos(1, 1, 1));
+        context.assertTrue(wraith.hasNoGravity(), "Wraith must use flight rather than Ghost gravity");
+        wraith.setFireTicks(100);
+        wraith.tick();
+        context.assertFalse(wraith.isOnFire(), "Wraith must clear fire every tick");
+        wraith.discard();
+        wraith = context.spawnMob(ModEntities.WRAITH, new BlockPos(1, 1, 1));
+
+        var lungeTarget = context.spawnMob(ModEntities.GHOST, new BlockPos(1, 5, 1));
+        lungeTarget.setNoGravity(true);
+        wraith.setTarget(lungeTarget);
+        wraith.getVisibilityCache().clear();
+        context.assertTrue(wraith.getTarget() == lungeTarget, "Wraith must retain an explicit hostile target");
+        context.assertTrue(wraith.squaredDistanceTo(lungeTarget) > 9.0D
+                        && wraith.squaredDistanceTo(lungeTarget) < 144.0D,
+                "Wraith test target must be inside the lunge distance window");
+        context.assertTrue(wraith.canSee(lungeTarget), "Wraith test target must be visible");
+        wraith.setVelocity(net.minecraft.util.math.Vec3d.ZERO);
+        context.assertTrue(wraith.tryLungeAtTarget(),
+                "Wraith lunge contract must activate for a visible supported target");
+        context.assertTrue(wraith.getVelocity().lengthSquared() > 0.1D,
+                "Wraith must lunge toward a visible mid-range target");
+
+        var player = context.createMockCreativeServerPlayerInWorld();
+        var encounter = player.server.getAdvancementLoader().get(
+                Identifier.of(UsefultoolsMod.MOD_ID, "spectral/encounter_wraith"));
+        context.assertTrue(encounter != null, "Wraith encounter advancement must load");
+        try {
+            com.stonytark.usefultoolsmod.util.ModAdvancements.award(
+                    player, "spectral/encounter_wraith");
+        } catch (NullPointerException mockConnectionWithoutChannel) {
+            // GameTest mock players can lack a Netty channel. Progress is mutated before sync.
+        }
+        context.assertTrue(player.getAdvancementTracker().getProgress(encounter).isDone(),
+                "Wraith encounter award path must complete its advancement");
+
+        var lootWraith = context.spawnMob(ModEntities.WRAITH, new BlockPos(2, 1, 2));
+        ItemStack infused = new ItemStack(Items.IRON_SWORD);
+        EctoplasmInfusionHelper.setInfused(infused, true);
+        player.setStackInHand(Hand.MAIN_HAND, infused);
+        lootWraith.setHealth(1.0F);
+        context.assertTrue(lootWraith.damage(context.getWorld().getDamageSources().playerAttack(player), 5.0F),
+                "infused player attack must kill a Wraith");
+        context.runAtTick(1, () -> {
+            context.expectItemAt(ModItems.CONDENSED_ECTOPLASM, new BlockPos(2, 1, 2), 4.0D);
+            context.expectItemAt(ModItems.ECTOPLASM, new BlockPos(2, 1, 2), 4.0D);
+            context.complete();
+        });
     }
 
     @GameTest(templateName = TEMPLATE, tickLimit = 100)

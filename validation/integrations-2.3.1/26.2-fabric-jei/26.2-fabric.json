@@ -1,0 +1,45 @@
+{
+  "target": "26.2-fabric",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-sgeacjd1",
+    "-PusefulToolsJeiRuntime=true",
+    "runServer"
+  ],
+  "java_home": "/usr/lib/jvm/java-26-openjdk",
+  "isolated_game_dir": true,
+  "external_game_dir": false,
+  "kept_isolated_game_dir": false,
+  "game_dir": "/dev/shm/usefultools-smoke-sgeacjd1",
+  "game_process_cwds": {
+    "1742815": "/dev/shm/usefultools-smoke-sgeacjd1"
+  },
+  "run_id": "b2adb1f52cd74322949240fb62d53d13",
+  "started_at_epoch": 1787815426.1766582,
+  "ready": true,
+  "ready_seconds": 10.79,
+  "stop_sent": true,
+  "stop_method": "stdin",
+  "term_fallback_pids": [],
+  "forced_launcher_cleanup": false,
+  "clean_shutdown": true,
+  "failure": null,
+  "crash_marker": null,
+  "saved_dimension_lines": [
+    "[00:23:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
+    "[00:23:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
+    "[00:23:56] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether",
+    "[00:23:57] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:overworld",
+    "[00:23:57] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_end",
+    "[00:23:57] [Server thread/INFO] (Minecraft) Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether"
+  ],
+  "thread_dump_pids": [],
+  "remaining_owned_pids": [],
+  "port_free_after": true,
+  "launcher_exit_code": 0,
+  "log": "validation/integrations-2.3.1/26.2-fabric-jei/26.2-fabric.log"
+}

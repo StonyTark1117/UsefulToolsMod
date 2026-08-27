@@ -10,6 +10,10 @@ public final class ModAdvancements {
     public static void award(ServerPlayer player, String path) {
         var advancement = ((net.minecraft.server.level.ServerLevel) player.level()).getServer().getAdvancements().get(
                 Identifier.fromNamespaceAndPath("usefultoolsmod", path));
-        if (advancement != null) player.getAdvancements().award(advancement, "trigger");
+        if (advancement != null) {
+            for (String criterion : player.getAdvancements().getOrStartProgress(advancement)
+                    .getRemainingCriteria())
+                player.getAdvancements().award(advancement, criterion);
+        }
     }
 }

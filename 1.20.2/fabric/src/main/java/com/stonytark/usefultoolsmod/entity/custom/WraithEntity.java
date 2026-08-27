@@ -62,7 +62,7 @@ public class WraithEntity extends HostileEntity {
 
     public static boolean checkSpawnRules(EntityType<? extends HostileEntity> type, WorldAccess world,
                                           SpawnReason reason, BlockPos pos, Random random) {
-        return Config.ghostEnabled && Config.wraithEnabled && random.nextDouble() <= Config.wraithSpawnChance
+        return Config.wraithEnabled && random.nextDouble() <= Config.wraithSpawnChance
                 && world.getBaseLightLevel(pos, 0) <= 3 && !hasActiveLantern(world, pos);
     }
 
@@ -85,12 +85,17 @@ public class WraithEntity extends HostileEntity {
                     net.minecraft.server.network.ServerPlayerEntity.class, getBoundingBox().expand(16.0D), entity -> true))
                 com.stonytark.usefultoolsmod.util.ModAdvancements.award(player, "spectral/encounter_wraith");
         }
+        tryLungeAtTarget();
+    }
+
+    public boolean tryLungeAtTarget() {
         LivingEntity target = getTarget();
         if (!getWorld().isClient && target != null && lungeCooldown == 0 && squaredDistanceTo(target) > 9.0D
                 && squaredDistanceTo(target) < 144.0D && canSee(target)) {
             Vec3d lunge = target.getEyePos().subtract(getPos()).normalize().multiply(0.85D);
-            setVelocity(lunge); lungeCooldown = 40;
+            setVelocity(lunge); lungeCooldown = 40; return true;
         }
+        return false;
     }
 
     @Override public boolean tryAttack(Entity target) {

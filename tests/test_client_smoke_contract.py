@@ -44,6 +44,8 @@ class ClientSmokeContractTests(unittest.TestCase):
         self.assertIn("mining_charge_unlit_screenshot", source)
         self.assertIn("mining_charge_lit_screenshot", source)
         self.assertIn("mining_charge_glass_screenshot", source)
+        self.assertIn("ectoplasm_lantern_screenshots", source)
+        self.assertIn("wraith_wthit_state_screenshots", source)
         self.assertIn("wraith_wthit_screenshot", source)
 
     def test_classic_client_uses_java_8_and_native_config_screen(self) -> None:

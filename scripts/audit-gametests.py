@@ -38,7 +38,7 @@ class Target:
     directory: str
     java_home: str
     task: str
-    required_tests: int = 6
+    required_tests: int = 7
 
 
 TARGETS = {
@@ -51,12 +51,12 @@ TARGETS = {
     "1.21.1-forge": Target("1.21.1/forge", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer"),
     "1.21.1-fabric": Target("1.21.1/fabric", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer"),
     "1.21.1-neoforge": Target("1.21.1/neoforge", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer"),
-    "26.1.2-forge": Target("26.1.2/forge", "/usr/lib/jvm/java-26-openjdk", "runGameTestServer", 7),
-    "26.1.2-fabric": Target("26.1.2/fabric", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "runGameTestServer", 7),
-    "26.1.2-neoforge": Target("26.1.2/neoforge", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer", 7),
-    "26.2-fabric": Target("26.2/fabric", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "runGameTestServer", 7),
-    "26.2-neoforge": Target("26.2/neoforge", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer", 7),
-    "26.2-forge": Target("26.2/forge", "/usr/lib/jvm/java-26-openjdk", "runGameTestServer", 7),
+    "26.1.2-forge": Target("26.1.2/forge", "/usr/lib/jvm/java-26-openjdk", "runGameTestServer", 8),
+    "26.1.2-fabric": Target("26.1.2/fabric", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "runGameTestServer", 8),
+    "26.1.2-neoforge": Target("26.1.2/neoforge", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer", 8),
+    "26.2-fabric": Target("26.2/fabric", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "runGameTestServer", 8),
+    "26.2-neoforge": Target("26.2/neoforge", "/usr/lib/jvm/java-21-openjdk", "runGameTestServer", 8),
+    "26.2-forge": Target("26.2/forge", "/usr/lib/jvm/java-26-openjdk", "runGameTestServer", 8),
 }
 
 
@@ -233,28 +233,32 @@ def main() -> int:
     for name in names:
         results[name] = run_target(name, TARGETS[name], args)
     success = all(results.values())
-    if args.target == "all":
-        output_dir = args.output_dir.resolve()
+    output_dir = args.output_dir.resolve()
+    report_paths = {name: output_dir / f"{name}.json" for name in TARGETS}
+    if all(path.is_file() for path in report_paths.values()):
         reports = {
-            name: json.loads((output_dir / f"{name}.json").read_text(encoding="utf-8"))
-            for name in names
+            name: json.loads(path.read_text(encoding="utf-8"))
+            for name, path in report_paths.items()
         }
         summary = {
-            "target_count": len(names),
+            "target_count": len(TARGETS),
             "required_test_invocations": sum(
                 target.required_tests for target in TARGETS.values()
             ),
-            "passed_targets": sum(results.values()),
-            "failed_targets": [name for name, passed in results.items() if not passed],
-            "success": success,
+            "passed_targets": sum(report.get("success", False) for report in reports.values()),
+            "failed_targets": [
+                name for name, report in reports.items() if not report.get("success", False)
+            ],
+            "success": all(report.get("success", False) for report in reports.values()),
             "reports": reports,
         }
         (output_dir / "matrix-summary.json").write_text(
             json.dumps(summary, indent=2) + "\n", encoding="utf-8"
         )
-        print(
-            f"gametest matrix: {summary['passed_targets']}/{summary['target_count']} targets passed"
-        )
+        if args.target == "all":
+            print(
+                f"gametest matrix: {summary['passed_targets']}/{summary['target_count']} targets passed"
+            )
     return 0 if success else 1
 
 

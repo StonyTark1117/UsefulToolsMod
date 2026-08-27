@@ -56,7 +56,7 @@ public class WraithEntity extends Monster {
     }
     public static boolean checkSpawnRules(EntityType<? extends Monster> type, LevelAccessor level,
                                           EntitySpawnReason reason, BlockPos pos, RandomSource random) {
-        return Config.ghostEnabled && Config.wraithEnabled && random.nextDouble() <= Config.wraithSpawnChance
+        return Config.wraithEnabled && random.nextDouble() <= Config.wraithSpawnChance
                 && level.getMaxLocalRawBrightness(pos) <= 3 && !SoulLanternWard.activeWithin(level, pos, 24);
     }
     @Override public void tick() {
@@ -71,11 +71,15 @@ public class WraithEntity extends Monster {
                     net.minecraft.server.level.ServerPlayer.class, getBoundingBox().inflate(16.0D)))
                 com.stonytark.usefultoolsmod.util.ModAdvancements.award(player, "spectral/encounter_wraith");
         }
+        tryLungeAtTarget();
+    }
+    public boolean tryLungeAtTarget() {
         LivingEntity target = getTarget();
         if (!level().isClientSide() && target != null && lungeCooldown == 0 && distanceToSqr(target) > 9
                 && distanceToSqr(target) < 144 && hasLineOfSight(target)) {
-            setDeltaMovement(target.getEyePosition().subtract(position()).normalize().scale(.85)); lungeCooldown = 40;
+            setDeltaMovement(target.getEyePosition().subtract(position()).normalize().scale(.85)); lungeCooldown = 40; return true;
         }
+        return false;
     }
     @Override public boolean doHurtTarget(ServerLevel level, Entity target) {
         boolean hit = super.doHurtTarget(level, target);
