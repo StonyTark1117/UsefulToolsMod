@@ -1,0 +1,61 @@
+[
+  {
+    "mode": "software",
+    "display": ":120",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "options": {
+      "LIBGL_ALWAYS_SOFTWARE": "true"
+    },
+    "gears_exit": null,
+    "glxinfo_exit": 0,
+    "capture_exit": 0,
+    "pixel_maximum": "0.94902"
+  },
+  {
+    "mode": "zink-disabled",
+    "display": ":120",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "options": {
+      "GALLIUM_DRIVER": "zink",
+      "LIBGL_KOPPER_DRI2": "true",
+      "LIBGL_KOPPER_DISABLE": "true"
+    },
+    "gears_exit": null,
+    "glxinfo_exit": 0,
+    "capture_exit": 0,
+    "pixel_maximum": "0"
+  },
+  {
+    "mode": "zink-dri2",
+    "display": ":120",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "options": {
+      "GALLIUM_DRIVER": "zink",
+      "LIBGL_KOPPER_DRI2": "true"
+    },
+    "gears_exit": 1,
+    "glxinfo_exit": 0,
+    "capture_exit": 0,
+    "pixel_maximum": "0"
+  },
+  {
+    "mode": "zink-default",
+    "display": ":120",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "options": {
+      "GALLIUM_DRIVER": "zink"
+    },
+    "gears_exit": null,
+    "glxinfo_exit": 0,
+    "capture_exit": 0,
+    "pixel_maximum": "0"
+  }
+]

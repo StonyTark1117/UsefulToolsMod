@@ -1,0 +1,60 @@
+{
+  "status": "offline focused tests passed",
+  "checks": {
+    "immutable_input_hashes_match": true,
+    "durable_world_content_hash_matches": true,
+    "publisher_optifine_archive_unchanged": true,
+    "publisher_bsl_archive_unchanged": true,
+    "publisher_shaders_properties_hash_matches": true,
+    "publisher_pipeline_options_match": true,
+    "row96_repaired_bridge_hash_matches": true,
+    "row96_donor_hash_matches": true,
+    "bridge_premain_manifest_present": true,
+    "bridge_deterministic_rebuild_verified": true,
+    "strict_48_class_verifier_passed": true,
+    "paired_donor_sprite_and_outline_classes_present": true,
+    "exact_forge_64_0_8_pin": true,
+    "full_six_scenes_two_entities_states_and_surfaces": true,
+    "active_bsl_toggle_required": true,
+    "native_commands_damage_and_rain_required": true,
+    "egl0_virtualgl_and_null_audio_required": true,
+    "client_admission_wait_1800_seconds": true,
+    "future_output_is_fresh": true,
+    "warning_policy_is_strict_and_preserving": true,
+    "canonical_manifest_not_modified": true
+  },
+  "bsl_ocr_control": {
+    "pattern": "^\\s*[B6]SL_[v4w]10\\.1\\.2\\.zip\\s*$",
+    "positive_cases": [
+      "BSL_v10.1.2.zip",
+      "6SL_410.1.2.zip",
+      "BSL_w10.1.2.zip"
+    ],
+    "negative_cases": [
+      "BSL_v10.1.1.zip",
+      "BSL_v10.1.20.zip",
+      "BSL_v10.1.2.jar",
+      "BSL-v10.1.2.zip",
+      "BSL_v10.2.1.zip",
+      "ComplementaryReimagined_r5.7.1.zip"
+    ],
+    "all_positive_cases_matched": true,
+    "all_negative_cases_rejected": true
+  },
+  "publisher_pipeline_options": {
+    "oldHandLight": false,
+    "oldLighting": false,
+    "separateAo": true,
+    "underwaterOverlay": false,
+    "vignette": false,
+    "beacon.beam.depth": true
+  },
+  "warning_policy": {
+    "shader_compile_errors_required": 0,
+    "jvm_linkage_errors_required": 0,
+    "allowed_backend_warning_pattern_if_present": "Invalid argument type.*BOOL.*FLOAT",
+    "unexpected_backend_diagnostics_are_gaps": true,
+    "all_diagnostics_must_be_preserved": true
+  },
+  "launch_state": "held pending explicit GPU-lane release"
+}

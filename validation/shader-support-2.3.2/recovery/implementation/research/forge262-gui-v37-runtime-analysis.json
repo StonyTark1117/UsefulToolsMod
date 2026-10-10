@@ -1,0 +1,76 @@
+{
+  "candidate": "forge262-optifine-gui-v37",
+  "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v37-BSL-indoor/report.json",
+  "report_sha256": "c3ada729d5e964f6a6afedd36dd040053c0a4a77011abbff224c7c71bad26f6a",
+  "harness_status": "captures_complete",
+  "error": null,
+  "clean_client_exit": true,
+  "shader_activation_logged": true,
+  "live_shader_states": [
+    {
+      "time_ms": 1791424567579,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ],
+  "shader_backend_diagnostics": [
+    "[07Oct2026 18:55:24.670] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniformMatrix(non-matrix uniform)'",
+    "[07Oct2026 18:55:24.670] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_textured_lit (gbuffers_textured), at: gbufferProjectionInverse",
+    "[07Oct2026 18:55:24.736] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniform(location=25)'",
+    "[07Oct2026 18:55:24.737] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_skybasic, at: renderStage",
+    "[07Oct2026 18:55:24.738] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniform(location=11)'",
+    "[07Oct2026 18:55:24.738] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_skytextured, at: renderStage"
+  ],
+  "acceptance_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "captures": [
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v37-BSL-indoor/wraith-indoor.png",
+      "sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "dimensions": [
+        854,
+        480
+      ],
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "all_black": true
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v37-BSL-indoor/wraith-indoor-framebuffer.png",
+      "sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "all_black": true
+    }
+  ],
+  "visual_verdict": "failed: both fresh entity and full-framebuffer captures are entirely black",
+  "inference": "Forced GL program binding also leaves active-pack output black; cached bind alone is not a sufficient fix."
+}

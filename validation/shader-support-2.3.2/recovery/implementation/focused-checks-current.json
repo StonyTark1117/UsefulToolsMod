@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-05T06:18:02.914704+00:00",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -p '*spectral*'",
+      "exit_code": 0,
+      "tests": 23,
+      "result": "OK",
+      "evidence": "classic-shader-arms-focused-tests.log; shader-state toggles and physically absent optional shader class included"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p '*shader_diagnostics*'",
+      "exit_code": 0,
+      "tests": 2,
+      "result": "OK",
+      "evidence": "Executed in this chat with actual shader/compiler diagnostics and timestamp false-positive cases."
+    },
+    {
+      "command": "python3 -m py_compile scripts/validate-packaged-spectral.py",
+      "exit_code": 0
+    }
+  ],
+  "tested_source_sha256": {
+    "scripts/validate-packaged-spectral.py": "7d994cc0fe06f3fdf82f95076b2c5f316151a331995b7bc47d1b04c9614c1d6a",
+    "scripts/spectral_validation.py": "6163eaac96a8e024023f55477bd9962d79b6463cdf073e8b647b469a6f088189",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78",
+    "tests/test_spectral_validation.py": "723a70a6f1a614f82d24f45e90c58eb1dc9c55a7d6c562cf78a578d71de22aac"
+  },
+  "latest_classic_build": {
+    "log": "build/classic-shader-arms-current.log",
+    "exit_code": 0,
+    "artifact_sha256": "26b2607979790a05f26f92dcefd1783eae97e2b5217f63afcb78d5d1c49d269b"
+  },
+  "latest_classic_server": {
+    "log": "server-classic-shader-arms.log",
+    "port": 29975,
+    "result": "server smoke: OK (1.7.10-forge)",
+    "exit_code": 0
+  }
+}

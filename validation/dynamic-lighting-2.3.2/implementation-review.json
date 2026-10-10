@@ -1,0 +1,49 @@
+{
+  "status": "core lighting implemented and runtime verified across all 16 targets; four Forge 26.x shader profiles remain uncertified",
+  "targets": 16,
+  "release_jars": 32,
+  "labpbr_maps": 208,
+  "reviewed_shader_profiles": 28,
+  "unverified_shader_profiles": 4,
+  "checks": [
+    "All source/native-hand and armor-slot cases",
+    "Mixed equipment maximum and exact falloff distances",
+    "Actual two-client equipment replication, movement, water, removal, disconnect",
+    "Native equipped mob fixtures",
+    "Chunk and world lifecycle, saved reopening, dimensions",
+    "Level-15 placed block, unchanged dynamic server light/saved arrays/spawn eligibility",
+    "Base-only client/server and companion-installed dedicated-server loading",
+    "Five Fabric-on-Quilt runtime targets",
+    "Optional Lamb ownership and applicable renderer-cache paths",
+    "Isolated Xvfb/null-audio captures and sampled performance comparisons"
+  ],
+  "records": [
+    "coverage.json",
+    "artifact-audit.json",
+    "production-class-equivalence.json",
+    "reviewed-runtime-class-equivalence.json",
+    "shader-certification.json",
+    "unavailable-shader-profiles.json"
+  ],
+  "final_checks": {
+    "catalog_audit_log": "/tmp/useful-tools-lighting-final-catalog-audit.log",
+    "shader_log_parser_tests": "shader-diagnostic-tests.log",
+    "shader_optional_api_tests": "shader-helper-tests.log",
+    "git_diff_check": "Passed for the changed lighting implementation, harness, generators, and compatibility notes.",
+    "owned_profile_clients_remaining": []
+  },
+  "limitations": [
+    "Shader comparisons measure rendered illumination including companion light; they do not isolate material-only radiance.",
+    "NeoForge 1.20.2 shader verification uses a private source-matched Oculus QA2 build.",
+    "Forge 26.1.2 and 26.2 shader backend attempts fail; exact native logs and alternatives remain recorded.",
+    "Performance samples are observations from isolated runs, not a hardware-independent FPS guarantee."
+  ],
+  "source_sha256": {
+    "lighting/sources.json": "08e1e7b740a99e57be9c373def704938683466d08970d796114198d401d937e8",
+    "lighting/common/java/com/stonytark/usefultools/lighting/LightField.java": "7c14d17477bc3da4a91b853bbdff661c87726f83ead5b5ba74ca04ad619591cd",
+    "lighting/common/java/com/stonytark/usefultools/lighting/SourcePolicy.java": "e93493bbd61982da6b47795327b8b512074b13678e586efba41458c6e3b97c20",
+    "scripts/generate-lighting-companion.py": "87ac87ac2cf912170984a66e91f3f3625a2fc0beaad54fc392f6b35d80dcb4ef",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78",
+    "scripts/summarize-lighting-validation.py": "baa16a404437ec4a557077150006d35151c4e2d4c4cd28b1fd9e217eacf9c4af"
+  }
+}

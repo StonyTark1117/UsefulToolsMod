@@ -1,0 +1,34 @@
+{
+  "command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/javac",
+    "-J-XX:ActiveProcessorCount=2",
+    "--release",
+    "8",
+    "-Xlint:all",
+    "-Xlint:-options",
+    "-Werror",
+    "-d",
+    "/tmp/lighting-menu-native-fixture-x3e4sogp",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/menu/com/stonytark/usefultools/lighting/qa/OptifineLightingQaMenuSnapshot.java",
+    "tests/dynamic-lighting/menu-fixture/OptifineMenuSnapshotFixture.java",
+    "tests/dynamic-lighting/menu-fixture/shadersmod/client/GuiShaders.java",
+    "tests/dynamic-lighting/menu-fixture/net/optifine/shaders/gui/GuiShaders.java"
+  ],
+  "compile_exit_code": 0,
+  "time_utc": "2026-10-07T20:33:39.830886+00:00",
+  "source_sha256": {
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/menu/com/stonytark/usefultools/lighting/qa/OptifineLightingQaMenuSnapshot.java": "4e148b1a3a9b38e5b3a02d33ecaa34f5d6cb36b286f7ad39b9b80373cbda4109",
+    "tests/dynamic-lighting/menu-fixture/OptifineMenuSnapshotFixture.java": "b10d88c71e597995a605f4966604b7ec5c8a9738dd2bbcb5415a11cb09974f06",
+    "tests/dynamic-lighting/menu-fixture/shadersmod/client/GuiShaders.java": "169e70d507201b70f697ba66fec12a9f8ca17ac4123c152fc2ddcf1fde2a5771",
+    "tests/dynamic-lighting/menu-fixture/net/optifine/shaders/gui/GuiShaders.java": "2c3b46689d6829e59026b2ea8d48960b4444b8953cee3fc1bedb74bc19107321"
+  },
+  "scope": "Strict Java 8-bytecode fixture checks; actual native GUI runs remain pending.",
+  "fixture_command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "-XX:ActiveProcessorCount=2",
+    "-cp",
+    "/tmp/lighting-menu-native-fixture-x3e4sogp",
+    "OptifineMenuSnapshotFixture"
+  ],
+  "fixture_exit_code": 0
+}

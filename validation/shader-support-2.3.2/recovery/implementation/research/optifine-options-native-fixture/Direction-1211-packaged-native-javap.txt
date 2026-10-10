@@ -1,0 +1,1311 @@
+Compiled from "Direction.java"
+public final class net.minecraft.core.Direction extends java.lang.Enum<net.minecraft.core.Direction> implements net.minecraft.util.StringRepresentable {
+  public static final net.minecraft.core.Direction DOWN;
+
+  public static final net.minecraft.core.Direction UP;
+
+  public static final net.minecraft.core.Direction NORTH;
+
+  public static final net.minecraft.core.Direction SOUTH;
+
+  public static final net.minecraft.core.Direction WEST;
+
+  public static final net.minecraft.core.Direction EAST;
+
+  public static final net.minecraft.util.StringRepresentable$EnumCodec<net.minecraft.core.Direction> CODEC;
+
+  public static final com.mojang.serialization.Codec<net.minecraft.core.Direction> VERTICAL_CODEC;
+
+  public static final java.util.function.IntFunction<net.minecraft.core.Direction> BY_ID;
+
+  public static final net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.core.Direction> STREAM_CODEC;
+
+  private final int data3d;
+
+  private final int oppositeIndex;
+
+  private final int data2d;
+
+  private final java.lang.String name;
+
+  private final net.minecraft.core.Direction$Axis axis;
+
+  private final net.minecraft.core.Direction$AxisDirection axisDirection;
+
+  private final net.minecraft.core.Vec3i normal;
+
+  private static final net.minecraft.core.Direction[] VALUES;
+
+  private static final java.util.List<net.minecraft.core.Direction> UPDATE_ORDER;
+
+  private static final net.minecraft.core.Direction[] BY_3D_DATA;
+
+  private static final net.minecraft.core.Direction[] BY_2D_DATA;
+
+  private static final net.minecraft.core.Direction[] $VALUES;
+
+  public static net.minecraft.core.Direction[] values();
+    Code:
+       0: getstatic     #22                 // Field $VALUES:[Lnet/minecraft/core/Direction;
+       3: invokevirtual #26                 // Method "[Lnet/minecraft/core/Direction;".clone:()Ljava/lang/Object;
+       6: checkcast     #27                 // class "[Lnet/minecraft/core/Direction;"
+       9: areturn
+
+  public static net.minecraft.core.Direction valueOf(java.lang.String);
+    Code:
+       0: ldc           #1                  // class net/minecraft/core/Direction
+       2: aload_0
+       3: invokestatic  #31                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: checkcast     #1                  // class net/minecraft/core/Direction
+       9: areturn
+
+  public static final java.util.List<net.minecraft.core.Direction> getUpdateOrder();
+    Code:
+       0: getstatic     #37                 // Field UPDATE_ORDER:Ljava/util/List;
+       3: areturn
+
+  private net.minecraft.core.Direction(int, int, int, java.lang.String, net.minecraft.core.Direction$AxisDirection, net.minecraft.core.Direction$Axis, net.minecraft.core.Vec3i);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #41                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: aload_0
+       7: iload_3
+       8: putfield      #45                 // Field data3d:I
+      11: aload_0
+      12: iload         5
+      14: putfield      #49                 // Field data2d:I
+      17: aload_0
+      18: iload         4
+      20: putfield      #52                 // Field oppositeIndex:I
+      23: aload_0
+      24: aload         6
+      26: putfield      #55                 // Field name:Ljava/lang/String;
+      29: aload_0
+      30: aload         8
+      32: putfield      #59                 // Field axis:Lnet/minecraft/core/Direction$Axis;
+      35: aload_0
+      36: aload         7
+      38: putfield      #63                 // Field axisDirection:Lnet/minecraft/core/Direction$AxisDirection;
+      41: aload_0
+      42: aload         9
+      44: putfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+      47: return
+
+  public static net.minecraft.core.Direction[] orderedByNearest(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: fconst_1
+       2: invokevirtual #71                 // Method net/minecraft/world/entity/Entity.getViewXRot:(F)F
+       5: ldc           #79                 // float 0.017453292f
+       7: fmul
+       8: fstore_1
+       9: aload_0
+      10: fconst_1
+      11: invokevirtual #80                 // Method net/minecraft/world/entity/Entity.getViewYRot:(F)F
+      14: fneg
+      15: ldc           #79                 // float 0.017453292f
+      17: fmul
+      18: fstore_2
+      19: fload_1
+      20: invokestatic  #83                 // Method net/minecraft/util/Mth.sin:(F)F
+      23: fstore_3
+      24: fload_1
+      25: invokestatic  #88                 // Method net/minecraft/util/Mth.cos:(F)F
+      28: fstore        4
+      30: fload_2
+      31: invokestatic  #83                 // Method net/minecraft/util/Mth.sin:(F)F
+      34: fstore        5
+      36: fload_2
+      37: invokestatic  #88                 // Method net/minecraft/util/Mth.cos:(F)F
+      40: fstore        6
+      42: fload         5
+      44: fconst_0
+      45: fcmpl
+      46: ifle          53
+      49: iconst_1
+      50: goto          54
+      53: iconst_0
+      54: istore        7
+      56: fload_3
+      57: fconst_0
+      58: fcmpg
+      59: ifge          66
+      62: iconst_1
+      63: goto          67
+      66: iconst_0
+      67: istore        8
+      69: fload         6
+      71: fconst_0
+      72: fcmpl
+      73: ifle          80
+      76: iconst_1
+      77: goto          81
+      80: iconst_0
+      81: istore        9
+      83: iload         7
+      85: ifeq          93
+      88: fload         5
+      90: goto          96
+      93: fload         5
+      95: fneg
+      96: fstore        10
+      98: iload         8
+     100: ifeq          108
+     103: fload_3
+     104: fneg
+     105: goto          109
+     108: fload_3
+     109: fstore        11
+     111: iload         9
+     113: ifeq          121
+     116: fload         6
+     118: goto          124
+     121: fload         6
+     123: fneg
+     124: fstore        12
+     126: fload         10
+     128: fload         4
+     130: fmul
+     131: fstore        13
+     133: fload         12
+     135: fload         4
+     137: fmul
+     138: fstore        14
+     140: iload         7
+     142: ifeq          151
+     145: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+     148: goto          154
+     151: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+     154: astore        15
+     156: iload         8
+     158: ifeq          167
+     161: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+     164: goto          170
+     167: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+     170: astore        16
+     172: iload         9
+     174: ifeq          183
+     177: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+     180: goto          186
+     183: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+     186: astore        17
+     188: fload         10
+     190: fload         12
+     192: fcmpl
+     193: ifle          244
+     196: fload         11
+     198: fload         13
+     200: fcmpl
+     201: ifle          214
+     204: aload         16
+     206: aload         15
+     208: aload         17
+     210: invokestatic  #91                 // Method makeDirectionArray:(Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)[Lnet/minecraft/core/Direction;
+     213: areturn
+     214: fload         14
+     216: fload         11
+     218: fcmpl
+     219: ifle          234
+     222: aload         15
+     224: aload         17
+     226: aload         16
+     228: invokestatic  #91                 // Method makeDirectionArray:(Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)[Lnet/minecraft/core/Direction;
+     231: goto          243
+     234: aload         15
+     236: aload         16
+     238: aload         17
+     240: invokestatic  #91                 // Method makeDirectionArray:(Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)[Lnet/minecraft/core/Direction;
+     243: areturn
+     244: fload         11
+     246: fload         14
+     248: fcmpl
+     249: ifle          262
+     252: aload         16
+     254: aload         17
+     256: aload         15
+     258: invokestatic  #91                 // Method makeDirectionArray:(Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)[Lnet/minecraft/core/Direction;
+     261: areturn
+     262: fload         13
+     264: fload         11
+     266: fcmpl
+     267: ifle          282
+     270: aload         17
+     272: aload         15
+     274: aload         16
+     276: invokestatic  #91                 // Method makeDirectionArray:(Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)[Lnet/minecraft/core/Direction;
+     279: goto          291
+     282: aload         17
+     284: aload         16
+     286: aload         15
+     288: invokestatic  #91                 // Method makeDirectionArray:(Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;Lnet/minecraft/core/Direction;)[Lnet/minecraft/core/Direction;
+     291: areturn
+
+  private static net.minecraft.core.Direction[] makeDirectionArray(net.minecraft.core.Direction, net.minecraft.core.Direction, net.minecraft.core.Direction);
+    Code:
+       0: bipush        6
+       2: anewarray     #1                  // class net/minecraft/core/Direction
+       5: dup
+       6: iconst_0
+       7: aload_0
+       8: aastore
+       9: dup
+      10: iconst_1
+      11: aload_1
+      12: aastore
+      13: dup
+      14: iconst_2
+      15: aload_2
+      16: aastore
+      17: dup
+      18: iconst_3
+      19: aload_2
+      20: invokevirtual #95                 // Method getOpposite:()Lnet/minecraft/core/Direction;
+      23: aastore
+      24: dup
+      25: iconst_4
+      26: aload_1
+      27: invokevirtual #95                 // Method getOpposite:()Lnet/minecraft/core/Direction;
+      30: aastore
+      31: dup
+      32: iconst_5
+      33: aload_0
+      34: invokevirtual #95                 // Method getOpposite:()Lnet/minecraft/core/Direction;
+      37: aastore
+      38: areturn
+
+  public static net.minecraft.core.Direction rotate(org.joml.Matrix4f, net.minecraft.core.Direction);
+    Code:
+       0: aload_1
+       1: invokevirtual #99                 // Method getNormal:()Lnet/minecraft/core/Vec3i;
+       4: astore_2
+       5: aload_0
+       6: new           #103                // class org/joml/Vector4f
+       9: dup
+      10: aload_2
+      11: invokevirtual #105                // Method net/minecraft/core/Vec3i.getX:()I
+      14: i2f
+      15: aload_2
+      16: invokevirtual #111                // Method net/minecraft/core/Vec3i.getY:()I
+      19: i2f
+      20: aload_2
+      21: invokevirtual #114                // Method net/minecraft/core/Vec3i.getZ:()I
+      24: i2f
+      25: fconst_0
+      26: invokespecial #117                // Method org/joml/Vector4f."<init>":(FFFF)V
+      29: invokevirtual #120                // Method org/joml/Matrix4f.transform:(Lorg/joml/Vector4f;)Lorg/joml/Vector4f;
+      32: astore_3
+      33: aload_3
+      34: invokevirtual #126                // Method org/joml/Vector4f.x:()F
+      37: aload_3
+      38: invokevirtual #130                // Method org/joml/Vector4f.y:()F
+      41: aload_3
+      42: invokevirtual #133                // Method org/joml/Vector4f.z:()F
+      45: invokestatic  #136                // Method getNearest:(FFF)Lnet/minecraft/core/Direction;
+      48: areturn
+
+  public static java.util.Collection<net.minecraft.core.Direction> allShuffled(net.minecraft.util.RandomSource);
+    Code:
+       0: invokestatic  #140                // Method values:()[Lnet/minecraft/core/Direction;
+       3: aload_0
+       4: invokestatic  #144                // Method net/minecraft/Util.shuffledCopy:([Ljava/lang/Object;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+       7: areturn
+
+  public static java.util.stream.Stream<net.minecraft.core.Direction> stream();
+    Code:
+       0: getstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+       3: invokestatic  #153                // InterfaceMethod java/util/stream/Stream.of:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+       6: areturn
+
+  public org.joml.Quaternionf getRotation();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 0 to 5
+                     0: 54
+                     1: 69
+                     2: 79
+                     3: 97
+                     4: 112
+                     5: 130
+               default: 44
+          }
+      44: new           #162                // class java/lang/MatchException
+      47: dup
+      48: aconst_null
+      49: aconst_null
+      50: invokespecial #164                // Method java/lang/MatchException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      53: athrow
+      54: new           #167                // class org/joml/Quaternionf
+      57: dup
+      58: invokespecial #169                // Method org/joml/Quaternionf."<init>":()V
+      61: ldc           #172                // float 3.1415927f
+      63: invokevirtual #173                // Method org/joml/Quaternionf.rotationX:(F)Lorg/joml/Quaternionf;
+      66: goto          145
+      69: new           #167                // class org/joml/Quaternionf
+      72: dup
+      73: invokespecial #169                // Method org/joml/Quaternionf."<init>":()V
+      76: goto          145
+      79: new           #167                // class org/joml/Quaternionf
+      82: dup
+      83: invokespecial #169                // Method org/joml/Quaternionf."<init>":()V
+      86: ldc           #177                // float 1.5707964f
+      88: fconst_0
+      89: ldc           #172                // float 3.1415927f
+      91: invokevirtual #178                // Method org/joml/Quaternionf.rotationXYZ:(FFF)Lorg/joml/Quaternionf;
+      94: goto          145
+      97: new           #167                // class org/joml/Quaternionf
+     100: dup
+     101: invokespecial #169                // Method org/joml/Quaternionf."<init>":()V
+     104: ldc           #177                // float 1.5707964f
+     106: invokevirtual #173                // Method org/joml/Quaternionf.rotationX:(F)Lorg/joml/Quaternionf;
+     109: goto          145
+     112: new           #167                // class org/joml/Quaternionf
+     115: dup
+     116: invokespecial #169                // Method org/joml/Quaternionf."<init>":()V
+     119: ldc           #177                // float 1.5707964f
+     121: fconst_0
+     122: ldc           #177                // float 1.5707964f
+     124: invokevirtual #178                // Method org/joml/Quaternionf.rotationXYZ:(FFF)Lorg/joml/Quaternionf;
+     127: goto          145
+     130: new           #167                // class org/joml/Quaternionf
+     133: dup
+     134: invokespecial #169                // Method org/joml/Quaternionf."<init>":()V
+     137: ldc           #177                // float 1.5707964f
+     139: fconst_0
+     140: ldc           #182                // float -1.5707964f
+     142: invokevirtual #178                // Method org/joml/Quaternionf.rotationXYZ:(FFF)Lorg/joml/Quaternionf;
+     145: areturn
+
+  public int get3DDataValue();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field data3d:I
+       4: ireturn
+
+  public int get2DDataValue();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field data2d:I
+       4: ireturn
+
+  public net.minecraft.core.Direction$AxisDirection getAxisDirection();
+    Code:
+       0: aload_0
+       1: getfield      #63                 // Field axisDirection:Lnet/minecraft/core/Direction$AxisDirection;
+       4: areturn
+
+  public static net.minecraft.core.Direction getFacingAxis(net.minecraft.world.entity.Entity, net.minecraft.core.Direction$Axis);
+    Code:
+       0: aload_1
+       1: invokevirtual #183                // Method net/minecraft/core/Direction$Axis.ordinal:()I
+       4: tableswitch   { // 0 to 2
+                     0: 42
+                     1: 68
+                     2: 90
+               default: 32
+          }
+      32: new           #162                // class java/lang/MatchException
+      35: dup
+      36: aconst_null
+      37: aconst_null
+      38: invokespecial #164                // Method java/lang/MatchException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      41: athrow
+      42: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      45: aload_0
+      46: fconst_1
+      47: invokevirtual #80                 // Method net/minecraft/world/entity/Entity.getViewYRot:(F)F
+      50: invokevirtual #186                // Method isFacingAngle:(F)Z
+      53: ifeq          62
+      56: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      59: goto          113
+      62: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      65: goto          113
+      68: aload_0
+      69: fconst_1
+      70: invokevirtual #71                 // Method net/minecraft/world/entity/Entity.getViewXRot:(F)F
+      73: fconst_0
+      74: fcmpg
+      75: ifge          84
+      78: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      81: goto          113
+      84: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      87: goto          113
+      90: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      93: aload_0
+      94: fconst_1
+      95: invokevirtual #80                 // Method net/minecraft/world/entity/Entity.getViewYRot:(F)F
+      98: invokevirtual #186                // Method isFacingAngle:(F)Z
+     101: ifeq          110
+     104: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+     107: goto          113
+     110: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+     113: areturn
+
+  public net.minecraft.core.Direction getOpposite();
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field oppositeIndex:I
+       4: invokestatic  #190                // Method from3DDataValue:(I)Lnet/minecraft/core/Direction;
+       7: areturn
+
+  public net.minecraft.core.Direction getClockWise(net.minecraft.core.Direction$Axis);
+    Code:
+       0: aload_1
+       1: invokevirtual #183                // Method net/minecraft/core/Direction$Axis.ordinal:()I
+       4: tableswitch   { // 0 to 2
+                     0: 42
+                     1: 67
+                     2: 92
+               default: 32
+          }
+      32: new           #162                // class java/lang/MatchException
+      35: dup
+      36: aconst_null
+      37: aconst_null
+      38: invokespecial #164                // Method java/lang/MatchException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      41: athrow
+      42: aload_0
+      43: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      46: if_acmpeq     63
+      49: aload_0
+      50: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      53: if_acmpeq     63
+      56: aload_0
+      57: invokevirtual #194                // Method getClockWiseX:()Lnet/minecraft/core/Direction;
+      60: goto          114
+      63: aload_0
+      64: goto          114
+      67: aload_0
+      68: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      71: if_acmpeq     88
+      74: aload_0
+      75: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      78: if_acmpeq     88
+      81: aload_0
+      82: invokevirtual #197                // Method getClockWise:()Lnet/minecraft/core/Direction;
+      85: goto          114
+      88: aload_0
+      89: goto          114
+      92: aload_0
+      93: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      96: if_acmpeq     113
+      99: aload_0
+     100: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+     103: if_acmpeq     113
+     106: aload_0
+     107: invokevirtual #200                // Method getClockWiseZ:()Lnet/minecraft/core/Direction;
+     110: goto          114
+     113: aload_0
+     114: areturn
+
+  public net.minecraft.core.Direction getCounterClockWise(net.minecraft.core.Direction$Axis);
+    Code:
+       0: aload_1
+       1: invokevirtual #183                // Method net/minecraft/core/Direction$Axis.ordinal:()I
+       4: tableswitch   { // 0 to 2
+                     0: 42
+                     1: 67
+                     2: 92
+               default: 32
+          }
+      32: new           #162                // class java/lang/MatchException
+      35: dup
+      36: aconst_null
+      37: aconst_null
+      38: invokespecial #164                // Method java/lang/MatchException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      41: athrow
+      42: aload_0
+      43: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      46: if_acmpeq     63
+      49: aload_0
+      50: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      53: if_acmpeq     63
+      56: aload_0
+      57: invokevirtual #203                // Method getCounterClockWiseX:()Lnet/minecraft/core/Direction;
+      60: goto          114
+      63: aload_0
+      64: goto          114
+      67: aload_0
+      68: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      71: if_acmpeq     88
+      74: aload_0
+      75: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      78: if_acmpeq     88
+      81: aload_0
+      82: invokevirtual #206                // Method getCounterClockWise:()Lnet/minecraft/core/Direction;
+      85: goto          114
+      88: aload_0
+      89: goto          114
+      92: aload_0
+      93: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      96: if_acmpeq     113
+      99: aload_0
+     100: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+     103: if_acmpeq     113
+     106: aload_0
+     107: invokevirtual #209                // Method getCounterClockWiseZ:()Lnet/minecraft/core/Direction;
+     110: goto          114
+     113: aload_0
+     114: areturn
+
+  public net.minecraft.core.Direction getClockWise();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 2 to 5
+                     2: 36
+                     3: 42
+                     4: 48
+                     5: 54
+               default: 60
+          }
+      36: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      39: goto          77
+      42: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      45: goto          77
+      48: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      51: goto          77
+      54: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      57: goto          77
+      60: new           #212                // class java/lang/IllegalStateException
+      63: dup
+      64: aload_0
+      65: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      68: invokedynamic #219,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      73: invokespecial #223                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      76: athrow
+      77: areturn
+
+  private net.minecraft.core.Direction getClockWiseX();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 0 to 3
+                     0: 36
+                     1: 42
+                     2: 48
+                     3: 54
+               default: 60
+          }
+      36: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      39: goto          77
+      42: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      45: goto          77
+      48: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      51: goto          77
+      54: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      57: goto          77
+      60: new           #212                // class java/lang/IllegalStateException
+      63: dup
+      64: aload_0
+      65: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      68: invokedynamic #226,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      73: invokespecial #223                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      76: athrow
+      77: areturn
+
+  private net.minecraft.core.Direction getCounterClockWiseX();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 0 to 3
+                     0: 36
+                     1: 42
+                     2: 48
+                     3: 54
+               default: 60
+          }
+      36: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      39: goto          77
+      42: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      45: goto          77
+      48: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      51: goto          77
+      54: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      57: goto          77
+      60: new           #212                // class java/lang/IllegalStateException
+      63: dup
+      64: aload_0
+      65: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      68: invokedynamic #226,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      73: invokespecial #223                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      76: athrow
+      77: areturn
+
+  private net.minecraft.core.Direction getClockWiseZ();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 0 to 5
+                     0: 44
+                     1: 50
+                     2: 56
+                     3: 56
+                     4: 73
+                     5: 79
+               default: 56
+          }
+      44: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      47: goto          82
+      50: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      53: goto          82
+      56: new           #212                // class java/lang/IllegalStateException
+      59: dup
+      60: aload_0
+      61: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      64: invokedynamic #227,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      69: invokespecial #223                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      72: athrow
+      73: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      76: goto          82
+      79: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      82: areturn
+
+  private net.minecraft.core.Direction getCounterClockWiseZ();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 0 to 5
+                     0: 44
+                     1: 50
+                     2: 56
+                     3: 56
+                     4: 73
+                     5: 79
+               default: 56
+          }
+      44: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      47: goto          82
+      50: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      53: goto          82
+      56: new           #212                // class java/lang/IllegalStateException
+      59: dup
+      60: aload_0
+      61: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      64: invokedynamic #227,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      69: invokespecial #223                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      72: athrow
+      73: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      76: goto          82
+      79: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      82: areturn
+
+  public net.minecraft.core.Direction getCounterClockWise();
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method ordinal:()I
+       4: tableswitch   { // 2 to 5
+                     2: 36
+                     3: 42
+                     4: 48
+                     5: 54
+               default: 60
+          }
+      36: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      39: goto          77
+      42: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      45: goto          77
+      48: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      51: goto          77
+      54: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      57: goto          77
+      60: new           #212                // class java/lang/IllegalStateException
+      63: dup
+      64: aload_0
+      65: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      68: invokedynamic #228,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      73: invokespecial #223                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      76: athrow
+      77: areturn
+
+  public int getStepX();
+    Code:
+       0: aload_0
+       1: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+       4: invokevirtual #105                // Method net/minecraft/core/Vec3i.getX:()I
+       7: ireturn
+
+  public int getStepY();
+    Code:
+       0: aload_0
+       1: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+       4: invokevirtual #111                // Method net/minecraft/core/Vec3i.getY:()I
+       7: ireturn
+
+  public int getStepZ();
+    Code:
+       0: aload_0
+       1: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+       4: invokevirtual #114                // Method net/minecraft/core/Vec3i.getZ:()I
+       7: ireturn
+
+  public org.joml.Vector3f step();
+    Code:
+       0: new           #229                // class org/joml/Vector3f
+       3: dup
+       4: aload_0
+       5: invokevirtual #231                // Method getStepX:()I
+       8: i2f
+       9: aload_0
+      10: invokevirtual #234                // Method getStepY:()I
+      13: i2f
+      14: aload_0
+      15: invokevirtual #237                // Method getStepZ:()I
+      18: i2f
+      19: invokespecial #240                // Method org/joml/Vector3f."<init>":(FFF)V
+      22: areturn
+
+  public java.lang.String getName();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field name:Ljava/lang/String;
+       4: areturn
+
+  public net.minecraft.core.Direction$Axis getAxis();
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field axis:Lnet/minecraft/core/Direction$Axis;
+       4: areturn
+
+  public static net.minecraft.core.Direction byName(java.lang.String);
+    Code:
+       0: getstatic     #243                // Field CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+       3: aload_0
+       4: invokevirtual #247                // Method net/minecraft/util/StringRepresentable$EnumCodec.byName:(Ljava/lang/String;)Ljava/lang/Enum;
+       7: checkcast     #1                  // class net/minecraft/core/Direction
+      10: areturn
+
+  public static net.minecraft.core.Direction from3DDataValue(int);
+    Code:
+       0: getstatic     #253                // Field BY_3D_DATA:[Lnet/minecraft/core/Direction;
+       3: iload_0
+       4: getstatic     #253                // Field BY_3D_DATA:[Lnet/minecraft/core/Direction;
+       7: arraylength
+       8: irem
+       9: invokestatic  #256                // Method net/minecraft/util/Mth.abs:(I)I
+      12: aaload
+      13: areturn
+
+  public static net.minecraft.core.Direction from2DDataValue(int);
+    Code:
+       0: getstatic     #260                // Field BY_2D_DATA:[Lnet/minecraft/core/Direction;
+       3: iload_0
+       4: getstatic     #260                // Field BY_2D_DATA:[Lnet/minecraft/core/Direction;
+       7: arraylength
+       8: irem
+       9: invokestatic  #256                // Method net/minecraft/util/Mth.abs:(I)I
+      12: aaload
+      13: areturn
+
+  public static net.minecraft.core.Direction fromDelta(int, int, int);
+    Code:
+       0: iload_0
+       1: ifne          40
+       4: iload_1
+       5: ifne          24
+       8: iload_2
+       9: ifle          16
+      12: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      15: areturn
+      16: iload_2
+      17: ifge          60
+      20: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      23: areturn
+      24: iload_2
+      25: ifne          60
+      28: iload_1
+      29: ifle          36
+      32: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      35: areturn
+      36: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      39: areturn
+      40: iload_1
+      41: ifne          60
+      44: iload_2
+      45: ifne          60
+      48: iload_0
+      49: ifle          56
+      52: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      55: areturn
+      56: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      59: areturn
+      60: aconst_null
+      61: areturn
+
+  public static net.minecraft.core.Direction fromYRot(double);
+    Code:
+       0: dload_0
+       1: ldc2_w        #263                // double 90.0d
+       4: ddiv
+       5: ldc2_w        #265                // double 0.5d
+       8: dadd
+       9: invokestatic  #267                // Method net/minecraft/util/Mth.floor:(D)I
+      12: iconst_3
+      13: iand
+      14: invokestatic  #271                // Method from2DDataValue:(I)Lnet/minecraft/core/Direction;
+      17: areturn
+
+  public static net.minecraft.core.Direction fromAxisAndDirection(net.minecraft.core.Direction$Axis, net.minecraft.core.Direction$AxisDirection);
+    Code:
+       0: aload_0
+       1: invokevirtual #183                // Method net/minecraft/core/Direction$Axis.ordinal:()I
+       4: tableswitch   { // 0 to 2
+                     0: 42
+                     1: 61
+                     2: 80
+               default: 32
+          }
+      32: new           #162                // class java/lang/MatchException
+      35: dup
+      36: aconst_null
+      37: aconst_null
+      38: invokespecial #164                // Method java/lang/MatchException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      41: athrow
+      42: aload_1
+      43: getstatic     #274                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+      46: if_acmpne     55
+      49: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      52: goto          96
+      55: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      58: goto          96
+      61: aload_1
+      62: getstatic     #274                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+      65: if_acmpne     74
+      68: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      71: goto          96
+      74: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      77: goto          96
+      80: aload_1
+      81: getstatic     #274                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+      84: if_acmpne     93
+      87: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      90: goto          96
+      93: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      96: areturn
+
+  public float toYRot();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field data2d:I
+       4: iconst_3
+       5: iand
+       6: bipush        90
+       8: imul
+       9: i2f
+      10: freturn
+
+  public static net.minecraft.core.Direction getRandom(net.minecraft.util.RandomSource);
+    Code:
+       0: getstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+       3: aload_0
+       4: invokestatic  #279                // Method net/minecraft/Util.getRandom:([Ljava/lang/Object;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+       7: checkcast     #1                  // class net/minecraft/core/Direction
+      10: areturn
+
+  public static net.minecraft.core.Direction getNearest(double, double, double);
+    Code:
+       0: dload_0
+       1: d2f
+       2: dload_2
+       3: d2f
+       4: dload         4
+       6: d2f
+       7: invokestatic  #136                // Method getNearest:(FFF)Lnet/minecraft/core/Direction;
+      10: areturn
+
+  public static net.minecraft.core.Direction getNearest(float, float, float);
+    Code:
+       0: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+       3: astore_3
+       4: ldc_w         #285                // float 1.4E-45f
+       7: fstore        4
+       9: getstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+      12: astore        5
+      14: aload         5
+      16: arraylength
+      17: istore        6
+      19: iconst_0
+      20: istore        7
+      22: iload         7
+      24: iload         6
+      26: if_icmpge     94
+      29: aload         5
+      31: iload         7
+      33: aaload
+      34: astore        8
+      36: fload_0
+      37: aload         8
+      39: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+      42: invokevirtual #105                // Method net/minecraft/core/Vec3i.getX:()I
+      45: i2f
+      46: fmul
+      47: fload_1
+      48: aload         8
+      50: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+      53: invokevirtual #111                // Method net/minecraft/core/Vec3i.getY:()I
+      56: i2f
+      57: fmul
+      58: fadd
+      59: fload_2
+      60: aload         8
+      62: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+      65: invokevirtual #114                // Method net/minecraft/core/Vec3i.getZ:()I
+      68: i2f
+      69: fmul
+      70: fadd
+      71: fstore        9
+      73: fload         9
+      75: fload         4
+      77: fcmpl
+      78: ifle          88
+      81: fload         9
+      83: fstore        4
+      85: aload         8
+      87: astore_3
+      88: iinc          7, 1
+      91: goto          22
+      94: aload_3
+      95: areturn
+
+  public static net.minecraft.core.Direction getNearest(net.minecraft.world.phys.Vec3);
+    Code:
+       0: aload_0
+       1: getfield      #286                // Field net/minecraft/world/phys/Vec3.x:D
+       4: aload_0
+       5: getfield      #291                // Field net/minecraft/world/phys/Vec3.y:D
+       8: aload_0
+       9: getfield      #293                // Field net/minecraft/world/phys/Vec3.z:D
+      12: invokestatic  #295                // Method getNearest:(DDD)Lnet/minecraft/core/Direction;
+      15: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field name:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String getSerializedName();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field name:Ljava/lang/String;
+       4: areturn
+
+  private static com.mojang.serialization.DataResult<net.minecraft.core.Direction> verifyVertical(net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: invokevirtual #298                // Method getAxis:()Lnet/minecraft/core/Direction$Axis;
+       4: invokevirtual #302                // Method net/minecraft/core/Direction$Axis.isVertical:()Z
+       7: ifeq          17
+      10: aload_0
+      11: invokestatic  #306                // InterfaceMethod com/mojang/serialization/DataResult.success:(Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      14: goto          25
+      17: invokedynamic #312,  0            // InvokeDynamic #4:get:()Ljava/util/function/Supplier;
+      22: invokestatic  #316                // InterfaceMethod com/mojang/serialization/DataResult.error:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/DataResult;
+      25: areturn
+
+  public static net.minecraft.core.Direction get(net.minecraft.core.Direction$AxisDirection, net.minecraft.core.Direction$Axis);
+    Code:
+       0: getstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+       3: astore_2
+       4: aload_2
+       5: arraylength
+       6: istore_3
+       7: iconst_0
+       8: istore        4
+      10: iload         4
+      12: iload_3
+      13: if_icmpge     49
+      16: aload_2
+      17: iload         4
+      19: aaload
+      20: astore        5
+      22: aload         5
+      24: invokevirtual #320                // Method getAxisDirection:()Lnet/minecraft/core/Direction$AxisDirection;
+      27: aload_0
+      28: if_acmpne     43
+      31: aload         5
+      33: invokevirtual #298                // Method getAxis:()Lnet/minecraft/core/Direction$Axis;
+      36: aload_1
+      37: if_acmpne     43
+      40: aload         5
+      42: areturn
+      43: iinc          4, 1
+      46: goto          10
+      49: new           #324                // class java/lang/IllegalArgumentException
+      52: dup
+      53: aload_0
+      54: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      57: aload_1
+      58: invokestatic  #214                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      61: invokedynamic #326,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      66: invokespecial #329                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      69: athrow
+
+  public net.minecraft.core.Vec3i getNormal();
+    Code:
+       0: aload_0
+       1: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+       4: areturn
+
+  public boolean isFacingAngle(float);
+    Code:
+       0: fload_1
+       1: ldc           #79                 // float 0.017453292f
+       3: fmul
+       4: fstore_2
+       5: fload_2
+       6: invokestatic  #83                 // Method net/minecraft/util/Mth.sin:(F)F
+       9: fneg
+      10: fstore_3
+      11: fload_2
+      12: invokestatic  #88                 // Method net/minecraft/util/Mth.cos:(F)F
+      15: fstore        4
+      17: aload_0
+      18: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+      21: invokevirtual #105                // Method net/minecraft/core/Vec3i.getX:()I
+      24: i2f
+      25: fload_3
+      26: fmul
+      27: aload_0
+      28: getfield      #67                 // Field normal:Lnet/minecraft/core/Vec3i;
+      31: invokevirtual #114                // Method net/minecraft/core/Vec3i.getZ:()I
+      34: i2f
+      35: fload         4
+      37: fmul
+      38: fadd
+      39: fconst_0
+      40: fcmpl
+      41: ifle          48
+      44: iconst_1
+      45: goto          49
+      48: iconst_0
+      49: ireturn
+
+  private static java.lang.String lambda$verifyVertical$5();
+    Code:
+       0: ldc_w         #330                // String Expected a vertical direction
+       3: areturn
+
+  private static net.minecraft.core.Direction[] lambda$static$4(int);
+    Code:
+       0: iload_0
+       1: anewarray     #1                  // class net/minecraft/core/Direction
+       4: areturn
+
+  private static int lambda$static$3(net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field data2d:I
+       4: ireturn
+
+  private static boolean lambda$static$2(net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: invokevirtual #298                // Method getAxis:()Lnet/minecraft/core/Direction$Axis;
+       4: invokevirtual #332                // Method net/minecraft/core/Direction$Axis.isHorizontal:()Z
+       7: ireturn
+
+  private static net.minecraft.core.Direction[] lambda$static$1(int);
+    Code:
+       0: iload_0
+       1: anewarray     #1                  // class net/minecraft/core/Direction
+       4: areturn
+
+  private static int lambda$static$0(net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field data3d:I
+       4: ireturn
+
+  private static net.minecraft.core.Direction[] $values();
+    Code:
+       0: bipush        6
+       2: anewarray     #1                  // class net/minecraft/core/Direction
+       5: dup
+       6: iconst_0
+       7: getstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: getstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      16: aastore
+      17: dup
+      18: iconst_2
+      19: getstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+      22: aastore
+      23: dup
+      24: iconst_3
+      25: getstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+      28: aastore
+      29: dup
+      30: iconst_4
+      31: getstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: getstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+      40: aastore
+      41: areturn
+
+  static {};
+    Code:
+       0: new           #1                  // class net/minecraft/core/Direction
+       3: dup
+       4: ldc_w         #335                // String DOWN
+       7: iconst_0
+       8: iconst_0
+       9: iconst_1
+      10: iconst_m1
+      11: ldc_w         #336                // String down
+      14: getstatic     #338                // Field net/minecraft/core/Direction$AxisDirection.NEGATIVE:Lnet/minecraft/core/Direction$AxisDirection;
+      17: getstatic     #341                // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+      20: new           #106                // class net/minecraft/core/Vec3i
+      23: dup
+      24: iconst_0
+      25: iconst_m1
+      26: iconst_0
+      27: invokespecial #344                // Method net/minecraft/core/Vec3i."<init>":(III)V
+      30: invokespecial #347                // Method "<init>":(Ljava/lang/String;IIIILjava/lang/String;Lnet/minecraft/core/Direction$AxisDirection;Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Vec3i;)V
+      33: putstatic     #3                  // Field DOWN:Lnet/minecraft/core/Direction;
+      36: new           #1                  // class net/minecraft/core/Direction
+      39: dup
+      40: ldc_w         #350                // String UP
+      43: iconst_1
+      44: iconst_1
+      45: iconst_0
+      46: iconst_m1
+      47: ldc_w         #351                // String up
+      50: getstatic     #274                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+      53: getstatic     #341                // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+      56: new           #106                // class net/minecraft/core/Vec3i
+      59: dup
+      60: iconst_0
+      61: iconst_1
+      62: iconst_0
+      63: invokespecial #344                // Method net/minecraft/core/Vec3i."<init>":(III)V
+      66: invokespecial #347                // Method "<init>":(Ljava/lang/String;IIIILjava/lang/String;Lnet/minecraft/core/Direction$AxisDirection;Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Vec3i;)V
+      69: putstatic     #7                  // Field UP:Lnet/minecraft/core/Direction;
+      72: new           #1                  // class net/minecraft/core/Direction
+      75: dup
+      76: ldc_w         #353                // String NORTH
+      79: iconst_2
+      80: iconst_2
+      81: iconst_3
+      82: iconst_2
+      83: ldc_w         #354                // String north
+      86: getstatic     #338                // Field net/minecraft/core/Direction$AxisDirection.NEGATIVE:Lnet/minecraft/core/Direction$AxisDirection;
+      89: getstatic     #356                // Field net/minecraft/core/Direction$Axis.Z:Lnet/minecraft/core/Direction$Axis;
+      92: new           #106                // class net/minecraft/core/Vec3i
+      95: dup
+      96: iconst_0
+      97: iconst_0
+      98: iconst_m1
+      99: invokespecial #344                // Method net/minecraft/core/Vec3i."<init>":(III)V
+     102: invokespecial #347                // Method "<init>":(Ljava/lang/String;IIIILjava/lang/String;Lnet/minecraft/core/Direction$AxisDirection;Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Vec3i;)V
+     105: putstatic     #10                 // Field NORTH:Lnet/minecraft/core/Direction;
+     108: new           #1                  // class net/minecraft/core/Direction
+     111: dup
+     112: ldc_w         #359                // String SOUTH
+     115: iconst_3
+     116: iconst_3
+     117: iconst_2
+     118: iconst_0
+     119: ldc_w         #360                // String south
+     122: getstatic     #274                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+     125: getstatic     #356                // Field net/minecraft/core/Direction$Axis.Z:Lnet/minecraft/core/Direction$Axis;
+     128: new           #106                // class net/minecraft/core/Vec3i
+     131: dup
+     132: iconst_0
+     133: iconst_0
+     134: iconst_1
+     135: invokespecial #344                // Method net/minecraft/core/Vec3i."<init>":(III)V
+     138: invokespecial #347                // Method "<init>":(Ljava/lang/String;IIIILjava/lang/String;Lnet/minecraft/core/Direction$AxisDirection;Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Vec3i;)V
+     141: putstatic     #13                 // Field SOUTH:Lnet/minecraft/core/Direction;
+     144: new           #1                  // class net/minecraft/core/Direction
+     147: dup
+     148: ldc_w         #362                // String WEST
+     151: iconst_4
+     152: iconst_4
+     153: iconst_5
+     154: iconst_1
+     155: ldc_w         #363                // String west
+     158: getstatic     #338                // Field net/minecraft/core/Direction$AxisDirection.NEGATIVE:Lnet/minecraft/core/Direction$AxisDirection;
+     161: getstatic     #365                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     164: new           #106                // class net/minecraft/core/Vec3i
+     167: dup
+     168: iconst_m1
+     169: iconst_0
+     170: iconst_0
+     171: invokespecial #344                // Method net/minecraft/core/Vec3i."<init>":(III)V
+     174: invokespecial #347                // Method "<init>":(Ljava/lang/String;IIIILjava/lang/String;Lnet/minecraft/core/Direction$AxisDirection;Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Vec3i;)V
+     177: putstatic     #16                 // Field WEST:Lnet/minecraft/core/Direction;
+     180: new           #1                  // class net/minecraft/core/Direction
+     183: dup
+     184: ldc_w         #368                // String EAST
+     187: iconst_5
+     188: iconst_5
+     189: iconst_4
+     190: iconst_3
+     191: ldc_w         #369                // String east
+     194: getstatic     #274                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+     197: getstatic     #365                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     200: new           #106                // class net/minecraft/core/Vec3i
+     203: dup
+     204: iconst_1
+     205: iconst_0
+     206: iconst_0
+     207: invokespecial #344                // Method net/minecraft/core/Vec3i."<init>":(III)V
+     210: invokespecial #347                // Method "<init>":(Ljava/lang/String;IIIILjava/lang/String;Lnet/minecraft/core/Direction$AxisDirection;Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/core/Vec3i;)V
+     213: putstatic     #19                 // Field EAST:Lnet/minecraft/core/Direction;
+     216: invokestatic  #371                // Method $values:()[Lnet/minecraft/core/Direction;
+     219: putstatic     #22                 // Field $VALUES:[Lnet/minecraft/core/Direction;
+     222: invokedynamic #374,  0            // InvokeDynamic #6:get:()Ljava/util/function/Supplier;
+     227: invokestatic  #375                // InterfaceMethod net/minecraft/util/StringRepresentable.fromEnum:(Ljava/util/function/Supplier;)Lnet/minecraft/util/StringRepresentable$EnumCodec;
+     230: putstatic     #243                // Field CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+     233: getstatic     #243                // Field CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+     236: invokedynamic #381,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     241: invokevirtual #385                // Method net/minecraft/util/StringRepresentable$EnumCodec.validate:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+     244: putstatic     #389                // Field VERTICAL_CODEC:Lcom/mojang/serialization/Codec;
+     247: invokedynamic #393,  0            // InvokeDynamic #8:applyAsInt:()Ljava/util/function/ToIntFunction;
+     252: invokestatic  #140                // Method values:()[Lnet/minecraft/core/Direction;
+     255: getstatic     #397                // Field net/minecraft/util/ByIdMap$OutOfBoundsStrategy.WRAP:Lnet/minecraft/util/ByIdMap$OutOfBoundsStrategy;
+     258: invokestatic  #403                // Method net/minecraft/util/ByIdMap.continuous:(Ljava/util/function/ToIntFunction;[Ljava/lang/Object;Lnet/minecraft/util/ByIdMap$OutOfBoundsStrategy;)Ljava/util/function/IntFunction;
+     261: putstatic     #409                // Field BY_ID:Ljava/util/function/IntFunction;
+     264: getstatic     #409                // Field BY_ID:Ljava/util/function/IntFunction;
+     267: invokedynamic #393,  0            // InvokeDynamic #8:applyAsInt:()Ljava/util/function/ToIntFunction;
+     272: invokestatic  #413                // InterfaceMethod net/minecraft/network/codec/ByteBufCodecs.idMapper:(Ljava/util/function/IntFunction;Ljava/util/function/ToIntFunction;)Lnet/minecraft/network/codec/StreamCodec;
+     275: putstatic     #419                // Field STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     278: invokestatic  #140                // Method values:()[Lnet/minecraft/core/Direction;
+     281: putstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+     284: getstatic     #423                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     287: invokevirtual #429                // Method net/minecraft/core/Direction$Plane.stream:()Ljava/util/stream/Stream;
+     290: getstatic     #433                // Field net/minecraft/core/Direction$Plane.VERTICAL:Lnet/minecraft/core/Direction$Plane;
+     293: invokevirtual #429                // Method net/minecraft/core/Direction$Plane.stream:()Ljava/util/stream/Stream;
+     296: invokestatic  #436                // InterfaceMethod java/util/stream/Stream.concat:(Ljava/util/stream/Stream;Ljava/util/stream/Stream;)Ljava/util/stream/Stream;
+     299: invokeinterface #440,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     304: invokestatic  #444                // Method java/util/Collections.unmodifiableList:(Ljava/util/List;)Ljava/util/List;
+     307: putstatic     #37                 // Field UPDATE_ORDER:Ljava/util/List;
+     310: getstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+     313: invokestatic  #450                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+     316: invokedynamic #454,  0            // InvokeDynamic #9:applyAsInt:()Ljava/util/function/ToIntFunction;
+     321: invokestatic  #455                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+     324: invokeinterface #461,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+     329: invokedynamic #465,  0            // InvokeDynamic #10:apply:()Ljava/util/function/IntFunction;
+     334: invokeinterface #468,  2          // InterfaceMethod java/util/stream/Stream.toArray:(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+     339: checkcast     #27                 // class "[Lnet/minecraft/core/Direction;"
+     342: putstatic     #253                // Field BY_3D_DATA:[Lnet/minecraft/core/Direction;
+     345: getstatic     #150                // Field VALUES:[Lnet/minecraft/core/Direction;
+     348: invokestatic  #450                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+     351: invokedynamic #472,  0            // InvokeDynamic #11:test:()Ljava/util/function/Predicate;
+     356: invokeinterface #476,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     361: invokedynamic #480,  0            // InvokeDynamic #12:applyAsInt:()Ljava/util/function/ToIntFunction;
+     366: invokestatic  #455                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+     369: invokeinterface #461,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+     374: invokedynamic #481,  0            // InvokeDynamic #13:apply:()Ljava/util/function/IntFunction;
+     379: invokeinterface #468,  2          // InterfaceMethod java/util/stream/Stream.toArray:(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+     384: checkcast     #27                 // class "[Lnet/minecraft/core/Direction;"
+     387: putstatic     #260                // Field BY_2D_DATA:[Lnet/minecraft/core/Direction;
+     390: return
+}

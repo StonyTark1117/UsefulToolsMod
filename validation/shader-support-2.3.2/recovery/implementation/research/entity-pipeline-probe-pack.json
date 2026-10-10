@@ -1,0 +1,14 @@
+{
+  "source": "/home/braydon/.cache/useful-tools-spectral-recovery/packs/934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7/BSL_v10.1.2.zip",
+  "source_sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7",
+  "probe_pack": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/bde4212c79f8cc80fd14d0e91aac941d19280808eedeccd298a87da6b5c356c5/BSL_v10.1.2_entity-pipeline-probe.zip",
+  "probe_pack_sha256": "bde4212c79f8cc80fd14d0e91aac941d19280808eedeccd298a87da6b5c356c5",
+  "short_label_alias": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/bde4212c79f8cc80fd14d0e91aac941d19280808eedeccd298a87da6b5c356c5/BSLprobe.zip",
+  "modified_entry": "shaders/program/gbuffers_entities.glsl",
+  "changed_assignments": [
+    "gl_FragData[0] = albedo; -> gl_FragData[0] = vec4(1.0, 0.0, 0.0, albedo.a);",
+    "gl_FragData[1] = vec4(vlAlbedo, 1.0); -> gl_FragData[1] = vec4(1.0, 0.0, 0.0, 1.0);"
+  ],
+  "purpose": "Private diagnostic only: an active entity gbuffer must turn entity pixels red while terrain stays unchanged. A full-screen-only port must not be treated as entity-pipeline coverage.",
+  "qualification": "Requires isolated packaged runs on exact Forge 65.1.2 with fresh controls and visual comparison; this pack is not a primary acceptance pack."
+}

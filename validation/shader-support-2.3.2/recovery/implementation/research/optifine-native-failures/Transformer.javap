@@ -1,0 +1,200 @@
+Compiled from "OptiFineTransformer.java"
+public class optifine.OptiFineTransformer extends optifine.OptiFineBaseTransformer implements cpw.mods.modlauncher.api.ITransformer<org.objectweb.asm.tree.ClassNode> {
+  private static final org.apache.logging.log4j.Logger LOGGER;
+
+  private final boolean hasTargetPreClass;
+
+  static {};
+    Code:
+         0: invokestatic  #14                 // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+         3: putstatic     #20                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+         6: return
+
+  public optifine.OptiFineTransformer(java.util.zip.ZipFile, cpw.mods.modlauncher.api.IEnvironment);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #26                 // Method optifine/OptiFineBaseTransformer."<init>":(Ljava/util/zip/ZipFile;)V
+         5: aload_0
+         6: aload_2
+         7: invokestatic  #29                 // Method hasTargetPreClass:(Lcpw/mods/modlauncher/api/IEnvironment;)Z
+        10: putfield      #32                 // Field hasTargetPreClass:Z
+        13: aload_0
+        14: getfield      #32                 // Field hasTargetPreClass:Z
+        17: ifeq          33
+        20: getstatic     #20                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        23: ldc           #34                 // String Target.PRE_CLASS is available
+        25: invokeinterface #36,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        30: goto          43
+        33: getstatic     #20                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        36: ldc           #42                 // String Target.PRE_CLASS is not available
+        38: invokeinterface #36,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        43: return
+
+  public cpw.mods.modlauncher.api.TransformerVoteResult castVote(cpw.mods.modlauncher.api.ITransformerVotingContext);
+    Code:
+         0: getstatic     #57                 // Field cpw/mods/modlauncher/api/TransformerVoteResult.YES:Lcpw/mods/modlauncher/api/TransformerVoteResult;
+         3: areturn
+
+  public cpw.mods.modlauncher.api.TargetType<org.objectweb.asm.tree.ClassNode> getTargetType();
+    Code:
+         0: getstatic     #69                 // Field cpw/mods/modlauncher/api/TargetType.PRE_CLASS:Lcpw/mods/modlauncher/api/TargetType;
+         3: areturn
+
+  public java.util.Set<cpw.mods.modlauncher.api.ITransformer$Target<org.objectweb.asm.tree.ClassNode>> targets();
+    Code:
+         0: new           #78                 // class java/util/HashSet
+         3: dup
+         4: invokespecial #80                 // Method java/util/HashSet."<init>":()V
+         7: astore_1
+         8: aload_0
+         9: ldc           #82                 // String srg/
+        11: ldc           #84                 // String .class
+        13: invokevirtual #86                 // Method getResourceNames:(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+        16: astore_2
+        17: aload_0
+        18: ldc           #90                 // String patch/srg/
+        20: ldc           #92                 // String .class.xdelta
+        22: invokevirtual #86                 // Method getResourceNames:(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+        25: astore_3
+        26: aload_2
+        27: aload_3
+        28: invokestatic  #94                 // Method optifine/Utils.addObjectsToArray:([Ljava/lang/Object;[Ljava/lang/Object;)[Ljava/lang/Object;
+        31: checkcast     #100                // class "[Ljava/lang/String;"
+        34: astore_2
+        35: iconst_0
+        36: istore        4
+        38: goto          122
+        41: aload_2
+        42: iload         4
+        44: aaload
+        45: astore        5
+        47: aload         5
+        49: iconst_2
+        50: anewarray     #102                // class java/lang/String
+        53: dup
+        54: iconst_0
+        55: ldc           #82                 // String srg/
+        57: aastore
+        58: dup
+        59: iconst_1
+        60: ldc           #90                 // String patch/srg/
+        62: aastore
+        63: invokestatic  #104                // Method optifine/Utils.removePrefix:(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+        66: astore        5
+        68: aload         5
+        70: iconst_2
+        71: anewarray     #102                // class java/lang/String
+        74: dup
+        75: iconst_0
+        76: ldc           #84                 // String .class
+        78: aastore
+        79: dup
+        80: iconst_1
+        81: ldc           #92                 // String .class.xdelta
+        83: aastore
+        84: invokestatic  #108                // Method optifine/Utils.removeSuffix:(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+        87: astore        5
+        89: aload         5
+        91: ldc           #111                // String net/optifine/
+        93: invokevirtual #113                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        96: ifeq          102
+        99: goto          119
+       102: aload_0
+       103: aload         5
+       105: invokevirtual #117                // Method getTargetClass:(Ljava/lang/String;)Lcpw/mods/modlauncher/api/ITransformer$Target;
+       108: astore        6
+       110: aload_1
+       111: aload         6
+       113: invokeinterface #121,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       118: pop
+       119: iinc          4, 1
+       122: iload         4
+       124: aload_2
+       125: arraylength
+       126: if_icmplt     41
+       129: getstatic     #20                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       132: aload_1
+       133: invokeinterface #127,  1          // InterfaceMethod java/util/Set.size:()I
+       138: invokedynamic #131,  0            // InvokeDynamic #0:makeConcatWithConstants:(I)Ljava/lang/String;
+       143: invokeinterface #36,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       148: aload_1
+       149: areturn
+
+  private cpw.mods.modlauncher.api.ITransformer$Target getTargetClass(java.lang.String);
+    Code:
+         0: aload_0
+         1: getfield      #32                 // Field hasTargetPreClass:Z
+         4: ifeq          13
+         7: aload_0
+         8: aload_1
+         9: invokevirtual #147                // Method getTargetPreClass:(Ljava/lang/String;)Lcpw/mods/modlauncher/api/ITransformer$Target;
+        12: areturn
+        13: aload_1
+        14: invokestatic  #150                // Method cpw/mods/modlauncher/api/ITransformer$Target.targetClass:(Ljava/lang/String;)Lcpw/mods/modlauncher/api/ITransformer$Target;
+        17: areturn
+
+  private cpw.mods.modlauncher.api.ITransformer$Target getTargetPreClass(java.lang.String);
+    Code:
+         0: aload_1
+         1: invokestatic  #155                // Method cpw/mods/modlauncher/api/ITransformer$Target.targetPreClass:(Ljava/lang/String;)Lcpw/mods/modlauncher/api/ITransformer$Target;
+         4: areturn
+
+  private static boolean hasTargetPreClass(cpw.mods.modlauncher.api.IEnvironment);
+    Code:
+         0: aload_0
+         1: getstatic     #158                // Field cpw/mods/modlauncher/api/IEnvironment$Keys.MLSPEC_VERSION:Ljava/util/function/Supplier;
+         4: invokeinterface #164,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+         9: checkcast     #170                // class cpw/mods/modlauncher/api/TypesafeMap$Key
+        12: invokeinterface #172,  2          // InterfaceMethod cpw/mods/modlauncher/api/IEnvironment.getProperty:(Lcpw/mods/modlauncher/api/TypesafeMap$Key;)Ljava/util/Optional;
+        17: astore_1
+        18: aload_1
+        19: invokevirtual #176                // Method java/util/Optional.isPresent:()Z
+        22: ifne          27
+        25: iconst_0
+        26: ireturn
+        27: aload_1
+        28: invokevirtual #182                // Method java/util/Optional.get:()Ljava/lang/Object;
+        31: checkcast     #102                // class java/lang/String
+        34: ldc           #183                // String .
+        36: invokestatic  #185                // Method optifine/Utils.tokenize:(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+        39: astore_2
+        40: aload_2
+        41: arraylength
+        42: ifgt          47
+        45: iconst_0
+        46: ireturn
+        47: aload_2
+        48: iconst_0
+        49: aaload
+        50: astore_3
+        51: aload_3
+        52: iconst_m1
+        53: invokestatic  #188                // Method optifine/Utils.parseInt:(Ljava/lang/String;I)I
+        56: istore        4
+        58: iload         4
+        60: bipush        7
+        62: if_icmpge     67
+        65: iconst_0
+        66: ireturn
+        67: iconst_1
+        68: ireturn
+
+  public org.objectweb.asm.tree.ClassNode transform(org.objectweb.asm.tree.ClassNode, cpw.mods.modlauncher.api.ITransformerVotingContext);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokeinterface #200,  1          // InterfaceMethod cpw/mods/modlauncher/api/ITransformerVotingContext.getClassName:()Ljava/lang/String;
+         8: invokespecial #206                // Method optifine/OptiFineBaseTransformer.transform:(Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;)Lorg/objectweb/asm/tree/ClassNode;
+        11: areturn
+
+  public java.lang.Object transform(java.lang.Object, cpw.mods.modlauncher.api.ITransformerVotingContext);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: checkcast     #212                // class org/objectweb/asm/tree/ClassNode
+         5: aload_2
+         6: invokevirtual #214                // Method transform:(Lorg/objectweb/asm/tree/ClassNode;Lcpw/mods/modlauncher/api/ITransformerVotingContext;)Lorg/objectweb/asm/tree/ClassNode;
+         9: areturn
+}

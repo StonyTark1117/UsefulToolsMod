@@ -1,0 +1,31 @@
+{
+  "conclusion": "The exact canonical Oculus community-port dependency is present but cannot activate the exact BSL 10.1.1 publisher archive on the isolated EGL0 route.",
+  "canonical_component": {
+    "path": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227/oculus-forge-26.2-0.3.0-beta.1.jar",
+    "sha256": "0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227",
+    "version": "0.3.0-beta.1",
+    "metadata_loader_range": "Forge [65.1,66)",
+    "metadata_minecraft_range": "[26.2,26.3)"
+  },
+  "fresh_failure": {
+    "report": "report.json",
+    "report_sha256": "1509d8c2443d10c0304af787142b44103a750700d326a1b0aed67ae6a5dda945",
+    "client_log": "client.log",
+    "client_log_sha256": "41b01b8ef4df72a4b19d3b7bec4b92c1dd4eb46b451abee4491e226803077d4a",
+    "error": "0:8(1): error: #extension directive is not allowed in the middle of a shader",
+    "stage": "oculus:pack/741b214d6f051306ee819e81/final_fragment",
+    "effect": "The loader explicitly left vanilla rendering active; shader activation was not reported."
+  },
+  "independent_exact_stack_reproductions": [
+    {"report":"../../precipitation-control-runs/26.2-forge-active-community0-BSL_v10.1.1-egl0-precipitation-controls-quota-recovery/report.json","sha256":"f1db0d14764608c98a82d05dd725fcb4486c7ec11acd991ac8d28ecf0c54f7ee"},
+    {"report":"../../precipitation-control-runs/26.2-forge-active-community0-BSL_v10.1.1-egl0-precipitation-controls-quota-recovery-disk-backed-single-world-retry/report.json","sha256":"b17560277633ef9a113e7bb226a06109a3e30774f8811398f1e35a3d7496bdbf"}
+  ],
+  "repaired_candidate_excluded_from_row": {
+    "sha256": "199395c32ef15cc46cd93844d6b6d9bbee667b1570f31dbc3172260951501826",
+    "reason": "This is a private rebuilt candidate, not canonical community0 SHA 0592d342, so its pass cannot promote the publisher-input row.",
+    "diagnostic_pass_report": "../../stack-revisit/26.2-forge-community-implicit-interpolation-native-menu-candidate-BSL_v10.1.1/report.json",
+    "diagnostic_pass_report_sha256": "7d0cb968404d8142dccc47d660428b63b78ca23a4514dc9b76cd38e406e5626c",
+    "source_inspection": "The candidate source LegacyFinalShaderAdapter extracts every #extension line, removes it from the body, and prepends it to injected declarations immediately after #version. ShaderCompatibilityRegressionTest.packExtensionsRemainAheadOfInjectedDeclarations asserts this ordering."
+  },
+  "required_external_change": "A publisher build of the community port containing the extension-ordering repair, or another publisher-compatible exact 26.2 Forge shader loader accepted into the canonical row."
+}

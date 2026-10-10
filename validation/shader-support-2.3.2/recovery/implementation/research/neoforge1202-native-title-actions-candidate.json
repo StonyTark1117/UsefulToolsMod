@@ -1,0 +1,26 @@
+{
+  "candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/5c137c17604fb68951c5d7838037a3d25b23185c9480a082b88eaf70be758cfe/native-title-actions-loader.jar",
+  "candidate_sha256": "5c137c17604fb68951c5d7838037a3d25b23185c9480a082b88eaf70be758cfe",
+  "prior_candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/6b9847049a08339a7bdc856e58d41c0cf97fc704dca31f662c6917ea6c35737b/native-gl-bbox-loader.jar",
+  "prior_candidate_sha256": "6b9847049a08339a7bdc856e58d41c0cf97fc704dca31f662c6917ea6c35737b",
+  "replaced_entry": "optifineoforge/donors/net/minecraft/client/gui/screens/TitleScreen.class",
+  "replaced_class_sha256": "68329fa8847085f8bab6e668b457bc39a302400981ad91f4f63db0ada1546974",
+  "checker_source": "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineNativeTitleActions.java",
+  "checker_source_sha256": "52c4457122c2408d04d468c21116a376228c2d27e437ed0740796a22c9d915ba",
+  "native_input": "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+  "native_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "publisher_input": "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/optifine-patched.jar",
+  "publisher_sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+  "restored_exact_native_title_actions": 5,
+  "unresolved_action": "lambda$createDemoMenuOptions$11 references publisher-absent confirmDemo and LOGGER",
+  "qualification": "private bytecode candidate only; requires fresh packaged runtime and full behavioral validation",
+  "offline_verification": {
+    "strict_java_compile": "passed with --release 17 -Xlint:all -Werror",
+    "asm_basic_verifier": "passed for all donor methods after five exact native body substitutions",
+    "zip_integrity": "passed; 557 entries with exactly one changed donor class",
+    "constant_return_donor_findings_before": 15,
+    "constant_return_donor_findings_after": 10
+  },
+  "superseded_by": "validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-native-mapped-callbacks-candidate.json",
+  "later_mapping_correction": "Raw publisher payload is SRG-named; absence of a Mojmap name in that archive did not establish runtime absence. The corrected candidate verifies officialToSrg aliases and restores all six title actions plus two chunk callbacks and the server halt callback."
+}

@@ -1,0 +1,118 @@
+{
+  "scope": "Offline reproduction and dependency-linkage verification of the private Oculus 1.20.2 NeoForge source adaptation. This does not alter current-matrix-audit.json and does not qualify either unchanged publisher stack.",
+  "tested_revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "runtime_pin": {
+    "minecraft": "1.20.2",
+    "neoforge": "20.2.93",
+    "prism_metadata_sha256": "d2852dcb49a78f10149413dcacc9aaa6ba9bf76fb3ffe4d27dc833f964321779",
+    "fml_loader": "1.0.16",
+    "fml_loader_sha256": "a335ee8d684ad57b028956a5350c85940e6e3dd16dd1884a2914d53fc6acee79",
+    "fml_publisher_index": "https://maven.neoforged.net/releases/net/neoforged/fancymodloader/loader/1.0.16/",
+    "neoforge_documentation_checked": "https://docs.neoforged.net/",
+    "neoforge_universal_sha256": "14738ecbf2b5322536c78c0a1de678ba457b3244a891f31efb5bac89eadee172",
+    "neoforge_client_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45"
+  },
+  "publisher_failure_preserved": {
+    "record": "durable-non262-lane-disposition.json",
+    "failure_layer": "dependency",
+    "unchanged_archive_reference": "net.minecraftforge.fml.loading.LoadingModList",
+    "result": "NoClassDefFoundError before game input",
+    "gate_closed": false
+  },
+  "repair_selection": {
+    "selected": "Compile the version-matched Oculus 1.20.2 source against NeoForge 20.2.93 and the publisher's native NeoForge Embeddium 0.2.10 artifact.",
+    "source_url": "https://codeload.github.com/LuanDCS/Oculus-1.20.2/tar.gz/eaceddf7084868fba459572de8672c885e8c3cd8",
+    "source_commit": "eaceddf7084868fba459572de8672c885e8c3cd8",
+    "source_archive_sha256": "cdf61716d1706be75dfc46ee51e07fa51566dce6273fc6de340bf8aacc34868b",
+    "patch": "oculus-1202-neoforge-qa2.patch",
+    "patch_sha256": "3589f9c48b4172b78489b73f1d612589693fc4208825d5e9651d549293a9987d",
+    "upstream_source_files_with_forge_references": 26,
+    "upstream_source_files_with_forge_loading_mod_list_references": 6,
+    "patched_files": 29,
+    "why_a_loading_mod_list_shim_is_insufficient": "The first preserved crash is only the earliest linkage failure. The version-matched source has Forge references in 26 source files, including event buses, GUI, model data, render type sets, registries, loader paths, and mixin plugins. Recompiling those sites against their actual NeoForge 20.2.93 APIs is the smallest repair that does not invent a partial Forge compatibility namespace."
+  },
+  "build": {
+    "command": [
+      "python3",
+      "scripts/build-spectral-oculus1202-neoforge.py",
+      "--work-dir",
+      "/tmp/useful-tools-neoforge1202-repair-20261007",
+      "--embeddium",
+      "/tmp/usefultools-shaders-2.3.2/mods/embeddium-neoforge-0.2.10+mc1.20.2.jar",
+      "--build-prepared"
+    ],
+    "status": "passed",
+    "exit_code": 0,
+    "complete_upstream_file_integrity_verified": true,
+    "durable_log": {
+      "path": "../build/neoforge1202-oculus-native-rebuild-2026-10-07.log",
+      "sha256": "75d30b909b95cad9eae050cb27a0e70d1fbe3465e937105796a190b6c0c56d5a",
+      "size": 3728
+    },
+    "durable_receipt": {
+      "path": "../build/neoforge1202-oculus-native-rebuild-2026-10-07-receipt.json",
+      "sha256": "83ebc6debe2af7f387ab56824d5a17bbbb313cf45fd1f8a61312d43665909fd6",
+      "size": 6046
+    },
+    "resource_policy": {
+      "max_workers": 1,
+      "active_processors": 2,
+      "nice": 10,
+      "shared_admission_lock": true
+    },
+    "warnings_retained": [
+      "Architectury Loom reports NeoForge support as experimental.",
+      "Mixin remapping could not resolve optional or absent targets for OptionsScreen, Breeze, BufferBuilder, and Pixelmon classes.",
+      "Gradle reports deprecated APIs, unchecked operations, and Gradle 9 incompatibility warnings."
+    ]
+  },
+  "durable_components": [
+    {
+      "path": "candidate-dependencies/a402decb6cdb3e5dec0b2cdd164e4412b327bd86bb83b0aac1f611d03f46a42e/oculus-mc1.20.2-1.8.0-neoforge-qa2.jar",
+      "sha256": "a402decb6cdb3e5dec0b2cdd164e4412b327bd86bb83b0aac1f611d03f46a42e",
+      "size": 2835594,
+      "matches_previously_tested_qa2_artifact": true
+    },
+    {
+      "path": "candidate-dependencies/bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947/embeddium-neoforge-0.2.10+mc1.20.2.jar",
+      "sha256": "bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947",
+      "size": 863971,
+      "publisher_loader": "neoforge"
+    }
+  ],
+  "offline_checks": {
+    "artifact_entries": 1854,
+    "class_or_resource_files_with_neoforge_references": 26,
+    "class_or_resource_files_with_forge_references": 0,
+    "class_files_with_neoforge_loading_mod_list_references": 9,
+    "source_files_with_residual_forge_references": 0,
+    "metadata": {
+      "mod_id": "oculus",
+      "version": "1.8.0-neoforge-qa2",
+      "minecraft_range": "[1.20.2]",
+      "neoforge_range": "[20.2.93]",
+      "embeddium_range": "[0.2,)"
+    },
+    "loading_mod_list_abi": {
+      "owner": "net.neoforged.fml.loading.LoadingModList",
+      "provider": "net.neoforged.fancymodloader:loader:1.0.16",
+      "required_methods_present": [
+        "get()",
+        "getModFileById(String)"
+      ]
+    },
+    "result": "passed"
+  },
+  "runtime_diagnostic": {
+    "started": false,
+    "profiles_created": 0,
+    "reason": "The shared client admission lock was owned by PID 1407604 for a separate isolated Forge performance run, so the allowed disabled diagnostic was not launched. No host display or physical audio route was used.",
+    "status": "not run; admission precondition was not clean"
+  },
+  "acceptance_disposition": {
+    "private_candidate_runtime_qualified_by_prior_hash_bound_reports": true,
+    "original_zenkai_rows_closed": false,
+    "original_optifine_preview_rows_closed": false,
+    "note": "The deterministic rebuild matches the already tested QA2 artifact byte-for-byte. It is a distinct NeoForge-native private candidate and cannot be relabeled as an unchanged publisher-archive pass."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/131ca6b56b100e60577ffdb0dd51bfab2ee6e334564eeee324e5422026891668/BSL_v10.1.1.zip",
+  "source_sha256": "131ca6b56b100e60577ffdb0dd51bfab2ee6e334564eeee324e5422026891668",
+  "probe_pack": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/7fcde34d99d9f141d95f1473fcbb70eff44848f466f875986c9da13b760e11b9/BSLprobe.zip",
+  "probe_pack_sha256": "7fcde34d99d9f141d95f1473fcbb70eff44848f466f875986c9da13b760e11b9",
+  "modified_entry": "shaders/program/gbuffers_entities.glsl",
+  "changed_assignment": "gl_FragData[0] = albedo; -> gl_FragData[0] = vec4(1.0, 0.0, 0.0, albedo.a);",
+  "purpose": "Private diagnostic only: test whether the pinned Forge community port routes entity pixels through gbuffers_entities; compare with the original BSL 10.1.1 scene.",
+  "qualification": "The primary pack and complete acceptance scenarios remain separate requirements."
+}

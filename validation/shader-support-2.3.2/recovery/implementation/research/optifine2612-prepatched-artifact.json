@@ -1,0 +1,10 @@
+{
+  "official_dependency": "/tmp/usefultools-shaders-2.3.2/mods/preview_OptiFine_26.1.2_HD_U_K1_pre2.jar",
+  "official_dependency_sha256": "f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172",
+  "vanilla_client_sha256": "b1b3158572666445eff01e82fad8c7de2e4953db6d354f311730d77a8359d0b0",
+  "artifact": "/tmp/usefultools-shaders-2.3.2/mods/experimental/f5774a88cd2e0bdf1d1ac819b04b6bd9ad6afb39fac65b9b9d7d28bfa847a3da/OptiFine_26.1.2_K1_pre2-prepatched-qa.jar",
+  "artifact_sha256": "f5774a88cd2e0bdf1d1ac819b04b6bd9ad6afb39fac65b9b9d7d28bfa847a3da",
+  "operation": "Official optifine.Patcher <base.jar> <diff.jar> <mod.jar>, headless, no display; full srg/notch patches generated against exact vanilla client.",
+  "scope": "Private packaged-client diagnostic on pinned Forge 64.0.8; not a publisher release or maintained pin change.",
+  "finding": "The missing GlStateManager.init(GLCapabilities) is supplied by OptiFine-patched class, absent from exact Forge source. This experiment tests complete patch resources instead of runtime binary deltas."
+}

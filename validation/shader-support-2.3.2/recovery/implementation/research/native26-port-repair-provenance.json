@@ -1,0 +1,35 @@
+{
+  "scope": "Isolated native Forge experiments; repository pins unchanged",
+  "attempts": [
+    {
+      "target": "26.1.2-forge",
+      "candidate": "Sodium QA4",
+      "failure_layer": "test automation",
+      "observed": "Native Minecraft mod-warning screen. ResourcePackInfo missing; OCR Froceed to main menu rejected by exact Proceed button matcher. Timed out with 40 fresh menu captures.",
+      "fix": "QA5 includes native resource pack 84.0 metadata; current harness accepts P/F pixel-font confusion. New attempt queued."
+    },
+    {
+      "target": "26.1.2-forge",
+      "candidate": "Iris QA3",
+      "failure_layer": "dependency native API adaptation",
+      "observed": "PipelineMixin copyPipeline could not find RenderPipeline.toBuilder.",
+      "native_source": "26.1.2-native-RenderPipeline.java",
+      "fix": "Remove only NeoForge-specific pipeline copy hooks absent on native Forge; ordinary Iris terrain/entity pipeline hooks retained. QA4 compiled, runtime queued."
+    },
+    {
+      "target": "26.2-forge",
+      "candidate": "Sodium QA1 and Iris+Sodium QA1",
+      "failure_layer": "dependency Mixin compatibility",
+      "observed": "Constructor @Inject at BufferStorage.create rejected by Forge bundled Mixin 0.8.7. ModList indexedMods null is secondary crash-report failure.",
+      "native_source": "26.2-native-GlDevice.java",
+      "fix": "MixinExtras WrapOperation at same BufferStorage.create preserves pre-allocation vendor workaround and calls original. QA2 compiled, runtime queued."
+    },
+    {
+      "target": "26.2-forge",
+      "candidate": "Iris QA2 first rebuild",
+      "failure_layer": "private build setup",
+      "observed": "Version substitution changed old Sodium artifact filename while retaining old hash directory; compile could not locate Sodium packages.",
+      "fix": "Compile dependency now exact frozen Sodium QA2 artifact and hash."
+    }
+  ]
+}

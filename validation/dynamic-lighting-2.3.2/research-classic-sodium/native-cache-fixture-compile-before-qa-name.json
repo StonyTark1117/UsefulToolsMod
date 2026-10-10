@@ -1,0 +1,27 @@
+{
+  "time_utc": "2026-10-07T20:20:42.450278+00:00",
+  "command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/javac",
+    "-J-XX:ActiveProcessorCount=2",
+    "--release",
+    "8",
+    "-Xlint:all",
+    "-Xlint:-options",
+    "-Werror",
+    "-classpath",
+    "/home/braydon/Useful-Tools/1.7.10/build/rfg/recompiled_minecraft-1.7.10.jar:/home/braydon/Useful-Tools/1.7.10/build/lighting-dev/usefultools-lighting-2.3.1+mc.1.7.10.forge.jar",
+    "-d",
+    "/tmp/classic-beddium-native-compile-7hw22mc4",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicBeddiumQa.java"
+  ],
+  "exit_code": 0,
+  "source_sha256": "94e4be8acff9fda04e31a93ad000e512958e8a8f2b77997287e7c57fce04478e",
+  "classpath": {
+    "/home/braydon/Useful-Tools/1.7.10/build/rfg/recompiled_minecraft-1.7.10.jar": "988fc3903e7586826f961cce7559f88558ae099a9ef3b483fb9c7070a828e74e",
+    "/home/braydon/Useful-Tools/1.7.10/build/lighting-dev/usefultools-lighting-2.3.1+mc.1.7.10.forge.jar": "2df441a604502efaf0d74d0f07dc7f83387cf646987470f022ee1a3aa0f26c5d"
+  },
+  "scope": "Focused native MCP/RFG API compilation only; no client or Gradle launched; no runtime compatibility claim",
+  "class_sha256": {
+    "com/stonytark/usefultools/lighting/classic/ClassicBeddiumQa.class": "5a4e864e5076374f3b807451f983f0a9a719a96ab25e51567819c1b9a1629747"
+  }
+}

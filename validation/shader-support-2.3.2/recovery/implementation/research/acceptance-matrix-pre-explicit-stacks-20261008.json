@@ -1,0 +1,2509 @@
+{
+  "scope": "16 maintained artifacts plus Fabric-on-Quilt compatibility; no scope reductions",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "rows": [
+    {
+      "target": "1.7.10-forge",
+      "source_root": "1.7.10",
+      "pins": {
+        "minecraft_version": "1.7.10"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.7.10",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.7.10"
+          },
+          "integration": "OptiFine E7",
+          "pack": "BSL compatible version to investigate",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.7.10",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.7.10"
+          },
+          "integration": "OptiFine E7",
+          "pack": "Complementary Reimagined 5.9.3",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.7.10",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.7.10"
+          },
+          "integration": "OptiFine E7",
+          "pack": "Sildur Enhanced Default 1.14 Fast",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.1-forge",
+      "source_root": "1.20.1/forge",
+      "pins": {
+        "minecraft_version": "1.20.1",
+        "minecraft_version_range": "[1.20.1,1.21)",
+        "forge_version": "47.4.10",
+        "forge_version_range": "[47,)",
+        "loader_version_range": "[47,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "1.20.1-forge-47410-oculus180-bsl1012-final",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 12,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "96532734f38bc154cd0daf119da29e1748c3f2d1ab8f3985e6933094cbd656c4",
+            "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.20.1-1.8.0.jar": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+            "/tmp/usefultools-shaders-2.3.2/mods/embeddium-0.3.31+mc1.20.1.jar": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
+          },
+          "coverage_limit": "No all-target completion claim; prior 1.20.1 artifact predates constructor compatibility helper."
+        },
+        {
+          "path": "1.20.1-forge-47410-oculus180-complementary593-toggle",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 16,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "96532734f38bc154cd0daf119da29e1748c3f2d1ab8f3985e6933094cbd656c4",
+            "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.20.1-1.8.0.jar": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+            "/tmp/usefultools-shaders-2.3.2/mods/embeddium-0.3.31+mc1.20.1.jar": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
+          },
+          "coverage_limit": "No all-target completion claim; prior 1.20.1 artifact predates constructor compatibility helper."
+        },
+        {
+          "path": "1.20.1-forge-47410-optifineI6-compatible-bsl1012",
+          "status": "reviewed scene/capture/exit evidence, recorded rebuilt artifact",
+          "captures": 12,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "ef963fafe728a0bb21cbb5bfa33dab6045ea5234ee8e9b6fdbbaed77d5602463",
+            "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-forge-optifine-47218/minecraft/mods/OptiFine_1.20.1_HD_U_I6.jar": "0b67cb670aedf2e55a982f3d52b6d53e46791a0c984aa1d2ee58100fc9bfc650"
+          },
+          "coverage_limit": "Other packs/controls/surfaces and final readability acceptance remain unfinished."
+        },
+        {
+          "path": "1.20.1-forge-47410-oculus180-compatible-bsl1012-reserved",
+          "status": "reviewed scene/capture/exit evidence, recorded rebuilt artifact",
+          "captures": 16,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "ef963fafe728a0bb21cbb5bfa33dab6045ea5234ee8e9b6fdbbaed77d5602463",
+            "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.20.1-1.8.0.jar": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+            "/tmp/usefultools-shaders-2.3.2/mods/embeddium-0.3.31+mc1.20.1.jar": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
+          },
+          "coverage_limit": "Other packs/controls/surfaces and final readability acceptance remain unfinished."
+        },
+        {
+          "path": "1.20.1-forge-47410-oculus180-compatible-complementary593-reserved",
+          "status": "runtime commands/captures/toggles/exit passed; visual artifacts unresolved",
+          "captures": 16,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "ef963fafe728a0bb21cbb5bfa33dab6045ea5234ee8e9b6fdbbaed77d5602463",
+            "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.20.1-1.8.0.jar": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+            "/tmp/usefultools-shaders-2.3.2/mods/embeddium-0.3.31+mc1.20.1.jar": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
+          },
+          "coverage_limit": "No clean visual acceptance pass; see visual-review.json."
+        },
+        {
+          "path": "1.20.1-forge-47410-oculus180-compatible-complementary593-single",
+          "status": "reviewed scene/toggle/exit evidence; prior artifacts did not reproduce; causation unresolved",
+          "captures": 16,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "ef963fafe728a0bb21cbb5bfa33dab6045ea5234ee8e9b6fdbbaed77d5602463",
+            "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.20.1-1.8.0.jar": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+            "/tmp/usefultools-shaders-2.3.2/mods/embeddium-0.3.31+mc1.20.1.jar": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
+          },
+          "coverage_limit": "Other controls/surfaces and final readability acceptance remain unfinished."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "minecraft_version_range": "[1.20.1,1.21)",
+            "forge_version": "47.4.10",
+            "forge_version_range": "[47,)",
+            "loader_version_range": "[47,)"
+          },
+          "integration": "Oculus 1.8.0 / Embeddium 0.3.31",
+          "pack": "BSL 10.1.2",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "minecraft_version_range": "[1.20.1,1.21)",
+            "forge_version": "47.4.10",
+            "forge_version_range": "[47,)",
+            "loader_version_range": "[47,)"
+          },
+          "integration": "Oculus 1.8.0 / Embeddium 0.3.31",
+          "pack": "Complementary Reimagined 5.9.3",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "minecraft_version_range": "[1.20.1,1.21)",
+            "forge_version": "47.4.10",
+            "forge_version_range": "[47,)",
+            "loader_version_range": "[47,)"
+          },
+          "integration": "OptiFine I6",
+          "pack": "BSL 10.1.2",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "minecraft_version_range": "[1.20.1,1.21)",
+            "forge_version": "47.4.10",
+            "forge_version_range": "[47,)",
+            "loader_version_range": "[47,)"
+          },
+          "integration": "OptiFine I6",
+          "pack": "Complementary Reimagined 5.9.3",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.1-fabric",
+      "source_root": "1.20.1/fabric",
+      "pins": {
+        "minecraft_version": "1.20.1",
+        "loader_version": "0.18.4"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.1",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.1",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.1-neoforge",
+      "source_root": "1.20.1/neoforge",
+      "pins": {
+        "minecraft_version": "1.20.1",
+        "minecraft_version_range": "[1.20.1,1.21)",
+        "neo_version": "47.1.106",
+        "neo_version_range": "[47.1,)",
+        "loader_version_range": "[1,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.1",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "minecraft_version_range": "[1.20.1,1.21)",
+            "neo_version": "47.1.106",
+            "neo_version_range": "[47.1,)",
+            "loader_version_range": "[1,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.1",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "minecraft_version_range": "[1.20.1,1.21)",
+            "neo_version": "47.1.106",
+            "neo_version_range": "[47.1,)",
+            "loader_version_range": "[1,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.1-quilt",
+      "source_root": "1.20.1/fabric",
+      "pins": {
+        "minecraft_version": "1.20.1",
+        "loader_version": "0.18.4"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.1",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.1",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.2-forge",
+      "source_root": "1.20.2/forge",
+      "pins": {
+        "minecraft_version": "1.20.2",
+        "minecraft_version_range": "[1.20.2,1.21)",
+        "forge_version": "48.1.0",
+        "forge_version_range": "[48,)",
+        "loader_version_range": "[48,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.2",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "minecraft_version_range": "[1.20.2,1.21)",
+            "forge_version": "48.1.0",
+            "forge_version_range": "[48,)",
+            "loader_version_range": "[48,)"
+          },
+          "integration": "Exact compatible shader runtime remains under investigation",
+          "pack": "BSL version to select",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.2",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "minecraft_version_range": "[1.20.2,1.21)",
+            "forge_version": "48.1.0",
+            "forge_version_range": "[48,)",
+            "loader_version_range": "[48,)"
+          },
+          "integration": "Exact compatible shader runtime remains under investigation",
+          "pack": "second compatible pack to select",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.2-fabric",
+      "source_root": "1.20.2/fabric",
+      "pins": {
+        "minecraft_version": "1.20.2",
+        "loader_version": "0.18.4"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.2",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.2",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.20.2-neoforge",
+      "source_root": "1.20.2/neoforge",
+      "pins": {
+        "minecraft_version": "1.20.2",
+        "minecraft_version_range": "[1.20.2,1.21)",
+        "neo_version": "20.2.93",
+        "neo_version_range": "[20.2,)",
+        "loader_version_range": "[1,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.2",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "minecraft_version_range": "[1.20.2,1.21)",
+            "neo_version": "20.2.93",
+            "neo_version_range": "[20.2,)",
+            "loader_version_range": "[1,)"
+          },
+          "integration": "Exact compatible shader runtime remains under investigation",
+          "pack": "BSL version to select",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Current-artifact no-loader baseline and Zenkai-derived rebuilt Oculus disabled/BSL/Complementary modes pass scoped audits; private OptiFine disabled/BSL also pass. Unchanged publisher Oculus/OptiFine stacks, OptiFine Complementary outline, and full row requirements remain incomplete.",
+          "observations": [
+            {
+              "kind": "private candidate active BSL review",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-full-single/visual-review.json",
+              "sha256": "73d38ffcd4e399a55527bc74b824390b2434bc8388922c468da27619ab92ff08",
+              "finding": "Full private OptiFine candidate run passed scoped visual controls; original publisher binary and other modes remain unqualified."
+            },
+            {
+              "kind": "rebuilt artifact private OptiFine candidate active BSL review",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/visual-review.json",
+              "sha256": "b186534d5b43ec3b9620ab0385ebd24f2e7744b9d6e893d64a4a69f9fe08477c",
+              "finding": "Fresh current-artifact private candidate run visually passed the captured BSL scenes, states, toggles and surfaces with clean shutdown; exact publisher binary, baseline and second pack remain unqualified."
+            },
+            {
+              "kind": "matched vanilla sheep outline pack pair on rebuilt private OptiFine candidate",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-optifine-vanilla-outline-pack-pair-20261008.json",
+              "sha256": "824fc5454363fb909a5486058ccbbf5e5ac6a6903480352c576d3ae0d5ad57a7",
+              "finding": "BSL shows a vanilla sheep outline with shader active; Complementary does not; both show it disabled. Private integration and publisher exact stack remain unresolved."
+            },
+            {
+              "kind": "current artifact private OptiFine compatibility candidate BSL scoped audit",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/scoped-audit.json",
+              "sha256": "39a4a3518dfd1cafce854733ac952d0293d63b44aa07e717bbc6cbd0c0eae2db",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/report.json",
+              "report_sha256": "6a92a39781eeb59e48d210aa1790845966e9b052a7a59ca8e4513ee13bea1106",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/scoped-requirements.json",
+              "requirements_sha256": "23cf94a5de99c9a426a6736c0be489c8303833814f6895101c9458ce8fbad369",
+              "finding": "On pinned NeoForge 20.2.93, current mod 2b07d16a and private OptiFine compatibility loader 70d057ac with BSL 10.1.2: 64 fresh hash-verified captures, 113/113 acknowledged commands, native states and surface/GUI controls, live off/on shader probes, clean game exit, and 35-capture scoped visual/audit pass. Untouched publisher OptiFine and other modes/packs remain unresolved."
+            },
+            {
+              "kind": "current artifact private OptiFine compatibility candidate installed-disabled scoped audit",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-current-disabled-full-v1/scoped-audit.json",
+              "sha256": "cd78389d5624a47d45e1cbc3d62ae6c055624e42efdf7457abe02ae1e6eca34d",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-current-disabled-full-v1/report.json",
+              "report_sha256": "f516d238e4a6569e17d728cf046a510cad5de15ef732b1511faa828b4728963f",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-current-disabled-full-v1/scoped-requirements.json",
+              "requirements_sha256": "669dd0d7d9158d1dc4484841c1cf4cff1805f6c88d1a70e7b934197daafcdcde",
+              "finding": "On pinned NeoForge 20.2.93, current mod 2b07d16a and private OptiFine compatibility loader 70d057ac: 40 fresh hash-verified captures, 113/113 acknowledged commands, shader state inactive, normal-menu world entry, native scenes/states and surfaces, clean game exit, and full 40-capture scoped visual/audit pass under owned Xvfb :91 1280x720x24 and null audio. Untouched publisher OptiFine, no-loader baseline, and other exact-stack requirements remain unresolved."
+            },
+            {
+              "kind": "current artifact no shader loader baseline scoped audit",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-current-baseline-full-v2/scoped-audit.json",
+              "sha256": "8261f95fcd0ef86b5320b6307730adc6482fdcfb921b638e45786127ebfa3191",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-current-baseline-full-v2/report.json",
+              "report_sha256": "7e1108693be6377ca70d304e4dc5142747f2129f65812b0ed0b7c17841fc9833",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-current-baseline-full-v2/scoped-requirements.json",
+              "requirements_sha256": "51842efdf5d444d01278e21366954ec7569d29935f0017d939eec2504f7d4ba4",
+              "finding": "On pinned NeoForge 20.2.93 with current mod 2b07d16a and no shader loader, 38 fresh hash-verified captures, 113/113 acknowledged commands, shader state inactive, normal-menu world entry, native scenes/states and surfaces, clean shutdown, and scoped visual/audit pass under owned Xvfb :91 1280x720x24 and null audio. Active integration and exact publisher stack remain separate."
+            },
+            {
+              "kind": "current artifact Zenkai-derived Oculus compatibility candidate active BSL scoped audit",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-bsl-full-v1/scoped-audit.json",
+              "sha256": "890527b6305a9986a97649f3c4ee993a018e02f8b7b1e56407ac6aba0044e485",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-bsl-full-v1/report.json",
+              "report_sha256": "af438af3989c63d93890dad8adf226f2e45d32cb6f6f0e82526756de2b427a3e",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-bsl-full-v1/scoped-requirements.json",
+              "requirements_sha256": "36117f0cd0ad91303a23236132f6561f52ae5fb9c3ac676d71c6a64ae6918cc1",
+              "finding": "On pinned NeoForge 20.2.93 with current mod 2b07d16a, Zenkai-derived rebuilt Oculus a9e8b431, native NeoForge Embeddium 0.2.10 and BSL 10.1.2: 43 fresh hash-verified captures, 113/113 acknowledged commands, active and toggled shader states, normal-menu world entry, native entity/material/GUI controls, clean shutdown, and scoped visual/audit pass under owned Xvfb :91 1280x720x24 and null audio. Unchanged publisher binary and other required modes/packs remain separate."
+            },
+            {
+              "kind": "current artifact Zenkai-derived Oculus compatibility candidate installed-disabled scoped audit",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-disabled-full-v1/scoped-audit.json",
+              "sha256": "fa8817089d21e8c7ae6eb74c86ab280d0bf9c970c278cca07208bf15edae1a4d",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-disabled-full-v1/report.json",
+              "report_sha256": "1b6c17594d31bcca781e1ece077f8d7b295f2e31232e5d70fce062da0b96c1e6",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-disabled-full-v1/scoped-requirements.json",
+              "requirements_sha256": "4d0cf2421b8e43b01235efceb536bcb2ce220d96b83f6ae997b780ac269c218e",
+              "finding": "On pinned NeoForge 20.2.93 with current mod 2b07d16a, Zenkai-derived rebuilt Oculus a9e8b431 and native NeoForge Embeddium 0.2.10: 40 fresh hash-verified captures, 113/113 acknowledged commands, shader state inactive, normal-menu entry, native scenes/states/material/GUI controls, clean shutdown, and scoped visual/audit pass under owned Xvfb :91 1280x720x24 and null audio. Unchanged publisher binary and active packs remain separate."
+            }
+          ]
+        },
+        {
+          "minecraft": "1.20.2",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "minecraft_version_range": "[1.20.2,1.21)",
+            "neo_version": "20.2.93",
+            "neo_version_range": "[20.2,)",
+            "loader_version_range": "[1,)"
+          },
+          "integration": "Exact compatible shader runtime remains under investigation",
+          "pack": "second compatible pack to select",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Current-artifact Zenkai-derived rebuilt Oculus candidate with Complementary passes scoped visual/evidence audit, including Glowing outlines; unchanged publisher Oculus/Zenkai stack, installed-disabled mode, and full row requirements remain incomplete. Private OptiFine candidate Complementary remains failed on Glowing outlines.",
+          "observations": [
+            {
+              "kind": "private candidate active Complementary review",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-full-single/visual-review.json",
+              "sha256": "ccf56974029561d44cdbf7d125278da7f9599297a77a7a39c8b3d380ecba0af5",
+              "finding": "Full run captured and toggled successfully, but both native Glowing outlines were absent. Original publisher binary remains unqualified."
+            },
+            {
+              "kind": "rebuilt artifact private OptiFine candidate active Complementary review",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-shader-texture-current-v1/visual-review.json",
+              "sha256": "5a242412660cdfc0b003d1a1918fa1c210d72e4425f975250dec1506c3b4da35",
+              "finding": "Fresh current-artifact private candidate run passed scenes/toggles/material captures but failed native Glowing outlines for both entities; original publisher stack remains unresolved."
+            },
+            {
+              "kind": "original Complementary vanilla outline control on private OptiFine candidate",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-complementary-original-vanilla-outline-control-20261008.json",
+              "sha256": "f89c62dcd5780670761b82fdb56eee56f933dd181db9d10714cd5cc0fa8d9a1b",
+              "finding": "Untouched Complementary pack hides even vanilla sheep Glowing outline while active; the same sheep has a white outline when disabled. Integration-wide active-state failure remains open."
+            },
+            {
+              "kind": "original Complementary 5.7.1 vanilla outline control on private OptiFine candidate",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-complementary-571-original-vanilla-outline-control-20261008.json",
+              "sha256": "25d206921c789ec4cf4f53d747fce1d6b2bc70aa7e0fb7a95586072792b69264",
+              "finding": "Older original pack 5.7.1 also hides vanilla sheep Glowing outline while active and restores it when disabled; exact publisher stack remains unresolved."
+            },
+            {
+              "kind": "current artifact Zenkai-derived Oculus compatibility candidate active Complementary scoped audit",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-complementary-full-v1/scoped-audit.json",
+              "sha256": "b5761d841d6aad0f317999fffe7b63485122c66679e4c0819152fc4ccbc80fba",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-complementary-full-v1/report.json",
+              "report_sha256": "4367990dd65a0bb7651c1fde268a1e7592b9df0b70168a739d1837dec8f34d41",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-zenkai-compat-current-complementary-full-v1/scoped-requirements.json",
+              "requirements_sha256": "601d20be42b7dc32045aa2703579ff29cdd654292edcf8230054b6a5b4525cbc",
+              "finding": "On pinned NeoForge 20.2.93 with current mod 2b07d16a, Zenkai-derived rebuilt Oculus a9e8b431, native NeoForge Embeddium 0.2.10 and unchanged Complementary Reimagined 5.9.3: 43 fresh hash-verified captures, 113/113 acknowledged commands, active and toggled shader states, native entity/material/GUI controls, visible Ghost and Wraith Glowing outlines, clean shutdown, and scoped visual/audit pass under owned Xvfb :91 1280x720x24 and null audio. Unchanged publisher Oculus binary and other required modes remain separate."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "1.20.2-quilt",
+      "source_root": "1.20.2/fabric",
+      "pins": {
+        "minecraft_version": "1.20.2",
+        "loader_version": "0.18.4"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.20.2",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.20.2",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "1.20.2",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.21.1-forge",
+      "source_root": "1.21.1/forge",
+      "pins": {
+        "minecraft_version": "1.21.1",
+        "minecraft_version_range": "[1.21.1,1.22)",
+        "forge_version": "52.1.10",
+        "forge_version_range": "[52,)",
+        "loader_version_range": "[52,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "1.21.1-forge-52110-optifineJ1-normal-menu-bsl1012",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 12,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.21.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "4cc3d51a5c1c2bd486916ffe94b16dd6910f55e976e63a288c237603f845ed87",
+            "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1211-forge-optifine-52016/minecraft/mods/OptiFine_1.21.1_HD_U_J1.jar": "db6d2d14db0009bdea2d8f848e5cb55aac52b555e8e50506dbf7876755b79082"
+          },
+          "coverage_limit": "No all-target completion claim or coverage of missing scenarios/packs."
+        },
+        {
+          "path": "1.21.1-forge-52110-forgeoculus188-normal-menu-bsl1012",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 16,
+          "artifact_sha256": {
+            "/tmp/ghost-validation-source-20261004/1.21.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "4cc3d51a5c1c2bd486916ffe94b16dd6910f55e976e63a288c237603f845ed87",
+            "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f",
+            "/tmp/usefultools-shaders-2.3.2/mods/beddium-1.0.11-mc1.21.1.jar": "fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611"
+          },
+          "coverage_limit": "No all-target completion claim or coverage of missing scenarios/packs."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.21.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "minecraft_version_range": "[1.21.1,1.22)",
+            "forge_version": "52.1.10",
+            "forge_version_range": "[52,)",
+            "loader_version_range": "[52,)"
+          },
+          "integration": "ForgeOculus 1.8.8 / Beddium 1.0.11",
+          "pack": "BSL 10.1.2",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.21.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "minecraft_version_range": "[1.21.1,1.22)",
+            "forge_version": "52.1.10",
+            "forge_version_range": "[52,)",
+            "loader_version_range": "[52,)"
+          },
+          "integration": "ForgeOculus 1.8.8 / Beddium 1.0.11",
+          "pack": "Complementary Reimagined 5.9.3",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open.",
+          "observations": [
+            {
+              "kind": "fresh active-pack visual review",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/forge1211-oculus-complementary593-active-7c18a31-fresh-20261007/visual-review.json",
+              "sha256": "5f8febf10f0be2e949a20f24185aa62365f87d1d0016a2ae99d21909d89a0fe1",
+              "finding": "45 captured frames and 37 visually reviewed; active/off/on, scenes, states, surfaces and clean shutdown passed for current artifact. Other modes and target-wide requirements remain open."
+            }
+          ]
+        },
+        {
+          "minecraft": "1.21.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "minecraft_version_range": "[1.21.1,1.22)",
+            "forge_version": "52.1.10",
+            "forge_version_range": "[52,)",
+            "loader_version_range": "[52,)"
+          },
+          "integration": "OptiFine J1",
+          "pack": "BSL 10.1.2",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open.",
+          "observations": [
+            {
+              "kind": "fresh installed-disabled control",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/forge1211-optifine-disabled-7c18a31-fresh-20261007/visual-review.json",
+              "sha256": "4c8f3294276c538a0bb01c04c7405a67460db768b51974f46d5c28a8896b5423",
+              "finding": "Publisher OptiFine J1 installed with shaders disabled: scenes, states and surfaces passed scoped visual review; cleanup commands were acknowledged and the client exited cleanly. Active packs and no-loader baseline remain open."
+            }
+          ]
+        },
+        {
+          "minecraft": "1.21.1",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "minecraft_version_range": "[1.21.1,1.22)",
+            "forge_version": "52.1.10",
+            "forge_version_range": "[52,)",
+            "loader_version_range": "[52,)"
+          },
+          "integration": "OptiFine J1",
+          "pack": "Complementary Reimagined (version to select)",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open.",
+          "observations": [
+            {
+              "kind": "fresh installed-disabled control",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/forge1211-optifine-disabled-7c18a31-fresh-20261007/visual-review.json",
+              "sha256": "4c8f3294276c538a0bb01c04c7405a67460db768b51974f46d5c28a8896b5423",
+              "finding": "Publisher OptiFine J1 installed with shaders disabled: scenes, states and surfaces passed scoped visual review; cleanup commands were acknowledged and the client exited cleanly. Active packs and no-loader baseline remain open."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "1.21.1-fabric",
+      "source_root": "1.21.1/fabric",
+      "pins": {
+        "minecraft_version": "1.21.1",
+        "loader_version": "0.18.4"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.21.1",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.21.1",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.21.1-neoforge",
+      "source_root": "1.21.1/neoforge",
+      "pins": {
+        "minecraft_version": "1.21.1",
+        "minecraft_version_range": "[1.21.1,1.22)",
+        "neo_version": "21.1.219",
+        "neo_version_range": "[21.1,)",
+        "loader_version_range": "[4,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.21.1",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "minecraft_version_range": "[1.21.1,1.22)",
+            "neo_version": "21.1.219",
+            "neo_version_range": "[21.1,)",
+            "loader_version_range": "[4,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.21.1",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "minecraft_version_range": "[1.21.1,1.22)",
+            "neo_version": "21.1.219",
+            "neo_version_range": "[21.1,)",
+            "loader_version_range": "[4,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "1.21.1-quilt",
+      "source_root": "1.21.1/fabric",
+      "pins": {
+        "minecraft_version": "1.21.1",
+        "loader_version": "0.18.4"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "1.21.1-quilt030-iris188-sodium0613-bsl1012-retry",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 16,
+          "artifact_sha256": {
+            "/home/braydon/Useful-Tools/1.21.1/fabric/build/libs/usefultoolsmod-2.3.1+mc.1.21.1.fabric.jar": "9b944ebfdacffeb01279d37f859f15b66b658ce4fd4979fb8321547ca1914618",
+            "/tmp/usefultools-shaders-2.3.2/mods/iris-fabric-1.8.8+mc1.21.1.jar": "b5ad39a6cb113ca0a1765f06689f9f4b29ccd0c81247de90b06c42f5da1092f5",
+            "/tmp/usefultools-shaders-2.3.2/mods/sodium-fabric-0.6.13+mc1.21.1.jar": "e04599514d88e41765f710eeba59e3814909833396bc11b977f48fc2e7e50353",
+            "/tmp/usefultools-shaders-2.3.2/mods/fabric-api-0.116.9+1.21.1.jar": "462d688976d93e61658d3045e660db20c2a7c2c912b22a6926db22c8c23321ef"
+          },
+          "coverage_limit": "No all-target completion claim or coverage of missing scenarios/packs."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "1.21.1",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "1.21.1",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "1.21.1",
+            "loader_version": "0.18.4"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.1.2-forge",
+      "source_root": "26.1.2/forge",
+      "pins": {
+        "minecraft_version": "26.1.2",
+        "minecraft_version_range": "[26.1.2,27)",
+        "forge_version": "26.1.2-64.0.8",
+        "forge_version_range": "[64,)",
+        "loader_version_range": "[64,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.1.2",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": "[26.1.2,27)",
+            "forge_version": "26.1.2-64.0.8",
+            "forge_version_range": "[64,)",
+            "loader_version_range": "[64,)"
+          },
+          "integration": "Exact compatible shader runtime remains under investigation",
+          "pack": "BSL version to select",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.1.2",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": "[26.1.2,27)",
+            "forge_version": "26.1.2-64.0.8",
+            "forge_version_range": "[64,)",
+            "loader_version_range": "[64,)"
+          },
+          "integration": "Exact compatible shader runtime remains under investigation",
+          "pack": "second compatible pack to select",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.1.2-fabric",
+      "source_root": "26.1.2/fabric",
+      "pins": {
+        "minecraft_version": "26.1.2",
+        "minecraft_version_range": ">=26.1- <27-",
+        "loader_version": "0.19.2"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.1.2",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": ">=26.1- <27-",
+            "loader_version": "0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.1.2",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": ">=26.1- <27-",
+            "loader_version": "0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.1.2-neoforge",
+      "source_root": "26.1.2/neoforge",
+      "pins": {
+        "minecraft_version": "26.1.2",
+        "minecraft_version_range": "[26.1,27)",
+        "neo_version": "26.1.2.59-beta",
+        "neo_version_range": "[26.1,)",
+        "loader_version_range": "[5,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "26.1.2-neoforge-pinned-complementary571-scenes",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 12,
+          "artifact_sha256": {
+            "/home/braydon/Useful-Tools/26.1.2/neoforge/build/libs/usefultoolsmod-2.3.1+mc.26.1.2.neoforge.jar": "acb1dcefceb51669583eb322e3682b7d00adaad05613f8b529bc39784822c75e",
+            "/tmp/usefultools-shaders-2.3.2/mods/iris-neoforge-1.11.4+mc26.1.2.jar": "32d672a890d3c74f75227abc7e7ef048bbb83a799bf46632f03f0583d4c22be5",
+            "/tmp/usefultools-shaders-2.3.2/mods/sodium-neoforge-0.9.2+mc26.1.2.jar": "e760fb2ad8bacd8e706f71e78e48f9d93a5c66a4d5976e4db053abebf9f08252"
+          },
+          "coverage_limit": "No all-target completion claim or coverage of missing scenarios/packs."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.1.2",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": "[26.1,27)",
+            "neo_version": "26.1.2.59-beta",
+            "neo_version_range": "[26.1,)",
+            "loader_version_range": "[5,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.1.2",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": "[26.1,27)",
+            "neo_version": "26.1.2.59-beta",
+            "neo_version_range": "[26.1,)",
+            "loader_version_range": "[5,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.1.2-quilt",
+      "source_root": "26.1.2/fabric",
+      "pins": {
+        "minecraft_version": "26.1.2",
+        "minecraft_version_range": ">=26.1- <27-",
+        "loader_version": "0.19.2"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "26.1.2-quilt030-iris1114-sodium092-bsl1012",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 12,
+          "artifact_sha256": {
+            "/home/braydon/Useful-Tools/26.1.2/fabric/build/libs/usefultoolsmod-2.3.1+mc.26.1.2.fabric.jar": "52941063d5950c4812ab41c920279cc5a34d1b5a4d7f4559a70e26662373bcca",
+            "/tmp/usefultools-shaders-2.3.2/mods/iris-fabric-1.11.4+mc26.1.2.jar": "69bdb6899ba006cf91b16565e4445a7a4f331e39b790c81c99626814bf6e22df",
+            "/tmp/usefultools-shaders-2.3.2/mods/sodium-fabric-0.9.2+mc26.1.2.jar": "dd19aaf6755788673941329cff855d89870dc9f69363c653c7f5378e799834f3",
+            "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-2612-fabric/minecraft/mods/fabric-api-0.155.3+26.1.2.jar": "7fe7bea3dbb7b2e9ff998ab583130cd62fab22ab8a5229656ff14b2e648c91dd"
+          },
+          "coverage_limit": "No all-target completion claim or coverage of missing scenarios/packs."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.1.2",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": ">=26.1- <27-",
+            "loader_version": "0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.1.2",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "26.1.2",
+            "minecraft_version_range": ">=26.1- <27-",
+            "loader_version": "0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.2-forge",
+      "source_root": "26.2/forge",
+      "pins": {
+        "minecraft_version": "26.2",
+        "minecraft_version_range": "[26.2,27)",
+        "forge_version": "26.2-65.1.2",
+        "forge_version_range": "[65,)",
+        "loader_version_range": "[65,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-current-baseline-full-v1/scoped-audit.json",
+          "sha256": "9a9691f39acdefea8f94e09e41ab0b96c5cdd6a633b3ded607f7351296ad4183",
+          "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-current-baseline-full-v1/report.json",
+          "report_sha256": "ca9973955198e32e69f40a35d56915e1bab0f331ae3b605aa973c650a645083b",
+          "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-current-baseline-full-v1/scoped-requirements.json",
+          "requirements_sha256": "f735f45d189a93be0b5b82d571aae9dc70583f8a67eab99164d79cf1e243a364",
+          "status": "Current main artifact a7c6ee9e, no shader loader: 40 fresh captures, 119/119 acknowledged commands, inactive shader state, clean game exit, and 33-capture scoped visual/audit pass. Wraith retains its authored no-shader transparent torso. Other exact-stack requirements remain incomplete."
+        },
+        {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-disabled-full-v1/scoped-audit.json",
+          "sha256": "5d539167192e7285452dbc591ac7f2bdaf9a58d827ea61d94a5b4ab8cdb435ab",
+          "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-disabled-full-v1/report.json",
+          "report_sha256": "e6d93e8613ce991d4b22701809b7ad1322d0931f1ab2aeb4f69ed1160a3083bc",
+          "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-disabled-full-v1/scoped-requirements.json",
+          "requirements_sha256": "0dd4ac2a973a7d6474cad4c84c4c7779353ce487291b77ee9f3fdc0090096d30",
+          "status": "Current main artifact a7c6ee9e, original publisher community port 0592d342, companion acb3d11a installed with shaders disabled: 43 fresh captures, 119/119 acknowledged commands, 12 inactive shader-state probes, clean game exit, and 33-capture scoped visual/audit pass. Active BSL and entity-gbuffer requirements remain incomplete."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.2",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": "[26.2,27)",
+            "forge_version": "26.2-65.1.2",
+            "forge_version_range": "[65,)",
+            "loader_version_range": "[65,)"
+          },
+          "integration": "Oculus Community Port 0.3.0-beta.1 on pinned Forge 65.1.2",
+          "pack": "BSL 10.1.1 publisher-tested candidate",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Current-artifact BSL scenes/states/surfaces/toggles, baseline and installed-disabled modes pass scoped audits; publisher port still has no demonstrated pack-driven terrain/entity gbuffer coverage.",
+          "observations": [
+            {
+              "kind": "exact publisher active-pack failure",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/research/community262-original-publisher-bsl-current-failure.json",
+              "sha256": "c48df0e3e05723a3746f278c51bd7cde602e7bee8653c1158e105c08c47dfff0",
+              "finding": "Normal-menu world entered but shader compilation rejected a mid-shader #extension directive; activation and entity gbuffer coverage unverified."
+            },
+            {
+              "kind": "exact publisher BSL active-pack scoped pass with optional companion",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-header-bsl-full-v3/visual-review.json",
+              "sha256": "5f775284ce64497681ad68a3d687b8d198173f4f2c710389dba25bc07c1ca396",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-header-bsl-full-v3/report.json",
+              "report_sha256": "09ff66197f3aab668c8bdd65dc81f8d3ea69b60f5fb01c145308b7ff7749ccbd",
+              "finding": "Original publisher port 0.3.0-beta.1 and unmodified BSL 10.1.1 on Forge 65.1.2, with optional lighting companion 27a0b6ed: 69 fresh captures, shader off/on toggles, native states and surfaces, scoped visual review, clean game exit, and evidence audit pass. Entity-gbuffer coverage and other required modes/packs remain unverified; row stays incomplete."
+            },
+            {
+              "kind": "exact publisher current-artifact BSL active-pack scoped pass with optional companion",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-bsl-full-v1/scoped-audit.json",
+              "sha256": "611e38f76fd7590d88257680bcb7eb86fccfebda8f3af7dcb3fe430e3a571244",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-bsl-full-v1/report.json",
+              "report_sha256": "1409a06314f3f046613da8187db040554404a6a4a128daae4fa8b725b2dd39d2",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-bsl-full-v1/scoped-requirements.json",
+              "requirements_sha256": "fa15dfc01619ad1d1fd37f544a82cbb89dfc0004d4ad9b760fa79793f71f680f",
+              "finding": "Original publisher port 0.3.0-beta.1 and unmodified BSL 10.1.1 on Forge 65.1.2, current main a7c6ee9e and companion acb3d11a: 67 hash-verified captures, 119/119 acknowledged commands, 14 active and 2 inactive live probes, native states/surfaces, clean game exit, and 35-capture scoped visual/audit pass. Missing pack-driven terrain/entity gbuffer coverage keeps row incomplete."
+            }
+          ]
+        },
+        {
+          "minecraft": "26.2",
+          "loader": "forge",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": "[26.2,27)",
+            "forge_version": "26.2-65.1.2",
+            "forge_version_range": "[65,)",
+            "loader_version_range": "[65,)"
+          },
+          "integration": "Oculus Community Port 0.3.0-beta.1 on pinned Forge 65.1.2",
+          "pack": "Complementary 5.7.1 publisher-tested candidate",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Current-artifact Complementary scenes/states/surfaces/toggles, baseline and installed-disabled modes pass scoped audits; publisher port still has no demonstrated pack-driven terrain/entity gbuffer coverage.",
+          "observations": [
+            {
+              "kind": "exact publisher Complementary active-pack scoped pass with optional companion",
+              "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-full-v2/scoped-audit.json",
+              "sha256": "3be486224c50982a67c4a7b5cb2cc16aab653d8d1966f195308695c073630e69",
+              "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-full-v2/report.json",
+              "report_sha256": "ad69ec6e35724d8aae34d63b7b915f614e496a6081e8a6211fac4574aa50d746",
+              "requirements": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-full-v2/scoped-requirements.json",
+              "requirements_sha256": "6cfa080f5bb0900d52e8cbef874a4aad983f9a7f1cb73ff1a003fad450ff1c8d",
+              "finding": "Original publisher port 0.3.0-beta.1 and unmodified Complementary Reimagined 5.7.1 on Forge 65.1.2 with optional source-maintained lighting companion acb3d11a: 69 hash-verified captures, 119/119 acknowledged commands, native entity states, material/GUI surfaces, off/on toggles, clean game exit, and 35-capture scoped visual/audit pass. The port still demonstrates only one final full-screen stage, not pack-driven terrain/entity gbuffers; other required modes remain open."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "26.2-fabric",
+      "source_root": "26.2/fabric",
+      "pins": {
+        "minecraft_version": "26.2",
+        "minecraft_version_range": ">=26.2- <27-",
+        "loader_version": "0.19.3",
+        "loader_version_range": ">=0.19.2"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.2",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": ">=26.2- <27-",
+            "loader_version": "0.19.3",
+            "loader_version_range": ">=0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.2",
+          "loader": "fabric",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": ">=26.2- <27-",
+            "loader_version": "0.19.3",
+            "loader_version_range": ">=0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.2-neoforge",
+      "source_root": "26.2/neoforge",
+      "pins": {
+        "minecraft_version": "26.2",
+        "minecraft_version_range": "[26.2,27)",
+        "neo_version": "26.2.0.67",
+        "neo_version_range": "[26.2,)",
+        "loader_version_range": "[5,)"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.2",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": "[26.2,27)",
+            "neo_version": "26.2.0.67",
+            "neo_version_range": "[26.2,)",
+            "loader_version_range": "[5,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.2",
+          "loader": "neoforge",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": "[26.2,27)",
+            "neo_version": "26.2.0.67",
+            "neo_version_range": "[26.2,)",
+            "loader_version_range": "[5,)"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    },
+    {
+      "target": "26.2-quilt",
+      "source_root": "26.2/fabric",
+      "pins": {
+        "minecraft_version": "26.2",
+        "minecraft_version_range": ">=26.2- <27-",
+        "loader_version": "0.19.3",
+        "loader_version_range": ">=0.19.2"
+      },
+      "required": [
+        "ghost/wraith day",
+        "ghost/wraith night",
+        "rain",
+        "dark background",
+        "bright background",
+        "lit indoor",
+        "no shader loader baseline",
+        "shader loader installed, disabled",
+        "BSL active",
+        "second active pack",
+        "shader off/on toggle",
+        "clean shutdown",
+        "artifact and isolation provenance",
+        "audit and capture other affected mod render surfaces",
+        "readability verdict, including low-light Wraith",
+        "original conditional extra-pass entity-state checks and performance gate"
+      ],
+      "status": "incomplete",
+      "evidence": [
+        {
+          "path": "26.2-quilt030-iris1114-sodium092-bsl1012",
+          "status": "scene commands, captures and clean exit verified; see visual-review.json",
+          "captures": 16,
+          "artifact_sha256": {
+            "/home/braydon/Useful-Tools/26.2/fabric/build/libs/usefultoolsmod-2.3.1+mc.26.2.fabric.jar": "f601e11072b95f146794283fabb4b6394bad1f9f28b094d96cf0b96307f870c3",
+            "/tmp/usefultools-shaders-2.3.2/mods/iris-fabric-1.11.4+mc26.2.jar": "f1f7ab57c974d193ba33aa285864a0ded949216f402116fceaf4dc7739b4dd7c",
+            "/tmp/usefultools-shaders-2.3.2/mods/sodium-fabric-0.9.2+mc26.2.jar": "16a5e91db49750f8c046ecca3b8f2af5a28ea6f9b6581b42f123ca8fda20864f",
+            "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-262-fabric/minecraft/mods/fabric-api-0.158.0+26.2.jar": "a4510eb2e9d4057ff20f751e420d0618598813ab9695b6f793a53c2883808dac"
+          },
+          "coverage_limit": "No all-target completion claim or coverage of missing scenarios/packs."
+        }
+      ],
+      "remaining": "Review all original requirements for every exact shader stack; unlisted checks remain unverified.",
+      "stack_checks": [
+        {
+          "minecraft": "26.2",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": ">=26.2- <27-",
+            "loader_version": "0.19.3",
+            "loader_version_range": ">=0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "BSL exact version to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        },
+        {
+          "minecraft": "26.2",
+          "loader": "quilt",
+          "pinned_runtime": {
+            "minecraft_version": "26.2",
+            "minecraft_version_range": ">=26.2- <27-",
+            "loader_version": "0.19.3",
+            "loader_version_range": ">=0.19.2"
+          },
+          "integration": "Iris / Sodium: exact versions recorded for each evidence set; absent rows need version-matched selection",
+          "pack": "second exact pack to verify",
+          "scenarios": [
+            "ghost/wraith day",
+            "ghost/wraith night",
+            "rain",
+            "dark background",
+            "bright background",
+            "lit indoor",
+            "no shader loader baseline",
+            "shader loader installed, disabled",
+            "BSL active",
+            "second active pack",
+            "shader off/on toggle",
+            "clean shutdown",
+            "artifact and isolation provenance",
+            "audit and capture other affected mod render surfaces",
+            "readability verdict, including low-light Wraith",
+            "original conditional extra-pass entity-state checks and performance gate"
+          ],
+          "status": "incomplete",
+          "reason": "Existing captures cover only their recorded stacks/hashes; missing scenarios remain open."
+        }
+      ]
+    }
+  ]
+}

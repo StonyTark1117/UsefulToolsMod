@@ -1,0 +1,211 @@
+{
+  "target": "1.21.1",
+  "shader": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "artifact_hashes": {
+    "/tmp/useful-tools-lighting-reviewed-artifacts/f11d2e16f6e685acdfe99ec580ad6a1ca1b20d97cdfe808bc1b1cc4ed5a58bff/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "f11d2e16f6e685acdfe99ec580ad6a1ca1b20d97cdfe808bc1b1cc4ed5a58bff",
+    "/tmp/useful-tools-lighting-qa-packages/1.21.1-forge-acceptance-only.jar": "bf716284eede55c9b6ea9ff2214b5b75f642991a2b27f9f275bdde9266649617",
+    "/tmp/usefultools-shaders-2.3.2/mods/beddium-1.0.11-mc1.21.1.jar": "fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611",
+    "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-3.png",
+          "sha256": "8ef00712987f3293c73e53d18e7e6dd18ba3b74c991c4a47756b1ab62ea7a9a7"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-3.png",
+          "sha256": "f62dc7b4546670768649cda1137604991e6b130ec08f031db2df8c884c56ca6c"
+        }
+      },
+      "ordinary": 0.5430322678733033,
+      "hardened": 0.7668734160396466,
+      "hardened_to_ordinary_ratio": 1.412205980029475
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-10.png",
+          "sha256": "7c14b03567b34cfd9409efcce8a7ffffe87e3a5589cf615e502972d334d57ee1"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-10.png",
+          "sha256": "9a37e23dd3f23bf1566c466b2bc89fcfa1ee382c88d43056a5d7fca111f5fd59"
+        }
+      },
+      "ordinary": 0.13389104982546868,
+      "hardened": 0.3296019066580478,
+      "hardened_to_ordinary_ratio": 2.4617172476255473
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-15.png",
+          "sha256": "4ebf67718b7b9132b1654e678ecb4f816bfdf95f61a3e0d609a8dde45ed7c506"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-15.png",
+          "sha256": "d7478e3a64538e83516318fadcbb733f6d1b2bf9d93cda75e0406c74b96d6353"
+        }
+      },
+      "ordinary": 0.04862993944408532,
+      "hardened": 0.20196244250808018,
+      "hardened_to_ordinary_ratio": 4.153047378154696
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-20.png",
+          "sha256": "634dee3f9b944fe9c23f824b433e45d85e4c0eb06e4ebe07189c06eec9a542df"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-20.png",
+          "sha256": "9dd7c90095e0426c0b398d813cc5db46c8c788cec82f67892e72ff24df501a43"
+        }
+      },
+      "ordinary": 0.04385336401637578,
+      "hardened": 0.13388139559577678,
+      "hardened_to_ordinary_ratio": 3.0529333062289727
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-29.png",
+          "sha256": "6162d5236d2f76f83e8b26f62cdc48aed1bdd0b8851e3ef16e4a994a8aefb271"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-29.png",
+          "sha256": "988da52a13fd1cab2ba90e0a22cae5f03b06929fa0e8b893ecf34916f9a7db98"
+        }
+      },
+      "ordinary": 0.043802619745744446,
+      "hardened": 0.05131627183796595,
+      "hardened_to_ordinary_ratio": 1.171534308583255
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791167932787,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167939293,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167946805,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167953309,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167959313,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167965319,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167970821,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167976329,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167981832,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167987836,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167993844,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167999346,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168005348,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168010851,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168016353,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168022356,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168027358,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168032860,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168038363,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168043864,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ]
+}

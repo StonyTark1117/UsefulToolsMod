@@ -1,0 +1,59 @@
+{
+  "candidate": "forge262-optifine-gui-v37",
+  "finding": "The v37 runtime does not load the bridge that passed the v37 forced-program-binding offline check.",
+  "runtime_manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine26-gui-26.2-v37-BSL-indoor-admit60-single.json",
+  "runtime_manifest_sha256": "6fe55f6e0b35ef3fd9bb73c7e83e39bf06af8f3f67e2c46d35fcc65772404c50",
+  "manifest_bridge": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a/bridge.jar",
+    "sha256": "91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a"
+  },
+  "observed_process_bridge": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a/bridge.jar",
+    "sha256": "91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a",
+    "observation": "The live validate-packaged-spectral.py argv used this javaagent path."
+  },
+  "offline_checked_bridge": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/58e63d3013c50daedbad26a40e3a697fe217c689c824b53bec9ee036ee2a1f10/bridge.jar",
+    "sha256": "58e63d3013c50daedbad26a40e3a697fe217c689c824b53bec9ee036ee2a1f10",
+    "offline_record": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/forge262-gui-v37-offline-check.json"
+  },
+  "jvm_flag": "-DusefulToolsSpectralForceProgramBind262=true",
+  "flag_effect": "inert",
+  "evidence": {
+    "runtime_bridge_contains_force_program_binding_property": false,
+    "offline_checked_bridge_contains_force_program_binding_property": true,
+    "inspection": "Streaming each JAR through strings finds usefulToolsSpectralForceProgramBind262 and glUseProgram only in 58e63d30, not in 91bea6f9."
+  },
+  "qualification": {
+    "forced_program_binding_runtime_verified": false,
+    "visual_result_can_qualify_forced_binding_candidate": false,
+    "reason": "A JVM property has no effect when the loaded bridge contains no code that reads or implements it. Any v37 captures or errors characterize the older 91bea6f9 bridge, regardless of visual outcome."
+  },
+  "terminal_runtime_outcome": {
+    "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v37-BSL-indoor/report.json",
+    "report_sha256": "c3ada729d5e964f6a6afedd36dd040053c0a4a77011abbff224c7c71bad26f6a",
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "shader_activation_logged": true,
+    "visual_verdict": "not reviewed",
+    "wraith_indoor_capture": {
+      "sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "geometry": "854x480",
+      "unique_colors": 1,
+      "rgb_extrema": "0..0"
+    },
+    "wraith_indoor_framebuffer": {
+      "sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "geometry": "1280x720",
+      "unique_colors": 1,
+      "rgb_extrema": "0..0"
+    },
+    "shader_backend_errors": [
+      "GL_INVALID_OPERATION in glUniformMatrix(non-matrix uniform), program gbuffers_textured_lit (gbuffers_textured), at gbufferProjectionInverse",
+      "GL_INVALID_OPERATION in glUniform(location=25), program gbuffers_skybasic, at renderStage",
+      "GL_INVALID_OPERATION in glUniform(location=11), program gbuffers_skytextured, at renderStage"
+    ],
+    "interpretation": "The result exactly repeats the older bridge's black captures and uniform-state errors; it does not test the 58e63d30 forced-binding implementation."
+  },
+  "preservation": "Do not alter the v37 runtime report or evidence; retain it as a provenance-mismatched diagnostic run."
+}

@@ -1,0 +1,213 @@
+{
+  "target": "1.21.1",
+  "shader": {
+    "name": "BSL_v10.1.2.zip",
+    "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+  },
+  "settings": [
+    "ADVANCED_MATERIALS=true",
+    "MATERIAL_FORMAT=1",
+    "EXPOSURE=0.00",
+    "AUTO_EXPOSURE=false",
+    "BLOOM_STRENGTH=1.00"
+  ],
+  "artifact_hashes": {
+    "/tmp/useful-tools-lighting-reviewed-artifacts/007797b0f99b3aa18a01c65bf130617e3118391893b58114e3820fc58c89e084/usefultoolsmod-2.3.1+mc.1.21.1.neoforge.jar": "007797b0f99b3aa18a01c65bf130617e3118391893b58114e3820fc58c89e084",
+    "/tmp/useful-tools-lighting-qa-packages/1.21.1-neoforge-acceptance-only.jar": "57b06045c314d3c33ba28ccba34fc57f11a5462999a12d9f8974261e34aef724",
+    "/tmp/usefultools-shaders-2.3.2/mods/sodium-neoforge-0.8.13+mc1.21.1.jar": "575d187b15328d7bddd8a9b1bee64333c22c14735f5780ec49eac0cd5503c08d",
+    "/tmp/usefultools-shaders-2.3.2/mods/iris-neoforge-1.8.14-beta.1+mc1.21.1.jar": "60d5f8bf52f25e9986440f4a4270a6bd986d9cff994510e1108ac1547063b314",
+    "/tmp/useful-tools-lighting-backends/1.21.1-neoforge/lambdynamiclights-4.8.11+1.21.1.jar": "913b0358b1031828f1e060ea0ee361232dc2a1c82464f488a0a920739ce7c763"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-ordinary-distance-3.png",
+          "sha256": "3cffaebf0ea8c3752281511c5a5ecc7d17b7f6b450a682928331732b44508815"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-hardened-distance-3.png",
+          "sha256": "b8d5ff934b27606248d1645ef525df0f4334355fd289119581e9ba767a8d3d7f"
+        }
+      },
+      "ordinary": 0.509414821047188,
+      "hardened": 0.6747196832406809,
+      "hardened_to_ordinary_ratio": 1.3244995146660257
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-ordinary-distance-10.png",
+          "sha256": "d6f458158738e297259f723c2982172b5afc8951140ce7f0f8095d7b4b09e4a4"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-hardened-distance-10.png",
+          "sha256": "2e3fedc11c675ce156967bd28e15a27b55eb1cb9f7e21ca35687dbfd6bdfc0cc"
+        }
+      },
+      "ordinary": 0.1624931156561086,
+      "hardened": 0.3184147371687136,
+      "hardened_to_ordinary_ratio": 1.9595583227205073
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-ordinary-distance-15.png",
+          "sha256": "d765b435471177dff0325c07195ab6b6a7061f6eff81b92c71076911146ad2e8"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-hardened-distance-15.png",
+          "sha256": "b74a817bf6c0721c4b22b2adeb4bb8ef446d630464d9036888a1d68645c1e35d"
+        }
+      },
+      "ordinary": 0.060272863710407236,
+      "hardened": 0.22162445545356604,
+      "hardened_to_ordinary_ratio": 3.677018840823693
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-ordinary-distance-20.png",
+          "sha256": "d17d613678963cfb43c84c555e870f9f7c30b18a70cc8b4255b02a811b4406ed"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-hardened-distance-20.png",
+          "sha256": "402e4e0013150b2de8aafe2cfc4f934851ce57f2e6d809142ae149c5f96443d8"
+        }
+      },
+      "ordinary": 0.04655413395388924,
+      "hardened": 0.16251505675500968,
+      "hardened_to_ordinary_ratio": 3.4908834716155814
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-ordinary-distance-29.png",
+          "sha256": "542c61c77abc5d9bd715eea153962c385b003db4e1d5add799b32d702fa1d766"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-neoforge-native-dispatch/lighting-hardened-distance-29.png",
+          "sha256": "e2dea55875544b420764a18d5822ae6ab5c438ff229e6fc3d58068ca5cff62ec"
+        }
+      },
+      "ordinary": 0.04642379576815341,
+      "hardened": 0.06613210039215686,
+      "hardened_to_ordinary_ratio": 1.4245302284722545
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791167562485,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167568989,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167576999,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167583005,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167588509,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167595011,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167600515,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167606016,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167611518,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167617021,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167622523,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167628025,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167633527,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167639529,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167645532,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167650533,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167656535,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167662037,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167668039,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167673541,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ]
+}

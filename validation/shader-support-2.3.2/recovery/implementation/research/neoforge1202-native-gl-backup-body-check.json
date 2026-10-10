@@ -1,0 +1,38 @@
+{
+  "rows": [
+    {
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/javac",
+        "--release",
+        "17",
+        "-Xlint:all",
+        "-Werror",
+        "-cp",
+        "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "-d",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-gl-backup-body-build",
+        "tests/spectral-qa/probe/OptifineNativeGlBackup.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/java",
+        "-cp",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-gl-backup-body-build:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "com.stonytark.usefultoolsmod.spectralqa.OptifineNativeGlBackup",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/qa/5aac88dd02cce90ae668ce99235975cf106a7be1ddc36abf42c59c1027b85149/native-inherited-click-loader.jar",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/qa/4d6abc90a4aaa4159dfeb7882b2adb684251c78f40193281c1e97b062477c1e4/optifine-native-game-layer-classpath.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-gl-backup-body-build/donors"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Exact class absent: com/mojang/blaze3d/platform/GlStateManager.class\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineNativeGlBackup.read(OptifineNativeGlBackup.java:17)\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineNativeGlBackup.main(OptifineNativeGlBackup.java:57)\n"
+    }
+  ],
+  "runtime_qualified": false,
+  "note": "Private prototype retains real native cache operations and guards; only before renderThread initialization does a verified current GLFW context permit scoped thread registration, reset on normal and exceptional exit."
+}

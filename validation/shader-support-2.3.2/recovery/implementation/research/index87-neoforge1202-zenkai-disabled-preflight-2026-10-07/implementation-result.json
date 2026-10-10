@@ -1,0 +1,52 @@
+{
+  "status": "offline implementation complete; runtime acceptance not run",
+  "index": 87,
+  "artifact": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/a9e8b431ccd2ea193e1802808e17e80a72833c39be620d827f773f805a9b8a4a/oculus-mc1.20.2-1.8.0-neoforge-publisher-compat.jar",
+    "sha256": "a9e8b431ccd2ea193e1802808e17e80a72833c39be620d827f773f805a9b8a4a",
+    "mod_id": "oculus",
+    "version": "1.8.0",
+    "publisher_origin": "Zenkai",
+    "publisher_binary_unchanged": false,
+    "embedded_provenance": "META-INF/useful-tools/oculus-1202-neoforge-publisher-compat.json",
+    "external_provenance": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/a9e8b431ccd2ea193e1802808e17e80a72833c39be620d827f773f805a9b8a4a/provenance.json"
+  },
+  "implementation": {
+    "builder": "/home/braydon/Useful-Tools/scripts/build-oculus1202-publisher-neoforge-compat.py",
+    "unit_test": "/home/braydon/Useful-Tools/tests/test_oculus1202_publisher_neoforge_compat.py",
+    "mapping_record": "publisher-port-map.json",
+    "source_files_ported": 26,
+    "changed_files_total": 29,
+    "residual_forge_namespace_files": 0,
+    "neoforge_namespace_files": 26,
+    "deterministic_rebuilds": 2,
+    "runtime_api_classes_verified": 8
+  },
+  "strict_inputs": {
+    "publisher_archive_sha256": "e566bf7783cd66b90fdb25f87f611b7eacb1f62e0b2a1fd122d07a294ce08327",
+    "source_archive_sha256": "cdf61716d1706be75dfc46ee51e07fa51566dce6273fc6de340bf8aacc34868b",
+    "port_patch_sha256": "3589f9c48b4172b78489b73f1d612589693fc4208825d5e9651d549293a9987d",
+    "compiled_native_sha256": "a402decb6cdb3e5dec0b2cdd164e4412b327bd86bb83b0aac1f611d03f46a42e",
+    "neoforge_universal_sha256": "14738ecbf2b5322536c78c0a1de678ba457b3244a891f31efb5bac89eadee172",
+    "fml_loader_sha256": "a335ee8d684ad57b028956a5350c85940e6e3dd16dd1884a2914d53fc6acee79"
+  },
+  "tests": {
+    "python_compile": "passed",
+    "focused_unit_tests": "56 passed",
+    "deterministic_output": "a9e8b431ccd2ea193e1802808e17e80a72833c39be620d827f773f805a9b8a4a twice",
+    "prior_version_native_gradle_build": "passed with complete upstream file integrity verification",
+    "scoped_audit": "expected incomplete: missing report; no runtime was launched"
+  },
+  "release_research": {
+    "zenkai_file": "CurseForge file 8644015 is exact Forge oculus-mc1.20.2-1.8.0.jar",
+    "embeddium": "Modrinth J5gD4WO0 is exact NeoForge 0.2.10+mc1.20.2",
+    "native_publisher_oculus_found": false,
+    "selection": "Use the fully mapped publisher-derived source rebuild; do not relabel it as an unchanged publisher binary."
+  },
+  "runtime": {
+    "launched": false,
+    "gpu_lock_touched": false,
+    "fresh_output": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/neoforge1202-zenkai-disabled-3df68c-index87-20261007",
+    "scoped_manifest": "scoped-manifest.json"
+  }
+}

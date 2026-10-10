@@ -1,0 +1,24 @@
+{
+  "candidate": "forge262-optifine-gui-v41",
+  "change": "Add exact K2 shader-mode emulated direct-state access and vertex-array cache getters and constructor setup to pinned Forge 65.1.2 GlDevice; preserve native Forge class and encoder.",
+  "source_sha256": {
+    "tests/spectral-qa/probe/OptifineGuiBridge.java": "e83249b2698a0bf4205caf25a28a32573c5ed67735ce8d28ca63c2acbef03bda",
+    "tests/spectral-qa/probe/Forge262GuiCheck.java": "1568abcee373e0b8814f5dbf7bfd5247bcacdb57001ee17242402eef25e9a056"
+  },
+  "bridge": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/68d66951998608892322967ebfdc384830a069ef57024dd9ddcbcc2266ba4a28/bridge.jar",
+  "bridge_sha256": "68d66951998608892322967ebfdc384830a069ef57024dd9ddcbcc2266ba4a28",
+  "runtime_manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine26-gui-26.2-v41-BSL-indoor-admit60-single.json",
+  "runtime_manifest_sha256": "528bee07d4e9a189d23fb4b6eaf1e74361d066a500ef7e84ff5000429c213444",
+  "strict_javac_passed": true,
+  "pinned_bytecode_basic_verifier_passed": true,
+  "runtime_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "upstream_bytecode_evidence": "Exact K2 srg/com/mojang/blaze3d/opengl/GlDevice.class directStateAccess(), vertexArrayCache(), and constructor tail versus pinned Forge 65.1.2 client GlDevice.class.",
+  "runtime_result": {
+    "status": "failed",
+    "error": "Game JVM exited before input; no captures",
+    "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v41-BSL-indoor/report.json",
+    "report_sha256": "64a4bce034594f4f2acdddcf5a5b6a37664d2833446df31778630b0fcf526a16",
+    "failure_layer": "private bridge: GlDevice publisher donor was not selected, so OptiFine saw unadapted Forge class and rejected its MD5; no mod or shader verdict"
+  }
+}

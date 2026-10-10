@@ -1,0 +1,27 @@
+{
+  "source_sha256": "4bf589e7254170f4dc23cbf73638e0bdb89ec25dcef7e5e43fbf032fceff6c11",
+  "rows": [
+    {
+      "minecraft": "26.1.2",
+      "forge": "64.0.8",
+      "exit_code": 1,
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Publisher logic requires a merge: broadcastOptions()V\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineNativeOptionsHooks.main(OptifineNativeOptionsHooks.java:50)\n",
+      "input_donor_sha256": "64a4a3b10198d36ed1b67fa51ad6d75b893b945c18df0a8c72bb260ec20074ac",
+      "native_sha256": "5d6acdaef133c4f002b9d8cf4c1b44e1b0720c039c3f21606f762a226e795601"
+    },
+    {
+      "minecraft": "26.2",
+      "forge": "65.1.2",
+      "exit_code": 1,
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Publisher logic requires a merge: broadcastOptions()V\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineNativeOptionsHooks.main(OptifineNativeOptionsHooks.java:50)\n",
+      "input_donor_sha256": "c62670144c51197b721b514d3f4268640fa701970cbf2564b01e8281486780b5",
+      "native_sha256": "712277950db1d04987c7affb38ca8b0b5275601b5f11b4d3102b2cb9c1b4ecf5"
+    }
+  ],
+  "runtime_qualified": false,
+  "native_methods_restored": [
+    "broadcastOptions",
+    "processOptionsKeysOnly"
+  ],
+  "preserved": "Publisher constructor, initGameSettings/initMinecraft, all other options and shader settings remain unchanged. Native key loop operates on the same combined keyMappings array."
+}

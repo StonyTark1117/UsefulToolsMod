@@ -1,0 +1,124 @@
+{
+  "target": "1.20.2",
+  "shader": {
+    "name": "BSL_v10.1.2.zip",
+    "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+  },
+  "settings": [
+    "ADVANCED_MATERIALS=true",
+    "MATERIAL_FORMAT=1",
+    "EXPOSURE=0.00",
+    "AUTO_EXPOSURE=false",
+    "BLOOM_STRENGTH=1.00"
+  ],
+  "artifact_hashes": {
+    "/home/braydon/Useful-Tools/1.20.2/fabric/build/libs/usefultoolsmod-2.3.1+mc.1.20.2.fabric.jar": "1878997eb18ee7819bae282175b4bf70fbca51117876fbf94f10a53e4ba2465d",
+    "/tmp/useful-tools-lighting-qa-packages/1.20.2-fabric-acceptance-only.jar": "4efaba683fc1e2a7328c4040e8cebaebb2831f0bd83230e968a83d33f762099d",
+    "/tmp/useful-tools-lighting-backends/1.20.2-fabric/sodium-fabric-mc1.20.2-0.5.5.jar": "088d26b928866300c76d1b58fccffc9086ff1cdeda435df20b59d55bef7f2017",
+    "/tmp/useful-tools-lighting-backends/1.20.2-fabric/lambdynamiclights-2.3.3+1.20.2.jar": "746e92a959a7da5f2052696ba75c85bbace4520aafc76c4140ee56ab4b3a6cfa",
+    "/tmp/usefultools-shaders-2.3.2/mods/fabric-api-0.91.6+1.20.2.jar": "f907f05b8ecdc0f33e48a79eddc33748cf97d00083185ea3cb452bb3b2e11d19",
+    "/tmp/usefultools-shaders-2.3.2/mods/iris-mc1.20.2-1.6.14.jar": "7dbe9c8b07e24b5ce80790e7451c1f4d55a86cdac9dd89726f06e7443021e5d2"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-3.png",
+          "sha256": "8f8f85a85da15f6cb08ea7ac3b53d9bf5520aaa2f68bba5f31def1f744eb90c0"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-3.png",
+          "sha256": "7f31cb232c11cff1413baf71d078ef3ea7909891e98a8bd4d77a25c0a0af1c7f"
+        }
+      },
+      "ordinary": 0.5365323243783667,
+      "hardened": 0.702781390907132,
+      "hardened_to_ordinary_ratio": 1.3098584353167977
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-10.png",
+          "sha256": "7ea6ed6526f7f7c45a65eab25cef45664213039f603487e494d9f2ba874186d8"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-10.png",
+          "sha256": "a95935e59637415419ff4b0e587d190fd6bcef48f0e904a2e78dcc7f0fb0feee"
+        }
+      },
+      "ordinary": 0.16263313609997843,
+      "hardened": 0.3147859161732385,
+      "hardened_to_ordinary_ratio": 1.9355582984006678
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-15.png",
+          "sha256": "0acf85b69b33b00e9c9618fe1ada394c1d13f60b2173eac7269a9c6bec0d6a9d"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-15.png",
+          "sha256": "046d01aa0236cd2e749cc5440dfe8abeb6c484e758dc66f1cb88cb80dcd814fa"
+        }
+      },
+      "ordinary": 0.05973585030812324,
+      "hardened": 0.21819533259211377,
+      "hardened_to_ordinary_ratio": 3.652669736291378
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-20.png",
+          "sha256": "46935867910fb041f77db794e56ff731e9df58db53869cc7381bd4f36402d97d"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-20.png",
+          "sha256": "c25b43238fd9eea7d8fe27c725b34f3760ce307bdb6dd468cd938ef4a7776013"
+        }
+      },
+      "ordinary": 0.04653147328592975,
+      "hardened": 0.16101295558715795,
+      "hardened_to_ordinary_ratio": 3.460302118476985
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-29.png",
+          "sha256": "f2b1bc17b1dbd0006a1f359572af10bcfa3d99af2699ba9d1da933d3ea4ad57e"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-29.png",
+          "sha256": "c8a8e676d7d16d64ab6bf3291256a0692e67577cf32a98054f737faf471edf96"
+        }
+      },
+      "ordinary": 0.04675609256625727,
+      "hardened": 0.066150152708468,
+      "hardened_to_ordinary_ratio": 1.4147921495947877
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791160103881,
+      "active": false,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791160110301,
+      "active": true,
+      "wraith_floor": null
+    }
+  ]
+}

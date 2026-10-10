@@ -1,0 +1,61 @@
+{
+  "candidate": "forge262-optifine-gui-v36-final-composite",
+  "bridge_sha256": "91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a",
+  "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v36-BSL-indoor/report.json",
+  "report_sha256": "21ad1d9ceea18ef8e59827a81db77ad48dd70a28344f916695623d1ac0900685",
+  "run_id": "ca3f85b58a8b4c16bb04f240479a211a",
+  "harness_status": "captures_complete",
+  "clean_client_exit": true,
+  "shader_pack": {
+    "name": "BSL_v10.1.2.zip",
+    "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+  },
+  "live_shader_states": [
+    {
+      "time_ms": 1791424245354,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ],
+  "scene_summon_accepted": true,
+  "captures": [
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v36-BSL-indoor/wraith-indoor.png",
+      "sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "dimensions": [854, 480],
+      "rgb_extrema": [[0, 0], [0, 0], [0, 0]],
+      "all_black": true
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v36-BSL-indoor/wraith-indoor-framebuffer.png",
+      "sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "dimensions": [1280, 720],
+      "rgb_extrema": [[0, 0], [0, 0], [0, 0]],
+      "all_black": true
+    }
+  ],
+  "visual_verdict": "failed: adding the publisher final composite and its projection sandwich did not change the fresh Wraith or full-framebuffer output; both remain entirely black",
+  "client_debug_log_sha256": "ff48c8795adbde88be6b6186f86520d50b1904620725a70b7a4293490065b009",
+  "first_shader_backend_error": "GL_INVALID_OPERATION in glUniformMatrix(non-matrix uniform), program gbuffers_textured_lit (gbuffers_textured), at gbufferProjectionInverse",
+  "following_shader_backend_errors": [
+    "GL_INVALID_OPERATION in glUniform(location=25), program gbuffers_skybasic, at renderStage",
+    "GL_INVALID_OPERATION in glUniform(location=11), program gbuffers_skytextured, at renderStage"
+  ],
+  "program_state_analysis": {
+    "native_path": "Pinned GlCommandEncoder.trySetup binds its cached vanilla GlProgram and does not restore Shaders.activeProgramID before OptiFine uniform updates.",
+    "publisher_path": "K2 GlCommandEncoder.trySetup invalidates stale lastProgram state when the actual GL program differs, restores Shaders.activeProgramID after native setup and forwards DynamicTransforms to Shaders.",
+    "inference": "The invalid uniform types and locations are consistent with OptiFine shader uniforms being uploaded while a vanilla pipeline program is bound. The successful final-composite insertion alone cannot repair this earlier program-state divergence."
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "egl_device": "egl0",
+    "virtualgl_wrapper_sha256": "423385b3bd6cf3ae67d35eadf768e7cdac2c57ed20d3d0c4069bef82be5a997a",
+    "virtualgl_interposer_sha256": "da23d69a5663f5da1cc7eb4383dc5f9467acc237655045d11f305f233fba9386"
+  },
+  "acceptance_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "next_investigation": "Validate the external publisher-encoder candidate after exact GlTexture sampler constructor initialization; preserve the v35 sampler-null failure and do not treat a clean black-frame exit as entity pipeline coverage."
+}

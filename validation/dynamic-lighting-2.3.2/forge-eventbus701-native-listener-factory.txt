@@ -1,0 +1,844 @@
+Compiled from "EventListenerFactory.java"
+final class net.minecraftforge.eventbus.internal.EventListenerFactory {
+  private static final java.lang.invoke.MethodType RETURNS_CONSUMER;
+
+  private static final java.lang.invoke.MethodType RETURNS_PREDICATE;
+
+  private static final java.lang.invoke.MethodType RETURNS_MONITOR;
+
+  private static final java.lang.invoke.MethodType CONSUMER_FI_TYPE;
+
+  private static final java.lang.invoke.MethodType PREDICATE_FI_TYPE;
+
+  private static final java.lang.invoke.MethodType MONITOR_FI_TYPE;
+
+  private static final java.util.Map<java.lang.reflect.Method, java.lang.invoke.MethodHandle> LMF_CACHE;
+
+  private net.minecraftforge.eventbus.internal.EventListenerFactory();
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  public static java.util.Collection<net.minecraftforge.eventbus.api.listener.EventListener> register(net.minecraftforge.eventbus.internal.BusGroupImpl, java.lang.invoke.MethodHandles$Lookup, java.lang.Class<?>, java.lang.Object);
+    Code:
+         0: aload_2
+         1: invokevirtual #7                  // Method java/lang/Class.getDeclaredMethods:()[Ljava/lang/reflect/Method;
+         4: astore        4
+         6: aload         4
+         8: arraylength
+         9: ifne          29
+        12: new           #13                 // class java/lang/IllegalArgumentException
+        15: dup
+        16: aload_2
+        17: invokestatic  #15                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        20: invokedynamic #21,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        25: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        28: athrow
+        29: aconst_null
+        30: astore        5
+        32: new           #28                 // class java/util/ArrayList
+        35: dup
+        36: invokespecial #30                 // Method java/util/ArrayList."<init>":()V
+        39: astore        6
+        41: aload         4
+        43: astore        7
+        45: aload         7
+        47: arraylength
+        48: istore        8
+        50: iconst_0
+        51: istore        9
+        53: iload         9
+        55: iload         8
+        57: if_icmpge     240
+        60: aload         7
+        62: iload         9
+        64: aaload
+        65: astore        10
+        67: aload_3
+        68: ifnonnull     85
+        71: aload         10
+        73: invokevirtual #31                 // Method java/lang/reflect/Method.getModifiers:()I
+        76: invokestatic  #37                 // Method java/lang/reflect/Modifier.isStatic:(I)Z
+        79: ifne          85
+        82: goto          234
+        85: aload         10
+        87: invokevirtual #43                 // Method java/lang/reflect/Method.isSynthetic:()Z
+        90: ifeq          96
+        93: goto          234
+        96: aload         10
+        98: invokevirtual #47                 // Method java/lang/reflect/Method.getParameterCount:()I
+       101: istore        11
+       103: iload         11
+       105: ifeq          234
+       108: iload         11
+       110: iconst_2
+       111: if_icmple     117
+       114: goto          234
+       117: aload         10
+       119: invokevirtual #50                 // Method java/lang/reflect/Method.getReturnType:()Ljava/lang/Class;
+       122: astore        12
+       124: aload         12
+       126: getstatic     #54                 // Field java/lang/Void.TYPE:Ljava/lang/Class;
+       129: if_acmpeq     143
+       132: aload         12
+       134: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+       137: if_acmpeq     143
+       140: goto          234
+       143: aload         10
+       145: ldc           #63                 // class net/minecraftforge/eventbus/api/listener/SubscribeEvent
+       147: invokevirtual #65                 // Method java/lang/reflect/Method.isAnnotationPresent:(Ljava/lang/Class;)Z
+       150: ifne          156
+       153: goto          234
+       156: aload         10
+       158: invokevirtual #69                 // Method java/lang/reflect/Method.getParameterTypes:()[Ljava/lang/Class;
+       161: astore        13
+       163: ldc           #73                 // class net/minecraftforge/eventbus/internal/Event
+       165: aload         13
+       167: iconst_0
+       168: aaload
+       169: invokevirtual #75                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+       172: ifne          185
+       175: new           #13                 // class java/lang/IllegalArgumentException
+       178: dup
+       179: ldc           #78                 // String First parameter of a @SubscribeEvent method must be an event
+       181: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       184: athrow
+       185: aload         13
+       187: iconst_0
+       188: aaload
+       189: astore        14
+       191: aload         10
+       193: ldc           #63                 // class net/minecraftforge/eventbus/api/listener/SubscribeEvent
+       195: invokevirtual #80                 // Method java/lang/reflect/Method.getAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+       198: checkcast     #63                 // class net/minecraftforge/eventbus/api/listener/SubscribeEvent
+       201: astore        15
+       203: aload         6
+       205: aload_0
+       206: aload_1
+       207: iload         11
+       209: aload         12
+       211: aload         14
+       213: aload         15
+       215: aload         10
+       217: aload_3
+       218: invokestatic  #84                 // Method registerListener:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;Ljava/lang/invoke/MethodHandles$Lookup;ILjava/lang/Class;Ljava/lang/Class;Lnet/minecraftforge/eventbus/api/listener/SubscribeEvent;Ljava/lang/reflect/Method;Ljava/lang/Object;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+       221: invokevirtual #90                 // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+       224: pop
+       225: aload         5
+       227: ifnonnull     234
+       230: aload         14
+       232: astore        5
+       234: iinc          9, 1
+       237: goto          53
+       240: aload         6
+       242: invokevirtual #94                 // Method java/util/ArrayList.isEmpty:()Z
+       245: ifeq          265
+       248: new           #13                 // class java/lang/IllegalArgumentException
+       251: dup
+       252: aload_2
+       253: invokestatic  #15                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       256: invokedynamic #97,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       261: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       264: athrow
+       265: aload         5
+       267: ifnonnull     287
+       270: new           #13                 // class java/lang/IllegalArgumentException
+       273: dup
+       274: aload_2
+       275: invokestatic  #15                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       278: invokedynamic #98,  0             // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       283: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       286: athrow
+       287: aload         6
+       289: invokevirtual #99                 // Method java/util/ArrayList.size:()I
+       292: iconst_1
+       293: if_icmpne     318
+       296: new           #13                 // class java/lang/IllegalArgumentException
+       299: dup
+       300: aload_2
+       301: invokestatic  #15                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       304: aload         5
+       306: invokevirtual #102                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+       309: invokedynamic #106,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       314: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       317: athrow
+       318: aload         6
+       320: areturn
+
+  public static java.util.Collection<net.minecraftforge.eventbus.api.listener.EventListener> registerStrict(net.minecraftforge.eventbus.internal.BusGroupImpl, java.lang.invoke.MethodHandles$Lookup, java.lang.Class<?>, java.lang.Object);
+    Code:
+         0: aconst_null
+         1: astore        4
+         3: aload_2
+         4: invokevirtual #7                  // Method java/lang/Class.getDeclaredMethods:()[Ljava/lang/reflect/Method;
+         7: invokestatic  #109                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+        10: invokedynamic #115,  0            // InvokeDynamic #4:test:()Ljava/util/function/Predicate;
+        15: invokestatic  #119                // InterfaceMethod java/util/function/Predicate.not:(Ljava/util/function/Predicate;)Ljava/util/function/Predicate;
+        18: invokeinterface #125,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+        23: invokeinterface #131,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+        28: astore        5
+        30: aload         5
+        32: invokeinterface #135,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+        37: ifeq          92
+        40: aload_2
+        41: invokevirtual #138                // Method java/lang/Class.getName:()Ljava/lang/String;
+        44: invokedynamic #21,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        49: astore        6
+        51: aload_2
+        52: invokevirtual #141                // Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
+        55: astore        7
+        57: aload         7
+        59: ifnull        85
+        62: aload         7
+        64: ldc           #144                // class java/lang/Record
+        66: if_acmpeq     85
+        69: aload         7
+        71: ldc           #146                // class java/lang/Enum
+        73: if_acmpeq     85
+        76: aload         6
+        78: invokedynamic #148,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        83: astore        6
+        85: aload_2
+        86: aload         6
+        88: invokestatic  #149                // Method fail:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+        91: athrow
+        92: new           #28                 // class java/util/ArrayList
+        95: dup
+        96: invokespecial #30                 // Method java/util/ArrayList."<init>":()V
+        99: astore        6
+       101: aload         5
+       103: invokeinterface #153,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       108: astore        7
+       110: aload         7
+       112: invokeinterface #157,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       117: ifeq          506
+       120: aload         7
+       122: invokeinterface #162,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       127: checkcast     #32                 // class java/lang/reflect/Method
+       130: astore        8
+       132: aload         8
+       134: ldc           #63                 // class net/minecraftforge/eventbus/api/listener/SubscribeEvent
+       136: invokevirtual #65                 // Method java/lang/reflect/Method.isAnnotationPresent:(Ljava/lang/Class;)Z
+       139: istore        9
+       141: aload         8
+       143: invokevirtual #47                 // Method java/lang/reflect/Method.getParameterCount:()I
+       146: istore        10
+       148: iload         9
+       150: ifeq          177
+       153: iload         10
+       155: ifeq          164
+       158: iload         10
+       160: iconst_2
+       161: if_icmple     177
+       164: aload         8
+       166: iload         10
+       168: invokedynamic #166,  0            // InvokeDynamic #6:makeConcatWithConstants:(I)Ljava/lang/String;
+       173: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       176: athrow
+       177: iload         10
+       179: ifne          185
+       182: goto          110
+       185: aload         8
+       187: invokevirtual #50                 // Method java/lang/reflect/Method.getReturnType:()Ljava/lang/Class;
+       190: astore        11
+       192: aload         8
+       194: invokevirtual #69                 // Method java/lang/reflect/Method.getParameterTypes:()[Ljava/lang/Class;
+       197: astore        12
+       199: ldc           #73                 // class net/minecraftforge/eventbus/internal/Event
+       201: aload         12
+       203: iconst_0
+       204: aaload
+       205: invokevirtual #75                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+       208: istore        13
+       210: iload         9
+       212: ifne          228
+       215: iload         13
+       217: ifeq          228
+       220: aload         8
+       222: ldc           #172                // String Missing @SubscribeEvent annotation
+       224: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       227: athrow
+       228: iload         9
+       230: ifeq          503
+       233: ldc           #174                // class net/minecraftforge/eventbus/api/event/characteristic/Cancellable
+       235: aload         12
+       237: iconst_0
+       238: aaload
+       239: invokevirtual #75                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+       242: istore        14
+       244: aload         8
+       246: ldc           #63                 // class net/minecraftforge/eventbus/api/listener/SubscribeEvent
+       248: invokevirtual #80                 // Method java/lang/reflect/Method.getAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+       251: checkcast     #63                 // class net/minecraftforge/eventbus/api/listener/SubscribeEvent
+       254: astore        15
+       256: aload         15
+       258: invokeinterface #176,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.priority:()B
+       263: bipush        -128
+       265: if_icmpne     272
+       268: iconst_1
+       269: goto          273
+       272: iconst_0
+       273: istore        16
+       275: iload         13
+       277: ifne          288
+       280: aload         8
+       282: ldc           #78                 // String First parameter of a @SubscribeEvent method must be an event
+       284: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       287: athrow
+       288: aload         12
+       290: iconst_0
+       291: aaload
+       292: astore        17
+       294: aload         11
+       296: getstatic     #54                 // Field java/lang/Void.TYPE:Ljava/lang/Class;
+       299: if_acmpeq     326
+       302: aload         11
+       304: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+       307: if_acmpeq     326
+       310: aload         8
+       312: aload         11
+       314: invokevirtual #138                // Method java/lang/Class.getName:()Ljava/lang/String;
+       317: invokedynamic #182,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       322: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       325: athrow
+       326: aload_3
+       327: ifnonnull     349
+       330: aload         8
+       332: invokevirtual #31                 // Method java/lang/reflect/Method.getModifiers:()I
+       335: invokestatic  #37                 // Method java/lang/reflect/Modifier.isStatic:(I)Z
+       338: ifne          349
+       341: aload         8
+       343: ldc           #183                // String Listener instance is null and method is not static
+       345: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       348: athrow
+       349: iload         16
+       351: ifeq          380
+       354: aload         11
+       356: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+       359: if_acmpeq     372
+       362: aload         15
+       364: invokeinterface #185,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.alwaysCancelling:()Z
+       369: ifeq          380
+       372: aload         8
+       374: ldc           #188                // String Monitoring listeners cannot cancel events
+       376: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       379: athrow
+       380: iload         10
+       382: iconst_2
+       383: if_icmpne     433
+       386: iload         14
+       388: ifne          399
+       391: aload         8
+       393: ldc           #190                // String Cancellation-aware monitoring listeners are only valid for cancellable events
+       395: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       398: athrow
+       399: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+       402: aload         12
+       404: iconst_1
+       405: aaload
+       406: invokevirtual #75                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+       409: ifne          420
+       412: aload         8
+       414: ldc           #192                // String Second parameter of a cancellation-aware monitoring listener must be a boolean
+       416: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       419: athrow
+       420: iload         16
+       422: ifne          433
+       425: aload         8
+       427: ldc           #194                // String Cancellation-aware monitoring listeners must have a priority of MONITOR
+       429: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       432: athrow
+       433: iload         14
+       435: ifne          472
+       438: aload         15
+       440: invokeinterface #185,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.alwaysCancelling:()Z
+       445: ifeq          456
+       448: aload         8
+       450: ldc           #196                // String Always cancelling listeners are only valid for cancellable events
+       452: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       455: athrow
+       456: aload         11
+       458: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+       461: if_acmpne     472
+       464: aload         8
+       466: ldc           #198                // String Return type boolean is only valid for cancellable events
+       468: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       471: athrow
+       472: aload         6
+       474: aload_0
+       475: aload_1
+       476: iload         10
+       478: aload         11
+       480: aload         17
+       482: aload         15
+       484: aload         8
+       486: aload_3
+       487: invokestatic  #84                 // Method registerListener:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;Ljava/lang/invoke/MethodHandles$Lookup;ILjava/lang/Class;Ljava/lang/Class;Lnet/minecraftforge/eventbus/api/listener/SubscribeEvent;Ljava/lang/reflect/Method;Ljava/lang/Object;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+       490: invokevirtual #90                 // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+       493: pop
+       494: aload         4
+       496: ifnonnull     503
+       499: aload         17
+       501: astore        4
+       503: goto          110
+       506: aload         6
+       508: invokevirtual #94                 // Method java/util/ArrayList.isEmpty:()Z
+       511: ifeq          521
+       514: aload_2
+       515: ldc           #200                // String No listeners found
+       517: invokestatic  #149                // Method fail:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       520: athrow
+       521: aload         4
+       523: ifnonnull     533
+       526: aload_2
+       527: ldc           #202                // String No valid listeners found
+       529: invokestatic  #149                // Method fail:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       532: athrow
+       533: aload         6
+       535: invokevirtual #99                 // Method java/util/ArrayList.size:()I
+       538: iconst_1
+       539: if_icmpne     557
+       542: aload_2
+       543: aload         4
+       545: invokevirtual #102                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+       548: invokedynamic #204,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       553: invokestatic  #149                // Method fail:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       556: athrow
+       557: aload         6
+       559: areturn
+
+  private static net.minecraftforge.eventbus.api.listener.EventListener registerListener(net.minecraftforge.eventbus.internal.BusGroupImpl, java.lang.invoke.MethodHandles$Lookup, int, java.lang.Class<?>, java.lang.Class<? extends net.minecraftforge.eventbus.internal.Event>, net.minecraftforge.eventbus.api.listener.SubscribeEvent, java.lang.reflect.Method, java.lang.Object);
+    Code:
+         0: iload_2
+         1: iconst_1
+         2: if_icmpne     174
+         5: aload         5
+         7: invokeinterface #176,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.priority:()B
+        12: istore        8
+        14: aload_3
+        15: getstatic     #54                 // Field java/lang/Void.TYPE:Ljava/lang/Class;
+        18: if_acmpne     111
+        21: ldc           #174                // class net/minecraftforge/eventbus/api/event/characteristic/Cancellable
+        23: aload         4
+        25: invokevirtual #75                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+        28: ifeq          89
+        31: aload_0
+        32: aload         4
+        34: invokevirtual #205                // Method net/minecraftforge/eventbus/internal/BusGroupImpl.getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+        37: checkcast     #211                // class net/minecraftforge/eventbus/api/bus/CancellableEventBus
+        40: astore        9
+        42: aload         5
+        44: invokeinterface #185,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.alwaysCancelling:()Z
+        49: ifeq          71
+        52: aload         9
+        54: iload         8
+        56: iconst_1
+        57: aload_1
+        58: aload         6
+        60: aload         7
+        62: invokestatic  #213                // Method createConsumer:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;Ljava/lang/Object;)Ljava/util/function/Consumer;
+        65: invokeinterface #217,  4          // InterfaceMethod net/minecraftforge/eventbus/api/bus/CancellableEventBus.addListener:(BZLjava/util/function/Consumer;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+        70: areturn
+        71: aload         9
+        73: iload         8
+        75: aload_1
+        76: aload         6
+        78: aload         7
+        80: invokestatic  #213                // Method createConsumer:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;Ljava/lang/Object;)Ljava/util/function/Consumer;
+        83: invokeinterface #221,  3          // InterfaceMethod net/minecraftforge/eventbus/api/bus/CancellableEventBus.addListener:(BLjava/util/function/Consumer;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+        88: areturn
+        89: aload_0
+        90: aload         4
+        92: invokevirtual #205                // Method net/minecraftforge/eventbus/internal/BusGroupImpl.getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+        95: iload         8
+        97: aload_1
+        98: aload         6
+       100: aload         7
+       102: invokestatic  #213                // Method createConsumer:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;Ljava/lang/Object;)Ljava/util/function/Consumer;
+       105: invokeinterface #224,  3          // InterfaceMethod net/minecraftforge/eventbus/api/bus/EventBus.addListener:(BLjava/util/function/Consumer;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+       110: areturn
+       111: ldc           #174                // class net/minecraftforge/eventbus/api/event/characteristic/Cancellable
+       113: aload         4
+       115: invokevirtual #75                 // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+       118: ifne          129
+       121: aload         6
+       123: ldc           #198                // String Return type boolean is only valid for cancellable events
+       125: invokestatic  #169                // Method fail:(Ljava/lang/reflect/Method;Ljava/lang/String;)Ljava/lang/IllegalArgumentException;
+       128: athrow
+       129: aload         5
+       131: invokeinterface #185,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.alwaysCancelling:()Z
+       136: ifeq          149
+       139: new           #13                 // class java/lang/IllegalArgumentException
+       142: dup
+       143: ldc           #227                // String Always cancelling listeners must have a void return type
+       145: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       148: athrow
+       149: aload_0
+       150: aload         4
+       152: invokevirtual #205                // Method net/minecraftforge/eventbus/internal/BusGroupImpl.getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+       155: checkcast     #211                // class net/minecraftforge/eventbus/api/bus/CancellableEventBus
+       158: iload         8
+       160: aload_1
+       161: aload         6
+       163: aload         7
+       165: invokestatic  #229                // Method createPredicate:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;Ljava/lang/Object;)Ljava/util/function/Predicate;
+       168: invokeinterface #233,  3          // InterfaceMethod net/minecraftforge/eventbus/api/bus/CancellableEventBus.addListener:(BLjava/util/function/Predicate;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+       173: areturn
+       174: aload_3
+       175: getstatic     #54                 // Field java/lang/Void.TYPE:Ljava/lang/Class;
+       178: if_acmpeq     191
+       181: new           #13                 // class java/lang/IllegalArgumentException
+       184: dup
+       185: ldc           #236                // String Cancellation-aware monitoring listeners must have a void return type
+       187: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       190: athrow
+       191: aload         5
+       193: invokeinterface #185,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/SubscribeEvent.alwaysCancelling:()Z
+       198: ifeq          211
+       201: new           #13                 // class java/lang/IllegalArgumentException
+       204: dup
+       205: ldc           #188                // String Monitoring listeners cannot cancel events
+       207: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       210: athrow
+       211: aload_0
+       212: aload         4
+       214: invokevirtual #205                // Method net/minecraftforge/eventbus/internal/BusGroupImpl.getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+       217: checkcast     #211                // class net/minecraftforge/eventbus/api/bus/CancellableEventBus
+       220: aload_1
+       221: aload         6
+       223: aload         7
+       225: invokestatic  #238                // Method createMonitor:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;Ljava/lang/Object;)Lnet/minecraftforge/eventbus/api/listener/ObjBooleanBiConsumer;
+       228: invokeinterface #242,  2          // InterfaceMethod net/minecraftforge/eventbus/api/bus/CancellableEventBus.addListener:(Lnet/minecraftforge/eventbus/api/listener/ObjBooleanBiConsumer;)Lnet/minecraftforge/eventbus/api/listener/EventListener;
+       233: areturn
+
+  private static java.lang.IllegalArgumentException fail(java.lang.Class<?>, java.lang.String);
+    Code:
+         0: new           #13                 // class java/lang/IllegalArgumentException
+         3: dup
+         4: aload_0
+         5: invokevirtual #138                // Method java/lang/Class.getName:()Ljava/lang/String;
+         8: aload_1
+         9: invokedynamic #245,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        14: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        17: areturn
+
+  private static java.lang.IllegalArgumentException fail(java.lang.reflect.Method, java.lang.String);
+    Code:
+         0: new           #13                 // class java/lang/IllegalArgumentException
+         3: dup
+         4: aload_0
+         5: invokevirtual #246                // Method java/lang/reflect/Method.getDeclaringClass:()Ljava/lang/Class;
+         8: invokevirtual #138                // Method java/lang/Class.getName:()Ljava/lang/String;
+        11: aload_0
+        12: invokevirtual #249                // Method java/lang/reflect/Method.getName:()Ljava/lang/String;
+        15: aload_1
+        16: invokedynamic #250,  0            // InvokeDynamic #10:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        21: invokespecial #25                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        24: areturn
+
+  private static <T extends net.minecraftforge.eventbus.internal.Event> java.util.function.Consumer<T> createConsumer(java.lang.invoke.MethodHandles$Lookup, java.lang.reflect.Method, java.lang.Object);
+    Code:
+         0: aload_1
+         1: invokevirtual #31                 // Method java/lang/reflect/Method.getModifiers:()I
+         4: invokestatic  #37                 // Method java/lang/reflect/Modifier.isStatic:(I)Z
+         7: istore_3
+         8: aload_0
+         9: aload_1
+        10: iload_3
+        11: aload_2
+        12: getstatic     #253                // Field RETURNS_CONSUMER:Ljava/lang/invoke/MethodType;
+        15: getstatic     #257                // Field CONSUMER_FI_TYPE:Ljava/lang/invoke/MethodType;
+        18: ldc_w         #260                // String accept
+        21: invokestatic  #262                // Method getOrMakeFactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;ZLjava/lang/Object;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/String;)Ljava/lang/invoke/MethodHandle;
+        24: astore        4
+        26: iload_3
+        27: ifeq          38
+        30: aload         4
+        32: invokevirtual #266                // Method java/lang/invoke/MethodHandle.invokeExact:()Ljava/util/function/Consumer;
+        35: goto          44
+        38: aload         4
+        40: aload_2
+        41: invokevirtual #272                // Method java/lang/invoke/MethodHandle.invokeExact:(Ljava/lang/Object;)Ljava/util/function/Consumer;
+        44: areturn
+        45: astore        5
+        47: aload_1
+        48: aload         5
+        50: invokestatic  #277                // Method makeRuntimeException:(Ljava/lang/reflect/Method;Ljava/lang/Exception;)Ljava/lang/RuntimeException;
+        53: athrow
+        54: astore        5
+        56: new           #283                // class java/lang/RuntimeException
+        59: dup
+        60: aload         5
+        62: invokespecial #285                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+        65: athrow
+      Exception table:
+         from    to  target type
+            26    44    45   Class java/lang/Exception
+            26    44    54   Class java/lang/Throwable
+
+  private static <T extends net.minecraftforge.eventbus.internal.Event> java.util.function.Predicate<T> createPredicate(java.lang.invoke.MethodHandles$Lookup, java.lang.reflect.Method, java.lang.Object);
+    Code:
+         0: aload_1
+         1: invokevirtual #31                 // Method java/lang/reflect/Method.getModifiers:()I
+         4: invokestatic  #37                 // Method java/lang/reflect/Modifier.isStatic:(I)Z
+         7: istore_3
+         8: aload_0
+         9: aload_1
+        10: iload_3
+        11: aload_2
+        12: getstatic     #288                // Field RETURNS_PREDICATE:Ljava/lang/invoke/MethodType;
+        15: getstatic     #291                // Field PREDICATE_FI_TYPE:Ljava/lang/invoke/MethodType;
+        18: ldc_w         #294                // String test
+        21: invokestatic  #262                // Method getOrMakeFactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;ZLjava/lang/Object;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/String;)Ljava/lang/invoke/MethodHandle;
+        24: astore        4
+        26: iload_3
+        27: ifeq          38
+        30: aload         4
+        32: invokevirtual #295                // Method java/lang/invoke/MethodHandle.invokeExact:()Ljava/util/function/Predicate;
+        35: goto          44
+        38: aload         4
+        40: aload_2
+        41: invokevirtual #297                // Method java/lang/invoke/MethodHandle.invokeExact:(Ljava/lang/Object;)Ljava/util/function/Predicate;
+        44: areturn
+        45: astore        5
+        47: aload_1
+        48: aload         5
+        50: invokestatic  #277                // Method makeRuntimeException:(Ljava/lang/reflect/Method;Ljava/lang/Exception;)Ljava/lang/RuntimeException;
+        53: athrow
+        54: astore        5
+        56: new           #283                // class java/lang/RuntimeException
+        59: dup
+        60: aload         5
+        62: invokespecial #285                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+        65: athrow
+      Exception table:
+         from    to  target type
+            26    44    45   Class java/lang/Exception
+            26    44    54   Class java/lang/Throwable
+
+  private static <T extends net.minecraftforge.eventbus.internal.Event> net.minecraftforge.eventbus.api.listener.ObjBooleanBiConsumer<T> createMonitor(java.lang.invoke.MethodHandles$Lookup, java.lang.reflect.Method, java.lang.Object);
+    Code:
+         0: aload_1
+         1: invokevirtual #31                 // Method java/lang/reflect/Method.getModifiers:()I
+         4: invokestatic  #37                 // Method java/lang/reflect/Modifier.isStatic:(I)Z
+         7: istore_3
+         8: aload_0
+         9: aload_1
+        10: iload_3
+        11: aload_2
+        12: getstatic     #300                // Field RETURNS_MONITOR:Ljava/lang/invoke/MethodType;
+        15: getstatic     #303                // Field MONITOR_FI_TYPE:Ljava/lang/invoke/MethodType;
+        18: ldc_w         #260                // String accept
+        21: invokestatic  #262                // Method getOrMakeFactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;ZLjava/lang/Object;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/String;)Ljava/lang/invoke/MethodHandle;
+        24: astore        4
+        26: iload_3
+        27: ifeq          38
+        30: aload         4
+        32: invokevirtual #306                // Method java/lang/invoke/MethodHandle.invokeExact:()Lnet/minecraftforge/eventbus/api/listener/ObjBooleanBiConsumer;
+        35: goto          44
+        38: aload         4
+        40: aload_2
+        41: invokevirtual #309                // Method java/lang/invoke/MethodHandle.invokeExact:(Ljava/lang/Object;)Lnet/minecraftforge/eventbus/api/listener/ObjBooleanBiConsumer;
+        44: areturn
+        45: astore        5
+        47: aload_1
+        48: aload         5
+        50: invokestatic  #277                // Method makeRuntimeException:(Ljava/lang/reflect/Method;Ljava/lang/Exception;)Ljava/lang/RuntimeException;
+        53: athrow
+        54: astore        5
+        56: new           #283                // class java/lang/RuntimeException
+        59: dup
+        60: aload         5
+        62: invokespecial #285                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+        65: athrow
+      Exception table:
+         from    to  target type
+            26    44    45   Class java/lang/Exception
+            26    44    54   Class java/lang/Throwable
+
+  private static java.lang.invoke.MethodHandle getOrMakeFactory(java.lang.invoke.MethodHandles$Lookup, java.lang.reflect.Method, boolean, java.lang.Object, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.String);
+    Code:
+         0: getstatic     #312                // Field net/minecraftforge/eventbus/internal/Constants.ALLOW_DUPE_LISTENERS:Z
+         3: ifeq          20
+         6: aload_0
+         7: aload_1
+         8: iload_2
+         9: aload_3
+        10: aload         4
+        12: aload         5
+        14: aload         6
+        16: invokestatic  #318                // Method makeFactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;ZLjava/lang/Object;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/String;)Ljava/lang/invoke/MethodHandle;
+        19: areturn
+        20: getstatic     #321                // Field LMF_CACHE:Ljava/util/Map;
+        23: aload_1
+        24: aload_0
+        25: iload_2
+        26: aload_3
+        27: aload         4
+        29: aload         5
+        31: aload         6
+        33: invokedynamic #325,  0            // InvokeDynamic #11:apply:(Ljava/lang/invoke/MethodHandles$Lookup;ZLjava/lang/Object;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/String;)Ljava/util/function/Function;
+        38: invokeinterface #329,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+        43: checkcast     #267                // class java/lang/invoke/MethodHandle
+        46: areturn
+
+  private static java.lang.invoke.MethodHandle makeFactory(java.lang.invoke.MethodHandles$Lookup, java.lang.reflect.Method, boolean, java.lang.Object, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #335                // Method java/lang/invoke/MethodHandles$Lookup.unreflect:(Ljava/lang/reflect/Method;)Ljava/lang/invoke/MethodHandle;
+         5: astore        7
+         7: iload_2
+         8: ifeq          16
+        11: aload         4
+        13: goto          36
+        16: aload         4
+        18: iconst_0
+        19: iconst_1
+        20: anewarray     #8                  // class java/lang/Class
+        23: dup
+        24: iconst_0
+        25: aload_3
+        26: invokestatic  #341                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        29: invokevirtual #347                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        32: aastore
+        33: invokevirtual #350                // Method java/lang/invoke/MethodType.insertParameterTypes:(I[Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+        36: astore        8
+        38: aload_0
+        39: aload         6
+        41: aload         8
+        43: aload         5
+        45: aload         7
+        47: iload_2
+        48: ifeq          59
+        51: aload         7
+        53: invokevirtual #356                // Method java/lang/invoke/MethodHandle.type:()Ljava/lang/invoke/MethodType;
+        56: goto          69
+        59: aload         7
+        61: invokevirtual #356                // Method java/lang/invoke/MethodHandle.type:()Ljava/lang/invoke/MethodType;
+        64: iconst_0
+        65: iconst_1
+        66: invokevirtual #360                // Method java/lang/invoke/MethodType.dropParameterTypes:(II)Ljava/lang/invoke/MethodType;
+        69: invokestatic  #364                // Method java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+        72: invokevirtual #370                // Method java/lang/invoke/CallSite.getTarget:()Ljava/lang/invoke/MethodHandle;
+        75: astore        9
+        77: iload_2
+        78: ifeq          84
+        81: aload         9
+        83: areturn
+        84: aload         9
+        86: aload         8
+        88: iconst_0
+        89: ldc           #2                  // class java/lang/Object
+        91: invokevirtual #376                // Method java/lang/invoke/MethodType.changeParameterType:(ILjava/lang/Class;)Ljava/lang/invoke/MethodType;
+        94: invokevirtual #380                // Method java/lang/invoke/MethodHandle.asType:(Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/MethodHandle;
+        97: areturn
+        98: astore        7
+       100: aload_1
+       101: aload         7
+       103: invokestatic  #277                // Method makeRuntimeException:(Ljava/lang/reflect/Method;Ljava/lang/Exception;)Ljava/lang/RuntimeException;
+       106: athrow
+      Exception table:
+         from    to  target type
+             0    83    98   Class java/lang/Exception
+            84    97    98   Class java/lang/Exception
+
+  private static java.lang.RuntimeException makeRuntimeException(java.lang.reflect.Method, java.lang.Exception);
+    Code:
+         0: aload_1
+         1: dup
+         2: invokestatic  #341                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+         5: pop
+         6: astore_2
+         7: iconst_0
+         8: istore_3
+         9: aload_2
+        10: iload_3
+        11: invokedynamic #384,  0            // InvokeDynamic #12:typeSwitch:(Ljava/lang/Object;I)I
+        16: lookupswitch  { // 2
+                       0: 44
+                       1: 88
+                 default: 109
+            }
+        44: aload_2
+        45: checkcast     #388                // class java/lang/IllegalAccessException
+        48: astore        4
+        50: ldc_w         #390                // String Failed to create listener
+        53: astore        5
+        55: aload_0
+        56: invokevirtual #31                 // Method java/lang/reflect/Method.getModifiers:()I
+        59: invokestatic  #392                // Method java/lang/reflect/Modifier.isPublic:(I)Z
+        62: ifne          74
+        65: aload         5
+        67: invokedynamic #395,  0            // InvokeDynamic #13:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        72: astore        5
+        74: new           #283                // class java/lang/RuntimeException
+        77: dup
+        78: aload         5
+        80: aload         4
+        82: invokespecial #396                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+        85: goto          120
+        88: aload_2
+        89: checkcast     #399                // class java/lang/NullPointerException
+        92: astore        5
+        94: new           #283                // class java/lang/RuntimeException
+        97: dup
+        98: ldc_w         #401                // String Failed to create listener - was given a non-static method without an instance to invoke it with
+       101: aload         5
+       103: invokespecial #396                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       106: goto          120
+       109: new           #283                // class java/lang/RuntimeException
+       112: dup
+       113: ldc_w         #390                // String Failed to create listener
+       116: aload_1
+       117: invokespecial #396                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       120: areturn
+
+  private static java.lang.invoke.MethodHandle lambda$getOrMakeFactory$0(java.lang.invoke.MethodHandles$Lookup, boolean, java.lang.Object, java.lang.invoke.MethodType, java.lang.invoke.MethodType, java.lang.String, java.lang.reflect.Method);
+    Code:
+         0: aload_0
+         1: aload         6
+         3: iload_1
+         4: aload_2
+         5: aload_3
+         6: aload         4
+         8: aload         5
+        10: invokestatic  #318                // Method makeFactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/reflect/Method;ZLjava/lang/Object;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/String;)Ljava/lang/invoke/MethodHandle;
+        13: areturn
+
+  static {};
+    Code:
+         0: ldc_w         #403                // class java/util/function/Consumer
+         3: invokestatic  #405                // Method java/lang/invoke/MethodType.methodType:(Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+         6: putstatic     #253                // Field RETURNS_CONSUMER:Ljava/lang/invoke/MethodType;
+         9: ldc           #120                // class java/util/function/Predicate
+        11: invokestatic  #405                // Method java/lang/invoke/MethodType.methodType:(Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+        14: putstatic     #288                // Field RETURNS_PREDICATE:Ljava/lang/invoke/MethodType;
+        17: ldc_w         #409                // class net/minecraftforge/eventbus/api/listener/ObjBooleanBiConsumer
+        20: invokestatic  #405                // Method java/lang/invoke/MethodType.methodType:(Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+        23: putstatic     #300                // Field RETURNS_MONITOR:Ljava/lang/invoke/MethodType;
+        26: getstatic     #54                 // Field java/lang/Void.TYPE:Ljava/lang/Class;
+        29: ldc           #2                  // class java/lang/Object
+        31: invokestatic  #411                // Method java/lang/invoke/MethodType.methodType:(Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+        34: putstatic     #257                // Field CONSUMER_FI_TYPE:Ljava/lang/invoke/MethodType;
+        37: getstatic     #257                // Field CONSUMER_FI_TYPE:Ljava/lang/invoke/MethodType;
+        40: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+        43: invokevirtual #414                // Method java/lang/invoke/MethodType.changeReturnType:(Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+        46: putstatic     #291                // Field PREDICATE_FI_TYPE:Ljava/lang/invoke/MethodType;
+        49: getstatic     #54                 // Field java/lang/Void.TYPE:Ljava/lang/Class;
+        52: ldc           #2                  // class java/lang/Object
+        54: iconst_1
+        55: anewarray     #8                  // class java/lang/Class
+        58: dup
+        59: iconst_0
+        60: getstatic     #60                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+        63: aastore
+        64: invokestatic  #417                // Method java/lang/invoke/MethodType.methodType:(Ljava/lang/Class;Ljava/lang/Class;[Ljava/lang/Class;)Ljava/lang/invoke/MethodType;
+        67: putstatic     #303                // Field MONITOR_FI_TYPE:Ljava/lang/invoke/MethodType;
+        70: new           #420                // class java/util/concurrent/ConcurrentHashMap
+        73: dup
+        74: invokespecial #422                // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+        77: putstatic     #321                // Field LMF_CACHE:Ljava/util/Map;
+        80: return
+}

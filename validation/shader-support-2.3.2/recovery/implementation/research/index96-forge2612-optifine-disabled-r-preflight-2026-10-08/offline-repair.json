@@ -1,0 +1,43 @@
+{
+  "status": "offline repair passed; runtime not launched",
+  "failed_attempt_preserved": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-minimal-disabled-full-20261007-q",
+  "failure": "NoSuchMethodError LevelRenderer.onPlayerPositionSet()V",
+  "repair": {
+    "bridge": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/76bf733d38e52b08b393b54371823dfb75c45bcae916e3069338eaa6d74d3e27/bridge.jar",
+    "bridge_sha256": "76bf733d38e52b08b393b54371823dfb75c45bcae916e3069338eaa6d74d3e27",
+    "source_sha256": "a45f5ec9c6d819a2867274f45568c6b4ad010ba690102c67b62c19863436cc09",
+    "check_sha256": "06e1f6be264bb45714813f0e134944f5c7e0d90bc11b1837723072451a45634c",
+    "donor_sha256": "89b6c8051570cf76259041ea13ca4ae5c0147b303c30d85c78d39a3f6305c633",
+    "native_archive_sha256": "5d6acdaef133c4f002b9d8cf4c1b44e1b0720c039c3f21606f762a226e795601",
+    "official_k1_sha256": "f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172"
+  },
+  "level_renderer_policy": {
+    "input_allowlist": ["exact donor member/access/signature inventory", "exact donor inventory minus public onPlayerPositionSet()V"],
+    "output": "exact donor member/access/signature inventory",
+    "output_fields": 70,
+    "output_methods": 130,
+    "method_body": "reviewed donor onPlayerPositionSet()V copied without altering other OptiFine-patched bodies",
+    "idempotent": true,
+    "unexpected_field_method_or_access": "fail closed",
+    "forge_client_call_sites_scanned": true,
+    "optifine_donor_call_sites_scanned": true,
+    "forge_client_call_sites_resolved": 57,
+    "optifine_donor_call_sites_resolved": 109,
+    "unresolved_call_sites": 0
+  },
+  "tests": {
+    "javac_release": 17,
+    "javac_lint": "all",
+    "javac_werror": true,
+    "compile_exit_code": 0,
+    "offline_check_exit_code": 0,
+    "structural_classes_verified": 48,
+    "deterministic_rebuilds": 2,
+    "deterministic_sha256": "76bf733d38e52b08b393b54371823dfb75c45bcae916e3069338eaa6d74d3e27",
+    "receipt": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/optifine2612-k1-admission/offline-check.json",
+    "receipt_sha256": "98ce170ac5aa3af5369033f784557c8946243bdac571841a04e43b45b5448055"
+  },
+  "future_output": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-minimal-disabled-full-20261008-r",
+  "future_output_fresh": true,
+  "launch_authorized": false
+}

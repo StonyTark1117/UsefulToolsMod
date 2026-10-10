@@ -1,0 +1,426 @@
+{
+  "target": "1.20.2-neoforge",
+  "shader": "complementary",
+  "native_profile": "complementary-material-native-1.20.2-neoforge-frozen-clock-matrix-v1",
+  "zero_alpha_profile": "complementary-material-zero-alpha-1.20.2-neoforge-frozen-clock-matrix-v1",
+  "status": "material metrics passed; visual review pending",
+  "report_sha256": [
+    "5d0feb6b4c06d44fd9df2cb37658d7ab6c47766c35ce66e6b46e4b5364207354",
+    "f560f7ee9f7bdceb4a669fca397a284b093c33b89e7722f1fee7ea3551060e0e"
+  ],
+  "native_artifact_sha256": "bdf4860d32f8e6b9457ad4eceaa41cfd29418e037fe198823ab0814484161e29",
+  "zero_alpha_artifact_sha256": "f7e96aad8abb38cedb5643b1ad7bd6c9c855724036bd8c343464df4f9eb1d94f",
+  "only_13_emission_alphas_changed": true,
+  "shader_pack": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "method": "Mean Rec.709-weighted RGB code values. Companion packed/Sodium light boosts bypassed, source policy retained, Lamb absent, native world light retained, OptiFine dynamic lighting off where applicable. Matched clock/exposure/bloom. Lower-floor distance comparison, close-up face and fixed camera foreground regions measure visible brightness, not physical radiance. Distant lower-floor alpha-control differences are retained without treating all floor pixels as material radiance.",
+  "distance_metrics": [
+    {
+      "distance": 3,
+      "roi": [
+        250,
+        355,
+        600,
+        420
+      ],
+      "ordinary": 0.5436648596767938,
+      "native_hardened": 0.5463023370480499,
+      "zero_alpha_hardened": 0.5440122916957553,
+      "native_to_ordinary_ratio": 1.0048512927115136,
+      "native_to_zero_alpha_floor_ratio": 1.00420954707688
+    },
+    {
+      "distance": 10,
+      "roi": [
+        250,
+        355,
+        600,
+        420
+      ],
+      "ordinary": 0.13389820114630466,
+      "native_hardened": 0.1340404137039431,
+      "zero_alpha_hardened": 0.13391448563671624,
+      "native_to_ordinary_ratio": 1.0010620946093447,
+      "native_to_zero_alpha_floor_ratio": 1.0009403618034907
+    },
+    {
+      "distance": 15,
+      "roi": [
+        250,
+        355,
+        600,
+        420
+      ],
+      "ordinary": 0.04863161101486748,
+      "native_hardened": 0.04864974052143934,
+      "zero_alpha_hardened": 0.04864874852833441,
+      "native_to_ordinary_ratio": 1.000372792638235,
+      "native_to_zero_alpha_floor_ratio": 1.000020390927515
+    },
+    {
+      "distance": 20,
+      "roi": [
+        250,
+        355,
+        600,
+        420
+      ],
+      "ordinary": 0.04385015446670976,
+      "native_hardened": 0.043851842275371686,
+      "zero_alpha_hardened": 0.04385263469079939,
+      "native_to_ordinary_ratio": 1.0000384903698163,
+      "native_to_zero_alpha_floor_ratio": 0.9999819300383365
+    },
+    {
+      "distance": 29,
+      "roi": [
+        250,
+        355,
+        600,
+        420
+      ],
+      "ordinary": 0.04380436861021332,
+      "native_hardened": 0.043803840620555916,
+      "zero_alpha_hardened": 0.04380484819650937,
+      "native_to_ordinary_ratio": 0.999987946643813,
+      "native_to_zero_alpha_floor_ratio": 0.9999769985288173
+    }
+  ],
+  "required_companion_distance_evidence": {
+    "profile": "complementary-software-1.20.2-neoforge-native-dispatch",
+    "report_sha256": "effd84934cdda9c06514fc63fa24e9d7d855337ebd47bfcc82d17d0c5bdd2633",
+    "equipment_review_sha256": "ef1f92f355d20a00822931480b160580712b3baf1550d43f0e8eb76e296fe88b",
+    "distance_metrics": [
+      {
+        "distance": 10,
+        "ordinary": 0.13386490649429,
+        "hardened": 0.32951589729799613,
+        "brighter": true
+      },
+      {
+        "distance": 15,
+        "ordinary": 0.048643763706097826,
+        "hardened": 0.20197640098254682,
+        "brighter": true
+      },
+      {
+        "distance": 20,
+        "ordinary": 0.043851311113984055,
+        "hardened": 0.13388087936220644,
+        "brighter": true
+      },
+      {
+        "distance": 29,
+        "ordinary": 0.043804476759319116,
+        "hardened": 0.05134123911226029,
+        "brighter": true
+      }
+    ]
+  },
+  "shader_only_distance_scope": "Diagnostic floor measurements with the specified companion radius intentionally disabled; all four required range assertions are retained in the authenticated matching companion-on profile.",
+  "closeup_face_metrics": {
+    "ordinary": 0.560428924183857,
+    "native_hardened": 0.953164708093604,
+    "zero_alpha_hardened": 0.7310372879006297,
+    "roi": [
+      374,
+      229,
+      480,
+      316
+    ],
+    "native_to_ordinary_ratio": 1.7007771493623054,
+    "native_to_zero_alpha_ratio": 1.30385238054118
+  },
+  "equipment_metrics": [
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_block",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.4055696675158403,
+      "zero_alpha": 0.3058041124597987,
+      "ratio": 1.3262400700028416
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.042028213469201124,
+      "zero_alpha": 0.03359024195686505,
+      "ratio": 1.2512030584111808
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_axe",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.06821240638916747,
+      "zero_alpha": 0.03147065601549262,
+      "ratio": 2.1674923571846527
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_hoe",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.04574313210606602,
+      "zero_alpha": 0.03209243420825121,
+      "ratio": 1.4253556401871539
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_pickaxe",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.0580851200946771,
+      "zero_alpha": 0.03142590018174622,
+      "ratio": 1.8483200086155662
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_shovel",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.06219907367062051,
+      "zero_alpha": 0.03190494695546257,
+      "ratio": 1.9495118972442351
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_sword",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.08687551989794545,
+      "zero_alpha": 0.03040500851094896,
+      "ratio": 2.8572766183131058
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_helmet",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.03411036091802976,
+      "zero_alpha": 0.0331097239993391,
+      "ratio": 1.0302218441540207
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_chestplate",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.033993538902529465,
+      "zero_alpha": 0.03305787844904766,
+      "ratio": 1.0283037054215063
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_leggings",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.034800030124532665,
+      "zero_alpha": 0.033277227159725344,
+      "ratio": 1.0457611133733622
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_boots",
+      "roi": [
+        365,
+        265,
+        428,
+        346
+      ],
+      "native": 0.03458409516893177,
+      "zero_alpha": 0.03289331104732702,
+      "ratio": 1.0514020652761906
+    },
+    {
+      "slot": "head",
+      "source": "usefultoolsmod:hglow_helmet",
+      "roi": [
+        320,
+        100,
+        535,
+        465
+      ],
+      "native": 0.04330393614551905,
+      "zero_alpha": 0.034589121441198335,
+      "ratio": 1.2519524735294576
+    },
+    {
+      "slot": "chest",
+      "source": "usefultoolsmod:hglow_chestplate",
+      "roi": [
+        320,
+        100,
+        535,
+        465
+      ],
+      "native": 0.06157831019495406,
+      "zero_alpha": 0.03559157529624146,
+      "ratio": 1.7301372496838274
+    },
+    {
+      "slot": "legs",
+      "source": "usefultoolsmod:hglow_leggings",
+      "roi": [
+        320,
+        100,
+        535,
+        465
+      ],
+      "native": 0.05240722507105423,
+      "zero_alpha": 0.03506063376246962,
+      "ratio": 1.494759776052683
+    },
+    {
+      "slot": "feet",
+      "source": "usefultoolsmod:hglow_boots",
+      "roi": [
+        320,
+        100,
+        535,
+        465
+      ],
+      "native": 0.04947316766048885,
+      "zero_alpha": 0.03458420912367496,
+      "ratio": 1.430513199928042
+    }
+  ],
+  "visual_review_sheets": [
+    {
+      "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-material-native-1.20.2-neoforge-frozen-clock-matrix-v1/material-control-contact-sheet.png",
+      "sha256": "1fe38527ecfbb1970ec37a6b63caf6c84e1b3db5f8dd13d2a71719f55311fcfa"
+    },
+    {
+      "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-material-zero-alpha-1.20.2-neoforge-frozen-clock-matrix-v1/material-control-contact-sheet.png",
+      "sha256": "d23a61a7f4bf5cd2e9dfb6d43321b0df8192ecc89540c69a7baabafea22023c9"
+    },
+    {
+      "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-material-native-1.20.2-neoforge-frozen-clock-matrix-v1/material-closeup-comparison.png",
+      "sha256": "14077fc5d0ce2c5d447f6fdd49467c4c60d6c4e50161c663054c210864c338ff"
+    }
+  ],
+  "all_required_metrics_passed": true,
+  "capture_sha256": [
+    {
+      "lighting-native-acceptance.png": "36dc5d035f5bf50cb3cfc3096af79adf865149cc444e4cef02ef88638d6d9a39",
+      "lighting-ordinary-distance-3.png": "e38ba64c9ab98033a8c6aa079b41a90d9a337e14bfc2c730b76b938fe98b7144",
+      "lighting-ordinary-distance-10.png": "229baf83d21ad1a1e2491febf5997109867d09d5838f343ea28e9d465f73aa0d",
+      "lighting-ordinary-distance-15.png": "81e8260df3e4a2e411e65ae119300e9095582eaa65711973144c0b82e650ad10",
+      "lighting-ordinary-distance-20.png": "a3bb0c36fe18986a201ff533ee55a5dcc00c7a3042b10bbc5fa2ee0bba81cd93",
+      "lighting-ordinary-distance-29.png": "dfbdeed500faf1619cbff4cc6d918c4f85254ed902454030d4af324473f1678b",
+      "lighting-hardened-distance-3.png": "9233fab6da204399b478af9c543d9bdd7c65c3d67e032f03339c004aee78d340",
+      "lighting-hardened-distance-10.png": "d4d9d81cb70196c816a9561226909bd00e58b1d94e12515df77a66297c13e240",
+      "lighting-hardened-distance-15.png": "43d4c58df92894e8a6b0f45045279f62f1f7f6ac8efbc99603d2caefdcebbf2f",
+      "lighting-hardened-distance-20.png": "e407b6a844579507cd1157781ffaf8b684c2f33f6690a5a7bf8d4890df648402",
+      "lighting-hardened-distance-29.png": "316a1ba9b9984c7bd017bf4c796f3b5514248edfb6618f4fc925ed65e19d2fe8",
+      "lighting-shaders-disabled.png": "555f28b06eb674fcb154e4b4437b6c8b44a479c0bd8c73766b6cd888e662ea0d",
+      "lighting-shaders-restored.png": "358ca0820d59216bce6c7220c860af808deee60067086ca560c35515c6bcec8f",
+      "lighting-equipment-held-glowstone.png": "5583422948df74b46d70ac4de967eb4c0c9bb723dbbde645a6f63f1fc755b77d",
+      "lighting-equipment-held-ectoplasm_lantern.png": "a717bbbc638377936978ebe059d566024be6e85cf4d15005d9fb9cfb563a3c30",
+      "lighting-equipment-held-soul_lantern.png": "84c2e04a00104baaa7f5e323343b00d7f3732058a954b6871bfb12cabbee337f",
+      "lighting-equipment-held-hglow_block.png": "b469d1db189cbbe3036ed0886e1764ab10e537de95ad6a9161b0b7d93bb3c247",
+      "lighting-equipment-held-hglow.png": "85be44236f27bcf5de86d9d5d2a2061228c965a17ce43327ff43429aedfc3905",
+      "lighting-equipment-held-hglowstone_axe.png": "73c160b99a5b08f43f2ad10044e17c667c08c1651e381982c875596cf4bf8e9e",
+      "lighting-equipment-held-hglowstone_hoe.png": "1bb370be06e219e78da6fac2194879435e5f79f0757bec5f917af862663b3431",
+      "lighting-equipment-held-hglowstone_pickaxe.png": "815e8c36bd41c4adad417735eb7e47cdd87fe86308063aa9fd56799db2438095",
+      "lighting-equipment-held-hglowstone_shovel.png": "50becc26163f3707981da25432ae7844644f5e8561852361390221f9da46569e",
+      "lighting-equipment-held-hglowstone_sword.png": "7b3e2a2225579d740b76f7a088b24a028c738f2c2c2b5897c22b47b07f154c18",
+      "lighting-equipment-held-hglow_helmet.png": "7f79a00a2e71875a813d6c4eb5577744f2c5585cccd58ef1da0fb62e38cb0a14",
+      "lighting-equipment-held-hglow_chestplate.png": "88e4487cf398266cf8cdee8a51941f6db9d2fa76467f908a975027337c8bcb2b",
+      "lighting-equipment-held-hglow_leggings.png": "d3a3f15e7d178e1158a35119285b088d60e13ae4fa73fd3a2e05b528ccfbd445",
+      "lighting-equipment-held-hglow_boots.png": "2a110e983b845586040f24f243aa255b3c9c3b41d5def81e396010b61e92e02e",
+      "lighting-equipment-head-hglow_helmet.png": "92769d8163a4933721e097e8fd1e85d972c55ad4fb1f20b432ae7ea9ba7f6cf3",
+      "lighting-equipment-chest-hglow_chestplate.png": "d516f608922e134b4a8dbaf0c6d350ca26dc40c808e0fa8a621300563881c177",
+      "lighting-equipment-legs-hglow_leggings.png": "91c8e5b2a42b3dc61723eb815252bfc0a09973514b33e9294f700ff2594c2015",
+      "lighting-equipment-feet-hglow_boots.png": "f1d6c8828d69e6622f650444bd9875e7c0fa55f5807be6e4427775c3ed07c1d5",
+      "lighting-save-quit.png": "95e05dc4faff5df8049928e150f594efe942d1477d0964cc5bfcb86231648e9a",
+      "lighting-quit-game.png": "0483dc16f61ffd503395fb60b19a83186d3ab714da6756a96dfca681043eac48"
+    },
+    {
+      "lighting-native-acceptance.png": "1f1fcee3913378070c33d957a27506ced51fd068cfc8cee0a80178e140745088",
+      "lighting-ordinary-distance-3.png": "c9800e56f166034fa77c17142d357f8695c11055532c97e6cad77b827ba33ff6",
+      "lighting-ordinary-distance-10.png": "b7110799d4e0dd988a666412960aaa957089c82f65cc6e1d49bb293a01725909",
+      "lighting-ordinary-distance-15.png": "be5d141a3ccfc571c35c8325f732c9fb9b3e285873d474dd279619b8ffa1d20c",
+      "lighting-ordinary-distance-20.png": "c06c2d4386f848836db7bdee7f6bfc1db6f8b9ef69e004d93d8535e0e2e3764b",
+      "lighting-ordinary-distance-29.png": "8221cadb012ae1675d3f2e6142932172235cf429c96d26a755f436fa7fe6edba",
+      "lighting-hardened-distance-3.png": "713c7455ecba8c190462aaa034955de4d72254ebe84f98657cde7f50ec972be7",
+      "lighting-hardened-distance-10.png": "da1a01fe3567a709158007a85cae1332874fc5b94fec8e069b1668b864aed45d",
+      "lighting-hardened-distance-15.png": "6f05db0e36749393d69f593ed05e8af17fdb33ba4f17adcb25fbbfce5b250f5e",
+      "lighting-hardened-distance-20.png": "e1eb66a544c42a8c7f5dfc45a352d901a47fc8074a3faa72aa21d3df0a989403",
+      "lighting-hardened-distance-29.png": "34856f1fce2ed77a6de7fde8549cf3ace8e54edd362fa1158015f3e4a684932d",
+      "lighting-shaders-disabled.png": "4b6ee5d5f4afd859dda90e47a4ccc69f464e9616edf9319ce6e829f0f32f82bb",
+      "lighting-shaders-restored.png": "bf1fb7c03f0ea311d2d4b2296b76f5a16a1e760f5fbe2c8146d30cf6d103da60",
+      "lighting-equipment-held-glowstone.png": "5d8ff24f0a45b8fd62b825a49f258171695b12e82cf42ece4cd12e691054cbff",
+      "lighting-equipment-held-ectoplasm_lantern.png": "90a20d15be947a7d56ccce0be47ef54989d21b3431edb9201ccf38991fdbcc73",
+      "lighting-equipment-held-soul_lantern.png": "6e9f514124854f0bcb2939fe34d0b99edf490177e109fa81abf999af59941c37",
+      "lighting-equipment-held-hglow_block.png": "2643eb42a60aa822a5b42f2cc427add88dbb6b63b6bbc9b4a4669cfffb27b7d5",
+      "lighting-equipment-held-hglow.png": "610bb8edf743962bcc298e272ab87117e8a63f06e533bd11ee28bce71b60e5de",
+      "lighting-equipment-held-hglowstone_axe.png": "19a2b127eacaea40e6fe297d1cb7003d203f3ed6091ef23ae4ad81de5b65962e",
+      "lighting-equipment-held-hglowstone_hoe.png": "fd3a7369fcdf5a04c15fe2dde4b947cc469acc92f89173ed54f5fe9c9f2c79b1",
+      "lighting-equipment-held-hglowstone_pickaxe.png": "0c00c65f694acb3c80a3f728034724873b0238ffcc6f92e7d09955ea202a7f70",
+      "lighting-equipment-held-hglowstone_shovel.png": "496bab9906349e9cd55937e30cb03d4e55e7de9abd8f8bdecde3a0f429f78a6d",
+      "lighting-equipment-held-hglowstone_sword.png": "75f9c2e8fe4dcea31531251449a50a7f8f6e87c335c9c4ae9dcbbb8556af79bc",
+      "lighting-equipment-held-hglow_helmet.png": "0a24187b39c76a447d3b47eca1c9d89b39623a48c1b2074f5d32e9b5f40bdfa4",
+      "lighting-equipment-held-hglow_chestplate.png": "c9961206a66ecc097ea8894ad3233cd594600595543e717986666f757e26e31f",
+      "lighting-equipment-held-hglow_leggings.png": "c0aa160efb845460723537caf6568169056a034bfc13e663a4e72cc1fd0ac63c",
+      "lighting-equipment-held-hglow_boots.png": "af93bb50f3fc4c5224c6e9a863ad0a397104fea3cd35609b4a6f84f405a87eaf",
+      "lighting-equipment-head-hglow_helmet.png": "3962ebb83fb4bcd846f1d3fd989bc629fb3d226e7a44eaaee93c259c46574341",
+      "lighting-equipment-chest-hglow_chestplate.png": "5bfae5d251346c4f706efc22f76e4dafcd5fd28d56a4a0da75f171c0e8c80180",
+      "lighting-equipment-legs-hglow_leggings.png": "1203aa8a07c47f52bd6218f51bc1c05bf76e321e04ac26a6d1c0773f5f59e83c",
+      "lighting-equipment-feet-hglow_boots.png": "b8bd1a641e1caf21c361cb2b577fc20fb8c9ae2bc4ba9dc90ad915c60c63c0ee",
+      "lighting-save-quit.png": "5265740954428e6fde8e33419cfcf760cc0ca2783969f89e99ab3fed5266e56f",
+      "lighting-quit-game.png": "5c542b24adc35111f44c04fef8caafc5ede6a5b9269291aa491042344204e3f8"
+    }
+  ]
+}

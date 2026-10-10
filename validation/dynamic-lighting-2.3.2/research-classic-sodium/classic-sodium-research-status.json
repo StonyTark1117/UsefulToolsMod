@@ -1,0 +1,104 @@
+{
+  "status": "Native pinned Beddium baseline runtime and visual dirty-section coverage passed",
+  "publisher": "https://modrinth.com/mod/beddium",
+  "source": "https://github.com/vfx-dev/Beddium",
+  "latest_native_release": "1.2.5-j8",
+  "date_published": "2026-07-13T08:14:25.318265Z",
+  "dependencies": [
+    {
+      "version_id": null,
+      "project_id": "2mCumCZs",
+      "file_name": null,
+      "dependency_type": "optional"
+    },
+    {
+      "version_id": null,
+      "project_id": "kvBHaMRv",
+      "file_name": null,
+      "dependency_type": "optional"
+    },
+    {
+      "version_id": null,
+      "project_id": "eC4lt4Oy",
+      "file_name": null,
+      "dependency_type": "incompatible"
+    },
+    {
+      "version_id": null,
+      "project_id": "RIP6DWIB",
+      "file_name": null,
+      "dependency_type": "optional"
+    },
+    {
+      "version_id": null,
+      "project_id": "VTGi3upD",
+      "file_name": null,
+      "dependency_type": "optional"
+    },
+    {
+      "version_id": null,
+      "project_id": "eGLBEILf",
+      "file_name": null,
+      "dependency_type": "required"
+    },
+    {
+      "version_id": null,
+      "project_id": "glC7saXJ",
+      "file_name": null,
+      "dependency_type": "optional"
+    },
+    {
+      "version_id": null,
+      "project_id": "ghjoiQAl",
+      "file_name": null,
+      "dependency_type": "required"
+    }
+  ],
+  "source_tree_sha": "bd0339762d5f9fd212b85fbed94d57b624443f33",
+  "candidate_source_paths": [
+    "build.gradle.kts"
+  ],
+  "known_publisher_incompatibilities": [
+    "OptiFine (any)",
+    "Original ShadersMod"
+  ],
+  "retained_verified_shader_backend": "OptiFine E7, separate from Beddium",
+  "requirement": "Investigate applicable classic Sodium-family renderer sampling and native dirty-section coverage without server light mutation",
+  "inspected_pinned_source_paths": [
+    "src/main/java/com/ventooth/beddium/api/cache/CachedArrays.java",
+    "src/main/java/com/ventooth/beddium/api/cache/CachedArraysFactory.java",
+    "src/main/java/com/ventooth/beddium/api/cache/SimpleChunkCache.java",
+    "src/main/java/com/ventooth/beddium/api/task/WorldRenderRegion.java",
+    "src/main/java/com/ventooth/beddium/modules/TerrainRendering/cache/CachedArraysVanillaLight.java",
+    "src/main/java/com/ventooth/beddium/api/task/SimpleChunkBuilderMeshingTask.java"
+  ],
+  "source_revision_pin": "bd0339762d5f9fd212b85fbed94d57b624443f33",
+  "native_java8_artifact_evidence": "validation/dynamic-lighting-2.3.2/research-classic-sodium/native-research-artifacts.json",
+  "source_notes": "Published native Java8 artifacts and exact source inspected; fresh packaged Forge10.13.4.1614 Beddium baseline passed with current shipping-class equivalence.",
+  "findings": [
+    "Published Java 8 Beddium exists with Java 8-compatible FPL and UniMixins dependencies.",
+    "Its native SimpleChunkCache caches vanilla packed brightness and delegates uncached reads to native ChunkCache.",
+    "Existing companion instrumentation hooks Block.getMixedBrightnessForBlock and overrides, rather than mutating those world/chunk light arrays.",
+    "Native renderer call-chain and dirty-section acceptance still require completion; no compatibility verdict is inferred from the source inventory.",
+    "Published native RenderGlobalMixin.func_72725_b forwards the complete dirty block area to CeleritasWorldRenderer.scheduleRebuildForBlockArea with flag false, matching the companion native markBlockRangeForRenderUpdate call.",
+    "Native meshing-cache acceptance fixture compiled with Java 8 bytecode and strict warnings against the actual RFG recompiled MCP game and current development companion jar. No Beddium runtime or visual pass is inferred."
+  ],
+  "acceptance_fixture": {
+    "source": "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicBeddiumLightingQa.java",
+    "native_api_compile": "validation/dynamic-lighting-2.3.2/research-classic-sodium/native-cache-fixture-compile.json",
+    "harness_flag": "--lighting-classic-beddium",
+    "coverage": "Active native renderer/cache across all22equipment stages and unchanged cached vanilla brightness; ten advanced cases; all18held/worn captures; fourdistance comparisons; fixed-camera removal/movement without manual reload; clean exit."
+  },
+  "signature_evidence": "validation/dynamic-lighting-2.3.2/research-classic-sodium/native-renderer-and-cache-signatures.txt",
+  "dirty_forwarding_evidence": "validation/dynamic-lighting-2.3.2/research-classic-sodium/native-dirty-section-forwarding-bytecode.txt",
+  "latest_native_attempt": "beddium-native-cache-dirty-scenes-1.7.10-forge-durable-v2",
+  "latest_native_attempt_report": "validation/dynamic-lighting-2.3.2/packaged/beddium-native-cache-dirty-scenes-1.7.10-forge-durable-v2/report.json",
+  "repair": "Native QA bootstrap rebuilt; actual silent Paulscode transformer confirmed in fresh run. Shipping production classes are unchanged.",
+  "next_required": [
+    "Complete separate Classic BSL and Complementary current material controls; Beddium publisher excludes OptiFine."
+  ],
+  "audio_bootstrap_native_compile": "validation/dynamic-lighting-2.3.2/research-classic-sodium/native-qa-bootstrap-compile-v3.json",
+  "audio_bootstrap_native_compile_status": "strict native bootstrap compilation passed",
+  "native_visual_review": "validation/dynamic-lighting-2.3.2/packaged/beddium-native-cache-dirty-scenes-1.7.10-forge-durable-v2/native-beddium-visual-review.json",
+  "previous_failure_layer": "Acceptance-only audio bootstrap was unavailable when command-line coremods loaded; two racing OpenAL sound loaders produced UnsatisfiedLinkError before advanced/dimension/scenes completed."
+}

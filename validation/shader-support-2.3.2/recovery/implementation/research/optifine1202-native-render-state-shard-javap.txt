@@ -1,0 +1,1128 @@
+Compiled from "RenderStateShard.java"
+public abstract class net.minecraft.client.renderer.RenderStateShard {
+  private static final float VIEW_SCALE_Z_EPSILON;
+
+  public static final double MAX_ENCHANTMENT_GLINT_SPEED_MILLIS;
+
+  protected final java.lang.String name;
+
+  private final java.lang.Runnable setupState;
+
+  private final java.lang.Runnable clearState;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TransparencyStateShard NO_TRANSPARENCY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TransparencyStateShard ADDITIVE_TRANSPARENCY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TransparencyStateShard LIGHTNING_TRANSPARENCY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TransparencyStateShard GLINT_TRANSPARENCY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TransparencyStateShard CRUMBLING_TRANSPARENCY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TransparencyStateShard TRANSLUCENT_TRANSPARENCY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard NO_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard POSITION_COLOR_LIGHTMAP_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard POSITION_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard POSITION_COLOR_TEX_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard POSITION_TEX_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard POSITION_COLOR_TEX_LIGHTMAP_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard POSITION_COLOR_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_SOLID_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_CUTOUT_MIPPED_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_CUTOUT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TRANSLUCENT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TRANSLUCENT_MOVING_BLOCK_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TRANSLUCENT_NO_CRUMBLING_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ARMOR_CUTOUT_NO_CULL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_SOLID_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_CUTOUT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_CUTOUT_NO_CULL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_CUTOUT_NO_CULL_Z_OFFSET_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ITEM_ENTITY_TRANSLUCENT_CULL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_TRANSLUCENT_CULL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_TRANSLUCENT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_SMOOTH_CUTOUT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_BEACON_BEAM_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_DECAL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_NO_OUTLINE_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_SHADOW_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_ALPHA_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_EYES_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENERGY_SWIRL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_LEASH_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_WATER_MASK_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_OUTLINE_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ARMOR_GLINT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ARMOR_ENTITY_GLINT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GLINT_TRANSLUCENT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GLINT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GLINT_DIRECT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_GLINT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_ENTITY_GLINT_DIRECT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_CRUMBLING_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TEXT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TEXT_BACKGROUND_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TEXT_INTENSITY_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TEXT_SEE_THROUGH_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TEXT_BACKGROUND_SEE_THROUGH_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TEXT_INTENSITY_SEE_THROUGH_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_LIGHTNING_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_TRIPWIRE_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_END_PORTAL_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_END_GATEWAY_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_LINES_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GUI_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GUI_OVERLAY_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GUI_TEXT_HIGHLIGHT_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ShaderStateShard RENDERTYPE_GUI_GHOST_RECIPE_OVERLAY_SHADER;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TextureStateShard BLOCK_SHEET_MIPPED;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TextureStateShard BLOCK_SHEET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$EmptyTextureStateShard NO_TEXTURE;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TexturingStateShard DEFAULT_TEXTURING;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TexturingStateShard GLINT_TEXTURING;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$TexturingStateShard ENTITY_GLINT_TEXTURING;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$LightmapStateShard LIGHTMAP;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$LightmapStateShard NO_LIGHTMAP;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OverlayStateShard OVERLAY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OverlayStateShard NO_OVERLAY;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$CullStateShard CULL;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$CullStateShard NO_CULL;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$DepthTestStateShard NO_DEPTH_TEST;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$DepthTestStateShard EQUAL_DEPTH_TEST;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$DepthTestStateShard LEQUAL_DEPTH_TEST;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$DepthTestStateShard GREATER_DEPTH_TEST;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$WriteMaskStateShard COLOR_DEPTH_WRITE;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$WriteMaskStateShard COLOR_WRITE;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$WriteMaskStateShard DEPTH_WRITE;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$LayeringStateShard NO_LAYERING;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$LayeringStateShard POLYGON_OFFSET_LAYERING;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$LayeringStateShard VIEW_OFFSET_Z_LAYERING;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard MAIN_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard OUTLINE_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard TRANSLUCENT_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard PARTICLES_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard WEATHER_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard CLOUDS_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$OutputStateShard ITEM_ENTITY_TARGET;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$LineStateShard DEFAULT_LINE;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ColorLogicStateShard NO_COLOR_LOGIC;
+
+  protected static final net.minecraft.client.renderer.RenderStateShard$ColorLogicStateShard OR_REVERSE_COLOR_LOGIC;
+
+  public net.minecraft.client.renderer.RenderStateShard(java.lang.String, java.lang.Runnable, java.lang.Runnable);
+    Code:
+         0: aload_0
+         1: invokespecial #200                // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #202                // Field name:Ljava/lang/String;
+         9: aload_0
+        10: aload_2
+        11: putfield      #204                // Field setupState:Ljava/lang/Runnable;
+        14: aload_0
+        15: aload_3
+        16: putfield      #206                // Field clearState:Ljava/lang/Runnable;
+        19: return
+
+  public void setupRenderState();
+    Code:
+         0: aload_0
+         1: getfield      #204                // Field setupState:Ljava/lang/Runnable;
+         4: invokeinterface #217,  1          // InterfaceMethod java/lang/Runnable.run:()V
+         9: return
+
+  public void clearRenderState();
+    Code:
+         0: aload_0
+         1: getfield      #206                // Field clearState:Ljava/lang/Runnable;
+         4: invokeinterface #217,  1          // InterfaceMethod java/lang/Runnable.run:()V
+         9: return
+
+  public java.lang.String toString();
+    Code:
+         0: aload_0
+         1: getfield      #202                // Field name:Ljava/lang/String;
+         4: areturn
+
+  private static void setupGlintTexturing(float);
+    Code:
+         0: invokestatic  #228                // Method net/minecraft/Util.getMillis:()J
+         3: l2d
+         4: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         7: getfield      #238                // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+        10: invokevirtual #244                // Method net/minecraft/client/Options.glintSpeed:()Lnet/minecraft/client/OptionInstance;
+        13: invokevirtual #250                // Method net/minecraft/client/OptionInstance.get:()Ljava/lang/Object;
+        16: checkcast     #252                // class java/lang/Double
+        19: invokevirtual #256                // Method java/lang/Double.doubleValue:()D
+        22: dmul
+        23: ldc2_w        #81                 // double 8.0d
+        26: dmul
+        27: d2l
+        28: lstore_1
+        29: lload_1
+        30: ldc2_w        #257                // long 110000l
+        33: lrem
+        34: l2f
+        35: ldc_w         #259                // float 110000.0f
+        38: fdiv
+        39: fstore_3
+        40: lload_1
+        41: ldc2_w        #260                // long 30000l
+        44: lrem
+        45: l2f
+        46: ldc_w         #262                // float 30000.0f
+        49: fdiv
+        50: fstore        4
+        52: new           #264                // class org/joml/Matrix4f
+        55: dup
+        56: invokespecial #265                // Method org/joml/Matrix4f."<init>":()V
+        59: fload_3
+        60: fneg
+        61: fload         4
+        63: fconst_0
+        64: invokevirtual #269                // Method org/joml/Matrix4f.translation:(FFF)Lorg/joml/Matrix4f;
+        67: astore        5
+        69: aload         5
+        71: ldc_w         #270                // float 0.17453292f
+        74: invokevirtual #274                // Method org/joml/Matrix4f.rotateZ:(F)Lorg/joml/Matrix4f;
+        77: fload_0
+        78: invokevirtual #277                // Method org/joml/Matrix4f.scale:(F)Lorg/joml/Matrix4f;
+        81: pop
+        82: aload         5
+        84: invokestatic  #283                // Method com/mojang/blaze3d/systems/RenderSystem.setTextureMatrix:(Lorg/joml/Matrix4f;)V
+        87: return
+
+  public java.lang.String getName();
+    Code:
+         0: aload_0
+         1: getfield      #202                // Field name:Ljava/lang/String;
+         4: areturn
+
+  private static void lambda$static$41();
+    Code:
+         0: invokestatic  #295                // Method com/mojang/blaze3d/systems/RenderSystem.disableColorLogicOp:()V
+         3: return
+
+  private static void lambda$static$40();
+    Code:
+         0: invokestatic  #299                // Method com/mojang/blaze3d/systems/RenderSystem.enableColorLogicOp:()V
+         3: getstatic     #303                // Field com/mojang/blaze3d/platform/GlStateManager$LogicOp.OR_REVERSE:Lcom/mojang/blaze3d/platform/GlStateManager$LogicOp;
+         6: invokestatic  #307                // Method com/mojang/blaze3d/systems/RenderSystem.logicOp:(Lcom/mojang/blaze3d/platform/GlStateManager$LogicOp;)V
+         9: return
+
+  private static void lambda$static$39();
+    Code:
+         0: return
+
+  private static void lambda$static$38();
+    Code:
+         0: invokestatic  #295                // Method com/mojang/blaze3d/systems/RenderSystem.disableColorLogicOp:()V
+         3: return
+
+  private static void lambda$static$37();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          16
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: invokevirtual #318                // Method net/minecraft/client/Minecraft.getMainRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        12: iconst_0
+        13: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        16: return
+
+  private static void lambda$static$36();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          19
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: getfield      #329                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+        12: invokevirtual #334                // Method net/minecraft/client/renderer/LevelRenderer.getItemEntityTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        15: iconst_0
+        16: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        19: return
+
+  private static void lambda$static$35();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          16
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: invokevirtual #318                // Method net/minecraft/client/Minecraft.getMainRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        12: iconst_0
+        13: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        16: return
+
+  private static void lambda$static$34();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          19
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: getfield      #329                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+        12: invokevirtual #339                // Method net/minecraft/client/renderer/LevelRenderer.getCloudsTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        15: iconst_0
+        16: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        19: return
+
+  private static void lambda$static$33();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          16
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: invokevirtual #318                // Method net/minecraft/client/Minecraft.getMainRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        12: iconst_0
+        13: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        16: return
+
+  private static void lambda$static$32();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          19
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: getfield      #329                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+        12: invokevirtual #344                // Method net/minecraft/client/renderer/LevelRenderer.getWeatherTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        15: iconst_0
+        16: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        19: return
+
+  private static void lambda$static$31();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          16
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: invokevirtual #318                // Method net/minecraft/client/Minecraft.getMainRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        12: iconst_0
+        13: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        16: return
+
+  private static void lambda$static$30();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          19
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: getfield      #329                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+        12: invokevirtual #349                // Method net/minecraft/client/renderer/LevelRenderer.getParticlesTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        15: iconst_0
+        16: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        19: return
+
+  private static void lambda$static$29();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          16
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: invokevirtual #318                // Method net/minecraft/client/Minecraft.getMainRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        12: iconst_0
+        13: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        16: return
+
+  private static void lambda$static$28();
+    Code:
+         0: invokestatic  #314                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+         3: ifeq          19
+         6: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         9: getfield      #329                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+        12: invokevirtual #354                // Method net/minecraft/client/renderer/LevelRenderer.getTranslucentTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        15: iconst_0
+        16: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        19: return
+
+  private static void lambda$static$27();
+    Code:
+         0: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: invokevirtual #318                // Method net/minecraft/client/Minecraft.getMainRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+         6: iconst_0
+         7: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        10: return
+
+  private static void lambda$static$26();
+    Code:
+         0: invokestatic  #234                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: getfield      #329                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+         6: invokevirtual #359                // Method net/minecraft/client/renderer/LevelRenderer.entityTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+         9: iconst_0
+        10: invokevirtual #324                // Method com/mojang/blaze3d/pipeline/RenderTarget.bindWrite:(Z)V
+        13: return
+
+  private static void lambda$static$25();
+    Code:
+         0: return
+
+  private static void lambda$static$24();
+    Code:
+         0: return
+
+  private static void lambda$static$23();
+    Code:
+         0: invokestatic  #366                // Method com/mojang/blaze3d/systems/RenderSystem.getModelViewStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+         3: astore_0
+         4: aload_0
+         5: invokevirtual #371                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+         8: invokestatic  #374                // Method com/mojang/blaze3d/systems/RenderSystem.applyModelViewMatrix:()V
+        11: return
+
+  private static void lambda$static$22();
+    Code:
+         0: invokestatic  #366                // Method com/mojang/blaze3d/systems/RenderSystem.getModelViewStack:()Lcom/mojang/blaze3d/vertex/PoseStack;
+         3: astore_0
+         4: aload_0
+         5: invokevirtual #380                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+         8: aload_0
+         9: ldc           #78                 // float 0.99975586f
+        11: ldc           #78                 // float 0.99975586f
+        13: ldc           #78                 // float 0.99975586f
+        15: invokevirtual #383                // Method com/mojang/blaze3d/vertex/PoseStack.scale:(FFF)V
+        18: invokestatic  #374                // Method com/mojang/blaze3d/systems/RenderSystem.applyModelViewMatrix:()V
+        21: return
+
+  private static void lambda$static$21();
+    Code:
+         0: fconst_0
+         1: fconst_0
+         2: invokestatic  #388                // Method com/mojang/blaze3d/systems/RenderSystem.polygonOffset:(FF)V
+         5: invokestatic  #391                // Method com/mojang/blaze3d/systems/RenderSystem.disablePolygonOffset:()V
+         8: return
+
+  private static void lambda$static$20();
+    Code:
+         0: ldc_w         #393                // float -1.0f
+         3: ldc_w         #394                // float -10.0f
+         6: invokestatic  #388                // Method com/mojang/blaze3d/systems/RenderSystem.polygonOffset:(FF)V
+         9: invokestatic  #397                // Method com/mojang/blaze3d/systems/RenderSystem.enablePolygonOffset:()V
+        12: return
+
+  private static void lambda$static$19();
+    Code:
+         0: return
+
+  private static void lambda$static$18();
+    Code:
+         0: return
+
+  private static void lambda$static$17();
+    Code:
+         0: invokestatic  #403                // Method com/mojang/blaze3d/systems/RenderSystem.resetTextureMatrix:()V
+         3: return
+
+  private static void lambda$static$16();
+    Code:
+         0: ldc_w         #405                // float 0.16f
+         3: invokestatic  #407                // Method setupGlintTexturing:(F)V
+         6: return
+
+  private static void lambda$static$15();
+    Code:
+         0: invokestatic  #403                // Method com/mojang/blaze3d/systems/RenderSystem.resetTextureMatrix:()V
+         3: return
+
+  private static void lambda$static$14();
+    Code:
+         0: ldc_w         #410                // float 8.0f
+         3: invokestatic  #407                // Method setupGlintTexturing:(F)V
+         6: return
+
+  private static void lambda$static$13();
+    Code:
+         0: return
+
+  private static void lambda$static$12();
+    Code:
+         0: return
+
+  private static void lambda$static$11();
+    Code:
+         0: invokestatic  #416                // Method com/mojang/blaze3d/systems/RenderSystem.disableBlend:()V
+         3: invokestatic  #419                // Method com/mojang/blaze3d/systems/RenderSystem.defaultBlendFunc:()V
+         6: return
+
+  private static void lambda$static$10();
+    Code:
+         0: invokestatic  #423                // Method com/mojang/blaze3d/systems/RenderSystem.enableBlend:()V
+         3: getstatic     #427                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.SRC_ALPHA:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+         6: getstatic     #431                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ONE_MINUS_SRC_ALPHA:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+         9: getstatic     #434                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+        12: getstatic     #431                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ONE_MINUS_SRC_ALPHA:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+        15: invokestatic  #438                // Method com/mojang/blaze3d/systems/RenderSystem.blendFuncSeparate:(Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;)V
+        18: return
+
+  private static void lambda$static$9();
+    Code:
+         0: invokestatic  #416                // Method com/mojang/blaze3d/systems/RenderSystem.disableBlend:()V
+         3: invokestatic  #419                // Method com/mojang/blaze3d/systems/RenderSystem.defaultBlendFunc:()V
+         6: return
+
+  private static void lambda$static$8();
+    Code:
+         0: invokestatic  #423                // Method com/mojang/blaze3d/systems/RenderSystem.enableBlend:()V
+         3: getstatic     #443                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.DST_COLOR:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+         6: getstatic     #446                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.SRC_COLOR:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+         9: getstatic     #434                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+        12: getstatic     #449                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ZERO:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+        15: invokestatic  #438                // Method com/mojang/blaze3d/systems/RenderSystem.blendFuncSeparate:(Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;)V
+        18: return
+
+  private static void lambda$static$7();
+    Code:
+         0: invokestatic  #416                // Method com/mojang/blaze3d/systems/RenderSystem.disableBlend:()V
+         3: invokestatic  #419                // Method com/mojang/blaze3d/systems/RenderSystem.defaultBlendFunc:()V
+         6: return
+
+  private static void lambda$static$6();
+    Code:
+         0: invokestatic  #423                // Method com/mojang/blaze3d/systems/RenderSystem.enableBlend:()V
+         3: getstatic     #453                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.SRC_COLOR:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+         6: getstatic     #455                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+         9: getstatic     #457                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.ZERO:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+        12: getstatic     #455                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+        15: invokestatic  #438                // Method com/mojang/blaze3d/systems/RenderSystem.blendFuncSeparate:(Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;)V
+        18: return
+
+  private static void lambda$static$5();
+    Code:
+         0: invokestatic  #416                // Method com/mojang/blaze3d/systems/RenderSystem.disableBlend:()V
+         3: invokestatic  #419                // Method com/mojang/blaze3d/systems/RenderSystem.defaultBlendFunc:()V
+         6: return
+
+  private static void lambda$static$4();
+    Code:
+         0: invokestatic  #423                // Method com/mojang/blaze3d/systems/RenderSystem.enableBlend:()V
+         3: getstatic     #427                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.SRC_ALPHA:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+         6: getstatic     #455                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+         9: invokestatic  #463                // Method com/mojang/blaze3d/systems/RenderSystem.blendFunc:(Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;)V
+        12: return
+
+  private static void lambda$static$3();
+    Code:
+         0: invokestatic  #416                // Method com/mojang/blaze3d/systems/RenderSystem.disableBlend:()V
+         3: invokestatic  #419                // Method com/mojang/blaze3d/systems/RenderSystem.defaultBlendFunc:()V
+         6: return
+
+  private static void lambda$static$2();
+    Code:
+         0: invokestatic  #423                // Method com/mojang/blaze3d/systems/RenderSystem.enableBlend:()V
+         3: getstatic     #434                // Field com/mojang/blaze3d/platform/GlStateManager$SourceFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;
+         6: getstatic     #455                // Field com/mojang/blaze3d/platform/GlStateManager$DestFactor.ONE:Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;
+         9: invokestatic  #463                // Method com/mojang/blaze3d/systems/RenderSystem.blendFunc:(Lcom/mojang/blaze3d/platform/GlStateManager$SourceFactor;Lcom/mojang/blaze3d/platform/GlStateManager$DestFactor;)V
+        12: return
+
+  private static void lambda$static$1();
+    Code:
+         0: return
+
+  private static void lambda$static$0();
+    Code:
+         0: invokestatic  #416                // Method com/mojang/blaze3d/systems/RenderSystem.disableBlend:()V
+         3: return
+
+  static {};
+    Code:
+         0: new           #9                  // class net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard
+         3: dup
+         4: ldc_w         #470                // String no_transparency
+         7: invokedynamic #484,  0            // InvokeDynamic #0:run:()Ljava/lang/Runnable;
+        12: invokedynamic #488,  0            // InvokeDynamic #1:run:()Ljava/lang/Runnable;
+        17: invokespecial #490                // Method net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+        20: putstatic     #492                // Field NO_TRANSPARENCY:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;
+        23: new           #9                  // class net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard
+        26: dup
+        27: ldc_w         #494                // String additive_transparency
+        30: invokedynamic #498,  0            // InvokeDynamic #2:run:()Ljava/lang/Runnable;
+        35: invokedynamic #502,  0            // InvokeDynamic #3:run:()Ljava/lang/Runnable;
+        40: invokespecial #490                // Method net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+        43: putstatic     #504                // Field ADDITIVE_TRANSPARENCY:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;
+        46: new           #9                  // class net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard
+        49: dup
+        50: ldc_w         #506                // String lightning_transparency
+        53: invokedynamic #510,  0            // InvokeDynamic #4:run:()Ljava/lang/Runnable;
+        58: invokedynamic #514,  0            // InvokeDynamic #5:run:()Ljava/lang/Runnable;
+        63: invokespecial #490                // Method net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+        66: putstatic     #516                // Field LIGHTNING_TRANSPARENCY:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;
+        69: new           #9                  // class net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard
+        72: dup
+        73: ldc_w         #518                // String glint_transparency
+        76: invokedynamic #522,  0            // InvokeDynamic #6:run:()Ljava/lang/Runnable;
+        81: invokedynamic #526,  0            // InvokeDynamic #7:run:()Ljava/lang/Runnable;
+        86: invokespecial #490                // Method net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+        89: putstatic     #528                // Field GLINT_TRANSPARENCY:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;
+        92: new           #9                  // class net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard
+        95: dup
+        96: ldc_w         #530                // String crumbling_transparency
+        99: invokedynamic #534,  0            // InvokeDynamic #8:run:()Ljava/lang/Runnable;
+       104: invokedynamic #538,  0            // InvokeDynamic #9:run:()Ljava/lang/Runnable;
+       109: invokespecial #490                // Method net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+       112: putstatic     #540                // Field CRUMBLING_TRANSPARENCY:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;
+       115: new           #9                  // class net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard
+       118: dup
+       119: ldc_w         #542                // String translucent_transparency
+       122: invokedynamic #546,  0            // InvokeDynamic #10:run:()Ljava/lang/Runnable;
+       127: invokedynamic #550,  0            // InvokeDynamic #11:run:()Ljava/lang/Runnable;
+       132: invokespecial #490                // Method net/minecraft/client/renderer/RenderStateShard$TransparencyStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+       135: putstatic     #552                // Field TRANSLUCENT_TRANSPARENCY:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;
+       138: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       141: dup
+       142: invokespecial #553                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":()V
+       145: putstatic     #555                // Field NO_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       148: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       151: dup
+       152: invokedynamic #567,  0            // InvokeDynamic #12:get:()Ljava/util/function/Supplier;
+       157: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       160: putstatic     #572                // Field POSITION_COLOR_LIGHTMAP_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       163: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       166: dup
+       167: invokedynamic #577,  0            // InvokeDynamic #13:get:()Ljava/util/function/Supplier;
+       172: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       175: putstatic     #579                // Field POSITION_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       178: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       181: dup
+       182: invokedynamic #584,  0            // InvokeDynamic #14:get:()Ljava/util/function/Supplier;
+       187: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       190: putstatic     #586                // Field POSITION_COLOR_TEX_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       193: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       196: dup
+       197: invokedynamic #591,  0            // InvokeDynamic #15:get:()Ljava/util/function/Supplier;
+       202: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       205: putstatic     #593                // Field POSITION_TEX_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       208: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       211: dup
+       212: invokedynamic #598,  0            // InvokeDynamic #16:get:()Ljava/util/function/Supplier;
+       217: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       220: putstatic     #600                // Field POSITION_COLOR_TEX_LIGHTMAP_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       223: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       226: dup
+       227: invokedynamic #605,  0            // InvokeDynamic #17:get:()Ljava/util/function/Supplier;
+       232: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       235: putstatic     #607                // Field POSITION_COLOR_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       238: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       241: dup
+       242: invokedynamic #612,  0            // InvokeDynamic #18:get:()Ljava/util/function/Supplier;
+       247: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       250: putstatic     #614                // Field RENDERTYPE_SOLID_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       253: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       256: dup
+       257: invokedynamic #619,  0            // InvokeDynamic #19:get:()Ljava/util/function/Supplier;
+       262: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       265: putstatic     #621                // Field RENDERTYPE_CUTOUT_MIPPED_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       268: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       271: dup
+       272: invokedynamic #626,  0            // InvokeDynamic #20:get:()Ljava/util/function/Supplier;
+       277: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       280: putstatic     #628                // Field RENDERTYPE_CUTOUT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       283: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       286: dup
+       287: invokedynamic #633,  0            // InvokeDynamic #21:get:()Ljava/util/function/Supplier;
+       292: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       295: putstatic     #635                // Field RENDERTYPE_TRANSLUCENT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       298: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       301: dup
+       302: invokedynamic #640,  0            // InvokeDynamic #22:get:()Ljava/util/function/Supplier;
+       307: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       310: putstatic     #642                // Field RENDERTYPE_TRANSLUCENT_MOVING_BLOCK_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       313: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       316: dup
+       317: invokedynamic #647,  0            // InvokeDynamic #23:get:()Ljava/util/function/Supplier;
+       322: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       325: putstatic     #649                // Field RENDERTYPE_TRANSLUCENT_NO_CRUMBLING_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       328: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       331: dup
+       332: invokedynamic #654,  0            // InvokeDynamic #24:get:()Ljava/util/function/Supplier;
+       337: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       340: putstatic     #656                // Field RENDERTYPE_ARMOR_CUTOUT_NO_CULL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       343: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       346: dup
+       347: invokedynamic #661,  0            // InvokeDynamic #25:get:()Ljava/util/function/Supplier;
+       352: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       355: putstatic     #663                // Field RENDERTYPE_ENTITY_SOLID_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       358: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       361: dup
+       362: invokedynamic #668,  0            // InvokeDynamic #26:get:()Ljava/util/function/Supplier;
+       367: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       370: putstatic     #670                // Field RENDERTYPE_ENTITY_CUTOUT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       373: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       376: dup
+       377: invokedynamic #675,  0            // InvokeDynamic #27:get:()Ljava/util/function/Supplier;
+       382: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       385: putstatic     #677                // Field RENDERTYPE_ENTITY_CUTOUT_NO_CULL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       388: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       391: dup
+       392: invokedynamic #682,  0            // InvokeDynamic #28:get:()Ljava/util/function/Supplier;
+       397: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       400: putstatic     #684                // Field RENDERTYPE_ENTITY_CUTOUT_NO_CULL_Z_OFFSET_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       403: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       406: dup
+       407: invokedynamic #689,  0            // InvokeDynamic #29:get:()Ljava/util/function/Supplier;
+       412: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       415: putstatic     #691                // Field RENDERTYPE_ITEM_ENTITY_TRANSLUCENT_CULL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       418: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       421: dup
+       422: invokedynamic #696,  0            // InvokeDynamic #30:get:()Ljava/util/function/Supplier;
+       427: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       430: putstatic     #698                // Field RENDERTYPE_ENTITY_TRANSLUCENT_CULL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       433: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       436: dup
+       437: invokedynamic #703,  0            // InvokeDynamic #31:get:()Ljava/util/function/Supplier;
+       442: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       445: putstatic     #705                // Field RENDERTYPE_ENTITY_TRANSLUCENT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       448: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       451: dup
+       452: invokedynamic #710,  0            // InvokeDynamic #32:get:()Ljava/util/function/Supplier;
+       457: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       460: putstatic     #712                // Field RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       463: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       466: dup
+       467: invokedynamic #717,  0            // InvokeDynamic #33:get:()Ljava/util/function/Supplier;
+       472: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       475: putstatic     #719                // Field RENDERTYPE_ENTITY_SMOOTH_CUTOUT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       478: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       481: dup
+       482: invokedynamic #724,  0            // InvokeDynamic #34:get:()Ljava/util/function/Supplier;
+       487: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       490: putstatic     #726                // Field RENDERTYPE_BEACON_BEAM_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       493: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       496: dup
+       497: invokedynamic #731,  0            // InvokeDynamic #35:get:()Ljava/util/function/Supplier;
+       502: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       505: putstatic     #733                // Field RENDERTYPE_ENTITY_DECAL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       508: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       511: dup
+       512: invokedynamic #738,  0            // InvokeDynamic #36:get:()Ljava/util/function/Supplier;
+       517: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       520: putstatic     #740                // Field RENDERTYPE_ENTITY_NO_OUTLINE_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       523: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       526: dup
+       527: invokedynamic #745,  0            // InvokeDynamic #37:get:()Ljava/util/function/Supplier;
+       532: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       535: putstatic     #747                // Field RENDERTYPE_ENTITY_SHADOW_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       538: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       541: dup
+       542: invokedynamic #752,  0            // InvokeDynamic #38:get:()Ljava/util/function/Supplier;
+       547: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       550: putstatic     #754                // Field RENDERTYPE_ENTITY_ALPHA_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       553: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       556: dup
+       557: invokedynamic #759,  0            // InvokeDynamic #39:get:()Ljava/util/function/Supplier;
+       562: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       565: putstatic     #761                // Field RENDERTYPE_EYES_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       568: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       571: dup
+       572: invokedynamic #766,  0            // InvokeDynamic #40:get:()Ljava/util/function/Supplier;
+       577: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       580: putstatic     #768                // Field RENDERTYPE_ENERGY_SWIRL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       583: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       586: dup
+       587: invokedynamic #773,  0            // InvokeDynamic #41:get:()Ljava/util/function/Supplier;
+       592: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       595: putstatic     #775                // Field RENDERTYPE_LEASH_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       598: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       601: dup
+       602: invokedynamic #780,  0            // InvokeDynamic #42:get:()Ljava/util/function/Supplier;
+       607: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       610: putstatic     #782                // Field RENDERTYPE_WATER_MASK_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       613: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       616: dup
+       617: invokedynamic #787,  0            // InvokeDynamic #43:get:()Ljava/util/function/Supplier;
+       622: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       625: putstatic     #789                // Field RENDERTYPE_OUTLINE_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       628: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       631: dup
+       632: invokedynamic #794,  0            // InvokeDynamic #44:get:()Ljava/util/function/Supplier;
+       637: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       640: putstatic     #796                // Field RENDERTYPE_ARMOR_GLINT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       643: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       646: dup
+       647: invokedynamic #801,  0            // InvokeDynamic #45:get:()Ljava/util/function/Supplier;
+       652: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       655: putstatic     #803                // Field RENDERTYPE_ARMOR_ENTITY_GLINT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       658: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       661: dup
+       662: invokedynamic #808,  0            // InvokeDynamic #46:get:()Ljava/util/function/Supplier;
+       667: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       670: putstatic     #810                // Field RENDERTYPE_GLINT_TRANSLUCENT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       673: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       676: dup
+       677: invokedynamic #815,  0            // InvokeDynamic #47:get:()Ljava/util/function/Supplier;
+       682: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       685: putstatic     #817                // Field RENDERTYPE_GLINT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       688: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       691: dup
+       692: invokedynamic #822,  0            // InvokeDynamic #48:get:()Ljava/util/function/Supplier;
+       697: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       700: putstatic     #824                // Field RENDERTYPE_GLINT_DIRECT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       703: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       706: dup
+       707: invokedynamic #829,  0            // InvokeDynamic #49:get:()Ljava/util/function/Supplier;
+       712: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       715: putstatic     #831                // Field RENDERTYPE_ENTITY_GLINT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       718: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       721: dup
+       722: invokedynamic #836,  0            // InvokeDynamic #50:get:()Ljava/util/function/Supplier;
+       727: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       730: putstatic     #838                // Field RENDERTYPE_ENTITY_GLINT_DIRECT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       733: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       736: dup
+       737: invokedynamic #843,  0            // InvokeDynamic #51:get:()Ljava/util/function/Supplier;
+       742: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       745: putstatic     #845                // Field RENDERTYPE_CRUMBLING_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       748: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       751: dup
+       752: invokedynamic #850,  0            // InvokeDynamic #52:get:()Ljava/util/function/Supplier;
+       757: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       760: putstatic     #852                // Field RENDERTYPE_TEXT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       763: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       766: dup
+       767: invokedynamic #857,  0            // InvokeDynamic #53:get:()Ljava/util/function/Supplier;
+       772: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       775: putstatic     #859                // Field RENDERTYPE_TEXT_BACKGROUND_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       778: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       781: dup
+       782: invokedynamic #864,  0            // InvokeDynamic #54:get:()Ljava/util/function/Supplier;
+       787: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       790: putstatic     #866                // Field RENDERTYPE_TEXT_INTENSITY_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       793: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       796: dup
+       797: invokedynamic #871,  0            // InvokeDynamic #55:get:()Ljava/util/function/Supplier;
+       802: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       805: putstatic     #873                // Field RENDERTYPE_TEXT_SEE_THROUGH_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       808: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       811: dup
+       812: invokedynamic #878,  0            // InvokeDynamic #56:get:()Ljava/util/function/Supplier;
+       817: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       820: putstatic     #880                // Field RENDERTYPE_TEXT_BACKGROUND_SEE_THROUGH_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       823: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       826: dup
+       827: invokedynamic #885,  0            // InvokeDynamic #57:get:()Ljava/util/function/Supplier;
+       832: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       835: putstatic     #887                // Field RENDERTYPE_TEXT_INTENSITY_SEE_THROUGH_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       838: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       841: dup
+       842: invokedynamic #892,  0            // InvokeDynamic #58:get:()Ljava/util/function/Supplier;
+       847: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       850: putstatic     #894                // Field RENDERTYPE_LIGHTNING_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       853: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       856: dup
+       857: invokedynamic #899,  0            // InvokeDynamic #59:get:()Ljava/util/function/Supplier;
+       862: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       865: putstatic     #901                // Field RENDERTYPE_TRIPWIRE_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       868: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       871: dup
+       872: invokedynamic #906,  0            // InvokeDynamic #60:get:()Ljava/util/function/Supplier;
+       877: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       880: putstatic     #908                // Field RENDERTYPE_END_PORTAL_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       883: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       886: dup
+       887: invokedynamic #913,  0            // InvokeDynamic #61:get:()Ljava/util/function/Supplier;
+       892: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       895: putstatic     #915                // Field RENDERTYPE_END_GATEWAY_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       898: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       901: dup
+       902: invokedynamic #920,  0            // InvokeDynamic #62:get:()Ljava/util/function/Supplier;
+       907: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       910: putstatic     #922                // Field RENDERTYPE_LINES_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       913: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       916: dup
+       917: invokedynamic #927,  0            // InvokeDynamic #63:get:()Ljava/util/function/Supplier;
+       922: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       925: putstatic     #929                // Field RENDERTYPE_GUI_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       928: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       931: dup
+       932: invokedynamic #934,  0            // InvokeDynamic #64:get:()Ljava/util/function/Supplier;
+       937: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       940: putstatic     #936                // Field RENDERTYPE_GUI_OVERLAY_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       943: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       946: dup
+       947: invokedynamic #941,  0            // InvokeDynamic #65:get:()Ljava/util/function/Supplier;
+       952: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       955: putstatic     #943                // Field RENDERTYPE_GUI_TEXT_HIGHLIGHT_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       958: new           #15                 // class net/minecraft/client/renderer/RenderStateShard$ShaderStateShard
+       961: dup
+       962: invokedynamic #948,  0            // InvokeDynamic #66:get:()Ljava/util/function/Supplier;
+       967: invokespecial #570                // Method net/minecraft/client/renderer/RenderStateShard$ShaderStateShard."<init>":(Ljava/util/function/Supplier;)V
+       970: putstatic     #950                // Field RENDERTYPE_GUI_GHOST_RECIPE_OVERLAY_SHADER:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;
+       973: new           #13                 // class net/minecraft/client/renderer/RenderStateShard$TextureStateShard
+       976: dup
+       977: getstatic     #956                // Field net/minecraft/client/renderer/texture/TextureAtlas.LOCATION_BLOCKS:Lnet/minecraft/resources/ResourceLocation;
+       980: iconst_0
+       981: iconst_1
+       982: invokespecial #959                // Method net/minecraft/client/renderer/RenderStateShard$TextureStateShard."<init>":(Lnet/minecraft/resources/ResourceLocation;ZZ)V
+       985: putstatic     #961                // Field BLOCK_SHEET_MIPPED:Lnet/minecraft/client/renderer/RenderStateShard$TextureStateShard;
+       988: new           #13                 // class net/minecraft/client/renderer/RenderStateShard$TextureStateShard
+       991: dup
+       992: getstatic     #956                // Field net/minecraft/client/renderer/texture/TextureAtlas.LOCATION_BLOCKS:Lnet/minecraft/resources/ResourceLocation;
+       995: iconst_0
+       996: iconst_0
+       997: invokespecial #959                // Method net/minecraft/client/renderer/RenderStateShard$TextureStateShard."<init>":(Lnet/minecraft/resources/ResourceLocation;ZZ)V
+      1000: putstatic     #963                // Field BLOCK_SHEET:Lnet/minecraft/client/renderer/RenderStateShard$TextureStateShard;
+      1003: new           #33                 // class net/minecraft/client/renderer/RenderStateShard$EmptyTextureStateShard
+      1006: dup
+      1007: invokespecial #964                // Method net/minecraft/client/renderer/RenderStateShard$EmptyTextureStateShard."<init>":()V
+      1010: putstatic     #966                // Field NO_TEXTURE:Lnet/minecraft/client/renderer/RenderStateShard$EmptyTextureStateShard;
+      1013: new           #11                 // class net/minecraft/client/renderer/RenderStateShard$TexturingStateShard
+      1016: dup
+      1017: ldc_w         #968                // String default_texturing
+      1020: invokedynamic #972,  0            // InvokeDynamic #67:run:()Ljava/lang/Runnable;
+      1025: invokedynamic #976,  0            // InvokeDynamic #68:run:()Ljava/lang/Runnable;
+      1030: invokespecial #977                // Method net/minecraft/client/renderer/RenderStateShard$TexturingStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1033: putstatic     #979                // Field DEFAULT_TEXTURING:Lnet/minecraft/client/renderer/RenderStateShard$TexturingStateShard;
+      1036: new           #11                 // class net/minecraft/client/renderer/RenderStateShard$TexturingStateShard
+      1039: dup
+      1040: ldc_w         #981                // String glint_texturing
+      1043: invokedynamic #985,  0            // InvokeDynamic #69:run:()Ljava/lang/Runnable;
+      1048: invokedynamic #989,  0            // InvokeDynamic #70:run:()Ljava/lang/Runnable;
+      1053: invokespecial #977                // Method net/minecraft/client/renderer/RenderStateShard$TexturingStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1056: putstatic     #991                // Field GLINT_TEXTURING:Lnet/minecraft/client/renderer/RenderStateShard$TexturingStateShard;
+      1059: new           #11                 // class net/minecraft/client/renderer/RenderStateShard$TexturingStateShard
+      1062: dup
+      1063: ldc_w         #993                // String entity_glint_texturing
+      1066: invokedynamic #997,  0            // InvokeDynamic #71:run:()Ljava/lang/Runnable;
+      1071: invokedynamic #1001,  0           // InvokeDynamic #72:run:()Ljava/lang/Runnable;
+      1076: invokespecial #977                // Method net/minecraft/client/renderer/RenderStateShard$TexturingStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1079: putstatic     #1003               // Field ENTITY_GLINT_TEXTURING:Lnet/minecraft/client/renderer/RenderStateShard$TexturingStateShard;
+      1082: new           #29                 // class net/minecraft/client/renderer/RenderStateShard$LightmapStateShard
+      1085: dup
+      1086: iconst_1
+      1087: invokespecial #1005               // Method net/minecraft/client/renderer/RenderStateShard$LightmapStateShard."<init>":(Z)V
+      1090: putstatic     #1007               // Field LIGHTMAP:Lnet/minecraft/client/renderer/RenderStateShard$LightmapStateShard;
+      1093: new           #29                 // class net/minecraft/client/renderer/RenderStateShard$LightmapStateShard
+      1096: dup
+      1097: iconst_0
+      1098: invokespecial #1005               // Method net/minecraft/client/renderer/RenderStateShard$LightmapStateShard."<init>":(Z)V
+      1101: putstatic     #1009               // Field NO_LIGHTMAP:Lnet/minecraft/client/renderer/RenderStateShard$LightmapStateShard;
+      1104: new           #17                 // class net/minecraft/client/renderer/RenderStateShard$OverlayStateShard
+      1107: dup
+      1108: iconst_1
+      1109: invokespecial #1010               // Method net/minecraft/client/renderer/RenderStateShard$OverlayStateShard."<init>":(Z)V
+      1112: putstatic     #1012               // Field OVERLAY:Lnet/minecraft/client/renderer/RenderStateShard$OverlayStateShard;
+      1115: new           #17                 // class net/minecraft/client/renderer/RenderStateShard$OverlayStateShard
+      1118: dup
+      1119: iconst_0
+      1120: invokespecial #1010               // Method net/minecraft/client/renderer/RenderStateShard$OverlayStateShard."<init>":(Z)V
+      1123: putstatic     #1014               // Field NO_OVERLAY:Lnet/minecraft/client/renderer/RenderStateShard$OverlayStateShard;
+      1126: new           #37                 // class net/minecraft/client/renderer/RenderStateShard$CullStateShard
+      1129: dup
+      1130: iconst_1
+      1131: invokespecial #1015               // Method net/minecraft/client/renderer/RenderStateShard$CullStateShard."<init>":(Z)V
+      1134: putstatic     #1017               // Field CULL:Lnet/minecraft/client/renderer/RenderStateShard$CullStateShard;
+      1137: new           #37                 // class net/minecraft/client/renderer/RenderStateShard$CullStateShard
+      1140: dup
+      1141: iconst_0
+      1142: invokespecial #1015               // Method net/minecraft/client/renderer/RenderStateShard$CullStateShard."<init>":(Z)V
+      1145: putstatic     #1019               // Field NO_CULL:Lnet/minecraft/client/renderer/RenderStateShard$CullStateShard;
+      1148: new           #35                 // class net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard
+      1151: dup
+      1152: ldc_w         #1021               // String always
+      1155: sipush        519
+      1158: invokespecial #1024               // Method net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard."<init>":(Ljava/lang/String;I)V
+      1161: putstatic     #1026               // Field NO_DEPTH_TEST:Lnet/minecraft/client/renderer/RenderStateShard$DepthTestStateShard;
+      1164: new           #35                 // class net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard
+      1167: dup
+      1168: ldc_w         #1028               // String ==
+      1171: sipush        514
+      1174: invokespecial #1024               // Method net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard."<init>":(Ljava/lang/String;I)V
+      1177: putstatic     #1030               // Field EQUAL_DEPTH_TEST:Lnet/minecraft/client/renderer/RenderStateShard$DepthTestStateShard;
+      1180: new           #35                 // class net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard
+      1183: dup
+      1184: ldc_w         #1032               // String <=
+      1187: sipush        515
+      1190: invokespecial #1024               // Method net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard."<init>":(Ljava/lang/String;I)V
+      1193: putstatic     #1034               // Field LEQUAL_DEPTH_TEST:Lnet/minecraft/client/renderer/RenderStateShard$DepthTestStateShard;
+      1196: new           #35                 // class net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard
+      1199: dup
+      1200: ldc_w         #1036               // String >
+      1203: sipush        516
+      1206: invokespecial #1024               // Method net/minecraft/client/renderer/RenderStateShard$DepthTestStateShard."<init>":(Ljava/lang/String;I)V
+      1209: putstatic     #1038               // Field GREATER_DEPTH_TEST:Lnet/minecraft/client/renderer/RenderStateShard$DepthTestStateShard;
+      1212: new           #7                  // class net/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard
+      1215: dup
+      1216: iconst_1
+      1217: iconst_1
+      1218: invokespecial #1041               // Method net/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard."<init>":(ZZ)V
+      1221: putstatic     #1043               // Field COLOR_DEPTH_WRITE:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;
+      1224: new           #7                  // class net/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard
+      1227: dup
+      1228: iconst_1
+      1229: iconst_0
+      1230: invokespecial #1041               // Method net/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard."<init>":(ZZ)V
+      1233: putstatic     #1045               // Field COLOR_WRITE:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;
+      1236: new           #7                  // class net/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard
+      1239: dup
+      1240: iconst_0
+      1241: iconst_1
+      1242: invokespecial #1041               // Method net/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard."<init>":(ZZ)V
+      1245: putstatic     #1047               // Field DEPTH_WRITE:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;
+      1248: new           #31                 // class net/minecraft/client/renderer/RenderStateShard$LayeringStateShard
+      1251: dup
+      1252: ldc_w         #1049               // String no_layering
+      1255: invokedynamic #1053,  0           // InvokeDynamic #73:run:()Ljava/lang/Runnable;
+      1260: invokedynamic #1057,  0           // InvokeDynamic #74:run:()Ljava/lang/Runnable;
+      1265: invokespecial #1058               // Method net/minecraft/client/renderer/RenderStateShard$LayeringStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1268: putstatic     #1060               // Field NO_LAYERING:Lnet/minecraft/client/renderer/RenderStateShard$LayeringStateShard;
+      1271: new           #31                 // class net/minecraft/client/renderer/RenderStateShard$LayeringStateShard
+      1274: dup
+      1275: ldc_w         #1062               // String polygon_offset_layering
+      1278: invokedynamic #1066,  0           // InvokeDynamic #75:run:()Ljava/lang/Runnable;
+      1283: invokedynamic #1070,  0           // InvokeDynamic #76:run:()Ljava/lang/Runnable;
+      1288: invokespecial #1058               // Method net/minecraft/client/renderer/RenderStateShard$LayeringStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1291: putstatic     #1072               // Field POLYGON_OFFSET_LAYERING:Lnet/minecraft/client/renderer/RenderStateShard$LayeringStateShard;
+      1294: new           #31                 // class net/minecraft/client/renderer/RenderStateShard$LayeringStateShard
+      1297: dup
+      1298: ldc_w         #1074               // String view_offset_z_layering
+      1301: invokedynamic #1078,  0           // InvokeDynamic #77:run:()Ljava/lang/Runnable;
+      1306: invokedynamic #1082,  0           // InvokeDynamic #78:run:()Ljava/lang/Runnable;
+      1311: invokespecial #1058               // Method net/minecraft/client/renderer/RenderStateShard$LayeringStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1314: putstatic     #1084               // Field VIEW_OFFSET_Z_LAYERING:Lnet/minecraft/client/renderer/RenderStateShard$LayeringStateShard;
+      1317: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1320: dup
+      1321: ldc_w         #1086               // String main_target
+      1324: invokedynamic #1090,  0           // InvokeDynamic #79:run:()Ljava/lang/Runnable;
+      1329: invokedynamic #1094,  0           // InvokeDynamic #80:run:()Ljava/lang/Runnable;
+      1334: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1337: putstatic     #1097               // Field MAIN_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1340: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1343: dup
+      1344: ldc_w         #1099               // String outline_target
+      1347: invokedynamic #1103,  0           // InvokeDynamic #81:run:()Ljava/lang/Runnable;
+      1352: invokedynamic #1107,  0           // InvokeDynamic #82:run:()Ljava/lang/Runnable;
+      1357: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1360: putstatic     #1109               // Field OUTLINE_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1363: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1366: dup
+      1367: ldc_w         #1111               // String translucent_target
+      1370: invokedynamic #1115,  0           // InvokeDynamic #83:run:()Ljava/lang/Runnable;
+      1375: invokedynamic #1119,  0           // InvokeDynamic #84:run:()Ljava/lang/Runnable;
+      1380: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1383: putstatic     #1121               // Field TRANSLUCENT_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1386: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1389: dup
+      1390: ldc_w         #1123               // String particles_target
+      1393: invokedynamic #1127,  0           // InvokeDynamic #85:run:()Ljava/lang/Runnable;
+      1398: invokedynamic #1131,  0           // InvokeDynamic #86:run:()Ljava/lang/Runnable;
+      1403: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1406: putstatic     #1133               // Field PARTICLES_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1409: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1412: dup
+      1413: ldc_w         #1135               // String weather_target
+      1416: invokedynamic #1139,  0           // InvokeDynamic #87:run:()Ljava/lang/Runnable;
+      1421: invokedynamic #1143,  0           // InvokeDynamic #88:run:()Ljava/lang/Runnable;
+      1426: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1429: putstatic     #1145               // Field WEATHER_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1432: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1435: dup
+      1436: ldc_w         #1147               // String clouds_target
+      1439: invokedynamic #1151,  0           // InvokeDynamic #89:run:()Ljava/lang/Runnable;
+      1444: invokedynamic #1155,  0           // InvokeDynamic #90:run:()Ljava/lang/Runnable;
+      1449: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1452: putstatic     #1157               // Field CLOUDS_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1455: new           #19                 // class net/minecraft/client/renderer/RenderStateShard$OutputStateShard
+      1458: dup
+      1459: ldc_w         #1159               // String item_entity_target
+      1462: invokedynamic #1163,  0           // InvokeDynamic #91:run:()Ljava/lang/Runnable;
+      1467: invokedynamic #1167,  0           // InvokeDynamic #92:run:()Ljava/lang/Runnable;
+      1472: invokespecial #1095               // Method net/minecraft/client/renderer/RenderStateShard$OutputStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1475: putstatic     #1169               // Field ITEM_ENTITY_TARGET:Lnet/minecraft/client/renderer/RenderStateShard$OutputStateShard;
+      1478: new           #27                 // class net/minecraft/client/renderer/RenderStateShard$LineStateShard
+      1481: dup
+      1482: dconst_1
+      1483: invokestatic  #1175               // Method java/util/OptionalDouble.of:(D)Ljava/util/OptionalDouble;
+      1486: invokespecial #1178               // Method net/minecraft/client/renderer/RenderStateShard$LineStateShard."<init>":(Ljava/util/OptionalDouble;)V
+      1489: putstatic     #1180               // Field DEFAULT_LINE:Lnet/minecraft/client/renderer/RenderStateShard$LineStateShard;
+      1492: new           #39                 // class net/minecraft/client/renderer/RenderStateShard$ColorLogicStateShard
+      1495: dup
+      1496: ldc_w         #1182               // String no_color_logic
+      1499: invokedynamic #1186,  0           // InvokeDynamic #93:run:()Ljava/lang/Runnable;
+      1504: invokedynamic #1190,  0           // InvokeDynamic #94:run:()Ljava/lang/Runnable;
+      1509: invokespecial #1191               // Method net/minecraft/client/renderer/RenderStateShard$ColorLogicStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1512: putstatic     #1193               // Field NO_COLOR_LOGIC:Lnet/minecraft/client/renderer/RenderStateShard$ColorLogicStateShard;
+      1515: new           #39                 // class net/minecraft/client/renderer/RenderStateShard$ColorLogicStateShard
+      1518: dup
+      1519: ldc_w         #1195               // String or_reverse
+      1522: invokedynamic #1199,  0           // InvokeDynamic #95:run:()Ljava/lang/Runnable;
+      1527: invokedynamic #1203,  0           // InvokeDynamic #96:run:()Ljava/lang/Runnable;
+      1532: invokespecial #1191               // Method net/minecraft/client/renderer/RenderStateShard$ColorLogicStateShard."<init>":(Ljava/lang/String;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+      1535: putstatic     #1205               // Field OR_REVERSE_COLOR_LOGIC:Lnet/minecraft/client/renderer/RenderStateShard$ColorLogicStateShard;
+      1538: return
+}

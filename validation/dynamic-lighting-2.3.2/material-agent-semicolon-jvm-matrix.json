@@ -1,0 +1,62 @@
+{
+  "agent_sha256": "dd61f94c242f8162abbd8805896796805f59ba091db27231a6233f4e9500b27d",
+  "source_sha256": "fb895630ac456109b012ed188a61080891985c483a65d7cfe1c5687f83f8f642",
+  "runs": [
+    {
+      "java": "8",
+      "command": [
+        "/usr/lib/jvm/java-8-openjdk/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-8;iris",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-8"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    },
+    {
+      "java": "17",
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-17;iris",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-17"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    },
+    {
+      "java": "21",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-21;iris",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-21"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    },
+    {
+      "java": "25",
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-25;iris",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-semicolon-jvm-rbl8iqn_/flag-25"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    }
+  ]
+}

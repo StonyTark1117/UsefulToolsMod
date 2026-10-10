@@ -1,0 +1,23 @@
+{
+  "candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/d4ed26c44f6ff02c6fdeac7e87425e41354a71966ed81f3b11148f00d7662f4a/native-video-defaults-loader.jar",
+  "candidate_sha256": "d4ed26c44f6ff02c6fdeac7e87425e41354a71966ed81f3b11148f00d7662f4a",
+  "base_candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/8a030fec935f05b7846a2f0ef3392a42de85a65704f79eade64b01a9ff00bbce/native-mapped-callbacks-loader.jar",
+  "base_candidate_sha256": "8a030fec935f05b7846a2f0ef3392a42de85a65704f79eade64b01a9ff00bbce",
+  "changed_entries": [
+    "optifineoforge/donors/net/minecraft/client/gui/screens/VideoSettingsScreen.class",
+    "optifineoforge/member-restores.txt"
+  ],
+  "removed_plan_rows": [
+    "M net/minecraft/client/gui/screens/VideoSettingsScreen lambda$init$2 (Lcom/mojang/blaze3d/platform/Window;Lnet/minecraft/client/gui/components/Button;)V",
+    "M net/minecraft/client/gui/screens/VideoSettingsScreen lambda$mouseClicked$3 (Lnet/minecraft/client/gui/components/Button;)V",
+    "M net/minecraft/client/gui/screens/VideoSettingsScreen lambda$mouseClicked$4 (Lnet/minecraft/client/gui/components/Button;)V",
+    "M net/minecraft/client/gui/screens/VideoSettingsScreen mouseScrolled (DDDD)Z",
+    "M net/minecraft/client/gui/screens/VideoSettingsScreen renderBackground (Lnet/minecraft/client/gui/GuiGraphics;IIF)V"
+  ],
+  "checker_source": "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineVideoDefaultPrune.java",
+  "checker_source_sha256": "6df1fa31d463710b89b39b047f08613adbc3ffbe09068db530eaa529f8fdb31e",
+  "publisher_sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+  "runtime_sha256": "4d6abc90a4aaa4159dfeb7882b2adb684251c78f40193281c1e97b062477c1e4",
+  "native_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "qualification": "private bytecode candidate only; inherited scrolling/background and menu controls require fresh packaged runtime validation"
+}

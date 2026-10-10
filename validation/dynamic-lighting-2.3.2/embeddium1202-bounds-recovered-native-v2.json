@@ -1,0 +1,63 @@
+{
+  "minecraft": "1.20.2",
+  "neoforge": "20.2.93",
+  "original": "/home/braydon/.cache/useful-tools-lighting-inputs/bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947/embeddium-neoforge-0.2.10+mc1.20.2.jar",
+  "original_sha256": "bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947",
+  "source_sha256": {
+    "tests/dynamic-lighting/backend-repairs/NativeBlockEntityBounds.java": "0801734aa4f7d31a4c0f210f96ff62c4d49460dacf463cdab2c5947fe7df2357",
+    "tests/dynamic-lighting/backend-repairs/RepairEmbeddiumBounds.java": "a1b9e7372aa49299857e7cd660a9eb8b0984f6e80dd06deb609abb55f5b32239"
+  },
+  "classpath_sha256": {
+    "/home/braydon/.gradle/caches/fabric-loom/1.20.2/neoforge/20.2.93/minecraft-merged-mojang-at-patched.jar": "e3c642e6bfb4e15550795f82bdad3214c97cd86db1a7d1d81ad20713d653620a",
+    "/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/20.2.93/2178eb0db26807ae60b0fefa97c281f992601152/neoforge-20.2.93-universal.jar": "14738ecbf2b5322536c78c0a1de678ba457b3244a891f31efb5bac89eadee172",
+    "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.6/aa205cf0a06dbd8e04ece91c0b37c3f5d567546a/asm-9.6.jar": "3c6fac2424db3d4a853b669f4e3d1d9c3c552235e19a319673f887083c2303a1",
+    "/home/braydon/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.5/22566d58af70ad3d72308bab63b8339906deb649/joml-1.10.5.jar": "cac9f22f83a7aa33eebda73c16ff5261e3cb4911b6bafcf4c79ea486099d0c9a",
+    "/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/mergetool/2.0.0/52fe1949be64e3303aabaaa21e315f551db9c9f4/mergetool-2.0.0-api.jar": "0260881294d8b218afe3d673f084d3745a55c28b35205d07d5e62d7f22202a00"
+  },
+  "compile_command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/javac",
+    "--release",
+    "17",
+    "-Xlint:all",
+    "-Werror",
+    "-proc:none",
+    "-cp",
+    "/home/braydon/.gradle/caches/fabric-loom/1.20.2/neoforge/20.2.93/minecraft-merged-mojang-at-patched.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/20.2.93/2178eb0db26807ae60b0fefa97c281f992601152/neoforge-20.2.93-universal.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.6/aa205cf0a06dbd8e04ece91c0b37c3f5d567546a/asm-9.6.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.5/22566d58af70ad3d72308bab63b8339906deb649/joml-1.10.5.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/mergetool/2.0.0/52fe1949be64e3303aabaaa21e315f551db9c9f4/mergetool-2.0.0-api.jar",
+    "-d",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/embeddium1202-bounds-recovered-native-v2/classes",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/backend-repairs/NativeBlockEntityBounds.java",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/backend-repairs/RepairEmbeddiumBounds.java"
+  ],
+  "resource_policy": {
+    "active_processors": 2,
+    "nice": 2,
+    "idle_io": true,
+    "no_client_or_gradle_launched": true
+  },
+  "status": "native strict compilation and two-call transformation passed; runtime pending",
+  "compile_exit_code": 0,
+  "log": "/home/braydon/.cache/useful-tools-lighting-private-stacks/embeddium1202-bounds-recovered-native-v2/build.log",
+  "previous_failure": "Missing native OnlyIn/Dist annotation dependency caused four strict compiler warnings; actual NeoForge 20.2.93 userdev selects mergetool 2.0.0:api.",
+  "transform_command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "-cp",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/embeddium1202-bounds-recovered-native-v2/classes:/home/braydon/.gradle/caches/fabric-loom/1.20.2/neoforge/20.2.93/minecraft-merged-mojang-at-patched.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/20.2.93/2178eb0db26807ae60b0fefa97c281f992601152/neoforge-20.2.93-universal.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.6/aa205cf0a06dbd8e04ece91c0b37c3f5d567546a/asm-9.6.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.joml/joml/1.10.5/22566d58af70ad3d72308bab63b8339906deb649/joml-1.10.5.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/mergetool/2.0.0/52fe1949be64e3303aabaaa21e315f551db9c9f4/mergetool-2.0.0-api.jar",
+    "com.stonytark.lightingqa.backend.RepairEmbeddiumBounds",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/embeddium1202-bounds-recovered-native-v2/original.class",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/embeddium1202-bounds-recovered-native-v2/repaired.class"
+  ],
+  "transform_exit_code": 0,
+  "artifact": "/home/braydon/.cache/useful-tools-lighting-inputs/509d50d68137297574c117c1945c2cce8d3d9e7f9c0f868ecb8ad92455f4e7bb/embeddium-neoforge-0.2.10-private-native-bounds.jar",
+  "sha256": "509d50d68137297574c117c1945c2cce8d3d9e7f9c0f868ecb8ad92455f4e7bb",
+  "changed_class": "me/jellysquid/mods/sodium/client/render/SodiumWorldRenderer.class",
+  "added_class": "com/stonytark/lightingqa/backend/NativeBlockEntityBounds.class",
+  "changed_class_sha256": "1f6c35cc90ee86e82fcb9b3046e0104d7aa7c22b627aaa73803e54521ea9c645",
+  "added_class_sha256": "e1dcb4fd09979c1d4c9052ceccdf489e918f350557e536e16a7dc12bf004e565",
+  "unchanged_entries_verified": true,
+  "scope": "Private optional dependency experiment; maintained pins and production mod unchanged",
+  "native_signatures": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/embeddium1202-bounds-recovered-native-v2-signatures.txt",
+  "native_source_artifact": "/home/braydon/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/20.2.93/4e6b344e522998668088de009d82abde93667a06/neoforge-20.2.93-sources.jar",
+  "replacement_call_count": 2,
+  "removed_entity_calls": 0,
+  "frustum_predicates_retained": true
+}

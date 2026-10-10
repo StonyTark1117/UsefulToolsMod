@@ -1,0 +1,1134 @@
+Compiled from "WeatherEffectRenderer.java"
+public class net.minecraft.client.renderer.WeatherEffectRenderer {
+  private static final float RAIN_PARTICLES_PER_BLOCK;
+
+  private static final int RAIN_RADIUS;
+
+  private static final net.minecraft.resources.Identifier RAIN_LOCATION;
+
+  private static final net.minecraft.resources.Identifier SNOW_LOCATION;
+
+  private static final int RAIN_TABLE_SIZE;
+
+  private static final int HALF_RAIN_TABLE_SIZE;
+
+  private static final int INDICES_PER_COLUMN;
+
+  private int rainSoundTime;
+
+  private final float[] columnSizeX;
+
+  private final float[] columnSizeZ;
+
+  public net.minecraft.client.renderer.WeatherEffectRenderer();
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: sipush        1024
+         8: newarray       float
+        10: putfield      #7                  // Field columnSizeX:[F
+        13: aload_0
+        14: sipush        1024
+        17: newarray       float
+        19: putfield      #13                 // Field columnSizeZ:[F
+        22: iconst_0
+        23: istore_1
+        24: iload_1
+        25: bipush        32
+        27: if_icmpge     103
+        30: iconst_0
+        31: istore_2
+        32: iload_2
+        33: bipush        32
+        35: if_icmpge     97
+        38: iload_2
+        39: bipush        16
+        41: isub
+        42: i2f
+        43: fstore_3
+        44: iload_1
+        45: bipush        16
+        47: isub
+        48: i2f
+        49: fstore        4
+        51: fload_3
+        52: fload         4
+        54: invokestatic  #16                 // Method net/minecraft/util/Mth.length:(FF)F
+        57: fstore        5
+        59: aload_0
+        60: getfield      #7                  // Field columnSizeX:[F
+        63: iload_1
+        64: bipush        32
+        66: imul
+        67: iload_2
+        68: iadd
+        69: fload         4
+        71: fneg
+        72: fload         5
+        74: fdiv
+        75: fastore
+        76: aload_0
+        77: getfield      #13                 // Field columnSizeZ:[F
+        80: iload_1
+        81: bipush        32
+        83: imul
+        84: iload_2
+        85: iadd
+        86: fload_3
+        87: fload         5
+        89: fdiv
+        90: fastore
+        91: iinc          2, 1
+        94: goto          32
+        97: iinc          1, 1
+       100: goto          24
+       103: return
+
+  public void extractRenderState(net.minecraft.world.level.Level, int, float, net.minecraft.world.phys.Vec3, net.minecraft.client.renderer.state.level.WeatherRenderState);
+    Code:
+         0: aload         5
+         2: aload_1
+         3: fload_3
+         4: invokevirtual #22                 // Method net/minecraft/world/level/Level.getRainLevel:(F)F
+         7: putfield      #28                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.intensity:F
+        10: aload         5
+        12: getfield      #28                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.intensity:F
+        15: fconst_0
+        16: fcmpg
+        17: ifle          368
+        20: aload         5
+        22: invokestatic  #34                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+        25: getfield      #40                 // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+        28: invokevirtual #44                 // Method net/minecraft/client/Options.weatherRadius:()Lnet/minecraft/client/OptionInstance;
+        31: invokevirtual #50                 // Method net/minecraft/client/OptionInstance.get:()Ljava/lang/Object;
+        34: checkcast     #56                 // class java/lang/Integer
+        37: invokevirtual #58                 // Method java/lang/Integer.intValue:()I
+        40: putfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+        43: aload         4
+        45: getfield      #66                 // Field net/minecraft/world/phys/Vec3.x:D
+        48: invokestatic  #72                 // Method net/minecraft/util/Mth.floor:(D)I
+        51: istore        6
+        53: aload         4
+        55: getfield      #76                 // Field net/minecraft/world/phys/Vec3.y:D
+        58: invokestatic  #72                 // Method net/minecraft/util/Mth.floor:(D)I
+        61: istore        7
+        63: aload         4
+        65: getfield      #79                 // Field net/minecraft/world/phys/Vec3.z:D
+        68: invokestatic  #72                 // Method net/minecraft/util/Mth.floor:(D)I
+        71: istore        8
+        73: new           #82                 // class net/minecraft/core/BlockPos$MutableBlockPos
+        76: dup
+        77: invokespecial #84                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+        80: astore        9
+        82: invokestatic  #85                 // InterfaceMethod net/minecraft/util/RandomSource.createThreadLocalInstance:()Lnet/minecraft/util/RandomSource;
+        85: astore        10
+        87: iload         8
+        89: aload         5
+        91: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+        94: isub
+        95: istore        11
+        97: iload         11
+        99: iload         8
+       101: aload         5
+       103: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       106: iadd
+       107: if_icmpgt     368
+       110: iload         6
+       112: aload         5
+       114: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       117: isub
+       118: istore        12
+       120: iload         12
+       122: iload         6
+       124: aload         5
+       126: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       129: iadd
+       130: if_icmpgt     362
+       133: aload_1
+       134: getstatic     #91                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+       137: iload         12
+       139: iload         11
+       141: invokevirtual #97                 // Method net/minecraft/world/level/Level.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+       144: istore        13
+       146: iload         7
+       148: aload         5
+       150: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       153: isub
+       154: iload         13
+       156: invokestatic  #101                // Method java/lang/Math.max:(II)I
+       159: istore        14
+       161: iload         7
+       163: aload         5
+       165: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       168: iadd
+       169: iload         13
+       171: invokestatic  #101                // Method java/lang/Math.max:(II)I
+       174: istore        15
+       176: iload         15
+       178: iload         14
+       180: isub
+       181: ifeq          356
+       184: aload_0
+       185: aload_1
+       186: aload         9
+       188: iload         12
+       190: iload         7
+       192: iload         11
+       194: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       197: invokevirtual #111                // Method getPrecipitationAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/biome/Biome$Precipitation;
+       200: astore        16
+       202: aload         16
+       204: getstatic     #115                // Field net/minecraft/world/level/biome/Biome$Precipitation.NONE:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+       207: if_acmpeq     356
+       210: iload         12
+       212: iload         12
+       214: imul
+       215: sipush        3121
+       218: imul
+       219: iload         12
+       221: ldc           #121                // int 45238971
+       223: imul
+       224: iadd
+       225: iload         11
+       227: iload         11
+       229: imul
+       230: ldc           #122                // int 418711
+       232: imul
+       233: iload         11
+       235: sipush        13761
+       238: imul
+       239: iadd
+       240: ixor
+       241: istore        17
+       243: aload         10
+       245: iload         17
+       247: i2l
+       248: invokeinterface #123,  3          // InterfaceMethod net/minecraft/util/RandomSource.setSeed:(J)V
+       253: iload         7
+       255: iload         13
+       257: invokestatic  #101                // Method java/lang/Math.max:(II)I
+       260: istore        18
+       262: aload_1
+       263: aload         9
+       265: iload         12
+       267: iload         18
+       269: iload         11
+       271: invokevirtual #107                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       274: invokestatic  #127                // Method net/minecraft/client/renderer/LevelRenderer.getLightCoords:(Lnet/minecraft/world/level/BlockAndLightGetter;Lnet/minecraft/core/BlockPos;)I
+       277: istore        19
+       279: aload         16
+       281: getstatic     #133                // Field net/minecraft/world/level/biome/Biome$Precipitation.RAIN:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+       284: if_acmpne     319
+       287: aload         5
+       289: getfield      #136                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.rainColumns:Ljava/util/List;
+       292: aload_0
+       293: aload         10
+       295: iload_2
+       296: iload         12
+       298: iload         14
+       300: iload         15
+       302: iload         11
+       304: iload         19
+       306: fload_3
+       307: invokevirtual #140                // Method createRainColumnInstance:(Lnet/minecraft/util/RandomSource;IIIIIIF)Lnet/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance;
+       310: invokeinterface #144,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       315: pop
+       316: goto          356
+       319: aload         16
+       321: getstatic     #150                // Field net/minecraft/world/level/biome/Biome$Precipitation.SNOW:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+       324: if_acmpne     356
+       327: aload         5
+       329: getfield      #153                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.snowColumns:Ljava/util/List;
+       332: aload_0
+       333: aload         10
+       335: iload_2
+       336: iload         12
+       338: iload         14
+       340: iload         15
+       342: iload         11
+       344: iload         19
+       346: fload_3
+       347: invokevirtual #156                // Method createSnowColumnInstance:(Lnet/minecraft/util/RandomSource;IIIIIIF)Lnet/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance;
+       350: invokeinterface #144,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       355: pop
+       356: iinc          12, 1
+       359: goto          120
+       362: iinc          11, 1
+       365: goto          97
+       368: return
+
+  private void renderWeather(com.mojang.blaze3d.systems.RenderPass, net.minecraft.client.renderer.texture.AbstractTexture, int, int);
+    Code:
+         0: aload_1
+         1: ldc           #159                // String Sampler0
+         3: aload_2
+         4: invokevirtual #161                // Method net/minecraft/client/renderer/texture/AbstractTexture.getTextureView:()Lcom/mojang/blaze3d/textures/GpuTextureView;
+         7: aload_2
+         8: invokevirtual #167                // Method net/minecraft/client/renderer/texture/AbstractTexture.getSampler:()Lcom/mojang/blaze3d/textures/GpuSampler;
+        11: invokevirtual #171                // Method com/mojang/blaze3d/systems/RenderPass.bindTexture:(Ljava/lang/String;Lcom/mojang/blaze3d/textures/GpuTextureView;Lcom/mojang/blaze3d/textures/GpuSampler;)V
+        14: aload_1
+        15: iconst_0
+        16: iload_3
+        17: bipush        6
+        19: imul
+        20: iload         4
+        22: bipush        6
+        24: imul
+        25: iconst_1
+        26: invokevirtual #177                // Method com/mojang/blaze3d/systems/RenderPass.drawIndexed:(IIII)V
+        29: return
+
+  public void render(net.minecraft.world.phys.Vec3, net.minecraft.client.renderer.state.level.WeatherRenderState);
+    Code:
+         0: aload_2
+         1: getfield      #136                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.rainColumns:Ljava/util/List;
+         4: invokeinterface #181,  1          // InterfaceMethod java/util/List.size:()I
+         9: aload_2
+        10: getfield      #153                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.snowColumns:Ljava/util/List;
+        13: invokeinterface #181,  1          // InterfaceMethod java/util/List.size:()I
+        18: iadd
+        19: istore_3
+        20: iload_3
+        21: ifeq          513
+        24: invokestatic  #34                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+        27: invokevirtual #184                // Method net/minecraft/client/Minecraft.getTextureManager:()Lnet/minecraft/client/renderer/texture/TextureManager;
+        30: astore        4
+        32: aload         4
+        34: getstatic     #188                // Field RAIN_LOCATION:Lnet/minecraft/resources/Identifier;
+        37: invokevirtual #192                // Method net/minecraft/client/renderer/texture/TextureManager.getTexture:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/texture/AbstractTexture;
+        40: astore        5
+        42: aload         4
+        44: getstatic     #198                // Field SNOW_LOCATION:Lnet/minecraft/resources/Identifier;
+        47: invokevirtual #192                // Method net/minecraft/client/renderer/texture/TextureManager.getTexture:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/texture/AbstractTexture;
+        50: astore        6
+        52: getstatic     #201                // Field net/minecraft/client/renderer/rendertype/OutputTarget.WEATHER_TARGET:Lnet/minecraft/client/renderer/rendertype/OutputTarget;
+        55: invokevirtual #207                // Method net/minecraft/client/renderer/rendertype/OutputTarget.getRenderTarget:()Lcom/mojang/blaze3d/pipeline/RenderTarget;
+        58: astore        7
+        60: aload         7
+        62: invokevirtual #211                // Method com/mojang/blaze3d/pipeline/RenderTarget.getColorTextureView:()Lcom/mojang/blaze3d/textures/GpuTextureView;
+        65: astore        8
+        67: aload         7
+        69: invokevirtual #216                // Method com/mojang/blaze3d/pipeline/RenderTarget.getDepthTextureView:()Lcom/mojang/blaze3d/textures/GpuTextureView;
+        72: astore        9
+        74: invokestatic  #219                // Method net/minecraft/client/Minecraft.useShaderTransparency:()Z
+        77: ifeq          86
+        80: getstatic     #223                // Field net/minecraft/client/renderer/RenderPipelines.WEATHER_DEPTH_WRITE:Lcom/mojang/blaze3d/pipeline/RenderPipeline;
+        83: goto          89
+        86: getstatic     #229                // Field net/minecraft/client/renderer/RenderPipelines.WEATHER_NO_DEPTH_WRITE:Lcom/mojang/blaze3d/pipeline/RenderPipeline;
+        89: astore        10
+        91: iload_3
+        92: getstatic     #232                // Field com/mojang/blaze3d/vertex/DefaultVertexFormat.PARTICLE:Lcom/mojang/blaze3d/vertex/VertexFormat;
+        95: invokevirtual #238                // Method com/mojang/blaze3d/vertex/VertexFormat.getVertexSize:()I
+        98: imul
+        99: iconst_4
+       100: imul
+       101: invokestatic  #243                // Method com/mojang/blaze3d/vertex/ByteBufferBuilder.exactlySized:(I)Lcom/mojang/blaze3d/vertex/ByteBufferBuilder;
+       104: astore        14
+       106: new           #249                // class com/mojang/blaze3d/vertex/BufferBuilder
+       109: dup
+       110: aload         14
+       112: getstatic     #251                // Field com/mojang/blaze3d/vertex/VertexFormat$Mode.QUADS:Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;
+       115: getstatic     #232                // Field com/mojang/blaze3d/vertex/DefaultVertexFormat.PARTICLE:Lcom/mojang/blaze3d/vertex/VertexFormat;
+       118: invokespecial #257                // Method com/mojang/blaze3d/vertex/BufferBuilder."<init>":(Lcom/mojang/blaze3d/vertex/ByteBufferBuilder;Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;Lcom/mojang/blaze3d/vertex/VertexFormat;)V
+       121: astore        15
+       123: aload_0
+       124: aload         15
+       126: aload_2
+       127: getfield      #136                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.rainColumns:Ljava/util/List;
+       130: aload_1
+       131: fconst_1
+       132: aload_2
+       133: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       136: aload_2
+       137: getfield      #28                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.intensity:F
+       140: invokevirtual #260                // Method renderInstances:(Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/util/List;Lnet/minecraft/world/phys/Vec3;FIF)V
+       143: aload_0
+       144: aload         15
+       146: aload_2
+       147: getfield      #153                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.snowColumns:Ljava/util/List;
+       150: aload_1
+       151: ldc_w         #264                // float 0.8f
+       154: aload_2
+       155: getfield      #62                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.radius:I
+       158: aload_2
+       159: getfield      #28                 // Field net/minecraft/client/renderer/state/level/WeatherRenderState.intensity:F
+       162: invokevirtual #260                // Method renderInstances:(Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/util/List;Lnet/minecraft/world/phys/Vec3;FIF)V
+       165: aload         15
+       167: invokevirtual #265                // Method com/mojang/blaze3d/vertex/BufferBuilder.buildOrThrow:()Lcom/mojang/blaze3d/vertex/MeshData;
+       170: astore        16
+       172: aload         10
+       174: invokevirtual #269                // Method com/mojang/blaze3d/pipeline/RenderPipeline.getVertexFormat:()Lcom/mojang/blaze3d/vertex/VertexFormat;
+       177: aload         16
+       179: invokevirtual #275                // Method com/mojang/blaze3d/vertex/MeshData.vertexBuffer:()Ljava/nio/ByteBuffer;
+       182: invokevirtual #281                // Method com/mojang/blaze3d/vertex/VertexFormat.uploadImmediateVertexBuffer:(Ljava/nio/ByteBuffer;)Lcom/mojang/blaze3d/buffers/GpuBuffer;
+       185: astore        11
+       187: aload         16
+       189: invokevirtual #285                // Method com/mojang/blaze3d/vertex/MeshData.drawState:()Lcom/mojang/blaze3d/vertex/MeshData$DrawState;
+       192: invokevirtual #289                // Method com/mojang/blaze3d/vertex/MeshData$DrawState.mode:()Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;
+       195: invokestatic  #295                // Method com/mojang/blaze3d/systems/RenderSystem.getSequentialBuffer:(Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;)Lcom/mojang/blaze3d/systems/RenderSystem$AutoStorageIndexBuffer;
+       198: astore        17
+       200: aload         17
+       202: aload         16
+       204: invokevirtual #285                // Method com/mojang/blaze3d/vertex/MeshData.drawState:()Lcom/mojang/blaze3d/vertex/MeshData$DrawState;
+       207: invokevirtual #301                // Method com/mojang/blaze3d/vertex/MeshData$DrawState.indexCount:()I
+       210: invokevirtual #304                // Method com/mojang/blaze3d/systems/RenderSystem$AutoStorageIndexBuffer.getBuffer:(I)Lcom/mojang/blaze3d/buffers/GpuBuffer;
+       213: astore        12
+       215: aload         17
+       217: invokevirtual #310                // Method com/mojang/blaze3d/systems/RenderSystem$AutoStorageIndexBuffer.type:()Lcom/mojang/blaze3d/vertex/VertexFormat$IndexType;
+       220: astore        13
+       222: aload         16
+       224: ifnull        262
+       227: aload         16
+       229: invokevirtual #314                // Method com/mojang/blaze3d/vertex/MeshData.close:()V
+       232: goto          262
+       235: astore        17
+       237: aload         16
+       239: ifnull        259
+       242: aload         16
+       244: invokevirtual #314                // Method com/mojang/blaze3d/vertex/MeshData.close:()V
+       247: goto          259
+       250: astore        18
+       252: aload         17
+       254: aload         18
+       256: invokevirtual #319                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       259: aload         17
+       261: athrow
+       262: aload         14
+       264: ifnull        302
+       267: aload         14
+       269: invokevirtual #323                // Method com/mojang/blaze3d/vertex/ByteBufferBuilder.close:()V
+       272: goto          302
+       275: astore        15
+       277: aload         14
+       279: ifnull        299
+       282: aload         14
+       284: invokevirtual #323                // Method com/mojang/blaze3d/vertex/ByteBufferBuilder.close:()V
+       287: goto          299
+       290: astore        16
+       292: aload         15
+       294: aload         16
+       296: invokevirtual #319                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       299: aload         15
+       301: athrow
+       302: invokestatic  #324                // Method com/mojang/blaze3d/systems/RenderSystem.getDynamicUniforms:()Lnet/minecraft/client/renderer/DynamicUniforms;
+       305: invokestatic  #328                // Method com/mojang/blaze3d/systems/RenderSystem.getModelViewMatrix:()Lorg/joml/Matrix4f;
+       308: new           #332                // class org/joml/Vector4f
+       311: dup
+       312: fconst_1
+       313: fconst_1
+       314: fconst_1
+       315: fconst_1
+       316: invokespecial #334                // Method org/joml/Vector4f."<init>":(FFFF)V
+       319: new           #337                // class org/joml/Vector3f
+       322: dup
+       323: invokespecial #339                // Method org/joml/Vector3f."<init>":()V
+       326: new           #340                // class org/joml/Matrix4f
+       329: dup
+       330: invokespecial #342                // Method org/joml/Matrix4f."<init>":()V
+       333: invokevirtual #343                // Method net/minecraft/client/renderer/DynamicUniforms.writeTransform:(Lorg/joml/Matrix4fc;Lorg/joml/Vector4fc;Lorg/joml/Vector3fc;Lorg/joml/Matrix4fc;)Lcom/mojang/blaze3d/buffers/GpuBufferSlice;
+       336: astore        14
+       338: invokestatic  #349                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+       341: invokevirtual #353                // Method com/mojang/blaze3d/systems/GpuDevice.createCommandEncoder:()Lcom/mojang/blaze3d/systems/CommandEncoder;
+       344: invokedynamic #359,  0            // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+       349: aload         8
+       351: invokestatic  #362                // Method java/util/OptionalInt.empty:()Ljava/util/OptionalInt;
+       354: aload         9
+       356: invokestatic  #368                // Method java/util/OptionalDouble.empty:()Ljava/util/OptionalDouble;
+       359: invokevirtual #373                // Method com/mojang/blaze3d/systems/CommandEncoder.createRenderPass:(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalDouble;)Lcom/mojang/blaze3d/systems/RenderPass;
+       362: astore        15
+       364: aload         15
+       366: aload         10
+       368: invokevirtual #379                // Method com/mojang/blaze3d/systems/RenderPass.setPipeline:(Lcom/mojang/blaze3d/pipeline/RenderPipeline;)V
+       371: aload         15
+       373: invokestatic  #383                // Method com/mojang/blaze3d/systems/RenderSystem.bindDefaultUniforms:(Lcom/mojang/blaze3d/systems/RenderPass;)V
+       376: aload         15
+       378: ldc_w         #387                // String DynamicTransforms
+       381: aload         14
+       383: invokevirtual #389                // Method com/mojang/blaze3d/systems/RenderPass.setUniform:(Ljava/lang/String;Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V
+       386: aload         15
+       388: ldc_w         #393                // String Sampler2
+       391: invokestatic  #34                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       394: getfield      #395                // Field net/minecraft/client/Minecraft.gameRenderer:Lnet/minecraft/client/renderer/GameRenderer;
+       397: invokevirtual #399                // Method net/minecraft/client/renderer/GameRenderer.lightmap:()Lcom/mojang/blaze3d/textures/GpuTextureView;
+       400: invokestatic  #404                // Method com/mojang/blaze3d/systems/RenderSystem.getSamplerCache:()Lcom/mojang/blaze3d/systems/SamplerCache;
+       403: getstatic     #408                // Field com/mojang/blaze3d/textures/FilterMode.LINEAR:Lcom/mojang/blaze3d/textures/FilterMode;
+       406: invokevirtual #414                // Method com/mojang/blaze3d/systems/SamplerCache.getClampToEdge:(Lcom/mojang/blaze3d/textures/FilterMode;)Lcom/mojang/blaze3d/textures/GpuSampler;
+       409: invokevirtual #171                // Method com/mojang/blaze3d/systems/RenderPass.bindTexture:(Ljava/lang/String;Lcom/mojang/blaze3d/textures/GpuTextureView;Lcom/mojang/blaze3d/textures/GpuSampler;)V
+       412: aload         15
+       414: aload         12
+       416: aload         13
+       418: invokevirtual #420                // Method com/mojang/blaze3d/systems/RenderPass.setIndexBuffer:(Lcom/mojang/blaze3d/buffers/GpuBuffer;Lcom/mojang/blaze3d/vertex/VertexFormat$IndexType;)V
+       421: aload         15
+       423: iconst_0
+       424: aload         11
+       426: invokevirtual #424                // Method com/mojang/blaze3d/systems/RenderPass.setVertexBuffer:(ILcom/mojang/blaze3d/buffers/GpuBuffer;)V
+       429: aload_0
+       430: aload         15
+       432: aload         5
+       434: iconst_0
+       435: aload_2
+       436: getfield      #136                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.rainColumns:Ljava/util/List;
+       439: invokeinterface #181,  1          // InterfaceMethod java/util/List.size:()I
+       444: invokevirtual #428                // Method renderWeather:(Lcom/mojang/blaze3d/systems/RenderPass;Lnet/minecraft/client/renderer/texture/AbstractTexture;II)V
+       447: aload_0
+       448: aload         15
+       450: aload         6
+       452: aload_2
+       453: getfield      #136                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.rainColumns:Ljava/util/List;
+       456: invokeinterface #181,  1          // InterfaceMethod java/util/List.size:()I
+       461: aload_2
+       462: getfield      #153                // Field net/minecraft/client/renderer/state/level/WeatherRenderState.snowColumns:Ljava/util/List;
+       465: invokeinterface #181,  1          // InterfaceMethod java/util/List.size:()I
+       470: invokevirtual #428                // Method renderWeather:(Lcom/mojang/blaze3d/systems/RenderPass;Lnet/minecraft/client/renderer/texture/AbstractTexture;II)V
+       473: aload         15
+       475: ifnull        513
+       478: aload         15
+       480: invokevirtual #432                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+       483: goto          513
+       486: astore        16
+       488: aload         15
+       490: ifnull        510
+       493: aload         15
+       495: invokevirtual #432                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+       498: goto          510
+       501: astore        17
+       503: aload         16
+       505: aload         17
+       507: invokevirtual #319                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       510: aload         16
+       512: athrow
+       513: return
+      Exception table:
+         from    to  target type
+           172   222   235   Class java/lang/Throwable
+           242   247   250   Class java/lang/Throwable
+           106   262   275   Class java/lang/Throwable
+           282   287   290   Class java/lang/Throwable
+           364   473   486   Class java/lang/Throwable
+           493   498   501   Class java/lang/Throwable
+
+  private net.minecraft.client.renderer.WeatherEffectRenderer$ColumnInstance createRainColumnInstance(net.minecraft.util.RandomSource, int, int, int, int, int, int, float);
+    Code:
+         0: iload_2
+         1: ldc_w         #433                // int 131071
+         4: iand
+         5: istore        9
+         7: iload_3
+         8: iload_3
+         9: imul
+        10: sipush        3121
+        13: imul
+        14: iload_3
+        15: ldc           #121                // int 45238971
+        17: imul
+        18: iadd
+        19: iload         6
+        21: iload         6
+        23: imul
+        24: ldc           #122                // int 418711
+        26: imul
+        27: iadd
+        28: iload         6
+        30: sipush        13761
+        33: imul
+        34: iadd
+        35: sipush        255
+        38: iand
+        39: istore        10
+        41: ldc_w         #434                // float 3.0f
+        44: aload_1
+        45: invokeinterface #435,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+        50: fadd
+        51: fstore        11
+        53: iload         9
+        55: iload         10
+        57: iadd
+        58: i2f
+        59: fload         8
+        61: fadd
+        62: fneg
+        63: ldc_w         #439                // float 32.0f
+        66: fdiv
+        67: fload         11
+        69: fmul
+        70: fstore        12
+        72: fload         12
+        74: ldc_w         #439                // float 32.0f
+        77: frem
+        78: fstore        13
+        80: new           #440                // class net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance
+        83: dup
+        84: iload_3
+        85: iload         6
+        87: iload         4
+        89: iload         5
+        91: fconst_0
+        92: fload         13
+        94: iload         7
+        96: invokespecial #442                // Method net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance."<init>":(IIIIFFI)V
+        99: areturn
+
+  private net.minecraft.client.renderer.WeatherEffectRenderer$ColumnInstance createSnowColumnInstance(net.minecraft.util.RandomSource, int, int, int, int, int, int, float);
+    Code:
+         0: iload_2
+         1: i2f
+         2: fload         8
+         4: fadd
+         5: fstore        9
+         7: aload_1
+         8: invokeinterface #445,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+        13: fload         9
+        15: ldc_w         #449                // float 0.01f
+        18: fmul
+        19: aload_1
+        20: invokeinterface #450,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+        25: d2f
+        26: fmul
+        27: f2d
+        28: dadd
+        29: d2f
+        30: fstore        10
+        32: aload_1
+        33: invokeinterface #445,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+        38: fload         9
+        40: aload_1
+        41: invokeinterface #450,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+        46: d2f
+        47: fmul
+        48: ldc_w         #453                // float 0.001f
+        51: fmul
+        52: f2d
+        53: dadd
+        54: d2f
+        55: fstore        11
+        57: iload_2
+        58: sipush        511
+        61: iand
+        62: i2f
+        63: fload         8
+        65: fadd
+        66: fneg
+        67: ldc_w         #454                // float 512.0f
+        70: fdiv
+        71: fstore        12
+        73: iload         7
+        75: invokestatic  #455                // Method net/minecraft/util/LightCoordsUtil.block:(I)I
+        78: iconst_3
+        79: imul
+        80: bipush        15
+        82: iadd
+        83: iconst_4
+        84: idiv
+        85: iload         7
+        87: invokestatic  #461                // Method net/minecraft/util/LightCoordsUtil.sky:(I)I
+        90: iconst_3
+        91: imul
+        92: bipush        15
+        94: iadd
+        95: iconst_4
+        96: idiv
+        97: invokestatic  #464                // Method net/minecraft/util/LightCoordsUtil.pack:(II)I
+       100: istore        13
+       102: new           #440                // class net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance
+       105: dup
+       106: iload_3
+       107: iload         6
+       109: iload         4
+       111: iload         5
+       113: fload         10
+       115: fload         12
+       117: fload         11
+       119: fadd
+       120: iload         13
+       122: invokespecial #442                // Method net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance."<init>":(IIIIFFI)V
+       125: areturn
+
+  private void renderInstances(com.mojang.blaze3d.vertex.VertexConsumer, java.util.List<net.minecraft.client.renderer.WeatherEffectRenderer$ColumnInstance>, net.minecraft.world.phys.Vec3, float, int, float);
+    Code:
+         0: aload_2
+         1: invokeinterface #467,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+         6: ifne          453
+         9: iload         5
+        11: iload         5
+        13: imul
+        14: i2f
+        15: fstore        7
+        17: aload_2
+        18: invokeinterface #470,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        23: astore        8
+        25: aload         8
+        27: invokeinterface #474,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        32: ifeq          453
+        35: aload         8
+        37: invokeinterface #479,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        42: checkcast     #440                // class net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance
+        45: astore        9
+        47: aload         9
+        49: getfield      #482                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.x:I
+        52: i2d
+        53: ldc2_w        #484                // double 0.5d
+        56: dadd
+        57: aload_3
+        58: getfield      #66                 // Field net/minecraft/world/phys/Vec3.x:D
+        61: dsub
+        62: d2f
+        63: fstore        10
+        65: aload         9
+        67: getfield      #486                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.z:I
+        70: i2d
+        71: ldc2_w        #484                // double 0.5d
+        74: dadd
+        75: aload_3
+        76: getfield      #79                 // Field net/minecraft/world/phys/Vec3.z:D
+        79: dsub
+        80: d2f
+        81: fstore        11
+        83: fload         10
+        85: f2d
+        86: fload         11
+        88: f2d
+        89: invokestatic  #488                // Method net/minecraft/util/Mth.lengthSquared:(DD)D
+        92: d2f
+        93: fstore        12
+        95: fload         12
+        97: fload         7
+        99: fdiv
+       100: fconst_1
+       101: invokestatic  #492                // Method java/lang/Math.min:(FF)F
+       104: fload         4
+       106: ldc_w         #495                // float 0.5f
+       109: invokestatic  #496                // Method net/minecraft/util/Mth.lerp:(FFF)F
+       112: fload         6
+       114: fmul
+       115: fstore        13
+       117: fload         13
+       119: invokestatic  #500                // Method net/minecraft/util/ARGB.white:(F)I
+       122: istore        14
+       124: aload         9
+       126: getfield      #486                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.z:I
+       129: aload_3
+       130: getfield      #79                 // Field net/minecraft/world/phys/Vec3.z:D
+       133: invokestatic  #72                 // Method net/minecraft/util/Mth.floor:(D)I
+       136: isub
+       137: bipush        16
+       139: iadd
+       140: bipush        32
+       142: imul
+       143: aload         9
+       145: getfield      #482                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.x:I
+       148: iadd
+       149: aload_3
+       150: getfield      #66                 // Field net/minecraft/world/phys/Vec3.x:D
+       153: invokestatic  #72                 // Method net/minecraft/util/Mth.floor:(D)I
+       156: isub
+       157: bipush        16
+       159: iadd
+       160: istore        15
+       162: aload_0
+       163: getfield      #7                  // Field columnSizeX:[F
+       166: iload         15
+       168: faload
+       169: fconst_2
+       170: fdiv
+       171: fstore        16
+       173: aload_0
+       174: getfield      #13                 // Field columnSizeZ:[F
+       177: iload         15
+       179: faload
+       180: fconst_2
+       181: fdiv
+       182: fstore        17
+       184: fload         10
+       186: fload         16
+       188: fsub
+       189: fstore        18
+       191: fload         10
+       193: fload         16
+       195: fadd
+       196: fstore        19
+       198: aload         9
+       200: getfield      #506                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.topY:I
+       203: i2d
+       204: aload_3
+       205: getfield      #76                 // Field net/minecraft/world/phys/Vec3.y:D
+       208: dsub
+       209: d2f
+       210: fstore        20
+       212: aload         9
+       214: getfield      #509                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.bottomY:I
+       217: i2d
+       218: aload_3
+       219: getfield      #76                 // Field net/minecraft/world/phys/Vec3.y:D
+       222: dsub
+       223: d2f
+       224: fstore        21
+       226: fload         11
+       228: fload         17
+       230: fsub
+       231: fstore        22
+       233: fload         11
+       235: fload         17
+       237: fadd
+       238: fstore        23
+       240: aload         9
+       242: getfield      #512                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.uOffset:F
+       245: fconst_0
+       246: fadd
+       247: fstore        24
+       249: aload         9
+       251: getfield      #512                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.uOffset:F
+       254: fconst_1
+       255: fadd
+       256: fstore        25
+       258: aload         9
+       260: getfield      #509                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.bottomY:I
+       263: i2f
+       264: ldc_w         #515                // float 0.25f
+       267: fmul
+       268: aload         9
+       270: getfield      #516                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.vOffset:F
+       273: fadd
+       274: fstore        26
+       276: aload         9
+       278: getfield      #506                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.topY:I
+       281: i2f
+       282: ldc_w         #515                // float 0.25f
+       285: fmul
+       286: aload         9
+       288: getfield      #516                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.vOffset:F
+       291: fadd
+       292: fstore        27
+       294: aload_1
+       295: fload         18
+       297: fload         20
+       299: fload         22
+       301: invokeinterface #519,  4          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.addVertex:(FFF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       306: fload         24
+       308: fload         26
+       310: invokeinterface #525,  3          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setUv:(FF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       315: iload         14
+       317: invokeinterface #529,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setColor:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       322: aload         9
+       324: getfield      #533                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.lightCoords:I
+       327: invokeinterface #536,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setLight:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       332: pop
+       333: aload_1
+       334: fload         19
+       336: fload         20
+       338: fload         23
+       340: invokeinterface #519,  4          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.addVertex:(FFF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       345: fload         25
+       347: fload         26
+       349: invokeinterface #525,  3          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setUv:(FF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       354: iload         14
+       356: invokeinterface #529,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setColor:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       361: aload         9
+       363: getfield      #533                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.lightCoords:I
+       366: invokeinterface #536,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setLight:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       371: pop
+       372: aload_1
+       373: fload         19
+       375: fload         21
+       377: fload         23
+       379: invokeinterface #519,  4          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.addVertex:(FFF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       384: fload         25
+       386: fload         27
+       388: invokeinterface #525,  3          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setUv:(FF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       393: iload         14
+       395: invokeinterface #529,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setColor:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       400: aload         9
+       402: getfield      #533                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.lightCoords:I
+       405: invokeinterface #536,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setLight:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       410: pop
+       411: aload_1
+       412: fload         18
+       414: fload         21
+       416: fload         22
+       418: invokeinterface #519,  4          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.addVertex:(FFF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       423: fload         24
+       425: fload         27
+       427: invokeinterface #525,  3          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setUv:(FF)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       432: iload         14
+       434: invokeinterface #529,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setColor:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       439: aload         9
+       441: getfield      #533                // Field net/minecraft/client/renderer/WeatherEffectRenderer$ColumnInstance.lightCoords:I
+       444: invokeinterface #536,  2          // InterfaceMethod com/mojang/blaze3d/vertex/VertexConsumer.setLight:(I)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+       449: pop
+       450: goto          25
+       453: return
+
+  public void tickRainParticles(net.minecraft.client.multiplayer.ClientLevel, net.minecraft.client.Camera, int, net.minecraft.server.level.ParticleStatus, int);
+    Code:
+         0: aload_1
+         1: fconst_1
+         2: invokevirtual #539                // Method net/minecraft/client/multiplayer/ClientLevel.getRainLevel:(F)F
+         5: fstore        6
+         7: fload         6
+         9: fconst_0
+        10: fcmpg
+        11: ifle          485
+        14: iload_3
+        15: i2l
+        16: ldc2_w        #542                // long 312987231l
+        19: lmul
+        20: invokestatic  #544                // InterfaceMethod net/minecraft/util/RandomSource.createThreadLocalInstance:(J)Lnet/minecraft/util/RandomSource;
+        23: astore        7
+        25: aload_2
+        26: invokevirtual #547                // Method net/minecraft/client/Camera.position:()Lnet/minecraft/world/phys/Vec3;
+        29: invokestatic  #553                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+        32: astore        8
+        34: aconst_null
+        35: astore        9
+        37: iconst_2
+        38: iload         5
+        40: imul
+        41: iconst_1
+        42: iadd
+        43: istore        10
+        45: iload         10
+        47: iload         10
+        49: imul
+        50: istore        11
+        52: ldc_w         #559                // float 0.225f
+        55: iload         11
+        57: i2f
+        58: fmul
+        59: fload         6
+        61: fmul
+        62: fload         6
+        64: fmul
+        65: f2i
+        66: aload         4
+        68: getstatic     #560                // Field net/minecraft/server/level/ParticleStatus.DECREASED:Lnet/minecraft/server/level/ParticleStatus;
+        71: if_acmpne     78
+        74: iconst_2
+        75: goto          79
+        78: iconst_1
+        79: idiv
+        80: istore        12
+        82: iconst_0
+        83: istore        13
+        85: iload         13
+        87: iload         12
+        89: if_icmpge     375
+        92: aload         7
+        94: iload         10
+        96: invokeinterface #566,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       101: iload         5
+       103: isub
+       104: istore        14
+       106: aload         7
+       108: iload         10
+       110: invokeinterface #566,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       115: iload         5
+       117: isub
+       118: istore        15
+       120: aload_1
+       121: getstatic     #91                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+       124: aload         8
+       126: iload         14
+       128: iconst_0
+       129: iload         15
+       131: invokevirtual #569                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+       134: invokevirtual #573                // Method net/minecraft/client/multiplayer/ClientLevel.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+       137: astore        16
+       139: aload         16
+       141: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       144: aload_1
+       145: invokevirtual #580                // Method net/minecraft/client/multiplayer/ClientLevel.getMinY:()I
+       148: if_icmple     369
+       151: aload         16
+       153: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       156: aload         8
+       158: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       161: bipush        10
+       163: iadd
+       164: if_icmpgt     369
+       167: aload         16
+       169: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       172: aload         8
+       174: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       177: bipush        10
+       179: isub
+       180: if_icmplt     369
+       183: aload_0
+       184: aload_1
+       185: aload         16
+       187: invokevirtual #111                // Method getPrecipitationAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/biome/Biome$Precipitation;
+       190: getstatic     #133                // Field net/minecraft/world/level/biome/Biome$Precipitation.RAIN:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+       193: if_acmpne     369
+       196: aload         16
+       198: invokevirtual #583                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       201: astore        9
+       203: aload         4
+       205: getstatic     #587                // Field net/minecraft/server/level/ParticleStatus.MINIMAL:Lnet/minecraft/server/level/ParticleStatus;
+       208: if_acmpne     214
+       211: goto          375
+       214: aload         7
+       216: invokeinterface #445,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+       221: dstore        17
+       223: aload         7
+       225: invokeinterface #445,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextDouble:()D
+       230: dstore        19
+       232: aload_1
+       233: aload         9
+       235: invokevirtual #590                // Method net/minecraft/client/multiplayer/ClientLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       238: astore        21
+       240: aload_1
+       241: aload         9
+       243: invokevirtual #594                // Method net/minecraft/client/multiplayer/ClientLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+       246: astore        22
+       248: aload         21
+       250: aload_1
+       251: aload         9
+       253: invokevirtual #598                // Method net/minecraft/world/level/block/state/BlockState.getCollisionShape:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/phys/shapes/VoxelShape;
+       256: astore        23
+       258: aload         23
+       260: getstatic     #604                // Field net/minecraft/core/Direction$Axis.Y:Lnet/minecraft/core/Direction$Axis;
+       263: dload         17
+       265: dload         19
+       267: invokevirtual #610                // Method net/minecraft/world/phys/shapes/VoxelShape.max:(Lnet/minecraft/core/Direction$Axis;DD)D
+       270: dstore        24
+       272: aload         22
+       274: aload_1
+       275: aload         9
+       277: invokevirtual #615                // Method net/minecraft/world/level/material/FluidState.getHeight:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F
+       280: f2d
+       281: dstore        26
+       283: dload         24
+       285: dload         26
+       287: invokestatic  #620                // Method java/lang/Math.max:(DD)D
+       290: dstore        28
+       292: aload         22
+       294: getstatic     #622                // Field net/minecraft/tags/FluidTags.LAVA:Lnet/minecraft/tags/TagKey;
+       297: invokevirtual #628                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+       300: ifne          328
+       303: aload         21
+       305: getstatic     #632                // Field net/minecraft/world/level/block/Blocks.MAGMA_BLOCK:Lnet/minecraft/world/level/block/Block;
+       308: invokevirtual #638                // Method net/minecraft/world/level/block/state/BlockState.is:(Ljava/lang/Object;)Z
+       311: ifne          328
+       314: aload         21
+       316: invokestatic  #640                // Method net/minecraft/world/level/block/CampfireBlock.isLitCampfire:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       319: ifne          328
+       322: getstatic     #646                // Field net/minecraft/core/particles/ParticleTypes.RAIN:Lnet/minecraft/core/particles/SimpleParticleType;
+       325: goto          331
+       328: getstatic     #651                // Field net/minecraft/core/particles/ParticleTypes.SMOKE:Lnet/minecraft/core/particles/SimpleParticleType;
+       331: astore        30
+       333: aload_1
+       334: aload         30
+       336: aload         9
+       338: invokevirtual #654                // Method net/minecraft/core/BlockPos.getX:()I
+       341: i2d
+       342: dload         17
+       344: dadd
+       345: aload         9
+       347: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       350: i2d
+       351: dload         28
+       353: dadd
+       354: aload         9
+       356: invokevirtual #657                // Method net/minecraft/core/BlockPos.getZ:()I
+       359: i2d
+       360: dload         19
+       362: dadd
+       363: dconst_0
+       364: dconst_0
+       365: dconst_0
+       366: invokevirtual #660                // Method net/minecraft/client/multiplayer/ClientLevel.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+       369: iinc          13, 1
+       372: goto          85
+       375: aload         9
+       377: ifnull        485
+       380: aload         7
+       382: iconst_3
+       383: invokeinterface #566,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       388: aload_0
+       389: dup
+       390: getfield      #664                // Field rainSoundTime:I
+       393: dup_x1
+       394: iconst_1
+       395: iadd
+       396: putfield      #664                // Field rainSoundTime:I
+       399: if_icmpge     485
+       402: aload_0
+       403: iconst_0
+       404: putfield      #664                // Field rainSoundTime:I
+       407: aload         9
+       409: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       412: aload         8
+       414: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       417: iconst_1
+       418: iadd
+       419: if_icmple     468
+       422: aload_1
+       423: getstatic     #91                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+       426: aload         8
+       428: invokevirtual #573                // Method net/minecraft/client/multiplayer/ClientLevel.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+       431: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       434: aload         8
+       436: invokevirtual #577                // Method net/minecraft/core/BlockPos.getY:()I
+       439: i2f
+       440: invokestatic  #667                // Method net/minecraft/util/Mth.floor:(F)I
+       443: if_icmple     468
+       446: aload_1
+       447: aload         9
+       449: getstatic     #669                // Field net/minecraft/sounds/SoundEvents.WEATHER_RAIN_ABOVE:Lnet/minecraft/sounds/SoundEvent;
+       452: getstatic     #675                // Field net/minecraft/sounds/SoundSource.WEATHER:Lnet/minecraft/sounds/SoundSource;
+       455: ldc_w         #681                // float 0.1f
+       458: ldc_w         #495                // float 0.5f
+       461: iconst_0
+       462: invokevirtual #682                // Method net/minecraft/client/multiplayer/ClientLevel.playLocalSound:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V
+       465: goto          485
+       468: aload_1
+       469: aload         9
+       471: getstatic     #686                // Field net/minecraft/sounds/SoundEvents.WEATHER_RAIN:Lnet/minecraft/sounds/SoundEvent;
+       474: getstatic     #675                // Field net/minecraft/sounds/SoundSource.WEATHER:Lnet/minecraft/sounds/SoundSource;
+       477: ldc_w         #689                // float 0.2f
+       480: fconst_1
+       481: iconst_0
+       482: invokevirtual #682                // Method net/minecraft/client/multiplayer/ClientLevel.playLocalSound:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V
+       485: return
+
+  private net.minecraft.world.level.biome.Biome$Precipitation getPrecipitationAt(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+         0: aload_1
+         1: invokevirtual #690                // Method net/minecraft/world/level/Level.getChunkSource:()Lnet/minecraft/world/level/chunk/ChunkSource;
+         4: aload_2
+         5: invokevirtual #654                // Method net/minecraft/core/BlockPos.getX:()I
+         8: invokestatic  #694                // Method net/minecraft/core/SectionPos.blockToSectionCoord:(I)I
+        11: aload_2
+        12: invokevirtual #657                // Method net/minecraft/core/BlockPos.getZ:()I
+        15: invokestatic  #694                // Method net/minecraft/core/SectionPos.blockToSectionCoord:(I)I
+        18: invokevirtual #699                // Method net/minecraft/world/level/chunk/ChunkSource.hasChunk:(II)Z
+        21: ifne          28
+        24: getstatic     #115                // Field net/minecraft/world/level/biome/Biome$Precipitation.NONE:Lnet/minecraft/world/level/biome/Biome$Precipitation;
+        27: areturn
+        28: aload_1
+        29: aload_2
+        30: invokevirtual #705                // Method net/minecraft/world/level/Level.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+        33: invokeinterface #709,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+        38: checkcast     #714                // class net/minecraft/world/level/biome/Biome
+        41: astore_3
+        42: aload_3
+        43: aload_2
+        44: aload_1
+        45: invokevirtual #716                // Method net/minecraft/world/level/Level.getSeaLevel:()I
+        48: invokevirtual #719                // Method net/minecraft/world/level/biome/Biome.getPrecipitationAt:(Lnet/minecraft/core/BlockPos;I)Lnet/minecraft/world/level/biome/Biome$Precipitation;
+        51: areturn
+
+  private static java.lang.String lambda$render$0();
+    Code:
+         0: ldc_w         #722                // String Weather Effect
+         3: areturn
+
+  static {};
+    Code:
+         0: ldc_w         #724                // String textures/environment/rain.png
+         3: invokestatic  #726                // Method net/minecraft/resources/Identifier.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+         6: putstatic     #188                // Field RAIN_LOCATION:Lnet/minecraft/resources/Identifier;
+         9: ldc_w         #732                // String textures/environment/snow.png
+        12: invokestatic  #726                // Method net/minecraft/resources/Identifier.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+        15: putstatic     #198                // Field SNOW_LOCATION:Lnet/minecraft/resources/Identifier;
+        18: return
+}

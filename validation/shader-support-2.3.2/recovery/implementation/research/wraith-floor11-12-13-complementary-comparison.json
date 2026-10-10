@@ -1,0 +1,115 @@
+{
+  "scope": "Private Forge 26.1.2 K1 bridge with Complementary 5.7.1; equal 854x480 camera/entity scenes; descriptive pixel comparison, not full matrix qualification.",
+  "luma_formula": "0.2126*R + 0.7152*G + 0.0722*B, mean over fixed rectangle",
+  "regions_xyxy": {
+    "face": [
+      404,
+      125,
+      449,
+      166
+    ],
+    "torso": [
+      411,
+      172,
+      444,
+      208
+    ],
+    "tail": [
+      416,
+      210,
+      438,
+      259
+    ]
+  },
+  "runs": {
+    "11": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-floor11-lowlight-v55/report.json",
+      "report_sha256": "84a3623f803a4fdca7de5d44da8d84f63b9ffe9a1aba1d2a41895311c8828143",
+      "shader_pack": {
+        "name": "ComplementaryReimagined_r5.7.1.zip",
+        "sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0"
+      },
+      "images": {
+        "night": {
+          "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-floor11-lowlight-v55/wraith-night.png",
+          "sha256": "41f90250892f9cf8962b21ec032cdd4796e0e56f672fa7a7d6cf06a54b8e3c81",
+          "mean_luminance": {
+            "face": 39.63,
+            "torso": 33.88,
+            "tail": 33.06
+          }
+        },
+        "indoor": {
+          "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-floor11-lowlight-v55/wraith-indoor.png",
+          "sha256": "ea10d96391307806c83e4098b90b5246ee8d064681362518c4f9a46d8d2d5ec9",
+          "mean_luminance": {
+            "face": 34.78,
+            "torso": 27.94,
+            "tail": 23.16
+          }
+        }
+      }
+    },
+    "12": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-floor12-lowlight-v56/report.json",
+      "report_sha256": "a25d870786835a3dcae3df86531ba7507822396e5d06d5f6051eea313e1a4e1d",
+      "shader_pack": {
+        "name": "ComplementaryReimagined_r5.7.1.zip",
+        "sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0"
+      },
+      "images": {
+        "night": {
+          "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-floor12-lowlight-v56/wraith-night.png",
+          "sha256": "f9c04c987923c4379e26273efa7b7b0a41d175fa2a273fef2b9daff0abfdbf4e",
+          "mean_luminance": {
+            "face": 43.66,
+            "torso": 37.42,
+            "tail": 35.55
+          }
+        },
+        "indoor": {
+          "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-floor12-lowlight-v56/wraith-indoor.png",
+          "sha256": "779567b49a422bc2e3e0e53cc91f5a913b58ff57feeb1931e93290545dd90e2a",
+          "mean_luminance": {
+            "face": 39.66,
+            "torso": 32.55,
+            "tail": 26.13
+          }
+        }
+      }
+    },
+    "13": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-scenes-toggle-v54/report.json",
+      "report_sha256": "d8ce48871acd0d2cfec034ef69b4dcf11ef2ac22f950d58db7142bc4621bf464",
+      "shader_pack": {
+        "name": "ComplementaryReimagined_r5.7.1.zip",
+        "sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0"
+      },
+      "images": {
+        "night": {
+          "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-scenes-toggle-v54/wraith-night.png",
+          "sha256": "1cf199d929fbc9642662f0fa56b06db7f2289af79b8be5447e08b3dece3bb104",
+          "mean_luminance": {
+            "face": 48.64,
+            "torso": 41.28,
+            "tail": 37.03
+          }
+        },
+        "indoor": {
+          "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-source-shader-texture-complementary-scenes-toggle-v54/wraith-indoor.png",
+          "sha256": "a292c4b29eccea28d004e3e2c82d02b9bbfea57a19e709752b7c890746c12478",
+          "mean_luminance": {
+            "face": 41.69,
+            "torso": 33.83,
+            "tail": 27.17
+          }
+        }
+      }
+    }
+  },
+  "visual_interpretation": {
+    "11": "Borderline face/body separation in low light; not yet clearly readable across packs.",
+    "12": "Eyes, mouth, torso/tail and separated arms visible in these two scenes; cross-pack and full-scene verdict pending.",
+    "13": "Clearly readable in full six-scene reviewed Complementary run; current provisional source default."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "compile_command": [
+    "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/javac",
+    "--release",
+    "17",
+    "-Xlint:all",
+    "-Werror",
+    "-cp",
+    "/home/braydon/.cache/useful-tools-spectral-recovery/native26-emissive-state-bridge-build/classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+    "-d",
+    "/home/braydon/.cache/useful-tools-spectral-recovery/native26-emissive-state-bridge-build/classes",
+    "validation/shader-support-2.3.2/recovery/implementation/research/optifine-options-native-fixture/NativeBridgeHookCheck.java"
+  ],
+  "rows": [
+    {
+      "minecraft": "26.1.2",
+      "forge": "64.0.8",
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-cp",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native26-emissive-state-bridge-build/classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "NativeBridgeHookCheck",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.1.2-64.0.8/forge-26.1.2-64.0.8-client.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/qa/89b6c8051570cf76259041ea13ca4ae5c0147b303c30d85c78d39a3f6305c633/native-options-quad-hooks-donor.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native26-emissive-state-bridge-build/26.1.2-events.log"
+      ],
+      "exit_code": 1,
+      "stderr": "Preserved native methods: net/minecraft/client/renderer/texture/MipmapGenerator=5; intentional compatibility methods=0\nPreserved native methods: net/minecraft/client/renderer/texture/SpriteLoader=16; intentional compatibility methods=2\nPreserved native methods: net/minecraft/client/renderer/texture/TextureAtlas=26; intentional compatibility methods=0\nException in thread \"main\" java.lang.IllegalStateException: Exact publisher emissive predicate comparison absent\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineGuiBridge.nativeEmissiveState(OptifineGuiBridge.java:159)\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineGuiBridge$1.transform(OptifineGuiBridge.java:90)\n\tat NativeBridgeHookCheck.main(NativeBridgeHookCheck.java:135)\n"
+    },
+    {
+      "minecraft": "26.2",
+      "forge": "65.1.2",
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-cp",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native26-emissive-state-bridge-build/classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "NativeBridgeHookCheck",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.2-65.1.2/forge-26.2-65.1.2-client.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/qa/75abfcc78c899c758c3d7d5cf13ee818994e0b5b38e3d5a8783788cc618210b9/native-options-quad-hooks-donor.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native26-emissive-state-bridge-build/26.2-events.log"
+      ],
+      "exit_code": 1,
+      "stderr": "Preserved native methods: net/minecraft/client/renderer/texture/MipmapGenerator=5; intentional compatibility methods=0\nPreserved native methods: net/minecraft/client/renderer/texture/SpriteLoader=16; intentional compatibility methods=2\nPreserved native methods: net/minecraft/client/renderer/texture/TextureAtlas=27; intentional compatibility methods=0\nException in thread \"main\" java.lang.IllegalStateException: Exact publisher emissive predicate comparison absent\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineGuiBridge.nativeEmissiveState(OptifineGuiBridge.java:159)\n\tat com.stonytark.usefultoolsmod.spectralqa.OptifineGuiBridge$1.transform(OptifineGuiBridge.java:90)\n\tat NativeBridgeHookCheck.main(NativeBridgeHookCheck.java:135)\n"
+    }
+  ],
+  "runtime_qualified": false,
+  "scope": "Pinned native atlas/loader/mipmap/state stack checks and unrelated-method identity; native state constructor retains its body and gains actual publisher emissive initialization.",
+  "compile_exit_code": 0,
+  "compile_stderr": "",
+  "checker_source_sha256": "d8f46f8fbe4d693256559d1f3e2be7d38fd9ed4345a930e460021e88315d90ef"
+}

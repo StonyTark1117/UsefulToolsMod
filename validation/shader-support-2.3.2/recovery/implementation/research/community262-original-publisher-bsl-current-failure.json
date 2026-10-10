@@ -1,0 +1,32 @@
+{
+  "target": "26.2-forge",
+  "runtime_pin": "Forge 65.1.2",
+  "integration": "publisher Oculus community port 0.3.0-beta.1",
+  "integration_sha256": "0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227",
+  "mod_artifact_sha256": "957094d68375564c6276db338035f7f113fbadb0d7327e5a7e4b65401ae73223",
+  "pack": "BSL v10.1.1",
+  "pack_sha256": "131ca6b56b100e60577ffdb0dd51bfab2ee6e334564eeee324e5422026891668",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/durable-262-lane/forge262-community0-bsl1011-active-957094-fresh-20261007/report.json",
+  "report_sha256": "1509d8c2443d10c0304af787142b44103a750700d326a1b0aed67ae6a5dda945",
+  "failure_framebuffer": "validation/shader-support-2.3.2/recovery/implementation/durable-262-lane/forge262-community0-bsl1011-active-957094-fresh-20261007/failure-framebuffer.png",
+  "failure_framebuffer_sha256": "3b9748a689e477851bbc12728981133f183f79e89135936221bb8acdc569f119",
+  "world_entry": "normal menu (fresh-frame verified isolated input)",
+  "gpu_route_verified": {
+    "game_pids": [
+      1635277
+    ],
+    "egl_device": "egl0",
+    "interposer_loaded": true
+  },
+  "framebuffer": "1280x720x24",
+  "audio_backend": "ALSOFT_DRIVERS=null",
+  "wayland_unset": true,
+  "activation_reported": false,
+  "compile_error": [
+    "[07Oct2026 22:12:57.514] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=SHADER COMPILER, type=ERROR, severity=HIGH, message='0:8(1): error: #extension directive is not allowed in the middle of a shader'",
+    "[07Oct2026 22:12:57.514] [Render thread/ERROR] [com.mojang.blaze3d.opengl.GlDevice/]: Couldn't compile fragment shader (oculus:pack/741b214d6f051306ee819e81/final_fragment): 0:8(1): error: #extension directive is not allowed in the middle of a shader"
+  ],
+  "classification": "shader compiler / publisher port legacy final adapter ordering; client entered the normal-menu world but pack activation failed, so no entity-scene acceptance and no clean-shutdown claim",
+  "source_patch_comparison": "research/community262-source-compatibility.patch reorders extracted #extension directives ahead of injected declarations and has separately passed private fullscreen candidate runs; that private candidate does not certify the publisher binary or entity gbuffers",
+  "remaining": "Repair original required community-port stack, prove entity gbuffers via the prepared probe, then repeat complete exact-pack scenarios."
+}

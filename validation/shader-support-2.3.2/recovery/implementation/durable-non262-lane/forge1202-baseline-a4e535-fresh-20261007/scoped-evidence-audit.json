@@ -1,0 +1,101 @@
+{
+  "complete": true,
+  "promotable_to_replace": "1.20.2-forge-baseline-iris0-egl0-precipitation-controls",
+  "gaps": [],
+  "requirements": "scoped-requirements.json",
+  "requirements_sha256": "9285fee53e74aa368b1544f6f691821ad4b197e35987603ba4d3fef4f86d5559",
+  "evidence": {
+    "report": "report.json",
+    "report_sha256": "c97a0592c49652e408d13ee8ed481225102b4ebf43e9b64ad5f81e8639c49cd2",
+    "review_sheets": "review-sheets.json",
+    "review_sheets_sha256": "506531711979d65c63de955bcd42c746a8373b714896f0f49fdfac8e846d73a3",
+    "visual_review": "visual-review.json",
+    "visual_review_sha256": "e143ede43b69ffcccf5d52754a63d0a0730ffa01d42008b0052a95340f4e12b2"
+  },
+  "exact_inputs": {
+    "artifact_sha256": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7",
+    "artifact_reported": {
+      "/home/braydon/.cache/useful-tools-spectral-recovery/artifacts/a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7/usefultoolsmod-2.3.1+mc.1.20.2.forge.jar": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7"
+    },
+    "provenance_sha256": "8393012b1653cd84569f598147402edd7821cc80740334a181a4aa4d1823f61c",
+    "provenance_reported_sha256": "8393012b1653cd84569f598147402edd7821cc80740334a181a4aa4d1823f61c",
+    "loader_uid": "net.minecraftforge",
+    "loader_version": "48.1.0"
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_route_verified": {
+      "game_pids": [
+        1417997
+      ],
+      "egl_device": "egl0",
+      "interposer_loaded": true
+    }
+  },
+  "behavioral_gates": {
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "rejected_command_count": 0,
+    "shader_compile_errors": [],
+    "native_damage_checks": [
+      {
+        "entity": "ghost",
+        "request_token": "e4bc19321e984faf9d8c954cd4453dfd",
+        "time_ms": 1791427739267,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.GhostEntity"
+      },
+      {
+        "entity": "wraith",
+        "request_token": "6cb75ec4f836425d8087857704cd6421",
+        "time_ms": 1791427755586,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.WraithEntity"
+      }
+    ],
+    "native_weather_checks": [
+      {
+        "entity": "ghost",
+        "raining": true,
+        "acknowledged": true
+      },
+      {
+        "entity": "wraith",
+        "raining": true,
+        "acknowledged": true
+      }
+    ],
+    "precipitation_fixture": {
+      "biome": "minecraft:plains",
+      "bounds": [
+        -12,
+        192,
+        -12,
+        12,
+        216,
+        12
+      ],
+      "acknowledged": true
+    },
+    "reviewed_capture_count": 33,
+    "paired_full_framebuffers": true
+  },
+  "cleanup": {
+    "sigkill_after_sigterm": [
+      1417558
+    ],
+    "private_launcher_root_retained": true,
+    "private_library_copy_removed": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ]
+  },
+  "note": "Scoped audit only. The main precipitation manifest, current matrix audit, and implementation README were intentionally not edited."
+}

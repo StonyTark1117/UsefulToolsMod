@@ -1,0 +1,78 @@
+{
+  "samples_per_trial": 1800,
+  "warmup_seconds": 10,
+  "repeats": 3,
+  "report_sha256": "62e12d3e44966360f5c467cf3bdf4a8789fc1db64d2ecf3db36b295350a947f2",
+  "paired_trials": [
+    {
+      "repeat": 0,
+      "mask": 1,
+      "median_ratio": 0.9747542431221995,
+      "p95_ratio": 1.0502915075303203
+    },
+    {
+      "repeat": 0,
+      "mask": 2,
+      "median_ratio": 0.8440209717461918,
+      "p95_ratio": 0.7914057948166071
+    },
+    {
+      "repeat": 0,
+      "mask": 3,
+      "median_ratio": 1.0275748399089986,
+      "p95_ratio": 0.9944011090020913
+    },
+    {
+      "repeat": 1,
+      "mask": 1,
+      "median_ratio": 1.0100180467574267,
+      "p95_ratio": 0.9750219231628963
+    },
+    {
+      "repeat": 1,
+      "mask": 2,
+      "median_ratio": 1.015726838791753,
+      "p95_ratio": 0.8001526673566299
+    },
+    {
+      "repeat": 1,
+      "mask": 3,
+      "median_ratio": 1.4620456098256411,
+      "p95_ratio": 1.55354774301121
+    },
+    {
+      "repeat": 2,
+      "mask": 1,
+      "median_ratio": 0.8823323998785384,
+      "p95_ratio": 0.720359618383593
+    },
+    {
+      "repeat": 2,
+      "mask": 2,
+      "median_ratio": 1.2972416646482832,
+      "p95_ratio": 1.4346891404179902
+    },
+    {
+      "repeat": 2,
+      "mask": 3,
+      "median_ratio": 1.1017520073148213,
+      "p95_ratio": 0.9832634398496574
+    }
+  ],
+  "summary": {
+    "1": {
+      "median_ratio": 0.9747542431221995,
+      "p95_ratio": 0.9750219231628963
+    },
+    "2": {
+      "median_ratio": 1.015726838791753,
+      "p95_ratio": 0.8001526673566299
+    },
+    "3": {
+      "median_ratio": 1.1017520073148213,
+      "p95_ratio": 0.9944011090020913
+    }
+  },
+  "scope": "Sole owned EGL GPU run; matched static scene, uncapped FPS. Frame trials completed before an unclean XDestroyWindow shutdown; native-menu retry remains required.",
+  "decision": "No reproducible performance regression established by these pairs; visual mask rejection remains independent."
+}

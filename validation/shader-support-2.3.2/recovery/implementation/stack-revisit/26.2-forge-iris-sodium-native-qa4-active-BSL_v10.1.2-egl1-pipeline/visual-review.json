@@ -1,0 +1,28 @@
+{
+  "target": "26.2-forge",
+  "runtime_pin": "Forge 65.1.2",
+  "integration": "private Iris 1.11.4 + Sodium 0.9.2 Forge native port",
+  "pack": "BSL 10.1.2",
+  "report_sha256": "781db030d10a0e1831434a1848ae96bb62e57fc865d0b0e2b5103a0839ca6579",
+  "image_sha256": {
+    "ghost-day.png": "4d63ed6058168c3db3a59690cdb285e3f9c659d02d2b4ac373c1363a84d344ee",
+    "ghost-night.png": "ca0adb914bf7a9f2e6eee39207523501bbfe6e6b8b48556596f6b5a2f8a0a3de",
+    "ghost-rain.png": "a00e5a8a61a0bc43a48b4a860a0c9c451c020d7456af4f93709597b01c6c3e0d",
+    "ghost-dark-background.png": "eb7d76397ebbff50ab345d88f6860040abbaea67b63dfd3967e7b948e89522bb",
+    "ghost-bright-background.png": "c53362e4dd623eb3f460948b6256cc022188876239be24f1091ef1dd4ebdccc9",
+    "ghost-indoor.png": "db732103c1ec0896c20cb8261677f8b65a64e6fb515a8fffeca39b7451f7eaeb",
+    "wraith-day.png": "6291610113b3be0b5cca6f0e2b34c57fa47ea190603876da58f4db5546c83723",
+    "wraith-night.png": "d43eec27e6c46bf5d50f272534dd9dfe028ced9d26a1b50c01be084163522ebe",
+    "wraith-rain.png": "775037dcddac3f50d51aee8d0f30eaafb45fa33b81a51535e8302497bc93c32b",
+    "wraith-dark-background.png": "c881d3a660e1c9e39c169165155259525b2747f2e94f2445cfc6a057aef043d4",
+    "wraith-bright-background.png": "41183c89d5dc40a6312b750a146a1fa5ae4bea20546d2a76615935be938878c1",
+    "wraith-indoor.png": "44451ebeb74cd07b40dd4cb68b50e6cef42a14e3dc2f0415a9c1ae8897a1bec6"
+  },
+  "scene_verdict": "pass: Ghost and Wraith visible across all six captured scenes; Wraith face and separated arms remain readable at night and indoors; no obvious colored framebuffer artifact in the scene contact sheet",
+  "report_status": "captures_complete",
+  "shader_activation_logged": true,
+  "clean_client_exit": true,
+  "commands_accepted": 119,
+  "commands_total": 119,
+  "limits": "Visual scene verdict only for private Iris/Sodium port. Screenshots and activation do not yet prove that gbuffers_entities compiled and processed entity pixels; prepared one-shader-entry diagnostic probe remains unrun. This is not the exact community-port stack and does not close its requirement."
+}

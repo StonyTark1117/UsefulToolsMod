@@ -1,0 +1,93 @@
+{
+  "scope": "Bounded exact-byte reconstruction of the two missing recorded classic inputs. No acceptance report, manifest, or audit was changed; no runtime or GUI validation was performed.",
+  "generated_at": "2026-10-07T19:01:58-07:00",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "toolchain": {
+    "minecraft": "1.7.10",
+    "loader": "Forge 10.13.4.1614",
+    "build_plugin": "com.gtnewhorizons.retrofuturagradle 1.4.9",
+    "gradle": "8.8",
+    "gradle_jvm": "OpenJDK 21.0.12.1",
+    "compile_toolchain": "OpenJDK 1.8.0_504",
+    "main_build_command": "JAVA_HOME=/usr/lib/jvm/java-21-openjdk scripts/build-matrix.sh 1.7.10-forge",
+    "qa_build_command": "JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew --no-daemon --max-workers=1 -I tests/spectral-qa/classic.gradle reobfSpectralQaJar"
+  },
+  "main_artifact": {
+    "expected_sha256": "52ab3d5b4dc58833bd638955e2f74bfc6a8ba1c96d0d2b7871b9b37fc6fb71ce",
+    "restored_path": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/52ab3d5b4dc58833bd638955e2f74bfc6a8ba1c96d0d2b7871b9b37fc6fb71ce/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+    "size_bytes": 729007,
+    "recorded_source_report": "validation/shader-support-2.3.2/recovery/implementation/classic-native-uv-final/1.7.10-forge-baseline-optifine0-egl0-precipitation-controls/report.json",
+    "recorded_source_map_entries": 969,
+    "recorded_source_map_canonical_sha256": "4af78f5c6f6a2452106316a031dbc1a1025c8e9c3d4d4699f3ea6105b27f2825",
+    "current_source_mismatches": 0,
+    "model_wraith_source_sha256": "4ddf789570f5d1c253f3c25716286e69ef1db476fad3ba7935cd8f6b2ec4f216",
+    "build_log": "validation/shader-support-2.3.2/recovery/implementation/build/classic-shader-native-uv-current.log",
+    "build_log_sha256": "8152dd9515f0d29ea9c93980e9d50c496f046b0ec447ac958b8fff48c8556fd6",
+    "reconstruction_source": "/home/braydon/Useful-Tools/1.7.10/build/libs/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+    "reconstruction_source_sha256": "0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182",
+    "archive_entries": 1004,
+    "payload_digest_over_names_and_uncompressed_bytes": "fdadb300d873b2873e6a782d21b7fc2d505435a57feb0e36337d5b4758fc50d3",
+    "reconstruction": {
+      "method": "Changed only each local and central ZIP DOS timestamp. Entry order, compressed payloads, flags, attributes, and all other bytes were retained.",
+      "source_uniform_timestamp": "2026-10-05T06:56:26",
+      "recovered_uniform_timestamp": "2026-10-05T01:10:26",
+      "changed_byte_positions": 4016,
+      "search_start": "2026-10-05T00:00:00",
+      "step_seconds": 2,
+      "planned_window_seconds": 7200,
+      "attempts_through_match": 2114,
+      "wall_clock_limit_seconds": 40,
+      "result": "exact_sha256_match"
+    }
+  },
+  "qa_artifact": {
+    "expected_sha256": "686455d95929c3b00f0cb93ee62ece5d797b8fbc3b17466910dd3a4f09ac773f",
+    "restored_path": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/686455d95929c3b00f0cb93ee62ece5d797b8fbc3b17466910dd3a4f09ac773f/usefultools-spectral-qa-2.3.1+mc.1.7.10.forge.jar",
+    "size_bytes": 11132,
+    "recorded_artifact_manifest": "validation/shader-support-2.3.2/recovery/implementation/classic-qa-native-redstone-gui-artifact.json",
+    "recorded_source_report": "validation/shader-support-2.3.2/recovery/implementation/baseline-final-controls/1.7.10-forge-baseline-final-controls-egl1-native-redstone-gui/report.json",
+    "recorded_source_map_entries": 969,
+    "recorded_source_map_canonical_sha256": "a2b790fe92409d0e8b372cc278b6b00af370bb89917e2437e1f343b088a0b576",
+    "current_source_mismatches": [
+      {
+        "path": "1.7.10/src/main/java/com/stonytark/usefultoolsmod/classic/client/ModelWraith.java",
+        "recorded_sha256": "624f14ab0828b81a60eae62cfaded3d37e2bf0e840d104943032dafa64170fce",
+        "current_sha256": "4ddf789570f5d1c253f3c25716286e69ef1db476fad3ba7935cd8f6b2ec4f216",
+        "note": "This main-mod source changed after the QA task ran. It is not packaged in the separately restored QA JAR."
+      }
+    ],
+    "qa_source": "tests/spectral-qa/classic/java/com/stonytark/usefultoolsmod/spectralqa/ClassicSpectralQa.java",
+    "qa_source_recorded_sha256": "0454af48d914aa6a5f0f1632cda580f274470c8734823d8c40019d52c8c3c3fb",
+    "qa_source_current_sha256": "0454af48d914aa6a5f0f1632cda580f274470c8734823d8c40019d52c8c3c3fb",
+    "init_script": "tests/spectral-qa/classic.gradle",
+    "init_script_sha256": "a3e71d590529cecbe0a1baa6abe5f817aba7d28d2a42e9c9f18fb81d7ef55ed1",
+    "build_log": "validation/shader-support-2.3.2/recovery/implementation/build/classic-qa-native-redstone-gui.log",
+    "build_log_sha256": "42481654d02530d7ded431afea84f2dbd8f4adf0b3f27c1734889f48e7bdae54",
+    "fresh_rebuild": {
+      "sha256": "06710f100b6039ab0eec03df59cd8493951022982e2a2229999e7d5060bf8bb7",
+      "timestamp_search_start": "2026-10-04T23:45:00",
+      "timestamp_search_end": "2026-10-05T00:14:58",
+      "step_seconds": 2,
+      "attempts": 900,
+      "result": "no_match",
+      "disposition": "No bytes from this nonmatching rebuild were retained under restored-inputs."
+    },
+    "gradle_cache_recovery": {
+      "cache_key": "0e98e3fdf6fb93a93283474b0ca03106",
+      "cache_entry": "/home/braydon/.gradle/caches/build-cache-1/0e98e3fdf6fb93a93283474b0ca03106",
+      "cache_entry_sha256": "ac17ebc3c4ff3db31ae2dec9d9ae198f0e9ee33cecbb779472ec3b22cc630a17",
+      "task_identity": ":reobfSpectralQaJar",
+      "gradle_version": "8.8",
+      "creation_time": "2026-10-05T00:04:31-07:00",
+      "archive_member": "tree-archiveFile",
+      "method": "Extracted the task's original cached archive member without rewriting it.",
+      "result": "exact_sha256_match"
+    }
+  },
+  "verification": {
+    "exact_hashes_rechecked_after_write": true,
+    "nonmatching_candidates_written_to_restored_inputs": false,
+    "acceptance_or_audit_files_changed": false,
+    "gui_or_client_launched": false
+  }
+}

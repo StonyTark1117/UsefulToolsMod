@@ -1,0 +1,39 @@
+{
+  "target": "1.21.1-neoforge",
+  "invocation": [
+    "scripts/validate-packaged-spectral.py",
+    "--template",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-262-neoforge",
+    "--artifact",
+    "/tmp/useful-tools-lighting-reviewed-artifacts/007797b0f99b3aa18a01c65bf130617e3118391893b58114e3820fc58c89e084/usefultoolsmod-2.3.1+mc.1.21.1.neoforge.jar",
+    "--artifact-provenance",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/profiles/1.21.1-neoforge-artifact-007797b0f99b3aa18a01c65bf130617e3118391893b58114e3820fc58c89e084.json",
+    "--minecraft-version",
+    "1.21.1",
+    "--java-path",
+    "/usr/lib/jvm/java-21-openjdk/bin/java",
+    "--loader-uid",
+    "net.neoforged",
+    "--loader-version",
+    "21.1.219",
+    "--world-source",
+    "/tmp/spectral-prism-qcq1k1xm/instances/spectral/minecraft/saves",
+    "--mode",
+    "baseline",
+    "--lighting-qa",
+    "--jvm-arg=-DusefulToolsLightingQa=true",
+    "--output",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/1.21.1-neoforge",
+    "--lighting-direct-client",
+    "--client-mod",
+    "/tmp/useful-tools-lighting-qa-packages/1.21.1-neoforge-acceptance-only.jar"
+  ],
+  "components": {
+    "components": [
+      {
+        "uid": "net.minecraft",
+        "version": "1.21.1"
+      }
+    ]
+  }
+}

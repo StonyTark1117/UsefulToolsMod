@@ -1,0 +1,450 @@
+Compiled from "OptiFineBaseTransformer.java"
+public class optifine.OptiFineBaseTransformer implements optifine.IResourceProvider,optifine.IOptiFineResourceLocator {
+  private static final org.apache.logging.log4j.Logger LOGGER;
+
+  private java.util.zip.ZipFile ofZipFile;
+
+  private java.lang.String forgeJarUrlStr;
+
+  private java.util.Map<java.lang.String, java.lang.String> patchMap;
+
+  private java.util.regex.Pattern[] patterns;
+
+  public static final java.lang.String PREFIX_SRG;
+
+  public static final java.lang.String SUFFIX_CLASS;
+
+  public static final java.lang.String PREFIX_PATCH_SRG;
+
+  public static final java.lang.String SUFFIX_CLASS_XDELTA;
+
+  public static final java.lang.String PREFIX_OPTIFINE;
+
+  static {};
+    Code:
+         0: invokestatic  #40                 // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+         3: putstatic     #46                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+         6: return
+
+  public optifine.OptiFineBaseTransformer(java.util.zip.ZipFile);
+    Code:
+         0: aload_0
+         1: invokespecial #52                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #54                 // Field patchMap:Ljava/util/Map;
+         9: aload_0
+        10: aconst_null
+        11: putfield      #56                 // Field patterns:[Ljava/util/regex/Pattern;
+        14: aload_0
+        15: aload_1
+        16: putfield      #58                 // Field ofZipFile:Ljava/util/zip/ZipFile;
+        19: aload_0
+        20: aload_1
+        21: invokestatic  #60                 // Method optifine/Patcher.getConfigurationMap:(Ljava/util/zip/ZipFile;)Ljava/util/Map;
+        24: putfield      #54                 // Field patchMap:Ljava/util/Map;
+        27: aload_0
+        28: aload_0
+        29: getfield      #54                 // Field patchMap:Ljava/util/Map;
+        32: invokestatic  #66                 // Method optifine/Patcher.getConfigurationPatterns:(Ljava/util/Map;)[Ljava/util/regex/Pattern;
+        35: putfield      #56                 // Field patterns:[Ljava/util/regex/Pattern;
+        38: goto          46
+        41: astore_2
+        42: aload_2
+        43: invokevirtual #70                 // Method java/io/IOException.printStackTrace:()V
+        46: ldc           #75                 // String net.minecraft.client.Minecraft
+        48: invokestatic  #77                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+        51: astore_2
+        52: aload_2
+        53: invokevirtual #83                 // Method java/lang/Class.getProtectionDomain:()Ljava/security/ProtectionDomain;
+        56: invokevirtual #87                 // Method java/security/ProtectionDomain.getCodeSource:()Ljava/security/CodeSource;
+        59: invokevirtual #93                 // Method java/security/CodeSource.getLocation:()Ljava/net/URL;
+        62: astore_3
+        63: aload_0
+        64: aload_3
+        65: invokevirtual #99                 // Method java/net/URL.toString:()Ljava/lang/String;
+        68: putfield      #105                // Field forgeJarUrlStr:Ljava/lang/String;
+        71: getstatic     #46                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        74: aload_0
+        75: getfield      #105                // Field forgeJarUrlStr:Ljava/lang/String;
+        78: invokedynamic #107,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        83: invokeinterface #111,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+        88: goto          102
+        91: astore_2
+        92: getstatic     #46                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+        95: ldc           #117                // String Forge JAR not available
+        97: invokeinterface #111,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+       102: return
+      Exception table:
+         from    to  target type
+            19    38    41   Class java/io/IOException
+            46    88    91   Class java/lang/Exception
+
+  public org.objectweb.asm.tree.ClassNode transform(org.objectweb.asm.tree.ClassNode, java.lang.String);
+    Code:
+         0: aload_1
+         1: astore_3
+         2: aload_0
+         3: aload_2
+         4: invokevirtual #135                // Method getSrgClassPath:(Ljava/lang/String;)Ljava/lang/String;
+         7: astore        4
+         9: aload_0
+        10: aload         4
+        12: invokevirtual #138                // Method getOptiFineResource:(Ljava/lang/String;)[B
+        15: astore        5
+        17: aload         5
+        19: ifnull        61
+        22: new           #142                // class java/io/ByteArrayInputStream
+        25: dup
+        26: aload         5
+        28: invokespecial #144                // Method java/io/ByteArrayInputStream."<init>":([B)V
+        31: astore        6
+        33: aload_0
+        34: aload         6
+        36: invokevirtual #147                // Method loadClass:(Ljava/io/InputStream;)Lorg/objectweb/asm/tree/ClassNode;
+        39: astore        7
+        41: aload         7
+        43: ifnull        61
+        46: aload_0
+        47: aload         7
+        49: invokevirtual #151                // Method debugClass:(Lorg/objectweb/asm/tree/ClassNode;)V
+        52: aload_3
+        53: aload         7
+        55: invokestatic  #155                // Method optifine/AccessFixer.fixMemberAccess:(Lorg/objectweb/asm/tree/ClassNode;Lorg/objectweb/asm/tree/ClassNode;)V
+        58: aload         7
+        60: astore_3
+        61: aload_3
+        62: areturn
+
+  private void debugClass(org.objectweb.asm.tree.ClassNode);
+    Code:
+         0: return
+
+  private org.objectweb.asm.tree.ClassNode loadClass(java.io.InputStream);
+    Code:
+         0: new           #176                // class org/objectweb/asm/ClassReader
+         3: dup
+         4: aload_1
+         5: invokespecial #178                // Method org/objectweb/asm/ClassReader."<init>":(Ljava/io/InputStream;)V
+         8: astore_2
+         9: new           #171                // class org/objectweb/asm/tree/ClassNode
+        12: dup
+        13: ldc           #183                // int 393216
+        15: invokespecial #184                // Method org/objectweb/asm/tree/ClassNode."<init>":(I)V
+        18: astore_3
+        19: aload_2
+        20: aload_3
+        21: iconst_0
+        22: invokevirtual #187                // Method org/objectweb/asm/ClassReader.accept:(Lorg/objectweb/asm/ClassVisitor;I)V
+        25: aload_3
+        26: areturn
+        27: astore_2
+        28: aload_2
+        29: invokevirtual #70                 // Method java/io/IOException.printStackTrace:()V
+        32: aconst_null
+        33: areturn
+      Exception table:
+         from    to  target type
+             0    26    27   Class java/io/IOException
+
+  protected java.lang.String[] getResourceNames(java.lang.String, java.lang.String);
+    Code:
+         0: new           #196                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #198                // Method java/util/ArrayList."<init>":()V
+         7: astore_3
+         8: aload_0
+         9: getfield      #58                 // Field ofZipFile:Ljava/util/zip/ZipFile;
+        12: invokevirtual #199                // Method java/util/zip/ZipFile.entries:()Ljava/util/Enumeration;
+        15: astore        4
+        17: goto          72
+        20: aload         4
+        22: invokeinterface #203,  1          // InterfaceMethod java/util/Enumeration.nextElement:()Ljava/lang/Object;
+        27: checkcast     #209                // class java/util/zip/ZipEntry
+        30: astore        5
+        32: aload         5
+        34: invokevirtual #211                // Method java/util/zip/ZipEntry.getName:()Ljava/lang/String;
+        37: astore        6
+        39: aload         6
+        41: aload_1
+        42: invokevirtual #214                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        45: ifne          51
+        48: goto          72
+        51: aload         6
+        53: aload_2
+        54: invokevirtual #218                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+        57: ifne          63
+        60: goto          72
+        63: aload_3
+        64: aload         6
+        66: invokeinterface #221,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        71: pop
+        72: aload         4
+        74: invokeinterface #227,  1          // InterfaceMethod java/util/Enumeration.hasMoreElements:()Z
+        79: ifne          20
+        82: aload_3
+        83: aload_3
+        84: invokeinterface #231,  1          // InterfaceMethod java/util/List.size:()I
+        89: anewarray     #173                // class java/lang/String
+        92: invokeinterface #235,  2          // InterfaceMethod java/util/List.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+        97: checkcast     #239                // class "[Ljava/lang/String;"
+       100: astore        5
+       102: aload         5
+       104: areturn
+
+  private byte[] getOptiFineResource(java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #253                // Method getOptiFineResourceStream:(Ljava/lang/String;)Ljava/io/InputStream;
+         5: astore_2
+         6: aload_2
+         7: ifnonnull     12
+        10: aconst_null
+        11: areturn
+        12: aload_2
+        13: invokestatic  #257                // Method optifine/Utils.readAll:(Ljava/io/InputStream;)[B
+        16: astore_3
+        17: aload_2
+        18: invokevirtual #263                // Method java/io/InputStream.close:()V
+        21: aload_3
+        22: areturn
+        23: astore_2
+        24: aload_2
+        25: invokevirtual #70                 // Method java/io/IOException.printStackTrace:()V
+        28: aconst_null
+        29: areturn
+      Exception table:
+         from    to  target type
+             0    10    23   Class java/io/IOException
+            12    22    23   Class java/io/IOException
+
+  public synchronized java.io.InputStream getOptiFineResourceStream(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc_w         #268                // String /
+         4: invokestatic  #270                // Method optifine/Utils.removePrefix:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+         7: astore_1
+         8: aload_0
+         9: aload_1
+        10: invokevirtual #274                // Method getOptiFineResourceStreamZip:(Ljava/lang/String;)Ljava/io/InputStream;
+        13: astore_2
+        14: aload_2
+        15: ifnull        20
+        18: aload_2
+        19: areturn
+        20: aload_0
+        21: aload_1
+        22: invokevirtual #277                // Method getOptiFineResourceStreamPatched:(Ljava/lang/String;)Ljava/io/InputStream;
+        25: astore_2
+        26: aload_2
+        27: ifnull        32
+        30: aload_2
+        31: areturn
+        32: aconst_null
+        33: areturn
+
+  public java.io.InputStream getResourceStream(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc_w         #268                // String /
+         4: invokestatic  #270                // Method optifine/Utils.removePrefix:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+         7: astore_1
+         8: invokestatic  #281                // Method java/lang/ClassLoader.getSystemClassLoader:()Ljava/lang/ClassLoader;
+        11: aload_1
+        12: invokevirtual #287                // Method java/lang/ClassLoader.getResources:(Ljava/lang/String;)Ljava/util/Enumeration;
+        15: astore_2
+        16: goto          58
+        19: aload_2
+        20: invokeinterface #203,  1          // InterfaceMethod java/util/Enumeration.nextElement:()Ljava/lang/Object;
+        25: checkcast     #100                // class java/net/URL
+        28: astore_3
+        29: aload_0
+        30: getfield      #105                // Field forgeJarUrlStr:Ljava/lang/String;
+        33: ifnull        53
+        36: aload_3
+        37: invokevirtual #291                // Method java/net/URL.getPath:()Ljava/lang/String;
+        40: aload_0
+        41: getfield      #105                // Field forgeJarUrlStr:Ljava/lang/String;
+        44: invokevirtual #214                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        47: ifeq          53
+        50: goto          58
+        53: aload_3
+        54: invokevirtual #294                // Method java/net/URL.openStream:()Ljava/io/InputStream;
+        57: areturn
+        58: aload_2
+        59: invokeinterface #227,  1          // InterfaceMethod java/util/Enumeration.hasMoreElements:()Z
+        64: ifne          19
+        67: aconst_null
+        68: areturn
+        69: astore_2
+        70: aconst_null
+        71: areturn
+      Exception table:
+         from    to  target type
+             8    57    69   Class java/io/IOException
+            58    67    69   Class java/io/IOException
+
+  public synchronized java.io.InputStream getOptiFineResourceStreamZip(java.lang.String);
+    Code:
+         0: aload_0
+         1: getfield      #58                 // Field ofZipFile:Ljava/util/zip/ZipFile;
+         4: ifnonnull     9
+         7: aconst_null
+         8: areturn
+         9: aload_1
+        10: ldc_w         #268                // String /
+        13: invokestatic  #270                // Method optifine/Utils.removePrefix:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        16: astore_1
+        17: aload_0
+        18: getfield      #58                 // Field ofZipFile:Ljava/util/zip/ZipFile;
+        21: aload_1
+        22: invokevirtual #302                // Method java/util/zip/ZipFile.getEntry:(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+        25: astore_2
+        26: aload_2
+        27: ifnonnull     32
+        30: aconst_null
+        31: areturn
+        32: aload_0
+        33: getfield      #58                 // Field ofZipFile:Ljava/util/zip/ZipFile;
+        36: aload_2
+        37: invokevirtual #306                // Method java/util/zip/ZipFile.getInputStream:(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+        40: astore_3
+        41: aload_3
+        42: areturn
+        43: astore_3
+        44: aload_3
+        45: invokevirtual #70                 // Method java/io/IOException.printStackTrace:()V
+        48: aconst_null
+        49: areturn
+      Exception table:
+         from    to  target type
+            32    42    43   Class java/io/IOException
+
+  public synchronized byte[] getOptiFineResourceZip(java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #274                // Method getOptiFineResourceStreamZip:(Ljava/lang/String;)Ljava/io/InputStream;
+         5: astore_2
+         6: aload_2
+         7: ifnonnull     12
+        10: aconst_null
+        11: areturn
+        12: aload_2
+        13: invokestatic  #257                // Method optifine/Utils.readAll:(Ljava/io/InputStream;)[B
+        16: astore_3
+        17: aload_3
+        18: areturn
+        19: astore_3
+        20: aconst_null
+        21: areturn
+      Exception table:
+         from    to  target type
+            12    18    19   Class java/io/IOException
+
+  public synchronized java.io.InputStream getOptiFineResourceStreamPatched(java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #312                // Method getOptiFineResourcePatched:(Ljava/lang/String;)[B
+         5: astore_2
+         6: aload_2
+         7: ifnonnull     12
+        10: aconst_null
+        11: areturn
+        12: new           #142                // class java/io/ByteArrayInputStream
+        15: dup
+        16: aload_2
+        17: invokespecial #144                // Method java/io/ByteArrayInputStream."<init>":([B)V
+        20: areturn
+
+  public synchronized byte[] getOptiFineResourcePatched(java.lang.String);
+    Code:
+         0: aload_0
+         1: getfield      #56                 // Field patterns:[Ljava/util/regex/Pattern;
+         4: ifnull        14
+         7: aload_0
+         8: getfield      #54                 // Field patchMap:Ljava/util/Map;
+        11: ifnonnull     16
+        14: aconst_null
+        15: areturn
+        16: aload_1
+        17: ldc_w         #268                // String /
+        20: invokestatic  #270                // Method optifine/Utils.removePrefix:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        23: astore_1
+        24: aload_1
+        25: invokedynamic #315,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        30: astore_2
+        31: aload_0
+        32: aload_2
+        33: invokevirtual #316                // Method getOptiFineResourceZip:(Ljava/lang/String;)[B
+        36: astore_3
+        37: aload_3
+        38: ifnonnull     43
+        41: aconst_null
+        42: areturn
+        43: aload_1
+        44: aload_3
+        45: aload_0
+        46: getfield      #56                 // Field patterns:[Ljava/util/regex/Pattern;
+        49: aload_0
+        50: getfield      #54                 // Field patchMap:Ljava/util/Map;
+        53: aload_0
+        54: invokestatic  #318                // Method optifine/Patcher.applyPatch:(Ljava/lang/String;[B[Ljava/util/regex/Pattern;Ljava/util/Map;Loptifine/IResourceProvider;)[B
+        57: astore        4
+        59: aload_1
+        60: invokedynamic #322,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        65: astore        5
+        67: aload_0
+        68: aload         5
+        70: invokevirtual #316                // Method getOptiFineResourceZip:(Ljava/lang/String;)[B
+        73: astore        6
+        75: aload         6
+        77: ifnull        136
+        80: new           #173                // class java/lang/String
+        83: dup
+        84: aload         6
+        86: ldc_w         #323                // String ASCII
+        89: invokespecial #325                // Method java/lang/String."<init>":([BLjava/lang/String;)V
+        92: astore        7
+        94: aload         4
+        96: invokestatic  #328                // Method optifine/HashUtils.getHashMd5:([B)[B
+        99: astore        8
+       101: aload         8
+       103: invokestatic  #334                // Method optifine/HashUtils.toHexString:([B)Ljava/lang/String;
+       106: astore        9
+       108: aload         7
+       110: aload         9
+       112: invokevirtual #338                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       115: ifne          136
+       118: new           #71                 // class java/io/IOException
+       121: dup
+       122: aload_1
+       123: aload         7
+       125: aload         9
+       127: invokedynamic #341,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       132: invokespecial #344                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+       135: athrow
+       136: aload         4
+       138: areturn
+       139: astore        4
+       141: aload         4
+       143: invokevirtual #346                // Method java/lang/Exception.printStackTrace:()V
+       146: aconst_null
+       147: areturn
+      Exception table:
+         from    to  target type
+            43   138   139   Class java/lang/Exception
+
+  public java.lang.String getSrgClassPath(java.lang.String);
+    Code:
+         0: aload_1
+         1: bipush        46
+         3: bipush        47
+         5: invokevirtual #354                // Method java/lang/String.replace:(CC)Ljava/lang/String;
+         8: invokedynamic #358,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        13: astore_2
+        14: aload_2
+        15: areturn
+}

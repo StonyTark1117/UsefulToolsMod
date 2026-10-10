@@ -1,0 +1,22 @@
+{
+  "integration": "OptiFine1.20.2HD_UI7pre1",
+  "loader": "Forge48.1.0",
+  "pack": "ComplementaryReimagined5.9.3",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-forge-optifine-complementary-native-outline-control/report.json",
+  "report_sha256": "8877eb8877f77583f17cd852777561d429cdd6582aa3816bc7abefc22226bd7d",
+  "reviewed_captures": {
+    "vanilla-sheep-outline-active.png": "20a5a954f3323786b0f68a18b34edce1a700accbe236c72f1e287cfa630a3368",
+    "vanilla-sheep-outline-disabled.png": "4d582e5a3cc71948cd00f14b25d127103454a3acad2128ef7527baa08d3c2485",
+    "wraith-outline.png": "87958ddc0c6aa087a993a35598b2fa5f7364ce6765a2c7ef38079f2000757119"
+  },
+  "native_api_inspection": {
+    "file": "validation/shader-support-2.3.2/recovery/implementation/research/optifine1202-native-level-renderer-javap.txt",
+    "sha256": "1340925128738cb8c1c74be30cec6ff99ccaac15eefb4d7bd6e95dd0dbb1e4a6",
+    "input_archive": "/tmp/usefultools-shaders-2.3.2/optifineoforge-native-20293-payload/optifine-official-patched.jar",
+    "input_sha256": "bcb6d2a0455c9e9623ce456c1e41b5936f0596341609457ef11521322e67d632",
+    "method": "LevelRenderer.shouldShowEntityOutlines",
+    "native_behavior": "Returns false when Config.isShaders or Config.isAntialiasing is true, before vanilla outline target/postchain checks."
+  },
+  "runtime_observation": "Both native sheep and Wraith lack outlines under active shader; native sheep white outline returns after verified disabling. Not caused by the mod lighting path.",
+  "disposition": "Native integration capability absence documented; required outline disposition retained for acceptance reconciliation. No extra rendering pass introduced."
+}

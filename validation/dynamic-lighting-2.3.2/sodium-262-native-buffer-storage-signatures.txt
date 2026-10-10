@@ -1,0 +1,68 @@
+Compiled from "BufferStorage.java"
+public abstract class com.mojang.blaze3d.opengl.BufferStorage {
+  public com.mojang.blaze3d.opengl.BufferStorage();
+  public static com.mojang.blaze3d.opengl.BufferStorage create(org.lwjgl.opengl.GLCapabilities, java.util.Set<java.lang.String>);
+  public abstract com.mojang.blaze3d.opengl.GlBuffer createBuffer(com.mojang.blaze3d.opengl.DirectStateAccess, int, long);
+  public abstract com.mojang.blaze3d.opengl.GlBuffer createBuffer(com.mojang.blaze3d.opengl.DirectStateAccess, int, java.nio.ByteBuffer);
+}
+Compiled from "GlDevice.java"
+class com.mojang.blaze3d.opengl.GlDevice implements com.mojang.blaze3d.systems.GpuDeviceBackend {
+  private static final org.slf4j.Logger LOGGER;
+  protected static boolean USE_GL_ARB_vertex_attrib_binding;
+  protected static boolean USE_GL_KHR_debug;
+  protected static boolean USE_GL_EXT_debug_label;
+  protected static boolean USE_GL_ARB_debug_output;
+  protected static boolean USE_GL_ARB_direct_state_access;
+  protected static boolean USE_GL_ARB_buffer_storage;
+  protected static boolean USE_GL_ARB_base_instance;
+  protected static boolean USE_GL_ARB_draw_indirect;
+  protected static boolean USE_GL_ARB_multi_draw_indirect;
+  protected static boolean USE_GL_ARB_shader_draw_parameters;
+  private final com.mojang.blaze3d.opengl.GlCommandEncoder encoder;
+  private final com.mojang.blaze3d.opengl.GlDebug debugLog;
+  private final com.mojang.blaze3d.opengl.GlDebugLabel debugLabels;
+  private final com.mojang.blaze3d.opengl.DirectStateAccess directStateAccess;
+  private final com.mojang.blaze3d.shaders.ShaderSource defaultShaderSource;
+  private final java.util.Map<com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.opengl.GlRenderPipeline> pipelineCache;
+  private final java.util.Map<com.mojang.blaze3d.opengl.GlDevice$ShaderCompilationKey, com.mojang.blaze3d.opengl.GlShaderModule> shaderCache;
+  private final com.mojang.blaze3d.opengl.FrameBufferCache frameBufferCache;
+  private final com.mojang.blaze3d.opengl.VertexArrayCache vertexArrayCache;
+  private final com.mojang.blaze3d.opengl.BufferStorage bufferStorage;
+  private final com.mojang.blaze3d.systems.DeviceInfo deviceInfo;
+  public com.mojang.blaze3d.opengl.GlDevice(long, com.mojang.blaze3d.shaders.ShaderSource, com.mojang.blaze3d.shaders.GpuDebugOptions);
+  public com.mojang.blaze3d.opengl.GlDebugLabel debugLabels();
+  public com.mojang.blaze3d.systems.GpuSurfaceBackend createSurface(long);
+  public com.mojang.blaze3d.systems.CommandEncoderBackend createCommandEncoder();
+  public com.mojang.blaze3d.textures.GpuSampler createSampler(com.mojang.blaze3d.textures.AddressMode, com.mojang.blaze3d.textures.AddressMode, com.mojang.blaze3d.textures.FilterMode, com.mojang.blaze3d.textures.FilterMode, int, java.util.OptionalDouble);
+  public com.mojang.blaze3d.textures.GpuTexture createTexture(java.util.function.Supplier<java.lang.String>, int, com.mojang.blaze3d.GpuFormat, int, int, int, int);
+  public com.mojang.blaze3d.textures.GpuTexture createTexture(java.util.function.Supplier<java.lang.String>, int, com.mojang.blaze3d.GpuFormat, int, int, int, int, boolean);
+  public com.mojang.blaze3d.textures.GpuTexture createTexture(java.lang.String, int, com.mojang.blaze3d.GpuFormat, int, int, int, int);
+  public com.mojang.blaze3d.textures.GpuTexture createTexture(java.lang.String, int, com.mojang.blaze3d.GpuFormat, int, int, int, int, boolean);
+  public com.mojang.blaze3d.textures.GpuTextureView createTextureView(com.mojang.blaze3d.textures.GpuTexture);
+  public com.mojang.blaze3d.textures.GpuTextureView createTextureView(com.mojang.blaze3d.textures.GpuTexture, int, int);
+  public com.mojang.blaze3d.buffers.GpuBuffer createBuffer(java.util.function.Supplier<java.lang.String>, int, long);
+  public com.mojang.blaze3d.buffers.GpuBuffer createBuffer(java.util.function.Supplier<java.lang.String>, int, java.nio.ByteBuffer);
+  public java.util.List<java.lang.String> getLastDebugMessages();
+  public boolean isDebuggingEnabled();
+  public void clearPipelineCache();
+  private static void sacrificeShaderToOpenGlAndAmd();
+  public void close();
+  public com.mojang.blaze3d.opengl.DirectStateAccess directStateAccess();
+  protected com.mojang.blaze3d.opengl.GlRenderPipeline getOrCompilePipeline(com.mojang.blaze3d.pipeline.RenderPipeline);
+  protected com.mojang.blaze3d.opengl.GlShaderModule getOrCompileShader(net.minecraft.resources.Identifier, com.mojang.blaze3d.shaders.ShaderType, net.minecraft.client.renderer.ShaderDefines, com.mojang.blaze3d.shaders.ShaderSource);
+  public com.mojang.blaze3d.opengl.GlRenderPipeline precompilePipeline(com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.shaders.ShaderSource);
+  private com.mojang.blaze3d.opengl.GlShaderModule compileShader(com.mojang.blaze3d.opengl.GlDevice$ShaderCompilationKey, com.mojang.blaze3d.shaders.ShaderSource);
+  private com.mojang.blaze3d.opengl.GlProgram compileProgram(com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.shaders.ShaderSource);
+  private com.mojang.blaze3d.opengl.GlRenderPipeline compilePipeline(com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.shaders.ShaderSource);
+  public com.mojang.blaze3d.opengl.VertexArrayCache vertexArrayCache();
+  public com.mojang.blaze3d.opengl.BufferStorage getBufferStorage();
+  public com.mojang.blaze3d.opengl.FrameBufferCache frameBufferCache();
+  public com.mojang.blaze3d.systems.GpuQueryPool createTimestampQueryPool(int);
+  public long getTimestampNow();
+  public com.mojang.blaze3d.systems.DeviceInfo getDeviceInfo();
+  public com.mojang.blaze3d.pipeline.CompiledRenderPipeline precompilePipeline(com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.shaders.ShaderSource);
+  private com.mojang.blaze3d.opengl.GlRenderPipeline lambda$precompilePipeline$0(com.mojang.blaze3d.shaders.ShaderSource, com.mojang.blaze3d.pipeline.RenderPipeline);
+  private com.mojang.blaze3d.opengl.GlShaderModule lambda$getOrCompileShader$0(com.mojang.blaze3d.shaders.ShaderSource, com.mojang.blaze3d.opengl.GlDevice$ShaderCompilationKey);
+  private com.mojang.blaze3d.opengl.GlRenderPipeline lambda$getOrCompilePipeline$0(com.mojang.blaze3d.pipeline.RenderPipeline);
+  static {};
+}

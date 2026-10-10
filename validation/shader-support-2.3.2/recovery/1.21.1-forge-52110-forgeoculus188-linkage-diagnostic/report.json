@@ -1,0 +1,90 @@
+{
+  "status": "failed",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "loader_uid": "net.minecraftforge",
+  "loader_version": "52.1.10",
+  "work_dir": "/tmp/spectral-prism-tamuyoci",
+  "framebuffer": "1280x720x24",
+  "audio_backend": "ALSOFT_DRIVERS=null",
+  "wayland_unset": true,
+  "gpu_zink": true,
+  "commands": [
+    {
+      "command": "gamerule sendCommandFeedback true",
+      "accepted": true
+    },
+    {
+      "command": "gamemode survival",
+      "accepted": true
+    },
+    {
+      "command": "gamemode creative",
+      "accepted": true
+    },
+    {
+      "command": "gamerule doMobSpawning false",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=!minecraft:player]",
+      "accepted": false
+    }
+  ],
+  "captures": [
+    "rejected-command-6.png"
+  ],
+  "visual_verdict": "not reviewed",
+  "components": {
+    "components": [
+      {
+        "cachedName": "LWJGL 3",
+        "cachedVersion": "3.3.3",
+        "cachedVolatile": true,
+        "dependencyOnly": true,
+        "uid": "org.lwjgl3",
+        "version": "3.3.3"
+      },
+      {
+        "cachedName": "Minecraft",
+        "cachedRequires": [
+          {
+            "suggests": "3.3.3",
+            "uid": "org.lwjgl3"
+          }
+        ],
+        "cachedVersion": "1.21.1",
+        "important": true,
+        "uid": "net.minecraft",
+        "version": "1.21.1"
+      },
+      {
+        "uid": "net.minecraftforge",
+        "version": "52.1.10"
+      }
+    ],
+    "formatVersion": 1
+  },
+  "artifacts": {
+    "/tmp/ghost-validation-source-20261004/1.21.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "82931cb4a35083d1e375f34da1e2e7517b1d9656b0d995963a0d5fd4598c62aa",
+    "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f",
+    "/tmp/usefultools-shaders-2.3.2/mods/beddium-1.0.11-mc1.21.1.jar": "fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611"
+  },
+  "shader_pack": {
+    "name": "BSL_v10.1.2.zip",
+    "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+  },
+  "display": ":91",
+  "xvfb_pid": 927724,
+  "client_pids": [
+    928044
+  ],
+  "error": "Command rejected: kill @e[type=!minecraft:player]",
+  "cleanup": {
+    "sigkill_after_sigterm": [],
+    "private_launcher_root_retained": true
+  }
+}

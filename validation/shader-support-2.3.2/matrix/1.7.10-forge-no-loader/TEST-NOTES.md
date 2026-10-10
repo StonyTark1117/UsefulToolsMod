@@ -1,0 +1,7 @@
+# 1.7.10 Forge without a shader loader
+
+The packaged client used Minecraft 1.7.10, Forge 10.13.4.1614, Java 8, and only `usefultoolsmod-2.3.1+mc.1.7.10.forge.jar` in its mods directory. The jar SHA-256 was `fd5a0789d7667910a3e12949d9931a5c68b00e0d72e45e8f7364d766c789d8b6`, identical to the two active-pack runs. The client was a disposable copy of the 1.7.10 profile with the OptiFine jar removed. It entered a copy of the existing Creative test world, rendered Wraith during rain (`wraith-rain-no-loader.png`) and Ghost/Wraith by day (`ghost-wraith-day-no-loader.png`), then exited through Save and Quit to Title and Quit Game. `packaged-latest.log` and `packaged-fml-client-latest.log` are the client logs.
+
+The run used isolated Xvfb `:91`, 1280x720x24 framebuffer, 854x480 Minecraft window, Mesa llvmpipe, `DISPLAY=:91`, no `WAYLAND_DISPLAY`, and `ALSOFT_DRIVERS=null`. All input and captures explicitly targeted `:91`; no host desktop or physical audio route was used.
+
+The preceding `scripts/smoke-client.py 1.7.10-forge --offline --timeout 300` attempt used its own isolated Xvfb `:90` and reached the title/config screens, but its fresh-world creation step timed out before player join. Its JSON, log, and screenshots are retained as a failed harness attempt. The packaged-client world join and screenshots above are the no-loader startup and rendering evidence; the timed-out smoke is not counted as a pass.

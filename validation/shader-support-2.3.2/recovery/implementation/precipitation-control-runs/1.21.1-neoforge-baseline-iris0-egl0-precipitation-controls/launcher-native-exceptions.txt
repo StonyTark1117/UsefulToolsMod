@@ -1,0 +1,11 @@
+java.lang.reflect.InvocationTargetException
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at io.github.zekerzhayard.forgewrapper.installer.Main.main(Main.java:67)
+at org.prismlauncher.launcher.impl.StandardLauncher.launch(StandardLauncher.java:115)
+at org.prismlauncher.EntryPoint.listen(EntryPoint.java:129)
+at org.prismlauncher.EntryPoint.main(EntryPoint.java:70)
+Caused by: java.lang.IllegalStateException: Module named cpw.mods.bootstraplauncher was already on the JVMs module path loaded from /home/********/.local/share/PrismLauncher/libraries/cpw/mods/bootstraplauncher/2.0.2/bootstraplauncher-2.0.2.jar but class-path contains it at location /tmp/spectral-prism-12esa2pp/libraries/cpw/mods/bootstraplauncher/2.0.2/bootstraplauncher-2.0.2.jar
+at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:139)
+at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)

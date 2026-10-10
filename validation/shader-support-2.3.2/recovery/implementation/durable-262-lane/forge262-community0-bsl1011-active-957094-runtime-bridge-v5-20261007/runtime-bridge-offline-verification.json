@@ -1,0 +1,50 @@
+{
+  "purpose": "Exact-input Java instrumentation bridge for the publisher Oculus 26.2 source-order defect; it does not rewrite either the publisher jar or BSL archive.",
+  "bridge": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/oculus262-source-order-bridge/bridge-v3.jar",
+    "sha256": "c519d4509ce88d7c498b0ffc870a94ff2e8f6bca8b282196f4a3423c9067d625",
+    "deterministic_rebuild_path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/oculus262-source-order-bridge/bridge-v3-rebuild.jar",
+    "deterministic_rebuild_sha256": "c519d4509ce88d7c498b0ffc870a94ff2e8f6bca8b282196f4a3423c9067d625",
+    "runtime_check_log": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/oculus262-source-order-bridge/runtime-check-v3-evidence.log",
+    "runtime_check_log_sha256": "ccdb40da3a2bc9fdb031535eee1ff36cf425afb924763e75a34a3705d5dcfded"
+  },
+  "unchanged_inputs": {
+    "publisher_oculus_sha256": "0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227",
+    "bsl_10_1_1_sha256": "131ca6b56b100e60577ffdb0dd51bfab2ee6e334564eeee324e5422026891668",
+    "useful_tools_artifact_sha256": "957094d68375564c6276db338035f7f113fbadb0d7327e5a7e4b65401ae73223",
+    "artifact_provenance_sha256": "1fae5494f09a581819e2d2900c474fe1851656cbdbaf37f82ec5cc13ca027b31",
+    "runtime_probe_sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1"
+  },
+  "strict_transformations": [
+    {
+      "class": "dev/oculusforge/render/program/LegacyFinalShaderAdapter",
+      "publisher_class_sha256": "a38310c597c0b03d7e2fec3737ed3f5ceb6db520e388ff11502819ace6fc306d",
+      "replacement_class_sha256": "a53f461cee4134d4d5147d830d17d6259e2ccb6eff1cef326603a9249b81ddba",
+      "public_method_descriptors_preserved": [
+        "adapt(Ljava/lang/String;)Ldev/oculusforge/render/program/LegacyFinalShaderAdapter$AdaptedShader;",
+        "adapt(Ljava/lang/String;Ljava/util/Map;)Ldev/oculusforge/render/program/LegacyFinalShaderAdapter$AdaptedShader;"
+      ],
+      "behavior": "Extract every #extension directive, remove it from the body, and reinsert it immediately after the normalized #version 330 core line and before generated declarations. This corrects the observed OpenGL rejection of an extension directive in the middle of the shader."
+    },
+    {
+      "class": "dev/oculusforge/render/program/PackProgramCompiler",
+      "publisher_class_sha256": "c72fbbf4e6f0d320c14600f36241cd9716e57a5876890812ccfee49fae99ac3a",
+      "replacement_class_sha256": "62ff9d9e264eef086380e946cc3bce57f6a4cd903c9be861206e80edcb50724b",
+      "public_method_descriptors_preserved": [
+        "prepare(Ldev/oculusforge/shaderpack/ShaderPackDescriptor;)Ldev/oculusforge/render/program/PreparedPackPipeline;",
+        "compile(Ldev/oculusforge/render/program/PreparedPackPipeline;)Ldev/oculusforge/render/program/PackShaderPipeline;"
+      ],
+      "added_private_method_descriptor": "matchFinalInterpolation(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+      "behavior": "Inline the final-pass interpolation matching operation in the publisher class so it remains visible through Forge's SecureModuleClassLoader; this removes the v2 helper-class linkage failure without broadening the transform target."
+    }
+  ],
+  "strictness": "The agent rejects either target unless its incoming and embedded replacement class hashes exactly match the recorded fingerprints. Only these two class names are transformable.",
+  "verification": {
+    "source_build_command": "bash gradlew clean test build --no-daemon",
+    "source_build_result": "BUILD SUCCESSFUL",
+    "focused_repository_tests": "60 passed",
+    "runtime_transform_log": "oculus262-source-bridge.log",
+    "runtime_transform_log_sha256": "105f6971e33761bf5617fc99c606dc9bb16caded9269e1d919254b89b37d7817",
+    "runtime_result": "Both exact transforms applied; BSL activated; no shader compile errors; native shutdown completed with clean client exit."
+  }
+}

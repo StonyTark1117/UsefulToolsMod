@@ -1,0 +1,53 @@
+{
+  "status": "offline focused tests passed",
+  "checks": {
+    "immutable_input_hashes_match": true,
+    "frozen_world_identity_matches": true,
+    "publisher_oculus_archive_unchanged": true,
+    "publisher_complementary_archive_unchanged": true,
+    "bridge_deterministic_hash_matches": true,
+    "publisher_input_class_fingerprints_match": true,
+    "bridge_output_class_fingerprints_match": true,
+    "pack_program_compiler_donor_hash_matches": true,
+    "complementary_has_both_gbuffer_source_pairs": true,
+    "complementary_offline_prepare_succeeded": true,
+    "bridge_fail_closed_contract_retained": true,
+    "exact_forge_65_1_2_pin": true,
+    "full_six_scenes_two_entities_states_and_surfaces": true,
+    "active_complementary_toggle_required": true,
+    "native_commands_damage_and_rain_required": true,
+    "egl0_virtualgl_and_null_audio_required": true,
+    "client_admission_wait_1800_seconds": true,
+    "future_output_is_fresh": true,
+    "strict_auditor_positive_and_wrong_pack_tests_passed": true,
+    "canonical_manifest_not_modified": true
+  },
+  "complementary_ocr_control": {
+    "pattern": "^\\s*Complementary(?:R|Fi)eimagined_r5\\.7\\.1\\.zip\\s*$",
+    "positive_cases": [
+      "ComplementaryReimagined_r5.7.1.zip",
+      "ComplementaryFieimagined_r5.7.1.zip"
+    ],
+    "negative_cases": [
+      "ComplementaryReimagined_r5.7.0.zip",
+      "ComplementaryReimagined_r5.7.10.zip",
+      "ComplementaryReimagined_r5.7.1.jar",
+      "ComplementaryReimagined-r5.7.1.zip",
+      "ComplementaryReimagined_r5.9.3.zip",
+      "BSL_v10.1.1.zip"
+    ],
+    "all_positive_cases_matched": true,
+    "all_negative_cases_rejected": true
+  },
+  "warning_and_proof_gate": {
+    "shader_compile_errors_required": 0,
+    "jvm_linkage_errors_required": 0,
+    "shader_backend_diagnostics_required": 0,
+    "exact_bridge_sha256": "1bde95b36f6ca2506625158c3de1589ef681ea19693efdfcee2e16d8e13b401b",
+    "exact_publisher_sha256": "0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227",
+    "exact_shader_pack_sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0",
+    "prepared_compiled_bound_rendered_required_for_both_categories": true,
+    "all_diagnostics_must_be_preserved": true
+  },
+  "launch_state": "held pending explicit GPU-lane release"
+}

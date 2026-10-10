@@ -1,0 +1,232 @@
+{
+  "status": "captures_complete",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "loader_uid": "net.neoforged",
+  "loader_version": "26.1.2.59-beta",
+  "work_dir": "/tmp/spectral-prism-5ifxtr5h",
+  "framebuffer": "1280x720x24",
+  "audio_backend": "ALSOFT_DRIVERS=null",
+  "wayland_unset": true,
+  "gpu_zink": true,
+  "commands": [
+    {
+      "command": "gamerule minecraft:send_command_feedback true",
+      "accepted": true
+    },
+    {
+      "command": "gamemode survival",
+      "accepted": true
+    },
+    {
+      "command": "gamemode creative",
+      "accepted": true
+    },
+    {
+      "command": "gamerule minecraft:spawn_mobs false",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=!minecraft:player]",
+      "accepted": true
+    },
+    {
+      "command": "tp @s 0 205 3 180 8",
+      "accepted": true
+    },
+    {
+      "command": "fill -8 199 -8 8 199 8 minecraft:smooth_stone",
+      "accepted": true
+    },
+    {
+      "command": "fill -8 200 -8 8 210 8 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "tp @s 0 200 3 180 8",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:ghost 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "time set midnight",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "weather rain 100000",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:deepslate_tiles",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:white_concrete",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:ghost]",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:wraith 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "time set midnight",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "weather rain 100000",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:deepslate_tiles",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:white_concrete",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:wraith]",
+      "accepted": true
+    },
+    {
+      "command": "fill -5 199 -8 5 207 4 minecraft:deepslate_bricks hollow",
+      "accepted": true
+    },
+    {
+      "command": "fill -5 200 4 5 206 4 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "setblock 0 205 -4 minecraft:sea_lantern",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:ghost 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:ghost]",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:wraith 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:wraith]",
+      "accepted": true
+    }
+  ],
+  "captures": [
+    "ghost-day.png",
+    "ghost-night.png",
+    "ghost-rain.png",
+    "ghost-dark-background.png",
+    "ghost-bright-background.png",
+    "wraith-day.png",
+    "wraith-night.png",
+    "wraith-rain.png",
+    "wraith-dark-background.png",
+    "wraith-bright-background.png",
+    "ghost-indoor.png",
+    "wraith-indoor.png"
+  ],
+  "visual_verdict": "not reviewed",
+  "components": {
+    "components": [
+      {
+        "cachedName": "LWJGL 3",
+        "cachedVersion": "3.4.1",
+        "cachedVolatile": true,
+        "dependencyOnly": true,
+        "uid": "org.lwjgl3",
+        "version": "3.4.1"
+      },
+      {
+        "cachedName": "Minecraft",
+        "cachedRequires": [
+          {
+            "suggests": "3.4.1",
+            "uid": "org.lwjgl3"
+          }
+        ],
+        "important": true,
+        "uid": "net.minecraft",
+        "version": "26.1.2"
+      },
+      {
+        "uid": "net.neoforged",
+        "version": "26.1.2.59-beta"
+      }
+    ],
+    "formatVersion": 1
+  },
+  "artifacts": {
+    "/home/braydon/Useful-Tools/26.1.2/neoforge/build/libs/usefultoolsmod-2.3.1+mc.26.1.2.neoforge.jar": "acb1dcefceb51669583eb322e3682b7d00adaad05613f8b529bc39784822c75e",
+    "/tmp/usefultools-shaders-2.3.2/mods/iris-neoforge-1.11.4+mc26.1.2.jar": "32d672a890d3c74f75227abc7e7ef048bbb83a799bf46632f03f0583d4c22be5",
+    "/tmp/usefultools-shaders-2.3.2/mods/sodium-neoforge-0.9.2+mc26.1.2.jar": "e760fb2ad8bacd8e706f71e78e48f9d93a5c66a4d5976e4db053abebf9f08252"
+  },
+  "shader_pack": {
+    "name": "ComplementaryReimagined_r5.7.1.zip",
+    "sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0"
+  },
+  "display": ":90",
+  "xvfb_pid": 914426,
+  "client_pids": [
+    914678
+  ],
+  "clean_client_exit": true,
+  "cleanup": {
+    "sigkill_after_sigterm": [],
+    "private_launcher_root_retained": true
+  }
+}

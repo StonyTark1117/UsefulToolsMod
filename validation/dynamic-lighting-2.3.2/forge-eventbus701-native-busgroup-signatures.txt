@@ -1,0 +1,548 @@
+Compiled from "BusGroupImpl.java"
+public final class net.minecraftforge.eventbus.internal.BusGroupImpl extends java.lang.Record implements net.minecraftforge.eventbus.api.bus.BusGroup {
+  private final java.lang.String name;
+
+  private final java.lang.Class<?> baseType;
+
+  private final java.util.concurrent.ConcurrentHashMap<java.lang.Class<? extends net.minecraftforge.eventbus.internal.Event>, net.minecraftforge.eventbus.api.bus.EventBus<?>> eventBuses;
+
+  private static final java.util.Set<java.lang.String> BUS_GROUP_NAMES;
+
+  public net.minecraftforge.eventbus.internal.BusGroupImpl(java.lang.String, java.lang.Class<?>);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: new           #1                  // class java/util/concurrent/ConcurrentHashMap
+         6: dup
+         7: invokespecial #3                  // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+        10: invokespecial #7                  // Method "<init>":(Ljava/lang/String;Ljava/lang/Class;Ljava/util/concurrent/ConcurrentHashMap;)V
+        13: return
+
+  public net.minecraftforge.eventbus.internal.BusGroupImpl(java.lang.String, java.lang.Class<?>, java.util.concurrent.ConcurrentHashMap<java.lang.Class<? extends net.minecraftforge.eventbus.internal.Event>, net.minecraftforge.eventbus.api.bus.EventBus<?>>);
+    Code:
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Record."<init>":()V
+         4: getstatic     #15                 // Field BUS_GROUP_NAMES:Ljava/util/Set;
+         7: aload_1
+         8: invokestatic  #19                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        11: checkcast     #25                 // class java/lang/String
+        14: invokeinterface #27,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+        19: ifne          36
+        22: new           #33                 // class java/lang/IllegalArgumentException
+        25: dup
+        26: aload_1
+        27: invokedynamic #35,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        32: invokespecial #39                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        35: athrow
+        36: aload_0
+        37: aload_1
+        38: putfield      #42                 // Field name:Ljava/lang/String;
+        41: aload_0
+        42: aload_2
+        43: putfield      #46                 // Field baseType:Ljava/lang/Class;
+        46: aload_0
+        47: aload_3
+        48: putfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+        51: return
+
+  public void startup();
+    Code:
+         0: aload_0
+         1: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+         4: invokevirtual #54                 // Method java/util/concurrent/ConcurrentHashMap.values:()Ljava/util/Collection;
+         7: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        12: astore_1
+        13: aload_1
+        14: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        19: ifeq          44
+        22: aload_1
+        23: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        28: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+        31: astore_2
+        32: aload_2
+        33: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+        36: invokeinterface #78,  1           // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.startup:()V
+        41: goto          13
+        44: return
+
+  public void shutdown();
+    Code:
+         0: aload_0
+         1: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+         4: invokevirtual #54                 // Method java/util/concurrent/ConcurrentHashMap.values:()Ljava/util/Collection;
+         7: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        12: astore_1
+        13: aload_1
+        14: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        19: ifeq          44
+        22: aload_1
+        23: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        28: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+        31: astore_2
+        32: aload_2
+        33: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+        36: invokeinterface #81,  1           // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.shutdown:()V
+        41: goto          13
+        44: return
+
+  public void dispose();
+    Code:
+         0: aload_0
+         1: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+         4: invokevirtual #54                 // Method java/util/concurrent/ConcurrentHashMap.values:()Ljava/util/Collection;
+         7: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        12: astore_1
+        13: aload_1
+        14: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        19: ifeq          44
+        22: aload_1
+        23: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        28: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+        31: astore_2
+        32: aload_2
+        33: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+        36: invokeinterface #84,  1           // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.dispose:()V
+        41: goto          13
+        44: aload_0
+        45: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+        48: invokevirtual #87                 // Method java/util/concurrent/ConcurrentHashMap.clear:()V
+        51: getstatic     #15                 // Field BUS_GROUP_NAMES:Ljava/util/Set;
+        54: aload_0
+        55: getfield      #42                 // Field name:Ljava/lang/String;
+        58: invokeinterface #90,  2           // InterfaceMethod java/util/Set.remove:(Ljava/lang/Object;)Z
+        63: pop
+        64: return
+
+  public void trim();
+    Code:
+         0: aload_0
+         1: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+         4: invokevirtual #54                 // Method java/util/concurrent/ConcurrentHashMap.values:()Ljava/util/Collection;
+         7: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        12: astore_1
+        13: aload_1
+        14: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        19: ifeq          44
+        22: aload_1
+        23: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        28: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+        31: astore_2
+        32: aload_2
+        33: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+        36: invokeinterface #93,  1           // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.trim:()V
+        41: goto          13
+        44: return
+
+  public java.util.Collection<net.minecraftforge.eventbus.api.listener.EventListener> register(java.lang.invoke.MethodHandles$Lookup, java.lang.Class<?>);
+    Code:
+         0: getstatic     #96                 // Field net/minecraftforge/eventbus/internal/Constants.STRICT_REGISTRATION_CHECKS:Z
+         3: ifeq          16
+         6: aload_0
+         7: aload_1
+         8: aload_2
+         9: aconst_null
+        10: invokestatic  #102                // Method net/minecraftforge/eventbus/internal/EventListenerFactory.registerStrict:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/Class;Ljava/lang/Object;)Ljava/util/Collection;
+        13: goto          23
+        16: aload_0
+        17: aload_1
+        18: aload_2
+        19: aconst_null
+        20: invokestatic  #108                // Method net/minecraftforge/eventbus/internal/EventListenerFactory.register:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/Class;Ljava/lang/Object;)Ljava/util/Collection;
+        23: areturn
+
+  public java.util.Collection<net.minecraftforge.eventbus.api.listener.EventListener> register(java.lang.invoke.MethodHandles$Lookup, java.lang.Object);
+    Code:
+         0: getstatic     #96                 // Field net/minecraftforge/eventbus/internal/Constants.STRICT_REGISTRATION_CHECKS:Z
+         3: ifeq          19
+         6: aload_0
+         7: aload_1
+         8: aload_2
+         9: invokevirtual #111                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        12: aload_2
+        13: invokestatic  #102                // Method net/minecraftforge/eventbus/internal/EventListenerFactory.registerStrict:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/Class;Ljava/lang/Object;)Ljava/util/Collection;
+        16: goto          29
+        19: aload_0
+        20: aload_1
+        21: aload_2
+        22: invokevirtual #111                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        25: aload_2
+        26: invokestatic  #108                // Method net/minecraftforge/eventbus/internal/EventListenerFactory.register:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/Class;Ljava/lang/Object;)Ljava/util/Collection;
+        29: areturn
+
+  public void unregister(java.util.Collection<net.minecraftforge.eventbus.api.listener.EventListener>);
+    Code:
+         0: aload_1
+         1: invokeinterface #117,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+         6: ifeq          19
+         9: new           #33                 // class java/lang/IllegalArgumentException
+        12: dup
+        13: ldc           #120                // String Listeners cannot be empty! You should be getting the collection fromthe BusGroup#register method.
+        15: invokespecial #39                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        18: athrow
+        19: aload_1
+        20: invokeinterface #58,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        25: astore_2
+        26: aload_2
+        27: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        32: ifeq          64
+        35: aload_2
+        36: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        41: checkcast     #122                // class net/minecraftforge/eventbus/api/listener/EventListener
+        44: astore_3
+        45: aload_0
+        46: aload_3
+        47: invokeinterface #124,  1          // InterfaceMethod net/minecraftforge/eventbus/api/listener/EventListener.eventType:()Ljava/lang/Class;
+        52: invokevirtual #127                // Method getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+        55: aload_3
+        56: invokeinterface #131,  2          // InterfaceMethod net/minecraftforge/eventbus/api/bus/EventBus.removeListener:(Lnet/minecraftforge/eventbus/api/listener/EventListener;)V
+        61: goto          26
+        64: return
+
+  private <T extends net.minecraftforge.eventbus.internal.Event> net.minecraftforge.eventbus.api.bus.EventBus<T> createEventBus(java.lang.Class<T>);
+    Code:
+         0: aload_0
+         1: getfield      #46                 // Field baseType:Ljava/lang/Class;
+         4: ldc           #135                // class net/minecraftforge/eventbus/internal/Event
+         6: if_acmpeq     48
+         9: aload_0
+        10: getfield      #46                 // Field baseType:Ljava/lang/Class;
+        13: aload_1
+        14: invokevirtual #137                // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+        17: ifne          48
+        20: new           #33                 // class java/lang/IllegalArgumentException
+        23: dup
+        24: aload_0
+        25: getfield      #42                 // Field name:Ljava/lang/String;
+        28: aload_0
+        29: getfield      #46                 // Field baseType:Ljava/lang/Class;
+        32: invokestatic  #143                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        35: aload_1
+        36: invokestatic  #143                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        39: invokedynamic #147,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        44: invokespecial #39                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        47: athrow
+        48: aload_1
+        49: invokestatic  #150                // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.computeEventCharacteristics:(Ljava/lang/Class;)I
+        52: istore_2
+        53: getstatic     #154                // Field net/minecraftforge/eventbus/internal/Constants.STRICT_BUS_CREATION_CHECKS:Z
+        56: ifeq          218
+        59: aload_1
+        60: invokevirtual #157                // Method java/lang/Class.isRecord:()Z
+        63: istore_3
+        64: iload_3
+        65: ifne          94
+        68: ldc           #160                // class net/minecraftforge/eventbus/api/event/RecordEvent
+        70: aload_1
+        71: invokevirtual #137                // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+        74: ifeq          94
+        77: new           #33                 // class java/lang/IllegalArgumentException
+        80: dup
+        81: aload_1
+        82: invokestatic  #143                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        85: invokedynamic #162,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        90: invokespecial #39                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        93: athrow
+        94: iload_2
+        95: invokestatic  #163                // Method net/minecraftforge/eventbus/internal/Constants.isMonitorAware:(I)Z
+        98: ifeq          127
+       101: ldc           #167                // class net/minecraftforge/eventbus/api/event/MutableEvent
+       103: aload_1
+       104: invokevirtual #137                // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+       107: ifne          127
+       110: new           #33                 // class java/lang/IllegalArgumentException
+       113: dup
+       114: aload_1
+       115: invokestatic  #143                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       118: invokedynamic #169,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       123: invokespecial #39                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       126: athrow
+       127: iload_2
+       128: invokestatic  #170                // Method net/minecraftforge/eventbus/internal/Constants.isInheritable:(I)Z
+       131: ifeq          218
+       134: iload_3
+       135: ifne          148
+       138: aload_1
+       139: invokevirtual #173                // Method java/lang/Class.getModifiers:()I
+       142: invokestatic  #177                // Method java/lang/reflect/Modifier.isFinal:(I)Z
+       145: ifeq          218
+       148: aload_1
+       149: invokevirtual #182                // Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
+       152: ifnonnull     218
+       155: aload_1
+       156: invokevirtual #185                // Method java/lang/Class.getInterfaces:()[Ljava/lang/Class;
+       159: astore        4
+       161: aload         4
+       163: arraylength
+       164: iconst_1
+       165: if_icmpne     218
+       168: aload         4
+       170: iconst_0
+       171: aaload
+       172: ldc           #189                // class net/minecraftforge/eventbus/api/event/InheritableEvent
+       174: if_acmpne     218
+       177: aload_1
+       178: invokestatic  #143                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       181: invokedynamic #191,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       186: astore        5
+       188: iload_3
+       189: ifeq          197
+       192: ldc           #192                // String implement RecordEvent instead
+       194: goto          199
+       197: ldc           #194                // String extend MutableEvent instead
+       199: astore        6
+       201: new           #33                 // class java/lang/IllegalArgumentException
+       204: dup
+       205: aload         5
+       207: aload         6
+       209: invokedynamic #196,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       214: invokespecial #39                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       217: athrow
+       218: new           #199                // class java/util/ArrayList
+       221: dup
+       222: invokespecial #201                // Method java/util/ArrayList."<init>":()V
+       225: astore_3
+       226: invokestatic  #202                // Method java/util/Collections.emptyList:()Ljava/util/List;
+       229: astore        4
+       231: iload_2
+       232: invokestatic  #170                // Method net/minecraftforge/eventbus/internal/Constants.isInheritable:(I)Z
+       235: ifeq          294
+       238: aload_0
+       239: aload_1
+       240: invokevirtual #208                // Method getParentEvents:(Ljava/lang/Class;)Ljava/util/List;
+       243: astore        4
+       245: aload         4
+       247: invokeinterface #212,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       252: astore        5
+       254: aload         5
+       256: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       261: ifeq          294
+       264: aload         5
+       266: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       271: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+       274: astore        6
+       276: aload_3
+       277: aload         6
+       279: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+       282: invokeinterface #215,  1          // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.backingList:()Ljava/util/ArrayList;
+       287: invokevirtual #219                // Method java/util/ArrayList.addAll:(Ljava/util/Collection;)Z
+       290: pop
+       291: goto          254
+       294: iload_2
+       295: invokestatic  #223                // Method net/minecraftforge/eventbus/internal/Constants.isCancellable:(I)Z
+       298: ifeq          318
+       301: new           #226                // class net/minecraftforge/eventbus/internal/CancellableEventBusImpl
+       304: dup
+       305: aload_0
+       306: getfield      #42                 // Field name:Ljava/lang/String;
+       309: aload_1
+       310: aload_3
+       311: iload_2
+       312: invokespecial #228                // Method net/minecraftforge/eventbus/internal/CancellableEventBusImpl."<init>":(Ljava/lang/String;Ljava/lang/Class;Ljava/util/ArrayList;I)V
+       315: goto          332
+       318: new           #231                // class net/minecraftforge/eventbus/internal/EventBusImpl
+       321: dup
+       322: aload_0
+       323: getfield      #42                 // Field name:Ljava/lang/String;
+       326: aload_1
+       327: aload_3
+       328: iload_2
+       329: invokespecial #233                // Method net/minecraftforge/eventbus/internal/EventBusImpl."<init>":(Ljava/lang/String;Ljava/lang/Class;Ljava/util/ArrayList;I)V
+       332: astore        5
+       334: iload_2
+       335: invokestatic  #170                // Method net/minecraftforge/eventbus/internal/Constants.isInheritable:(I)Z
+       338: ifeq          396
+       341: aload         4
+       343: invokeinterface #212,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       348: astore        6
+       350: aload         6
+       352: invokeinterface #64,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       357: ifeq          396
+       360: aload         6
+       362: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       367: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+       370: astore        7
+       372: aload         7
+       374: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+       377: invokeinterface #234,  1          // InterfaceMethod net/minecraftforge/eventbus/internal/AbstractEventBusImpl.children:()Ljava/util/List;
+       382: aload         5
+       384: checkcast     #76                 // class net/minecraftforge/eventbus/internal/AbstractEventBusImpl
+       387: invokeinterface #237,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       392: pop
+       393: goto          350
+       396: aload         5
+       398: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+       401: areturn
+
+  public <T extends net.minecraftforge.eventbus.internal.Event> net.minecraftforge.eventbus.api.bus.EventBus<T> getOrCreateEventBus(java.lang.Class<T>);
+    Code:
+         0: aload_0
+         1: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+         4: aload_1
+         5: invokevirtual #238                // Method java/util/concurrent/ConcurrentHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+         8: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+        11: astore_2
+        12: aload_2
+        13: ifnull        18
+        16: aload_2
+        17: areturn
+        18: aload_0
+        19: aload_1
+        20: invokevirtual #241                // Method createEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+        23: astore_3
+        24: aload_0
+        25: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+        28: dup
+        29: astore        4
+        31: monitorenter
+        32: aload_0
+        33: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+        36: aload_1
+        37: aload_3
+        38: invokevirtual #244                // Method java/util/concurrent/ConcurrentHashMap.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        41: checkcast     #74                 // class net/minecraftforge/eventbus/api/bus/EventBus
+        44: astore        5
+        46: aload         5
+        48: ifnonnull     55
+        51: aload_3
+        52: goto          57
+        55: aload         5
+        57: aload         4
+        59: monitorexit
+        60: areturn
+        61: astore        6
+        63: aload         4
+        65: monitorexit
+        66: aload         6
+        68: athrow
+      Exception table:
+         from    to  target type
+            32    60    61   any
+            61    66    61   any
+
+  public boolean equals(java.lang.Object);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: if_acmpeq     31
+         5: aload_1
+         6: instanceof    #8                  // class net/minecraftforge/eventbus/internal/BusGroupImpl
+         9: ifeq          35
+        12: aload_1
+        13: checkcast     #8                  // class net/minecraftforge/eventbus/internal/BusGroupImpl
+        16: astore_2
+        17: aload_0
+        18: getfield      #42                 // Field name:Ljava/lang/String;
+        21: aload_2
+        22: getfield      #42                 // Field name:Ljava/lang/String;
+        25: invokevirtual #248                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        28: ifeq          35
+        31: iconst_1
+        32: goto          36
+        35: iconst_0
+        36: ireturn
+
+  public int hashCode();
+    Code:
+         0: aload_0
+         1: getfield      #42                 // Field name:Ljava/lang/String;
+         4: invokevirtual #251                // Method java/lang/String.hashCode:()I
+         7: ireturn
+
+  private <T extends net.minecraftforge.eventbus.internal.Event> java.util.List<net.minecraftforge.eventbus.api.bus.EventBus<?>> getParentEvents(java.lang.Class<T>);
+    Code:
+         0: new           #199                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #201                // Method java/util/ArrayList."<init>":()V
+         7: astore_2
+         8: aload_1
+         9: invokevirtual #182                // Method java/lang/Class.getSuperclass:()Ljava/lang/Class;
+        12: astore_3
+        13: aload_3
+        14: ifnull        46
+        17: ldc           #189                // class net/minecraftforge/eventbus/api/event/InheritableEvent
+        19: aload_3
+        20: invokevirtual #137                // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+        23: ifeq          46
+        26: aload_3
+        27: ldc           #167                // class net/minecraftforge/eventbus/api/event/MutableEvent
+        29: if_acmpeq     46
+        32: aload_0
+        33: aload_3
+        34: invokevirtual #127                // Method getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+        37: astore        4
+        39: aload_2
+        40: aload         4
+        42: invokevirtual #254                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+        45: pop
+        46: aload_1
+        47: invokevirtual #185                // Method java/lang/Class.getInterfaces:()[Ljava/lang/Class;
+        50: astore        4
+        52: aload         4
+        54: arraylength
+        55: istore        5
+        57: iconst_0
+        58: istore        6
+        60: iload         6
+        62: iload         5
+        64: if_icmpge     126
+        67: aload         4
+        69: iload         6
+        71: aaload
+        72: astore        7
+        74: aload         7
+        76: ldc           #189                // class net/minecraftforge/eventbus/api/event/InheritableEvent
+        78: if_acmpeq     120
+        81: ldc           #189                // class net/minecraftforge/eventbus/api/event/InheritableEvent
+        83: aload         7
+        85: invokevirtual #137                // Method java/lang/Class.isAssignableFrom:(Ljava/lang/Class;)Z
+        88: ifeq          120
+        91: aload         7
+        93: ldc           #160                // class net/minecraftforge/eventbus/api/event/RecordEvent
+        95: if_acmpeq     120
+        98: aload         7
+       100: ldc           #135                // class net/minecraftforge/eventbus/internal/Event
+       102: if_acmpeq     120
+       105: aload_0
+       106: aload         7
+       108: invokevirtual #127                // Method getOrCreateEventBus:(Ljava/lang/Class;)Lnet/minecraftforge/eventbus/api/bus/EventBus;
+       111: astore        8
+       113: aload_2
+       114: aload         8
+       116: invokevirtual #254                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+       119: pop
+       120: iinc          6, 1
+       123: goto          60
+       126: aload_2
+       127: areturn
+
+  public final java.lang.String toString();
+    Code:
+         0: aload_0
+         1: invokedynamic #255,  0            // InvokeDynamic #6:toString:(Lnet/minecraftforge/eventbus/internal/BusGroupImpl;)Ljava/lang/String;
+         6: areturn
+
+  public java.lang.String name();
+    Code:
+         0: aload_0
+         1: getfield      #42                 // Field name:Ljava/lang/String;
+         4: areturn
+
+  public java.lang.Class<?> baseType();
+    Code:
+         0: aload_0
+         1: getfield      #46                 // Field baseType:Ljava/lang/Class;
+         4: areturn
+
+  public java.util.concurrent.ConcurrentHashMap<java.lang.Class<? extends net.minecraftforge.eventbus.internal.Event>, net.minecraftforge.eventbus.api.bus.EventBus<?>> eventBuses();
+    Code:
+         0: aload_0
+         1: getfield      #50                 // Field eventBuses:Ljava/util/concurrent/ConcurrentHashMap;
+         4: areturn
+
+  static {};
+    Code:
+         0: invokestatic  #259                // Method java/util/concurrent/ConcurrentHashMap.newKeySet:()Ljava/util/concurrent/ConcurrentHashMap$KeySetView;
+         3: putstatic     #15                 // Field BUS_GROUP_NAMES:Ljava/util/Set;
+         6: return
+}

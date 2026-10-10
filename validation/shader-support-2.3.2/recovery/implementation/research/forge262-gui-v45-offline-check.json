@@ -1,0 +1,18 @@
+{
+  "candidate": "forge262-optifine-gui-v45",
+  "change": "Remove glReadPixels from final-composite trace and retain v44 GL error checkpoints to isolate actual renderFinal setup errors.",
+  "source_sha256": {
+    "tests/spectral-qa/probe/OptifineGuiBridge.java": "15e5d2cb44c496fd064e278de58de23d8c593f42b61348ff434b9b9280498e32",
+    "tests/spectral-qa/probe/Forge262GuiCheck.java": "2e483d710af729b45b17f1990854679289828f990c9de81ea7993475dee2b4be"
+  },
+  "bridge": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/5eaf292d497fad09356516f6c3a26802b9c1c4b93f09907fd1b042e23c0a3305/bridge.jar",
+  "bridge_sha256": "5eaf292d497fad09356516f6c3a26802b9c1c4b93f09907fd1b042e23c0a3305",
+  "runtime_manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine26-gui-26.2-v45-BSL-indoor-admit60-single.json",
+  "runtime_manifest_sha256": "fa73aa196740486ef9507c59c58160df5f78cd963b8426620fed6c2d9b348013",
+  "strict_javac_passed": true,
+  "pinned_bytecode_basic_verifier_passed": true,
+  "runtime_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "runtime_status": "captures_complete but visually failed",
+  "runtime_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v45-BSL-indoor/report.json"
+}

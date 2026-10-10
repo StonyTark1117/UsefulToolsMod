@@ -1,0 +1,129 @@
+{
+  "scope": "Bounded exact reconstruction of the missing historical 1.20.1 NeoForge main artifact. Only the recorded full SHA-256 is accepted.",
+  "target": "1.20.1-neoforge",
+  "expected": {
+    "artifact_sha256": "5ba94d1035e067c310d27787a846ef262884493a2473056a9044f828322dd479",
+    "artifact_name": "usefultoolsmod-2.3.1+mc.1.20.1.neoforge.jar",
+    "artifact_record": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-floor13-artifacts.json",
+    "artifact_record_sha256": "7f90e8c0e386e799b3a0574704f999be5c1f9b93e67ca02d6bef0f091e7b7596",
+    "recorded_build_log": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-floor13.log",
+    "recorded_build_log_sha256": "318fd085a3b6608c5a61fbb6f29ec6fa9f0385e538400142f6f0096d2e6e400d",
+    "recorded_build_log_birth_local": "2026-10-04T16:11:22.085365772-07:00",
+    "recorded_build_log_mtime_local": "2026-10-04T16:15:20.429038186-07:00"
+  },
+  "recorded_source_recheck": {
+    "recorded_files": 4567,
+    "current_exact_hash_matches": 4567,
+    "missing": 0,
+    "changed": 0,
+    "canonical_recorded_source_map_sha256": "15b4fc99410d577f7b9489070edf148e3cc43ee504076caf5d0080aeec2153b7",
+    "canonicalization": "SHA-256 of compact JSON with lexicographically sorted keys.",
+    "conclusion": "Every path in the recorded 1.20.1-neoforge source_sha256 map matches the current workspace byte-for-byte. The isolated copy was rechecked against the same 4,567 hashes before building. This exact source state includes the lighting inputs and generated resources and is not inferred from clean HEAD."
+  },
+  "exact_source_builds": {
+    "isolated_root": "/tmp/useful-tools-neoforge1201-forensics.BeK8r1",
+    "command": "JAVA_HOME=/usr/lib/jvm/java-17-openjdk ./gradlew --no-daemon --max-workers=1 --no-build-cache clean build -I <isolated-root>/scripts/strict-warnings.gradle",
+    "java": "17.0.20.1",
+    "neoforge": "1.20.1-47.1.106",
+    "neoforge_moddev_legacyforge_plugin": "2.0.141",
+    "gradle": "8.13",
+    "attempts": [
+      {
+        "attempt": 1,
+        "artifact_sha256": "6e75984d9d80f5f8c973a86811cd7df61e056901b91c4f13cc7e68f9250c0f14",
+        "non_epoch_relative_timestamp_groups": {"-10": 78, "-8": 43, "0": 4451},
+        "build_log_sha256": "d804c1d10a0eba4f346fe756450316c1fb9b464a68e506d21629a460ffbea875"
+      },
+      {
+        "attempt": 2,
+        "artifact_sha256": "3afd7bdb06be6d7a4df462dd5ed964d631dad06953ab091439d0ac8ef2fc7483",
+        "non_epoch_relative_timestamp_groups": {"-6": 66, "-4": 55, "-2": 4450, "0": 1},
+        "build_log_sha256": "ad6d2359dccea72fcc3e1df237baf928b6db126794a4fe5c8d9130dbc6c90bdc"
+      },
+      {
+        "attempt": 3,
+        "artifact_sha256": "726154388a19f5410ba9d45dae26906e0a7b27f59c9a59d4efd7930d146767cc",
+        "non_epoch_relative_timestamp_groups": {"-4": 58, "-2": 4112, "0": 402},
+        "build_log_sha256": "cddd35cfd3684f74f472f9d4df6cae75cd0e9657b713a0eb20e205ad4d3bc9ec"
+      },
+      {
+        "attempt": 4,
+        "artifact_sha256": "3042e0c42a25991e685196bc11e372f2d8691cd31e26d135306b47a827745f45",
+        "non_epoch_relative_timestamp_groups": {"-2": 104, "0": 4468},
+        "build_log_sha256": "24ea7bad50a4a2852c57e6c600c6bb65cc6286725c2e59e97618f2a6b3aa16ea"
+      },
+      {
+        "attempt": 5,
+        "artifact_sha256": "42162b82f227132c729d6dc96fd2dedfcf3e3d530acb6ee2406b417ff52af4c4",
+        "non_epoch_relative_timestamp_groups": {"-2": 19, "0": 4553},
+        "build_log_sha256": "320ee2f3d2d401e1f4b6ea3c2b5de409f6e8386e4b859b65a507b94e78f13a00"
+      }
+    ],
+    "normalized_zip_sha256": "b2432fb551da1459c023a8433f2a835bf41de9587941d5c5b766fd844f44c8d9",
+    "normalization": "Only the four DOS date/time bytes in every non-1980 local and central entry header were zeroed.",
+    "stable_properties": {
+      "archive_size": 2411305,
+      "entry_count": 4646,
+      "file_count": 4572,
+      "directory_count": 74,
+      "entry_order_equal": true,
+      "uncompressed_payloads_equal": true,
+      "compressed_payload_and_non_timestamp_zip_bytes_equal": true,
+      "compression_method": "DEFLATED for all 4,646 entries",
+      "general_purpose_flag": 2056,
+      "zip_create_system": 0,
+      "forge_reobf_cache_entries": 8,
+      "forge_reobf_cache_names_order_and_payloads_equal": true
+    },
+    "nondeterminism_conclusion": "Across five clean exact-source builds, ZIP entry order, all uncompressed payloads, compressed bytes, flags, attributes, reobfuscation cache names/content/order and every non-timestamp byte are identical. Only DOS timestamps and their per-entry membership in adjacent two-second groups vary."
+  },
+  "gradle_task_cache_inspection": {
+    "global_cache": "/home/braydon/.gradle/caches/build-cache-1",
+    "cache_entries_scanned": 3155,
+    "entries_with_archive_task_or_nested_jar_output": 40,
+    "entries_with_tree_archiveFile": 39,
+    "archive_outputs_with_expected_size": 0,
+    "archive_outputs_with_expected_sha256": 0,
+    "largest_archive_output_bytes": 1550780,
+    "local_project_cache": "1.20.1/neoforge/.gradle",
+    "local_project_cache_result": "The project-local cache contains execution history, hashes, NeoForm/Minecraft artifacts and repository material, but no archived main-mod task output.",
+    "original_build_cache_disposition": "scripts/build-matrix.sh invokes every maintained build with --no-build-cache, including the recorded matrix build. No cache archive can supply the missing 2,411,305-byte main artifact."
+  },
+  "bounded_reconstruction_search": {
+    "prior_search": {
+      "record": "validation/shader-support-2.3.2/recovery/implementation/research/exact-archive-timestamp-recovery.json",
+      "source_sha256": "4942ce1b93620bd6b96dde00e1a630445e2d75d8f1f17a81c4ba7997fb32403b",
+      "attempts": 960,
+      "result": "no match",
+      "failure_explanation": "That source preserved a different per-file timestamp-group membership. Translating its relative times or making all entries uniform could not represent the historical 121/4451 split."
+    },
+    "new_search": {
+      "window_local": "2026-10-04T16:11:20-07:00 through 2026-10-04T16:13:40-07:00",
+      "step_seconds": 2,
+      "modes": ["relative", "uniform"],
+      "isolated_exact_source_memberships": 5,
+      "additional_hash-equivalent_retained_memberships": 4,
+      "initial_six_membership_search_attempts": 852,
+      "retained_membership_search_attempts_to_match": 460,
+      "matching_retained_source_sha256": "aa5b7f7606762f56491e35ce9d90dd83fdf063b21b4a2f00c1e31b52383855e4",
+      "matching_source": "/home/braydon/.cache/useful-tools-lighting-completed-runs/spectral-prism-rumulawf/instances/spectral/minecraft/mods/1.20.1-neoforge-usefultoolsmod-2.3.1+mc.1.20.1.neoforge.jar",
+      "matching_mode": "relative",
+      "matching_non_epoch_timestamps": {
+        "2026-10-04T16:12:24-07:00": 121,
+        "2026-10-04T16:12:26-07:00": 4451
+      },
+      "preserved_epoch_entries": {"1980-01-01T00:00:00": 74},
+      "result_sha256": "5ba94d1035e067c310d27787a846ef262884493a2473056a9044f828322dd479"
+    }
+  },
+  "recovery_result": {
+    "status": "recovered_exact_sha256",
+    "artifact_path": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/5ba94d1035e067c310d27787a846ef262884493a2473056a9044f828322dd479/usefultoolsmod-2.3.1+mc.1.20.1.neoforge.jar",
+    "artifact_sha256": "5ba94d1035e067c310d27787a846ef262884493a2473056a9044f828322dd479",
+    "artifact_size": 2411305,
+    "zip_integrity_test": "pass",
+    "full_hash_verified_after_move": true,
+    "exact_bytes_written": true,
+    "durable_directory_contains_only_full_exact_match": true
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "target": "1.7.10-forge",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--init-script",
+    "/home/braydon/Useful-Tools/scripts/smoke-isolated.gradle",
+    "-PusefulToolsSmokeGameDir=/dev/shm/usefultools-smoke-zjp2i29o",
+    "runServer"
+  ],
+  "java_home": "/usr/lib/jvm/java-21-openjdk",
+  "requested_port": 25909,
+  "isolated_game_dir": true,
+  "external_game_dir": false,
+  "kept_isolated_game_dir": false,
+  "game_dir": "/dev/shm/usefultools-smoke-zjp2i29o",
+  "game_process_cwds": {
+    "1762544": "/dev/shm/usefultools-smoke-zjp2i29o"
+  },
+  "run_id": "2c7dbdd3764640f39aeb8a853f6c028e",
+  "started_at_epoch": 1791161876.6730592,
+  "ready": true,
+  "ready_seconds": 12.324,
+  "stop_sent": true,
+  "stop_method": "stdin",
+  "term_fallback_pids": [],
+  "forced_launcher_cleanup": false,
+  "clean_shutdown": true,
+  "failure": null,
+  "crash_marker": null,
+  "saved_dimension_lines": [
+    "[17:58:09] [Server thread/INFO]: Saving chunks for level 'world'/Overworld",
+    "[17:58:11] [Server thread/INFO]: Saving chunks for level 'world'/Nether",
+    "[17:58:11] [Server thread/INFO]: Saving chunks for level 'world'/The End"
+  ],
+  "thread_dump_pids": [],
+  "remaining_owned_pids": [],
+  "port_free_after": true,
+  "launcher_exit_code": 0,
+  "log": "validation/dynamic-lighting-2.3.2/companion-server-native-final/1.7.10-forge/1.7.10-forge.log"
+}

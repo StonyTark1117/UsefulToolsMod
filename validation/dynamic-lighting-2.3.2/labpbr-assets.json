@@ -1,0 +1,2296 @@
+{
+  "format": "LabPBR 1.3",
+  "standard": "https://shaderlabs.org/wiki/LabPBR_Material_Standard",
+  "assets": [
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/blocks/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/blocks/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/items/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.7.10/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.20.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/fabric/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.1.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/forge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/fabric/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block.png",
+      "diffuse_sha256": "3e15fa7857c697fd06dde7649090bbac40d072340490cc1c179e083efd7abd97",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/block/hglow_block_s.png",
+      "specular_sha256": "f33875f7c46082c1b49ec092fae18e780b584ca08fba8c269ff9ef79afb37404",
+      "alpha_range": [
+        32,
+        192
+      ],
+      "mask": "opaque block surface"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow.png",
+      "diffuse_sha256": "e7ee84e319e832bb05c5bb0cfda5eb8be7708df99366ff7a508fdd7b56f0525c",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid/hglow_s.png",
+      "specular_sha256": "ae489492c47b3ef0f8ee35761800b2b7a0242fa6d68d2e26e4cdc1d16af284c9",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_1_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow.png",
+      "diffuse_sha256": "64c06d45defbdae2f89f89a025a5ffe3bf9cca8e13f5c38a6beb6bd65ed50bb3",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/entity/equipment/humanoid_leggings/hglow_s.png",
+      "specular_sha256": "5ec30c6d8189412f4e89200be5332132ff4d074fd4a3ef3db63a17f8aac0152b",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "1.21.1/neoforge/src/main/resources/assets/usefultoolsmod/textures/models/armor/hglow_layer_2_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow.png",
+      "diffuse_sha256": "e017bab7d0bd059c2014f749b363b460d9a7da22c41dda435e891042604a2280",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_s.png",
+      "specular_sha256": "4a55419f64f5bd66af7d1df1abc1c1d41e7b331a07ca65634aafff18559f974e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots.png",
+      "diffuse_sha256": "232a2b7592464a28df977050e7197395d5d54223e3e6349ccee4c67704e082b8",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_s.png",
+      "specular_sha256": "2fb19bd7e954d74a5cba961a200460cb910880c491c0cbbfd9e3b3a4d1a7f296",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_boots_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate.png",
+      "diffuse_sha256": "4f3f8a12650dc17bf590a42500a2ea122c678fc0b418041084290970fcd5af16",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_s.png",
+      "specular_sha256": "c06f4c45a0bac32181a92c7091a7202276ed895f99e6b1ba6eebe52ae5c7c034",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_chestplate_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet.png",
+      "diffuse_sha256": "8ed87c477fe9cd839eba528cd035407fbd3503a2de4f84148fa5d1c7a84b927b",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_s.png",
+      "specular_sha256": "29f0adeefda61d93fd3b59e4f5bd1dc1dafc288a98ef98dbc9b18c1ea916b935",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_helmet_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings.png",
+      "diffuse_sha256": "638a9bbde949d916a3293bacb3a7d1a21984be9d79131c86857a0bdc4e37c5da",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_s.png",
+      "specular_sha256": "d84abe7d3e457576d8af6dd43bf44c361545754a3fba6282dbd8af7f2046529f",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglow_leggings_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe.png",
+      "diffuse_sha256": "d074a46bb32fdac5c3fc7d1d4c5e750344dc689a7ea6eec194006863666c5c12",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_s.png",
+      "specular_sha256": "549362e36c903cec272cf0c7d6c877134805550855af05541bbe9b5c213994ee",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_axe_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe.png",
+      "diffuse_sha256": "dfe340ef19dbed89ac3189fc3052fb7aa7bda99436d70e941606c7dc74898cb9",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_s.png",
+      "specular_sha256": "5b85341b6fbb7ea124d76e9d697d44764dce8e08c9c50263ec274ec75829ab4e",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_hoe_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe.png",
+      "diffuse_sha256": "e381891c03576217b15e22f551c809821d3dd092642bc3ada543fd2930f0cfe8",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_s.png",
+      "specular_sha256": "4c09533b8cf757eecffb122c82db77f8a7c434975d5c54b693293a62d2ddaf46",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_pickaxe_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel.png",
+      "diffuse_sha256": "a436fcab15fb9c0c0d8ab493c09f82e40f2396e4b12075023ca4c3c7ebb8a705",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_s.png",
+      "specular_sha256": "36ab4b03e8dd28d8e79a98e54bcefa3592149b29b21e06f4106a52575d0b06dd",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_shovel_e.png"
+    },
+    {
+      "diffuse": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword.png",
+      "diffuse_sha256": "dcf939b25e8f4f946b436cd9f5d1e12bab6213de6e536289ea1d0440c2a4442f",
+      "specular": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_s.png",
+      "specular_sha256": "7af5417174a84d9186c33396114c338ac01bc18d8a42464a1aad12c236d8df96",
+      "alpha_range": [
+        0,
+        192
+      ],
+      "mask": "26.2/neoforge/src/main/resources/assets/usefultoolsmod/textures/item/hglowstone_sword_e.png"
+    }
+  ],
+  "shader_certification": "See the separate per-profile runtime record; generation alone does not certify a shader.",
+  "shader_certification_record": "validation/dynamic-lighting-2.3.2/shader-certification.json"
+}

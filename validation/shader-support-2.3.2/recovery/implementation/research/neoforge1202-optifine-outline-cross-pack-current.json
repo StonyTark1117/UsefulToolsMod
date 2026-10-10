@@ -1,0 +1,76 @@
+{
+  "scope": "Same current 1.20.2 NeoForge mod artifact, pinned 20.2.93, and same private OptiFine candidate; active pack differs. Both native Glowing commands were accepted and both runs were clean. Visual review shows BSL outlines and Complementary missing outlines. This diagnoses a pack-dependent integration path; it does not qualify the private candidate or the original publisher stack.",
+  "runs": {
+    "BSL": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-full-single/report.json",
+      "report_sha256": "e7b47ed878b71ae225237874a164d429304071d56095f9587aeec7d03736a479",
+      "visual_review": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-full-single/visual-review.json",
+      "shader_pack": {
+        "name": "BSL_v10.1.2.zip",
+        "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+      },
+      "mod_artifact_sha256": "44c8e5e9a50b6d9cc07ff37abd99e8d9d2763c577ce72b146753f7d01634161e",
+      "candidate_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+      "loader_version": "20.2.93",
+      "glowing_commands": [
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:ghost,limit=1] {Glowing:1b}",
+          "accepted": true,
+          "native_transport": "client connection",
+          "request_token": "9f7433d5add9426595e28ca12df96b82",
+          "native_method": "public void net.minecraft.client.multiplayer.ClientPacketListener.sendCommand(java.lang.String)"
+        },
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:wraith,limit=1] {Glowing:1b}",
+          "accepted": true,
+          "native_transport": "client connection",
+          "request_token": "d88523931b254e9ca27ff5865cce5c83",
+          "native_method": "public void net.minecraft.client.multiplayer.ClientPacketListener.sendCommand(java.lang.String)"
+        }
+      ],
+      "images_sha256": {
+        "ghost-outline.png": "2cb3488e52b65c4cf901a9c079e0672dc55b6a122211b13ce02540b4610c7dc4",
+        "wraith-outline.png": "39b6a13c63b4ef029db0c34904d1e9e2e32e7a668c1a48e05001297153123d5c",
+        "ghost-movement-before.png": "1cce9db58e2fe2aba97728d07edec6f70457225e5a69b6c09ffdf70d6aab1025",
+        "wraith-movement-before.png": "47c9a179abb32f839d28b9396099da7a2660e7a3e0802543f86f84a926fc8034"
+      },
+      "visual_outline_verdict": "visible white entity outlines"
+    },
+    "Complementary": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-full-single/report.json",
+      "report_sha256": "77a34b860d88df83e1f9e11e427e8b6d9177881c6d1a2f8cef1db968c3e5fdae",
+      "visual_review": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-full-single/visual-review.json",
+      "shader_pack": {
+        "name": "ComplementaryReimagined_r5.9.3.zip",
+        "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+      },
+      "mod_artifact_sha256": "44c8e5e9a50b6d9cc07ff37abd99e8d9d2763c577ce72b146753f7d01634161e",
+      "candidate_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+      "loader_version": "20.2.93",
+      "glowing_commands": [
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:ghost,limit=1] {Glowing:1b}",
+          "accepted": true,
+          "native_transport": "client connection",
+          "request_token": "1481681e990d4e26b03064bbdfea7eab",
+          "native_method": "public void net.minecraft.client.multiplayer.ClientPacketListener.sendCommand(java.lang.String)"
+        },
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:wraith,limit=1] {Glowing:1b}",
+          "accepted": true,
+          "native_transport": "client connection",
+          "request_token": "48ee37128b5a478ebc23843e30ebc267",
+          "native_method": "public void net.minecraft.client.multiplayer.ClientPacketListener.sendCommand(java.lang.String)"
+        }
+      ],
+      "images_sha256": {
+        "ghost-outline.png": "39d3d9a5ea828525a9b48a8c651cb0394b237eb860ee20dde30396369d4763d0",
+        "wraith-outline.png": "42efb1b9834bdad2d34c9f0123081bef4411ff58cb56f75b0b6adce54361366c",
+        "ghost-movement-before.png": "f8768a9619655418407483133364700c1e388f2cee198b6874098c8e20b47dd8",
+        "wraith-movement-before.png": "e9bf7b78110854b92041b1a9da89632a75488d07b2bdc9a884d61d26913cdd77"
+      },
+      "visual_outline_verdict": "white entity outlines absent"
+    }
+  },
+  "next_action": "Inspect active pack and OptiFine native outline framebuffer/program path using this paired evidence; preserve existing original pack hashes and renderer behavior."
+}

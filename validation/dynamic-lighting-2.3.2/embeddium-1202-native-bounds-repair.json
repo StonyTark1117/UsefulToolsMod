@@ -1,0 +1,20 @@
+{
+  "artifact": "/tmp/useful-tools-lighting-native-port-repairs/b86023eef80347136d74abdd5dedc9a18ef8d4add4c36a00d9e553fafd97547f/embeddium-neoforge-0.2.10-private-native-bounds.jar",
+  "sha256": "b86023eef80347136d74abdd5dedc9a18ef8d4add4c36a00d9e553fafd97547f",
+  "original_artifact": "/tmp/usefultools-shaders-2.3.2/mods/embeddium-neoforge-0.2.10+mc1.20.2.jar",
+  "original_sha256": "bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947",
+  "minecraft": "1.20.2",
+  "neoforge": "20.2.93",
+  "changed_class": "me/jellysquid/mods/sodium/client/render/SodiumWorldRenderer.class",
+  "added_class": "com/stonytark/lightingqa/backend/NativeBlockEntityBounds.class",
+  "source_sha256": {
+    "tests/dynamic-lighting/backend-repairs/NativeBlockEntityBounds.java": "0801734aa4f7d31a4c0f210f96ff62c4d49460dacf463cdab2c5947fe7df2357",
+    "tests/dynamic-lighting/backend-repairs/RepairEmbeddiumBounds.java": "a1b9e7372aa49299857e7cd660a9eb8b0984f6e80dd06deb609abb55f5b32239"
+  },
+  "native_signatures": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/neoforge-1202-native-bounds-signatures.txt",
+  "build_log": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/embeddium-1202-native-bounds-build-recovered-classpath.log",
+  "build_warning_gate": "javac --release 17 -Xlint:all -Werror; no annotations processed",
+  "classpath_verified_by_native_sha1": true,
+  "status": "private experimental runtime pending",
+  "behavior": "Both local/global block-entity frustum predicates now use native renderer bounds. Missing renderer uses the native unit-box default. No culling or render pass disabled."
+}

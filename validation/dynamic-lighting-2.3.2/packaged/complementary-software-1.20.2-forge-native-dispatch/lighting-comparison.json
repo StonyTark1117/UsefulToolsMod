@@ -1,0 +1,210 @@
+{
+  "target": "1.20.2",
+  "shader": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "artifact_hashes": {
+    "/tmp/useful-tools-lighting-reviewed-artifacts/62b340f970a33fa705ef0996e7587937d96d93caaa8a5bacdad57c051a0b5401/usefultoolsmod-2.3.1+mc.1.20.2.forge.jar": "62b340f970a33fa705ef0996e7587937d96d93caaa8a5bacdad57c051a0b5401",
+    "/tmp/useful-tools-lighting-qa-packages/1.20.2-forge-acceptance-only.jar": "511fdc78c3b26b25b8883ae5151d80e3cab47acdd59ba3668d9630a88fbf4479",
+    "/tmp/usefultools-shaders-2.3.2/mods/preview_OptiFine_1.20.2_HD_U_I7_pre1.jar": "6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-ordinary-distance-3.png",
+          "sha256": "cc1f5dd77f77413c54c5eadb6a502a1fb10a271529914bf1650bfc72038da97f"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-hardened-distance-3.png",
+          "sha256": "07feacf4a8caae858f28f5874bd282b6a126e199694520d929cc8ffba365055b"
+        }
+      },
+      "ordinary": 0.5394828529713424,
+      "hardened": 0.7039660096358543,
+      "hardened_to_ordinary_ratio": 1.3048904256336937
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-ordinary-distance-10.png",
+          "sha256": "7242f5b0e40c64f4a4ef9c240b8470c5568842b1ef6543fc3efa636eb9687c24"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-hardened-distance-10.png",
+          "sha256": "fce9fe7464dd6197374f7eb73a75ecf9971d54bc187df29d260a707764e3a613"
+        }
+      },
+      "ordinary": 0.133873915070028,
+      "hardened": 0.3059709458134023,
+      "hardened_to_ordinary_ratio": 2.285515782916726
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-ordinary-distance-15.png",
+          "sha256": "bd27131ab59d9bf0b1b181d21020f3348c89ac1104a689d6c5f157f93dcba454"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-hardened-distance-15.png",
+          "sha256": "8e4beea1ff0862ecf2f6c723bd67170ad27ad217d4a061fa498a99f0537acca2"
+        }
+      },
+      "ordinary": 0.04906991538030597,
+      "hardened": 0.19111688505063562,
+      "hardened_to_ordinary_ratio": 3.894787336995076
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-ordinary-distance-20.png",
+          "sha256": "7219e9297e35c1b7ec9b9b03cf8e8724719ece7075b4f0d333984a00a77c980b"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-hardened-distance-20.png",
+          "sha256": "04764cb31179124cb59621003e309bb3b9d98e99f0bd508f0d5be290074fc316"
+        }
+      },
+      "ordinary": 0.04385173933204051,
+      "hardened": 0.12677623781081662,
+      "hardened_to_ordinary_ratio": 2.8910195978973836
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-ordinary-distance-29.png",
+          "sha256": "738ef58f486d53c1daeb33e0e8e61ea06570044e39aaccce4ef6963b808f8d5d"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-software-1.20.2-forge-native-dispatch/lighting-hardened-distance-29.png",
+          "sha256": "345efaa4fe7e29f30a12aea8be20f451d3b0b5df56cf4bd16282c11f1922c46e"
+        }
+      },
+      "ordinary": 0.04380437912518853,
+      "hardened": 0.04813434111613876,
+      "hardened_to_ordinary_ratio": 1.0988476969066412
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791168779893,
+      "active": false,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168812211,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168825290,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168830736,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168836374,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168841849,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168847264,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168852685,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168858133,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168863584,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168869563,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168875015,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168880451,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168885883,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168890797,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168896738,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168901639,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168907762,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168913234,
+      "active": true,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791168918652,
+      "active": true,
+      "wraith_floor": null
+    }
+  ]
+}

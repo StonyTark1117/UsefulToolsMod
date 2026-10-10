@@ -1,0 +1,39 @@
+{
+  "observed_at": "2026-10-07T22:48:07.183146+00:00",
+  "target": "1.7.10-forge",
+  "shader": "BSL 8.4.02.2",
+  "profiles": {
+    "bsl-current-native-1.7.10-forge-serial-v1": {
+      "status": "captures_complete",
+      "report_sha256": "d12e430cd9336b46aaeb33d020656f3f59dfbe59fd8ccc8b4bde1eb290aaf17f"
+    },
+    "bsl-material-native-1.7.10-forge-serial-v1": {
+      "status": "captures_complete",
+      "report_sha256": "7c9a2a43b62835fce1b69ed5f956b487d450d8b0bf0f7dcbdc6d54da8d66c5c2"
+    },
+    "bsl-material-zero-alpha-1.7.10-forge-serial-v1": {
+      "status": "captures_complete",
+      "report_sha256": "86b9ac28176d2a82fd9b9a2d43037da451edce52915692588b1ea518fcc5cd8d"
+    },
+    "bsl-classic-software-renderer-diagnostic-v1": {
+      "status": "captures_complete",
+      "report_sha256": "6269c62a7b93e41196bda8a6df6512cf2fd7ec4c89e7c78a8dae17180121736b"
+    },
+    "bsl-current-software-1.7.10-forge-serial-v1": {
+      "status": "not started; admission busy"
+    }
+  },
+  "current_normal_visual_hold": "validation/dynamic-lighting-2.3.2/packaged/bsl-current-native-1.7.10-forge-serial-v1/visual-review-hold.json",
+  "normal_retry_manifest": "validation/dynamic-lighting-2.3.2/bsl-current-native-1.7.10-forge-serial-v2-standalone.json",
+  "zero_alpha_manifest": "validation/dynamic-lighting-2.3.2/bsl-material-zero-alpha-1.7.10-forge-serial-v1-standalone.json",
+  "next": "Run two software material controls individually when admission free; compare and visually review both, then update BSL material certification. Complete Classic Complementary and six remaining modern material rows.",
+  "goal_status": "incomplete: 24 of 32 material shader rows certified; BSL Classic software companion-on reviewed, material controls pending",
+  "material_control_findings": "Native and zero-alpha runs complete, 13 map-alpha difference authenticated, preliminary all15 held/worn emission regions brighter; auditor remains incomplete because no clean reviewed companion-on BSL frame. Visual artifacts observed in two different Zink captures.",
+  "software_diagnostic": "Fresh llvmpipe startup loaded BSL8.4.02.2 and exited cleanly; full current companion-on software profile is prepared but admission busy.",
+  "software_full_profile": "bsl-current-software-1.7.10-forge-serial-v1",
+  "software_full_review": "validation/dynamic-lighting-2.3.2/packaged/bsl-current-software-1.7.10-forge-serial-v1/equipment-shader-review.json",
+  "software_matched_material_manifests": [
+    "validation/dynamic-lighting-2.3.2/bsl-material-native-software-1.7.10-forge-serial-v1-standalone.json",
+    "validation/dynamic-lighting-2.3.2/bsl-material-zero-alpha-software-1.7.10-forge-serial-v1-standalone.json"
+  ]
+}

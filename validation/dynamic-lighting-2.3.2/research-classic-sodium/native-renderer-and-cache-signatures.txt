@@ -1,0 +1,107 @@
+Compiled from "CeleritasWorldRenderer.java"
+public class com.ventooth.beddium.modules.TerrainRendering.CeleritasWorldRenderer {
+  private final net.minecraft.client.Minecraft client;
+  private net.minecraft.client.multiplayer.WorldClient world;
+  private int renderDistance;
+  private double lastCameraX;
+  private double lastCameraY;
+  private double lastCameraZ;
+  private double lastCameraPitch;
+  private double lastCameraYaw;
+  private float lastFogDistance;
+  private boolean useEntityCulling;
+  private org.embeddedt.embeddium.impl.render.viewport.Viewport currentViewport;
+  private com.ventooth.beddium.modules.TerrainRendering.ArchaicRenderSectionManager renderSectionManager;
+  private boolean blockEntityRequestedOutline;
+  private static final double MAX_ENTITY_CHECK_VOLUME;
+  public static com.ventooth.beddium.modules.TerrainRendering.CeleritasWorldRenderer instance();
+  public static org.embeddedt.embeddium.impl.render.chunk.map.ChunkTracker createChunkTracker();
+  public static com.ventooth.beddium.modules.TerrainRendering.CeleritasWorldRenderer instanceNullable();
+  public com.ventooth.beddium.modules.TerrainRendering.CeleritasWorldRenderer(net.minecraft.client.Minecraft);
+  public void setWorld(net.minecraft.client.multiplayer.WorldClient);
+  private void loadWorld(net.minecraft.client.multiplayer.WorldClient);
+  private void unloadWorld();
+  public int getVisibleChunkCount();
+  public void scheduleTerrainUpdate();
+  public boolean isTerrainRenderComplete();
+  public static int getEffectiveRenderDistance();
+  public void setupTerrain(org.embeddedt.embeddium.impl.render.viewport.Viewport, float, int, boolean, boolean);
+  private void processChunkEvents();
+  public void drawChunkLayer(int, double, double, double);
+  public void reload();
+  private void initRenderer(org.embeddedt.embeddium.impl.gl.device.CommandList);
+  public boolean didBlockEntityRequestOutline();
+  public java.util.Iterator<net.minecraft.tileentity.TileEntity> blockEntityIterator();
+  public void forEachVisibleBlockEntity(java.util.function.Consumer<net.minecraft.tileentity.TileEntity>);
+  public boolean shouldRenderBlockEntity(net.minecraft.tileentity.TileEntity, int);
+  private void getCulledBlockEntities(java.util.List<net.minecraft.tileentity.TileEntity>);
+  private void getGlobalBlockEntities(java.util.List<net.minecraft.tileentity.TileEntity>);
+  public void getRenderableBlockEntities(java.util.List<net.minecraft.tileentity.TileEntity>);
+  private static boolean isInfiniteExtentsBox(net.minecraft.util.AxisAlignedBB);
+  public boolean isEntityVisible(net.minecraft.entity.Entity);
+  public boolean isBoxVisible(double, double, double, double, double, double);
+  public java.lang.String getChunksDebugString();
+  public org.embeddedt.embeddium.impl.render.chunk.RenderPassConfiguration<?> getRenderPassConfiguration();
+  public void scheduleRebuildForBlockArea(int, int, int, int, int, int, boolean);
+  public void scheduleRebuildForChunks(int, int, int, int, int, int, boolean);
+  public void scheduleRebuildForChunk(int, int, int, boolean);
+  public java.util.Collection<java.lang.String> getDebugStrings();
+  public boolean isSectionReady(int, int, int);
+  public com.ventooth.beddium.modules.TerrainRendering.ArchaicRenderSectionManager getRenderSectionManager();
+  static {};
+}
+Compiled from "RenderGlobalMixin.java"
+public abstract class com.ventooth.beddium.mixin.mixins.client.TerrainRendering.RenderGlobalMixin implements com.ventooth.beddium.modules.TerrainRendering.ext.RenderGlobalExt {
+  private net.minecraft.client.Minecraft field_72777_q;
+  private java.util.Map<java.lang.Integer, net.minecraft.client.renderer.DestroyBlockProgress> field_72738_E;
+  private com.ventooth.beddium.modules.TerrainRendering.CeleritasWorldRenderer celeritas$worldRenderer;
+  private int celeritas$frame;
+  private java.util.List<net.minecraft.tileentity.TileEntity> celeritas$renderableBlockEntities;
+  public com.ventooth.beddium.mixin.mixins.client.TerrainRendering.RenderGlobalMixin();
+  private int nullifyBuiltChunkStorage(net.minecraft.client.renderer.RenderGlobal);
+  private int nullifyBuiltChunkStorage2(int);
+  private void init(net.minecraft.client.Minecraft, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void onWorldLoad(net.minecraft.client.multiplayer.WorldClient, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void onTerrainUpdateScheduled(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  public int func_72719_a(net.minecraft.entity.EntityLivingBase, int, double);
+  public void func_72729_a(net.minecraft.client.renderer.culling.ICamera, float);
+  private static org.embeddedt.embeddium.impl.render.viewport.Viewport celeritas$createShadowViewport(com.ventooth.beddium.modules.TerrainRendering.ext.FrustrumExt, float);
+  private static org.embeddedt.embeddium.impl.render.viewport.Viewport celeritas$createViewport(com.ventooth.beddium.modules.TerrainRendering.ext.FrustrumExt);
+  public void func_72725_b(int, int, int, int, int, int);
+  private void onReload(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  public void renderTileEntities(net.minecraft.entity.EntityLivingBase, net.minecraft.client.renderer.culling.ICamera, float, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private java.util.List<net.minecraft.tileentity.TileEntity> hijackTEList(net.minecraft.client.renderer.RenderGlobal);
+  private net.minecraft.util.AxisAlignedBB noBB(net.minecraft.tileentity.TileEntity);
+  private boolean noBB2(net.minecraft.client.renderer.culling.ICamera, net.minecraft.util.AxisAlignedBB);
+  private boolean customShouldRender(net.minecraft.tileentity.TileEntity, int);
+  private void safeRenderTileEntity(net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher, net.minecraft.tileentity.TileEntity, float, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>);
+  public java.lang.String func_72735_c();
+  public com.ventooth.beddium.modules.TerrainRendering.CeleritasWorldRenderer celeritas$worldRenderer();
+  private static boolean lambda$celeritas$createShadowViewport$0(com.ventooth.beddium.modules.TerrainRendering.ext.FrustrumExt, org.joml.Vector3d, float, float, float, float, float, float);
+}
+Compiled from "SimpleChunkCache.java"
+public class com.ventooth.beddium.api.cache.SimpleChunkCache extends net.minecraft.world.ChunkCache implements com.ventooth.beddium.api.cache.BiomeColorCacheCapable,com.ventooth.beddium.api.cache.StateAwareCache {
+  private final com.ventooth.beddium.modules.BiomeColorCache.BiomeColorCacheImpl biomeColorCache;
+  private final int posX;
+  private final int posY;
+  private final int posZ;
+  private com.ventooth.beddium.api.cache.CachedArrays cache;
+  private static final com.ventooth.beddium.modules.TerrainRendering.cache.ArrayCache arrayCache;
+  private static final int EDGE_SIZE;
+  private static final int ARRAY_SIZE;
+  public com.ventooth.beddium.api.cache.SimpleChunkCache(net.minecraft.world.World, com.ventooth.beddium.api.task.WorldRenderRegion);
+  public com.ventooth.beddium.api.cache.SimpleChunkCache(net.minecraft.world.World, int, int, int, int, int, int);
+  public int func_72802_i(int, int, int, int);
+  protected int getLightBrightnessForSkyBlocksUncached(int, int, int, int);
+  public net.minecraft.block.Block func_147439_a(int, int, int);
+  protected net.minecraft.block.Block getBlockUncached(int, int, int);
+  public int func_72805_g(int, int, int);
+  protected int getBlockMetadataUncached(int, int, int);
+  public boolean func_147437_c(int, int, int);
+  protected boolean isAirBlockUncached(int, int, int);
+  private int getPositionIndex(int, int, int);
+  public void renderStart();
+  public void renderFinish();
+  public org.embeddedt.embeddium.impl.biome.BiomeColorCache<net.minecraft.world.biome.BiomeGenBase, com.ventooth.beddium.modules.BiomeColorCache.BiomeColorType> celeritas$biomeCache();
+  static {};
+}

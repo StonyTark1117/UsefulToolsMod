@@ -1,0 +1,26 @@
+{
+  "run_report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v22-BSL-indoor/report.json",
+  "status": "failed",
+  "captured_frames": 6,
+  "behavioral_entity_captures": 0,
+  "shaderpack_load_logged": true,
+  "client_log_sha256": "30c6294e2a1b5bc0ac4f947e6ea4c5780f34c9650104a2303ee646b6c47c1616",
+  "crash_report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v22-BSL-indoor/crash-reports/crash-2026-10-07_16.59.20-client.txt",
+  "crash_sha256": "bfbbf3964fa74bed5dc8ab64eb02d7e8904a40d940df8221970eb18bfd4505e7",
+  "root_cause_observed": "OptiFine Shaders.frameInit entered initialization, then RenderSystem.getGlCommandEncoder called missing pinned GlDevice.getGlCommandEncoder; first world frame still failed.",
+  "bridge_frame_lifecycle_transform_logged": true,
+  "original_stack_qualified": false,
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_virtualgl": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/virtualgl-3.1.5",
+      "egl_device": "egl0",
+      "transport": "proxy",
+      "wrapper_sha256": "423385b3bd6cf3ae67d35eadf768e7cdac2c57ed20d3d0c4069bef82be5a997a",
+      "interposer_sha256": "da23d69a5663f5da1cc7eb4383dc5f9467acc237655045d11f305f233fba9386"
+    }
+  }
+}

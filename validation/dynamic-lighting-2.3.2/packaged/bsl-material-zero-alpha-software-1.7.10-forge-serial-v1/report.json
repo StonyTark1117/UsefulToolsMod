@@ -1,0 +1,990 @@
+{
+  "status": "captures_complete",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "run_id": "8d4e3f29acd44224814677c6fe44ee18",
+  "invocation": [
+    "/tmp/usefultools-shaders-2.3.2/harness/1393292f6da366a0bda94dea1117903d757cd52f219ca4238bc041bb60130622/scripts/validate-packaged-spectral.py",
+    "--template",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1710-forge-optifine",
+    "--artifact",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/classic-base-zero-emission-control-v1.jar",
+    "--minecraft-version",
+    "1.7.10",
+    "--java-path",
+    "/usr/lib/jvm/java-8-openjdk/bin/java",
+    "--loader-uid",
+    "net.minecraftforge",
+    "--loader-version",
+    "10.13.4.1614",
+    "--mode",
+    "active",
+    "--shader-integration",
+    "optifine",
+    "--lighting-qa",
+    "--lighting-scenes",
+    "--classic-qa",
+    "--menu-world",
+    "--toggle-shaders",
+    "--shader-pack",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/a9498205dcccb5a0f4480d5829d661efa13bd3897b44a4a288d24061f39cbf61/BSL_v8.4.02.2.zip",
+    "--shader-setting",
+    "ADVANCED_MATERIALS=true",
+    "--shader-setting",
+    "MATERIAL_FORMAT=1",
+    "--shader-setting",
+    "EXPOSURE=0.00",
+    "--shader-setting",
+    "AUTO_EXPOSURE=false",
+    "--shader-setting",
+    "BLOOM_STRENGTH=1.00",
+    "--jvm-arg=-DusefulToolsLightingQa=true",
+    "--client-mod",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4/1.7.10-forge-acceptance-only.jar",
+    "--client-mod",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4/OptiFine_1.7.10_HD_U_E7.jar",
+    "--output",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/packaged/bsl-material-zero-alpha-software-1.7.10-forge-serial-v1",
+    "--lighting-equipment-scenes",
+    "--artifact-provenance",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/classic-base-zero-emission-control-v1.json",
+    "--ocr-python",
+    "/home/braydon/.cache/useful-tools-lighting-ocr/bin/python",
+    "--lighting-material-only"
+  ],
+  "mode": "active",
+  "shader_integration": "optifine",
+  "loader_uid": "net.minecraftforge",
+  "loader_version": "10.13.4.1614",
+  "work_dir": "/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-g_tmnm4s",
+  "framebuffer": "1280x720x24",
+  "audio_backend": "ALSOFT_DRIVERS=null",
+  "wayland_unset": true,
+  "gpu_zink": false,
+  "software_render_threads": "2",
+  "test_active_processors": "2",
+  "commands": [
+    {
+      "command": "gamerule doDaylightCycle false",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa prepare",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa ordinary",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 3",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 10",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 15",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 20",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 29",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa hardened",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 3",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 10",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 15",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 20",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa view 29",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held minecraft:glowstone",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:ectoplasm_lantern",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:soul_lantern",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglow_block",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglow",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglowstone_axe",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglowstone_hoe",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglowstone_pickaxe",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglowstone_shovel",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglowstone_sword",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglow_helmet",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglow_chestplate",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglow_leggings",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip held usefultoolsmod:hglow_boots",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip head usefultoolsmod:hglow_helmet",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip chest usefultoolsmod:hglow_chestplate",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip legs usefultoolsmod:hglow_leggings",
+      "accepted": true
+    },
+    {
+      "command": "lightingqa equip feet usefultoolsmod:hglow_boots",
+      "accepted": true
+    }
+  ],
+  "captures": [
+    "world-entry-1.png",
+    "world-entry-2.png",
+    "world-entry-2-play.png",
+    "world-entry-3.png",
+    "world-entry-3-play.png",
+    "lighting-native-acceptance.png",
+    "lighting-ordinary-distance-3.png",
+    "lighting-ordinary-distance-10.png",
+    "lighting-ordinary-distance-15.png",
+    "lighting-ordinary-distance-20.png",
+    "lighting-ordinary-distance-29.png",
+    "lighting-hardened-distance-3.png",
+    "lighting-hardened-distance-10.png",
+    "lighting-hardened-distance-15.png",
+    "lighting-hardened-distance-20.png",
+    "lighting-hardened-distance-29.png",
+    "lighting-disable-menu-options.png",
+    "lighting-disable-menu-video.png",
+    "lighting-disable-menu-shaders.png",
+    "lighting-disable-menu-off.png",
+    "lighting-disable-menu-done.png",
+    "lighting-shaders-disabled.png",
+    "lighting-enable-menu-options.png",
+    "lighting-enable-menu-video.png",
+    "lighting-enable-menu-shaders.png",
+    "lighting-enable-menu-pack.png",
+    "lighting-enable-menu-done.png",
+    "lighting-shaders-restored.png",
+    "lighting-equipment-held-glowstone.png",
+    "lighting-equipment-held-ectoplasm_lantern.png",
+    "lighting-equipment-held-soul_lantern.png",
+    "lighting-equipment-held-hglow_block.png",
+    "lighting-equipment-held-hglow.png",
+    "lighting-equipment-held-hglowstone_axe.png",
+    "lighting-equipment-held-hglowstone_hoe.png",
+    "lighting-equipment-held-hglowstone_pickaxe.png",
+    "lighting-equipment-held-hglowstone_shovel.png",
+    "lighting-equipment-held-hglowstone_sword.png",
+    "lighting-equipment-held-hglow_helmet.png",
+    "lighting-equipment-held-hglow_chestplate.png",
+    "lighting-equipment-held-hglow_leggings.png",
+    "lighting-equipment-held-hglow_boots.png",
+    "lighting-equipment-head-hglow_helmet.png",
+    "lighting-equipment-chest-hglow_chestplate.png",
+    "lighting-equipment-legs-hglow_leggings.png",
+    "lighting-equipment-feet-hglow_boots.png",
+    "lighting-save-quit.png",
+    "lighting-quit-game.png"
+  ],
+  "visual_verdict": "not reviewed",
+  "process_resource_priority": {
+    "nice": 10,
+    "io": {
+      "requested": "idle",
+      "applied": true,
+      "error": ""
+    },
+    "scope": "Private harness and inherited client/display children only"
+  },
+  "harness_sha256": {
+    "scripts/validate-packaged-spectral.py": "67dee4e6eefd603cbf47ba7ee83867206cd20c843634f6b18a69e6325fa36da2",
+    "scripts/spectral_validation.py": "495a4815055f650adcd7095a37dafff04f772309f14664208d3e1f1e47fd7176",
+    "scripts/spectral-menu-ocr.py": "f5187c10999150b94c9971e9c29bae069de7b5661c3df1ba8b2c9d218036c8d2",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78"
+  },
+  "harness_source_directory": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/packaged/bsl-material-zero-alpha-software-1.7.10-forge-serial-v1/harness-source",
+  "harness_original_source_directory": "/tmp/usefultools-shaders-2.3.2/harness/1393292f6da366a0bda94dea1117903d757cd52f219ca4238bc041bb60130622/scripts",
+  "working_tree_diff_sha256": "fdb1a2152107fbf88356c4fdeeaec0ba2a4560dad44c1276ac243dcdb250b0f9",
+  "source_sha256": {
+    "original-build-evidence:validation/dynamic-lighting-2.3.2/build/results.json": "e25313474752e5eb4de6cca89a72b486930b19afa83d394c537bcfd01656c40d",
+    "original-artifact-audit:validation/dynamic-lighting-2.3.2/artifact-audit.json": "80e4d1f8ddc263a85293348a15666da6f4958e62535eeca3726c286b4088f265",
+    "private-emission-control:assets/usefultoolsmod/textures/blocks/hglow_block_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglow_boots_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglow_chestplate_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglow_helmet_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglow_leggings_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglow_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglowstone_axe_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglowstone_hoe_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglowstone_pickaxe_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglowstone_shovel_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/items/hglowstone_sword_s.png": "90a336c96d6d1183441f3dc7e87677ccb3ccc7ce82f1d2447039344d7ca15a2f",
+    "private-emission-control:assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png": "4bd060846b1d006249598ce048285122018b197eb5eca17422c683da9c6f44be",
+    "private-emission-control:assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png": "4bd060846b1d006249598ce048285122018b197eb5eca17422c683da9c6f44be"
+  },
+  "artifact_provenance_sha256": "9649ca47e029ff0a9fc0574f370085e97e86ed747e9c972581f67fa21ad942c1",
+  "artifact_original_path": "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/classic-base-zero-emission-control-v1.jar",
+  "private_emission_control": {
+    "original_artifact": "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+    "original_artifact_sha256": "0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182",
+    "control_artifact_sha256": "97587fb1238a5d103458c34eb7221662a0f86371c62d93370237fa66a7e63864",
+    "unchanged_production_classes_and_diffuse_assets": true,
+    "changed_resource_paths": [
+      "assets/usefultoolsmod/textures/blocks/hglow_block_s.png",
+      "assets/usefultoolsmod/textures/items/hglow_boots_s.png",
+      "assets/usefultoolsmod/textures/items/hglow_chestplate_s.png",
+      "assets/usefultoolsmod/textures/items/hglow_helmet_s.png",
+      "assets/usefultoolsmod/textures/items/hglow_leggings_s.png",
+      "assets/usefultoolsmod/textures/items/hglow_s.png",
+      "assets/usefultoolsmod/textures/items/hglowstone_axe_s.png",
+      "assets/usefultoolsmod/textures/items/hglowstone_hoe_s.png",
+      "assets/usefultoolsmod/textures/items/hglowstone_pickaxe_s.png",
+      "assets/usefultoolsmod/textures/items/hglowstone_shovel_s.png",
+      "assets/usefultoolsmod/textures/items/hglowstone_sword_s.png",
+      "assets/usefultoolsmod/textures/models/armor/hglow_layer_1_s.png",
+      "assets/usefultoolsmod/textures/models/armor/hglow_layer_2_s.png"
+    ]
+  },
+  "private_component_metadata": true,
+  "private_verified_metadata": [
+    {
+      "uid": "org.lwjgl",
+      "version": "2.9.3",
+      "sha256": "12304aa2ed4b4359fa5346cdecc18a31441feefe99b8cd85e9309cfd6fd6b3e8",
+      "restored": false
+    },
+    {
+      "uid": "net.minecraft",
+      "version": "1.7.10",
+      "sha256": "5da6b22bde2571e1e9602f390cf5ba6535f85414fb82dd0d63782f44f33a38d4",
+      "restored": false
+    },
+    {
+      "uid": "net.minecraftforge",
+      "version": "10.13.4.1614",
+      "sha256": "8805569218d16a3d66bf519961d9dbb96da82398c42056345450639b568dd199",
+      "restored": false
+    }
+  ],
+  "prism_loader_version": "10.13.4.1614",
+  "components": {
+    "components": [
+      {
+        "cachedName": "LWJGL 2",
+        "cachedVersion": "2.9.3",
+        "cachedVolatile": true,
+        "dependencyOnly": true,
+        "uid": "org.lwjgl",
+        "version": "2.9.3"
+      },
+      {
+        "cachedName": "Minecraft",
+        "important": true,
+        "uid": "net.minecraft",
+        "version": "1.7.10"
+      },
+      {
+        "uid": "net.minecraftforge",
+        "version": "10.13.4.1614"
+      }
+    ],
+    "formatVersion": 1
+  },
+  "probe_agent_sha256": "1e1a878e5b8c4a028d6601966eeb9d5f370cf55cbc9c42eff70d3d73877082e1",
+  "lighting_material_control": {
+    "agent_sha256": "f7b2aeb0ca6634ddf44a01c2f0854cb3a38c9fcc24128141bf5f080de3eed547",
+    "production_artifact_changed": false,
+    "activation": "after full native acceptance",
+    "render_chunk_reload": "F3+A on verified owned client window after activation",
+    "optifine_dynamic_lighting": "Off; native Config.isDynamicLights must acknowledge false",
+    "acknowledgement": "USEFUL_TOOLS_LIGHTING_MATERIAL_CONTROL_PASS packed=same sodium=same source=15 normal=restored transformed=2 optifine=true\n",
+    "acknowledgement_sha256": "25038e21ac1ec4936a0a4d4d497391c0950088c5b368276be35a5b3c3fab4b70"
+  },
+  "artifacts": {
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/classic-base-zero-emission-control-v1.jar": "97587fb1238a5d103458c34eb7221662a0f86371c62d93370237fa66a7e63864",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4/1.7.10-forge-acceptance-only.jar": "100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4/OptiFine_1.7.10_HD_U_E7.jar": "8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4"
+  },
+  "preserved_inputs": {
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/classic-base-zero-emission-control-v1.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/97587fb1238a5d103458c34eb7221662a0f86371c62d93370237fa66a7e63864/classic-base-zero-emission-control-v1.jar",
+      "sha256": "97587fb1238a5d103458c34eb7221662a0f86371c62d93370237fa66a7e63864"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4/1.7.10-forge-acceptance-only.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4/1.7.10-forge-acceptance-only.jar",
+      "sha256": "100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4/OptiFine_1.7.10_HD_U_E7.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4/OptiFine_1.7.10_HD_U_E7.jar",
+      "sha256": "8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4"
+    },
+    "/home/braydon/Useful-Tools/tests/spectral-qa/build/runtime-probe.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/1e1a878e5b8c4a028d6601966eeb9d5f370cf55cbc9c42eff70d3d73877082e1/runtime-probe.jar",
+      "sha256": "1e1a878e5b8c4a028d6601966eeb9d5f370cf55cbc9c42eff70d3d73877082e1"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/a9498205dcccb5a0f4480d5829d661efa13bd3897b44a4a288d24061f39cbf61/BSL_v8.4.02.2.zip": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/a9498205dcccb5a0f4480d5829d661efa13bd3897b44a4a288d24061f39cbf61/BSL_v8.4.02.2.zip",
+      "sha256": "a9498205dcccb5a0f4480d5829d661efa13bd3897b44a4a288d24061f39cbf61"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/classic-base-zero-emission-control-v1.json": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/9649ca47e029ff0a9fc0574f370085e97e86ed747e9c972581f67fa21ad942c1/classic-base-zero-emission-control-v1.json",
+      "sha256": "9649ca47e029ff0a9fc0574f370085e97e86ed747e9c972581f67fa21ad942c1"
+    },
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/f7b2aeb0ca6634ddf44a01c2f0854cb3a38c9fcc24128141bf5f080de3eed547/material-control-agent.jar",
+      "sha256": "f7b2aeb0ca6634ddf44a01c2f0854cb3a38c9fcc24128141bf5f080de3eed547"
+    }
+  },
+  "native_cloud_control": {
+    "clouds": false,
+    "reason": "Prevent native clouds occluding the entity fixture at height 200"
+  },
+  "shader_pack": {
+    "name": "BSL_v8.4.02.2.zip",
+    "sha256": "a9498205dcccb5a0f4480d5829d661efa13bd3897b44a4a288d24061f39cbf61"
+  },
+  "shader_settings": [
+    "ADVANCED_MATERIALS=true",
+    "MATERIAL_FORMAT=1",
+    "EXPOSURE=0.00",
+    "AUTO_EXPOSURE=false",
+    "BLOOM_STRENGTH=1.00"
+  ],
+  "shaders_disabled_control": false,
+  "serial_render_lock": {
+    "path": "/tmp/useful-tools-spectral-render.lock",
+    "wait_seconds": 3.9808001019991934e-05
+  },
+  "display": ":91",
+  "xvfb_pid": 502816,
+  "copied_world_selection": {
+    "selected_directory": "Useful Tools Q",
+    "unselected_directories_archived": [],
+    "visible_acceptance_worlds": 1
+  },
+  "world_directory": "Useful Tools Q",
+  "world_title": "Useful Tools Q",
+  "world_entry": "normal menu (fresh-frame verified isolated input)",
+  "capture_sha256": {
+    "world-entry-1.png": "2428f24c7aa6811e65a236879ccdba34f1088c6c5d7893367aed629636672008",
+    "world-entry-2.png": "eb41b2768ec518061555a0295b8cff5e650533a5494f53499dbf49067677d5d0",
+    "world-entry-2-play.png": "bc9a644b8536be0eed8a51ff8fe4294566d7f94311df8358dceea804c47643f3",
+    "world-entry-3.png": "89274e7af99a8edac10bae89c70ee0619b8647ca9a8d8f191cf1686444486aca",
+    "world-entry-3-play.png": "1c878346392353d3c7855d9fa0699efcbcbdb534d0a02270f37cd5e3feae2c89",
+    "lighting-native-acceptance.png": "6270896b2a175e0906ef88d37ff571ce7a2f3430e42652c3742729d7a4ca7d16",
+    "lighting-ordinary-distance-3.png": "e178994b1d7012942885868efe141fd13dd6b4d6bb5063a83e181e51afb4470f",
+    "lighting-ordinary-distance-10.png": "34c995cff7a5e9c238d9b98823a322f84d2047db870f0588696365d71e5b10eb",
+    "lighting-ordinary-distance-15.png": "10f5ffe78a78f5d84848429484a4a5492fc0591be0e2d9dce7852bce0ed92be2",
+    "lighting-ordinary-distance-20.png": "c710027e51986b544ccc79bb69dae4be2ba9efd962bb6b903660a98faa5eba84",
+    "lighting-ordinary-distance-29.png": "2d908f9150a7e8ea86c7050acd9df3a37bed3cf371902270085fc960b419e323",
+    "lighting-hardened-distance-3.png": "2fe24689219640a6ea97171ea87a676f68dad09efa2462bcf341960d0d36c3da",
+    "lighting-hardened-distance-10.png": "84508304f89192c32269c81b369896ca3c299ff17da1c11a868885403866e45b",
+    "lighting-hardened-distance-15.png": "30e4dfc29442cc573a7edea060f4a82a6a041737113ac0aa65186344df72b19b",
+    "lighting-hardened-distance-20.png": "bd65832d0f4e01c6b772ee2aa07f594b0e5f55d11d0651f8825ed5a161eb0998",
+    "lighting-hardened-distance-29.png": "ca5e75df86212da16623570987f45dae9bc2f6d480608d9f89b61d05cca78ed9",
+    "lighting-disable-menu-options.png": "7893689851f64e20e0dab7f8e2ebefa14841da0f2f00584f0bcbbf59fd14dbb5",
+    "lighting-disable-menu-video.png": "732b2de2c39a2ec0be8cce3565df2b2978f574800ba56f4a76fba0a39d3b679e",
+    "lighting-disable-menu-shaders.png": "8a24dc4cdf15b78b804becf07bc561bd77450a342b4c92f575b4690aa03cf7c3",
+    "lighting-disable-menu-off.png": "8de302d9a247a79288aca91eb7b954bbd4081887fe9181cf37cc895fea3015e4",
+    "lighting-disable-menu-done.png": "ed68e5796d1694109384b7abebffc642f489f614d4de7dab8f9874d4953db137",
+    "lighting-shaders-disabled.png": "40a434a3ca9711902f9d12200f31f0675429ec5ce704ec2dea8bc0bc981ab261",
+    "lighting-enable-menu-options.png": "a86efb43d4329ad90a7722a2c39c1b97ea5b3123ff2d82a785b8064798c812d1",
+    "lighting-enable-menu-video.png": "6b8f12b99e66587be60a71523ab63515da79e513f0fd021929b920a5bc0bef4a",
+    "lighting-enable-menu-shaders.png": "953b8ba0bac57b0c1bc8a8723121a9199b80ed2144f5d9923f75f132a5b17dc0",
+    "lighting-enable-menu-pack.png": "f92f9bb843a1b9335c7cfb8f519d7b96a859cd4a91155a181fdc6fd1ec47ab79",
+    "lighting-enable-menu-done.png": "58e2e94e2858b5a89a1ef66e97b42245a636a18dc4a9c91e38c712e4f3436766",
+    "lighting-shaders-restored.png": "c59cb9d721b70db37ec08c182fe422e30a9905fb6b688b555f1b3b6660d6de40",
+    "lighting-equipment-held-glowstone.png": "d4adfaedd3c81f866b1baf73d4a0add93e8e65cadc6ed5465113738ebe8249da",
+    "lighting-equipment-held-ectoplasm_lantern.png": "f159c02a44508315b9fe8386aded747c9f88ca39bbf1e723a008a929dddedd7d",
+    "lighting-equipment-held-soul_lantern.png": "d2e8ce305bc572d59dc925f3ba99bf38c16b3bd7fffb8c69c3635576051f2039",
+    "lighting-equipment-held-hglow_block.png": "16a8cdb2f12db8dc3d94781183aaa950aef7e18ba5f9e17e63897e7397d3fa22",
+    "lighting-equipment-held-hglow.png": "d640d2311e5a100c8a5e9b2e039356496b8a03afbedf43aaacc9ad7109d6d229",
+    "lighting-equipment-held-hglowstone_axe.png": "b34e6d23fb970be45dd2f5de2458202703b9f23e34f0a2b62980588325c3493a",
+    "lighting-equipment-held-hglowstone_hoe.png": "83096573d184e3ce9776b98cf0c99297bbc44bd1c469534825655634d5398c15",
+    "lighting-equipment-held-hglowstone_pickaxe.png": "53ae174fe64f35ea85b097e02cfabf4145081995440d67b9552a10e51513c91b",
+    "lighting-equipment-held-hglowstone_shovel.png": "c357affbdad1693ad6e6fb0faf99e3d2619e9a3105cd1d7edad1723242a2a72e",
+    "lighting-equipment-held-hglowstone_sword.png": "bbd2168cc51d87d45805ebeb702b9a6b15d6b72f628084834e12490d201644f3",
+    "lighting-equipment-held-hglow_helmet.png": "5c434de835bc3ca8e9c79c78d87446fce3f18d05e9d60adfd56d1f68e7237df7",
+    "lighting-equipment-held-hglow_chestplate.png": "66b5374c150f3712d153a6822d90c7301d162b0f2c81fb46d363c314b67f32cd",
+    "lighting-equipment-held-hglow_leggings.png": "eb8e225144b8e1261a2c1e1f4449916dd5672f70479835760c8eff8d291c8674",
+    "lighting-equipment-held-hglow_boots.png": "08c6669e0968baf679dbf969aad6e5888c63ac7e8ace8d6c48627f3ac39908bf",
+    "lighting-equipment-head-hglow_helmet.png": "b015adfb29c24305d13f8d827071f2a0523e126ac00a6efd49db1c6469587265",
+    "lighting-equipment-chest-hglow_chestplate.png": "1644c6edc43d422c83c998f285891d11dcf3ad13353df41374b04dd58dcbc190",
+    "lighting-equipment-legs-hglow_leggings.png": "75508bfc9f6edcda70fcbc94d7ab6be43d67a2310ba88c7ed474fb1f48c4a285",
+    "lighting-equipment-feet-hglow_boots.png": "26bdd5c9060b9f75753963ccb935312ebad5bdec1af7b47e6bb06170edf0dad4",
+    "lighting-save-quit.png": "c92ca2285f9a400927fa032320d4c8c07965d07a4523d0cc216a311933c601a6",
+    "lighting-quit-game.png": "0cc12386ca1bd60c5c72976277453e81b35ffc4d0825ca2f5f9805cf937b6cc4"
+  },
+  "framebuffer_sha256": {
+    "world-entry-1-framebuffer.png": "679ace3c82cd66c17192c3ea588065d00b1f3f2dcbbd010e24194222ce5e6275",
+    "world-entry-2-framebuffer.png": "af4ff88732baab0836332ee57f9b870653fb48c2ef523e5cd1c936f8060bc912",
+    "world-entry-2-play-framebuffer.png": "d6690916a93f1a9bda210e2ba0b81d5bb8aa6bb262da1efb1dec428761168012",
+    "world-entry-3-framebuffer.png": "3c4b727447ee6edc82ab2ceba9c58c00db48583e3cffcb053a07703087cf6ca8",
+    "world-entry-3-play-framebuffer.png": "99a18171aa71cda458fabe1415defaefdcd28ae9d68cb86939ad0295ef160587",
+    "lighting-native-acceptance-framebuffer.png": "434109fc6b61c391e5fff76b96c1d811f8c1a9b2ed11b86a128541f957d5f0c2",
+    "lighting-ordinary-distance-3-framebuffer.png": "8be1d2bd598365443d1281136ef3906997d69dc023184413f9c45a0703f719e5",
+    "lighting-ordinary-distance-10-framebuffer.png": "0f264f65893038045e23cf31fe6a550382a38fd99f269cd9b0a473eaf7a259e7",
+    "lighting-ordinary-distance-15-framebuffer.png": "3fd34ef60184cea6dd92db11f54451ce8a93ebbd8d8666bbb5bc99afa6dfb2d2",
+    "lighting-ordinary-distance-20-framebuffer.png": "0b5da65c4bdf33376f6c71e38eab38c79e54859e9e4101006d1ade513e397fc7",
+    "lighting-ordinary-distance-29-framebuffer.png": "c7d7d6e8f115e443f6df6b41e355b43d2c4c45673c1915ef3236ee1af2c3fc01",
+    "lighting-hardened-distance-3-framebuffer.png": "2a9ad23208207a900da514163bb54511a087609bcd4668ee65cf533a40402522",
+    "lighting-hardened-distance-10-framebuffer.png": "ac072b9068214148e93afd70be9a68e450f9c8e7b66d5f1f9dbd3a5ebe064292",
+    "lighting-hardened-distance-15-framebuffer.png": "70d959cf001e825db9d914a3fed055d6c9099db5c683971f9f6751dc6a6c1506",
+    "lighting-hardened-distance-20-framebuffer.png": "7e1c4a537fda1c6959f485340bbb62e0cb528a72d28f27e5afae8bc625deb99a",
+    "lighting-hardened-distance-29-framebuffer.png": "770c250917580ac77a9b4738ed9304d6e9d321b619b6078dbe5d3aea0c791dac",
+    "lighting-disable-menu-options-framebuffer.png": "2df5bc2b3863db1ac9c84bf872e6c6235646b37412495b897a824c80d5907b04",
+    "lighting-disable-menu-video-framebuffer.png": "0d297b6e10adab1f2969152bafdf0efade66cb35e831d63806cafafdf4e9f005",
+    "lighting-disable-menu-shaders-framebuffer.png": "56ea24ae3e591193d77f1726bbc97475a4e3102311561c306372f72c20ea3803",
+    "lighting-disable-menu-off-framebuffer.png": "e6c64040262c5e2c219f57268b4e0bcfc9cf6c06278ea2e609b5d242026a226f",
+    "lighting-disable-menu-done-framebuffer.png": "847d0de5d8daf430346432a6809eaecfd7a81b3b229b99ac840ef90a3da24417",
+    "lighting-shaders-disabled-framebuffer.png": "e2750d9079ee777c174eab02f4bb284331410a28e7e085a450667e1561628aa7",
+    "lighting-enable-menu-options-framebuffer.png": "8c63e53919736fe7b4f3e5e411b22be96bdf4586b46c92a6b6b094c16dfc967f",
+    "lighting-enable-menu-video-framebuffer.png": "8373e5e1998d33509d0bb6a8b3af3ef9d294b6e7289ef925e230c57057ed59fc",
+    "lighting-enable-menu-shaders-framebuffer.png": "682663eee6ed8e03c2ac3f0aca1bff2fb07ff001dbea45533db7b8c790dd8a51",
+    "lighting-enable-menu-pack-framebuffer.png": "9edb6768a8a3bcf6dfdbbe3ad0c5fa4afdaf21458ba271cb0f991a606cac91a9",
+    "lighting-enable-menu-done-framebuffer.png": "2c466bb0f0b0ea3ba65f94862c03ad490faba6b0690665a1f83b652e0a8764fd",
+    "lighting-shaders-restored-framebuffer.png": "e2741845fb8d2c00f43489dc89a58a3e10831bf9fffe4d42458a390ec8a48750",
+    "lighting-equipment-held-glowstone-framebuffer.png": "dcf2c21c2c2509d210ecf7d0933fae2bd9319491eacfd540542f0322751a4349",
+    "lighting-equipment-held-ectoplasm_lantern-framebuffer.png": "2d231983a931b1be5e338fc4446a0a2331f0128556dd9bef582fac0ba231c907",
+    "lighting-equipment-held-soul_lantern-framebuffer.png": "1e0bca2e5600f48f675fc79cc206f3a7693b96503dd37cfbccb642fcfd8ab8d5",
+    "lighting-equipment-held-hglow_block-framebuffer.png": "7dc1ffc85e76ca163d2789f6b948cc49b5d82956b8eaa3410b5fd76f25146d84",
+    "lighting-equipment-held-hglow-framebuffer.png": "1cd89273d88460ea846c3c291194a279530c997f13c24566623da18a48c53a7c",
+    "lighting-equipment-held-hglowstone_axe-framebuffer.png": "3e4c605a352d0fc04ff65025f01c44fb168977e2896636969105dcec700874a7",
+    "lighting-equipment-held-hglowstone_hoe-framebuffer.png": "fd77a394e3667bf71a9f27e691fca91322751241ae609d59287afad707a2ec0f",
+    "lighting-equipment-held-hglowstone_pickaxe-framebuffer.png": "3fbce594fe769b6fae68fd3411f44f7978b7fedac99525888d6ced4bdd5fb8c2",
+    "lighting-equipment-held-hglowstone_shovel-framebuffer.png": "74e9e7d82b47f4a092bbba5ed980185eca8078bf796842c56204a18627504427",
+    "lighting-equipment-held-hglowstone_sword-framebuffer.png": "853fd1a7792b493f6371001b5f7df88f6cf56aca801ac2da70d73d8abc5b193f",
+    "lighting-equipment-held-hglow_helmet-framebuffer.png": "76d1f60c054545af0d06c5c800309cc22eddaee01064c15626d434d77af23b6d",
+    "lighting-equipment-held-hglow_chestplate-framebuffer.png": "95dbfd80b4f860c11ebf6c7b927e1dc158b360acd8ae4990bd554193519bfe7d",
+    "lighting-equipment-held-hglow_leggings-framebuffer.png": "c747e0fcdd1b68eef65f6f46f2dae8be1045bcab4cc48c608a6fa97cfffd52e1",
+    "lighting-equipment-held-hglow_boots-framebuffer.png": "b26a79151ad2b2a3a646e8da424ca2f0d400b041733f15ca4fd1f0d69c28a2c0",
+    "lighting-equipment-head-hglow_helmet-framebuffer.png": "2c4473d88dbb1f5756fa15a85d6aea64d84d39a3014424ff17f18cb2d5ba0011",
+    "lighting-equipment-chest-hglow_chestplate-framebuffer.png": "bcb85ae4e51945d0b4cf9f8fac7b861d30241df57b7f0624f54c90b93903b14c",
+    "lighting-equipment-legs-hglow_leggings-framebuffer.png": "e42d19809c3ab7133f8154b71d4fabf5afc121682b51563bbce0048da9fe545b",
+    "lighting-equipment-feet-hglow_boots-framebuffer.png": "b86dd7ae29bb4a02cbe4ad1d79898ec1f28b0941f56be6cafa4d413e216e8b7c",
+    "lighting-save-quit-framebuffer.png": "5fde5da837480b1e6844f97afe093b08de9cbb272b64d553c7af59779ff375d6",
+    "lighting-quit-game-framebuffer.png": "729c2a61ef3aae7ad9d544adbc6d35cc702c69eb29363578c2b8b2ed48b77112"
+  },
+  "menu_actions": [
+    {
+      "action": "singleplayer",
+      "control": {
+        "text": "Singleplayer",
+        "x": 426.0,
+        "y": 236.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "world-entry-1.png"
+    },
+    {
+      "action": "open_world",
+      "control": {
+        "text": "Useful Tools Q",
+        "confidence": 0.8683863639831543,
+        "x": 287.0,
+        "y": 186.0
+      },
+      "frame": "world-entry-2.png"
+    }
+  ],
+  "shader_menu_actions": [
+    {
+      "control": {
+        "text": "Play Selected World",
+        "x": 268.0,
+        "y": 396.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "world-entry-2-play.png"
+    },
+    {
+      "control": {
+        "text": "Options...",
+        "x": 324.0,
+        "y": 300.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-disable-menu-options.png"
+    },
+    {
+      "control": {
+        "text": "Video Settings...",
+        "x": 266.0,
+        "y": 280.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-disable-menu-video.png"
+    },
+    {
+      "control": {
+        "text": "Shaders...",
+        "x": 266.0,
+        "y": 328.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-disable-menu-shaders.png"
+    },
+    {
+      "control": {
+        "text": "OFF",
+        "x": 287.0,
+        "y": 186.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-disable-menu-off.png"
+    },
+    {
+      "control": {
+        "text": "Done",
+        "x": 427.0,
+        "y": 450.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-disable-menu-done.png"
+    },
+    {
+      "control": {
+        "text": "Options...",
+        "x": 324.0,
+        "y": 300.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-enable-menu-options.png"
+    },
+    {
+      "control": {
+        "text": "Video Settings...",
+        "x": 266.0,
+        "y": 280.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-enable-menu-video.png"
+    },
+    {
+      "control": {
+        "text": "Shaders...",
+        "x": 266.0,
+        "y": 328.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-enable-menu-shaders.png"
+    },
+    {
+      "control": {
+        "text": "BSL_v8.4.02.2.zip",
+        "x": 287.0,
+        "y": 250.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-enable-menu-pack.png"
+    },
+    {
+      "control": {
+        "text": "Done",
+        "x": 427.0,
+        "y": 450.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-enable-menu-done.png"
+    },
+    {
+      "control": {
+        "text": "Save and Quit to Title",
+        "x": 426.0,
+        "y": 348.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-save-quit.png"
+    },
+    {
+      "control": {
+        "text": "Quit Game",
+        "x": 528.0,
+        "y": 404.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "lighting-quit-game.png"
+    }
+  ],
+  "menu_transition_retries": [
+    {
+      "frame": "world-entry-3-play.png",
+      "error": "Expected one verified control ^[PF]lay Sele[co]ted [WHM]orld$; found 0",
+      "native_result": "World joined while the selected-world control was being reverified; no additional click sent"
+    }
+  ],
+  "client_pids": [
+    504478
+  ],
+  "jvm_arguments_verified": [
+    "-DusefulToolsLightingQa=true",
+    "-XX:ActiveProcessorCount=2",
+    "-javaagent:/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-g_tmnm4s/runtime-probe.jar=/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-g_tmnm4s/spectral-state.log",
+    "-javaagent:/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-g_tmnm4s/lighting-material-control-agent.jar=/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-g_tmnm4s/lighting-material-control-optifine.flag"
+  ],
+  "runtime_loader_pin_acknowledged": "10.13.4.1614",
+  "shader_activation_logged": true,
+  "classic_silent_audio_hook": "USEFUL_TOOLS_LIGHTING_QA_AUDIO silent Paulscode Library; ALSOFT_DRIVERS=null retained",
+  "lighting_equipment_cases": [
+    "[15:59:05] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=0 source=usefultoolsmod:ectoplasm_lantern slot=0 level=12.0",
+    "[15:59:06] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=1 source=usefultoolsmod:soul_lantern slot=0 level=12.0",
+    "[15:59:07] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=2 source=usefultoolsmod:hglow_block slot=0 level=15.0",
+    "[15:59:07] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=3 source=usefultoolsmod:hglow slot=0 level=15.0",
+    "[15:59:08] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=4 source=usefultoolsmod:hglowstone_axe slot=0 level=15.0",
+    "[15:59:08] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=5 source=usefultoolsmod:hglowstone_hoe slot=0 level=15.0",
+    "[15:59:09] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=6 source=usefultoolsmod:hglowstone_pickaxe slot=0 level=15.0",
+    "[15:59:09] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=7 source=usefultoolsmod:hglowstone_shovel slot=0 level=15.0",
+    "[15:59:10] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=8 source=usefultoolsmod:hglowstone_sword slot=0 level=15.0",
+    "[15:59:11] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=9 source=usefultoolsmod:hglow_helmet slot=0 level=15.0",
+    "[15:59:11] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=10 source=usefultoolsmod:hglow_helmet slot=4 level=15.0",
+    "[15:59:12] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=11 source=usefultoolsmod:hglow_chestplate slot=0 level=15.0",
+    "[15:59:12] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=12 source=usefultoolsmod:hglow_chestplate slot=3 level=15.0",
+    "[15:59:13] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=13 source=usefultoolsmod:hglow_leggings slot=0 level=15.0",
+    "[15:59:14] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=14 source=usefultoolsmod:hglow_leggings slot=2 level=15.0",
+    "[15:59:14] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=15 source=usefultoolsmod:hglow_boots slot=0 level=15.0",
+    "[15:59:15] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=16 source=usefultoolsmod:hglow_boots slot=1 level=15.0",
+    "[15:59:16] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=17 source=minecraft:glowstone slot=0 level=15.0",
+    "[15:59:16] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=18 source=usefultoolsmod:calcified_amethyst slot=0 level=0.0",
+    "[15:59:17] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=19 source=usefultoolsmod:ectoplasm slot=0 level=0.0",
+    "[15:59:17] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=20 source=mixed/removal slot=-1 level=15.0",
+    "[15:59:18] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.ClassicLightingQa:tick:41]: USEFUL_TOOLS_LIGHTING_QA_CASE_PASS stage=21 source=mixed/removal slot=-1 level=0.0"
+  ],
+  "lighting_advanced_cases": [
+    "[15:59:06] [Server thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS server block-light bytes and spawn eligibility unchanged inside visual field",
+    "[15:59:20] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS two visible remote players and equipped mob",
+    "[15:59:21] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS underwater worn emission retained",
+    "[15:59:22] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS movement removes former illumination",
+    "[15:59:23] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS mob unequip removes illumination",
+    "[15:59:24] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS network block placement indexed and removed entities cleared",
+    "[15:59:24] [Server thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS placed Hardened Glowstone actual server block light 15",
+    "[15:59:25] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS dimension change clears old field",
+    "[15:59:27] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS return reload indexes retained placed light",
+    "[15:59:30] [Client thread/INFO] [STDOUT/]: [com.stonytark.usefultools.lighting.classic.AdvancedLightingQa:log:34]: USEFUL_TOOLS_LIGHTING_QA_ADVANCED_PASS network block removal clears field"
+  ],
+  "live_shader_states": [
+    {
+      "time_ms": 1791414133277,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414177447,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414196467,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414204972,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414214978,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414224984,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414233990,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414244496,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414254503,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414264009,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414273515,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414282520,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414292026,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414302533,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414312539,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414322545,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414332051,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414341556,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414351062,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791414360567,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ],
+  "lighting_comparison_distances": [
+    10,
+    15,
+    20,
+    29
+  ],
+  "lighting_equipment_shader_captures": [
+    {
+      "slot": "held",
+      "source": "minecraft:glowstone",
+      "capture": "lighting-equipment-held-glowstone.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=minecraft:glowstone"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:ectoplasm_lantern",
+      "capture": "lighting-equipment-held-ectoplasm_lantern.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:ectoplasm_lantern"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:soul_lantern",
+      "capture": "lighting-equipment-held-soul_lantern.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:soul_lantern"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_block",
+      "capture": "lighting-equipment-held-hglow_block.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglow_block"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow",
+      "capture": "lighting-equipment-held-hglow.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglow"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_axe",
+      "capture": "lighting-equipment-held-hglowstone_axe.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglowstone_axe"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_hoe",
+      "capture": "lighting-equipment-held-hglowstone_hoe.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglowstone_hoe"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_pickaxe",
+      "capture": "lighting-equipment-held-hglowstone_pickaxe.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglowstone_pickaxe"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_shovel",
+      "capture": "lighting-equipment-held-hglowstone_shovel.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglowstone_shovel"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglowstone_sword",
+      "capture": "lighting-equipment-held-hglowstone_sword.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglowstone_sword"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_helmet",
+      "capture": "lighting-equipment-held-hglow_helmet.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglow_helmet"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_chestplate",
+      "capture": "lighting-equipment-held-hglow_chestplate.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglow_chestplate"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_leggings",
+      "capture": "lighting-equipment-held-hglow_leggings.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglow_leggings"
+    },
+    {
+      "slot": "held",
+      "source": "usefultoolsmod:hglow_boots",
+      "capture": "lighting-equipment-held-hglow_boots.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=held source=usefultoolsmod:hglow_boots"
+    },
+    {
+      "slot": "head",
+      "source": "usefultoolsmod:hglow_helmet",
+      "capture": "lighting-equipment-head-hglow_helmet.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=head source=usefultoolsmod:hglow_helmet"
+    },
+    {
+      "slot": "chest",
+      "source": "usefultoolsmod:hglow_chestplate",
+      "capture": "lighting-equipment-chest-hglow_chestplate.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=chest source=usefultoolsmod:hglow_chestplate"
+    },
+    {
+      "slot": "legs",
+      "source": "usefultoolsmod:hglow_leggings",
+      "capture": "lighting-equipment-legs-hglow_leggings.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=legs source=usefultoolsmod:hglow_leggings"
+    },
+    {
+      "slot": "feet",
+      "source": "usefultoolsmod:hglow_boots",
+      "capture": "lighting-equipment-feet-hglow_boots.png",
+      "native_acknowledgement": "USEFUL_TOOLS_LIGHTING_SCENE_EQUIPMENT_ACK slot=feet source=usefultoolsmod:hglow_boots"
+    }
+  ],
+  "shutdown_acknowledgement": [
+    "[16:01:16] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Overworld",
+    "[16:01:16] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Nether",
+    "[16:01:16] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/The End",
+    "[16:02:20] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Overworld",
+    "[16:02:20] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Nether",
+    "[16:02:20] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/The End",
+    "[16:02:23] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Overworld",
+    "[16:02:23] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Nether",
+    "[16:02:23] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/The End",
+    "[16:03:02] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Overworld",
+    "[16:03:02] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Nether",
+    "[16:03:02] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/The End",
+    "[16:06:03] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Overworld",
+    "[16:06:03] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Nether",
+    "[16:06:03] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/The End",
+    "[16:06:08] [Server thread/INFO]: Stopping server",
+    "[16:06:08] [Server thread/INFO]: Saving worlds",
+    "[16:06:08] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Overworld",
+    "[16:06:08] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/Nether",
+    "[16:06:08] [Server thread/INFO]: Saving chunks for level 'Useful Tools Q'/The End"
+  ],
+  "clean_client_exit": true,
+  "shader_compile_errors": [],
+  "shader_backend_diagnostics": [],
+  "cleanup": {
+    "sigkill_after_sigterm": [
+      502838
+    ],
+    "private_launcher_root_retained": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ]
+  }
+}

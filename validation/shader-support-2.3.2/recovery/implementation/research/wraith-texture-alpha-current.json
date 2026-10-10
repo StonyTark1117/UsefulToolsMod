@@ -1,0 +1,74 @@
+{
+  "scope": "Wraith shader readability diagnostic, not a completed render fix",
+  "texture_path": "1.21.1/forge/src/main/resources/assets/usefultoolsmod/textures/entity/ghost/wraith.png",
+  "texture_sha256": "bc8ff54c85d7518e36fd9cd4b38311f469d93f9741b7eae74c524cec4ac381ac",
+  "texture_dimensions": [
+    64,
+    64
+  ],
+  "all_maintained_texture_hashes_equal": true,
+  "alpha_rows": [
+    {
+      "y": [
+        0,
+        17
+      ],
+      "nontransparent_pixels": 520,
+      "total_pixels": 1152
+    },
+    {
+      "y": [
+        18,
+        27
+      ],
+      "nontransparent_pixels": 174,
+      "total_pixels": 640
+    },
+    {
+      "y": [
+        28,
+        34
+      ],
+      "nontransparent_pixels": 0,
+      "total_pixels": 448
+    },
+    {
+      "y": [
+        35,
+        63
+      ],
+      "nontransparent_pixels": 0,
+      "total_pixels": 1856
+    }
+  ],
+  "model_sources": {
+    "1.7.10": [],
+    "1.20.1": [
+      "1.20.1/neoforge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "1.20.1/forge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "1.20.1/fabric/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java"
+    ],
+    "1.20.2": [
+      "1.20.2/forge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "1.20.2/fabric/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "1.20.2/neoforge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java"
+    ],
+    "1.21.1": [
+      "1.21.1/forge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "1.21.1/neoforge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "1.21.1/fabric/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java"
+    ],
+    "26.1.2": [
+      "26.1.2/fabric/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "26.1.2/neoforge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "26.1.2/forge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java"
+    ],
+    "26.2": [
+      "26.2/neoforge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "26.2/fabric/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java",
+      "26.2/forge/src/main/java/com/stonytark/usefultoolsmod/entity/client/WraithModel.java"
+    ]
+  },
+  "observation": "The maintained Wraith texture contains no opaque pixels in rows 28-63. Modern WraithModel tail UVs begin at y=35, so lighting floors cannot make that geometry visible. The torso UV area also includes a large zero-alpha region. A shader-only silhouette solution must preserve the existing no-shader texture path and be visually/performance-tested.",
+  "sample_capture": "validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/forge1211-optifine-bsl1012-active-7c18a31-fresh-20261007-v3/wraith-night.png"
+}

@@ -1,0 +1,92 @@
+{
+  "scope": "Matched vanilla sheep native Glowing control on current rebuilt mod artifact, pinned NeoForge 20.2.93 and identical private OptiFine candidate. Serial owned Xvfb, null audio, normal menu world entry. Original pack archives unchanged.",
+  "artifact_sha256": "2b07d16ab4ade86f80946cc96e2f0c6ec6a423d586ec62e0c4d443132c757182",
+  "candidate_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+  "runs": {
+    "BSL": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-bsl-original-sheep-control-current-v1/report.json",
+      "report_sha256": "ea855724e28b6404da433e22347994a4677d609cfe3ffa80ade7523f4878aadd",
+      "shader_pack": {
+        "name": "BSL_v10.1.2.zip",
+        "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+      },
+      "images": {
+        "vanilla-sheep-outline-interior-before.png": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-bsl-original-sheep-control-current-v1/vanilla-sheep-outline-interior-before.png",
+          "sha256": "1169d15ce7efc3cf783a3732c81d336d3960e6da1ff440442e8be5a5a9346bf9"
+        },
+        "vanilla-sheep-outline-active.png": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-bsl-original-sheep-control-current-v1/vanilla-sheep-outline-active.png",
+          "sha256": "c3fe3453ea9c92a3873a2605835fcbd286b743ce0cd08b2d67ac30cca58be198"
+        },
+        "vanilla-sheep-outline-disabled.png": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-bsl-original-sheep-control-current-v1/vanilla-sheep-outline-disabled.png",
+          "sha256": "41f9fd04d2d855153be3286d6cf51e1b10c1858ed63374551383d7c073215806"
+        }
+      },
+      "native_glowing_commands": [
+        {
+          "command": "summon minecraft:sheep 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,Invulnerable:1b,Glowing:0b,Rotation:[0f,0f]}",
+          "accepted": true
+        },
+        {
+          "command": "data merge entity @e[type=minecraft:sheep,limit=1] {Glowing:1b}",
+          "accepted": true
+        }
+      ],
+      "clean_client_exit": true,
+      "live_shader_states": [
+        true,
+        false,
+        true
+      ],
+      "display": ":91",
+      "framebuffer": "1280x720x24",
+      "audio_backend": "ALSOFT_DRIVERS=null"
+    },
+    "Complementary": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/report.json",
+      "report_sha256": "19374be7f9e546e8b553dc8eec7064b107b758840c43a3398c0266fef9e557f4",
+      "shader_pack": {
+        "name": "ComplementaryReimagined_r5.9.3.zip",
+        "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+      },
+      "images": {
+        "vanilla-sheep-outline-interior-before.png": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/vanilla-sheep-outline-interior-before.png",
+          "sha256": "26f1cdd649ee96f2e5dd53ff101b4a301d89038b0a7e3879da2a945c191959b8"
+        },
+        "vanilla-sheep-outline-active.png": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/vanilla-sheep-outline-active.png",
+          "sha256": "843f3c6b26741ee50b0d43782578253afbbe89a7781eaae0368ea6a520d0f581"
+        },
+        "vanilla-sheep-outline-disabled.png": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/vanilla-sheep-outline-disabled.png",
+          "sha256": "d06e561603eb696fb8c061bf28b18c6cbccad80a24ef676c663f0dc55d249f7e"
+        }
+      },
+      "native_glowing_commands": [
+        {
+          "command": "summon minecraft:sheep 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,Invulnerable:1b,Glowing:0b,Rotation:[0f,0f]}",
+          "accepted": true
+        },
+        {
+          "command": "data merge entity @e[type=minecraft:sheep,limit=1] {Glowing:1b}",
+          "accepted": true
+        }
+      ],
+      "clean_client_exit": true,
+      "live_shader_states": [
+        true,
+        false,
+        true
+      ],
+      "display": ":91",
+      "framebuffer": "1280x720x24",
+      "audio_backend": "ALSOFT_DRIVERS=null"
+    }
+  },
+  "visual_verdict": "BSL active shows a white vanilla sheep outline; Complementary active does not. Both show a strong outline when disabled. The pack-dependent defect is in the active rendering path, not limited to the mod entity model or Wraith texture.",
+  "production_promoted": false,
+  "exact_publisher_stack_qualified": false
+}

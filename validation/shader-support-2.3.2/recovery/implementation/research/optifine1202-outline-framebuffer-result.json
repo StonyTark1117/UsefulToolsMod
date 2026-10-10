@@ -1,0 +1,14 @@
+{
+  "agent_sha256": "48bf268e46de2aade0f8d84f39e4cf067aea0e56c8e831802a09a46b3d61cd4b",
+  "implementation": "Restore actual OptiFine dfb after native outline framebuffer clear; keep actual shadow-pass/native outline guards",
+  "full_trials": [
+    "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-forge-optifine-native-outline-framebuffer-full-BSL_v10.1.2/report.json",
+    "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-forge-optifine-native-outline-framebuffer-full-C59/report.json"
+  ],
+  "production_promoted": false,
+  "remaining": [
+    "Native outlined composite interior is darker, particularly Complementary; preserve native entity colors before promotion",
+    "Paired native frame-time comparisons"
+  ],
+  "prior_guard_trial": "Rejected: normal entity model disappears"
+}

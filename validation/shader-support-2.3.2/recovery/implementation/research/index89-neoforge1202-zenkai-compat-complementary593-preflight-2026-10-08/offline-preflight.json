@@ -1,0 +1,67 @@
+{
+  "status": "offline preflight passed; runtime not launched",
+  "index": 89,
+  "launch_authorized": false,
+  "inherits_verified_index87_88_stack": true,
+  "inputs": {
+    "artifact": {"sha256":"3df68c4c0cc84f8c320447cc8c815202167b68d9ca97f30becfbdfa1e454460a"},
+    "artifact_provenance": {"sha256":"44f8c79bd044759194c2b214f56ff68708c49c7f33724d1196ecfa242fbf8899"},
+    "publisher_compat_oculus": {
+      "sha256":"a9e8b431ccd2ea193e1802808e17e80a72833c39be620d827f773f805a9b8a4a",
+      "provenance_sha256":"25caa03e3e1cd16ec0246c4e3cccd6e7c97a6da63ff989d3b112a144687e6799",
+      "publisher_origin_sha256":"e566bf7783cd66b90fdb25f87f611b7eacb1f62e0b2a1fd122d07a294ce08327",
+      "publisher_binary_unchanged":false,
+      "mod_id":"oculus",
+      "version":"1.8.0",
+      "deterministic_rebuild_verified":true
+    },
+    "embeddium": {"sha256":"bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947","version":"0.2.10+mc1.20.2","loader":"neoforge"},
+    "shader_pack": {
+      "sha256":"fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38",
+      "name":"ComplementaryReimagined_r5.9.3.zip",
+      "publisher_archive_unchanged":true,
+      "shaders_properties_sha256":"b29be050d6296bc5df769a66e351adbaaa9108eec801eb0442137a7a81266ab7"
+    },
+    "probe": {"sha256":"11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1"},
+    "world": {"canonical_content_sha256":"67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef","file_count":23,"session_lock_excluded":true}
+  },
+  "runtime": {"minecraft":"1.20.2","neoforge":"20.2.93","java":"17.0.20.1","egl":"egl0","xvfb":"1280x720x24","audio":"ALSOFT_DRIVERS=null","wayland_unset":true},
+  "shader_options": {"harness_optionsshaders":"shaderPack=ComplementaryReimagined_r5.9.3.zip","oldHandLight":false,"oldLighting":false,"separateAo":true,"underwaterOverlay":false,"vignette":false,"beacon.beam.depth":true,"publisher_properties_unchanged":true},
+  "ocr": {
+    "expected_label":"ComplementaryReimagined_r5.9.3.zip",
+    "strict_pattern":"^\\s*Complementary(?:R|Fi)eimagined_r5\\.9\\.3\\.zip\\s*$",
+    "positive":["ComplementaryReimagined_r5.9.3.zip","ComplementaryFieimagined_r5.9.3.zip","Complementaryfieimagined_r5.9.3.zip"],
+    "negative":["ComplementaryReimagined_r5.9.2.zip","ComplementaryReimagined_r5.9.30.zip","ComplementaryReimagined_r5.9.3.jar","ComplementaryReimagined_5.9.3.zip","BSL_v10.1.2.zip"],
+    "case_insensitive_native_match":true,
+    "version_and_zip_suffix_must_match_exactly":true
+  },
+  "coverage": {
+    "entities":["ghost","wraith"],
+    "scenes":["day","night","rain","dark-background","bright-background","indoor"],
+    "entity_states":true,"surfaces":true,"toggle_shaders":true,"native_commands":true,"native_damage":true,"native_rain":true
+  },
+  "strict_warning_gate": {
+    "shader_compile_errors":0,
+    "jvm_linkage_errors":0,
+    "opengl_errors":0,
+    "backend_diagnostics":"Any Oculus/Embeddium/shader diagnostic must be reviewed and dispositioned; no unknown warning may be waived.",
+    "pack_option_warnings":"Only exact publisher type-mismatch warnings may be dispositioned if visually and causally harmless; otherwise fail."
+  },
+  "harness": {
+    "validate-packaged-spectral.py":"874aee3988da936d513df2a628d00ce5f2053cbd648f14910de5665ec93d5284",
+    "spectral_validation.py":"23a943f8c479a149bbb9044d96c1bc39428446a5f99866e0a96801dae2a6d55d",
+    "spectral-menu-ocr.py":"0d77b27c42dfadb755d8723857866c8ec6c1ea3dce5fa5ee539490ac2f07547e",
+    "lighting_shader_diagnostics.py":"582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78",
+    "audit-spectral-matrix.py":"48eb7c0dd12ea875ed85123d61b1bfe50f30cbd701c8782dabc57ae67cf1c0d2"
+  },
+  "offline_tests": {
+    "compat_deterministic_rebuilds":2,
+    "focused_suites":["tests.test_oculus1202_publisher_neoforge_compat","tests.test_spectral_evidence","tests.test_spectral_validation"],
+    "tests_run":56,
+    "result":"passed"
+  },
+  "future_output":"/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/neoforge1202-zenkai-compat-complementary593-active-3df68c-index89-20261008",
+  "future_output_fresh":true,
+  "required_postrun":"All required captures must be fresh, framebuffer-bound and manually reviewed; active/off/restored shader states, native damage/rain, clean shutdown and strict scoped audit must all pass.",
+  "remaining_gap":"Fresh exact-stack packaged-client report, capture-specific visual reviews, and passing scoped/full audit."
+}

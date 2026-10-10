@@ -1,0 +1,39 @@
+{
+  "scope": "Current-checkout 26.1.2 Forge 64.0.8 mod artifact with official OptiFine K1 pre2 plus private admission bridge and donor renderer, active BSL v10.1.2 at Wraith floor 13. Twelve entity scenes, two entity off/on toggles, native removal and shutdown.",
+  "scope_status": "visual_pass_for_recorded_private_stack",
+  "acceptance_qualified": false,
+  "report": "report.json",
+  "report_sha256": "0e08cfdfe4ca25dfbc505c3dfe3a9be064ac2ead0f61842d75fb8bd0264d4069",
+  "pre_review_report_sha256": "27193e21b2072af74815f93779171e001d57295b1f101c9dd9566850bda05691",
+  "capture_sha256": {
+    "ghost-day.png": "a6eaae166e9ef5a3e70e47ac6b1db220671bed8a4df45ad0de3a29321289dcd1",
+    "ghost-night.png": "2174248f1bf2521c69cde73afc08f28e796f5fcdd51094cb16c5106dda706650",
+    "ghost-rain.png": "6eb25aeeeb4aad83da80d1f4a018062f23198581abd16470ff1a5ad4956d2d96",
+    "ghost-dark-background.png": "a7d50437aa38e339b2dc0c78e96fd2087621ba257c37f74d6fd19986aab851f4",
+    "ghost-bright-background.png": "8befaece65d16218ad80e5cf2749c6f582730f6721b4b9d78b0449f7afe40691",
+    "ghost-indoor.png": "23bac10e1597e3bb99a6d8e75ec553c2e31218ea7b7e1e3fb9df2ac29cffd892",
+    "wraith-day.png": "5febce2058e0a913e1872de455fd643ceea42c87d01c3fb94345f5fbe4e41304",
+    "wraith-night.png": "4141ba1367bc82647b6677298e27a8df1a75afba60d3e854065109b9687b5776",
+    "wraith-rain.png": "bed95c858949ea8eea23b66270d8a3e4e5f1b3b3cf935b435268506119587a63",
+    "wraith-dark-background.png": "0270a4aad9044f96368f874a73e791c45f6304d460f33a149504f55c02f7d2ba",
+    "wraith-bright-background.png": "6b5c14df667da5c5458bd701ee7f58542877bffd60f638aeb2bc7e8bc3e75e33",
+    "wraith-indoor.png": "c8479259b332d66c43536ffdd80f68f875f6a909eeb9b6a36403c67adbe4d5b4",
+    "ghost-shaders-off.png": "864c5b07dc72cc49ee34be8683b2e26d224276ad2eb57abe5530f23571f4a4f4",
+    "ghost-shaders-restored.png": "eb1c7f2cf46ae7fa22b1e65c0e665bd6126490f753f00325fc0596bd2fba4cdf",
+    "wraith-shaders-off.png": "b46dbbbd5102cf11cd5b5dae06c10dd4685df7397bd77402f66c54608622b600",
+    "wraith-shaders-restored.png": "216ffb8bff90dea21384479c9bbfdb0a18e22615a46c0173162a5930e900dd01"
+  },
+  "observations": [
+    "Ghost head, face and established pale appearance remain visible across noon, midnight, rain, dark and bright backgrounds, and indoors; no colored artifacts seen in these captures.",
+    "Wraith eyes, mouth, solid torso/tail silhouette and separated arms are readable across the same six scenes; daytime body shading remains darker than the face.",
+    "Wraith shader-off indoor capture has the original head-and-arms silhouette; shader-restored capture regains the solid torso/tail. Ghost remains recognizable in both states.",
+    "Live OptiFine state records show active, off, restored for each entity; all 44 scene/removal commands were accepted and the client exited cleanly."
+  ],
+  "limitations": [
+    "The private K1 admission bridge and donor renderer are additional components. This does not qualify the bare publisher OptiFine stack or every 26.1.2 Forge required configuration.",
+    "The run did not cover Complementary, entity movement/damage/invisibility/outline/spectator controls, affected materials or GUI previews.",
+    "Restored-toggle screenshots contain a transient Saving world overlay but show the entities; live state and pack activation records support the toggle result.",
+    "The floor-13 visual verdict does not establish it is the lowest acceptable floor across packs."
+  ],
+  "per_capture_reviews_in_report": 16
+}

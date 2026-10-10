@@ -1,0 +1,4 @@
+Exact resolved artifact: LambDynamicLights 2.3.3+1.20.2.
+Native javap -c LambDynLights.onInitializeClient: getEntrypointContainers("dynamiclights", DynamicLightsInitializer.class).
+ItemLightSources.registerItemLightSource stores the source; load() overlays static registrations after JSON sources. getLuminance() returns the registered zero before BlockItem fallback.
+Corrected 1.20.2 Fabric entrypoint from v4 lambdynlights:initializer to native v2 dynamiclights after packaged QA observed duplicate lantern light. Failure evidence: packaged/baseline-backend-1.20.2-fabric-native-java17.

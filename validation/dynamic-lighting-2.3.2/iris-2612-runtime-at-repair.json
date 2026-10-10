@@ -1,0 +1,11 @@
+{
+  "artifact": "/tmp/useful-tools-lighting-native-port-repairs/427854d5a714194d661ae4b083d38acdd56bbdc703d2fe251426da4ed21ffea2/iris-forge-2612-qa2-runtime-at.jar",
+  "sha256": "427854d5a714194d661ae4b083d38acdd56bbdc703d2fe251426da4ed21ffea2",
+  "original_artifact": "/tmp/usefultools-shaders-2.3.2/mods/experimental/2e0d19fae1f2911744adaf30b950d57a3e47ec4f94a3702c865213f27f9bbc89/iris-forge-native-2612-qa-1.11.4-forge-qa2.jar",
+  "original_sha256": "2e0d19fae1f2911744adaf30b950d57a3e47ec4f94a3702c865213f27f9bbc89",
+  "runtime_at_source": "/tmp/usefultools-iris-2612-forge-qa2-reproduction/native-accesstransformer.cfg",
+  "runtime_at_sha256": "ed2c624f5ca20c412d5716c6eb3d6b1fad7a95febe9ecfebc909ace0ef90ddff",
+  "change": "Package the same source-matched native access-transformer rules used at compile time; the original Iris QA2 jar omitted them. No class bytes or maintained mod/pin changed.",
+  "observed_failure": "ShadowDistanceOption cannot inherit from final native OptionInstance; upstream Iris requires OptionInstance extendable.",
+  "status": "Runtime experiment pending"
+}

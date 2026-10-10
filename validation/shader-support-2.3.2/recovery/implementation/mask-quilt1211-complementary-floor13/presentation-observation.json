@@ -1,0 +1,11 @@
+{
+  "game_capture": "wraith-night.png",
+  "virtual_root_capture": "wraith-night-framebuffer.png",
+  "observed": "Game F2 capture contains the scene; Xvfb root capture is black. GPU renderer identifies AMD RX 7900 XTX RADV through Zink. Full X11 presentation remains unverified.",
+  "configuration": {
+    "GALLIUM_DRIVER": "zink",
+    "LIBGL_KOPPER_DRI2": "true",
+    "LIBGL_KOPPER_DISABLE": "true"
+  },
+  "next": "Investigate isolated Zink presentation with a bounded native GLX experiment."
+}

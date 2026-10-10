@@ -1,0 +1,749 @@
+{
+  "selected_floor": 13,
+  "lowest_passing_per_pack": {
+    "BSL_v10.1.2": 12,
+    "ComplementaryReimagined_r5.9.3": 12,
+    "SolasV3.7b": 13
+  },
+  "scope": "18 fresh six-scene trials on unchanged Fabric artifact under Quilt 0.30.0, Minecraft 1.21.1. Other exact matrix configurations require their own fresh floor-13 acceptance scenes.",
+  "rows": [
+    {
+      "pack": "BSL_v10.1.2",
+      "floor": 10,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-10-egl0-BSL_v10.1.2/report.json",
+      "report_sha256": "85abe6adab3a46ad6f6aed0a9d083cad7b0a9d5d691a29c96acaca961191fb39",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "f5acde1e984cc1599277de75e550ba87d2651efd1ac38e1c9025c4fecf00cc5c",
+          "note": "Face, mouth and separated arms readable; daytime native shading retained."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "46f7d57fdd02fec25a498e1033cc117314e1a0fb2c9cdc1a280b6d4f45616db9",
+          "note": "Face and arms visible but low contrast in this floor-10 candidate; compare higher floors before final selection."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "c00b7d5392ae647aab3e6363d2245033d390d2facc9771fd5d317915d4b11621",
+          "note": "Face, mouth and separated arms readable; daytime native shading retained."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "53a8cffb7f011173fb7cf0e68f198c0de360ce45bf1de2fa74ea43bcd743ef61",
+          "note": "Face, mouth and separated arms readable; daytime native shading retained."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "c05127dea6450680f7f49e0b7c598ba2c1dbb5d8d8b7453ffd27524552881ae0",
+          "note": "Face, mouth and separated arms readable; daytime native shading retained."
+        },
+        "wraith-indoor.png": {
+          "verdict": "partial",
+          "capture_sha256": "2a06f275cc142d927cb6cddade86aa691df99e3ca59bdbe219bd065a4a03bf58",
+          "note": "Face and arms visible but low contrast in this floor-10 candidate; compare higher floors before final selection."
+        }
+      }
+    },
+    {
+      "pack": "BSL_v10.1.2",
+      "floor": 11,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-11-egl0-BSL_v10.1.2/report.json",
+      "report_sha256": "81bd782bcf149baf2be5d70c58d1e9ed9dbe6243155240bf890d669e11e11d25",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "cf2c2c2b1d2090fe809008ece46e538e1c094245a7e85d296517124e3a722a84",
+          "note": "Face, silhouette and arms readable; day shading retained."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "9c4ef81b9b28daaadd646cd4312f1e9b11ff51766e40f2183f391c8afb57d8ec",
+          "note": "Floor 11 remains weak at midnight/indoors; compare higher floors."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "5f9af87ccde1175ccbeb49c16d0b6dae81074d076e657d7fc8a6ccc86b74581b",
+          "note": "Face, silhouette and arms readable; day shading retained."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "3ac05f7be40bed4bc0099c372c5b46c117cc8e08c8922f87e1ac12b310ffa5ee",
+          "note": "Face, silhouette and arms readable; day shading retained."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "f832401e6352fc4c37483de734b97e73ba04944d28c7b50688356e1fa19aff9a",
+          "note": "Face, silhouette and arms readable; day shading retained."
+        },
+        "wraith-indoor.png": {
+          "verdict": "partial",
+          "capture_sha256": "b67326bc35bb1ff7e95e83811b4a956bb363cb7530f7d9b53f769d0655527400",
+          "note": "Floor 11 remains weak at midnight/indoors; compare higher floors."
+        }
+      }
+    },
+    {
+      "pack": "BSL_v10.1.2",
+      "floor": 12,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-12-egl0-BSL_v10.1.2/report.json",
+      "report_sha256": "8370ae04886d9eebf894415f9b59ab1bb129423e0d7e5c698a0f4b7dcc92d266",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "fea9102c711d125a72562e32ca6fa3fa7d8de1d7a3e8bc575fd23b376b1dedbb",
+          "note": "All six fresh scenes manually reviewed; full-resolution indoor checked. Face, eyes, mouth and separated arms remain distinguishable against the dim wall, with dark shading retained. BSL floor 12 passes these ordinary scenes; cross-pack minimum is still unresolved."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "47041c7cd7733dbc5ff3484e7e921f9f4f901ce5718f7735d3d4a5f565a9800f",
+          "note": "All six fresh scenes manually reviewed; full-resolution indoor checked. Face, eyes, mouth and separated arms remain distinguishable against the dim wall, with dark shading retained. BSL floor 12 passes these ordinary scenes; cross-pack minimum is still unresolved."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "5735eaca606c17690870386c43666a142ca2a5ab12b968ef3caba6b56a6a9494",
+          "note": "All six fresh scenes manually reviewed; full-resolution indoor checked. Face, eyes, mouth and separated arms remain distinguishable against the dim wall, with dark shading retained. BSL floor 12 passes these ordinary scenes; cross-pack minimum is still unresolved."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "f364d668535826917be3321e74ca4eb63b1e027ba844f6534852fbef389d068a",
+          "note": "All six fresh scenes manually reviewed; full-resolution indoor checked. Face, eyes, mouth and separated arms remain distinguishable against the dim wall, with dark shading retained. BSL floor 12 passes these ordinary scenes; cross-pack minimum is still unresolved."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "d82ea7bf7d3907d053b60708a3c39d058700917d7ea2371910838e715c956a6c",
+          "note": "All six fresh scenes manually reviewed; full-resolution indoor checked. Face, eyes, mouth and separated arms remain distinguishable against the dim wall, with dark shading retained. BSL floor 12 passes these ordinary scenes; cross-pack minimum is still unresolved."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "d2d96bc391d1255bc11f641ae8eec78b288b3711903cd447b6fe3e935f74ab6b",
+          "note": "All six fresh scenes manually reviewed; full-resolution indoor checked. Face, eyes, mouth and separated arms remain distinguishable against the dim wall, with dark shading retained. BSL floor 12 passes these ordinary scenes; cross-pack minimum is still unresolved."
+        }
+      }
+    },
+    {
+      "pack": "BSL_v10.1.2",
+      "floor": 13,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-13-egl0-BSL_v10.1.2-quota-recovery/report.json",
+      "report_sha256": "508599b397f28fd75ed2c3b75b019ced629cd90f6456af70cbcb2304ea999c97",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "5fc3a1773be0dc8800a6deda1b18ebddf7a4dfe6c00561409ace0aeb8eb391c8",
+          "note": "Manual review: floor 13 preserves daytime face shading, readable dark eyes/mouth and separated arms at midnight, rain, both backgrounds and indoors."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "6a5166b61cad864b045e92bcea45b53f203723d8f3edbd65db2f5fb2e94256ac",
+          "note": "Manual review: floor 13 preserves daytime face shading, readable dark eyes/mouth and separated arms at midnight, rain, both backgrounds and indoors."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "0a82da15af72ec12c6dd2a4d3c107f3c76ca31437918d32d876c5ab874d598c6",
+          "note": "Manual review: floor 13 preserves daytime face shading, readable dark eyes/mouth and separated arms at midnight, rain, both backgrounds and indoors."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "75854f06d383cda1ad1a65ded5957467a5058f31e3ae6e8ddd20e7321bac8503",
+          "note": "Manual review: floor 13 preserves daytime face shading, readable dark eyes/mouth and separated arms at midnight, rain, both backgrounds and indoors."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "d06dcded5e139d24e63b8c4dc30715590d157fc3e4bac0808686a8a12ff73375",
+          "note": "Manual review: floor 13 preserves daytime face shading, readable dark eyes/mouth and separated arms at midnight, rain, both backgrounds and indoors."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "6403205b079712d38d00d3478e10940dc6dae289f99b1d784bfe35373c2c19df",
+          "note": "Manual review: floor 13 preserves daytime face shading, readable dark eyes/mouth and separated arms at midnight, rain, both backgrounds and indoors."
+        }
+      }
+    },
+    {
+      "pack": "BSL_v10.1.2",
+      "floor": 14,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-14-egl0-BSL_v10.1.2-quota-recovery/report.json",
+      "report_sha256": "fe6ecb876729c545199b42835ea1eaef780210cea34c4c95a315d453e1617ade",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "286c208c829d8190ac92ab146179bb24852c64e3be501298701ae2ec848f5280",
+          "note": "Manual comparison: floor 14 readable in all six scenes but brighter than floor 13; preserves face shading."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "d3fa40e95401ad639927736212e0dfc4dc5d253b5037e43509c9f7b060ff9ecc",
+          "note": "Manual comparison: floor 14 readable in all six scenes but brighter than floor 13; preserves face shading."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "0f99e8021655b928ee906601eb028c4249a7b5639ec36c8d3ea6b9900b19aaa4",
+          "note": "Manual comparison: floor 14 readable in all six scenes but brighter than floor 13; preserves face shading."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "822ce7238e55a809468f6c2444e7abf6af988b3e6bac1123661d3230a49ba8f5",
+          "note": "Manual comparison: floor 14 readable in all six scenes but brighter than floor 13; preserves face shading."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "c220c241861832ae7a0946da9759570a28f80132f651aa5a69bf4f1e16a067de",
+          "note": "Manual comparison: floor 14 readable in all six scenes but brighter than floor 13; preserves face shading."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "d4b4fe07e95530daef60b86811c7c6356e965a7cc151361a3be5baecadd72dcf",
+          "note": "Manual comparison: floor 14 readable in all six scenes but brighter than floor 13; preserves face shading."
+        }
+      }
+    },
+    {
+      "pack": "BSL_v10.1.2",
+      "floor": 15,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-15-egl0-BSL_v10.1.2-quota-recovery/report.json",
+      "report_sha256": "43f4396b735b5725fded2edc86dc0df01a06bfd19a1ca02e13d545cd2d563ff8",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "30aee88415d131c02151fdd10f0aeae43829078317a792a78fbe5f7ad1c71e43",
+          "note": "Manual comparison: floor 15 readable but brighter than 13/14 in all scenes; floor 13 retains darker readable face shading."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "94d798727b647790ff794b61813436562da9f3f8cc6b651fbf300bdf505c03f8",
+          "note": "Manual comparison: floor 15 readable but brighter than 13/14 in all scenes; floor 13 retains darker readable face shading."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "baeb73eb43c044794124fa7e577b4f9d79fd91bd55138ad1f004bfb110b3192b",
+          "note": "Manual comparison: floor 15 readable but brighter than 13/14 in all scenes; floor 13 retains darker readable face shading."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "3e5ed26adc43718a77df88146e2c9c977bbc5d7b015f02305834e0bb0fc92712",
+          "note": "Manual comparison: floor 15 readable but brighter than 13/14 in all scenes; floor 13 retains darker readable face shading."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "5c61b3bdce4aefa66dd2adfec8e05d743abb802a11b27f9aca12ef886d66b25e",
+          "note": "Manual comparison: floor 15 readable but brighter than 13/14 in all scenes; floor 13 retains darker readable face shading."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "ff4d8b4ab0d6bd092fff3cce7708fb3573794464e12666f9efe55b0cc15636c9",
+          "note": "Manual comparison: floor 15 readable but brighter than 13/14 in all scenes; floor 13 retains darker readable face shading."
+        }
+      }
+    },
+    {
+      "pack": "ComplementaryReimagined_r5.9.3",
+      "floor": 10,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-10-egl0-ComplementaryReimagined_r5.9.3-quota-recovery/report.json",
+      "report_sha256": "6948fa9e3aae17af04d4ff4ece9d55b176283d5e2f95666009d7404d20a64c52",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "25efee25badd36d6feab829e5fae1482438420910986f1f8cec20bec3f08cbb0",
+          "note": "Face silhouette and separated arms readable without daytime shading washout."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "caed8e97bc9b15c3d843c6a170e2f78f7892b1a0c2b5f81f6a53a651acded1e6",
+          "note": "Eyes/mouth have insufficient contrast for the requested clear low-light readability at this floor; compare higher floors."
+        },
+        "wraith-rain.png": {
+          "verdict": "partial",
+          "capture_sha256": "f693f9787c9124e22f83c45736e91bf8ac9d077287475443114705449cbf5a48",
+          "note": "Eyes/mouth have insufficient contrast for the requested clear low-light readability at this floor; compare higher floors."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "0e9961a466c3305967a23a066299d24dabf7163246fa79920c7217228344cf90",
+          "note": "Face silhouette and separated arms readable without daytime shading washout."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "719e60d11793d0d5889d5a25100da32c7e5f12e9960cf16b1ed4bb923e803003",
+          "note": "Face silhouette and separated arms readable without daytime shading washout."
+        },
+        "wraith-indoor.png": {
+          "verdict": "partial",
+          "capture_sha256": "4384ef8c2327a4001c85c06788b56733b73cf4688a9e509bfd606da0cd7f25b5",
+          "note": "Eyes/mouth have insufficient contrast for the requested clear low-light readability at this floor; compare higher floors."
+        }
+      }
+    },
+    {
+      "pack": "ComplementaryReimagined_r5.9.3",
+      "floor": 11,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-11-egl0-ComplementaryReimagined_r5.9.3-quota-recovery/report.json",
+      "report_sha256": "4484f099c1bf74821734073c34c9e59da5ccc77e7521d6ce25ea00cd6be4b7ce",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "4dca3c0fb9a1c80b1b4d2361517fd99d7acdd44e106e66ad0e7ee0890623691f",
+          "note": "Face silhouette and separated arms readable without daytime shading washout."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "7364417dfb084413223f1d9912c0a30507801ffbf54fd45671cedc967f27aa70",
+          "note": "Eyes/mouth have insufficient contrast for the requested clear low-light readability at this floor; compare higher floors."
+        },
+        "wraith-rain.png": {
+          "verdict": "partial",
+          "capture_sha256": "61dfa460d94aa3c925edfa03951a48d78e913a8c3cdbf5e165a0f15f5d71a0f6",
+          "note": "Eyes/mouth have insufficient contrast for the requested clear low-light readability at this floor; compare higher floors."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "e1b9dc55617f42252020e2ba8e897ea9ad7794a7596f05fee2810cc3fc2d9cbf",
+          "note": "Face silhouette and separated arms readable without daytime shading washout."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "bb511294ef85e7c36ff306c00b4385026f28ad3f9e0d20201554e80d61db7486",
+          "note": "Face silhouette and separated arms readable without daytime shading washout."
+        },
+        "wraith-indoor.png": {
+          "verdict": "partial",
+          "capture_sha256": "c8a81a01f92d5d064d8562a9ef018f33b889ce9376bf104bab02a0b02a208297",
+          "note": "Eyes/mouth have insufficient contrast for the requested clear low-light readability at this floor; compare higher floors."
+        }
+      }
+    },
+    {
+      "pack": "ComplementaryReimagined_r5.9.3",
+      "floor": 12,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-12-egl0-ComplementaryReimagined_r5.9.3-quota-recovery/report.json",
+      "report_sha256": "325109baefb235ddfabd48dc102e529981f8a9b0df0f7c2001f76421ed667d71",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "561cc379830066bf87bfd3abb8faeb8d6209b52c00b8d7e93fdcff858d2ccdf9",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "e3a7d9bce44d78bc471dc09feddf95fbc5d309a7eb4dbafcb27fc7a6870f4869",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "648435dcfa8e4962ce449092a2ba1f4a486d0f52adb0e4ba3459f6d2970a9723",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "20d8d9a122562790b1479abe881f60625266ef22bc55db405c4af40e41abe19a",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "efb55ef2976105aa0b43d2ce0f6d6df2a28dbad29a7b44a65e6f417c7391af05",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "81a161135fd26f15801a845f2f2d25f869074b6d56ec1e57197d65008020e8ea",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        }
+      }
+    },
+    {
+      "pack": "ComplementaryReimagined_r5.9.3",
+      "floor": 13,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-13-egl0-ComplementaryReimagined_r5.9.3-quota-recovery/report.json",
+      "report_sha256": "17eb17bcdb2a756a4e16bb8a2756e172b91be0d7e358eba62f5552a9ea15af49",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "5edf9778274394bb77ef35b9399bb5e8df0e66508c1085cb05cdaf1774d88165",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "a08059e7a01eb3d389a2be2b9914dd6fe6e4985466ee1d2f71bf15a03ba80e47",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "d9cae03c1c28b4f2f53b57bbf44d113a96925266777fffe73859cfcf395793bf",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "861985751db7dcff9c7450df3c2cd0e75460e1b532c3f580feeeac8cc10cb0fb",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "f7802a75ef47526499d3e7d3c62c0161c233dd8bfac8add45fe6414e746923fe",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "d0b3d1ec4b5138c59a22dc65c835eb0471f517048801d9c3a2d4871e94f94216",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        }
+      }
+    },
+    {
+      "pack": "ComplementaryReimagined_r5.9.3",
+      "floor": 14,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-14-egl0-ComplementaryReimagined_r5.9.3-quota-recovery/report.json",
+      "report_sha256": "42aa05a786d0e496c7093d658a7ceec4c4d94a3f2475faa88a900760e4ed4d17",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "65ddfafc7e66f7539c290e4955f4ffec2f4ffaafc20f010323db61a126150cc7",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "9f0096cd37ef6760133b4a924ee4983486ee0ac2f03708cb1c4fc9e987bd590f",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "8640221acda1605aa023bda236ab3c2a8956b7fb1d1f5819170b0e629a1ae090",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "26d34e82b3afd591cd1c337feaedd55ffbdaa6fbaf7b806c517937cd6b0d8c02",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "a6d9443989990aacfd3963596de8f71c9182820973da65a448d9fa1a2db6b385",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "fd68288a7984ca1c446e2f1b3593252bd06d687ebcc80742d1f20fc16cd39fdb",
+          "note": "Manually compared six native scenes: eyes and mouth distinguishable, face silhouette and arms separated; daytime shading retained. Floors 12 and 13 rain additionally inspected at original resolution."
+        }
+      }
+    },
+    {
+      "pack": "ComplementaryReimagined_r5.9.3",
+      "floor": 15,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-15-egl0-ComplementaryReimagined_r5.9.3-quota-recovery/report.json",
+      "report_sha256": "020f856bad4a197372bf3464699ae4dd9dba2a8833f9e0484f7423d0b78bc7f4",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "bb32c743ed0de630e329e33d55a104927967d5794e66a06628625dfff6483076",
+          "note": "Manually compared all six scenes with floors 12\u201314; readable face and separated arms, retained daytime shading, unnecessary brightness above the lowest accepted floor."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "d4c2fd59031d5d6099d4a9c43150e59b6208b6fe833b344ab60463f677614782",
+          "note": "Manually compared all six scenes with floors 12\u201314; readable face and separated arms, retained daytime shading, unnecessary brightness above the lowest accepted floor."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "aac746ebaf4a42a6d0eba6d59fa964b5db9a86896b2d4f3df089dc6233d57d15",
+          "note": "Manually compared all six scenes with floors 12\u201314; readable face and separated arms, retained daytime shading, unnecessary brightness above the lowest accepted floor."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "e6f9a33afc1f570e0e95fc378b207b394c3fdc6d045a1fa43c1f48f2c04c3f20",
+          "note": "Manually compared all six scenes with floors 12\u201314; readable face and separated arms, retained daytime shading, unnecessary brightness above the lowest accepted floor."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "13af4fd542b77e88363f14ad399acea40b55d2e49ffda20d61abab80c294d263",
+          "note": "Manually compared all six scenes with floors 12\u201314; readable face and separated arms, retained daytime shading, unnecessary brightness above the lowest accepted floor."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "a734764a262311586d7ef638a2387066d5c75003751794242179c261d420a8c5",
+          "note": "Manually compared all six scenes with floors 12\u201314; readable face and separated arms, retained daytime shading, unnecessary brightness above the lowest accepted floor."
+        }
+      }
+    },
+    {
+      "pack": "SolasV3.7b",
+      "floor": 10,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-10-egl0-SolasV3.7b-world-entry-retry/report.json",
+      "report_sha256": "b251edecc61430e47c411e0d9dfd4752a033c207be88d08bceea45867eb30e12",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "partial",
+          "capture_sha256": "76f63a3632a32287adc1d027be4cf909d80a3c01ce2f0aaa89fac6b52da3d7f8",
+          "note": "Manually inspected all six fresh Solas floor-10 scenes: midnight facial contrast and arm silhouette are too weak; day/rain/bright-background faces also fail clearly readable eyes/mouth. Indoor brighter lighting recovers readable face. Compared without color/brightness adjustment. Lower floor rejected."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "d2a99849da70bc198de3af26810b656ac5b7ab134b65eb3f82222bba46d657ef",
+          "note": "Manually inspected all six fresh Solas floor-10 scenes: midnight facial contrast and arm silhouette are too weak; day/rain/bright-background faces also fail clearly readable eyes/mouth. Indoor brighter lighting recovers readable face. Compared without color/brightness adjustment. Lower floor rejected."
+        },
+        "wraith-rain.png": {
+          "verdict": "partial",
+          "capture_sha256": "e191256bc0b63d59ec81c97c68b6f7f31ed6334b498f1ed553c1e6f390d4b0d3",
+          "note": "Manually inspected all six fresh Solas floor-10 scenes: midnight facial contrast and arm silhouette are too weak; day/rain/bright-background faces also fail clearly readable eyes/mouth. Indoor brighter lighting recovers readable face. Compared without color/brightness adjustment. Lower floor rejected."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "partial",
+          "capture_sha256": "7859961401b8414fa673aa0faeef981ba98dcf88fe08b3bfdd4c178c0d8351a3",
+          "note": "Manually inspected all six fresh Solas floor-10 scenes: midnight facial contrast and arm silhouette are too weak; day/rain/bright-background faces also fail clearly readable eyes/mouth. Indoor brighter lighting recovers readable face. Compared without color/brightness adjustment. Lower floor rejected."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "partial",
+          "capture_sha256": "3b3258ebb3deaeccca5a3e6153cb52890073ee7739c7f4070294a7786e6b06c3",
+          "note": "Manually inspected all six fresh Solas floor-10 scenes: midnight facial contrast and arm silhouette are too weak; day/rain/bright-background faces also fail clearly readable eyes/mouth. Indoor brighter lighting recovers readable face. Compared without color/brightness adjustment. Lower floor rejected."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "a28ab0cee3750a66602cffc1a82bc78c0fba276b571f4e0364fee4fa871a4cc3",
+          "note": "Manually inspected all six fresh Solas floor-10 scenes: midnight facial contrast and arm silhouette are too weak; day/rain/bright-background faces also fail clearly readable eyes/mouth. Indoor brighter lighting recovers readable face. Compared without color/brightness adjustment. Lower floor rejected."
+        }
+      }
+    },
+    {
+      "pack": "SolasV3.7b",
+      "floor": 11,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-11-egl0-SolasV3.7b/report.json",
+      "report_sha256": "f492c92db4eef1f722518b4c0049213ef1101aadaf440ff0c48f76969e5b6407",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "1ed1eee14c42a4938e4ca80b19678d5cf1f00d0b0fda6cb44102f7aa35bc9720",
+          "note": "All six scenes manually reviewed; floor 11 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "98a9b8f5516b030d595b8e13206d1bc5e96212a7f2517903b4f0e5cf7ceb247e",
+          "note": "All six scenes manually reviewed; floor 11 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "c957a00b9f7a2ee47793bbe95d2c6b67affb0aeb12519ca1db8962f2b53eb0dd",
+          "note": "All six scenes manually reviewed; floor 11 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "8769659976941b2e5cfffd137947649ff9373ecb320a6548ef34c277ed2f37b0",
+          "note": "All six scenes manually reviewed; floor 11 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "077b7e04bc329185b492ba574c2ecd71bca108d03fa58d1bc2c7be42e8911010",
+          "note": "All six scenes manually reviewed; floor 11 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "b8ffff87289d6431cd41732f66c6d7fb11a32140bf508a8b67d5f0b9f9ce42aa",
+          "note": "All six scenes manually reviewed; floor 11 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        }
+      }
+    },
+    {
+      "pack": "SolasV3.7b",
+      "floor": 12,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-12-egl0-SolasV3.7b/report.json",
+      "report_sha256": "4321f19e4c9f0c18add7eab2aa19373f2cd3df18abcfecbc2f4b680e4579aba8",
+      "visual_verdict": "partial",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "d5476e9f953e2b122a3f7a96f27dc3dd54b68f9170031f5d864eefb8322cc175",
+          "note": "All six scenes manually reviewed; floor 12 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-night.png": {
+          "verdict": "partial",
+          "capture_sha256": "2fdeeebecf8ef2be9a9ef839f959c06c8c071ad3cb5330dd2c9c068d26a370ac",
+          "note": "All six scenes manually reviewed; floor 12 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "fe7a94eab53b420527fc01833811c91ef380fa203471cffd2becd879b10ff830",
+          "note": "All six scenes manually reviewed; floor 12 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "4d74b5596e42f20b19743c392dcd11277f8a4f0e43f8f31c0ec9b83b9c6b6ba0",
+          "note": "All six scenes manually reviewed; floor 12 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "8b68e8ac30345ea6b47e0ce5cb9b9dfaa19b1cc7e80cdfe69f82169287a876a8",
+          "note": "All six scenes manually reviewed; floor 12 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "886cb739a9c73e1e10d13c2f5aced0c0d78e08ec61d95cbfdc83a4958bf1f6d3",
+          "note": "All six scenes manually reviewed; floor 12 midnight eyes/mouth have weak contrast, below the clearly readable floor-13 comparison. Full-resolution floor-12 midnight also inspected; daytime retains dark shading, arms visible, indoor/background/rain scenes present."
+        }
+      }
+    },
+    {
+      "pack": "SolasV3.7b",
+      "floor": 13,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-13-egl0-SolasV3.7b/report.json",
+      "report_sha256": "04af9ef9fc03915efad421529936187fd82c0122f0ae0f7dd6ea9547124d90d5",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "c7244f838804a40e73239322173b2e30ec1e08872e8070815a053da1b6748059",
+          "note": "Six fresh ordinary scenes manually inspected. Midnight face/eyes/mouth and separated arms distinguishable; daytime dark shading retained. Rain validity confirmed by native and same-pack off/restored control. Remaining lower floors and other packs still under comparison."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "9591a6bdc89661254512457cf593b00db2ea18e387992ddf02051b56491545bf",
+          "note": "Six fresh ordinary scenes manually inspected. Midnight face/eyes/mouth and separated arms distinguishable; daytime dark shading retained. Rain validity confirmed by native and same-pack off/restored control. Remaining lower floors and other packs still under comparison."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "34f30aae764b88dfa6d7dd49900ba32509e23ac817567ea1a611f391b8a5699a",
+          "note": "Six fresh ordinary scenes manually inspected. Midnight face/eyes/mouth and separated arms distinguishable; daytime dark shading retained. Rain validity confirmed by native and same-pack off/restored control. Remaining lower floors and other packs still under comparison."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "094c222a46ea06c4c676cb208e85dedbe8dc49e5992aecff67a3e936b10bdbf9",
+          "note": "Six fresh ordinary scenes manually inspected. Midnight face/eyes/mouth and separated arms distinguishable; daytime dark shading retained. Rain validity confirmed by native and same-pack off/restored control. Remaining lower floors and other packs still under comparison."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "f151b74331c10e8f4418c91626371d970d7f3453889791466aee300ba2dcdb11",
+          "note": "Six fresh ordinary scenes manually inspected. Midnight face/eyes/mouth and separated arms distinguishable; daytime dark shading retained. Rain validity confirmed by native and same-pack off/restored control. Remaining lower floors and other packs still under comparison."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "a69bf8885489cdcb751f933b0a765d9295bef245f04119bd07fe65cfde2f6ec7",
+          "note": "Six fresh ordinary scenes manually inspected. Midnight face/eyes/mouth and separated arms distinguishable; daytime dark shading retained. Rain validity confirmed by native and same-pack off/restored control. Remaining lower floors and other packs still under comparison."
+        }
+      }
+    },
+    {
+      "pack": "SolasV3.7b",
+      "floor": 14,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-14-egl0-SolasV3.7b/report.json",
+      "report_sha256": "f1c1613d99da375bc0d9f7a3f506a95c9f0001957afb6ad2743be9ebe0342d78",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "2acdfdd41edc01b5b939d02e0d2b2a3d68d560f3b1555be9c89f4106b706403f",
+          "note": "Six fresh scenes manually reviewed: dark daytime face retained, eyes/mouth distinguishable, separated arms visible at midnight and indoors. Rain-scene validity established by same-pack native/off/restored diagnostic. Cross-pack minimum remains under comparison."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "eda16eba40fd25a0aa4e7c76d413a6b609ecd22f00a9e4498cf9175f642b3ee9",
+          "note": "Six fresh scenes manually reviewed: dark daytime face retained, eyes/mouth distinguishable, separated arms visible at midnight and indoors. Rain-scene validity established by same-pack native/off/restored diagnostic. Cross-pack minimum remains under comparison."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "d341ca6bb9b0060434297067b578256b6aec600a2851235dc0fc565c20f4d3f7",
+          "note": "Six fresh scenes manually reviewed: dark daytime face retained, eyes/mouth distinguishable, separated arms visible at midnight and indoors. Rain-scene validity established by same-pack native/off/restored diagnostic. Cross-pack minimum remains under comparison."
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "9b5ba3937aec8a73cece732bf9a0b61156e8109579ef2ecd2949be9a1738a5a8",
+          "note": "Six fresh scenes manually reviewed: dark daytime face retained, eyes/mouth distinguishable, separated arms visible at midnight and indoors. Rain-scene validity established by same-pack native/off/restored diagnostic. Cross-pack minimum remains under comparison."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "e0f8534502fd64a8b92d8ee58e18159e6e937dda6bb650bea2cd363d23df0fd1",
+          "note": "Six fresh scenes manually reviewed: dark daytime face retained, eyes/mouth distinguishable, separated arms visible at midnight and indoors. Rain-scene validity established by same-pack native/off/restored diagnostic. Cross-pack minimum remains under comparison."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "d90fd430439dfa2ab5182a80c69beb8c3488546e8ab23765b1631614394fbcda",
+          "note": "Six fresh scenes manually reviewed: dark daytime face retained, eyes/mouth distinguishable, separated arms visible at midnight and indoors. Rain-scene validity established by same-pack native/off/restored diagnostic. Cross-pack minimum remains under comparison."
+        }
+      }
+    },
+    {
+      "pack": "SolasV3.7b",
+      "floor": 15,
+      "target": "1.21.1-quilt",
+      "runtime_loader": "Quilt 0.30.0",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/floor-full-scenes/full-scenes-floor-15-egl0-SolasV3.7b/report.json",
+      "report_sha256": "ce50cf4abcd13c180502c47e809de2a7758251634568bde19328da3360d68a8c",
+      "visual_verdict": "pass",
+      "capture_reviews": {
+        "wraith-day.png": {
+          "verdict": "pass",
+          "capture_sha256": "06fa3ae6fd1c5c40ebaaba88770f30785ff83d5f31ac67ec41ba2741ff8fb550",
+          "note": "Six fresh Solas floor-15 scenes manually reviewed: face and separated arms readable at midnight and indoors, dark daytime shading retained. Rain predicate is acknowledged but visible precipitation requires the queued off/restored comparison."
+        },
+        "wraith-night.png": {
+          "verdict": "pass",
+          "capture_sha256": "bd00d9720748c30da88a3bc95f9917a918bdfaa641a5acb80632615a75fb2f2a",
+          "note": "Six fresh Solas floor-15 scenes manually reviewed: face and separated arms readable at midnight and indoors, dark daytime shading retained. Rain predicate is acknowledged but visible precipitation requires the queued off/restored comparison."
+        },
+        "wraith-rain.png": {
+          "verdict": "pass",
+          "capture_sha256": "1624b8c6ff084bb7d3bedee2098cc77f48d29fa3127a81d816f3ccc49e9f7f5f",
+          "note": "Fresh rain scene manually reviewed; native weather predicate acknowledged. Same-pack off/restored diagnostic confirms real precipitation with reduced Solas opacity. validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-quilt-solas-native-rain-toggle-diagnostic/report.json"
+        },
+        "wraith-dark-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "9dc10664f49065a42d2c14b86f0a969e30e22086720050366b6396679e268423",
+          "note": "Six fresh Solas floor-15 scenes manually reviewed: face and separated arms readable at midnight and indoors, dark daytime shading retained. Rain predicate is acknowledged but visible precipitation requires the queued off/restored comparison."
+        },
+        "wraith-bright-background.png": {
+          "verdict": "pass",
+          "capture_sha256": "ee5cd6b427d4f1499d3c5444283c2fd38bd4ae1b4efe5e3cc11ab8a6838c99fc",
+          "note": "Six fresh Solas floor-15 scenes manually reviewed: face and separated arms readable at midnight and indoors, dark daytime shading retained. Rain predicate is acknowledged but visible precipitation requires the queued off/restored comparison."
+        },
+        "wraith-indoor.png": {
+          "verdict": "pass",
+          "capture_sha256": "490253d6022d986db5d5107af089625b7f9a102afff5e1f5f70496a45537a34a",
+          "note": "Six fresh Solas floor-15 scenes manually reviewed: face and separated arms readable at midnight and indoors, dark daytime shading retained. Rain predicate is acknowledged but visible precipitation requires the queued off/restored comparison."
+        }
+      }
+    }
+  ]
+}

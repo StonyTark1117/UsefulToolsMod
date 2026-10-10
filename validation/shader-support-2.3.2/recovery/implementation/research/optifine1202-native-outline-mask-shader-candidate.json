@@ -1,0 +1,33 @@
+{
+  "candidate_not_certified": true,
+  "production_promoted": false,
+  "agent": {
+    "sha256": "b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee",
+    "sources": {
+      "tests/spectral-qa/probe/OptifineOutlineBridge.java": "92dd144ce6e6d50fa0619edf4ad47464766166ba2cbe0470b60d1b41dfd404db",
+      "tests/spectral-qa/probe/RelocateDiagnosticAsm.java": "2535cc0d8a9e103b5a21833b7aaaa9acf818202f117a944d682bd75eb6f00b96"
+    },
+    "libraries": {
+      "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar": "ed825d10ab1399c8c0cb669e688cf0c8c82629b4c8399b58352b68e92ca10fcb",
+      "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar": "3dfb0d5b6a106cd40b5b250e39935fbf2f927f4477546a5369a3ac609cf0506b",
+      "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar": "6d0abefb7cbf972ea16edb37ec14835372505063a45f976ab7ea889ed9497895"
+    },
+    "output": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee/bridge.jar"
+  },
+  "native_api_evidence": {
+    "net/minecraft/client/renderer/ShaderInstance": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/srg-javap/net/minecraft/client/renderer/ShaderInstance.txt",
+      "sha256": "d4ad58333e34ea73782a447b95c8ea8d3c4cbfc128fb2ee071ac7fefa1f792d4"
+    },
+    "net/optifine/shaders/Shaders": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/srg-javap/net/optifine/shaders/Shaders.txt",
+      "sha256": "024ae1a60bff340a553891a0db38a59d3fb0c170edd482d6265baeee1d6dae8b"
+    },
+    "net/optifine/shaders/ShadersFramebuffer": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/srg-javap/net/optifine/shaders/ShadersFramebuffer.txt",
+      "sha256": "989a922f67fd76f31504d51f3498f685c4a73e45781f336e48411f50fec3ee92"
+    }
+  },
+  "hypothesis": "Native ShaderInstance.apply restores Shaders.activeProgramID even for rendertype_outline, writing entity gbuffer output into native outline-mask target. Limit override suppression to this exact native outline shader outside shadow pass.",
+  "next_validation": "Fresh scoped paired native entity/vanilla outline and unoutlined captures with Complementary; inspect interior colors, occlusion, toggles, then performance only if visually qualified."
+}

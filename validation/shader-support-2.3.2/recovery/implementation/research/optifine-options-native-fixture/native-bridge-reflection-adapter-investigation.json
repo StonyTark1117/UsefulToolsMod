@@ -1,0 +1,128 @@
+{
+  "scope": "Direct bytecode-call differences alone do not prove missing behavior. Name-matched publisher reflection fields are candidates for exact signature/control-flow investigation, not proof of successful callbacks. No acceptance row changed.",
+  "source_sha256": "3b9a2683f2a2f100adbe05754509de2e19cf30323bf41de56cd4fdf95c38832b",
+  "rows": [
+    {
+      "minecraft": "26.1.2",
+      "forge": "64.0.8",
+      "direct_call_differences": 29,
+      "publisher_reflection_adapter_candidates": 22,
+      "differences_without_name_matched_adapter": [
+        [
+          "net/minecraft/client/renderer/LevelRenderer",
+          "extractBlockDestroyAnimation(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/LevelRenderState;)V -> net/minecraftforge/client/model/data/ModelDataManager.getAtOrEmpty(Lnet/minecraft/core/BlockPos;)Lnet/minecraftforge/client/model/data/ModelData;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/renderer/LevelRenderer",
+          "extractBlockOutline(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/LevelRenderState;)V -> net/minecraftforge/client/ForgeHooksClient.onExtractBlockOutline(Lnet/minecraft/client/renderer/LevelRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/LevelRenderState;Lnet/minecraft/world/phys/HitResult;)Lnet/minecraftforge/client/event/RenderHighlightEvent$Callback;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/renderer/chunk/SectionCompiler",
+          "compile(Lnet/minecraft/core/SectionPos;Lnet/minecraft/client/renderer/chunk/RenderSectionRegion;Lcom/mojang/blaze3d/vertex/VertexSorting;Lnet/minecraft/client/renderer/SectionBufferBuilderPack;)Lnet/minecraft/client/renderer/chunk/SectionCompiler$Results; -> net/minecraftforge/client/model/data/ModelDataManager.getAt(Lnet/minecraft/core/SectionPos;)Ljava/util/Map;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/ModelManager",
+          "lambda$loadModels$1(Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lnet/minecraft/client/resources/model/ModelBakery;Lcom/google/common/collect/Multimap;Lcom/google/common/collect/Multimap;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;Ljava/util/Map;)Lnet/minecraft/client/resources/model/ModelManager$ReloadState; -> net/minecraftforge/client/ForgeHooksClient.onFluidModelBake(Lnet/minecraft/client/resources/model/ModelBakery;Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Ljava/util/Map;)Ljava/util/Map;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/ModelManager",
+          "lambda$loadModels$1(Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lnet/minecraft/client/resources/model/ModelBakery;Lcom/google/common/collect/Multimap;Lcom/google/common/collect/Multimap;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;Ljava/util/Map;)Lnet/minecraft/client/resources/model/ModelManager$ReloadState; -> net/minecraftforge/client/ForgeHooksClient.onModifyBakingResult(Lnet/minecraft/client/resources/model/ModelBakery;Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;)V",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/ModelManager",
+          "reload(Lnet/minecraft/server/packs/resources/PreparableReloadListener$SharedState;Ljava/util/concurrent/Executor;Lnet/minecraft/server/packs/resources/PreparableReloadListener$PreparationBarrier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture; -> net/minecraftforge/client/model/geometry/GeometryLoaderManager.init()V",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/geometry/QuadCollection",
+          "transform(Lnet/minecraftforge/client/model/IQuadTransformer;)Lnet/minecraft/client/resources/model/geometry/QuadCollection; -> net/minecraftforge/client/model/IQuadTransformer.process(Ljava/util/List;)Ljava/util/List;",
+          "8",
+          "0",
+          ""
+        ]
+      ],
+      "runtime_hook_qualification": false,
+      "native_sha256": "5d6acdaef133c4f002b9d8cf4c1b44e1b0720c039c3f21606f762a226e795601",
+      "donor_sha256": "64a4a3b10198d36ed1b67fa51ad6d75b893b945c18df0a8c72bb260ec20074ac",
+      "evidence": "validation/shader-support-2.3.2/recovery/implementation/research/optifine-options-native-fixture/native-bridge-hook-adapter-check-26.1.2.tsv"
+    },
+    {
+      "minecraft": "26.2",
+      "forge": "65.1.2",
+      "direct_call_differences": 28,
+      "publisher_reflection_adapter_candidates": 21,
+      "differences_without_name_matched_adapter": [
+        [
+          "net/minecraft/client/renderer/chunk/SectionCompiler",
+          "compile(Lnet/minecraft/core/SectionPos;Lnet/minecraft/client/renderer/chunk/RenderSectionRegion;Lcom/mojang/blaze3d/vertex/VertexSorting;Lnet/minecraft/client/renderer/SectionBufferBuilderPack;)Lnet/minecraft/client/renderer/chunk/SectionCompiler$Results; -> net/minecraftforge/client/model/data/ModelDataManager.getAt(Lnet/minecraft/core/SectionPos;)Ljava/util/Map;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/renderer/extract/LevelExtractor",
+          "extractBlockDestroyAnimation(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/LevelRenderState;)V -> net/minecraftforge/client/model/data/ModelDataManager.getAtOrEmpty(Lnet/minecraft/core/BlockPos;)Lnet/minecraftforge/client/model/data/ModelData;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/renderer/extract/LevelExtractor",
+          "extractBlockOutline(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/LevelRenderState;)V -> net/minecraftforge/client/ForgeHooksClient.onExtractBlockOutline(Lnet/minecraft/client/renderer/extract/LevelExtractor;Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/LevelRenderState;Lnet/minecraft/world/phys/HitResult;)Lnet/minecraftforge/client/event/RenderHighlightEvent$Callback;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/ModelManager",
+          "lambda$loadModels$1(Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lnet/minecraft/client/resources/model/ModelBakery;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;Ljava/util/Map;)Lnet/minecraft/client/resources/model/ModelManager$ReloadState; -> net/minecraftforge/client/ForgeHooksClient.onFluidModelBake(Lnet/minecraft/client/resources/model/ModelBakery;Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Ljava/util/Map;)Ljava/util/Map;",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/ModelManager",
+          "lambda$loadModels$1(Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lnet/minecraft/client/resources/model/ModelBakery;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;Ljava/util/Map;)Lnet/minecraft/client/resources/model/ModelManager$ReloadState; -> net/minecraftforge/client/ForgeHooksClient.onModifyBakingResult(Lnet/minecraft/client/resources/model/ModelBakery;Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;)V",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/ModelManager",
+          "reload(Lnet/minecraft/server/packs/resources/PreparableReloadListener$SharedState;Ljava/util/concurrent/Executor;Lnet/minecraft/server/packs/resources/PreparableReloadListener$PreparationBarrier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture; -> net/minecraftforge/client/model/geometry/GeometryLoaderManager.init()V",
+          "1",
+          "0",
+          ""
+        ],
+        [
+          "net/minecraft/client/resources/model/geometry/QuadCollection",
+          "transform(Lnet/minecraftforge/client/model/IQuadTransformer;)Lnet/minecraft/client/resources/model/geometry/QuadCollection; -> net/minecraftforge/client/model/IQuadTransformer.process(Ljava/util/List;)Ljava/util/List;",
+          "8",
+          "0",
+          ""
+        ]
+      ],
+      "runtime_hook_qualification": false,
+      "native_sha256": "712277950db1d04987c7affb38ca8b0b5275601b5f11b4d3102b2cb9c1b4ecf5",
+      "donor_sha256": "c62670144c51197b721b514d3f4268640fa701970cbf2564b01e8281486780b5",
+      "evidence": "validation/shader-support-2.3.2/recovery/implementation/research/optifine-options-native-fixture/native-bridge-hook-adapter-check-26.2.tsv"
+    }
+  ]
+}

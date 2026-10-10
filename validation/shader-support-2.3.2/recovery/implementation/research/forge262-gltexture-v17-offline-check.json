@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/javac",
+        "--release",
+        "17",
+        "-Xlint:all",
+        "-Werror",
+        "-cp",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gltexture-v17/classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "-d",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gltexture-v17/classes",
+        "tests/spectral-qa/probe/Forge262FramePassCheck.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-cp",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gltexture-v17/classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "com.stonytark.usefultoolsmod.spectralqa.Forge262FramePassCheck",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/optifine-26.2-payload/optifine-patched.jar",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.2-65.1.2/forge-26.2-65.1.2-universal.jar",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.1.2-64.0.8/forge-26.1.2-64.0.8-universal.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/preview_OptiFine_26.1.2_HD_U_K1_pre2.jar",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.2-65.1.2/forge-26.2-65.1.2-client.jar"
+      ],
+      "exit_code": 0,
+      "stdout": "Verified Forge 65 four-argument adapter, K2 pack enable, native GlTexture shader-ID and cleanup graft; Forge 64/K1 guards preserved; all method stacks valid.\n",
+      "stderr": ""
+    }
+  ],
+  "source_sha256": "7644be996e202b892a1b1ce0bb7d2aeda5f79bcc033d47a383a0d700685e3b53",
+  "bridge_source_sha256": "22f21d90ebc0a34d2f6a3b77a5c1ff3cff64921284abaad807040fc16ec279ee",
+  "passed": true
+}

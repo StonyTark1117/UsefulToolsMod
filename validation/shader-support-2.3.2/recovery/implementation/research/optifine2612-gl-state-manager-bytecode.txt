@@ -1,0 +1,2144 @@
+Compiled from "GlStateManager.java"
+public class com.mojang.blaze3d.opengl.GlStateManager {
+  private static final com.mojang.jtracy.Plot PLOT_TEXTURES;
+
+  private static int numTextures;
+
+  private static final com.mojang.jtracy.Plot PLOT_BUFFERS;
+
+  private static int numBuffers;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$BlendState BLEND;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$DepthState DEPTH;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$CullState CULL;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$PolygonOffsetState POLY_OFFSET;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$ColorLogicState COLOR_LOGIC;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$ScissorState SCISSOR;
+
+  private static int activeTexture;
+
+  private static final int TEXTURE_COUNT;
+
+  private static final com.mojang.blaze3d.opengl.GlStateManager$TextureState[] TEXTURES;
+
+  private static int COLOR_MASK;
+
+  private static int readFbo;
+
+  private static int writeFbo;
+
+  private static boolean alphaTest;
+
+  private static int alphaTestFunc;
+
+  private static float alphaTestRef;
+
+  private static net.optifine.util.LockCounter alphaLock;
+
+  private static net.optifine.render.GlAlphaState alphaLockState;
+
+  private static net.optifine.util.LockCounter blendLock;
+
+  private static net.optifine.render.GlBlendState blendLockState;
+
+  private static net.optifine.util.LockCounter cullLock;
+
+  private static net.optifine.render.GlCullState cullLockState;
+
+  private static net.optifine.util.LockCounter depthLock;
+
+  private static net.optifine.render.GlDepthState depthLockState;
+
+  public static boolean vboRegions;
+
+  public static int GL_COPY_READ_BUFFER;
+
+  public static int GL_COPY_WRITE_BUFFER;
+
+  public static int GL_ARRAY_BUFFER;
+
+  public static int GL_STATIC_DRAW;
+
+  public static final int GL_QUADS;
+
+  public static final int GL_TRIANGLES;
+
+  public static final int GL_TEXTURE0;
+
+  public static final int GL_TEXTURE1;
+
+  public static final int GL_TEXTURE2;
+
+  private static final int[] IMAGE_TEXTURES;
+
+  private static int glProgram;
+
+  public static float lastBrightnessX;
+
+  public static float lastBrightnessY;
+
+  public com.mojang.blaze3d.opengl.GlStateManager();
+    Code:
+         0: aload_0
+         1: invokespecial #5                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  public static void disableAlphaTest();
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          16
+         9: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        12: invokevirtual #27                 // Method net/optifine/render/GlAlphaState.setDisabled:()V
+        15: return
+        16: iconst_0
+        17: putstatic     #32                 // Field alphaTest:Z
+        20: invokestatic  #36                 // Method applyAlphaTest:()V
+        23: return
+
+  public static void enableAlphaTest();
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          16
+         9: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        12: invokevirtual #39                 // Method net/optifine/render/GlAlphaState.setEnabled:()V
+        15: return
+        16: iconst_1
+        17: putstatic     #32                 // Field alphaTest:Z
+        20: invokestatic  #36                 // Method applyAlphaTest:()V
+        23: return
+
+  public static void alphaFunc(int, float);
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          18
+         9: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        12: iload_0
+        13: fload_1
+        14: invokevirtual #42                 // Method net/optifine/render/GlAlphaState.setFuncRef:(IF)V
+        17: return
+        18: iload_0
+        19: putstatic     #46                 // Field alphaTestFunc:I
+        22: fload_1
+        23: putstatic     #50                 // Field alphaTestRef:F
+        26: invokestatic  #36                 // Method applyAlphaTest:()V
+        29: return
+
+  public static void applyAlphaTest();
+    Code:
+         0: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+         3: ifeq          40
+         6: getstatic     #32                 // Field alphaTest:Z
+         9: ifeq          33
+        12: getstatic     #46                 // Field alphaTestFunc:I
+        15: sipush        516
+        18: if_icmpne     33
+        21: getstatic     #59                 // Field net/optifine/shaders/Shaders.uniform_alphaTestRef:Lnet/optifine/shaders/uniform/ShaderUniform1f;
+        24: getstatic     #50                 // Field alphaTestRef:F
+        27: invokevirtual #65                 // Method net/optifine/shaders/uniform/ShaderUniform1f.setValue:(F)V
+        30: goto          40
+        33: getstatic     #59                 // Field net/optifine/shaders/Shaders.uniform_alphaTestRef:Lnet/optifine/shaders/uniform/ShaderUniform1f;
+        36: fconst_0
+        37: invokevirtual #65                 // Method net/optifine/shaders/uniform/ShaderUniform1f.setValue:(F)V
+        40: return
+
+  public static void _disableScissorTest();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #76                 // Field SCISSOR:Lcom/mojang/blaze3d/opengl/GlStateManager$ScissorState;
+         6: getfield      #80                 // Field com/mojang/blaze3d/opengl/GlStateManager$ScissorState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: invokevirtual #86                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.disable:()V
+        12: return
+
+  public static void _enableScissorTest();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #76                 // Field SCISSOR:Lcom/mojang/blaze3d/opengl/GlStateManager$ScissorState;
+         6: getfield      #80                 // Field com/mojang/blaze3d/opengl/GlStateManager$ScissorState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: invokevirtual #91                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enable:()V
+        12: return
+
+  public static void _scissorBox(int, int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: invokestatic  #94                 // Method org/lwjgl/opengl/GL20.glScissor:(IIII)V
+        10: return
+
+  public static void _disableDepthTest();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          20
+        12: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        15: iconst_0
+        16: invokevirtual #107                // Method net/optifine/render/GlDepthState.setEnabled:(Z)V
+        19: return
+        20: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        23: getfield      #116                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        26: invokevirtual #86                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.disable:()V
+        29: return
+
+  public static void _enableDepthTest();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          20
+        12: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        15: iconst_1
+        16: invokevirtual #107                // Method net/optifine/render/GlDepthState.setEnabled:(Z)V
+        19: return
+        20: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        23: getfield      #116                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        26: invokevirtual #91                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enable:()V
+        29: return
+
+  public static void _depthFunc(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          20
+        12: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        15: iload_0
+        16: invokevirtual #119                // Method net/optifine/render/GlDepthState.setFunc:(I)V
+        19: return
+        20: iload_0
+        21: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        24: getfield      #123                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.func:I
+        27: if_icmpeq     41
+        30: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        33: iload_0
+        34: putfield      #123                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.func:I
+        37: iload_0
+        38: invokestatic  #126                // Method org/lwjgl/opengl/GL11.glDepthFunc:(I)V
+        41: return
+
+  public static void _depthMask(boolean);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          20
+        12: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        15: iload_0
+        16: invokevirtual #129                // Method net/optifine/render/GlDepthState.setMask:(Z)V
+        19: return
+        20: iload_0
+        21: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        24: getfield      #132                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mask:Z
+        27: if_icmpeq     41
+        30: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        33: iload_0
+        34: putfield      #132                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mask:Z
+        37: iload_0
+        38: invokestatic  #135                // Method org/lwjgl/opengl/GL11.glDepthMask:(Z)V
+        41: return
+
+  public static void _disableBlend();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          19
+        12: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        15: invokevirtual #145                // Method net/optifine/render/GlBlendState.setDisabled:()V
+        18: return
+        19: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        22: getfield      #152                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        25: invokevirtual #86                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.disable:()V
+        28: return
+
+  public static void _enableBlend();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          19
+        12: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        15: invokevirtual #155                // Method net/optifine/render/GlBlendState.setEnabled:()V
+        18: return
+        19: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        22: getfield      #152                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        25: invokevirtual #91                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enable:()V
+        28: return
+
+  public static void blendFunc(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          21
+        12: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        15: iload_0
+        16: iload_1
+        17: invokevirtual #156                // Method net/optifine/render/GlBlendState.setFactors:(II)V
+        20: return
+        21: iload_0
+        22: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        25: getfield      #160                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcRgb:I
+        28: if_icmpne     61
+        31: iload_1
+        32: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        35: getfield      #163                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstRgb:I
+        38: if_icmpne     61
+        41: iload_0
+        42: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        45: getfield      #166                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcAlpha:I
+        48: if_icmpne     61
+        51: iload_1
+        52: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        55: getfield      #169                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstAlpha:I
+        58: if_icmpeq     110
+        61: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        64: iload_0
+        65: putfield      #160                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcRgb:I
+        68: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        71: iload_1
+        72: putfield      #163                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstRgb:I
+        75: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        78: iload_0
+        79: putfield      #166                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcAlpha:I
+        82: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        85: iload_1
+        86: putfield      #169                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstAlpha:I
+        89: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+        92: ifeq          105
+        95: getstatic     #172                // Field net/optifine/shaders/Shaders.uniform_blendFunc:Lnet/optifine/shaders/uniform/ShaderUniform4i;
+        98: iload_0
+        99: iload_1
+       100: iload_0
+       101: iload_1
+       102: invokevirtual #176                // Method net/optifine/shaders/uniform/ShaderUniform4i.setValue:(IIII)V
+       105: iload_0
+       106: iload_1
+       107: invokestatic  #180                // Method org/lwjgl/opengl/GL11.glBlendFunc:(II)V
+       110: return
+
+  public static void _blendFuncSeparate(int, int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          23
+        12: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        15: iload_0
+        16: iload_1
+        17: iload_2
+        18: iload_3
+        19: invokevirtual #183                // Method net/optifine/render/GlBlendState.setFactors:(IIII)V
+        22: return
+        23: iload_0
+        24: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        27: getfield      #160                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcRgb:I
+        30: if_icmpne     63
+        33: iload_1
+        34: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        37: getfield      #163                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstRgb:I
+        40: if_icmpne     63
+        43: iload_2
+        44: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        47: getfield      #166                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcAlpha:I
+        50: if_icmpne     63
+        53: iload_3
+        54: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        57: getfield      #169                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstAlpha:I
+        60: if_icmpeq     114
+        63: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        66: iload_0
+        67: putfield      #160                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcRgb:I
+        70: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        73: iload_1
+        74: putfield      #163                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstRgb:I
+        77: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        80: iload_2
+        81: putfield      #166                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcAlpha:I
+        84: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        87: iload_3
+        88: putfield      #169                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstAlpha:I
+        91: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+        94: ifeq          107
+        97: getstatic     #172                // Field net/optifine/shaders/Shaders.uniform_blendFunc:Lnet/optifine/shaders/uniform/ShaderUniform4i;
+       100: iload_0
+       101: iload_1
+       102: iload_2
+       103: iload_3
+       104: invokevirtual #176                // Method net/optifine/shaders/uniform/ShaderUniform4i.setValue:(IIII)V
+       107: iload_0
+       108: iload_1
+       109: iload_2
+       110: iload_3
+       111: invokestatic  #185                // Method glBlendFuncSeparate:(IIII)V
+       114: return
+
+  public static void init(org.lwjgl.opengl.GLCapabilities);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #188                // Method net/optifine/Config.initDisplay:()V
+         6: ldc           #193                // int 36662
+         8: putstatic     #194                // Field GL_COPY_READ_BUFFER:I
+        11: ldc           #197                // int 36663
+        13: putstatic     #198                // Field GL_COPY_WRITE_BUFFER:I
+        16: ldc           #203                // int 34962
+        18: putstatic     #204                // Field GL_ARRAY_BUFFER:I
+        21: ldc           #207                // int 35044
+        23: putstatic     #208                // Field GL_STATIC_DRAW:I
+        26: iconst_1
+        27: istore_1
+        28: iconst_1
+        29: istore_2
+        30: iload_1
+        31: ifeq          42
+        34: iload_2
+        35: ifeq          42
+        38: iconst_1
+        39: goto          43
+        42: iconst_0
+        43: putstatic     #211                // Field vboRegions:Z
+        46: getstatic     #211                // Field vboRegions:Z
+        49: ifne          102
+        52: new           #214                // class java/util/ArrayList
+        55: dup
+        56: invokespecial #216                // Method java/util/ArrayList."<init>":()V
+        59: astore_3
+        60: iload_1
+        61: ifne          73
+        64: aload_3
+        65: ldc           #217                // String OpenGL 1.3, ARB_copy_buffer
+        67: invokeinterface #219,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        72: pop
+        73: iload_2
+        74: ifne          86
+        77: aload_3
+        78: ldc           #225                // String OpenGL 1.4
+        80: invokeinterface #219,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        85: pop
+        86: aload_3
+        87: invokestatic  #227                // Method net/optifine/Config.listToString:(Ljava/util/List;)Ljava/lang/String;
+        90: invokedynamic #231,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        95: astore        4
+        97: aload         4
+        99: invokestatic  #235                // Method net/optifine/Config.dbg:(Ljava/lang/String;)V
+       102: return
+
+  public static int glGetProgrami(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #239                // Method org/lwjgl/opengl/GL20.glGetProgrami:(II)I
+         8: ireturn
+
+  public static void glAttachShader(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #243                // Method org/lwjgl/opengl/GL20.glAttachShader:(II)V
+         8: return
+
+  public static void glDeleteShader(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #246                // Method org/lwjgl/opengl/GL20.glDeleteShader:(I)V
+         7: return
+
+  public static int glCreateShader(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #249                // Method org/lwjgl/opengl/GL20.glCreateShader:(I)I
+         7: ireturn
+
+  public static void glShaderSource(int, java.lang.String);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: aload_1
+         4: getstatic     #253                // Field java/nio/charset/StandardCharsets.UTF_8:Ljava/nio/charset/Charset;
+         7: invokevirtual #259                // Method java/lang/String.getBytes:(Ljava/nio/charset/Charset;)[B
+        10: astore_2
+        11: aload_2
+        12: arraylength
+        13: iconst_1
+        14: iadd
+        15: invokestatic  #265                // Method org/lwjgl/system/MemoryUtil.memAlloc:(I)Ljava/nio/ByteBuffer;
+        18: astore_3
+        19: aload_3
+        20: aload_2
+        21: invokevirtual #271                // Method java/nio/ByteBuffer.put:([B)Ljava/nio/ByteBuffer;
+        24: pop
+        25: aload_3
+        26: iconst_0
+        27: invokevirtual #277                // Method java/nio/ByteBuffer.put:(B)Ljava/nio/ByteBuffer;
+        30: pop
+        31: aload_3
+        32: invokevirtual #280                // Method java/nio/ByteBuffer.flip:()Ljava/nio/ByteBuffer;
+        35: pop
+        36: invokestatic  #284                // Method org/lwjgl/system/MemoryStack.stackPush:()Lorg/lwjgl/system/MemoryStack;
+        39: astore        4
+        41: aload         4
+        43: iconst_1
+        44: invokevirtual #290                // Method org/lwjgl/system/MemoryStack.mallocPointer:(I)Lorg/lwjgl/PointerBuffer;
+        47: astore        5
+        49: aload         5
+        51: aload_3
+        52: invokevirtual #294                // Method org/lwjgl/PointerBuffer.put:(Ljava/nio/ByteBuffer;)Lorg/lwjgl/PointerBuffer;
+        55: pop
+        56: iload_0
+        57: iconst_1
+        58: aload         5
+        60: invokevirtual #299                // Method org/lwjgl/PointerBuffer.address0:()J
+        63: lconst_0
+        64: invokestatic  #303                // Method org/lwjgl/opengl/GL20C.nglShaderSource:(IIJJ)V
+        67: aload         4
+        69: ifnull        107
+        72: aload         4
+        74: invokevirtual #309                // Method org/lwjgl/system/MemoryStack.close:()V
+        77: goto          107
+        80: astore        5
+        82: aload         4
+        84: ifnull        104
+        87: aload         4
+        89: invokevirtual #309                // Method org/lwjgl/system/MemoryStack.close:()V
+        92: goto          104
+        95: astore        6
+        97: aload         5
+        99: aload         6
+       101: invokevirtual #314                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       104: aload         5
+       106: athrow
+       107: aload_3
+       108: invokestatic  #318                // Method org/lwjgl/system/MemoryUtil.memFree:(Ljava/nio/ByteBuffer;)V
+       111: goto          123
+       114: astore        7
+       116: aload_3
+       117: invokestatic  #318                // Method org/lwjgl/system/MemoryUtil.memFree:(Ljava/nio/ByteBuffer;)V
+       120: aload         7
+       122: athrow
+       123: return
+      Exception table:
+         from    to  target type
+            41    67    80   Class java/lang/Throwable
+            87    92    95   Class java/lang/Throwable
+            36   107   114   any
+           114   116   114   any
+
+  public static void glCompileShader(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #322                // Method org/lwjgl/opengl/GL20.glCompileShader:(I)V
+         7: return
+
+  public static int glGetShaderi(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #325                // Method org/lwjgl/opengl/GL20.glGetShaderi:(II)I
+         8: ireturn
+
+  public static void _glUseProgram(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #328                // Field glProgram:I
+         6: iload_0
+         7: if_icmpne     11
+        10: return
+        11: iload_0
+        12: invokestatic  #331                // Method org/lwjgl/opengl/GL20.glUseProgram:(I)V
+        15: iload_0
+        16: putstatic     #328                // Field glProgram:I
+        19: return
+
+  public static int glCreateProgram();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #334                // Method org/lwjgl/opengl/GL20.glCreateProgram:()I
+         6: ireturn
+
+  public static void glDeleteProgram(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #338                // Method org/lwjgl/opengl/GL20.glDeleteProgram:(I)V
+         7: return
+
+  public static void glLinkProgram(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #341                // Method org/lwjgl/opengl/GL20.glLinkProgram:(I)V
+         7: return
+
+  public static int _glGetUniformLocation(int, java.lang.CharSequence);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: aload_1
+         5: invokestatic  #344                // Method org/lwjgl/opengl/GL20.glGetUniformLocation:(ILjava/lang/CharSequence;)I
+         8: ireturn
+
+  public static void _glUniform1i(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #348                // Method org/lwjgl/opengl/GL20.glUniform1i:(II)V
+         8: return
+
+  public static void _glBindAttribLocation(int, int, java.lang.CharSequence);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: aload_2
+         6: invokestatic  #351                // Method org/lwjgl/opengl/GL20.glBindAttribLocation:(IILjava/lang/CharSequence;)V
+         9: return
+
+  static void incrementTrackedBuffers();
+    Code:
+         0: getstatic     #355                // Field numBuffers:I
+         3: iconst_1
+         4: iadd
+         5: putstatic     #355                // Field numBuffers:I
+         8: getstatic     #358                // Field PLOT_BUFFERS:Lcom/mojang/jtracy/Plot;
+        11: getstatic     #355                // Field numBuffers:I
+        14: i2d
+        15: invokevirtual #362                // Method com/mojang/jtracy/Plot.setValue:(D)V
+        18: return
+
+  public static int _glGenBuffers();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #367                // Method incrementTrackedBuffers:()V
+         6: invokestatic  #370                // Method org/lwjgl/opengl/GL15.glGenBuffers:()I
+         9: ireturn
+
+  public static int _glGenVertexArrays();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #373                // Method org/lwjgl/opengl/GL30.glGenVertexArrays:()I
+         6: ireturn
+
+  public static void _glBindBuffer(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #378                // Method org/lwjgl/opengl/GL15.glBindBuffer:(II)V
+         8: return
+
+  public static void _glBindVertexArray(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #381                // Method org/lwjgl/opengl/GL30.glBindVertexArray:(I)V
+         7: return
+
+  public static void _glBufferData(int, java.nio.ByteBuffer, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: aload_1
+         5: iload_2
+         6: invokestatic  #384                // Method org/lwjgl/opengl/GL15.glBufferData:(ILjava/nio/ByteBuffer;I)V
+         9: return
+
+  public static void _glBufferSubData(int, long, java.nio.ByteBuffer);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: lload_1
+         5: aload_3
+         6: invokestatic  #388                // Method org/lwjgl/opengl/GL15.glBufferSubData:(IJLjava/nio/ByteBuffer;)V
+         9: return
+
+  public static void _glBufferData(int, long, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: lload_1
+         5: iload_3
+         6: invokestatic  #392                // Method org/lwjgl/opengl/GL15.glBufferData:(IJI)V
+         9: return
+
+  public static java.nio.ByteBuffer _glMapBufferRange(int, long, long, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: lload_1
+         5: lload_3
+         6: iload         5
+         8: invokestatic  #395                // Method org/lwjgl/opengl/GL30.glMapBufferRange:(IJJI)Ljava/nio/ByteBuffer;
+        11: areturn
+
+  public static void _glUnmapBuffer(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #399                // Method org/lwjgl/opengl/GL15.glUnmapBuffer:(I)Z
+         7: pop
+         8: return
+
+  public static void _glDeleteBuffers(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #355                // Field numBuffers:I
+         6: iconst_1
+         7: isub
+         8: putstatic     #355                // Field numBuffers:I
+        11: getstatic     #358                // Field PLOT_BUFFERS:Lcom/mojang/jtracy/Plot;
+        14: getstatic     #355                // Field numBuffers:I
+        17: i2d
+        18: invokevirtual #362                // Method com/mojang/jtracy/Plot.setValue:(D)V
+        21: iload_0
+        22: invokestatic  #403                // Method org/lwjgl/opengl/GL15.glDeleteBuffers:(I)V
+        25: return
+
+  public static void deleteVertexArrays(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #406                // Method org/lwjgl/opengl/GL30.glDeleteVertexArrays:(I)V
+         7: return
+
+  public static void _glBindFramebuffer(int, int);
+    Code:
+         0: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+         3: ifeq          30
+         6: invokestatic  #409                // Method net/optifine/shaders/GlState.getFramebuffer:()Lnet/optifine/shaders/ShadersFramebuffer;
+         9: ifnull        30
+        12: iload_1
+        13: invokestatic  #415                // Method net/optifine/render/RenderUtils.isMainFramebuffer:(I)Z
+        16: ifne          23
+        19: iload_1
+        20: ifne          30
+        23: invokestatic  #409                // Method net/optifine/shaders/GlState.getFramebuffer:()Lnet/optifine/shaders/ShadersFramebuffer;
+        26: invokevirtual #420                // Method net/optifine/shaders/ShadersFramebuffer.getGlFramebuffer:()I
+        29: istore_1
+        30: iload_0
+        31: ldc_w         #425                // int 36008
+        34: if_icmpeq     44
+        37: iload_0
+        38: ldc_w         #426                // int 36160
+        41: if_icmpne     62
+        44: getstatic     #427                // Field readFbo:I
+        47: iload_1
+        48: if_icmpeq     62
+        51: ldc_w         #425                // int 36008
+        54: iload_1
+        55: invokestatic  #430                // Method org/lwjgl/opengl/GL30.glBindFramebuffer:(II)V
+        58: iload_1
+        59: putstatic     #427                // Field readFbo:I
+        62: iload_0
+        63: ldc_w         #433                // int 36009
+        66: if_icmpeq     76
+        69: iload_0
+        70: ldc_w         #426                // int 36160
+        73: if_icmpne     94
+        76: getstatic     #434                // Field writeFbo:I
+        79: iload_1
+        80: if_icmpeq     94
+        83: ldc_w         #433                // int 36009
+        86: iload_1
+        87: invokestatic  #430                // Method org/lwjgl/opengl/GL30.glBindFramebuffer:(II)V
+        90: iload_1
+        91: putstatic     #434                // Field writeFbo:I
+        94: return
+
+  public static int getFrameBuffer(int);
+    Code:
+         0: iload_0
+         1: ldc_w         #425                // int 36008
+         4: if_icmpne     11
+         7: getstatic     #427                // Field readFbo:I
+        10: ireturn
+        11: iload_0
+        12: ldc_w         #433                // int 36009
+        15: if_icmpne     24
+        18: getstatic     #434                // Field writeFbo:I
+        21: goto          25
+        24: iconst_0
+        25: ireturn
+
+  public static void _glBlitFrameBuffer(int, int, int, int, int, int, int, int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: iload         5
+        11: iload         6
+        13: iload         7
+        15: iload         8
+        17: iload         9
+        19: invokestatic  #437                // Method org/lwjgl/opengl/GL30.glBlitFramebuffer:(IIIIIIIIII)V
+        22: return
+
+  public static void _glDeleteFramebuffers(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #441                // Method org/lwjgl/opengl/GL30.glDeleteFramebuffers:(I)V
+         7: getstatic     #427                // Field readFbo:I
+        10: iload_0
+        11: if_icmpne     18
+        14: iconst_0
+        15: putstatic     #427                // Field readFbo:I
+        18: getstatic     #434                // Field writeFbo:I
+        21: iload_0
+        22: if_icmpne     29
+        25: iconst_0
+        26: putstatic     #434                // Field writeFbo:I
+        29: return
+
+  public static int glGenFramebuffers();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #444                // Method org/lwjgl/opengl/GL30.glGenFramebuffers:()I
+         6: ireturn
+
+  public static void _glFramebufferTexture2D(int, int, int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: invokestatic  #447                // Method org/lwjgl/opengl/GL30.glFramebufferTexture2D:(IIIII)V
+        12: return
+
+  public static void glBlendFuncSeparate(int, int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: invokestatic  #451                // Method org/lwjgl/opengl/GL14.glBlendFuncSeparate:(IIII)V
+        10: return
+
+  public static java.lang.String glGetShaderInfoLog(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #454                // Method org/lwjgl/opengl/GL20.glGetShaderInfoLog:(II)Ljava/lang/String;
+         8: areturn
+
+  public static java.lang.String glGetProgramInfoLog(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #458                // Method org/lwjgl/opengl/GL20.glGetProgramInfoLog:(II)Ljava/lang/String;
+         8: areturn
+
+  public static void _enableCull();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          19
+        12: getstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+        15: invokevirtual #468                // Method net/optifine/render/GlCullState.setEnabled:()V
+        18: return
+        19: getstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        22: getfield      #475                // Field com/mojang/blaze3d/opengl/GlStateManager$CullState.enable:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        25: invokevirtual #91                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enable:()V
+        28: return
+
+  public static void _disableCull();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+         6: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         9: ifeq          19
+        12: getstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+        15: invokevirtual #479                // Method net/optifine/render/GlCullState.setDisabled:()V
+        18: return
+        19: getstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        22: getfield      #475                // Field com/mojang/blaze3d/opengl/GlStateManager$CullState.enable:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        25: invokevirtual #86                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.disable:()V
+        28: return
+
+  public static void _polygonMode(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #480                // Method org/lwjgl/opengl/GL11.glPolygonMode:(II)V
+         8: return
+
+  public static void _enablePolygonOffset();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+         6: getfield      #487                // Field com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState.fill:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: invokevirtual #91                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enable:()V
+        12: return
+
+  public static void _disablePolygonOffset();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+         6: getfield      #487                // Field com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState.fill:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: invokevirtual #86                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.disable:()V
+        12: return
+
+  public static void _polygonOffset(float, float);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: fload_0
+         4: getstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+         7: getfield      #492                // Field com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState.factor:F
+        10: fcmpl
+        11: ifne          25
+        14: fload_1
+        15: getstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+        18: getfield      #495                // Field com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState.units:F
+        21: fcmpl
+        22: ifeq          44
+        25: getstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+        28: fload_0
+        29: putfield      #492                // Field com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState.factor:F
+        32: getstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+        35: fload_1
+        36: putfield      #495                // Field com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState.units:F
+        39: fload_0
+        40: fload_1
+        41: invokestatic  #498                // Method org/lwjgl/opengl/GL11.glPolygonOffset:(FF)V
+        44: return
+
+  public static void _enableColorLogicOp();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #502                // Field COLOR_LOGIC:Lcom/mojang/blaze3d/opengl/GlStateManager$ColorLogicState;
+         6: getfield      #506                // Field com/mojang/blaze3d/opengl/GlStateManager$ColorLogicState.enable:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: invokevirtual #91                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enable:()V
+        12: return
+
+  public static void _disableColorLogicOp();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #502                // Field COLOR_LOGIC:Lcom/mojang/blaze3d/opengl/GlStateManager$ColorLogicState;
+         6: getfield      #506                // Field com/mojang/blaze3d/opengl/GlStateManager$ColorLogicState.enable:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: invokevirtual #86                 // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.disable:()V
+        12: return
+
+  public static void _logicOp(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: getstatic     #502                // Field COLOR_LOGIC:Lcom/mojang/blaze3d/opengl/GlStateManager$ColorLogicState;
+         7: getfield      #509                // Field com/mojang/blaze3d/opengl/GlStateManager$ColorLogicState.op:I
+        10: if_icmpeq     24
+        13: getstatic     #502                // Field COLOR_LOGIC:Lcom/mojang/blaze3d/opengl/GlStateManager$ColorLogicState;
+        16: iload_0
+        17: putfield      #509                // Field com/mojang/blaze3d/opengl/GlStateManager$ColorLogicState.op:I
+        20: iload_0
+        21: invokestatic  #512                // Method org/lwjgl/opengl/GL11.glLogicOp:(I)V
+        24: return
+
+  public static void _activeTexture(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #515                // Field activeTexture:I
+         6: iload_0
+         7: ldc_w         #518                // int 33984
+        10: isub
+        11: if_icmpeq     26
+        14: iload_0
+        15: ldc_w         #518                // int 33984
+        18: isub
+        19: putstatic     #515                // Field activeTexture:I
+        22: iload_0
+        23: invokestatic  #519                // Method org/lwjgl/opengl/GL13.glActiveTexture:(I)V
+        26: return
+
+  public static void enableTexture();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+         6: getstatic     #515                // Field activeTexture:I
+         9: aaload
+        10: iconst_1
+        11: putfield      #526                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.texture2DState:Z
+        14: return
+
+  public static void disableTexture();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+         6: getstatic     #515                // Field activeTexture:I
+         9: aaload
+        10: iconst_0
+        11: putfield      #526                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.texture2DState:Z
+        14: return
+
+  public static void texParameter(int, int, float);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: fload_2
+         6: invokestatic  #531                // Method org/lwjgl/opengl/GL11.glTexParameterf:(IIF)V
+         9: return
+
+  public static void _texParameter(int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: invokestatic  #535                // Method org/lwjgl/opengl/GL11.glTexParameteri:(III)V
+         9: return
+
+  public static int _getTexLevelParameter(int, int, int);
+    Code:
+         0: iload_0
+         1: iload_1
+         2: iload_2
+         3: invokestatic  #539                // Method org/lwjgl/opengl/GL11.glGetTexLevelParameteri:(III)I
+         6: ireturn
+
+  public static int _genTexture();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #543                // Field numTextures:I
+         6: iconst_1
+         7: iadd
+         8: putstatic     #543                // Field numTextures:I
+        11: getstatic     #546                // Field PLOT_TEXTURES:Lcom/mojang/jtracy/Plot;
+        14: getstatic     #543                // Field numTextures:I
+        17: i2d
+        18: invokevirtual #362                // Method com/mojang/jtracy/Plot.setValue:(D)V
+        21: invokestatic  #549                // Method org/lwjgl/opengl/GL11.glGenTextures:()I
+        24: ireturn
+
+  public static void _deleteTexture(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: ifne          8
+         7: return
+         8: iconst_0
+         9: istore_1
+        10: iload_1
+        11: getstatic     #552                // Field IMAGE_TEXTURES:[I
+        14: arraylength
+        15: if_icmpge     39
+        18: getstatic     #552                // Field IMAGE_TEXTURES:[I
+        21: iload_1
+        22: iaload
+        23: iload_0
+        24: if_icmpne     33
+        27: getstatic     #552                // Field IMAGE_TEXTURES:[I
+        30: iload_1
+        31: iconst_0
+        32: iastore
+        33: iinc          1, 1
+        36: goto          10
+        39: iload_0
+        40: invokestatic  #556                // Method org/lwjgl/opengl/GL11.glDeleteTextures:(I)V
+        43: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+        46: astore_1
+        47: aload_1
+        48: arraylength
+        49: istore_2
+        50: iconst_0
+        51: istore_3
+        52: iload_3
+        53: iload_2
+        54: if_icmpge     83
+        57: aload_1
+        58: iload_3
+        59: aaload
+        60: astore        4
+        62: aload         4
+        64: getfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+        67: iload_0
+        68: if_icmpne     77
+        71: aload         4
+        73: iconst_0
+        74: putfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+        77: iinc          3, 1
+        80: goto          52
+        83: getstatic     #543                // Field numTextures:I
+        86: iconst_1
+        87: isub
+        88: putstatic     #543                // Field numTextures:I
+        91: getstatic     #546                // Field PLOT_TEXTURES:Lcom/mojang/jtracy/Plot;
+        94: getstatic     #543                // Field numTextures:I
+        97: i2d
+        98: invokevirtual #362                // Method com/mojang/jtracy/Plot.setValue:(D)V
+       101: return
+
+  public static void _bindTexture(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+         7: getstatic     #515                // Field activeTexture:I
+        10: aaload
+        11: getfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+        14: if_icmpeq     45
+        17: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+        20: getstatic     #515                // Field activeTexture:I
+        23: aaload
+        24: iload_0
+        25: putfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+        28: sipush        3553
+        31: iload_0
+        32: invokestatic  #562                // Method org/lwjgl/opengl/GL11.glBindTexture:(II)V
+        35: invokestatic  #565                // Method net/optifine/SmartAnimations.isActive:()Z
+        38: ifeq          45
+        41: iload_0
+        42: invokestatic  #570                // Method net/optifine/SmartAnimations.textureRendered:(I)V
+        45: return
+
+  public static void _texImage2D(int, int, int, int, int, int, int, int, java.nio.ByteBuffer);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: iload         5
+        11: iload         6
+        13: iload         7
+        15: aload         8
+        17: invokestatic  #573                // Method org/lwjgl/opengl/GL11.glTexImage2D:(IIIIIIIILjava/nio/ByteBuffer;)V
+        20: return
+
+  public static void _texSubImage2D(int, int, int, int, int, int, int, int, long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: iload         5
+        11: iload         6
+        13: iload         7
+        15: lload         8
+        17: invokestatic  #577                // Method org/lwjgl/opengl/GL11.glTexSubImage2D:(IIIIIIIIJ)V
+        20: return
+
+  public static void _texSubImage2D(int, int, int, int, int, int, int, int, java.nio.ByteBuffer);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: iload         5
+        11: iload         6
+        13: iload         7
+        15: aload         8
+        17: invokestatic  #581                // Method org/lwjgl/opengl/GL11.glTexSubImage2D:(IIIIIIIILjava/nio/ByteBuffer;)V
+        20: return
+
+  public static void _viewport(int, int, int, int);
+    Code:
+         0: iload_0
+         1: iload_1
+         2: iload_2
+         3: iload_3
+         4: invokestatic  #583                // Method org/lwjgl/opengl/GL11.glViewport:(IIII)V
+         7: return
+
+  public static void _colorMask(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: getstatic     #586                // Field COLOR_MASK:I
+         7: if_icmpeq     62
+        10: iload_0
+        11: putstatic     #586                // Field COLOR_MASK:I
+        14: iload_0
+        15: iconst_1
+        16: iand
+        17: ifeq          24
+        20: iconst_1
+        21: goto          25
+        24: iconst_0
+        25: iload_0
+        26: iconst_2
+        27: iand
+        28: ifeq          35
+        31: iconst_1
+        32: goto          36
+        35: iconst_0
+        36: iload_0
+        37: iconst_4
+        38: iand
+        39: ifeq          46
+        42: iconst_1
+        43: goto          47
+        46: iconst_0
+        47: iload_0
+        48: bipush        8
+        50: iand
+        51: ifeq          58
+        54: iconst_1
+        55: goto          59
+        58: iconst_0
+        59: invokestatic  #589                // Method org/lwjgl/opengl/GL11.glColorMask:(ZZZZ)V
+        62: return
+
+  public static void _clear(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #593                // Method org/lwjgl/opengl/GL11.glClear:(I)V
+         7: getstatic     #596                // Field com/mojang/blaze3d/platform/MacosUtil.IS_MACOS:Z
+        10: ifeq          17
+        13: invokestatic  #601                // Method _getError:()I
+        16: pop
+        17: return
+
+  public static void clearDepth(double);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: dload_0
+         4: invokestatic  #604                // Method org/lwjgl/opengl/GL11.glClearDepth:(D)V
+         7: return
+
+  public static void clearColor(float, float, float, float);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: fload_0
+         4: fload_1
+         5: fload_2
+         6: fload_3
+         7: invokestatic  #607                // Method org/lwjgl/opengl/GL11.glClearColor:(FFFF)V
+        10: return
+
+  public static void _vertexAttribPointer(int, int, int, boolean, int, long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: lload         5
+        11: invokestatic  #611                // Method org/lwjgl/opengl/GL20.glVertexAttribPointer:(IIIZIJ)V
+        14: return
+
+  public static void _vertexAttribIPointer(int, int, int, int, long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: lload         4
+         9: invokestatic  #615                // Method org/lwjgl/opengl/GL30.glVertexAttribIPointer:(IIIIJ)V
+        12: return
+
+  public static void _enableVertexAttribArray(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #619                // Method org/lwjgl/opengl/GL20.glEnableVertexAttribArray:(I)V
+         7: return
+
+  public static void _drawElements(int, int, int, long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: lload_3
+         7: invokestatic  #622                // Method org/lwjgl/opengl/GL11.glDrawElements:(IIIJ)V
+        10: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+        13: ifeq          74
+        16: getstatic     #626                // Field net/optifine/shaders/Shaders.isRenderingWorld:Z
+        19: ifeq          74
+        22: getstatic     #629                // Field net/optifine/shaders/Shaders.activeProgram:Lnet/optifine/shaders/Program;
+        25: invokevirtual #633                // Method net/optifine/shaders/Program.getCountInstances:()I
+        28: istore        5
+        30: iload         5
+        32: iconst_1
+        33: if_icmple     74
+        36: iconst_1
+        37: istore        6
+        39: iload         6
+        41: iload         5
+        43: if_icmpge     67
+        46: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        49: iload         6
+        51: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        54: iload_0
+        55: iload_1
+        56: iload_2
+        57: lload_3
+        58: invokestatic  #622                // Method org/lwjgl/opengl/GL11.glDrawElements:(IIIJ)V
+        61: iinc          6, 1
+        64: goto          39
+        67: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        70: iconst_0
+        71: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        74: return
+
+  public static void _drawArrays(int, int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: invokestatic  #646                // Method org/lwjgl/opengl/GL11.glDrawArrays:(III)V
+         9: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+        12: ifeq          69
+        15: getstatic     #626                // Field net/optifine/shaders/Shaders.isRenderingWorld:Z
+        18: ifeq          69
+        21: getstatic     #629                // Field net/optifine/shaders/Shaders.activeProgram:Lnet/optifine/shaders/Program;
+        24: invokevirtual #633                // Method net/optifine/shaders/Program.getCountInstances:()I
+        27: istore_3
+        28: iload_3
+        29: iconst_1
+        30: if_icmple     69
+        33: iconst_1
+        34: istore        4
+        36: iload         4
+        38: iload_3
+        39: if_icmpge     62
+        42: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        45: iload         4
+        47: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        50: iload_0
+        51: iload_1
+        52: iload_2
+        53: invokestatic  #646                // Method org/lwjgl/opengl/GL11.glDrawArrays:(III)V
+        56: iinc          4, 1
+        59: goto          36
+        62: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        65: iconst_0
+        66: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        69: return
+
+  public static void _pixelStore(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #649                // Method org/lwjgl/opengl/GL11.glPixelStorei:(II)V
+         8: return
+
+  public static void _readPixels(int, int, int, int, int, int, long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: iload         4
+         9: iload         5
+        11: lload         6
+        13: invokestatic  #652                // Method org/lwjgl/opengl/GL11.glReadPixels:(IIIIIIJ)V
+        16: return
+
+  public static int _getError();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #656                // Method org/lwjgl/opengl/GL11.glGetError:()I
+         6: ireturn
+
+  public static void clearGlErrors();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: invokestatic  #656                // Method org/lwjgl/opengl/GL11.glGetError:()I
+         6: ifeq          12
+         9: goto          3
+        12: return
+
+  public static java.lang.String _getString(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #659                // Method org/lwjgl/opengl/GL11.glGetString:(I)Ljava/lang/String;
+         7: areturn
+
+  public static int _getInteger(int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: invokestatic  #663                // Method org/lwjgl/opengl/GL11.glGetInteger:(I)I
+         7: ireturn
+
+  public static long _glFenceSync(int, int);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: iload_1
+         5: invokestatic  #666                // Method org/lwjgl/opengl/GL32.glFenceSync:(II)J
+         8: lreturn
+
+  public static int _glClientWaitSync(long, int, long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: lload_0
+         4: iload_2
+         5: lload_3
+         6: invokestatic  #672                // Method org/lwjgl/opengl/GL32.glClientWaitSync:(JIJ)I
+         9: ireturn
+
+  public static void _glDeleteSync(long);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: lload_0
+         4: invokestatic  #676                // Method org/lwjgl/opengl/GL32.glDeleteSync:(J)V
+         7: return
+
+  public static int getActiveTextureUnit();
+    Code:
+         0: ldc_w         #518                // int 33984
+         3: getstatic     #515                // Field activeTexture:I
+         6: iadd
+         7: ireturn
+
+  public static void bindCurrentTexture();
+    Code:
+         0: sipush        3553
+         3: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+         6: getstatic     #515                // Field activeTexture:I
+         9: aaload
+        10: getfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+        13: invokestatic  #562                // Method org/lwjgl/opengl/GL11.glBindTexture:(II)V
+        16: return
+
+  public static int getBoundTexture();
+    Code:
+         0: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+         3: getstatic     #515                // Field activeTexture:I
+         6: aaload
+         7: getfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+        10: ireturn
+
+  public static int getBoundTexture(int);
+    Code:
+         0: getstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+         3: iload_0
+         4: aaload
+         5: getfield      #559                // Field com/mojang/blaze3d/opengl/GlStateManager$TextureState.binding:I
+         8: ireturn
+
+  public static void checkBoundTexture();
+    Code:
+         0: invokestatic  #680                // Method net/optifine/Config.isMinecraftThread:()Z
+         3: ifne          7
+         6: return
+         7: ldc_w         #683                // int 34016
+        10: invokestatic  #663                // Method org/lwjgl/opengl/GL11.glGetInteger:(I)I
+        13: istore_0
+        14: ldc_w         #684                // int 32873
+        17: invokestatic  #663                // Method org/lwjgl/opengl/GL11.glGetInteger:(I)I
+        20: istore_1
+        21: invokestatic  #685                // Method getActiveTextureUnit:()I
+        24: istore_2
+        25: invokestatic  #688                // Method getBoundTexture:()I
+        28: istore_3
+        29: iload_3
+        30: ifgt          34
+        33: return
+        34: iload_0
+        35: iload_2
+        36: if_icmpne     44
+        39: iload_1
+        40: iload_3
+        41: if_icmpeq     56
+        44: iload_2
+        45: iload_0
+        46: iload_3
+        47: iload_1
+        48: invokedynamic #691,  0            // InvokeDynamic #1:makeConcatWithConstants:(IIII)Ljava/lang/String;
+        53: invokestatic  #235                // Method net/optifine/Config.dbg:(Ljava/lang/String;)V
+        56: return
+
+  public static void genTextures(java.nio.IntBuffer);
+    Code:
+         0: aload_0
+         1: invokestatic  #694                // Method org/lwjgl/opengl/GL11.glGenTextures:(Ljava/nio/IntBuffer;)V
+         4: return
+
+  public static void deleteTextures(java.nio.IntBuffer);
+    Code:
+         0: aload_0
+         1: invokevirtual #697                // Method java/nio/IntBuffer.rewind:()Ljava/nio/IntBuffer;
+         4: pop
+         5: aload_0
+         6: invokevirtual #703                // Method java/nio/IntBuffer.position:()I
+         9: aload_0
+        10: invokevirtual #706                // Method java/nio/IntBuffer.limit:()I
+        13: if_icmpge     28
+        16: aload_0
+        17: invokevirtual #709                // Method java/nio/IntBuffer.get:()I
+        20: istore_1
+        21: iload_1
+        22: invokestatic  #712                // Method _deleteTexture:(I)V
+        25: goto          5
+        28: aload_0
+        29: invokevirtual #697                // Method java/nio/IntBuffer.rewind:()Ljava/nio/IntBuffer;
+        32: pop
+        33: return
+
+  public static void lockAlpha(net.optifine.render.GlAlphaState);
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          10
+         9: return
+        10: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        13: invokestatic  #715                // Method getAlphaState:(Lnet/optifine/render/GlAlphaState;)V
+        16: aload_0
+        17: ifnull        24
+        20: aload_0
+        21: invokestatic  #719                // Method setAlphaState:(Lnet/optifine/render/GlAlphaState;)V
+        24: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+        27: invokevirtual #722                // Method net/optifine/util/LockCounter.lock:()Z
+        30: pop
+        31: return
+
+  public static void unlockAlpha();
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #725                // Method net/optifine/util/LockCounter.unlock:()Z
+         6: ifne          10
+         9: return
+        10: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        13: invokestatic  #719                // Method setAlphaState:(Lnet/optifine/render/GlAlphaState;)V
+        16: return
+
+  public static void getAlphaState(net.optifine.render.GlAlphaState);
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: aload_0
+        10: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        13: invokevirtual #728                // Method net/optifine/render/GlAlphaState.setState:(Lnet/optifine/render/GlAlphaState;)V
+        16: return
+        17: aload_0
+        18: getstatic     #32                 // Field alphaTest:Z
+        21: getstatic     #46                 // Field alphaTestFunc:I
+        24: getstatic     #50                 // Field alphaTestRef:F
+        27: invokevirtual #731                // Method net/optifine/render/GlAlphaState.setState:(ZIF)V
+        30: return
+
+  public static void setAlphaState(net.optifine.render.GlAlphaState);
+    Code:
+         0: getstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: getstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+        12: aload_0
+        13: invokevirtual #728                // Method net/optifine/render/GlAlphaState.setState:(Lnet/optifine/render/GlAlphaState;)V
+        16: return
+        17: aload_0
+        18: invokevirtual #734                // Method net/optifine/render/GlAlphaState.isEnabled:()Z
+        21: putstatic     #32                 // Field alphaTest:Z
+        24: aload_0
+        25: invokevirtual #737                // Method net/optifine/render/GlAlphaState.getFunc:()I
+        28: aload_0
+        29: invokevirtual #740                // Method net/optifine/render/GlAlphaState.getRef:()F
+        32: invokestatic  #744                // Method alphaFunc:(IF)V
+        35: return
+
+  public static void lockBlend(net.optifine.render.GlBlendState);
+    Code:
+         0: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          10
+         9: return
+        10: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        13: invokestatic  #747                // Method getBlendState:(Lnet/optifine/render/GlBlendState;)V
+        16: aload_0
+        17: ifnull        24
+        20: aload_0
+        21: invokestatic  #751                // Method setBlendState:(Lnet/optifine/render/GlBlendState;)V
+        24: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+        27: invokevirtual #722                // Method net/optifine/util/LockCounter.lock:()Z
+        30: pop
+        31: return
+
+  public static void unlockBlend();
+    Code:
+         0: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #725                // Method net/optifine/util/LockCounter.unlock:()Z
+         6: ifne          10
+         9: return
+        10: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        13: invokestatic  #751                // Method setBlendState:(Lnet/optifine/render/GlBlendState;)V
+        16: return
+
+  public static void getBlendState(net.optifine.render.GlBlendState);
+    Code:
+         0: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: aload_0
+        10: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        13: invokevirtual #754                // Method net/optifine/render/GlBlendState.setState:(Lnet/optifine/render/GlBlendState;)V
+        16: return
+        17: aload_0
+        18: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        21: getfield      #152                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        24: getfield      #756                // Field com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enabled:Z
+        27: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        30: getfield      #160                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcRgb:I
+        33: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        36: getfield      #163                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstRgb:I
+        39: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        42: getfield      #166                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcAlpha:I
+        45: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        48: getfield      #169                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstAlpha:I
+        51: invokevirtual #759                // Method net/optifine/render/GlBlendState.setState:(ZIIII)V
+        54: return
+
+  public static void setBlendState(net.optifine.render.GlBlendState);
+    Code:
+         0: getstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: getstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+        12: aload_0
+        13: invokevirtual #754                // Method net/optifine/render/GlBlendState.setState:(Lnet/optifine/render/GlBlendState;)V
+        16: return
+        17: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        20: getfield      #152                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        23: aload_0
+        24: invokevirtual #762                // Method net/optifine/render/GlBlendState.isEnabled:()Z
+        27: invokevirtual #763                // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.setEnabled:(Z)V
+        30: aload_0
+        31: invokevirtual #764                // Method net/optifine/render/GlBlendState.isSeparate:()Z
+        34: ifne          51
+        37: aload_0
+        38: invokevirtual #767                // Method net/optifine/render/GlBlendState.getSrcFactor:()I
+        41: aload_0
+        42: invokevirtual #770                // Method net/optifine/render/GlBlendState.getDstFactor:()I
+        45: invokestatic  #773                // Method blendFunc:(II)V
+        48: goto          70
+        51: aload_0
+        52: invokevirtual #767                // Method net/optifine/render/GlBlendState.getSrcFactor:()I
+        55: aload_0
+        56: invokevirtual #770                // Method net/optifine/render/GlBlendState.getDstFactor:()I
+        59: aload_0
+        60: invokevirtual #776                // Method net/optifine/render/GlBlendState.getSrcFactorAlpha:()I
+        63: aload_0
+        64: invokevirtual #779                // Method net/optifine/render/GlBlendState.getDstFactorAlpha:()I
+        67: invokestatic  #782                // Method _blendFuncSeparate:(IIII)V
+        70: return
+
+  public static void lockCull(net.optifine.render.GlCullState);
+    Code:
+         0: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          10
+         9: return
+        10: getstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+        13: invokestatic  #785                // Method getCullState:(Lnet/optifine/render/GlCullState;)V
+        16: aload_0
+        17: ifnull        24
+        20: aload_0
+        21: invokestatic  #789                // Method setCullState:(Lnet/optifine/render/GlCullState;)V
+        24: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+        27: invokevirtual #722                // Method net/optifine/util/LockCounter.lock:()Z
+        30: pop
+        31: return
+
+  public static void unlockCull();
+    Code:
+         0: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #725                // Method net/optifine/util/LockCounter.unlock:()Z
+         6: ifne          10
+         9: return
+        10: getstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+        13: invokestatic  #789                // Method setCullState:(Lnet/optifine/render/GlCullState;)V
+        16: return
+
+  public static void getCullState(net.optifine.render.GlCullState);
+    Code:
+         0: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: aload_0
+        10: getstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+        13: invokevirtual #792                // Method net/optifine/render/GlCullState.setState:(Lnet/optifine/render/GlCullState;)V
+        16: return
+        17: aload_0
+        18: getstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        21: getfield      #475                // Field com/mojang/blaze3d/opengl/GlStateManager$CullState.enable:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        24: getfield      #756                // Field com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enabled:Z
+        27: getstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        30: getfield      #794                // Field com/mojang/blaze3d/opengl/GlStateManager$CullState.mode:I
+        33: invokevirtual #796                // Method net/optifine/render/GlCullState.setState:(ZI)V
+        36: return
+
+  public static void setCullState(net.optifine.render.GlCullState);
+    Code:
+         0: getstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: getstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+        12: aload_0
+        13: invokevirtual #792                // Method net/optifine/render/GlCullState.setState:(Lnet/optifine/render/GlCullState;)V
+        16: return
+        17: getstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        20: getfield      #475                // Field com/mojang/blaze3d/opengl/GlStateManager$CullState.enable:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        23: aload_0
+        24: invokevirtual #799                // Method net/optifine/render/GlCullState.isEnabled:()Z
+        27: invokevirtual #763                // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.setEnabled:(Z)V
+        30: getstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        33: aload_0
+        34: invokevirtual #800                // Method net/optifine/render/GlCullState.getMode:()I
+        37: putfield      #794                // Field com/mojang/blaze3d/opengl/GlStateManager$CullState.mode:I
+        40: return
+
+  public static void lockDepth(net.optifine.render.GlDepthState);
+    Code:
+         0: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          10
+         9: return
+        10: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        13: invokestatic  #803                // Method getDepthState:(Lnet/optifine/render/GlDepthState;)V
+        16: aload_0
+        17: ifnull        24
+        20: aload_0
+        21: invokestatic  #807                // Method setDepthState:(Lnet/optifine/render/GlDepthState;)V
+        24: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+        27: invokevirtual #722                // Method net/optifine/util/LockCounter.lock:()Z
+        30: pop
+        31: return
+
+  public static void unlockDepth();
+    Code:
+         0: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #725                // Method net/optifine/util/LockCounter.unlock:()Z
+         6: ifne          10
+         9: return
+        10: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        13: invokestatic  #807                // Method setDepthState:(Lnet/optifine/render/GlDepthState;)V
+        16: return
+
+  public static void getDepthState(net.optifine.render.GlDepthState);
+    Code:
+         0: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: aload_0
+        10: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        13: invokevirtual #810                // Method net/optifine/render/GlDepthState.setState:(Lnet/optifine/render/GlDepthState;)V
+        16: return
+        17: aload_0
+        18: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        21: getfield      #116                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        24: getfield      #756                // Field com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enabled:Z
+        27: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        30: getfield      #132                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mask:Z
+        33: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        36: getfield      #123                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.func:I
+        39: invokevirtual #812                // Method net/optifine/render/GlDepthState.setState:(ZZI)V
+        42: return
+
+  public static void setDepthState(net.optifine.render.GlDepthState);
+    Code:
+         0: getstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+         3: invokevirtual #17                 // Method net/optifine/util/LockCounter.isLocked:()Z
+         6: ifeq          17
+         9: getstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+        12: aload_0
+        13: invokevirtual #810                // Method net/optifine/render/GlDepthState.setState:(Lnet/optifine/render/GlDepthState;)V
+        16: return
+        17: getstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        20: getfield      #116                // Field com/mojang/blaze3d/opengl/GlStateManager$DepthState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+        23: aload_0
+        24: invokevirtual #815                // Method net/optifine/render/GlDepthState.isEnabled:()Z
+        27: invokevirtual #763                // Method com/mojang/blaze3d/opengl/GlStateManager$BooleanState.setEnabled:(Z)V
+        30: aload_0
+        31: invokevirtual #816                // Method net/optifine/render/GlDepthState.isMask:()Z
+        34: invokestatic  #819                // Method _depthMask:(Z)V
+        37: aload_0
+        38: invokevirtual #822                // Method net/optifine/render/GlDepthState.getFunc:()I
+        41: invokestatic  #823                // Method _depthFunc:(I)V
+        44: return
+
+  public static void glMultiDrawArrays(int, java.nio.IntBuffer, java.nio.IntBuffer);
+    Code:
+         0: iload_0
+         1: aload_1
+         2: aload_2
+         3: invokestatic  #826                // Method org/lwjgl/opengl/GL14.glMultiDrawArrays:(ILjava/nio/IntBuffer;Ljava/nio/IntBuffer;)V
+         6: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+         9: ifeq          60
+        12: getstatic     #629                // Field net/optifine/shaders/Shaders.activeProgram:Lnet/optifine/shaders/Program;
+        15: invokevirtual #633                // Method net/optifine/shaders/Program.getCountInstances:()I
+        18: istore_3
+        19: iload_3
+        20: iconst_1
+        21: if_icmple     60
+        24: iconst_1
+        25: istore        4
+        27: iload         4
+        29: iload_3
+        30: if_icmpge     53
+        33: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        36: iload         4
+        38: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        41: iload_0
+        42: aload_1
+        43: aload_2
+        44: invokestatic  #826                // Method org/lwjgl/opengl/GL14.glMultiDrawArrays:(ILjava/nio/IntBuffer;Ljava/nio/IntBuffer;)V
+        47: iinc          4, 1
+        50: goto          27
+        53: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        56: iconst_0
+        57: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        60: return
+
+  public static void glMultiDrawElements(int, java.nio.IntBuffer, int, org.lwjgl.PointerBuffer);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: aload_1
+         5: iload_2
+         6: aload_3
+         7: invokestatic  #830                // Method org/lwjgl/opengl/GL14.glMultiDrawElements:(ILjava/nio/IntBuffer;ILorg/lwjgl/PointerBuffer;)V
+        10: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+        13: ifeq          74
+        16: getstatic     #626                // Field net/optifine/shaders/Shaders.isRenderingWorld:Z
+        19: ifeq          74
+        22: getstatic     #629                // Field net/optifine/shaders/Shaders.activeProgram:Lnet/optifine/shaders/Program;
+        25: invokevirtual #633                // Method net/optifine/shaders/Program.getCountInstances:()I
+        28: istore        4
+        30: iload         4
+        32: iconst_1
+        33: if_icmple     74
+        36: iconst_1
+        37: istore        5
+        39: iload         5
+        41: iload         4
+        43: if_icmpge     67
+        46: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        49: iload         5
+        51: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        54: iload_0
+        55: aload_1
+        56: iload_2
+        57: aload_3
+        58: invokestatic  #830                // Method org/lwjgl/opengl/GL14.glMultiDrawElements:(ILjava/nio/IntBuffer;ILorg/lwjgl/PointerBuffer;)V
+        61: iinc          5, 1
+        64: goto          39
+        67: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        70: iconst_0
+        71: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        74: return
+
+  public static void glMultiDrawElementsBaseVertex(int, java.nio.IntBuffer, int, org.lwjgl.PointerBuffer, java.nio.IntBuffer);
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: iload_0
+         4: aload_1
+         5: iload_2
+         6: aload_3
+         7: aload         4
+         9: invokestatic  #834                // Method org/lwjgl/opengl/GL32.glMultiDrawElementsBaseVertex:(ILjava/nio/IntBuffer;ILorg/lwjgl/PointerBuffer;Ljava/nio/IntBuffer;)V
+        12: invokestatic  #54                 // Method net/optifine/Config.isShaders:()Z
+        15: ifeq          78
+        18: getstatic     #626                // Field net/optifine/shaders/Shaders.isRenderingWorld:Z
+        21: ifeq          78
+        24: getstatic     #629                // Field net/optifine/shaders/Shaders.activeProgram:Lnet/optifine/shaders/Program;
+        27: invokevirtual #633                // Method net/optifine/shaders/Program.getCountInstances:()I
+        30: istore        5
+        32: iload         5
+        34: iconst_1
+        35: if_icmple     78
+        38: iconst_1
+        39: istore        6
+        41: iload         6
+        43: iload         5
+        45: if_icmpge     71
+        48: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        51: iload         6
+        53: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        56: iload_0
+        57: aload_1
+        58: iload_2
+        59: aload_3
+        60: aload         4
+        62: invokestatic  #834                // Method org/lwjgl/opengl/GL32.glMultiDrawElementsBaseVertex:(ILjava/nio/IntBuffer;ILorg/lwjgl/PointerBuffer;Ljava/nio/IntBuffer;)V
+        65: iinc          6, 1
+        68: goto          41
+        71: getstatic     #638                // Field net/optifine/shaders/Shaders.uniform_instanceId:Lnet/optifine/shaders/uniform/ShaderUniform1i;
+        74: iconst_0
+        75: invokevirtual #642                // Method net/optifine/shaders/uniform/ShaderUniform1i.setValue:(I)V
+        78: return
+
+  public static void bufferSubData(int, long, java.nio.ByteBuffer);
+    Code:
+         0: iload_0
+         1: lload_1
+         2: aload_3
+         3: invokestatic  #388                // Method org/lwjgl/opengl/GL15.glBufferSubData:(IJLjava/nio/ByteBuffer;)V
+         6: return
+
+  public static void copyBufferSubData(int, int, long, long, long);
+    Code:
+         0: iload_0
+         1: iload_1
+         2: lload_2
+         3: lload         4
+         5: lload         6
+         7: invokestatic  #838                // Method org/lwjgl/opengl/GL31.glCopyBufferSubData:(IIJJJ)V
+        10: return
+
+  public static void applyCurrentBlend();
+    Code:
+         0: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+         3: getfield      #152                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         6: getfield      #756                // Field com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enabled:Z
+         9: ifeq          21
+        12: sipush        3042
+        15: invokestatic  #842                // Method org/lwjgl/opengl/GL11.glEnable:(I)V
+        18: goto          27
+        21: sipush        3042
+        24: invokestatic  #845                // Method org/lwjgl/opengl/GL11.glDisable:(I)V
+        27: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        30: getfield      #160                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcRgb:I
+        33: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        36: getfield      #163                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstRgb:I
+        39: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        42: getfield      #166                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.srcAlpha:I
+        45: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        48: getfield      #169                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.dstAlpha:I
+        51: invokestatic  #451                // Method org/lwjgl/opengl/GL14.glBlendFuncSeparate:(IIII)V
+        54: return
+
+  public static void setBlendsIndexed(net.optifine.render.GlBlendState[]);
+    Code:
+         0: aload_0
+         1: ifnonnull     5
+         4: return
+         5: iconst_0
+         6: istore_1
+         7: iload_1
+         8: aload_0
+         9: arraylength
+        10: if_icmpge     74
+        13: aload_0
+        14: iload_1
+        15: aaload
+        16: astore_2
+        17: aload_2
+        18: ifnonnull     24
+        21: goto          68
+        24: aload_2
+        25: invokevirtual #762                // Method net/optifine/render/GlBlendState.isEnabled:()Z
+        28: ifeq          41
+        31: sipush        3042
+        34: iload_1
+        35: invokestatic  #848                // Method org/lwjgl/opengl/GL30.glEnablei:(II)V
+        38: goto          48
+        41: sipush        3042
+        44: iload_1
+        45: invokestatic  #851                // Method org/lwjgl/opengl/GL30.glDisablei:(II)V
+        48: iload_1
+        49: aload_2
+        50: invokevirtual #767                // Method net/optifine/render/GlBlendState.getSrcFactor:()I
+        53: aload_2
+        54: invokevirtual #770                // Method net/optifine/render/GlBlendState.getDstFactor:()I
+        57: aload_2
+        58: invokevirtual #776                // Method net/optifine/render/GlBlendState.getSrcFactorAlpha:()I
+        61: aload_2
+        62: invokevirtual #779                // Method net/optifine/render/GlBlendState.getDstFactorAlpha:()I
+        65: invokestatic  #854                // Method org/lwjgl/opengl/ARBDrawBuffersBlend.glBlendFuncSeparateiARB:(IIIII)V
+        68: iinc          1, 1
+        71: goto          7
+        74: return
+
+  public static void bindImageTexture(int, int, int, boolean, int, int, int);
+    Code:
+         0: iload_0
+         1: iflt          28
+         4: iload_0
+         5: getstatic     #552                // Field IMAGE_TEXTURES:[I
+         8: arraylength
+         9: if_icmpge     28
+        12: getstatic     #552                // Field IMAGE_TEXTURES:[I
+        15: iload_0
+        16: iaload
+        17: iload_1
+        18: if_icmpne     22
+        21: return
+        22: getstatic     #552                // Field IMAGE_TEXTURES:[I
+        25: iload_0
+        26: iload_1
+        27: iastore
+        28: iload_0
+        29: iload_1
+        30: iload_2
+        31: iload_3
+        32: iload         4
+        34: iload         5
+        36: iload         6
+        38: invokestatic  #859                // Method org/lwjgl/opengl/GL42.glBindImageTexture:(IIIZIII)V
+        41: return
+
+  public static int getProgram();
+    Code:
+         0: getstatic     #328                // Field glProgram:I
+         3: ireturn
+
+  public static void bindSampler(int, int);
+    Code:
+         0: iload_0
+         1: iload_1
+         2: invokestatic  #865                // Method org/lwjgl/opengl/GL33.glBindSampler:(II)V
+         5: return
+
+  public static void bindTexture(int, int);
+    Code:
+         0: iload_0
+         1: iload_1
+         2: invokestatic  #562                // Method org/lwjgl/opengl/GL11.glBindTexture:(II)V
+         5: return
+
+  public static boolean _isBlendEnabled();
+    Code:
+         0: invokestatic  #71                 // Method com/mojang/blaze3d/systems/RenderSystem.assertOnRenderThread:()V
+         3: getstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+         6: getfield      #152                // Field com/mojang/blaze3d/opengl/GlStateManager$BlendState.mode:Lcom/mojang/blaze3d/opengl/GlStateManager$BooleanState;
+         9: getfield      #756                // Field com/mojang/blaze3d/opengl/GlStateManager$BooleanState.enabled:Z
+        12: ireturn
+
+  private static com.mojang.blaze3d.opengl.GlStateManager$TextureState[] lambda$TEXTURES$0(int);
+    Code:
+         0: iload_0
+         1: anewarray     #527                // class com/mojang/blaze3d/opengl/GlStateManager$TextureState
+         4: areturn
+
+  private static com.mojang.blaze3d.opengl.GlStateManager$TextureState lambda$static$0(int);
+    Code:
+         0: new           #527                // class com/mojang/blaze3d/opengl/GlStateManager$TextureState
+         3: dup
+         4: invokespecial #870                // Method com/mojang/blaze3d/opengl/GlStateManager$TextureState."<init>":()V
+         7: areturn
+
+  static {};
+    Code:
+         0: ldc_w         #871                // String GPU Textures
+         3: invokestatic  #873                // Method com/mojang/jtracy/TracyClient.createPlot:(Ljava/lang/String;)Lcom/mojang/jtracy/Plot;
+         6: putstatic     #546                // Field PLOT_TEXTURES:Lcom/mojang/jtracy/Plot;
+         9: iconst_0
+        10: putstatic     #543                // Field numTextures:I
+        13: ldc_w         #879                // String GPU Buffers
+        16: invokestatic  #873                // Method com/mojang/jtracy/TracyClient.createPlot:(Ljava/lang/String;)Lcom/mojang/jtracy/Plot;
+        19: putstatic     #358                // Field PLOT_BUFFERS:Lcom/mojang/jtracy/Plot;
+        22: iconst_0
+        23: putstatic     #355                // Field numBuffers:I
+        26: new           #153                // class com/mojang/blaze3d/opengl/GlStateManager$BlendState
+        29: dup
+        30: invokespecial #881                // Method com/mojang/blaze3d/opengl/GlStateManager$BlendState."<init>":()V
+        33: putstatic     #148                // Field BLEND:Lcom/mojang/blaze3d/opengl/GlStateManager$BlendState;
+        36: new           #117                // class com/mojang/blaze3d/opengl/GlStateManager$DepthState
+        39: dup
+        40: invokespecial #882                // Method com/mojang/blaze3d/opengl/GlStateManager$DepthState."<init>":()V
+        43: putstatic     #112                // Field DEPTH:Lcom/mojang/blaze3d/opengl/GlStateManager$DepthState;
+        46: new           #476                // class com/mojang/blaze3d/opengl/GlStateManager$CullState
+        49: dup
+        50: invokespecial #883                // Method com/mojang/blaze3d/opengl/GlStateManager$CullState."<init>":()V
+        53: putstatic     #471                // Field CULL:Lcom/mojang/blaze3d/opengl/GlStateManager$CullState;
+        56: new           #488                // class com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState
+        59: dup
+        60: invokespecial #884                // Method com/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState."<init>":()V
+        63: putstatic     #483                // Field POLY_OFFSET:Lcom/mojang/blaze3d/opengl/GlStateManager$PolygonOffsetState;
+        66: new           #507                // class com/mojang/blaze3d/opengl/GlStateManager$ColorLogicState
+        69: dup
+        70: invokespecial #885                // Method com/mojang/blaze3d/opengl/GlStateManager$ColorLogicState."<init>":()V
+        73: putstatic     #502                // Field COLOR_LOGIC:Lcom/mojang/blaze3d/opengl/GlStateManager$ColorLogicState;
+        76: new           #81                 // class com/mojang/blaze3d/opengl/GlStateManager$ScissorState
+        79: dup
+        80: invokespecial #886                // Method com/mojang/blaze3d/opengl/GlStateManager$ScissorState."<init>":()V
+        83: putstatic     #76                 // Field SCISSOR:Lcom/mojang/blaze3d/opengl/GlStateManager$ScissorState;
+        86: iconst_0
+        87: bipush        32
+        89: invokestatic  #887                // InterfaceMethod java/util/stream/IntStream.range:(II)Ljava/util/stream/IntStream;
+        92: invokedynamic #893,  0            // InvokeDynamic #2:apply:()Ljava/util/function/IntFunction;
+        97: invokeinterface #897,  2          // InterfaceMethod java/util/stream/IntStream.mapToObj:(Ljava/util/function/IntFunction;)Ljava/util/stream/Stream;
+       102: invokedynamic #901,  0            // InvokeDynamic #3:apply:()Ljava/util/function/IntFunction;
+       107: invokeinterface #902,  2          // InterfaceMethod java/util/stream/Stream.toArray:(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+       112: checkcast     #908                // class "[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;"
+       115: putstatic     #522                // Field TEXTURES:[Lcom/mojang/blaze3d/opengl/GlStateManager$TextureState;
+       118: bipush        15
+       120: putstatic     #586                // Field COLOR_MASK:I
+       123: iconst_0
+       124: putstatic     #32                 // Field alphaTest:Z
+       127: sipush        519
+       130: putstatic     #46                 // Field alphaTestFunc:I
+       133: fconst_0
+       134: putstatic     #50                 // Field alphaTestRef:F
+       137: new           #18                 // class net/optifine/util/LockCounter
+       140: dup
+       141: invokespecial #909                // Method net/optifine/util/LockCounter."<init>":()V
+       144: putstatic     #11                 // Field alphaLock:Lnet/optifine/util/LockCounter;
+       147: new           #28                 // class net/optifine/render/GlAlphaState
+       150: dup
+       151: invokespecial #910                // Method net/optifine/render/GlAlphaState."<init>":()V
+       154: putstatic     #23                 // Field alphaLockState:Lnet/optifine/render/GlAlphaState;
+       157: new           #18                 // class net/optifine/util/LockCounter
+       160: dup
+       161: invokespecial #909                // Method net/optifine/util/LockCounter."<init>":()V
+       164: putstatic     #138                // Field blendLock:Lnet/optifine/util/LockCounter;
+       167: new           #146                // class net/optifine/render/GlBlendState
+       170: dup
+       171: invokespecial #911                // Method net/optifine/render/GlBlendState."<init>":()V
+       174: putstatic     #141                // Field blendLockState:Lnet/optifine/render/GlBlendState;
+       177: new           #18                 // class net/optifine/util/LockCounter
+       180: dup
+       181: invokespecial #909                // Method net/optifine/util/LockCounter."<init>":()V
+       184: putstatic     #461                // Field cullLock:Lnet/optifine/util/LockCounter;
+       187: new           #469                // class net/optifine/render/GlCullState
+       190: dup
+       191: invokespecial #912                // Method net/optifine/render/GlCullState."<init>":()V
+       194: putstatic     #464                // Field cullLockState:Lnet/optifine/render/GlCullState;
+       197: new           #18                 // class net/optifine/util/LockCounter
+       200: dup
+       201: invokespecial #909                // Method net/optifine/util/LockCounter."<init>":()V
+       204: putstatic     #100                // Field depthLock:Lnet/optifine/util/LockCounter;
+       207: new           #108                // class net/optifine/render/GlDepthState
+       210: dup
+       211: invokespecial #913                // Method net/optifine/render/GlDepthState."<init>":()V
+       214: putstatic     #103                // Field depthLockState:Lnet/optifine/render/GlDepthState;
+       217: bipush        8
+       219: newarray       int
+       221: putstatic     #552                // Field IMAGE_TEXTURES:[I
+       224: iconst_0
+       225: putstatic     #328                // Field glProgram:I
+       228: fconst_0
+       229: putstatic     #914                // Field lastBrightnessX:F
+       232: fconst_0
+       233: putstatic     #917                // Field lastBrightnessY:F
+       236: return
+}

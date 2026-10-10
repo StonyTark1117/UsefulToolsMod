@@ -1,0 +1,25 @@
+{
+  "native_minecraft_forge_sources": "/home/braydon/.gradle/caches/minecraftforge/forgegradle/mavenizer/caches/forge/net/minecraftforge/forge/26.1.2-64.0.8/injected-sources.jar",
+  "forge_sources": "/home/braydon/.gradle/caches/minecraftforge/forgegradle/mavenizer/caches/maven/forge/net/minecraftforge/forge/26.1.2-64.0.8/forge-26.1.2-64.0.8-sources.jar",
+  "source_sha256": {
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/AbstractContainerScreen.java": "ecb119837823bec27226a2028da45a3f616860e7e1c2ac5ded00dee6cf96657f",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/AbstractFurnaceScreen.java": "78b75508ee59e60351a0d83a207b6db7757845a01df8455049086f93d885c771",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/AbstractContainerMenu.java": "978aa61b04b82f6f97f5c01de0b2496fcd41311ebe608c464ae045e8f0cb0cdf",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/ClientPacketListener.java": "d0fae49332c33ec0923738b4d557cff585254e151d9feb709d33aa185c5ed069",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/ServerPlayer.java": "285949b461c37322a6a9a565b67a9ecf7ede2167a39b84cf8c99ff5b19bc35d8",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/ClientboundContainerSetContentPacket.java": "fb186d0435deb8c52131a4eec5e146d0a37bbecd0200b7b9a2ceb30503e2fece",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/Slot.java": "36828c2c16e5d893d3e94bf5f1602945040af561a4e0529c5e95b2641a982d92",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/IForgeServerPlayer.java": "fa9d40a124c79ad89c64c7d9dc6e60d8a68807353dbc21e3c11df2bf7d069dd2",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/OpenContainer.java": "5c1b97f3ae6ba4ccc2a9b7cd4541a7a6c829abaa984f15677a8b1975a3888f69",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/MenuType.java": "d02477917a6f905d0bf0c266942c88242b4d01b6b75094ce7eff687d0e3cdc77",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/Minecraft.java": "618ed91bbbf5621976b8f26b1f6faa1b2ae564a5d29f5c1ee7b8c8a078508524",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/CustomPayloadEvent.java": "7275ac0d95438616317adf30013429c5fc7395368760522aa6069d4ab1816409",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/NetworkInitialization.java": "dc0bfbec5d7619008165a5fadebca6a33a7bc67f4551212c3ed4ebb88d459ae9",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-container-gui/SimpleChannel.java": "159c524711068af6e452df001e187d7504f07226078a223647a0ee09ada7f51d"
+  },
+  "observed": "Private native menu probe confirms populated server slots 36/37 but empty client slots.",
+  "inference": "Forge custom menu handler uses WORKQUEUE; Minecraft processes PacketProcessor packets before its event-loop tasks. Vanilla menu open keeps creation/content in the same queue.",
+  "experiment": "Two maintained Forge26 artifacts rebuilt with native menus; fresh software API/menu diagnostic running; no GPU acceptance inferred.",
+  "experiment_result": "Pinned Forge 26.1.2 and 26.2 strict builds/server smokes passed. Rebuilt 26.1.2 software diagnostic now shows iron sword and ectoplasm in both native client/server menu probes and fresh GUI capture. Full GPU acceptance remains pending.",
+  "fixed_gui_evidence": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-infuser-native-client-slot-probe-software-server-slot-probe-native-menu-fixed"
+}

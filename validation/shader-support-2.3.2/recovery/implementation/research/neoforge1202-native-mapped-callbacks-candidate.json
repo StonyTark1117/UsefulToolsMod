@@ -1,0 +1,44 @@
+{
+  "candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/8a030fec935f05b7846a2f0ef3392a42de85a65704f79eade64b01a9ff00bbce/native-mapped-callbacks-loader.jar",
+  "candidate_sha256": "8a030fec935f05b7846a2f0ef3392a42de85a65704f79eade64b01a9ff00bbce",
+  "base_candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/6b9847049a08339a7bdc856e58d41c0cf97fc704dca31f662c6917ea6c35737b/native-gl-bbox-loader.jar",
+  "base_candidate_sha256": "6b9847049a08339a7bdc856e58d41c0cf97fc704dca31f662c6917ea6c35737b",
+  "replaced_entries": [
+    "optifineoforge/donors/net/minecraft/client/gui/screens/TitleScreen.class",
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$RebuildTask.class",
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$ResortTransparencyTask.class",
+    "optifineoforge/donors/net/minecraft/client/server/IntegratedServer.class"
+  ],
+  "replaced_class_sha256": {
+    "optifineoforge/donors/net/minecraft/client/gui/screens/TitleScreen.class": "c82c1be202889d3aeb87ab68bf6395583ec8b7bb03d500d84ebfd8a3742c43ec",
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$RebuildTask.class": "ab09248d01ca26549f5e70c1690589daf5bd7f62ba8b4f283730162ca7479991",
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$ResortTransparencyTask.class": "dbaccc355c1caabfbbbb606843cb66979b056dd65589131880deb62e995b4d7f",
+    "optifineoforge/donors/net/minecraft/client/server/IntegratedServer.class": "238ca507f307b6c35d78dc25c42cd7e9ee86de8032606cfe2dfb2a8890248538"
+  },
+  "checker_sources_sha256": {
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineNativeTitleActions.java": "30d3ea880f68ac1735bc4955a9eca715f56f81cc809d36d6101b6305bc4bc554",
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineNativeChunkCallbacks.java": "7f7cc6f3bcc8a37c45d2e930c49378e0e73abed804a3b9e9ce8285f25c27c82a",
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineNativeServerHalt.java": "d4ea496acb4c38633266be20c67b62808b56cc818d621998e30c3c3a8ed91c9e"
+  },
+  "native_input": "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+  "native_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "publisher_input": "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/optifine-patched.jar",
+  "publisher_sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+  "official_to_srg_mappings": "/home/braydon/.gradle/caches/neoformruntime/intermediate_results/createMappings_9fe271ac4d3dc80a91f4395462ead5ddacfd6398_officialToSrg.tsrg",
+  "mappings_sha256": "1d4076bbec508f9407b0528847e8033ae1600a8b657bdc03aa577562761f2196",
+  "restored_exact_native_bodies": {
+    "title_actions": 6,
+    "chunk_callbacks": 2,
+    "integrated_server_halt": 1
+  },
+  "qualification": "private bytecode candidate only; fresh packaged runtime, pack and full behavior validation required",
+  "offline_verification": {
+    "strict_java_compile": "all three checkers passed --release 17 -Xlint:all -Werror",
+    "asm_basic_verifier": "all four changed donor classes passed after native-body substitution",
+    "publisher_abi": "mapped source references found against exact patched publisher with hash-bound officialToSrg mapping",
+    "zip_integrity": "557 entries, exactly four changed donor classes, no corruption",
+    "constant_return_donor_findings_before": 15,
+    "constant_return_donor_findings_after": 6
+  },
+  "remaining_donor_disposition": "Six constant-return findings remain: five VideoSettingsScreen and one HttpTexture methods absent from pinned native declarations. They require OptiFine-specific semantic/runtime investigation; no success claim."
+}

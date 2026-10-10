@@ -1,0 +1,20 @@
+java.util.concurrent.CompletionException: java.lang.NullPointerException: Cannot invoke "net.minecraft.client.renderer.texture.TextureAtlas.getShadersColorBlender(net.optifine.shaders.ShadersTextureType)" because the return value of "net.minecraft.client.renderer.texture.TextureAtlasSprite.getTextureAtlas()" is null
+	at java.base/java.util.concurrent.CompletableFuture.wrapInCompletionException(CompletableFuture.java:323) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:359) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:364) ~[?:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1828) ~[?:?]
+	at TRANSFORMER/minecraft@26.2/net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$prepareTasks$1(SimpleReloadInstance.java:51) ~[forge-26.2-65.1.2-client.jar!/:?]
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1753) ~[?:?]
+	at java.base/java.util.concurrent.ForkJoinTask$RunnableExecuteAction.compute(ForkJoinTask.java:1745) ~[?:?]
+	at java.base/java.util.concurrent.ForkJoinTask$InterruptibleTask.exec(ForkJoinTask.java:1662) ~[?:?]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:511) ~[?:?]
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450) ~[?:?]
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019) ~[?:?]
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187) ~[?:?]
+Caused by: java.lang.NullPointerException: Cannot invoke "net.minecraft.client.renderer.texture.TextureAtlas.getShadersColorBlender(net.optifine.shaders.ShadersTextureType)" because the return value of "net.minecraft.client.renderer.texture.TextureAtlasSprite.getTextureAtlas()" is null
+	at TRANSFORMER/minecraft@26.2/net.minecraft.client.renderer.texture.SpriteContents.increaseMipLevel(SpriteContents.java:103) ~[forge-26.2-65.1.2-client.jar!/:?]
+	at TRANSFORMER/minecraft@26.2/net.minecraft.client.renderer.texture.SpriteLoader.lambda$stitch$3(SpriteLoader.java:110) ~[forge-26.2-65.1.2-client.jar!/:?]
+	at java.base/java.util.HashMap$Values.forEach(HashMap.java:1074) ~[?:?]
+	at TRANSFORMER/minecraft@26.2/net.minecraft.client.renderer.texture.SpriteLoader.lambda$stitch$2(SpriteLoader.java:110) ~[forge-26.2-65.1.2-client.jar!/:?]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1825) ~[?:?]
+	... 8 more

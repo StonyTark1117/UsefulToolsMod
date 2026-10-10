@@ -1,0 +1,49 @@
+{
+  "minecraft": "26.2",
+  "forge_pin": "65.1.2",
+  "publisher_commit": "b26e55ad1841de9adb9b1edff88c35f7d5a5b634",
+  "source_patch_sha256": "d691ee7554d02fc98bdd65bfa20b56cd3b6bcadc012b654da67c67d3098bfdad",
+  "artifacts": [
+    {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/199395c32ef15cc46cd93844d6b6d9bbee667b1570f31dbc3172260951501826/oculus-forge-26.2-0.3.0-beta.1.jar",
+      "sha256": "199395c32ef15cc46cd93844d6b6d9bbee667b1570f31dbc3172260951501826"
+    }
+  ],
+  "tests": [
+    {
+      "suite": "dev.oculusforge.shaderpack.ShaderCompatibilityRegressionTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "report_sha256": "716442ff27e7c759309ad2058b170e7ace8930e8a1d700883efca88176e58d72"
+    },
+    {
+      "suite": "dev.oculusforge.shaderpack.ShaderPackSecurityTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "report_sha256": "b1dca7bb902396717b6e28b5074ec134e7bd78d1c271cbf907baeb5a407ed3a5"
+    }
+  ],
+  "entity_pipeline_coverage": false,
+  "runtime_qualification": "Exact hash restores earlier scoped fullscreen evidence; no new run and no entity/terrain gbuffer qualification",
+  "build_log": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/community262-durable-rebuild.log",
+  "previous_tested_candidate_sha256": "199395c32ef15cc46cd93844d6b6d9bbee667b1570f31dbc3172260951501826",
+  "matches_previous_tested_candidate": true,
+  "previous_scoped_evidence": [
+    {
+      "pack": "ComplementaryReimagined_r5.7.1",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-implicit-interpolation-native-menu-candidate-ComplementaryReimagined_r5.7.1/report.json",
+      "report_sha256": "e6c768099d29bbecbe4c66558bc2417c8dc11dccc6598fcb9480154ca68995f8",
+      "verified_scene_captures": 61,
+      "entity_pipeline_coverage": false
+    },
+    {
+      "pack": "BSL_v10.1.1",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-implicit-interpolation-native-menu-candidate-BSL_v10.1.1/report.json",
+      "report_sha256": "7d0cb968404d8142dccc47d660428b63b78ca23a4514dc9b76cd38e406e5626c",
+      "verified_scene_captures": 61,
+      "entity_pipeline_coverage": false
+    }
+  ]
+}

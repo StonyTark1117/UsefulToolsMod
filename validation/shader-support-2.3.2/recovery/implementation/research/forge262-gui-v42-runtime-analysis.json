@@ -1,0 +1,68 @@
+{
+  "candidate": "forge262-optifine-gui-v42",
+  "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v42-BSL-indoor/report.json",
+  "report_sha256": "ae3567893f4cc86def84756437a7fc803d72f71c0ccdcb52eecb804f78938751",
+  "status": "captures_complete",
+  "clean_client_exit": true,
+  "shader_activation_logged": true,
+  "live_shader_states": [
+    {
+      "time_ms": 1791428368082,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ],
+  "bridge_applied_gl_device": true,
+  "composite_trace_counts": {
+    "before fbo=24 status=36053 glProgram=222 activeProgramID=222 readFbo=24 centerRGBA=0": 1533,
+    "after fbo=5 status=36053 glProgram=223 activeProgramID=223 readFbo=5 centerRGBA=-16777216": 1533
+  },
+  "gl_errors": {
+    "1282_composite7": 1533
+  },
+  "captures": [
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v42-BSL-indoor/wraith-indoor.png",
+      "sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "all_black": true,
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v42-BSL-indoor/wraith-indoor-framebuffer.png",
+      "sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "all_black": true,
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "visual_verdict": "failed: fresh Wraith and full-framebuffer images are black",
+  "acceptance_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "disposition": "The exact K2 GlDevice shader-mode emulation was applied on pinned Forge 65.1.2 but did not change black source/game pixels or the repeated composite7 GL_INVALID_OPERATION.",
+  "later_readback_limitation": "The per-frame glReadPixels(int[]) diagnostic could itself raise GL_INVALID_OPERATION (v44 checkpoint). Its zero source value cannot certify texture contents; rely on the fresh full-framebuffer black capture and later no-readback v45 diagnostics for the visual failure."
+}

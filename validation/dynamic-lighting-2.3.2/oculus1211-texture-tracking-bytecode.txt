@@ -1,0 +1,53 @@
+Compiled from "MixinAbstractTexture.java"
+public abstract class net.irisshaders.iris.mixin.texture.MixinAbstractTexture {
+  protected int id;
+
+  public net.irisshaders.iris.mixin.texture.MixinAbstractTexture();
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  private void iris$afterGetId(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Integer>);
+    Code:
+         0: aload_0
+         1: getfield      #7                  // Field id:I
+         4: iconst_m1
+         5: if_icmpeq     22
+         8: getstatic     #13                 // Field net/irisshaders/iris/texture/TextureTracker.INSTANCE:Lnet/irisshaders/iris/texture/TextureTracker;
+        11: aload_0
+        12: getfield      #7                  // Field id:I
+        15: aload_0
+        16: checkcast     #19                 // class net/minecraft/client/renderer/texture/AbstractTexture
+        19: invokevirtual #21                 // Method net/irisshaders/iris/texture/TextureTracker.trackTexture:(ILnet/minecraft/client/renderer/texture/AbstractTexture;)V
+        22: return
+}
+Compiled from "MixinTextureManager.java"
+public class net.irisshaders.iris.mixin.texture.MixinTextureManager {
+  public net.irisshaders.iris.mixin.texture.MixinTextureManager();
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  private void iris$onTailReloadLambda(net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor, java.util.concurrent.CompletableFuture<?>, java.lang.Void, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    Code:
+         0: aload_1
+         1: invokestatic  #7                  // Method net/irisshaders/iris/pbr/format/TextureFormatLoader.reload:(Lnet/minecraft/server/packs/resources/ResourceManager;)V
+         4: getstatic     #13                 // Field net/irisshaders/iris/pbr/texture/PBRTextureManager.INSTANCE:Lnet/irisshaders/iris/pbr/texture/PBRTextureManager;
+         7: invokevirtual #19                 // Method net/irisshaders/iris/pbr/texture/PBRTextureManager.clear:()V
+        10: return
+
+  private void iris$onInnerDumpTextures(java.nio.file.Path, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    Code:
+         0: getstatic     #13                 // Field net/irisshaders/iris/pbr/texture/PBRTextureManager.INSTANCE:Lnet/irisshaders/iris/pbr/texture/PBRTextureManager;
+         3: aload_1
+         4: invokevirtual #22                 // Method net/irisshaders/iris/pbr/texture/PBRTextureManager.dumpTextures:(Ljava/nio/file/Path;)V
+         7: return
+
+  private void iris$onTailClose(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    Code:
+         0: getstatic     #13                 // Field net/irisshaders/iris/pbr/texture/PBRTextureManager.INSTANCE:Lnet/irisshaders/iris/pbr/texture/PBRTextureManager;
+         3: invokevirtual #26                 // Method net/irisshaders/iris/pbr/texture/PBRTextureManager.close:()V
+         6: return
+}

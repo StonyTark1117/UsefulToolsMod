@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/javac",
+        "--release",
+        "17",
+        "-Xlint:all",
+        "-Werror",
+        "-cp",
+        "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar",
+        "-d",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-default-body-audit",
+        "validation/shader-support-2.3.2/recovery/implementation/research/optifine-options-native-fixture/NativeDefaultBodyAudit.java"
+      ],
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/java",
+        "-cp",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-default-body-audit:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar",
+        "NativeDefaultBodyAudit",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/qa/5aac88dd02cce90ae668ce99235975cf106a7be1ddc36abf42c59c1027b85149/native-inherited-click-loader.jar",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar"
+      ],
+      "exit_code": 0,
+      "stderr": "Constant-return donors requiring semantic investigation=21; same actual native constant body=4\n"
+    }
+  ],
+  "checker_sha256": "8a0d2b3395388c5effb38988cb3847be0ab6a241b3c05004040d661ffbc1e6b1",
+  "audit": "/home/braydon/.cache/useful-tools-spectral-recovery/native-default-body-audit/audit.tsv",
+  "verdict": "Semantic investigation required. Constant return is not automatically a stub; native matches excluded. No runtime assertions changed."
+}

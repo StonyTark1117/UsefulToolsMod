@@ -1,0 +1,48 @@
+{
+  "target": "1.21.1-forge",
+  "checked_at": "2026-10-08T01:26:58.984157+00:00",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--no-build-cache",
+    "clean",
+    "build",
+    "-I",
+    "/home/braydon/Useful-Tools/scripts/strict-warnings.gradle"
+  ],
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "resource_policy": {
+    "nice": 10,
+    "io_class": "idle",
+    "active_processors": 2,
+    "ordinary_client_or_build_slots": 1
+  },
+  "strict_warning_gate": "scripts/strict-warnings.gradle",
+  "status": "strict pinned build evidence refreshed; rebuilt archive payloads match reviewed artifacts byte-for-byte",
+  "exit_code": 0,
+  "seconds": 9.898000012999546,
+  "log": "validation/dynamic-lighting-2.3.2/build/1.21.1-forge.log",
+  "archives": {
+    "base": {
+      "current_path": "1.21.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+      "current_sha256": "d00ac88591c343aaee644dce498480686ab00b3f1f4b751e7d75d877789b56a2",
+      "audited_path": "/home/braydon/.cache/useful-tools-lighting-inputs/baeaff404d76fb4616501fa8062171037b14215be20cac3092874fdadd7909b5/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+      "audited_sha256": "baeaff404d76fb4616501fa8062171037b14215be20cac3092874fdadd7909b5",
+      "entry_count": 4676,
+      "payload_entry_sets_equal": true,
+      "changed_payload_entries": [],
+      "payload_bytes_identical": true
+    },
+    "companion": {
+      "current_path": "1.21.1/forge/build/libs/usefultools-lighting-2.3.1+mc.1.21.1.forge.jar",
+      "current_sha256": "2e7cc42f6955fd3ba196181c364fee6af074f2be6f5d4e0babdb24a8f35d71a4",
+      "audited_path": "/home/braydon/.cache/useful-tools-lighting-inputs/997c4eea4b7c52cd1f97b2aa669d59dc728686292a9a0452d675d423f404131b/usefultools-lighting-2.3.1+mc.1.21.1.forge.jar",
+      "audited_sha256": "997c4eea4b7c52cd1f97b2aa669d59dc728686292a9a0452d675d423f404131b",
+      "entry_count": 27,
+      "payload_entry_sets_equal": true,
+      "changed_payload_entries": [],
+      "payload_bytes_identical": true
+    }
+  }
+}

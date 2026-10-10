@@ -1,0 +1,39 @@
+{
+  "complete": false,
+  "promotable_to_replace": null,
+  "canonical_row": "26.2-forge-active-community0-BSL_v10.1.1-egl0-precipitation-controls",
+  "requirements": "scoped-requirements.json",
+  "requirements_sha256": "8b1b47fcb235431a7020a67a9a1f22a975f82081c2fbedb4b5d278a886fdf077",
+  "auditor": "python3 scripts/audit-spectral-evidence.py <run> <run>/scoped-requirements.json",
+  "auditor_gap_count": 114,
+  "gaps": [
+    "run or shutdown incomplete",
+    "visual review incomplete",
+    "shader compilation errors remain",
+    "no scene command reached acceptance",
+    "native rain acknowledgements missing for Ghost and Wraith",
+    "pack activation missing",
+    "live active/off/restored shader states missing",
+    "all 35 canonical behavioral captures are missing",
+    "all 35 canonical per-capture visual reviews are missing",
+    "all 35 canonical paired full framebuffers are missing"
+  ],
+  "failure_layer": "publisher community shader-loader dependency",
+  "evidence": {
+    "report": "report.json",
+    "report_sha256": "1509d8c2443d10c0304af787142b44103a750700d326a1b0aed67ae6a5dda945",
+    "client_log": "client.log",
+    "client_log_sha256": "41b01b8ef4df72a4b19d3b7bec4b92c1dd4eb46b451abee4491e226803077d4a",
+    "dependency_investigation": "dependency-investigation.json",
+    "dependency_investigation_sha256": "2eabfba9e9f57df98396eba544648341ea9a1536f77d8a90a7761aec213f3fdf"
+  },
+  "isolation_reached": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "egl_device": "egl0",
+    "gpu_interposer_loaded": true
+  },
+  "note": "Failure is preserved. No manifest, current audit, or README claim was changed."
+}

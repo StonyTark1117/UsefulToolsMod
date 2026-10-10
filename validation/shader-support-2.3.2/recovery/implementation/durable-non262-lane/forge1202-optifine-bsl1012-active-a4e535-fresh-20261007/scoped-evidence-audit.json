@@ -1,0 +1,166 @@
+{
+  "complete": true,
+  "promotable_to_replace": "1.20.2-forge-optifine-preview-active-BSL_v10.1.2-egl0-precipitation-controls",
+  "gaps": [],
+  "requirements": "scoped-requirements.json",
+  "requirements_sha256": "b1361821b65fd7d025b1f966c34ee5b563d39c0ab94c2aee9ad20eaed7a7443b",
+  "evidence": {
+    "report": "report.json",
+    "report_sha256": "4149546eb545f6a465b67bb6610a9ae18153a68eebd3961ac00aec687ca79a62",
+    "review_sheets": "review-sheets.json",
+    "review_sheets_sha256": "5797b8fb18c8cf8d76649e9e3828a7b6f4919a1afb6786425cd2d961cb5986d2",
+    "visual_review": "visual-review.json",
+    "visual_review_sha256": "05688cccf3ff81841c8d81e009d0e78923df353173d43dd7b5543601db4f9c54"
+  },
+  "exact_inputs": {
+    "artifact_sha256": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7",
+    "artifact_provenance_sha256": "8393012b1653cd84569f598147402edd7821cc80740334a181a4aa4d1823f61c",
+    "optifine_publisher_jar_sha256": "6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223",
+    "bsl_publisher_archive_sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7",
+    "probe_sha256": "08e78016a4a94ba715d6a8357e52c4ea68c9d21276373efa0ba50e86944de67f",
+    "fml_configuration": {
+      "source": "/home/braydon/.cache/useful-tools-lighting-completed-runs/spectral-prism-1gs5h0lt/instances/spectral/minecraft/config/fml.toml",
+      "sha256": "953c6cb21eb0898aa077589b474b0eec19db6ed1052e5d59fe2a25cba89b4ded",
+      "private_destination": "/home/braydon/.cache/useful-tools-spectral-active-runs/spectral-prism-m9xt_xav/instances/spectral/minecraft/config/fml.toml"
+    },
+    "source_map_entries": 4567,
+    "source_map_matches_provenance": true,
+    "loader_uid": "net.minecraftforge",
+    "loader_version": "48.1.0",
+    "runtime_loader_pin_acknowledged": "48.1.0",
+    "java_path": "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "world_fixture": "3666dbdb229f02d9e1f6ecadac78a68ce9410e0727f66d7b6b4459698c00b1ea"
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_route_verified": {
+      "game_pids": [
+        1574908
+      ],
+      "egl_device": "egl0",
+      "interposer_loaded": true
+    },
+    "serial_gpu_lock": {
+      "wait_seconds": 0.012756222000462003,
+      "path": "/tmp/useful-tools-spectral-gpu-egl0.lock"
+    },
+    "serial_render_lock": {
+      "path": "/tmp/useful-tools-spectral-render.lock",
+      "wait_seconds": 2.2239997633732855e-05
+    }
+  },
+  "active_shader_control": {
+    "mode": "active",
+    "shader_integration": "optifine",
+    "shader_pack": {
+      "name": "BSL_v10.1.2.zip",
+      "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+    },
+    "shader_activation_logged": true,
+    "live_shader_state_count": 16,
+    "active_state_count": 14,
+    "disabled_toggle_state_count": 2,
+    "initial_active": true,
+    "both_entity_native_menu_off_and_restored_controls_captured": true,
+    "toggle_requested": true,
+    "experimental_outline_or_frame_agent_requested": false
+  },
+  "behavioral_gates": {
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "accepted_command_count": 113,
+    "rejected_command_count": 0,
+    "shader_compile_errors": [],
+    "shader_backend_diagnostics": [
+      "[07Oct2026 21:25:06.051] [Thread-5/ERROR] [com.mojang.blaze3d.platform.GlDebug/]: OpenGL API ERROR: 2 (GL_INVALID_OPERATION in glBindTexture(non-gen name))"
+    ],
+    "backend_diagnostic_assessment": "One isolated OptiFine/Forge startup glBindTexture(non-gen name) diagnostic occurred on Thread-5 before scene capture; there were no shader compilation failures or later backend errors, activation and both toggle restores succeeded, all captures passed manual review, and shutdown was clean.",
+    "native_damage_checks": [
+      {
+        "entity": "ghost",
+        "request_token": "414458c14d1a4bb5b51df45cd676f44a",
+        "time_ms": 1791433773878,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.GhostEntity"
+      },
+      {
+        "entity": "wraith",
+        "request_token": "523a2308c8f7459d9062b4819f9aa549",
+        "time_ms": 1791433791979,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.WraithEntity"
+      }
+    ],
+    "native_weather_checks": [
+      {
+        "entity": "ghost",
+        "raining": true,
+        "acknowledged": true
+      },
+      {
+        "entity": "wraith",
+        "raining": true,
+        "acknowledged": true
+      }
+    ],
+    "precipitation_fixture": {
+      "biome": "minecraft:plains",
+      "bounds": [
+        -12,
+        192,
+        -12,
+        12,
+        216,
+        12
+      ],
+      "acknowledged": true
+    },
+    "surface_registry_fixture": [
+      "ectoplasm_lantern",
+      "soul_lantern",
+      "mining_charge",
+      "spectral_infuser",
+      "ectoplasm_block",
+      "refined_ectoplasm_block",
+      "hglow_block"
+    ],
+    "inventory_preview_fixture": {
+      "native_survival_inventory": true,
+      "toasts_absent": true,
+      "armor_slots": 4
+    },
+    "glint_fixture": {
+      "item": "usefultoolsmod:hglowstone_sword",
+      "enchantment": "minecraft:unbreaking",
+      "native_serialization_acknowledged": true
+    },
+    "reviewed_capture_count": 57,
+    "capture_count": 65,
+    "paired_full_framebuffers": true
+  },
+  "cleanup": {
+    "sigkill_after_sigterm": [
+      1574167
+    ],
+    "private_launcher_root_retained": true,
+    "private_library_copy_removed": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ],
+    "owned_pids_checked": [
+      1574122,
+      1574908,
+      1574167
+    ],
+    "owned_pids_alive_after_run": [],
+    "launcher_sigkill_note": "Minecraft completed native save-and-quit and clean Java exit; only the retained Prism launcher wrapper required SIGKILL after SIGTERM."
+  },
+  "note": "Scoped audit only. The main precipitation manifest, current matrix audit, and implementation README were intentionally not edited."
+}

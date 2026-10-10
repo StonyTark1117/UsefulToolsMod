@@ -1,0 +1,27 @@
+{
+  "artifact": "validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/27a0b6ed5751ef4804b009ed19f162d553a2b01849bc9533fdada264d25f18a8/usefultools-lighting-2.3.1+mc.26.2.forge.jar",
+  "artifact_sha256": "27a0b6ed5751ef4804b009ed19f162d553a2b01849bc9533fdada264d25f18a8",
+  "build_command": "scripts/build-matrix.sh 26.2-forge (strict-warnings.gradle, clean build, catalog audit)",
+  "build_result": "pass",
+  "source_sha256": {
+    "26.2/forge/src/lighting/resources/usefultools_lighting.mixins.json": "741cea5f4148ecb2726fb99af533d1af3b13d5bad8eec6bcb53918801e298d40",
+    "26.2/forge/src/lighting/java/com/stonytark/usefultools/lighting/CompanionMixinPlugin.java": "42b5f16391975c34078054ee7b7027d8512b9020b2ed8af0e8dcc116223af18a",
+    "26.2/forge/src/lighting/java/com/stonytark/usefultools/lighting/CommunityPortShaderHeaders.java": "80258bb8792e59ae441b4f120b4eb6015f59486a7f87a7eaf7aeb8633b0e1b35",
+    "26.2/forge/src/lighting/java/com/stonytark/usefultools/lighting/mixin/CommunityPortFinalAdapterMixin.java": "62942d1956a3a4721602e5766949cca9ae05b16f312a36af2fb5de23628d5a1d"
+  },
+  "scope": "Optional companion candidate for exact 26.2 Forge publisher port BSL extension-header failure; artifact and source preserved before runtime test.",
+  "checks": {
+    "header_ordering": "Direct Java 25 compile/run: moves #extension immediately after #version, idempotent, leaves no-extension shader unchanged; passed",
+    "optional_target_absence": "Direct Java 25 CompanionMixinPlugin.shouldApplyMixin: false without publisher JAR, true with unmodified 0.3.0-beta.1 publisher JAR; passed",
+    "pinned_build": "scripts/build-matrix.sh 26.2-forge passed with strict-warnings.gradle and catalog audit; rebuilt base mod sha256 remained 957094d68375564c6276db338035f7f113fbadb0d7327e5a7e4b65401ae73223",
+    "server_smoke": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/server-smoke-community262-companion/26.2-forge.json",
+      "report_sha256": "a428e7ea063709b67bfc40d1c237f8336b8b095d8f0822ee9a89ee77dd931b88",
+      "log": "validation/shader-support-2.3.2/recovery/implementation/server-smoke-community262-companion/26.2-forge.log",
+      "log_sha256": "3a56f3aea70a165d29c5aec5bb9398923cbad91be5c773e94966cc9457e9aad5",
+      "companion_loaded": true,
+      "ready": true,
+      "clean_shutdown": true
+    }
+  }
+}

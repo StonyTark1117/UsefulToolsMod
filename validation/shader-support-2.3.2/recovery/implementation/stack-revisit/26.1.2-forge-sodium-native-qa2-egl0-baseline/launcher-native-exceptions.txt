@@ -1,0 +1,62 @@
+org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @At("HEAD") selector Found @Inject targetting a constructor in injector net/minecraft/client/Minecraft::sodium$nativeDriverProbe [INJECT_PREPARE Applicator Phase -> sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin -> Prepare Injections -> handler$sodium$zdj000$sodium$nativeDriverProbe(Lnet/minecraft/client/main/GameConfig;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V -> Prepare ->  -> { target: <init>(Lnet/minecraft/client/main/GameConfig;)V }]
+org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @At("HEAD") selector Found @Inject targetting a constructor in injector net/minecraft/client/Minecraft::sodium$nativeDriverProbe [INJECT_PREPARE Applicator Phase -> sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin -> Prepare Injections -> handler$sodium$zdj000$sodium$nativeDriverProbe(Lnet/minecraft/client/main/GameConfig;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V -> Prepare ->  -> { target: <init>(Lnet/minecraft/client/main/GameConfig;)V }]
+java.lang.reflect.InvocationTargetException
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:119)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at io.github.zekerzhayard.forgewrapper.installer.Main.main(Main.java:67)
+at org.prismlauncher.launcher.impl.StandardLauncher.launch(StandardLauncher.java:115)
+at org.prismlauncher.EntryPoint.listen(EntryPoint.java:129)
+at org.prismlauncher.EntryPoint.main(EntryPoint.java:70)
+Caused by: java.lang.reflect.InvocationTargetException
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:119)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133)
+at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53)
+at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+Caused by: java.lang.reflect.InvocationTargetException
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:119)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.1.2-64.0.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:96)
+at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@26.1.2-64.0.8/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:79)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:77)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:97)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:116)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:75)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17)
+at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+Caused by: org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerError: An unexpected critical error was encountered
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:392)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:142)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:93)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:107)
+at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:48)
+at cpw.mods.securejarhandler/net.minecraftforge.securemodules.SecureModuleClassLoader.readerToClass(SecureModuleClassLoader.java:480)
+at cpw.mods.securejarhandler/net.minecraftforge.securemodules.SecureModuleClassLoader.findClass(SecureModuleClassLoader.java:406)
+at cpw.mods.securejarhandler/net.minecraftforge.securemodules.SecureModuleClassLoader.loadClass(SecureModuleClassLoader.java:422)
+at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.main.Main.main(Main.java:232)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+Caused by: org.spongepowered.asm.mixin.throwables.MixinApplyError: Mixin [sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin] from phase [DEFAULT] in config [sodium-neoforge.mixins.json] FAILED during APPLY
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinError(MixinProcessor.java:636)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinApplyError(MixinProcessor.java:588)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:379)
+Caused by: org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @At("HEAD") selector Found @Inject targetting a constructor in injector net/minecraft/client/Minecraft::sodium$nativeDriverProbe [INJECT_PREPARE Applicator Phase -> sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin -> Prepare Injections -> handler$sodium$zdj000$sodium$nativeDriverProbe(Lnet/minecraft/client/main/GameConfig;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V -> Prepare ->  -> { target: <init>(Lnet/minecraft/client/main/GameConfig;)V }]
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.callback.CallbackInjector.addTargetNode(CallbackInjector.java:410)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.code.Injector.find(Injector.java:249)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.struct.InjectionInfo.prepare(InjectionInfo.java:475)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTargetContext.prepareInjections(MixinTargetContext.java:1385)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.prepareInjections(MixinApplicatorStandard.java:728)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyMixin(MixinApplicatorStandard.java:313)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.apply(MixinApplicatorStandard.java:244)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:398)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:380)
+at SECURE-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:363)
+org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @At("HEAD") selector Found @Inject targetting a constructor in injector net/minecraft/client/Minecraft::sodium$nativeDriverProbe [INJECT_PREPARE Applicator Phase -> sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin -> Prepare Injections -> handler$sodium$zdj000$sodium$nativeDriverProbe(Lnet/minecraft/client/main/GameConfig;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V -> Prepare ->  -> { target: <init>(Lnet/minecraft/client/main/GameConfig;)V }]
+org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerError: An unexpected critical error was encountered
+Caused by: org.spongepowered.asm.mixin.throwables.MixinApplyError: Mixin [sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin] from phase [DEFAULT] in config [sodium-neoforge.mixins.json] FAILED during APPLY
+Caused by: org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: @At("HEAD") selector Found @Inject targetting a constructor in injector net/minecraft/client/Minecraft::sodium$nativeDriverProbe [INJECT_PREPARE Applicator Phase -> sodium-neoforge.mixins.json:platform.neoforge.EntrypointMixin -> Prepare Injections -> handler$sodium$zdj000$sodium$nativeDriverProbe(Lnet/minecraft/client/main/GameConfig;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V -> Prepare ->  -> { target: <init>(Lnet/minecraft/client/main/GameConfig;)V }]

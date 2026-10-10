@@ -1,0 +1,131 @@
+{
+  "comparison": "Forge 1.21.1 OptiFine J1 Complementary Reimagined r5.9.3 Wraith shader-light floors 13 and 15, agent-off paired ordinary scenes",
+  "scope": "Same pinned Forge 52.1.10, artifact, pack, world fixture, GPU egl0, harness and six scenes; only output path and -Dusefultools.wraithShaderLight differ in commands. Both clients used owned Xvfb and null audio, and exited cleanly. Face statistics use one fixed image box and are descriptive, not a perceptual threshold; particles and animation may vary.",
+  "inputs": {
+    "mod_artifact_sha256": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+    "shader_pack": {
+      "name": "ComplementaryReimagined_r5.9.3.zip",
+      "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+    },
+    "loader_version": "52.1.10",
+    "world_source": "/home/braydon/.cache/useful-tools-spectral-recovery/world-fixtures/28589a2df66f0b9d3028932245006dbe513209f18becd936f1964b6dac1a03da/saves",
+    "harness_sha256": {
+      "scripts/validate-packaged-spectral.py": "fe4e9b2bc124fca6d21156311dd5a6e80b83352fe6e0b8a1bf774a6499c5272c",
+      "scripts/spectral_validation.py": "149816b2f2635fd4167c1a3c76384ca0a8e3bd94b84a851976a2accb75fae1c1",
+      "scripts/spectral-menu-ocr.py": "b7ae6dfc38e425c9bf510d10ce65fba9df4018cc13f3181c56f15a739bdf4b1b",
+      "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78"
+    }
+  },
+  "reports": {
+    "13": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/report.json",
+      "sha256": "48d34b12047a716aec01b102882ea79dc6e0b9cdaa9ce62f25698ab1520b1910",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "live_floor": 13,
+      "gpu_route_verified": {
+        "game_pids": [
+          1545876
+        ],
+        "egl_device": "egl0",
+        "interposer_loaded": true
+      }
+    },
+    "15": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/report.json",
+      "sha256": "192fd2101faf96778d63caf4397f114c2f65af19aad8a019b0594c569f5532dd",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "live_floor": 15,
+      "gpu_route_verified": {
+        "game_pids": [
+          1535882
+        ],
+        "egl_device": "egl0",
+        "interposer_loaded": true
+      }
+    }
+  },
+  "paired_wraith_scenes": {
+    "day": {
+      "13": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/wraith-day.png",
+        "sha256": "d2fc07d1ffdda6dcca3977874c1d47ebb698839ada543cedb0e69e0e797e61d4",
+        "face_fixed_box_median_rgb_mean": 100.33
+      },
+      "15": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/wraith-day.png",
+        "sha256": "2165b1d662a74c4b8e48dac57bb5d0d8665c9fa94b20694c008eb8eaa1b313e3",
+        "face_fixed_box_median_rgb_mean": 101.33
+      },
+      "floor15_minus_floor13": 1.0
+    },
+    "night": {
+      "13": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/wraith-night.png",
+        "sha256": "a2952d24f521ccc4b9aaacbd054fa5621f3415479479947791905a936e0a9064",
+        "face_fixed_box_median_rgb_mean": 61.67
+      },
+      "15": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/wraith-night.png",
+        "sha256": "3a5e7597e70636b16dfbe97a0d9fe2888e3016e405b5eebfcf859a234e127e7f",
+        "face_fixed_box_median_rgb_mean": 65.0
+      },
+      "floor15_minus_floor13": 3.33
+    },
+    "rain": {
+      "13": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/wraith-rain.png",
+        "sha256": "20e08dba006f6f50af9ef1ce7fcc7776b3c4b790e9ddf172b37d1c7160f8d0b7",
+        "face_fixed_box_median_rgb_mean": 113.67
+      },
+      "15": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/wraith-rain.png",
+        "sha256": "3b88f602275daf0cf2fbc02cb95101d25b0e4e1f28e0ff7b10a28fa59875c8c9",
+        "face_fixed_box_median_rgb_mean": 115.67
+      },
+      "floor15_minus_floor13": 2.0
+    },
+    "dark-background": {
+      "13": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/wraith-dark-background.png",
+        "sha256": "cd66b1a9a6bd482815c21b1482a7da1aeac5d5b84fbf3694cac61e3ede4a4857",
+        "face_fixed_box_median_rgb_mean": 82.0
+      },
+      "15": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/wraith-dark-background.png",
+        "sha256": "ad92b6d6d399d58e0385a78bb0a4a00b5a8f36eef76940bbedb028f677ccc471",
+        "face_fixed_box_median_rgb_mean": 83.33
+      },
+      "floor15_minus_floor13": 1.33
+    },
+    "bright-background": {
+      "13": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/wraith-bright-background.png",
+        "sha256": "e7b99bac41f8578122d7cbcac68294febffb94b76f256c1e30c0cb8f4261e495",
+        "face_fixed_box_median_rgb_mean": 97.33
+      },
+      "15": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/wraith-bright-background.png",
+        "sha256": "04c9299b7fa0cb4949eef968cdd8fa32a29f14ffbb168a0e2e0e237fcc5c7358",
+        "face_fixed_box_median_rgb_mean": 97.67
+      },
+      "floor15_minus_floor13": 0.34
+    },
+    "indoor": {
+      "13": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor13-six-scenes-current-v2/wraith-indoor.png",
+        "sha256": "89c46f9e60ebf980ebfc503443b10c25acac25f7b56da0c3914315742e5b7432",
+        "face_fixed_box_median_rgb_mean": 54.67
+      },
+      "15": {
+        "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-complementary-floor15-six-scenes-current-v1/wraith-indoor.png",
+        "sha256": "2dc30b8a75c03f3a97af9e4567ab21be144e5ad31d26055abb2e349d1519b685",
+        "face_fixed_box_median_rgb_mean": 57.67
+      },
+      "floor15_minus_floor13": 3.0
+    }
+  },
+  "visual_review": "Both floors show readable eyes, mouth, head and separated arms in the six scenes. Floor 15 raises fixed face-box median by about 0.34-3.33 RGB levels but does not materially recover the sparse torso/tail silhouette at night or indoors; daytime shading remains similar. Retain 13 as the lower effective floor on this exact stack.",
+  "limitations": "This is a scoped six-scene diagnostic; it does not qualify outline, materials, GUI, toggles or the full acceptance row. No maintained source or artifact was changed."
+}

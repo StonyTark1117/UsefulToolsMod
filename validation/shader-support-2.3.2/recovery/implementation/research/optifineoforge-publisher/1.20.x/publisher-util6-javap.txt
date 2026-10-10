@@ -1,0 +1,29 @@
+Compiled from "Util.java"
+class net.minecraft.Util$6 implements java.util.function.BooleanSupplier {
+  final java.nio.file.Path val$pathIn;
+
+  net.minecraft.Util$6();
+    Code:
+         0: aload_0
+         1: aload_1
+         2: putfield      #24                 // Field val$pathIn:Ljava/nio/file/Path;
+         5: aload_0
+         6: invokespecial #26                 // Method java/lang/Object."<init>":()V
+         9: return
+
+  public boolean getAsBoolean();
+    Code:
+         0: aload_0
+         1: getfield      #24                 // Field val$pathIn:Ljava/nio/file/Path;
+         4: iconst_0
+         5: anewarray     #32                 // class java/nio/file/LinkOption
+         8: invokestatic  #38                 // Method java/nio/file/Files.isRegularFile:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+        11: ireturn
+
+  public java.lang.String toString();
+    Code:
+         0: aload_0
+         1: getfield      #24                 // Field val$pathIn:Ljava/nio/file/Path;
+         4: invokedynamic #52,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/nio/file/Path;)Ljava/lang/String;
+         9: areturn
+}

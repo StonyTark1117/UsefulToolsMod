@@ -1,0 +1,29 @@
+{
+  "scope": "Direct calls from exact K2 srg/net/optifine/shaders classes to Minecraft/Blaze3D methods absent from pinned Forge 65.1.2 direct class declarations. Inherited declarations not resolved; rows are candidates, not proven runtime failures.",
+  "source_sha256": "8737ded2cc6ac3c8c10aba19853c3c455be1b76f5aa6a698b3116a8f90ca0227",
+  "native_sha256": "712277950db1d04987c7affb38ca8b0b5275601b5f11b4d3102b2cb9c1b4ecf5",
+  "publisher_sha256": "0ba35c8a42dd9a55769e856c326edd17a96878ba52874ab2c3a89864d65c030f",
+  "diff_sha256": "ffab0c80aca7f9bf433e60d5c011ad0d088763a16fce82d94ee97f3cd5984c42",
+  "rows": 254,
+  "compile_warning_gate": "--release 17 -Xlint:all -Werror",
+  "scan_command": [
+    "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+    "-cp",
+    "/tmp/usefultools-shaders-2.3.2/forge262-shader-reference-audit:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/f9a1c24644762077e7c144a3b7c004e4968d70ce/asm-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/9f9a96aa17fd1113b218fa2dd6c4dc075192aa2e/asm-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/74f8124353236bac3870dd9964aff7cb5ec9d8c/asm-commons-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/3925366ce827acc4c6bca218f380a3636e1a0bc2/asm-commons-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/cd1b0e38c494f17caee94a9a06f17bfaee1625f2/asm-tree-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/868e297f64cade189fff6600060ae8418b77bb92/asm-tree-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/ce7945892f4c8376b381d9dbc81887a610a849e3/asm-util-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/a18ec55bd1dceeb27f5d02e5ae3f9ac76239926e/asm-util-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/bbc1319731a4edcb18181f41e86bd904faa20043/asm-analysis-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/dc5795b6a72aba9b953aebb3707afff61d34b640/asm-analysis-9.10.1-sources.jar",
+    "com.stonytark.usefultoolsmod.spectralqa.Forge262ShaderReferenceDiff",
+    "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.2-65.1.2/forge-26.2-65.1.2-client.jar",
+    "/home/braydon/.cache/useful-tools-spectral-recovery/optifine-26.2-payload/optifine-patched.jar"
+  ],
+  "compile_command": [
+    "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/javac",
+    "--release",
+    "17",
+    "-Xlint:all",
+    "-Werror",
+    "-cp",
+    "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/f9a1c24644762077e7c144a3b7c004e4968d70ce/asm-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/9f9a96aa17fd1113b218fa2dd6c4dc075192aa2e/asm-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/74f8124353236bac3870dd9964aff7cb5ec9d8c/asm-commons-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/3925366ce827acc4c6bca218f380a3636e1a0bc2/asm-commons-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/cd1b0e38c494f17caee94a9a06f17bfaee1625f2/asm-tree-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/868e297f64cade189fff6600060ae8418b77bb92/asm-tree-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/ce7945892f4c8376b381d9dbc81887a610a849e3/asm-util-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/a18ec55bd1dceeb27f5d02e5ae3f9ac76239926e/asm-util-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/bbc1319731a4edcb18181f41e86bd904faa20043/asm-analysis-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/dc5795b6a72aba9b953aebb3707afff61d34b640/asm-analysis-9.10.1-sources.jar",
+    "-d",
+    "/tmp/usefultools-shaders-2.3.2/forge262-shader-reference-audit",
+    "tests/spectral-qa/probe/Forge262ShaderReferenceDiff.java"
+  ]
+}

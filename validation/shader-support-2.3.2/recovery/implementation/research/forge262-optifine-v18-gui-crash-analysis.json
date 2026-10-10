@@ -1,0 +1,12 @@
+{
+  "run_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-fog-v18-BSL-indoor/report.json",
+  "status": "failed",
+  "captured_frames": 0,
+  "shaderpack_load_logged": true,
+  "client_log_sha256": "7d1bb355e1ea8950d4498ceb85d51254709d17a0e32d99dc94887e31d75acd72",
+  "crash_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-fog-v18-BSL-indoor/crash-reports/crash-2026-10-07_16.29.46-client.txt",
+  "crash_sha256": "0752141a720e101790dd20b5641441c71bd35f843dae52e86c941d5eed96d842",
+  "root_cause": "K2 SVertexBuilder calls GuiRenderer.isRenderGui during first GUI frame; pinned Forge 65 lacks the publisher static renderGui field/method and state transitions.",
+  "v19_candidate": "Exact publisher GUI state field/getter, with state writes around pinned native render() body; offline bytecode check passed, runtime pending.",
+  "original_stack_qualified": false
+}

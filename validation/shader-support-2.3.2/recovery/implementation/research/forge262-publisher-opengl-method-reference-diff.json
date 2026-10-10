@@ -1,0 +1,426 @@
+{
+  "forge_65_1_2_client_sha256": "712277950db1d04987c7affb38ca8b0b5275601b5f11b4d3102b2cb9c1b4ecf5",
+  "rows": [
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlCommandEncoder",
+      "missing_direct_declarations": [
+        {
+          "name": "isBindFramebuffer",
+          "descriptor": "(Lcom/mojang/blaze3d/systems/RenderPassDescriptor;)Z",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.createRenderPass(Lcom/mojang/blaze3d/systems/RenderPassDescriptor;)Lcom/mojang/blaze3d/systems/RenderPassBackend;"
+          ]
+        },
+        {
+          "name": "isBindFramebuffer",
+          "descriptor": "(Lcom/mojang/blaze3d/textures/GpuTexture;Lcom/mojang/blaze3d/textures/GpuTexture;)Z",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.clearColorAndDepthTextures(Lcom/mojang/blaze3d/textures/GpuTexture;Lorg/joml/Vector4fc;Lcom/mojang/blaze3d/textures/GpuTexture;D)V",
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.clearColorAndDepthTextures(Lcom/mojang/blaze3d/textures/GpuTexture;Lorg/joml/Vector4fc;Lcom/mojang/blaze3d/textures/GpuTexture;DIIII)V",
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.clearColorTexture(Lcom/mojang/blaze3d/textures/GpuTexture;Lorg/joml/Vector4fc;)V",
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.clearDepthTexture(Lcom/mojang/blaze3d/textures/GpuTexture;D)V",
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.isBindFramebuffer(Lcom/mojang/blaze3d/systems/RenderPassDescriptor;)Z",
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.isBindFramebuffer(Lcom/mojang/blaze3d/textures/GpuTextureView;Lcom/mojang/blaze3d/textures/GpuTextureView;)Z"
+          ]
+        },
+        {
+          "name": "isBindFramebuffer",
+          "descriptor": "(Lcom/mojang/blaze3d/textures/GpuTextureView;Lcom/mojang/blaze3d/textures/GpuTextureView;)Z",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.presentTexture(Lcom/mojang/blaze3d/textures/GpuTextureView;II)V"
+          ]
+        },
+        {
+          "name": "drawRegion",
+          "descriptor": "(Lcom/mojang/blaze3d/opengl/GlRenderPass;Lnet/optifine/render/RegionRenderData;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.executeDrawMultiple(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;Lcom/mojang/blaze3d/buffers/GpuBuffer;Lcom/mojang/blaze3d/IndexType;Ljava/util/Collection;Ljava/lang/Object;)V"
+          ]
+        },
+        {
+          "name": "drawMultiTexture",
+          "descriptor": "(Lcom/mojang/blaze3d/opengl/GlRenderPass;IILcom/mojang/blaze3d/IndexType;Lnet/optifine/render/MultiTextureData;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.executeDrawMultiple(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;Lcom/mojang/blaze3d/buffers/GpuBuffer;Lcom/mojang/blaze3d/IndexType;Ljava/util/Collection;Ljava/lang/Object;)V"
+          ]
+        },
+        {
+          "name": "getTextureUnit",
+          "descriptor": "(Ljava/lang/String;I)I",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.trySetup(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;)Z"
+          ]
+        },
+        {
+          "name": "useVanillaProgram",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/shaders/Shaders.useProgram(Lnet/optifine/shaders/Program;)V"
+          ]
+        },
+        {
+          "name": "bindFramebuffer",
+          "descriptor": "(Lcom/mojang/blaze3d/pipeline/RenderTarget;)V",
+          "callers": [
+            "net/optifine/shaders/Shaders.renderFinal()V"
+          ]
+        }
+      ],
+      "candidate_transformation": "No forced publisher replacement in v23 bridge"
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlStateManager",
+      "missing_direct_declarations": [
+        {
+          "name": "texParameter",
+          "descriptor": "(IIF)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/DirectStateAccess$Emulated.texParameter(IIF)V",
+            "com/mojang/blaze3d/opengl/DirectStateAccess$Emulated.texParameter(III)V",
+            "com/mojang/blaze3d/platform/NativeImage.setClamp(Z)V",
+            "com/mojang/blaze3d/platform/NativeImage.setMinMagFilters(ZZ)V",
+            "net/minecraft/client/renderer/texture/TextureAtlasSprite.getSpriteTexture()Lcom/mojang/blaze3d/textures/GpuTexture;",
+            "net/optifine/shaders/ShadersTex.bindNSTextures(IIZZZ)V",
+            "net/optifine/shaders/ShadersTex.bindTextures(Lnet/optifine/shaders/MultiTexID;ZZZ)V",
+            "net/optifine/util/TextureUtils.prepareImage(Lcom/mojang/blaze3d/platform/NativeImage$Format;IIII)V"
+          ]
+        },
+        {
+          "name": "getProgram",
+          "descriptor": "()I",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.trySetup(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;)Z"
+          ]
+        },
+        {
+          "name": "bindSampler",
+          "descriptor": "(II)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlCommandEncoder.trySetup(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;)Z",
+            "net/optifine/shaders/Shaders.init()V"
+          ]
+        },
+        {
+          "name": "bindTexture",
+          "descriptor": "(II)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlProgram.setupBindGroupLayouts(Ljava/util/List;)V"
+          ]
+        },
+        {
+          "name": "applyAlphaTest",
+          "descriptor": "()V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.alphaFunc(IF)V",
+            "com/mojang/blaze3d/opengl/GlStateManager.disableAlphaTest()V",
+            "com/mojang/blaze3d/opengl/GlStateManager.enableAlphaTest()V",
+            "net/optifine/shaders/Shaders.setProgramUniforms(Lnet/optifine/shaders/ProgramStage;)V"
+          ]
+        },
+        {
+          "name": "getActiveTextureUnit",
+          "descriptor": "()I",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.checkBoundTexture()V",
+            "net/optifine/shaders/ShadersTex.bindNSTextures(IIZZZ)V",
+            "net/optifine/shaders/ShadersTex.bindTexture(Lcom/mojang/blaze3d/opengl/GlTexture;Lnet/minecraft/client/renderer/texture/AbstractTexture;)V",
+            "net/optifine/shaders/ShadersTex.bindTextures(III)V",
+            "net/optifine/shaders/ShadersTex.bindTextures(Lnet/optifine/shaders/MultiTexID;ZZZ)V"
+          ]
+        },
+        {
+          "name": "getBoundTexture",
+          "descriptor": "()I",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.checkBoundTexture()V",
+            "net/minecraft/client/renderer/texture/TextureAtlas.isTextureBound()Z",
+            "net/optifine/CustomItemProperties.getTextureHeight(Lnet/minecraft/client/renderer/texture/TextureManager;)F",
+            "net/optifine/CustomItemProperties.getTextureWidth(Lnet/minecraft/client/renderer/texture/TextureManager;)F"
+          ]
+        },
+        {
+          "name": "getAlphaState",
+          "descriptor": "(Lnet/optifine/render/GlAlphaState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockAlpha(Lnet/optifine/render/GlAlphaState;)V"
+          ]
+        },
+        {
+          "name": "setAlphaState",
+          "descriptor": "(Lnet/optifine/render/GlAlphaState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockAlpha(Lnet/optifine/render/GlAlphaState;)V",
+            "com/mojang/blaze3d/opengl/GlStateManager.unlockAlpha()V"
+          ]
+        },
+        {
+          "name": "alphaFunc",
+          "descriptor": "(IF)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.setAlphaState(Lnet/optifine/render/GlAlphaState;)V",
+            "net/optifine/render/GlAlphaState.apply()V",
+            "net/optifine/shaders/Shaders.beginRender(Lnet/minecraft/client/Camera;Lorg/joml/Matrix4fc;Lorg/joml/Matrix4f;Lnet/minecraft/client/DeltaTracker;F)V",
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        },
+        {
+          "name": "getBlendState",
+          "descriptor": "(Lnet/optifine/render/GlBlendState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockBlend(Lnet/optifine/render/GlBlendState;)V",
+            "net/optifine/util/GlUtils.getBlendState()Lnet/optifine/render/GlBlendState;"
+          ]
+        },
+        {
+          "name": "setBlendState",
+          "descriptor": "(Lnet/optifine/render/GlBlendState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockBlend(Lnet/optifine/render/GlBlendState;)V",
+            "com/mojang/blaze3d/opengl/GlStateManager.unlockBlend()V"
+          ]
+        },
+        {
+          "name": "blendFunc",
+          "descriptor": "(II)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.setBlendState(Lnet/optifine/render/GlBlendState;)V",
+            "net/optifine/render/Blender.clearBlend()V",
+            "net/optifine/render/Blender.setupBlend(IF)V",
+            "net/optifine/shaders/Shaders.beginSpiderEyes()V",
+            "net/optifine/shaders/Shaders.beginWeather()V",
+            "net/optifine/shaders/Shaders.endHand()V"
+          ]
+        },
+        {
+          "name": "getCullState",
+          "descriptor": "(Lnet/optifine/render/GlCullState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockCull(Lnet/optifine/render/GlCullState;)V",
+            "net/optifine/util/GlUtils.getCullState()Lnet/optifine/render/GlCullState;"
+          ]
+        },
+        {
+          "name": "setCullState",
+          "descriptor": "(Lnet/optifine/render/GlCullState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockCull(Lnet/optifine/render/GlCullState;)V",
+            "com/mojang/blaze3d/opengl/GlStateManager.unlockCull()V"
+          ]
+        },
+        {
+          "name": "getDepthState",
+          "descriptor": "(Lnet/optifine/render/GlDepthState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockDepth(Lnet/optifine/render/GlDepthState;)V",
+            "net/optifine/util/GlUtils.getDepthState()Lnet/optifine/render/GlDepthState;"
+          ]
+        },
+        {
+          "name": "setDepthState",
+          "descriptor": "(Lnet/optifine/render/GlDepthState;)V",
+          "callers": [
+            "com/mojang/blaze3d/opengl/GlStateManager.lockDepth(Lnet/optifine/render/GlDepthState;)V",
+            "com/mojang/blaze3d/opengl/GlStateManager.unlockDepth()V"
+          ]
+        },
+        {
+          "name": "init",
+          "descriptor": "(Lorg/lwjgl/opengl/GLCapabilities;)V",
+          "callers": [
+            "com/mojang/blaze3d/systems/RenderSystem.initRenderer(Lcom/mojang/blaze3d/systems/GpuDevice;)V"
+          ]
+        },
+        {
+          "name": "enableTexture",
+          "descriptor": "()V",
+          "callers": [
+            "net/minecraft/client/renderer/GameRenderer.render(Lnet/minecraft/client/DeltaTracker;Z)V",
+            "net/optifine/Lagometer.renderLines(Lnet/minecraft/client/gui/render/GuiRenderer;)V",
+            "net/optifine/render/Blender.setupBlend(IF)V",
+            "net/optifine/shaders/Shaders.renderComposites(Lnet/optifine/shaders/ShadersFramebuffer;[Lnet/optifine/shaders/Program;Z[Lnet/optifine/shaders/ICustomTexture;)V",
+            "net/optifine/shaders/Shaders.renderFinal()V"
+          ]
+        },
+        {
+          "name": "_disableBlend",
+          "descriptor": "()V",
+          "callers": [
+            "net/minecraft/client/renderer/LevelRenderer.render(Lcom/mojang/blaze3d/resource/GraphicsResourceAllocator;Lnet/minecraft/client/DeltaTracker;ZLnet/minecraft/client/renderer/state/level/CameraRenderState;Lorg/joml/Matrix4fc;Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lorg/joml/Vector4f;Z)V",
+            "net/optifine/render/Blender.setupBlend(IF)V",
+            "net/optifine/render/GlBlendState.apply()V",
+            "net/optifine/shaders/Shaders.beginFPOverlay()V",
+            "net/optifine/shaders/Shaders.endWeather()V",
+            "net/optifine/shaders/Shaders.renderComposites(Lnet/optifine/shaders/ShadersFramebuffer;[Lnet/optifine/shaders/Program;Z[Lnet/optifine/shaders/ICustomTexture;)V",
+            "net/optifine/shaders/Shaders.renderFinal()V",
+            "net/optifine/shaders/ShadersRender.beaconBeamDraw2()V",
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        },
+        {
+          "name": "disableTexture",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/Lagometer.renderLines(Lnet/minecraft/client/gui/render/GuiRenderer;)V"
+          ]
+        },
+        {
+          "name": "_enableBlend",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/render/Blender.clearBlend()V",
+            "net/optifine/render/Blender.setupBlend(IF)V",
+            "net/optifine/render/GlBlendState.apply()V",
+            "net/optifine/shaders/Shaders.beginWater()V",
+            "net/optifine/shaders/Shaders.beginWeather()V",
+            "net/optifine/shaders/Shaders.renderComposites(Lnet/optifine/shaders/ShadersFramebuffer;[Lnet/optifine/shaders/Program;Z[Lnet/optifine/shaders/ICustomTexture;)V",
+            "net/optifine/shaders/ShadersRender.renderHandTranslucent(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/state/level/CameraRenderState;Lorg/joml/Matrix4fc;F)V",
+            "net/optifine/shaders/gui/GuiSliderShaderOption.extractContents(Lnet/minecraft/client/gui/GuiGraphicsExtractor;IIF)V"
+          ]
+        },
+        {
+          "name": "lockBlend",
+          "descriptor": "(Lnet/optifine/render/GlBlendState;)V",
+          "callers": [
+            "net/optifine/render/Blender.setupBlend(IF)V",
+            "net/optifine/shaders/Shaders.updateAlphaBlend(Lnet/optifine/shaders/Program;Lnet/optifine/shaders/Program;)V",
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        },
+        {
+          "name": "unlockBlend",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/render/Blender.clearBlend()V",
+            "net/optifine/shaders/Shaders.updateAlphaBlend(Lnet/optifine/shaders/Program;Lnet/optifine/shaders/Program;)V",
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        },
+        {
+          "name": "disableAlphaTest",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/render/GlAlphaState.apply()V",
+            "net/optifine/shaders/Shaders.beginWaterMask()V",
+            "net/optifine/shaders/Shaders.renderComposites(Lnet/optifine/shaders/ShadersFramebuffer;[Lnet/optifine/shaders/Program;Z[Lnet/optifine/shaders/ICustomTexture;)V",
+            "net/optifine/shaders/Shaders.renderFinal()V"
+          ]
+        },
+        {
+          "name": "enableAlphaTest",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/render/GlAlphaState.apply()V",
+            "net/optifine/shaders/Shaders.beginRender(Lnet/minecraft/client/Camera;Lorg/joml/Matrix4fc;Lorg/joml/Matrix4f;Lnet/minecraft/client/DeltaTracker;F)V",
+            "net/optifine/shaders/Shaders.beginWeather()V",
+            "net/optifine/shaders/Shaders.endWaterMask()V",
+            "net/optifine/shaders/Shaders.renderComposites(Lnet/optifine/shaders/ShadersFramebuffer;[Lnet/optifine/shaders/Program;Z[Lnet/optifine/shaders/ICustomTexture;)V"
+          ]
+        },
+        {
+          "name": "glMultiDrawElementsBaseVertex",
+          "descriptor": "(ILjava/nio/IntBuffer;ILorg/lwjgl/PointerBuffer;Ljava/nio/IntBuffer;)V",
+          "callers": [
+            "net/optifine/render/MultiTextureRenderer.draw(Lcom/mojang/blaze3d/PrimitiveTopology;IIILnet/optifine/render/SpriteRenderData;)V"
+          ]
+        },
+        {
+          "name": "copyBufferSubData",
+          "descriptor": "(IIJJJ)V",
+          "callers": [
+            "net/optifine/render/VboRegion.copyVboData(III)V",
+            "net/optifine/render/VboRegion.expandVbo(I)V"
+          ]
+        },
+        {
+          "name": "glMultiDrawElements",
+          "descriptor": "(ILjava/nio/IntBuffer;ILorg/lwjgl/PointerBuffer;)V",
+          "callers": [
+            "net/optifine/render/VboRegion.finishDraw()V"
+          ]
+        },
+        {
+          "name": "deleteVertexArrays",
+          "descriptor": "(I)V",
+          "callers": [
+            "net/optifine/render/VboRegion.deleteGlBuffers()V",
+            "net/optifine/shaders/Shaders.init()V"
+          ]
+        },
+        {
+          "name": "genTextures",
+          "descriptor": "(Ljava/nio/IntBuffer;)V",
+          "callers": [
+            "net/optifine/shaders/FlipTextures.genTextures()V"
+          ]
+        },
+        {
+          "name": "deleteTextures",
+          "descriptor": "(Ljava/nio/IntBuffer;)V",
+          "callers": [
+            "net/optifine/shaders/FlipTextures.deleteTextures()V",
+            "net/optifine/shaders/ShadersFramebuffer.delete()V"
+          ]
+        },
+        {
+          "name": "unlockAlpha",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/shaders/Shaders.updateAlphaBlend(Lnet/optifine/shaders/Program;Lnet/optifine/shaders/Program;)V"
+          ]
+        },
+        {
+          "name": "applyCurrentBlend",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/shaders/Shaders.updateAlphaBlend(Lnet/optifine/shaders/Program;Lnet/optifine/shaders/Program;)V"
+          ]
+        },
+        {
+          "name": "lockAlpha",
+          "descriptor": "(Lnet/optifine/render/GlAlphaState;)V",
+          "callers": [
+            "net/optifine/shaders/Shaders.updateAlphaBlend(Lnet/optifine/shaders/Program;Lnet/optifine/shaders/Program;)V"
+          ]
+        },
+        {
+          "name": "setBlendsIndexed",
+          "descriptor": "([Lnet/optifine/render/GlBlendState;)V",
+          "callers": [
+            "net/optifine/shaders/Shaders.updateAlphaBlend(Lnet/optifine/shaders/Program;Lnet/optifine/shaders/Program;)V"
+          ]
+        },
+        {
+          "name": "bindImageTexture",
+          "descriptor": "(IIIZIII)V",
+          "callers": [
+            "net/optifine/shaders/Shaders.uninit()V",
+            "net/optifine/shaders/ShadersFramebuffer.bindColorImage(IZ)V"
+          ]
+        },
+        {
+          "name": "clearColor",
+          "descriptor": "(FFFF)V",
+          "callers": [
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        },
+        {
+          "name": "lockCull",
+          "descriptor": "(Lnet/optifine/render/GlCullState;)V",
+          "callers": [
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        },
+        {
+          "name": "unlockCull",
+          "descriptor": "()V",
+          "callers": [
+            "net/optifine/shaders/ShadersRender.renderShadowMap(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/Camera;Lnet/minecraft/client/DeltaTracker;F)V"
+          ]
+        }
+      ],
+      "candidate_transformation": "Publisher replacement already selected"
+    }
+  ],
+  "scope": "Direct declarations only, not inheritance or runtime proof. v23 still requires packaged test."
+}

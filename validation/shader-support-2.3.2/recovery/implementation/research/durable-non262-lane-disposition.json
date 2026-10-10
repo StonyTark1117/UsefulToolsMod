@@ -1,0 +1,57 @@
+{
+  "scope": "Distinct non-26.2 recovery lane using only hash-addressed durable inputs. This record does not alter or qualify current-matrix-audit.json.",
+  "tested_revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "results": [
+    {
+      "candidate_gate": "1.20.2-neoforge-zenkai-egl-disabled-matrix-native-controls",
+      "status": "failed_before_input",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/runs/1.20.2-neoforge-zenkai-disabled/report.json",
+      "run_id": "abba46fcbfc7473b8c7604795a8803c2",
+      "inputs": {
+        "main_artifact_sha256": "3df68c4c0cc84f8c320447cc8c815202167b68d9ca97f30becfbdfa1e454460a",
+        "artifact_provenance_sha256": "44f8c79bd044759194c2b214f56ff68708c49c7f33724d1196ecfa242fbf8899",
+        "oculus_sha256": "e566bf7783cd66b90fdb25f87f611b7eacb1f62e0b2a1fd122d07a294ce08327",
+        "embeddium_sha256": "bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947",
+        "probe_sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1"
+      },
+      "isolation": {
+        "display": ":91",
+        "framebuffer": "1280x720x24",
+        "audio_backend": "ALSOFT_DRIVERS=null",
+        "wayland_unset": true,
+        "virtualgl_egl_device": "egl0"
+      },
+      "failure_layer": "dependency",
+      "failure": "The unchanged Forge Oculus archive requests net.minecraftforge.fml.loading.LoadingModList under NeoForge 20.2.93 and exits with NoClassDefFoundError before game input.",
+      "captures": 0,
+      "gate_closed": false,
+      "next_valid_candidate": "A NeoForge-native Oculus/Embeddium implementation must be tested as a distinct private candidate; it cannot certify the unchanged publisher jars."
+    },
+    {
+      "candidate_gate": "26.1.2-forge-optifine-preview-disabled-egl0-precipitation-controls",
+      "status": "failed_before_input",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/runs/26.1.2-forge-optifine-preview-disabled/report.json",
+      "run_id": "db8c8aaeb24c46478d179b6a2659e27d",
+      "inputs": {
+        "main_artifact_sha256": "c0e94e10373ff3a4f2b70afb0ba5c1e9a2f7267a5c62e8de4c0f4bc0684ba6ba",
+        "artifact_provenance_sha256": "02f3cdb6649ba9fe182cd63dd0d8699798f1ae2b5c81d65bfa0fdb8cf98a5682",
+        "optifine_k1_sha256": "f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172",
+        "probe_sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1"
+      },
+      "isolation": {
+        "display": ":91",
+        "framebuffer": "1280x720x24",
+        "audio_backend": "ALSOFT_DRIVERS=null",
+        "wayland_unset": true,
+        "virtualgl_egl_device": "egl1"
+      },
+      "failure_layer": "dependency_transformation",
+      "failure": "The unchanged K1 preview emits xdelta truncated-source and MD5-mismatch errors against pinned Forge 64.0.8 classes, then exits on missing GlStateManager.init(GLCapabilities) before input.",
+      "captures": 0,
+      "gate_closed": false,
+      "next_valid_candidate": "Continue only with a separately identified private native compatibility bridge; a bridge pass cannot certify the unchanged publisher archive."
+    }
+  ],
+  "newly_closed_gates": [],
+  "preservation": "Both failed reports retain exact invocations, hashes, isolated-framebuffer captures, native exception evidence and cleanup state."
+}

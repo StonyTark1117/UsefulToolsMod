@@ -1,0 +1,61 @@
+{
+  "status": "failed; preserved; not promotable",
+  "manifest_index": 96,
+  "attempt": "q",
+  "terminal_error": "java.lang.NoSuchMethodError: 'void net.minecraft.client.renderer.LevelRenderer.onPlayerPositionSet()'",
+  "failure_stage": "world entry",
+  "failure_layer": "OptiFine/native donor linkage",
+  "evidence": {
+    "report.json": "8c99237f39d27f982bc92bd7099d3bd793e28786031351159b7961ed617a0a32",
+    "crash-reports/crash-2026-10-08_00.00.55-client.txt": "a019dfd5b46366337a1d62823b35fb4a110093fb0a11c4e38940cfca2bafc5a7",
+    "k1-admission-bridge.log": "80a79c19ccc41c6bb04af10f9666ef2b80950024fc0462cc1c5c3ed4dd8b2ca6",
+    "launcher-native-exceptions.txt": "f46302d60964d1919011bfe7ed7bd16abe9b55bc2cffae69a23878121c1fad37",
+    "jvm-linkage-errors.txt": "770ff6af27ce593beb3fef871afd9445a90e41dea10f08a78d117485c0d0dd04",
+    "failure-framebuffer.png": "dfc2aa6668c47a6eda8c081c098e7e65ca5a024e773472d35e68372ffe52f905",
+    "scoped-audit.json": "8acec304389cd0c904d18fb50397a47fd62ec23ba6bccb1c195f5a033d62d359",
+    "full-audit.json": "a70ef3c9fc3eb32b49cae6040eb5bd7884dbf47d412fc26a8dffb9a806e2040d"
+  },
+  "configuration": {
+    "minecraft": "26.1.2",
+    "forge": "64.0.8",
+    "java": "25.0.4.1",
+    "artifact_sha256": "c0e94e10373ff3a4f2b70afb0ba5c1e9a2f7267a5c62e8de4c0f4bc0684ba6ba",
+    "provenance_sha256": "faae54e72a90231a4d18a9c6c3680f849eebd5852aec924004c0886f489e3d84",
+    "optifine_sha256": "f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172",
+    "probe_sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1",
+    "bridge_sha256": "137b7867f15b475ea31a537313258f579aa20552e539f9ecea182394c3f83950",
+    "donor_sha256": "89b6c8051570cf76259041ea13ca4ae5c0147b303c30d85c78d39a3f6305c633",
+    "world_content_sha256": "494e44db22a7bbefab8cabe365b292d222115e63d5bb3a637ee1a0c8f8c0e45e"
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "egl_device": "egl0"
+  },
+  "captures": {
+    "required_scenario_captures_reached": false,
+    "entry_diagnostics_only": [
+      "world-entry-1.png",
+      "world-entry-2.png",
+      "world-entry-2-play.png",
+      "world-entry-3.png"
+    ],
+    "manual_acceptance_review": "not applicable; no required scenario capture exists",
+    "failure_framebuffer_review": "Prism Launcher log window after client termination; diagnostic only"
+  },
+  "audits": {
+    "scoped_complete": false,
+    "scoped_gap_summary": "run/shutdown incomplete and every required scenario/state/surface proof absent",
+    "full_complete": false,
+    "full_complete_configurations": 97,
+    "full_total_configurations": 110
+  },
+  "next_exact_gap": {
+    "owner": "net.minecraft.client.renderer.LevelRenderer",
+    "missing_method": "onPlayerPositionSet()V",
+    "caller": "net.minecraft.network.PacketProcessor.clientPreProcessPacket(PacketProcessor.java:32)",
+    "note": "The current bridge replaced LevelRenderer with donor bytes, but the resulting class lacks the method required by the Forge 64.0.8 PacketProcessor. Any next repair must inventory and preserve the complete native LevelRenderer API while satisfying OptiFine, rather than add an unchecked stub."
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "complete": true,
+  "promotable_to_replace": "1.20.2-forge-optifine-preview-active-ComplementaryReimagined_r5.9.3-egl0-precipitation-controls",
+  "gaps": [],
+  "requirements": "scoped-requirements.json",
+  "requirements_sha256": "3bde956b486572c594c27888bd42541e5e35544fbf7174832b9a305bd17a049c",
+  "evidence": {
+    "report": "report.json",
+    "report_sha256": "07b0ae66efab3e35b357f78488b663217399e3730f9e3634c974c550d6442174",
+    "review_sheets": "review-sheets.json",
+    "review_sheets_sha256": "b91cbbdca0a394144677fd25eb7b62d1a5537eea491b41288d9c246e301e2714",
+    "visual_review": "visual-review.json",
+    "visual_review_sha256": "123253b8a1e64c596ae8beffa11e47e330c89fcf321ad7dc1cd6364625c1d5fe"
+  },
+  "exact_inputs": {
+    "artifact_sha256": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7",
+    "artifact_provenance_sha256": "8393012b1653cd84569f598147402edd7821cc80740334a181a4aa4d1823f61c",
+    "optifine_publisher_jar_sha256": "6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223",
+    "complementary_publisher_archive_sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38",
+    "probe_sha256": "08e78016a4a94ba715d6a8357e52c4ea68c9d21276373efa0ba50e86944de67f",
+    "fml_sha256": "953c6cb21eb0898aa077589b474b0eec19db6ed1052e5d59fe2a25cba89b4ded",
+    "source_map_entries": 4567,
+    "source_map_matches_provenance": true,
+    "loader_uid": "net.minecraftforge",
+    "loader_version": "48.1.0",
+    "java_path": "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "world_fixture": "3666dbdb229f02d9e1f6ecadac78a68ce9410e0727f66d7b6b4459698c00b1ea",
+    "harness_validate_sha256": "df6a276051d98792a5817c7b5f96f6e54f50fb5e862f440ce987c5339e0f6076",
+    "harness_frozen_source": "/tmp/usefultools-shaders-2.3.2/harness/e220780fa830f7c8274f6266e19920cbec43cbe33a871d6c589cae781dd8006b/scripts"
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_route_verified": {"game_pids":[1591410],"egl_device":"egl0","interposer_loaded":true},
+    "serial_gpu_lock": {"wait_seconds":0.011895777999598067,"path":"/tmp/useful-tools-spectral-gpu-egl0.lock"},
+    "serial_render_lock": {"wait_seconds":0.00002084099833155051,"path":"/tmp/useful-tools-spectral-render.lock"}
+  },
+  "active_shader_control": {
+    "shader_integration": "optifine",
+    "shader_pack": {"name":"ComplementaryReimagined_r5.9.3.zip","sha256":"fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"},
+    "shader_activation_logged": true,
+    "live_shader_state_count": 16,
+    "active_state_count": 14,
+    "disabled_toggle_state_count": 2,
+    "initial_active": true,
+    "both_entity_native_menu_off_and_restored_controls_captured": true,
+    "experimental_outline_or_frame_agent_requested": false
+  },
+  "behavioral_gates": {
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "accepted_command_count": 113,
+    "rejected_command_count": 0,
+    "shader_compile_errors": [],
+    "shader_backend_diagnostics": [
+      "One GL_INVALID_OPERATION in glBindTexture(non-gen name) on Thread-5 before scene capture.",
+      "Six publisher OptiFine expression warnings for BOOL supplied to the greater-than function during initial activation and the two restores."
+    ],
+    "backend_diagnostic_assessment": "The diagnostics are retained. They did not produce a shader compile failure or interrupt activation: all 16 live states show the required active/off/restored sequence, both entities and all surfaces rendered, all 57 required captures passed manual inspection, and shutdown was clean.",
+    "native_damage_hurt_ticks": {"ghost":10,"wraith":10},
+    "native_rain_acknowledged": {"ghost":true,"wraith":true},
+    "precipitation_biome": "minecraft:plains",
+    "surface_registry_count": 7,
+    "reviewed_capture_count": 57,
+    "capture_count": 63,
+    "paired_full_framebuffers": true,
+    "focused_tests": "53 passed in 6.61s"
+  },
+  "cleanup": {
+    "native_save_and_quit": true,
+    "clean_java_exit": true,
+    "launcher_wrapper_sigkill_after_sigterm": 1590733,
+    "private_library_copy_removed": true,
+    "owned_pids_alive_after_run": []
+  },
+  "note": "Scoped audit only. The main manifest, current audit, and implementation README were intentionally not edited."
+}

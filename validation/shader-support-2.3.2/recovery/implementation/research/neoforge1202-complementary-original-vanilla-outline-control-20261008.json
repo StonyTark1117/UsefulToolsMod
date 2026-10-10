@@ -1,0 +1,42 @@
+{
+  "scope": "Untouched Complementary Reimagined 5.9.3 under pinned NeoForge 20.2.93 with private OptiFine candidate and rebuilt Useful Tools artifact. Vanilla sheep controls isolate the failure from Ghost/Wraith renderer code but do not qualify original publisher OptiFine.",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/report.json",
+  "report_sha256": "19374be7f9e546e8b553dc8eec7064b107b758840c43a3398c0266fef9e557f4",
+  "pack": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "artifact_sha256": "2b07d16ab4ade86f80946cc96e2f0c6ec6a423d586ec62e0c4d443132c757182",
+  "candidate_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+  "images": {
+    "vanilla-sheep-outline-interior-before.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/vanilla-sheep-outline-interior-before.png",
+      "sha256": "26f1cdd649ee96f2e5dd53ff101b4a301d89038b0a7e3879da2a945c191959b8"
+    },
+    "vanilla-sheep-outline-active.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/vanilla-sheep-outline-active.png",
+      "sha256": "843f3c6b26741ee50b0d43782578253afbbe89a7781eaae0368ea6a520d0f581"
+    },
+    "vanilla-sheep-outline-disabled.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-original-sheep-control-current-v1/vanilla-sheep-outline-disabled.png",
+      "sha256": "d06e561603eb696fb8c061bf28b18c6cbccad80a24ef676c663f0dc55d249f7e"
+    }
+  },
+  "visual_verdict": "Vanilla sheep has no white outline with the original Complementary pack active, despite acknowledged native Glowing state. The same sheep shows a clear white outline after the pack is disabled. This confirms a pack/integration-wide active-state failure rather than one limited to Ghost/Wraith.",
+  "commands_total": 27,
+  "commands_accepted": 27,
+  "shader_activation_logged": true,
+  "live_states": [
+    true,
+    false,
+    true
+  ],
+  "clean_client_exit": true,
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true
+  },
+  "no_promotion": true
+}

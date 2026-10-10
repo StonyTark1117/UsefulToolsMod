@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "scope": "Frozen index52 Complementary Reimagined 5.9.3 native OptiFine pack-control OCR alias",
+  "pattern": "^\\s*Complementary(?:R|Fi)eimagined_r5\\.9\\.3\\.zip\\s*$",
+  "positive_cases": [
+    "ComplementaryReimagined_r5.9.3.zip",
+    "ComplementaryFieimagined_r5.9.3.zip"
+  ],
+  "negative_cases": [
+    "ComplementaryReimagined_r5.9.2.zip",
+    "ComplementaryReimagined_r5.9.30.zip",
+    "ComplementaryReimagined_r5.9.3.jar",
+    "ComplementaryReimagined-r5.9.3.zip",
+    "ComplementaryReimagined_r5.9.3.zip.bak",
+    "BSL_v10.1.2.zip"
+  ],
+  "all_positive_cases_matched": true,
+  "all_negative_cases_rejected": true,
+  "frozen_harness_source": "harness-source/spectral_validation.py",
+  "frozen_harness_source_sha256": "23a943f8c479a149bbb9044d96c1bc39428446a5f99866e0a96801dae2a6d55d",
+  "evidence": "Native OptiFine pixel-font OCR can read the capital R in Reimagined as Fi. The alias permits only that observed glyph expansion while retaining the complete pack name, exact r5.9.3 version, and .zip suffix."
+}

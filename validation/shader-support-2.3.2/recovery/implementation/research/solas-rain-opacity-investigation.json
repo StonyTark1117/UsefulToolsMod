@@ -1,0 +1,15 @@
+{
+  "shader_pack": "Solas Shader V3.7b.zip",
+  "program_sha256": "3559eba62c85cf35e2f0c4594d39d72ecab866ef70babc166c84d9fdf92c7bf0",
+  "program": "validation/shader-support-2.3.2/recovery/implementation/research/solas-native-review/gbuffers_weather.glsl",
+  "observation": "Native raining predicate acknowledged; ordinary pack-on images show little precipitation.",
+  "source_inference": "Weather shader scales texture alpha by rainStrength, 0.5, altitude attenuation and color-derived opacity, discarding alpha below 0.01.",
+  "next_evidence": "1.21.1-quilt-solas-native-rain-toggle-diagnostic",
+  "verdict": "Pending same-scene native off/restored comparison.",
+  "fresh_control_result": {
+    "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-quilt-solas-native-rain-toggle-diagnostic/report.json",
+    "observed": "Same native rain state before/off/restored; vanilla off captures have strong rain lines, active Solas captures have much fainter rain lines and fog. This isolates precipitation opacity to pack presentation, rather than rejected weather commands or missing native rain.",
+    "visual_review": "Six hash-verified captures manually inspected, including full-resolution Wraith active rain.",
+    "scope": "This control resolves rain-scene validity; it does not establish Wraith readability at every floor or other Solas states."
+  }
+}

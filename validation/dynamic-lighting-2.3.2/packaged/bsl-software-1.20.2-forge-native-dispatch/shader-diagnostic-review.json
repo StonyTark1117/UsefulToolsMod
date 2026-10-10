@@ -1,0 +1,10 @@
+{
+  "original_report_sha256": "08f0b29c29a5492937ac6be2992efc1754d1d084672fc1e24278ebefcab797ed",
+  "retained_original_diagnostics": [
+    "[04Oct2026 19:42:58.886] [Render thread/ERROR] [com.mojang.blaze3d.platform.GlDebug/]: OpenGL API ERROR: 1 (GL_INVALID_OPERATION in glBindTexture(non-gen name))",
+    "[04Oct2026 19:43:07.001] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: none, at: pre-useProgram"
+  ],
+  "compiler_failures": [],
+  "classification": "Timestamp-based false positives in the original harness. Native shader programs subsequently loaded and active capture/toggle states were acknowledged. OpenGL startup and shader-option warnings remain recorded; this is not a warning-free backend claim.",
+  "parser_sha256": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78"
+}

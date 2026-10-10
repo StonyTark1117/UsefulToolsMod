@@ -1,0 +1,88 @@
+{
+  "candidate": "forge262-optifine-gui-v34",
+  "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v34-BSL-indoor/report.json",
+  "report_sha256": "318e79125da37f3c1a1cdc11fb8aff39b84cd7c4dbab9c474113f2a0abb93853",
+  "harness_status": "captures_complete",
+  "clean_client_exit": true,
+  "shader_activation_logged": true,
+  "live_shader_states": [
+    {
+      "time_ms": 1791423609889,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ],
+  "world_entry": "normal menu (fresh-frame verified isolated input)",
+  "scene_summon_accepted": true,
+  "captures": [
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v34-BSL-indoor/wraith-indoor.png",
+      "sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "dimensions": [
+        854,
+        480
+      ],
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "all_black": true
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v34-BSL-indoor/wraith-indoor-framebuffer.png",
+      "sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "all_black": true
+    }
+  ],
+  "visual_verdict": "failed: both fresh Wraith indoor game screenshot and full framebuffer are entirely black; entity and low-light readability cannot be verified",
+  "shader_backend_diagnostics": [
+    "[07Oct2026 18:39:25.631] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniform(location=25)'",
+    "[07Oct2026 18:39:25.631] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_skybasic, at: renderStage",
+    "[07Oct2026 18:39:25.632] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniform(location=11)'",
+    "[07Oct2026 18:39:25.632] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_skytextured, at: renderStage"
+  ],
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_route_verified": {
+      "game_pids": [
+        817426
+      ],
+      "egl_device": "egl0",
+      "interposer_loaded": true
+    }
+  },
+  "acceptance_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "next_investigation": "Inspect pinned/publisher program binding and composite path against logged GL_INVALID_OPERATION glUniform failures; do not count black frame as entity pipeline coverage."
+}

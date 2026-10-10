@@ -1,0 +1,74 @@
+{
+  "scope": "Same rebuilt 1.20.2 NeoForge artifact (2b07d16), pinned NeoForge 20.2.93, private OptiFine candidate (70d057), normal menu entry and isolated serial GPU. Both runs used native Glowing commands, active packs, scenes, states, materials, toggles and clean game exit. This is private-candidate diagnosis, not exact publisher qualification.",
+  "artifact_sha256": "2b07d16ab4ade86f80946cc96e2f0c6ec6a423d586ec62e0c4d443132c757182",
+  "candidate_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+  "runs": {
+    "BSL": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/report.json",
+      "report_sha256": "38fc2b3b3b385c754af4b2e0ab36160b3cef1869c189facafcfcbce02ed1e4b1",
+      "visual_review": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/visual-review.json",
+      "visual_review_sha256": "b186534d5b43ec3b9620ab0385ebd24f2e7744b9d6e893d64a4a69f9fe08477c",
+      "pack": {
+        "name": "BSL_v10.1.2.zip",
+        "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+      },
+      "glowing_commands": [
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:ghost,limit=1] {Glowing:1b}",
+          "accepted": true
+        },
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:wraith,limit=1] {Glowing:1b}",
+          "accepted": true
+        }
+      ],
+      "outline_images": {
+        "ghost": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/ghost-outline.png",
+          "sha256": "d881e379af2aaf3eb7d47029ced38b1fe3b2541ecca4a3ebf315939022a1ef31"
+        },
+        "wraith": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-BSL-shader-texture-current-v1/wraith-outline.png",
+          "sha256": "349e24de1a3b4c160d378a6880db57575d98d54fbd05fdcbdda3e9e2241fa802"
+        }
+      },
+      "outline_verdict": "visible white outlines",
+      "capture_count": 64,
+      "clean_client_exit": true
+    },
+    "Complementary": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-shader-texture-current-v1/report.json",
+      "report_sha256": "07b8a36d42061432351ce9dcd712c916b7aa7aa97f4607e7d16b413250bd9ccb",
+      "visual_review": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-shader-texture-current-v1/visual-review.json",
+      "visual_review_sha256": "5a242412660cdfc0b003d1a1918fa1c210d72e4425f975250dec1506c3b4da35",
+      "pack": {
+        "name": "ComplementaryReimagined_r5.9.3.zip",
+        "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+      },
+      "glowing_commands": [
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:ghost,limit=1] {Glowing:1b}",
+          "accepted": true
+        },
+        {
+          "command": "data merge entity @e[type=usefultoolsmod:wraith,limit=1] {Glowing:1b}",
+          "accepted": true
+        }
+      ],
+      "outline_images": {
+        "ghost": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-shader-texture-current-v1/ghost-outline.png",
+          "sha256": "2ef509cc902dad333500f8f243a634d143d6b07c7b896b87eb2aa5e0b5ae3bb7"
+        },
+        "wraith": {
+          "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-http-defaults-Complementary-shader-texture-current-v1/wraith-outline.png",
+          "sha256": "dec24f4bb82014a47a39a573fc991063ead7bd9cdda5f7889144e0fd400db07c"
+        }
+      },
+      "outline_verdict": "white outlines absent",
+      "capture_count": 63,
+      "clean_client_exit": true
+    }
+  },
+  "finding": "BSL produces visible native Glowing outlines for both entities; Complementary Reimagined 5.9.3 does not, despite accepted native commands and active shader state. The defect remains open."
+}

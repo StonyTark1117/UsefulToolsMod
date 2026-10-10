@@ -1,0 +1,320 @@
+import java.security.MessageDigest
+import java.util.zip.ZipFile
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '7.0.31'
+    id 'com.gradleup.shadow' version '9.4.2'
+}
+
+group = mod_group
+version = mod_version
+
+base {
+    archivesName = "oculus-forge-${minecraft_version}"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+sourceSets {
+    gbufferDonor {
+        java.srcDir '../oculus262-gbuffer-bridge/donor-src'
+        compileClasspath = sourceSets.main.compileClasspath
+        runtimeClasspath = output + compileClasspath
+    }
+}
+
+tasks.named('compileGbufferDonorJava', JavaCompile).configure {
+    options.encoding = 'UTF-8'
+    options.release = 25
+    options.compilerArgs.addAll(['-Xlint:all', '-Xlint:-processing'])
+}
+
+minecraft {
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+            systemProperty 'eventbus.api.strictRuntimeChecks', 'true'
+            systemProperty 'forge.logging.console.level', 'info'
+        }
+
+        register('client')
+
+        register('server') {
+            args '--nogui'
+        }
+
+        register('gameTestServer')
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
+configurations {
+    bundle
+    implementation.extendsFrom bundle
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+    bundle('org.anarres:jcpp:1.4.14') { transitive = false }
+    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
+
+    testImplementation platform("org.junit:junit-bom:${junit_version}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+    options.compilerArgs.addAll(['-Xlint:all', '-Xlint:-processing'])
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    maxHeapSize = '1G'
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
+    testLogging {
+        events = [TestLogEvent.FAILED, TestLogEvent.SKIPPED]
+        exceptionFormat = TestExceptionFormat.FULL
+    }
+}
+
+tasks.withType(JavaExec).configureEach {
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
+}
+
+tasks.register('auditShaderPacks', JavaExec) {
+    group = 'verification'
+    description = 'Prepares shader-pack sources without starting Minecraft or creating GPU resources.'
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.oculusforge.tools.ShaderPackAuditMain'
+}
+
+def resourceProperties = [
+    mod_id: mod_id,
+    mod_name: mod_name,
+    mod_version: mod_version,
+    minecraft_version: minecraft_version,
+    forge_version: forge_version
+]
+
+processResources {
+    inputs.properties(resourceProperties)
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand(resourceProperties)
+    }
+}
+
+// ForgeGradle's official merged source-set layout gives compileJava and
+// processResources the same destination directory. Make the write order
+// deterministic when Gradle parallel execution is enabled.
+tasks.named('compileJava', JavaCompile).configure {
+    mustRunAfter tasks.named('processResources')
+}
+
+tasks.named('compileTestJava', JavaCompile).configure {
+    mustRunAfter tasks.named('processTestResources')
+}
+
+tasks.named('jar', Jar).configure {
+    archiveClassifier = 'slim'
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+
+    from(rootProject.file('LICENSE')) {
+        rename { 'LICENSE-oculus-forge.txt' }
+    }
+    from(rootProject.file('LICENSE_NOTES.md'))
+    from(rootProject.file('NOTICE'))
+
+    manifest {
+        attributes(
+            'Implementation-Title': mod_name,
+            'Implementation-Version': mod_version,
+            'Implementation-Vendor': 'Oculus Forge 26.2 community port contributors',
+            'Specification-Title': 'Oculus shader-pack loader',
+            'Specification-Version': mod_version
+        )
+    }
+}
+
+tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar).configure {
+    archiveClassifier = ''
+    configurations = [project.configurations.bundle]
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    exclude 'META-INF/MANIFEST.MF', 'META-INF/LICENSE*', 'META-INF/NOTICE*', 'META-INF/*.SF'
+    relocate 'org.anarres.cpp', 'dev.oculusforge.bundle.jcpp'
+
+    from(rootProject.file('LICENSE')) {
+        rename { 'LICENSE-oculus-forge.txt' }
+    }
+    from(rootProject.file('LICENSE_NOTES.md'))
+    from(rootProject.file('NOTICE'))
+    from(rootProject.file('third_party/JCPP-LICENSE.txt')) {
+        into 'META-INF/licenses'
+    }
+
+    manifest {
+        attributes(
+            'Implementation-Title': mod_name,
+            'Implementation-Version': mod_version,
+            'Implementation-Vendor': 'Oculus Forge 26.2 community port contributors',
+            'Specification-Title': 'Oculus shader-pack loader',
+            'Specification-Version': mod_version
+        )
+    }
+}
+
+def requiredJarEntries = [
+    'META-INF/mods.toml',
+    'pack.mcmeta',
+    'oculus-logo.png',
+    'assets/oculus/lang/en_us.json',
+    'LICENSE-oculus-forge.txt',
+    'LICENSE_NOTES.md',
+    'NOTICE',
+    'META-INF/licenses/JCPP-LICENSE.txt'
+]
+def productionJarFile = tasks.named('shadowJar', Jar).flatMap { it.archiveFile }
+def sourceJarFile = tasks.named('sourcesJar', Jar).flatMap { it.archiveFile }
+def expectedProductionName = "oculus-forge-${minecraft_version}-${mod_version}.jar"
+
+tasks.register('verifyJarResources') {
+    group = 'verification'
+    description = 'Checks that the distributable JAR contains required Forge and legal resources.'
+    dependsOn tasks.named('shadowJar')
+    inputs.file(productionJarFile)
+
+    doLast {
+        def jarFile = productionJarFile.get().asFile
+        ZipFile zip = new ZipFile(jarFile)
+        try {
+            def names = zip.entries().collect { it.name }.toSet()
+            def missing = requiredJarEntries.findAll { !names.contains(it) }
+            if (!missing.isEmpty()) {
+                throw new GradleException("Production JAR is missing required entries: ${missing}")
+            }
+        } finally {
+            zip.close()
+        }
+    }
+}
+
+tasks.register('verifyNoDuplicateClasses') {
+    group = 'verification'
+    description = 'Fails if the production JAR contains duplicate class entry names.'
+    dependsOn tasks.named('shadowJar')
+    inputs.file(productionJarFile)
+
+    doLast {
+        def jarFile = productionJarFile.get().asFile
+        ZipFile zip = new ZipFile(jarFile)
+        try {
+            def seen = new HashSet<String>()
+            def duplicates = new TreeSet<String>()
+            zip.entries().each { entry ->
+                if (entry.name.endsWith('.class') && !seen.add(entry.name)) {
+                    duplicates.add(entry.name)
+                }
+            }
+            if (!duplicates.isEmpty()) {
+                throw new GradleException("Duplicate class entries found: ${duplicates}")
+            }
+        } finally {
+            zip.close()
+        }
+    }
+}
+
+tasks.register('verifyProductionArtifact') {
+    group = 'verification'
+    description = 'Verifies the production artifact name and rejects dev/source classifiers.'
+    dependsOn tasks.named('shadowJar')
+    inputs.file(productionJarFile)
+
+    doLast {
+        def jarFile = productionJarFile.get().asFile
+        if (jarFile.name != expectedProductionName) {
+            throw new GradleException("Expected production artifact ${expectedProductionName}, got ${jarFile.name}")
+        }
+        if (jarFile.name.contains('-sources') || jarFile.name.contains('-dev')) {
+            throw new GradleException("Production artifact has a development classifier: ${jarFile.name}")
+        }
+    }
+}
+
+tasks.register('writeChecksums') {
+    group = 'distribution'
+    description = 'Writes SHA-256 sidecar files for production and sources JARs.'
+    dependsOn tasks.named('build')
+    inputs.files(productionJarFile, sourceJarFile)
+    outputs.files(
+        productionJarFile.map { it.asFile.toPath().resolveSibling(it.asFile.name + '.sha256').toFile() },
+        sourceJarFile.map { it.asFile.toPath().resolveSibling(it.asFile.name + '.sha256').toFile() }
+    )
+
+    doLast {
+        [productionJarFile.get().asFile, sourceJarFile.get().asFile].each { artifact ->
+            MessageDigest digest = MessageDigest.getInstance('SHA-256')
+            artifact.withInputStream { stream ->
+                byte[] buffer = new byte[64 * 1024]
+                for (int count = stream.read(buffer); count >= 0; count = stream.read(buffer)) {
+                    if (count > 0) {
+                        digest.update(buffer, 0, count)
+                    }
+                }
+            }
+            def hash = digest.digest().collect { String.format('%02x', it & 0xff) }.join()
+            new File(artifact.parentFile, artifact.name + '.sha256').setText("${hash}  ${artifact.name}\n", 'UTF-8')
+        }
+    }
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('verifyJarResources')
+    dependsOn tasks.named('verifyNoDuplicateClasses')
+    dependsOn tasks.named('verifyProductionArtifact')
+}
+
+tasks.named('build').configure {
+    dependsOn tasks.named('shadowJar')
+}
+
+tasks.register('packageRelease', Sync) {
+    group = 'distribution'
+    description = 'Builds verified artifacts and synchronizes them into the release directory.'
+    dependsOn tasks.named('build'), tasks.named('writeChecksums')
+    into layout.projectDirectory.dir('release')
+    from(productionJarFile)
+    from(sourceJarFile)
+    from(productionJarFile.map {
+        it.asFile.toPath().resolveSibling(it.asFile.name + '.sha256').toFile()
+    })
+    from(sourceJarFile.map {
+        it.asFile.toPath().resolveSibling(it.asFile.name + '.sha256').toFile()
+    })
+}

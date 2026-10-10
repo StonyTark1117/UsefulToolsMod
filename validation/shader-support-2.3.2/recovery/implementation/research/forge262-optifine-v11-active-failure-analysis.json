@@ -1,0 +1,16 @@
+{
+  "failed_report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-fluid-v11-BSL-indoor/report.json",
+  "client_log_sha256": "3178ca9a94f48fd753d86dd598ab17933d3690d449390e60a110837ee3eb7db7",
+  "original_k2_jar_sha256": "db05b25f8aa5ac688a77354680ef939d4f3135350e64e7ccfe5996cfaf925927",
+  "original_k2_shaders_class_sha256": "5cbcf4fa414780a8e15a02a6f54433b5e1013097ebc59ee33b5b0fde06eeca0f",
+  "original_k1_shaders_class_sha256": "1d6bf0944920f84c4df2ddffdd609b7ab05d7d73dc24108848e498a38f0e73f6",
+  "forge65_framepass_class_sha256": "28c76c668f92a4c5082c6d40dbb89ccfd61254c637f9a4b72a7c6f5aa848a9e7",
+  "observations": [
+    "Normal-menu world loaded and local player joined.",
+    "Client logged [Shaders] No shaderpack loaded despite staged optionsshaders.txt setting shaderPack=BSL_v10.1.2.zip.",
+    "Pinned K2 Shaders.loadShaderPack sets its blocked flag to one unconditionally immediately after the guarded antialiasing/Fabulous checks; K1 does not.",
+    "OptiFine LevelRenderer calls FramePassManager.insertForgePasses with three reflected arguments; pinned Forge 65.1.2 declares four including DeltaTracker, and client logs wrong number of arguments: 3 expected: 4."
+  ],
+  "classification": "OptiFine 26.2 publisher-preview and pinned Forge integration mismatch; no active-pack entity capture",
+  "candidate": "research/forge262-optifine-pack-enable-v13-candidate.json"
+}

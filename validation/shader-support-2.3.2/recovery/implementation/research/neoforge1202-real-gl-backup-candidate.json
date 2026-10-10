@@ -1,0 +1,15 @@
+{
+  "input_sha256": "5aac88dd02cce90ae668ce99235975cf106a7be1ddc36abf42c59c1027b85149",
+  "output": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/1dc419d8704c99665380fd89dfe5ac59c1d4b465d2af976c68eaafb08da1b6a4/native-real-gl-backup-loader.jar",
+  "sha256": "1dc419d8704c99665380fd89dfe5ac59c1d4b465d2af976c68eaafb08da1b6a4",
+  "changed_entries": [
+    "optifineoforge/donors/com/mojang/blaze3d/platform/GlStateManager.class",
+    "optifineoforge/donors/com/mojang/blaze3d/systems/RenderSystem.class"
+  ],
+  "helper_sha256": "c420c6baa036f23bc8cb3c27209057c58113fab4ce36880584ebc9f5c3934c8c",
+  "native_client_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "raw_publisher_patched_sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+  "runtime_qualified": false,
+  "remaining_donor_semantics_investigation": 17,
+  "note": "Four empty GL state bodies replaced with actual native bodies. Guards retained. Scoped render-thread registration only when absent and actual GLFW current context exists, reset on normal and exceptional exit. No renderer pass or default state result added."
+}

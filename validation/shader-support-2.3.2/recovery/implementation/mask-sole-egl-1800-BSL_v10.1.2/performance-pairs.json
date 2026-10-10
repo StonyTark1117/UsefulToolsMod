@@ -1,0 +1,77 @@
+{
+  "samples_per_trial": 1800,
+  "warmup_seconds": 10,
+  "repeats": 3,
+  "paired_trials": [
+    {
+      "repeat": 0,
+      "mask": 1,
+      "median_ratio": 1.1642798433496109,
+      "p95_ratio": 1.6194812608491354
+    },
+    {
+      "repeat": 0,
+      "mask": 2,
+      "median_ratio": 0.8519873415566952,
+      "p95_ratio": 0.5645450807266098
+    },
+    {
+      "repeat": 0,
+      "mask": 3,
+      "median_ratio": 0.8885044281897808,
+      "p95_ratio": 0.8490168981832839
+    },
+    {
+      "repeat": 1,
+      "mask": 1,
+      "median_ratio": 0.9959228715183922,
+      "p95_ratio": 0.9299386107250531
+    },
+    {
+      "repeat": 1,
+      "mask": 2,
+      "median_ratio": 0.9238365448829534,
+      "p95_ratio": 0.833794769701756
+    },
+    {
+      "repeat": 1,
+      "mask": 3,
+      "median_ratio": 1.2605085335080832,
+      "p95_ratio": 1.3255413382877348
+    },
+    {
+      "repeat": 2,
+      "mask": 1,
+      "median_ratio": 0.9597541714304142,
+      "p95_ratio": 0.8950383869280797
+    },
+    {
+      "repeat": 2,
+      "mask": 2,
+      "median_ratio": 1.0151810580633944,
+      "p95_ratio": 1.0088887286781931
+    },
+    {
+      "repeat": 2,
+      "mask": 3,
+      "median_ratio": 0.780982575850572,
+      "p95_ratio": 0.6310667345543505
+    }
+  ],
+  "summary": {
+    "1": {
+      "median_ratio": 0.9959228715183922,
+      "p95_ratio": 0.9299386107250531
+    },
+    "2": {
+      "median_ratio": 0.9238365448829534,
+      "p95_ratio": 0.833794769701756
+    },
+    "3": {
+      "median_ratio": 0.8885044281897808,
+      "p95_ratio": 0.8490168981832839
+    }
+  },
+  "scope": "Sole owned EGL GPU run; matched static scene, uncapped FPS. All frame trials completed before an unclean XDestroyWindow shutdown; native-menu retry remains required.",
+  "decision": "No reproducible performance regression established by these pairs; visual mask rejection remains independent."
+}

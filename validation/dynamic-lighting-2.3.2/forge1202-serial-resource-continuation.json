@@ -1,0 +1,86 @@
+{
+  "timestamp_unix": 1791408071.201275,
+  "normal_profile": "bsl-current-native-1.20.2-forge-durable-serial-v2",
+  "normal_terminal_status": "captures_complete",
+  "normal_clean_client_exit": true,
+  "completed_normal_java_pid_gone": true,
+  "completed_normal_xvfb_pid_gone": true,
+  "current_owned_native_material_processes": [
+    {
+      "pid": 276268,
+      "kind": "Xvfb",
+      "nice": 10,
+      "active_processors_argument": null,
+      "display": ":91",
+      "audio": "null",
+      "wayland_display": null,
+      "framebuffer": "1280x720x24"
+    },
+    {
+      "pid": 276395,
+      "kind": "java",
+      "nice": 10,
+      "active_processors_argument": "-XX:ActiveProcessorCount=2",
+      "display": ":91",
+      "audio": "null",
+      "wayland_display": null,
+      "framebuffer": null
+    }
+  ],
+  "private_build_gate_attempt": {
+    "exit_code": 75,
+    "observed": "Client/build admission occupied; no private build started.",
+    "prepared_source_verification_completed": true
+  },
+  "resource_policy": "One standalone client or package build at a time; no unattended queue.",
+  "native_material_terminal_status": "captures_complete",
+  "native_material_clean_client_exit": true,
+  "native_material_java_pid_gone": true,
+  "native_material_xvfb_pid_gone": true,
+  "native_material_cleanup": {
+    "sigkill_after_sigterm": [],
+    "private_launcher_root_retained": true,
+    "private_library_copy_removed": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ]
+  },
+  "zero_alpha_started_after_native_process_exit": true,
+  "current_stage": "all three Forge profiles and native classic package build terminal; no owned test left running",
+  "current_isolated_process_snapshot": [],
+  "zero_alpha_terminal_status": "captures_complete",
+  "zero_alpha_clean_client_exit": true,
+  "zero_alpha_java_pid_gone": true,
+  "zero_alpha_xvfb_pid_gone": true,
+  "terminal_process_audit": "validation/dynamic-lighting-2.3.2/serial-resource-and-material-continuation-terminal.json",
+  "terminal_owned_test_processes_remaining": [],
+  "other_chat_processes_observed": [
+    {
+      "pid": 346097,
+      "kind": "python3",
+      "nice": -8,
+      "results": "validation/shader-support-2.3.2/recovery/implementation/optifine26-mipmap-blender-26.2-v5-results.json"
+    },
+    {
+      "pid": 346098,
+      "kind": "python3",
+      "nice": 10,
+      "output": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-durable-options-quad-mipmap-blender-v5"
+    },
+    {
+      "pid": 346122,
+      "kind": "Xvfb",
+      "nice": 10
+    },
+    {
+      "pid": 346715,
+      "kind": "java",
+      "nice": 10,
+      "active_processors": "-XX:ActiveProcessorCount=2"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "scope": "Minimal repair and fresh acceptance run for the 26.2 Forge OptiFine installed-disabled row. This record does not edit or promote the main manifest or audit.",
+  "base_bridge_sha256": "91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a",
+  "base_source_sha256": "cbbaad4f5a9ec59bd3e2d5b023ee704f0d511d4bdc53bf5a38c37ef8d0f9b34a",
+  "change": "Add net/minecraft/client/renderer/state/level/BlockOutlineRenderState to selected donor replacements immediately after LevelExtractor.",
+  "patched_source_sha256": "02fdd08d9bf0d051b87576dcd0eef8bc4ba7304d85c995e4560e359d815c389c",
+  "relocator_source_sha256": "2535cc0d8a9e103b5a21833b7aaaa9acf818202f117a944d682bd75eb6f00b96",
+  "deterministic_build": {
+    "first_raw_sha256": "cca278f02b8da964daff856834de2d407e45450e02f2ca8b8704cc01e17c6538",
+    "second_raw_sha256": "8e5052720a4d6179d6e0f79c7f81bf05b302ddbc88e924c04f3555409a0d4564",
+    "normalization": "Sorted entries with ZIP metadata stripped and every entry timestamp fixed to 1980-01-01.",
+    "first_normalized_sha256": "3cbef46e56712364fed61b1c10f34529709d36bc034c0c24ddcb4951ac4fa0ba",
+    "second_normalized_sha256": "3cbef46e56712364fed61b1c10f34529709d36bc034c0c24ddcb4951ac4fa0ba",
+    "byte_identical": true,
+    "bridge": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/3cbef46e56712364fed61b1c10f34529709d36bc034c0c24ddcb4951ac4fa0ba/bridge.jar"
+  },
+  "signature_verification": {
+    "pinned_runtime": "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.2-65.1.2/forge-26.2-65.1.2-client.jar",
+    "donor": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/75abfcc78c899c758c3d7d5cf13ee818994e0b5b38e3d5a8783788cc618210b9/native-options-quad-hooks-donor.jar",
+    "publisher_level_extractor_missing_runtime_call": "(BlockPos,boolean,boolean,VoxelShape,BlockState)V",
+    "pinned_runtime_has_missing_call": false,
+    "paired_donor_has_missing_call": true
+  },
+  "offline_checks": {
+    "strict_javac_release_17_xlint_all_werror": "pass",
+    "paired_selected_reflection_and_scope": "pass",
+    "focused_pytest": "47 passed"
+  },
+  "runtime": {
+    "output": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-preview-disabled-v35bridge-paired-outline-full-20261007-d",
+    "report_sha256": "df50787fcb511c4bfaf14b07eff5324d5ac4dd3e557dc94621bf4b7f42f4e95e",
+    "client_log_sha256": "e54bb3bd164cb7475c1605f89f9436a0f315570021e87209f4ab3749eeb5c495",
+    "native_bridge_log_sha256": "51d9dcc38e6be5769eda419d5b508b24792455ecbd9f75db8cedf01f6b3a6425",
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "required_capture_pairs_reviewed": 31,
+    "capture_and_framebuffer_hash_mismatches": 0,
+    "scoped_audit_sha256": "7cc6478aa1d003cbcc077dc2d2b44f162578252872a2e769fc38f5d5b92321ba",
+    "scoped_audit_complete": true,
+    "scoped_audit_gaps": []
+  },
+  "preserved_failure": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-preview-disabled-v35bridge-full-20261007-b"
+}

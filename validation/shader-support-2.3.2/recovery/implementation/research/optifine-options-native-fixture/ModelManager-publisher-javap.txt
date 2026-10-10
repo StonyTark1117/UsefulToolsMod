@@ -1,0 +1,1136 @@
+Compiled from "ModelManager.java"
+public class net.minecraft.client.resources.model.ModelManager implements net.minecraft.server.packs.resources.PreparableReloadListener {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final net.minecraft.resources.FileToIdConverter MODEL_LISTER;
+
+  private java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.item.ItemModel> bakedItemStackModels;
+
+  private java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.item.ClientItem$Properties> itemProperties;
+
+  private final net.minecraft.client.resources.model.sprite.AtlasManager atlasManager;
+
+  private final net.minecraft.client.renderer.PlayerSkinRenderCache playerSkinRenderCache;
+
+  private final net.minecraft.client.color.block.BlockColors blockColors;
+
+  private net.minecraft.client.model.geom.EntityModelSet entityModelSet;
+
+  private net.minecraft.client.resources.model.ModelBakery$MissingModels missingModels;
+
+  private net.minecraft.client.renderer.block.BlockStateModelSet blockStateModelSet;
+
+  private net.minecraft.client.renderer.block.BlockModelSet blockModelSet;
+
+  private net.minecraft.client.renderer.block.FluidStateModelSet fluidStateModelSet;
+
+  private it.unimi.dsi.fastutil.objects.Object2IntMap<net.minecraft.world.level.block.state.BlockState> modelGroups;
+
+  private java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.item.ItemModel> bakedItemStackModelsView;
+
+  private net.minecraft.client.resources.model.ModelBakery modelBakery;
+
+  private static java.lang.ThreadLocal<net.minecraft.resources.Identifier> parsedModelLocation;
+
+  public net.minecraft.client.resources.model.ModelManager(net.minecraft.client.color.block.BlockColors, net.minecraft.client.resources.model.sprite.AtlasManager, net.minecraft.client.renderer.PlayerSkinRenderCache);
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: invokestatic  #7                  // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+         8: putfield      #13                 // Field bakedItemStackModels:Ljava/util/Map;
+        11: aload_0
+        12: invokestatic  #7                  // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+        15: putfield      #19                 // Field itemProperties:Ljava/util/Map;
+        18: aload_0
+        19: getstatic     #22                 // Field net/minecraft/client/model/geom/EntityModelSet.EMPTY:Lnet/minecraft/client/model/geom/EntityModelSet;
+        22: putfield      #28                 // Field entityModelSet:Lnet/minecraft/client/model/geom/EntityModelSet;
+        25: aload_0
+        26: invokestatic  #31                 // Method it/unimi/dsi/fastutil/objects/Object2IntMaps.emptyMap:()Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        29: putfield      #37                 // Field modelGroups:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        32: aload_0
+        33: invokestatic  #7                  // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+        36: putfield      #41                 // Field bakedItemStackModelsView:Ljava/util/Map;
+        39: aload_0
+        40: aload_1
+        41: putfield      #44                 // Field blockColors:Lnet/minecraft/client/color/block/BlockColors;
+        44: aload_0
+        45: aload_2
+        46: putfield      #48                 // Field atlasManager:Lnet/minecraft/client/resources/model/sprite/AtlasManager;
+        49: aload_0
+        50: aload_3
+        51: putfield      #52                 // Field playerSkinRenderCache:Lnet/minecraft/client/renderer/PlayerSkinRenderCache;
+        54: return
+
+  public net.minecraft.client.renderer.item.ItemModel getItemModel(net.minecraft.resources.Identifier);
+    Code:
+         0: aload_0
+         1: getfield      #13                 // Field bakedItemStackModels:Ljava/util/Map;
+         4: aload_1
+         5: aload_0
+         6: getfield      #56                 // Field missingModels:Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+         9: invokevirtual #60                 // Method net/minecraft/client/resources/model/ModelBakery$MissingModels.item:()Lnet/minecraft/client/renderer/item/MissingItemModel;
+        12: invokeinterface #66,  3           // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        17: checkcast     #70                 // class net/minecraft/client/renderer/item/ItemModel
+        20: areturn
+
+  public net.minecraft.client.renderer.item.ClientItem$Properties getItemProperties(net.minecraft.resources.Identifier);
+    Code:
+         0: aload_0
+         1: getfield      #19                 // Field itemProperties:Ljava/util/Map;
+         4: aload_1
+         5: getstatic     #72                 // Field net/minecraft/client/renderer/item/ClientItem$Properties.DEFAULT:Lnet/minecraft/client/renderer/item/ClientItem$Properties;
+         8: invokeinterface #66,  3           // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        13: checkcast     #73                 // class net/minecraft/client/renderer/item/ClientItem$Properties
+        16: areturn
+
+  public net.minecraft.client.renderer.block.BlockStateModelSet getBlockStateModelSet();
+    Code:
+         0: aload_0
+         1: getfield      #78                 // Field blockStateModelSet:Lnet/minecraft/client/renderer/block/BlockStateModelSet;
+         4: ldc           #82                 // String Block models not yet initialized
+         6: invokestatic  #84                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+         9: checkcast     #90                 // class net/minecraft/client/renderer/block/BlockStateModelSet
+        12: areturn
+
+  public net.minecraft.client.renderer.block.BlockModelSet getBlockModelSet();
+    Code:
+         0: aload_0
+         1: getfield      #92                 // Field blockModelSet:Lnet/minecraft/client/renderer/block/BlockModelSet;
+         4: ldc           #82                 // String Block models not yet initialized
+         6: invokestatic  #84                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+         9: checkcast     #96                 // class net/minecraft/client/renderer/block/BlockModelSet
+        12: areturn
+
+  public net.minecraft.client.renderer.block.FluidStateModelSet getFluidStateModelSet();
+    Code:
+         0: aload_0
+         1: getfield      #98                 // Field fluidStateModelSet:Lnet/minecraft/client/renderer/block/FluidStateModelSet;
+         4: ldc           #102                // String Fluid models not yet initialized
+         6: invokestatic  #84                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+         9: checkcast     #104                // class net/minecraft/client/renderer/block/FluidStateModelSet
+        12: areturn
+
+  public final java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor, net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, java.util.concurrent.Executor);
+    Code:
+         0: aload_1
+         1: invokevirtual #106                // Method net/minecraft/server/packs/resources/PreparableReloadListener$SharedState.resourceManager:()Lnet/minecraft/server/packs/resources/ResourceManager;
+         4: astore        5
+         6: invokedynamic #112,  0            // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+        11: aload_2
+        12: invokestatic  #116                // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        15: astore        6
+        17: aload         5
+        19: aload_2
+        20: invokestatic  #122                // Method loadBlockModels:(Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        23: astore        7
+        25: aload         5
+        27: aload_2
+        28: invokestatic  #126                // Method net/minecraft/client/resources/model/BlockStateModelLoader.loadBlockStates:(Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        31: astore        8
+        33: aload_0
+        34: invokedynamic #131,  0            // InvokeDynamic #1:get:(Lnet/minecraft/client/resources/model/ModelManager;)Ljava/util/function/Supplier;
+        39: aload_2
+        40: invokestatic  #116                // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        43: astore        9
+        45: aload         5
+        47: aload_2
+        48: invokestatic  #134                // Method net/minecraft/client/resources/model/ClientItemInfoLoader.scheduleLoad:(Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        51: astore        10
+        53: iconst_3
+        54: anewarray     #117                // class java/util/concurrent/CompletableFuture
+        57: dup
+        58: iconst_0
+        59: aload         7
+        61: aastore
+        62: dup
+        63: iconst_1
+        64: aload         8
+        66: aastore
+        67: dup
+        68: iconst_2
+        69: aload         10
+        71: aastore
+        72: invokestatic  #139                // Method java/util/concurrent/CompletableFuture.allOf:([Ljava/util/concurrent/CompletableFuture;)Ljava/util/concurrent/CompletableFuture;
+        75: aload         7
+        77: aload         8
+        79: aload         10
+        81: invokedynamic #143,  0            // InvokeDynamic #2:apply:(Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;)Ljava/util/function/Function;
+        86: aload_2
+        87: invokevirtual #147                // Method java/util/concurrent/CompletableFuture.thenApplyAsync:(Ljava/util/function/Function;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        90: astore        11
+        92: aload         11
+        94: invokedynamic #151,  0            // InvokeDynamic #3:accept:()Ljava/util/function/BiConsumer;
+        99: invokevirtual #155                // Method java/util/concurrent/CompletableFuture.whenComplete:(Ljava/util/function/BiConsumer;)Ljava/util/concurrent/CompletableFuture;
+       102: astore        12
+       104: aload         8
+       106: aload_0
+       107: invokedynamic #159,  0            // InvokeDynamic #4:apply:(Lnet/minecraft/client/resources/model/ModelManager;)Ljava/util/function/Function;
+       112: aload_2
+       113: invokevirtual #147                // Method java/util/concurrent/CompletableFuture.thenApplyAsync:(Ljava/util/function/Function;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+       116: astore        13
+       118: aload_1
+       119: getstatic     #162                // Field net/minecraft/client/resources/model/sprite/AtlasManager.PENDING_STITCH:Lnet/minecraft/server/packs/resources/PreparableReloadListener$StateKey;
+       122: invokevirtual #168                // Method net/minecraft/server/packs/resources/PreparableReloadListener$SharedState.get:(Lnet/minecraft/server/packs/resources/PreparableReloadListener$StateKey;)Ljava/lang/Object;
+       125: checkcast     #171                // class net/minecraft/client/resources/model/sprite/AtlasManager$PendingStitchResults
+       128: astore        14
+       130: aload         14
+       132: getstatic     #173                // Field net/minecraft/data/AtlasIds.BLOCKS:Lnet/minecraft/resources/Identifier;
+       135: invokevirtual #179                // Method net/minecraft/client/resources/model/sprite/AtlasManager$PendingStitchResults.get:(Lnet/minecraft/resources/Identifier;)Ljava/util/concurrent/CompletableFuture;
+       138: astore        15
+       140: aload         14
+       142: getstatic     #182                // Field net/minecraft/data/AtlasIds.ITEMS:Lnet/minecraft/resources/Identifier;
+       145: invokevirtual #179                // Method net/minecraft/client/resources/model/sprite/AtlasManager$PendingStitchResults.get:(Lnet/minecraft/resources/Identifier;)Ljava/util/concurrent/CompletableFuture;
+       148: astore        16
+       150: iconst_2
+       151: anewarray     #117                // class java/util/concurrent/CompletableFuture
+       154: dup
+       155: iconst_0
+       156: aload         9
+       158: aastore
+       159: dup
+       160: iconst_1
+       161: aload         6
+       163: aastore
+       164: invokestatic  #139                // Method java/util/concurrent/CompletableFuture.allOf:([Ljava/util/concurrent/CompletableFuture;)Ljava/util/concurrent/CompletableFuture;
+       167: aload_0
+       168: aload         9
+       170: aload         6
+       172: invokedynamic #185,  0            // InvokeDynamic #5:apply:(Lnet/minecraft/client/resources/model/ModelManager;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;)Ljava/util/function/Function;
+       177: invokevirtual #188                // Method java/util/concurrent/CompletableFuture.thenApplyAsync:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+       180: astore        17
+       182: bipush        9
+       184: anewarray     #117                // class java/util/concurrent/CompletableFuture
+       187: dup
+       188: iconst_0
+       189: aload         15
+       191: aastore
+       192: dup
+       193: iconst_1
+       194: aload         16
+       196: aastore
+       197: dup
+       198: iconst_2
+       199: aload         12
+       201: aastore
+       202: dup
+       203: iconst_3
+       204: aload         13
+       206: aastore
+       207: dup
+       208: iconst_4
+       209: aload         8
+       211: aastore
+       212: dup
+       213: iconst_5
+       214: aload         10
+       216: aastore
+       217: dup
+       218: bipush        6
+       220: aload         6
+       222: aastore
+       223: dup
+       224: bipush        7
+       226: aload         17
+       228: aastore
+       229: dup
+       230: bipush        8
+       232: aload         7
+       234: aastore
+       235: invokestatic  #139                // Method java/util/concurrent/CompletableFuture.allOf:([Ljava/util/concurrent/CompletableFuture;)Ljava/util/concurrent/CompletableFuture;
+       238: aload_0
+       239: aload         15
+       241: aload         16
+       243: aload         12
+       245: aload         13
+       247: aload         7
+       249: aload         6
+       251: aload         8
+       253: aload         10
+       255: aload         17
+       257: aload_2
+       258: invokedynamic #191,  0            // InvokeDynamic #6:apply:(Lnet/minecraft/client/resources/model/ModelManager;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/CompletableFuture;Ljava/util/concurrent/Executor;)Ljava/util/function/Function;
+       263: aload_2
+       264: invokevirtual #194                // Method java/util/concurrent/CompletableFuture.thenComposeAsync:(Ljava/util/function/Function;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+       267: aload_3
+       268: dup
+       269: invokestatic  #197                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       272: pop
+       273: invokedynamic #200,  0            // InvokeDynamic #7:apply:(Lnet/minecraft/server/packs/resources/PreparableReloadListener$PreparationBarrier;)Ljava/util/function/Function;
+       278: invokevirtual #203                // Method java/util/concurrent/CompletableFuture.thenCompose:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+       281: aload_0
+       282: invokedynamic #206,  0            // InvokeDynamic #8:accept:(Lnet/minecraft/client/resources/model/ModelManager;)Ljava/util/function/Consumer;
+       287: aload         4
+       289: invokevirtual #209                // Method java/util/concurrent/CompletableFuture.thenAcceptAsync:(Ljava/util/function/Consumer;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+       292: areturn
+
+  private static java.util.concurrent.CompletableFuture<java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.resources.model.UnbakedModel>> loadBlockModels(net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor);
+    Code:
+         0: aload_0
+         1: invokedynamic #213,  0            // InvokeDynamic #9:get:(Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/function/Supplier;
+         6: aload_1
+         7: invokestatic  #116                // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        10: aload_1
+        11: invokedynamic #216,  0            // InvokeDynamic #10:apply:(Ljava/util/concurrent/Executor;)Ljava/util/function/Function;
+        16: invokevirtual #203                // Method java/util/concurrent/CompletableFuture.thenCompose:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+        19: areturn
+
+  private static net.minecraft.client.resources.model.ModelManager$ResolvedModels discoverModelDependencies(java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.resources.model.UnbakedModel>, net.minecraft.client.resources.model.BlockStateModelLoader$LoadedModels, net.minecraft.client.resources.model.ClientItemInfoLoader$LoadedClientInfos);
+    Code:
+         0: invokestatic  #219                // Method net/minecraft/util/profiling/Profiler.get:()Lnet/minecraft/util/profiling/ProfilerFiller;
+         3: ldc           #224                // String dependencies
+         5: invokeinterface #226,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.zone:(Ljava/lang/String;)Lnet/minecraft/util/profiling/Zone;
+        10: astore        4
+        12: new           #232                // class net/minecraft/client/resources/model/ModelDiscovery
+        15: dup
+        16: aload_0
+        17: invokestatic  #234                // Method net/minecraft/client/resources/model/cuboid/MissingCuboidModel.missingModel:()Lnet/minecraft/client/resources/model/UnbakedModel;
+        20: invokespecial #240                // Method net/minecraft/client/resources/model/ModelDiscovery."<init>":(Ljava/util/Map;Lnet/minecraft/client/resources/model/UnbakedModel;)V
+        23: astore        5
+        25: aload         5
+        27: getstatic     #243                // Field net/minecraft/client/resources/model/cuboid/ItemModelGenerator.GENERATED_ITEM_MODEL_ID:Lnet/minecraft/resources/Identifier;
+        30: new           #244                // class net/minecraft/client/resources/model/cuboid/ItemModelGenerator
+        33: dup
+        34: invokespecial #248                // Method net/minecraft/client/resources/model/cuboid/ItemModelGenerator."<init>":()V
+        37: invokevirtual #249                // Method net/minecraft/client/resources/model/ModelDiscovery.addSpecialModel:(Lnet/minecraft/resources/Identifier;Lnet/minecraft/client/resources/model/UnbakedModel;)V
+        40: aload_1
+        41: invokevirtual #253                // Method net/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels.models:()Ljava/util/Map;
+        44: invokeinterface #258,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+        49: aload         5
+        51: dup
+        52: invokestatic  #197                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        55: pop
+        56: invokedynamic #262,  0            // InvokeDynamic #11:accept:(Lnet/minecraft/client/resources/model/ModelDiscovery;)Ljava/util/function/Consumer;
+        61: invokeinterface #265,  2          // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+        66: aload_2
+        67: invokevirtual #271                // Method net/minecraft/client/resources/model/ClientItemInfoLoader$LoadedClientInfos.contents:()Ljava/util/Map;
+        70: invokeinterface #258,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+        75: aload         5
+        77: invokedynamic #276,  0            // InvokeDynamic #12:accept:(Lnet/minecraft/client/resources/model/ModelDiscovery;)Ljava/util/function/Consumer;
+        82: invokeinterface #265,  2          // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+        87: new           #277                // class net/minecraft/client/resources/model/ModelManager$ResolvedModels
+        90: dup
+        91: aload         5
+        93: invokevirtual #279                // Method net/minecraft/client/resources/model/ModelDiscovery.missingModel:()Lnet/minecraft/client/resources/model/ResolvedModel;
+        96: aload         5
+        98: invokevirtual #282                // Method net/minecraft/client/resources/model/ModelDiscovery.resolve:()Ljava/util/Map;
+       101: invokespecial #285                // Method net/minecraft/client/resources/model/ModelManager$ResolvedModels."<init>":(Lnet/minecraft/client/resources/model/ResolvedModel;Ljava/util/Map;)V
+       104: astore_3
+       105: invokestatic  #288                // Method net/optifine/Config.isCustomItems:()Z
+       108: ifeq          118
+       111: aload_3
+       112: getfield      #294                // Field net/minecraft/client/resources/model/ModelManager$ResolvedModels.models:Ljava/util/Map;
+       115: invokestatic  #296                // Method net/optifine/CustomItems.collectModelSprites:(Ljava/util/Map;)V
+       118: aload         4
+       120: ifnull        158
+       123: aload         4
+       125: invokevirtual #302                // Method net/minecraft/util/profiling/Zone.close:()V
+       128: goto          158
+       131: astore        5
+       133: aload         4
+       135: ifnull        155
+       138: aload         4
+       140: invokevirtual #302                // Method net/minecraft/util/profiling/Zone.close:()V
+       143: goto          155
+       146: astore        6
+       148: aload         5
+       150: aload         6
+       152: invokevirtual #309                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       155: aload         5
+       157: athrow
+       158: aload_3
+       159: areturn
+      Exception table:
+         from    to  target type
+            12   118   131   Class java/lang/Throwable
+           138   143   146   Class java/lang/Throwable
+
+  private static java.util.concurrent.CompletableFuture<net.minecraft.client.resources.model.ModelManager$ReloadState> loadModels(net.minecraft.client.renderer.texture.SpriteLoader$Preparations, net.minecraft.client.renderer.texture.SpriteLoader$Preparations, net.minecraft.client.resources.model.ModelBakery, net.minecraft.client.renderer.block.LoadedBlockModels, it.unimi.dsi.fastutil.objects.Object2IntMap<net.minecraft.world.level.block.state.BlockState>, net.minecraft.client.model.geom.EntityModelSet, java.util.concurrent.Executor);
+    Code:
+         0: invokestatic  #313                // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+         3: invokestatic  #319                // Method com/google/common/collect/Multimaps.synchronizedMultimap:(Lcom/google/common/collect/Multimap;)Lcom/google/common/collect/Multimap;
+         6: astore        7
+         8: invokestatic  #313                // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+        11: invokestatic  #319                // Method com/google/common/collect/Multimaps.synchronizedMultimap:(Lcom/google/common/collect/Multimap;)Lcom/google/common/collect/Multimap;
+        14: astore        8
+        16: new           #325                // class net/minecraft/client/resources/model/ModelManager$1
+        19: dup
+        20: aload_0
+        21: aload         7
+        23: aload_1
+        24: aload         8
+        26: invokespecial #327                // Method net/minecraft/client/resources/model/ModelManager$1."<init>":(Lnet/minecraft/client/renderer/texture/SpriteLoader$Preparations;Lcom/google/common/collect/Multimap;Lnet/minecraft/client/renderer/texture/SpriteLoader$Preparations;Lcom/google/common/collect/Multimap;)V
+        29: astore        9
+        31: aload_2
+        32: aload         9
+        34: aload         6
+        36: invokevirtual #330                // Method net/minecraft/client/resources/model/ModelBakery.bakeModels:(Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        39: astore        10
+        41: aload         10
+        43: aload_3
+        44: aload         6
+        46: invokedynamic #336,  0            // InvokeDynamic #13:apply:(Lnet/minecraft/client/renderer/block/LoadedBlockModels;Ljava/util/concurrent/Executor;)Ljava/util/function/Function;
+        51: invokevirtual #203                // Method java/util/concurrent/CompletableFuture.thenCompose:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+        54: astore        11
+        56: aload         10
+        58: aload         11
+        60: aload_2
+        61: aload         9
+        63: aload         7
+        65: aload         8
+        67: aload         4
+        69: aload         5
+        71: invokedynamic #339,  0            // InvokeDynamic #14:apply:(Lnet/minecraft/client/resources/model/ModelBakery;Lnet/minecraft/client/resources/model/sprite/MaterialBaker;Lcom/google/common/collect/Multimap;Lcom/google/common/collect/Multimap;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/client/model/geom/EntityModelSet;)Ljava/util/function/BiFunction;
+        76: invokevirtual #342                // Method java/util/concurrent/CompletableFuture.thenCombine:(Ljava/util/concurrent/CompletionStage;Ljava/util/function/BiFunction;)Ljava/util/concurrent/CompletableFuture;
+        79: areturn
+
+  private static java.util.Map<net.minecraft.world.level.block.state.BlockState, net.minecraft.client.renderer.block.dispatch.BlockStateModel> createBlockStateToModelDispatch(java.util.Map<net.minecraft.world.level.block.state.BlockState, net.minecraft.client.renderer.block.dispatch.BlockStateModel>, net.minecraft.client.renderer.block.dispatch.BlockStateModel);
+    Code:
+         0: invokestatic  #219                // Method net/minecraft/util/profiling/Profiler.get:()Lnet/minecraft/util/profiling/ProfilerFiller;
+         3: ldc_w         #346                // String block state dispatch
+         6: invokeinterface #226,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.zone:(Ljava/lang/String;)Lnet/minecraft/util/profiling/Zone;
+        11: astore_3
+        12: new           #348                // class java/util/IdentityHashMap
+        15: dup
+        16: aload_0
+        17: invokespecial #350                // Method java/util/IdentityHashMap."<init>":(Ljava/util/Map;)V
+        20: astore        4
+        22: getstatic     #352                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+        25: invokeinterface #358,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.iterator:()Ljava/util/Iterator;
+        30: astore        5
+        32: aload         5
+        34: invokeinterface #364,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        39: ifeq          75
+        42: aload         5
+        44: invokeinterface #369,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        49: checkcast     #373                // class net/minecraft/world/level/block/Block
+        52: astore        6
+        54: aload         6
+        56: invokevirtual #375                // Method net/minecraft/world/level/block/Block.getStateDefinition:()Lnet/minecraft/world/level/block/state/StateDefinition;
+        59: invokevirtual #379                // Method net/minecraft/world/level/block/state/StateDefinition.getPossibleStates:()Lcom/google/common/collect/ImmutableList;
+        62: aload_0
+        63: aload_1
+        64: invokedynamic #385,  0            // InvokeDynamic #15:accept:(Ljava/util/Map;Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;)Ljava/util/function/Consumer;
+        69: invokevirtual #388                // Method com/google/common/collect/ImmutableList.forEach:(Ljava/util/function/Consumer;)V
+        72: goto          32
+        75: aload         4
+        77: astore_2
+        78: aload_3
+        79: ifnull        114
+        82: aload_3
+        83: invokevirtual #302                // Method net/minecraft/util/profiling/Zone.close:()V
+        86: goto          114
+        89: astore        4
+        91: aload_3
+        92: ifnull        111
+        95: aload_3
+        96: invokevirtual #302                // Method net/minecraft/util/profiling/Zone.close:()V
+        99: goto          111
+       102: astore        5
+       104: aload         4
+       106: aload         5
+       108: invokevirtual #309                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       111: aload         4
+       113: athrow
+       114: aload_2
+       115: checkcast     #8                  // class java/util/Map
+       118: areturn
+      Exception table:
+         from    to  target type
+            12    78    89   Class java/lang/Throwable
+            95    99   102   Class java/lang/Throwable
+
+  private static it.unimi.dsi.fastutil.objects.Object2IntMap<net.minecraft.world.level.block.state.BlockState> buildModelGroups(net.minecraft.client.color.block.BlockColors, net.minecraft.client.resources.model.BlockStateModelLoader$LoadedModels);
+    Code:
+         0: invokestatic  #219                // Method net/minecraft/util/profiling/Profiler.get:()Lnet/minecraft/util/profiling/ProfilerFiller;
+         3: ldc_w         #391                // String block groups
+         6: invokeinterface #226,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.zone:(Ljava/lang/String;)Lnet/minecraft/util/profiling/Zone;
+        11: astore_3
+        12: aload_0
+        13: aload_1
+        14: invokestatic  #393                // Method net/minecraft/client/resources/model/ModelGroupCollector.build:(Lnet/minecraft/client/color/block/BlockColors;Lnet/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels;)Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        17: astore_2
+        18: aload_3
+        19: ifnull        54
+        22: aload_3
+        23: invokevirtual #302                // Method net/minecraft/util/profiling/Zone.close:()V
+        26: goto          54
+        29: astore        4
+        31: aload_3
+        32: ifnull        51
+        35: aload_3
+        36: invokevirtual #302                // Method net/minecraft/util/profiling/Zone.close:()V
+        39: goto          51
+        42: astore        5
+        44: aload         4
+        46: aload         5
+        48: invokevirtual #309                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+        51: aload         4
+        53: athrow
+        54: aload_2
+        55: areturn
+      Exception table:
+         from    to  target type
+            12    18    29   Class java/lang/Throwable
+            35    39    42   Class java/lang/Throwable
+
+  private void apply(net.minecraft.client.resources.model.ModelManager$ReloadState);
+    Code:
+         0: aload_1
+         1: getfield      #399                // Field net/minecraft/client/resources/model/ModelManager$ReloadState.bakedModels:Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;
+         4: astore_2
+         5: aload_0
+         6: aload_2
+         7: invokevirtual #405                // Method net/minecraft/client/resources/model/ModelBakery$BakingResult.itemStackModels:()Ljava/util/Map;
+        10: putfield      #13                 // Field bakedItemStackModels:Ljava/util/Map;
+        13: aload_0
+        14: aload_2
+        15: invokevirtual #410                // Method net/minecraft/client/resources/model/ModelBakery$BakingResult.itemProperties:()Ljava/util/Map;
+        18: putfield      #19                 // Field itemProperties:Ljava/util/Map;
+        21: aload_0
+        22: aload_1
+        23: getfield      #412                // Field net/minecraft/client/resources/model/ModelManager$ReloadState.modelGroups:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        26: putfield      #37                 // Field modelGroups:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        29: aload_0
+        30: aload_2
+        31: invokevirtual #413                // Method net/minecraft/client/resources/model/ModelBakery$BakingResult.missingModels:()Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+        34: putfield      #56                 // Field missingModels:Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+        37: aload_0
+        38: aload_0
+        39: getfield      #13                 // Field bakedItemStackModels:Ljava/util/Map;
+        42: invokestatic  #416                // Method java/util/Collections.unmodifiableMap:(Ljava/util/Map;)Ljava/util/Map;
+        45: putfield      #41                 // Field bakedItemStackModelsView:Ljava/util/Map;
+        48: aload_0
+        49: aload_1
+        50: invokevirtual #422                // Method net/minecraft/client/resources/model/ModelManager$ReloadState.modelBakery:()Lnet/minecraft/client/resources/model/ModelBakery;
+        53: putfield      #426                // Field modelBakery:Lnet/minecraft/client/resources/model/ModelBakery;
+        56: getstatic     #429                // Field net/optifine/reflect/Reflector.ForgeHooksClient_onModelBake:Lnet/optifine/reflect/ReflectorMethod;
+        59: iconst_2
+        60: anewarray     #2                  // class java/lang/Object
+        63: dup
+        64: iconst_0
+        65: aload_0
+        66: aastore
+        67: dup
+        68: iconst_1
+        69: aload_0
+        70: getfield      #426                // Field modelBakery:Lnet/minecraft/client/resources/model/ModelBakery;
+        73: aastore
+        74: invokevirtual #435                // Method net/optifine/reflect/ReflectorMethod.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        77: pop
+        78: aload_0
+        79: new           #90                 // class net/minecraft/client/renderer/block/BlockStateModelSet
+        82: dup
+        83: aload_1
+        84: getfield      #441                // Field net/minecraft/client/resources/model/ModelManager$ReloadState.blockStateModels:Ljava/util/Map;
+        87: aload_0
+        88: getfield      #56                 // Field missingModels:Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+        91: invokevirtual #444                // Method net/minecraft/client/resources/model/ModelBakery$MissingModels.block:()Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;
+        94: invokespecial #448                // Method net/minecraft/client/renderer/block/BlockStateModelSet."<init>":(Ljava/util/Map;Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;)V
+        97: putfield      #78                 // Field blockStateModelSet:Lnet/minecraft/client/renderer/block/BlockStateModelSet;
+       100: aload_0
+       101: new           #96                 // class net/minecraft/client/renderer/block/BlockModelSet
+       104: dup
+       105: aload_0
+       106: getfield      #78                 // Field blockStateModelSet:Lnet/minecraft/client/renderer/block/BlockStateModelSet;
+       109: aload_1
+       110: getfield      #451                // Field net/minecraft/client/resources/model/ModelManager$ReloadState.blockModels:Ljava/util/Map;
+       113: aload_0
+       114: getfield      #44                 // Field blockColors:Lnet/minecraft/client/color/block/BlockColors;
+       117: invokespecial #454                // Method net/minecraft/client/renderer/block/BlockModelSet."<init>":(Lnet/minecraft/client/renderer/block/BlockStateModelSet;Ljava/util/Map;Lnet/minecraft/client/color/block/BlockColors;)V
+       120: putfield      #92                 // Field blockModelSet:Lnet/minecraft/client/renderer/block/BlockModelSet;
+       123: aload_0
+       124: new           #104                // class net/minecraft/client/renderer/block/FluidStateModelSet
+       127: dup
+       128: aload_1
+       129: getfield      #457                // Field net/minecraft/client/resources/model/ModelManager$ReloadState.fluidModels:Ljava/util/Map;
+       132: aload_0
+       133: getfield      #56                 // Field missingModels:Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+       136: invokevirtual #460                // Method net/minecraft/client/resources/model/ModelBakery$MissingModels.fluid:()Lnet/minecraft/client/renderer/block/FluidModel;
+       139: invokespecial #464                // Method net/minecraft/client/renderer/block/FluidStateModelSet."<init>":(Ljava/util/Map;Lnet/minecraft/client/renderer/block/FluidModel;)V
+       142: putfield      #98                 // Field fluidStateModelSet:Lnet/minecraft/client/renderer/block/FluidStateModelSet;
+       145: aload_0
+       146: aload_1
+       147: getfield      #467                // Field net/minecraft/client/resources/model/ModelManager$ReloadState.entityModelSet:Lnet/minecraft/client/model/geom/EntityModelSet;
+       150: putfield      #28                 // Field entityModelSet:Lnet/minecraft/client/model/geom/EntityModelSet;
+       153: return
+
+  public boolean requiresRender(net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
+    Code:
+         0: aload_1
+         1: aload_2
+         2: if_acmpne     7
+         5: iconst_0
+         6: ireturn
+         7: aload_0
+         8: getfield      #37                 // Field modelGroups:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        11: aload_1
+        12: invokeinterface #468,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.getInt:(Ljava/lang/Object;)I
+        17: istore_3
+        18: iload_3
+        19: iconst_m1
+        20: if_icmpeq     66
+        23: aload_0
+        24: getfield      #37                 // Field modelGroups:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+        27: aload_2
+        28: invokeinterface #468,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.getInt:(Ljava/lang/Object;)I
+        33: istore        4
+        35: iload_3
+        36: iload         4
+        38: if_icmpne     66
+        41: aload_1
+        42: invokevirtual #474                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+        45: astore        5
+        47: aload_2
+        48: invokevirtual #474                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+        51: astore        6
+        53: aload         5
+        55: aload         6
+        57: if_acmpeq     64
+        60: iconst_1
+        61: goto          65
+        64: iconst_0
+        65: ireturn
+        66: iconst_1
+        67: ireturn
+
+  public net.minecraft.client.renderer.item.ItemModel getMissingItemModel();
+    Code:
+         0: aload_0
+         1: getfield      #56                 // Field missingModels:Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+         4: invokevirtual #60                 // Method net/minecraft/client/resources/model/ModelBakery$MissingModels.item:()Lnet/minecraft/client/renderer/item/MissingItemModel;
+         7: areturn
+
+  public net.minecraft.client.resources.model.ModelBakery$MissingModels getMissingModels();
+    Code:
+         0: aload_0
+         1: getfield      #56                 // Field missingModels:Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+         4: areturn
+
+  public net.minecraft.client.resources.model.sprite.AtlasManager getAtlasManager();
+    Code:
+         0: aload_0
+         1: getfield      #48                 // Field atlasManager:Lnet/minecraft/client/resources/model/sprite/AtlasManager;
+         4: areturn
+
+  private static com.mojang.datafixers.util.Pair<net.minecraft.resources.Identifier, net.minecraft.client.resources.model.cuboid.CuboidModel> fixBlockModel(net.minecraft.resources.Identifier, net.minecraft.client.resources.model.cuboid.CuboidModel);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #480                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.parent:()Lnet/minecraft/resources/Identifier;
+         5: invokestatic  #486                // Method resolveRelative:(Lnet/minecraft/resources/Identifier;Lnet/minecraft/resources/Identifier;)Lnet/minecraft/resources/Identifier;
+         8: astore_2
+         9: aload_2
+        10: aload_1
+        11: invokevirtual #480                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.parent:()Lnet/minecraft/resources/Identifier;
+        14: if_acmpeq     46
+        17: new           #481                // class net/minecraft/client/resources/model/cuboid/CuboidModel
+        20: dup
+        21: aload_1
+        22: invokevirtual #490                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.geometry:()Lnet/minecraft/client/resources/model/geometry/UnbakedGeometry;
+        25: aload_1
+        26: invokevirtual #494                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.guiLight:()Lnet/minecraft/client/resources/model/UnbakedModel$GuiLight;
+        29: aload_1
+        30: invokevirtual #498                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.ambientOcclusion:()Ljava/lang/Boolean;
+        33: aload_1
+        34: invokevirtual #502                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.transforms:()Lnet/minecraft/client/resources/model/cuboid/ItemTransforms;
+        37: aload_1
+        38: invokevirtual #506                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.textureSlots:()Lnet/minecraft/client/resources/model/sprite/TextureSlots$Data;
+        41: aload_2
+        42: invokespecial #510                // Method net/minecraft/client/resources/model/cuboid/CuboidModel."<init>":(Lnet/minecraft/client/resources/model/geometry/UnbakedGeometry;Lnet/minecraft/client/resources/model/UnbakedModel$GuiLight;Ljava/lang/Boolean;Lnet/minecraft/client/resources/model/cuboid/ItemTransforms;Lnet/minecraft/client/resources/model/sprite/TextureSlots$Data;Lnet/minecraft/resources/Identifier;)V
+        45: astore_1
+        46: new           #513                // class com/mojang/datafixers/util/Pair
+        49: dup
+        50: aload_0
+        51: aload_1
+        52: invokespecial #515                // Method com/mojang/datafixers/util/Pair."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+        55: areturn
+
+  public static net.minecraft.resources.Identifier resolveRelative(net.minecraft.resources.Identifier, net.minecraft.resources.Identifier);
+    Code:
+         0: aload_0
+         1: ifnull        8
+         4: aload_1
+         5: ifnonnull     10
+         8: aload_1
+         9: areturn
+        10: aload_1
+        11: invokevirtual #518                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+        14: ldc_w         #524                // String ./
+        17: invokevirtual #526                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        20: ifeq          54
+        23: aload_0
+        24: invokevirtual #518                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+        27: invokestatic  #532                // Method net/optifine/util/PathUtils.removeLast:(Ljava/lang/String;)Ljava/lang/String;
+        30: astore_2
+        31: aload_1
+        32: invokevirtual #518                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+        35: ldc_w         #524                // String ./
+        38: aload_2
+        39: invokedynamic #538,  0            // InvokeDynamic #16:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        44: invokestatic  #541                // Method net/optifine/util/StrUtils.replacePrefix:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        47: astore_3
+        48: aload_1
+        49: aload_3
+        50: invokevirtual #547                // Method net/minecraft/resources/Identifier.withPath:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+        53: astore_1
+        54: aload_1
+        55: areturn
+
+  public static net.minecraft.client.resources.model.sprite.Material fixMaterial(net.minecraft.client.resources.model.sprite.Material);
+    Code:
+         0: getstatic     #551                // Field parsedModelLocation:Ljava/lang/ThreadLocal;
+         3: invokevirtual #555                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+         6: checkcast     #519                // class net/minecraft/resources/Identifier
+         9: astore_1
+        10: aload_1
+        11: ifnull        81
+        14: aload_1
+        15: invokevirtual #559                // Method net/minecraft/resources/Identifier.isDefaultNamespace:()Z
+        18: ifeq          81
+        21: aload_1
+        22: invokevirtual #518                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+        25: ldc_w         #562                // String optifine/cit/
+        28: invokevirtual #526                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        31: ifeq          81
+        34: getstatic     #564                // Field net/minecraft/client/renderer/texture/TextureAtlas.LOCATION_ITEMS:Lnet/minecraft/resources/Identifier;
+        37: astore_2
+        38: aload_1
+        39: aload_0
+        40: invokevirtual #569                // Method net/minecraft/client/resources/model/sprite/Material.sprite:()Lnet/minecraft/resources/Identifier;
+        43: invokestatic  #486                // Method resolveRelative:(Lnet/minecraft/resources/Identifier;Lnet/minecraft/resources/Identifier;)Lnet/minecraft/resources/Identifier;
+        46: astore_3
+        47: aload_3
+        48: invokevirtual #518                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+        51: ldc_w         #574                // String block/
+        54: invokevirtual #526                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+        57: ifeq          68
+        60: aload_3
+        61: ldc_w         #578                // String _virtual_/
+        64: invokevirtual #580                // Method net/minecraft/resources/Identifier.withPrefix:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+        67: astore_3
+        68: new           #570                // class net/minecraft/client/resources/model/sprite/Material
+        71: dup
+        72: aload_2
+        73: aload_0
+        74: invokevirtual #583                // Method net/minecraft/client/resources/model/sprite/Material.forceTranslucent:()Z
+        77: invokespecial #586                // Method net/minecraft/client/resources/model/sprite/Material."<init>":(Lnet/minecraft/resources/Identifier;Z)V
+        80: areturn
+        81: aload_0
+        82: areturn
+
+  public java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.item.ItemModel> getItemModels();
+    Code:
+         0: aload_0
+         1: getfield      #41                 // Field bakedItemStackModelsView:Ljava/util/Map;
+         4: areturn
+
+  public net.minecraft.client.resources.model.ModelBakery getModelBakery();
+    Code:
+         0: aload_0
+         1: getfield      #426                // Field modelBakery:Lnet/minecraft/client/resources/model/ModelBakery;
+         4: ldc_w         #589                // String Attempted to query model bakery before it has been initialized.
+         7: invokestatic  #591                // Method com/google/common/base/Preconditions.checkNotNull:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #331                // class net/minecraft/client/resources/model/ModelBakery
+        13: areturn
+
+  public java.util.function.Supplier<net.minecraft.client.model.geom.EntityModelSet> entityModels();
+    Code:
+         0: aload_0
+         1: invokedynamic #596,  0            // InvokeDynamic #17:get:(Lnet/minecraft/client/resources/model/ModelManager;)Ljava/util/function/Supplier;
+         6: areturn
+
+  private net.minecraft.client.model.geom.EntityModelSet lambda$entityModels$0();
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field entityModelSet:Lnet/minecraft/client/model/geom/EntityModelSet;
+         4: areturn
+
+  private static void lambda$createBlockStateToModelDispatch$0(java.util.Map, net.minecraft.client.renderer.block.dispatch.BlockStateModel, net.minecraft.world.level.block.state.BlockState);
+    Code:
+         0: aload_0
+         1: aload_2
+         2: aload_1
+         3: invokeinterface #597,  3          // InterfaceMethod java/util/Map.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+         8: ifnonnull     23
+        11: getstatic     #600                // Field LOGGER:Lorg/slf4j/Logger;
+        14: ldc_w         #604                // String Missing model for variant: \'{}\'
+        17: aload_2
+        18: invokeinterface #606,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+        23: return
+
+  private static net.minecraft.client.resources.model.ModelManager$ReloadState lambda$loadModels$1(net.minecraft.client.resources.model.ModelBakery, net.minecraft.client.resources.model.sprite.MaterialBaker, com.google.common.collect.Multimap, com.google.common.collect.Multimap, it.unimi.dsi.fastutil.objects.Object2IntMap, net.minecraft.client.model.geom.EntityModelSet, net.minecraft.client.resources.model.ModelBakery$BakingResult, java.util.Map);
+    Code:
+         0: getstatic     #612                // Field net/optifine/reflect/Reflector.ForgeHooksClient_onModifyBakingResult:Lnet/optifine/reflect/ReflectorMethod;
+         3: iconst_2
+         4: anewarray     #2                  // class java/lang/Object
+         7: dup
+         8: iconst_0
+         9: aload_0
+        10: aastore
+        11: dup
+        12: iconst_1
+        13: aload         6
+        15: aastore
+        16: invokevirtual #435                // Method net/optifine/reflect/ReflectorMethod.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        19: pop
+        20: aload_1
+        21: invokestatic  #615                // Method net/minecraft/client/renderer/block/FluidStateModelSet.bake:(Lnet/minecraft/client/resources/model/sprite/MaterialBaker;)Ljava/util/Map;
+        24: astore        8
+        26: aload_2
+        27: invokeinterface #619,  1          // InterfaceMethod com/google/common/collect/Multimap.asMap:()Ljava/util/Map;
+        32: invokedynamic #624,  0            // InvokeDynamic #18:accept:()Ljava/util/function/BiConsumer;
+        37: invokeinterface #625,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        42: aload_3
+        43: invokeinterface #619,  1          // InterfaceMethod com/google/common/collect/Multimap.asMap:()Ljava/util/Map;
+        48: invokedynamic #628,  0            // InvokeDynamic #19:accept:()Ljava/util/function/BiConsumer;
+        53: invokeinterface #625,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        58: aload         6
+        60: invokevirtual #629                // Method net/minecraft/client/resources/model/ModelBakery$BakingResult.blockStateModels:()Ljava/util/Map;
+        63: aload         6
+        65: invokevirtual #413                // Method net/minecraft/client/resources/model/ModelBakery$BakingResult.missingModels:()Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+        68: invokevirtual #444                // Method net/minecraft/client/resources/model/ModelBakery$MissingModels.block:()Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;
+        71: invokestatic  #631                // Method createBlockStateToModelDispatch:(Ljava/util/Map;Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;)Ljava/util/Map;
+        74: astore        9
+        76: new           #400                // class net/minecraft/client/resources/model/ModelManager$ReloadState
+        79: dup
+        80: aload         6
+        82: aload         4
+        84: aload         9
+        86: aload         7
+        88: aload         8
+        90: aload         5
+        92: aload_0
+        93: invokespecial #635                // Method net/minecraft/client/resources/model/ModelManager$ReloadState."<init>":(Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/ModelBakery;)V
+        96: areturn
+
+  private static void lambda$loadModels$4(java.lang.String, java.util.Collection);
+    Code:
+         0: getstatic     #600                // Field LOGGER:Lorg/slf4j/Logger;
+         3: ldc_w         #638                // String Missing texture references in model {}: {}
+         6: aload_0
+         7: aload_1
+         8: invokeinterface #640,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+        13: invokeinterface #644,  1          // InterfaceMethod java/util/stream/Stream.sorted:()Ljava/util/stream/Stream;
+        18: invokedynamic #649,  0            // InvokeDynamic #20:apply:()Ljava/util/function/Function;
+        23: invokeinterface #652,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+        28: ldc_w         #656                // String ,
+        31: invokestatic  #658                // Method java/util/stream/Collectors.joining:(Ljava/lang/CharSequence;)Ljava/util/stream/Collector;
+        34: invokeinterface #664,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+        39: invokeinterface #668,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+        44: return
+
+  private static java.lang.String lambda$loadModels$5(java.lang.String);
+    Code:
+         0: aload_0
+         1: invokedynamic #671,  0            // InvokeDynamic #21:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+         6: areturn
+
+  private static void lambda$loadModels$2(java.lang.String, java.util.Collection);
+    Code:
+         0: getstatic     #600                // Field LOGGER:Lorg/slf4j/Logger;
+         3: ldc_w         #672                // String Missing textures in model {}: {}
+         6: aload_0
+         7: aload_1
+         8: invokeinterface #640,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+        13: invokeinterface #644,  1          // InterfaceMethod java/util/stream/Stream.sorted:()Ljava/util/stream/Stream;
+        18: invokedynamic #674,  0            // InvokeDynamic #22:apply:()Ljava/util/function/Function;
+        23: invokeinterface #652,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+        28: ldc_w         #675                // String \n
+        31: invokestatic  #658                // Method java/util/stream/Collectors.joining:(Ljava/lang/CharSequence;)Ljava/util/stream/Collector;
+        34: invokeinterface #664,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+        39: invokeinterface #668,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+        44: return
+
+  private static java.lang.String lambda$loadModels$3(net.minecraft.resources.Identifier);
+    Code:
+         0: aload_0
+         1: invokestatic  #677                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+         4: invokedynamic #671,  0            // InvokeDynamic #21:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+         9: areturn
+
+  private static java.util.concurrent.CompletionStage lambda$loadModels$0(net.minecraft.client.renderer.block.LoadedBlockModels, java.util.concurrent.Executor, net.minecraft.client.resources.model.ModelBakery$BakingResult);
+    Code:
+         0: aload_0
+         1: aload_2
+         2: dup
+         3: invokestatic  #197                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+         6: pop
+         7: invokedynamic #681,  0            // InvokeDynamic #23:apply:(Lnet/minecraft/client/resources/model/ModelBakery$BakingResult;)Ljava/util/function/Function;
+        12: aload_2
+        13: invokevirtual #413                // Method net/minecraft/client/resources/model/ModelBakery$BakingResult.missingModels:()Lnet/minecraft/client/resources/model/ModelBakery$MissingModels;
+        16: invokevirtual #444                // Method net/minecraft/client/resources/model/ModelBakery$MissingModels.block:()Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;
+        19: aload_1
+        20: invokevirtual #684                // Method net/minecraft/client/renderer/block/LoadedBlockModels.bake:(Ljava/util/function/Function;Lnet/minecraft/client/renderer/block/dispatch/BlockStateModel;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        23: areturn
+
+  private static void lambda$discoverModelDependencies$0(net.minecraft.client.resources.model.ModelDiscovery, net.minecraft.client.renderer.item.ClientItem);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #689                // Method net/minecraft/client/renderer/item/ClientItem.model:()Lnet/minecraft/client/renderer/item/ItemModel$Unbaked;
+         5: invokevirtual #695                // Method net/minecraft/client/resources/model/ModelDiscovery.addRoot:(Lnet/minecraft/client/resources/model/ResolvableModel;)V
+         8: return
+
+  private static java.util.concurrent.CompletionStage lambda$loadBlockModels$1(java.util.concurrent.Executor, java.util.Map);
+    Code:
+         0: new           #699                // class java/util/ArrayList
+         3: dup
+         4: aload_1
+         5: invokeinterface #701,  1          // InterfaceMethod java/util/Map.size:()I
+        10: invokespecial #705                // Method java/util/ArrayList."<init>":(I)V
+        13: astore_2
+        14: aload_1
+        15: invokestatic  #708                // Method net/optifine/util/TextureUtils.registerCustomModels:(Ljava/util/Map;)V
+        18: aload_1
+        19: invokeinterface #713,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        24: invokeinterface #717,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        29: astore_3
+        30: aload_3
+        31: invokeinterface #364,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        36: ifeq          71
+        39: aload_3
+        40: invokeinterface #369,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        45: checkcast     #720                // class java/util/Map$Entry
+        48: astore        4
+        50: aload_2
+        51: aload         4
+        53: invokedynamic #722,  0            // InvokeDynamic #24:get:(Ljava/util/Map$Entry;)Ljava/util/function/Supplier;
+        58: aload_0
+        59: invokestatic  #116                // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        62: invokeinterface #725,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        67: pop
+        68: goto          30
+        71: aload_2
+        72: invokestatic  #731                // Method net/minecraft/util/Util.sequence:(Ljava/util/List;)Ljava/util/concurrent/CompletableFuture;
+        75: invokedynamic #737,  0            // InvokeDynamic #25:apply:()Ljava/util/function/Function;
+        80: invokevirtual #738                // Method java/util/concurrent/CompletableFuture.thenApply:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+        83: areturn
+
+  private static java.util.Map lambda$loadBlockModels$3(java.util.List);
+    Code:
+         0: aload_0
+         1: invokeinterface #741,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+         6: invokedynamic #742,  0            // InvokeDynamic #26:test:()Ljava/util/function/Predicate;
+        11: invokeinterface #746,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+        16: invokedynamic #750,  0            // InvokeDynamic #27:apply:()Ljava/util/function/Function;
+        21: invokedynamic #751,  0            // InvokeDynamic #28:apply:()Ljava/util/function/Function;
+        26: invokestatic  #752                // Method java/util/stream/Collectors.toUnmodifiableMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+        29: invokeinterface #664,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+        34: checkcast     #8                  // class java/util/Map
+        37: areturn
+
+  private static com.mojang.datafixers.util.Pair lambda$loadBlockModels$2(java.util.Map$Entry);
+    Code:
+         0: getstatic     #756                // Field MODEL_LISTER:Lnet/minecraft/resources/FileToIdConverter;
+         3: aload_0
+         4: invokeinterface #760,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+         9: checkcast     #519                // class net/minecraft/resources/Identifier
+        12: invokevirtual #763                // Method net/minecraft/resources/FileToIdConverter.fileToId:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/resources/Identifier;
+        15: astore_1
+        16: aload_0
+        17: invokeinterface #769,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        22: checkcast     #772                // class net/minecraft/server/packs/resources/Resource
+        25: invokevirtual #774                // Method net/minecraft/server/packs/resources/Resource.openAsReader:()Ljava/io/BufferedReader;
+        28: astore_3
+        29: getstatic     #551                // Field parsedModelLocation:Ljava/lang/ThreadLocal;
+        32: aload_1
+        33: invokevirtual #778                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+        36: aload_1
+        37: aload_3
+        38: invokestatic  #782                // Method net/minecraft/client/resources/model/cuboid/CuboidModel.fromStream:(Ljava/io/Reader;)Lnet/minecraft/client/resources/model/cuboid/CuboidModel;
+        41: invokestatic  #786                // Method fixBlockModel:(Lnet/minecraft/resources/Identifier;Lnet/minecraft/client/resources/model/cuboid/CuboidModel;)Lcom/mojang/datafixers/util/Pair;
+        44: astore_2
+        45: getstatic     #551                // Field parsedModelLocation:Ljava/lang/ThreadLocal;
+        48: aconst_null
+        49: invokevirtual #778                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+        52: aload_3
+        53: ifnull        88
+        56: aload_3
+        57: invokevirtual #790                // Method java/io/Reader.close:()V
+        60: goto          88
+        63: astore        4
+        65: aload_3
+        66: ifnull        85
+        69: aload_3
+        70: invokevirtual #790                // Method java/io/Reader.close:()V
+        73: goto          85
+        76: astore        5
+        78: aload         4
+        80: aload         5
+        82: invokevirtual #309                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+        85: aload         4
+        87: athrow
+        88: aload_2
+        89: areturn
+        90: astore_2
+        91: getstatic     #600                // Field LOGGER:Lorg/slf4j/Logger;
+        94: ldc_w         #795                // String Failed to load model {}
+        97: aload_0
+        98: invokeinterface #760,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       103: aload_2
+       104: invokeinterface #797,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+       109: aconst_null
+       110: areturn
+      Exception table:
+         from    to  target type
+            29    52    63   Class java/lang/Throwable
+            69    73    76   Class java/lang/Throwable
+            16    89    90   Class java/lang/Exception
+
+  private static java.util.Map lambda$loadBlockModels$0(net.minecraft.server.packs.resources.ResourceManager);
+    Code:
+         0: getstatic     #756                // Field MODEL_LISTER:Lnet/minecraft/resources/FileToIdConverter;
+         3: aload_0
+         4: invokevirtual #800                // Method net/minecraft/resources/FileToIdConverter.listMatchingResources:(Lnet/minecraft/server/packs/resources/ResourceManager;)Ljava/util/Map;
+         7: areturn
+
+  private java.util.concurrent.CompletionStage lambda$reload$5(java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.Executor, java.lang.Void);
+    Code:
+         0: aload_1
+         1: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+         4: checkcast     #807                // class net/minecraft/client/renderer/texture/SpriteLoader$Preparations
+         7: astore        12
+         9: aload_2
+        10: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        13: checkcast     #807                // class net/minecraft/client/renderer/texture/SpriteLoader$Preparations
+        16: astore        13
+        18: aload_3
+        19: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        22: checkcast     #277                // class net/minecraft/client/resources/model/ModelManager$ResolvedModels
+        25: astore        14
+        27: aload         4
+        29: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        32: checkcast     #469                // class it/unimi/dsi/fastutil/objects/Object2IntMap
+        35: astore        15
+        37: aload         5
+        39: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        42: checkcast     #8                  // class java/util/Map
+        45: invokeinterface #809,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+        50: aload         14
+        52: getfield      #294                // Field net/minecraft/client/resources/model/ModelManager$ResolvedModels.models:Ljava/util/Map;
+        55: invokeinterface #809,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+        60: invokestatic  #812                // Method com/google/common/collect/Sets.difference:(Ljava/util/Set;Ljava/util/Set;)Lcom/google/common/collect/Sets$SetView;
+        63: astore        16
+        65: aload         16
+        67: invokeinterface #818,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+        72: ifne          116
+        75: getstatic     #600                // Field LOGGER:Lorg/slf4j/Logger;
+        78: ldc_w         #821                // String Unreferenced models: \n{}
+        81: aload         16
+        83: invokeinterface #823,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+        88: invokeinterface #644,  1          // InterfaceMethod java/util/stream/Stream.sorted:()Ljava/util/stream/Stream;
+        93: invokedynamic #824,  0            // InvokeDynamic #29:apply:()Ljava/util/function/Function;
+        98: invokeinterface #652,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+       103: invokestatic  #825                // Method java/util/stream/Collectors.joining:()Ljava/util/stream/Collector;
+       106: invokeinterface #664,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+       111: invokeinterface #828,  3          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;)V
+       116: new           #331                // class net/minecraft/client/resources/model/ModelBakery
+       119: dup
+       120: aload         6
+       122: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+       125: checkcast     #23                 // class net/minecraft/client/model/geom/EntityModelSet
+       128: aload_0
+       129: getfield      #48                 // Field atlasManager:Lnet/minecraft/client/resources/model/sprite/AtlasManager;
+       132: aload_0
+       133: getfield      #52                 // Field playerSkinRenderCache:Lnet/minecraft/client/renderer/PlayerSkinRenderCache;
+       136: aload         7
+       138: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+       141: checkcast     #254                // class net/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels
+       144: invokevirtual #253                // Method net/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels.models:()Ljava/util/Map;
+       147: aload         8
+       149: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+       152: checkcast     #272                // class net/minecraft/client/resources/model/ClientItemInfoLoader$LoadedClientInfos
+       155: invokevirtual #271                // Method net/minecraft/client/resources/model/ClientItemInfoLoader$LoadedClientInfos.contents:()Ljava/util/Map;
+       158: aload         14
+       160: invokevirtual #831                // Method net/minecraft/client/resources/model/ModelManager$ResolvedModels.models:()Ljava/util/Map;
+       163: aload         14
+       165: invokevirtual #832                // Method net/minecraft/client/resources/model/ModelManager$ResolvedModels.missing:()Lnet/minecraft/client/resources/model/ResolvedModel;
+       168: invokespecial #835                // Method net/minecraft/client/resources/model/ModelBakery."<init>":(Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/sprite/SpriteGetter;Lnet/minecraft/client/renderer/PlayerSkinRenderCache;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lnet/minecraft/client/resources/model/ResolvedModel;)V
+       171: astore        17
+       173: aload         12
+       175: aload         13
+       177: aload         17
+       179: aload         9
+       181: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+       184: checkcast     #685                // class net/minecraft/client/renderer/block/LoadedBlockModels
+       187: aload         15
+       189: aload         6
+       191: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+       194: checkcast     #23                 // class net/minecraft/client/model/geom/EntityModelSet
+       197: aload         10
+       199: invokestatic  #838                // Method loadModels:(Lnet/minecraft/client/renderer/texture/SpriteLoader$Preparations;Lnet/minecraft/client/renderer/texture/SpriteLoader$Preparations;Lnet/minecraft/client/resources/model/ModelBakery;Lnet/minecraft/client/renderer/block/LoadedBlockModels;Lit/unimi/dsi/fastutil/objects/Object2IntMap;Lnet/minecraft/client/model/geom/EntityModelSet;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+       202: areturn
+
+  private static java.lang.String lambda$reload$6(net.minecraft.resources.Identifier);
+    Code:
+         0: aload_0
+         1: invokestatic  #677                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+         4: invokedynamic #842,  0            // InvokeDynamic #30:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+         9: areturn
+
+  private net.minecraft.client.renderer.block.LoadedBlockModels lambda$reload$4(java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.lang.Void);
+    Code:
+         0: new           #685                // class net/minecraft/client/renderer/block/LoadedBlockModels
+         3: dup
+         4: aload_1
+         5: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+         8: checkcast     #8                  // class java/util/Map
+        11: aload_2
+        12: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        15: checkcast     #23                 // class net/minecraft/client/model/geom/EntityModelSet
+        18: aload_0
+        19: getfield      #48                 // Field atlasManager:Lnet/minecraft/client/resources/model/sprite/AtlasManager;
+        22: aload_0
+        23: getfield      #52                 // Field playerSkinRenderCache:Lnet/minecraft/client/renderer/PlayerSkinRenderCache;
+        26: invokespecial #843                // Method net/minecraft/client/renderer/block/LoadedBlockModels."<init>":(Ljava/util/Map;Lnet/minecraft/client/model/geom/EntityModelSet;Lnet/minecraft/client/resources/model/sprite/SpriteGetter;Lnet/minecraft/client/renderer/PlayerSkinRenderCache;)V
+        29: areturn
+
+  private it.unimi.dsi.fastutil.objects.Object2IntMap lambda$reload$3(net.minecraft.client.resources.model.BlockStateModelLoader$LoadedModels);
+    Code:
+         0: aload_0
+         1: getfield      #44                 // Field blockColors:Lnet/minecraft/client/color/block/BlockColors;
+         4: aload_1
+         5: invokestatic  #846                // Method buildModelGroups:(Lnet/minecraft/client/color/block/BlockColors;Lnet/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels;)Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+         8: areturn
+
+  private static void lambda$reload$2(net.minecraft.client.resources.model.ModelManager$ResolvedModels, java.lang.Throwable);
+    Code:
+         0: aload_1
+         1: invokestatic  #849                // Method net/optifine/util/TextureUtils.setModelLoadingException:(Ljava/lang/Throwable;)V
+         4: return
+
+  private static net.minecraft.client.resources.model.ModelManager$ResolvedModels lambda$reload$1(java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture, java.lang.Void);
+    Code:
+         0: aload_0
+         1: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+         4: checkcast     #8                  // class java/util/Map
+         7: aload_1
+         8: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        11: checkcast     #254                // class net/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels
+        14: aload_2
+        15: invokevirtual #804                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        18: checkcast     #272                // class net/minecraft/client/resources/model/ClientItemInfoLoader$LoadedClientInfos
+        21: invokestatic  #852                // Method discoverModelDependencies:(Ljava/util/Map;Lnet/minecraft/client/resources/model/BlockStateModelLoader$LoadedModels;Lnet/minecraft/client/resources/model/ClientItemInfoLoader$LoadedClientInfos;)Lnet/minecraft/client/resources/model/ModelManager$ResolvedModels;
+        24: areturn
+
+  private java.util.Map lambda$reload$0();
+    Code:
+         0: aload_0
+         1: getfield      #44                 // Field blockColors:Lnet/minecraft/client/color/block/BlockColors;
+         4: invokestatic  #856                // Method net/minecraft/client/renderer/block/BuiltInBlockModels.createBlockModels:(Lnet/minecraft/client/color/block/BlockColors;)Ljava/util/Map;
+         7: areturn
+
+  static {};
+    Code:
+         0: invokestatic  #862                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+         3: putstatic     #600                // Field LOGGER:Lorg/slf4j/Logger;
+         6: ldc_w         #868                // String models
+         9: invokestatic  #869                // Method net/minecraft/resources/FileToIdConverter.json:(Ljava/lang/String;)Lnet/minecraft/resources/FileToIdConverter;
+        12: putstatic     #756                // Field MODEL_LISTER:Lnet/minecraft/resources/FileToIdConverter;
+        15: new           #556                // class java/lang/ThreadLocal
+        18: dup
+        19: invokespecial #873                // Method java/lang/ThreadLocal."<init>":()V
+        22: putstatic     #551                // Field parsedModelLocation:Ljava/lang/ThreadLocal;
+        25: return
+}

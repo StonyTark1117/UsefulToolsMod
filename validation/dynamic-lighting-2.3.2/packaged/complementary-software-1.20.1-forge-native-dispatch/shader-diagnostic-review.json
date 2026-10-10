@@ -1,0 +1,18 @@
+{
+  "original_report_sha256": "2202ad24dbb32490a076b998dfa577c865bbfefb3b2379b4f96a9e924c35e1b5",
+  "retained_original_diagnostics": [
+    "[04Oct2026 20:01:51.580] [Render thread/ERROR] [com.mojang.blaze3d.platform.GlDebug/]: OpenGL API ERROR: 1 (GL_INVALID_OPERATION in glBindTexture(non-gen name))",
+    "[04Oct2026 20:01:56.233] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: none, at: pre-useProgram",
+    "[04Oct2026 20:02:18.851] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:02:18.879] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:02:57.259] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:02:57.283] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:02:59.785] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:02:59.805] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:05:04.707] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT",
+    "[04Oct2026 20:05:04.727] [Render thread/WARN] [net.optifine.Config/]: [OptiFine] Error: Invalid argument type, function: \">\", index: 0, type: BOOL, should be: FLOAT"
+  ],
+  "compiler_failures": [],
+  "classification": "Timestamp-based false positives in the original harness. Native shader programs subsequently loaded and active capture/toggle states were acknowledged. OpenGL startup and shader-option warnings remain recorded; this is not a warning-free backend claim.",
+  "parser_sha256": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78"
+}

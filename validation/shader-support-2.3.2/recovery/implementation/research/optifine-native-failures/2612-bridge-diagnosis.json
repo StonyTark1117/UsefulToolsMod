@@ -1,0 +1,10 @@
+{
+  "runtime": "Minecraft 26.1.2 / Forge 64.0.8 / OptiFine K1 pre2",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-official-native-bridge-egl0-ini-safe/report.json",
+  "observed": "OptiFine binary patches report MD5 mismatch, then Config.gameSettings is null during GlStateManager.init -> Config.initDisplay -> Shaders.startup",
+  "mismatch_count": 58,
+  "native_hooks": "Forge Options has setForgeKeybindProperties, key modifiers, unknown-key preservation and save-during-mod-loading guard; replacing it wholesale loses those hooks. Minecraft also contains many Forge hooks.",
+  "private_bridge": "Exact OptiFine GlStateManager and Identifier class families resolve earlier missing-method failure; this does not establish pack or entity-pipeline coverage.",
+  "disposition": "Required official OptiFine stack remains failed. Native source alternatives are being investigated.",
+  "options_further_investigation": "Publisher bytecode DOES retain reflection-based key-conflict contexts, modifier serialization, unknown-key preservation. Native save-during-mod-loading guard is absent from publisher save(); private fixture adds this native guard and Config.initMinecraft before constructor initialization. Pending packaged test; previous wholesale-replacement concern now narrowed by exact bytecode inspection."
+}

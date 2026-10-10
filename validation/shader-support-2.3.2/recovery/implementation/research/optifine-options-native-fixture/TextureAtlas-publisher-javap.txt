@@ -1,0 +1,2876 @@
+Compiled from "TextureAtlas.java"
+public class net.minecraft.client.renderer.texture.TextureAtlas extends net.minecraft.client.renderer.texture.AbstractTexture implements net.minecraft.client.renderer.texture.TickableTexture,net.minecraft.client.renderer.texture.Dumpable {
+  private static final org.slf4j.Logger LOGGER;
+
+  public static final net.minecraft.resources.Identifier LOCATION_BLOCKS;
+
+  public static final net.minecraft.resources.Identifier LOCATION_ITEMS;
+
+  public static final net.minecraft.resources.Identifier LOCATION_PARTICLES;
+
+  private java.util.List<net.minecraft.client.renderer.texture.TextureAtlasSprite> sprites;
+
+  private java.util.List<net.minecraft.client.renderer.texture.SpriteContents$AnimationState> animatedTexturesStates;
+
+  private java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.TextureAtlasSprite> texturesByName;
+
+  private net.minecraft.client.renderer.texture.TextureAtlasSprite missingSprite;
+
+  private final net.minecraft.resources.Identifier location;
+
+  private final int maxSupportedTextureSize;
+
+  private int width;
+
+  private int height;
+
+  private int maxMipLevel;
+
+  private int mipLevelCount;
+
+  private com.mojang.blaze3d.textures.GpuTextureView[] mipViews;
+
+  private com.mojang.blaze3d.buffers.GpuBuffer spriteUbos;
+
+  private java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.TextureAtlasSprite> mapRegisteredSprites;
+
+  private java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.TextureAtlasSprite> mapMissingSprites;
+
+  private net.minecraft.client.renderer.texture.TextureAtlasSprite[] iconGrid;
+
+  private int iconGridSize;
+
+  private int iconGridCountX;
+
+  private int iconGridCountY;
+
+  private double iconGridSizeU;
+
+  private double iconGridSizeV;
+
+  private net.optifine.util.CounterInt counterIndexInMap;
+
+  public int atlasWidth;
+
+  public int atlasHeight;
+
+  public int mipmapLevel;
+
+  private java.util.List<net.minecraft.client.renderer.texture.SpriteContents$AnimationState> activeAnimations;
+
+  private int countAnimationsActive;
+
+  private int frameCountAnimations;
+
+  private boolean terrain;
+
+  private boolean items;
+
+  private net.optifine.shaders.ITextureFormat textureFormat;
+
+  private com.mojang.blaze3d.textures.GpuTextureView[] mipViewsNormal;
+
+  private com.mojang.blaze3d.textures.GpuTextureView[] mipViewsSpecular;
+
+  public net.minecraft.client.renderer.texture.TextureAtlas(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/client/renderer/texture/AbstractTexture."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       8: putfield      #13                 // Field sprites:Ljava/util/List;
+      11: aload_0
+      12: invokestatic  #7                  // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      15: putfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+      18: aload_0
+      19: invokestatic  #22                 // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+      22: putfield      #27                 // Field texturesByName:Ljava/util/Map;
+      25: aload_0
+      26: iconst_0
+      27: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+      30: putfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+      33: aload_0
+      34: new           #37                 // class java/util/LinkedHashMap
+      37: dup
+      38: invokespecial #39                 // Method java/util/LinkedHashMap."<init>":()V
+      41: putfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+      44: aload_0
+      45: new           #37                 // class java/util/LinkedHashMap
+      48: dup
+      49: invokespecial #39                 // Method java/util/LinkedHashMap."<init>":()V
+      52: putfield      #43                 // Field mapMissingSprites:Ljava/util/Map;
+      55: aload_0
+      56: aconst_null
+      57: putfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      60: aload_0
+      61: iconst_m1
+      62: putfield      #50                 // Field iconGridSize:I
+      65: aload_0
+      66: iconst_m1
+      67: putfield      #54                 // Field iconGridCountX:I
+      70: aload_0
+      71: iconst_m1
+      72: putfield      #57                 // Field iconGridCountY:I
+      75: aload_0
+      76: ldc2_w        #60                 // double -1.0d
+      79: putfield      #62                 // Field iconGridSizeU:D
+      82: aload_0
+      83: ldc2_w        #60                 // double -1.0d
+      86: putfield      #66                 // Field iconGridSizeV:D
+      89: aload_0
+      90: new           #69                 // class net/optifine/util/CounterInt
+      93: dup
+      94: iconst_0
+      95: invokespecial #71                 // Method net/optifine/util/CounterInt."<init>":(I)V
+      98: putfield      #74                 // Field counterIndexInMap:Lnet/optifine/util/CounterInt;
+     101: aload_0
+     102: iconst_0
+     103: putfield      #78                 // Field atlasWidth:I
+     106: aload_0
+     107: iconst_0
+     108: putfield      #81                 // Field atlasHeight:I
+     111: aload_0
+     112: iconst_0
+     113: putfield      #84                 // Field mipmapLevel:I
+     116: aload_0
+     117: new           #87                 // class java/util/ArrayList
+     120: dup
+     121: invokespecial #89                 // Method java/util/ArrayList."<init>":()V
+     124: putfield      #90                 // Field activeAnimations:Ljava/util/List;
+     127: aload_0
+     128: iconst_0
+     129: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+     132: putfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     135: aload_0
+     136: iconst_0
+     137: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+     140: putfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     143: aload_0
+     144: aload_1
+     145: putfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     148: aload_0
+     149: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     152: invokevirtual #109                // Method com/mojang/blaze3d/systems/GpuDevice.getMaxTextureSize:()I
+     155: putfield      #115                // Field maxSupportedTextureSize:I
+     158: aload_0
+     159: aload_1
+     160: getstatic     #118                // Field LOCATION_BLOCKS:Lnet/minecraft/resources/Identifier;
+     163: invokevirtual #121                // Method net/minecraft/resources/Identifier.equals:(Ljava/lang/Object;)Z
+     166: putfield      #127                // Field terrain:Z
+     169: aload_0
+     170: aload_1
+     171: getstatic     #131                // Field LOCATION_ITEMS:Lnet/minecraft/resources/Identifier;
+     174: invokevirtual #121                // Method net/minecraft/resources/Identifier.equals:(Ljava/lang/Object;)Z
+     177: putfield      #134                // Field items:Z
+     180: aload_0
+     181: getfield      #127                // Field terrain:Z
+     184: ifeq          191
+     187: aload_0
+     188: invokestatic  #137                // Method net/optifine/Config.setTextureMapBlocks:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+     191: aload_0
+     192: getfield      #134                // Field items:Z
+     195: ifeq          202
+     198: aload_0
+     199: invokestatic  #143                // Method net/optifine/Config.setTextureMapItems:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+     202: return
+
+  private void createTexture(int, int, int);
+    Code:
+       0: getstatic     #146                // Field LOGGER:Lorg/slf4j/Logger;
+       3: ldc           #150                // String Created: {}x{}x{} {}-atlas
+       5: iconst_4
+       6: anewarray     #152                // class java/lang/Object
+       9: dup
+      10: iconst_0
+      11: iload_1
+      12: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      15: aastore
+      16: dup
+      17: iconst_1
+      18: iload_2
+      19: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      22: aastore
+      23: dup
+      24: iconst_2
+      25: iload_3
+      26: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      29: aastore
+      30: dup
+      31: iconst_3
+      32: aload_0
+      33: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+      36: aastore
+      37: invokeinterface #160,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;[Ljava/lang/Object;)V
+      42: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+      45: astore        4
+      47: aload_0
+      48: invokevirtual #166                // Method close:()V
+      51: aload_0
+      52: aload         4
+      54: aload_0
+      55: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+      58: dup
+      59: invokestatic  #169                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      62: pop
+      63: invokedynamic #175,  0            // InvokeDynamic #0:get:(Lnet/minecraft/resources/Identifier;)Ljava/util/function/Supplier;
+      68: bipush        15
+      70: getstatic     #179                // Field com/mojang/blaze3d/textures/TextureFormat.RGBA8:Lcom/mojang/blaze3d/textures/TextureFormat;
+      73: iload_1
+      74: iload_2
+      75: iconst_1
+      76: iload_3
+      77: iconst_1
+      78: iadd
+      79: invokevirtual #185                // Method com/mojang/blaze3d/systems/GpuDevice.createTexture:(Ljava/util/function/Supplier;ILcom/mojang/blaze3d/textures/TextureFormat;IIII)Lcom/mojang/blaze3d/textures/GpuTexture;
+      82: putfield      #189                // Field texture:Lcom/mojang/blaze3d/textures/GpuTexture;
+      85: aload_0
+      86: aload         4
+      88: aload_0
+      89: getfield      #189                // Field texture:Lcom/mojang/blaze3d/textures/GpuTexture;
+      92: invokevirtual #193                // Method com/mojang/blaze3d/systems/GpuDevice.createTextureView:(Lcom/mojang/blaze3d/textures/GpuTexture;)Lcom/mojang/blaze3d/textures/GpuTextureView;
+      95: putfield      #197                // Field textureView:Lcom/mojang/blaze3d/textures/GpuTextureView;
+      98: aload_0
+      99: iload_1
+     100: putfield      #201                // Field width:I
+     103: aload_0
+     104: iload_2
+     105: putfield      #204                // Field height:I
+     108: aload_0
+     109: iload_3
+     110: putfield      #207                // Field maxMipLevel:I
+     113: aload_0
+     114: iload_3
+     115: iconst_1
+     116: iadd
+     117: putfield      #210                // Field mipLevelCount:I
+     120: aload_0
+     121: aload_0
+     122: getfield      #210                // Field mipLevelCount:I
+     125: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+     128: putfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     131: invokestatic  #213                // Method net/optifine/Config.isShaders:()Z
+     134: ifeq          171
+     137: getstatic     #217                // Field net/optifine/shaders/Shaders.configNormalMap:Z
+     140: ifeq          154
+     143: aload_0
+     144: aload_0
+     145: getfield      #210                // Field mipLevelCount:I
+     148: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+     151: putfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     154: getstatic     #222                // Field net/optifine/shaders/Shaders.configSpecularMap:Z
+     157: ifeq          171
+     160: aload_0
+     161: aload_0
+     162: getfield      #210                // Field mipLevelCount:I
+     165: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+     168: putfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     171: iconst_0
+     172: istore        5
+     174: iload         5
+     176: aload_0
+     177: getfield      #207                // Field maxMipLevel:I
+     180: if_icmpgt     270
+     183: aload_0
+     184: getfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     187: iload         5
+     189: aload         4
+     191: aload_0
+     192: getfield      #189                // Field texture:Lcom/mojang/blaze3d/textures/GpuTexture;
+     195: iload         5
+     197: iconst_1
+     198: invokevirtual #225                // Method com/mojang/blaze3d/systems/GpuDevice.createTextureView:(Lcom/mojang/blaze3d/textures/GpuTexture;II)Lcom/mojang/blaze3d/textures/GpuTextureView;
+     201: aastore
+     202: invokestatic  #213                // Method net/optifine/Config.isShaders:()Z
+     205: ifeq          264
+     208: getstatic     #217                // Field net/optifine/shaders/Shaders.configNormalMap:Z
+     211: ifeq          236
+     214: aload_0
+     215: getfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     218: iload         5
+     220: aload         4
+     222: aload_0
+     223: invokevirtual #228                // Method getMultiTexID:()Lnet/optifine/shaders/MultiTexID;
+     226: getfield      #232                // Field net/optifine/shaders/MultiTexID.normTex:Lcom/mojang/blaze3d/opengl/GlTexture;
+     229: iload         5
+     231: iconst_1
+     232: invokevirtual #225                // Method com/mojang/blaze3d/systems/GpuDevice.createTextureView:(Lcom/mojang/blaze3d/textures/GpuTexture;II)Lcom/mojang/blaze3d/textures/GpuTextureView;
+     235: aastore
+     236: getstatic     #222                // Field net/optifine/shaders/Shaders.configSpecularMap:Z
+     239: ifeq          264
+     242: aload_0
+     243: getfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     246: iload         5
+     248: aload         4
+     250: aload_0
+     251: invokevirtual #228                // Method getMultiTexID:()Lnet/optifine/shaders/MultiTexID;
+     254: getfield      #238                // Field net/optifine/shaders/MultiTexID.specTex:Lcom/mojang/blaze3d/opengl/GlTexture;
+     257: iload         5
+     259: iconst_1
+     260: invokevirtual #225                // Method com/mojang/blaze3d/systems/GpuDevice.createTextureView:(Lcom/mojang/blaze3d/textures/GpuTexture;II)Lcom/mojang/blaze3d/textures/GpuTextureView;
+     263: aastore
+     264: iinc          5, 1
+     267: goto          174
+     270: aload_0
+     271: getfield      #189                // Field texture:Lcom/mojang/blaze3d/textures/GpuTexture;
+     274: aload_0
+     275: invokevirtual #241                // Method com/mojang/blaze3d/textures/GpuTexture.setParentTexture:(Lnet/minecraft/client/renderer/texture/AbstractTexture;)V
+     278: return
+
+  public void upload(net.minecraft.client.renderer.texture.SpriteLoader$Preparations);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #247                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.width:()I
+       5: aload_1
+       6: invokevirtual #251                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.height:()I
+       9: aload_1
+      10: invokevirtual #253                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.mipLevel:()I
+      13: invokevirtual #256                // Method createTexture:(III)V
+      16: aload_0
+      17: aload_1
+      18: invokevirtual #247                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.width:()I
+      21: putfield      #78                 // Field atlasWidth:I
+      24: aload_0
+      25: aload_1
+      26: invokevirtual #251                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.height:()I
+      29: putfield      #81                 // Field atlasHeight:I
+      32: aload_0
+      33: aload_1
+      34: invokevirtual #253                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.mipLevel:()I
+      37: putfield      #84                 // Field mipmapLevel:I
+      40: invokestatic  #213                // Method net/optifine/Config.isShaders:()Z
+      43: ifeq          62
+      46: aload_0
+      47: getfield      #84                 // Field mipmapLevel:I
+      50: aload_0
+      51: getfield      #78                 // Field atlasWidth:I
+      54: aload_0
+      55: getfield      #81                 // Field atlasHeight:I
+      58: aload_0
+      59: invokestatic  #259                // Method net/optifine/shaders/ShadersTex.allocateTextureMapNS:(IIILnet/minecraft/client/renderer/texture/TextureAtlas;)V
+      62: aload_0
+      63: invokevirtual #265                // Method clearTextureData:()V
+      66: aload_0
+      67: invokestatic  #268                // Method com/mojang/blaze3d/systems/RenderSystem.getSamplerCache:()Lcom/mojang/blaze3d/systems/SamplerCache;
+      70: getstatic     #272                // Field com/mojang/blaze3d/textures/FilterMode.NEAREST:Lcom/mojang/blaze3d/textures/FilterMode;
+      73: invokevirtual #278                // Method com/mojang/blaze3d/systems/SamplerCache.getClampToEdge:(Lcom/mojang/blaze3d/textures/FilterMode;)Lcom/mojang/blaze3d/textures/GpuSampler;
+      76: putfield      #284                // Field sampler:Lcom/mojang/blaze3d/textures/GpuSampler;
+      79: aload_0
+      80: aload_1
+      81: invokevirtual #288                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.regions:()Ljava/util/Map;
+      84: invokestatic  #291                // InterfaceMethod java/util/Map.copyOf:(Ljava/util/Map;)Ljava/util/Map;
+      87: putfield      #27                 // Field texturesByName:Ljava/util/Map;
+      90: aload_0
+      91: aload_0
+      92: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+      95: invokestatic  #295                // Method net/minecraft/client/renderer/texture/MissingTextureAtlasSprite.getLocation:()Lnet/minecraft/resources/Identifier;
+      98: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     103: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+     106: putfield      #305                // Field missingSprite:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     109: aload_0
+     110: getfield      #305                // Field missingSprite:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     113: ifnonnull     145
+     116: new           #309                // class java/lang/IllegalStateException
+     119: dup
+     120: aload_0
+     121: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     124: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     127: aload_0
+     128: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+     131: invokeinterface #316,  1          // InterfaceMethod java/util/Map.size:()I
+     136: invokedynamic #319,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;I)Ljava/lang/String;
+     141: invokespecial #323                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     144: athrow
+     145: new           #87                 // class java/util/ArrayList
+     148: dup
+     149: invokespecial #89                 // Method java/util/ArrayList."<init>":()V
+     152: astore_2
+     153: new           #87                 // class java/util/ArrayList
+     156: dup
+     157: invokespecial #89                 // Method java/util/ArrayList."<init>":()V
+     160: astore_3
+     161: aload_1
+     162: invokevirtual #288                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.regions:()Ljava/util/Map;
+     165: invokeinterface #326,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     170: invokeinterface #330,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+     175: invokedynamic #336,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+     180: invokeinterface #340,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     185: invokeinterface #346,  1          // InterfaceMethod java/util/stream/Stream.count:()J
+     190: l2i
+     191: istore        4
+     193: getstatic     #350                // Field net/minecraft/client/renderer/texture/SpriteContents.UBO_SIZE:I
+     196: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     199: invokevirtual #355                // Method com/mojang/blaze3d/systems/GpuDevice.getUniformOffsetAlignment:()I
+     202: invokestatic  #358                // Method net/minecraft/util/Mth.roundToward:(II)I
+     205: istore        5
+     207: iload         5
+     209: aload_0
+     210: getfield      #210                // Field mipLevelCount:I
+     213: imul
+     214: istore        6
+     216: iload         4
+     218: iload         6
+     220: imul
+     221: invokestatic  #364                // Method org/lwjgl/system/MemoryUtil.memAlloc:(I)Ljava/nio/ByteBuffer;
+     224: astore        7
+     226: iconst_0
+     227: istore        8
+     229: aload_1
+     230: invokevirtual #288                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.regions:()Ljava/util/Map;
+     233: invokeinterface #326,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     238: invokeinterface #370,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     243: astore        9
+     245: aload         9
+     247: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     252: ifeq          313
+     255: aload         9
+     257: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     262: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+     265: astore        10
+     267: aload         10
+     269: aload_0
+     270: invokevirtual #383                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTextureAtlas:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+     273: aload         10
+     275: invokevirtual #386                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.isAnimated:()Z
+     278: ifeq          310
+     281: aload         10
+     283: aload         7
+     285: iload         8
+     287: iload         6
+     289: imul
+     290: aload_0
+     291: getfield      #207                // Field maxMipLevel:I
+     294: aload_0
+     295: getfield      #201                // Field width:I
+     298: aload_0
+     299: getfield      #204                // Field height:I
+     302: iload         5
+     304: invokevirtual #389                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.uploadSpriteUbo:(Ljava/nio/ByteBuffer;IIIII)V
+     307: iinc          8, 1
+     310: goto          245
+     313: iload         8
+     315: ifle          338
+     318: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     321: aload_0
+     322: invokedynamic #393,  0            // InvokeDynamic #3:get:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)Ljava/util/function/Supplier;
+     327: sipush        128
+     330: aload         7
+     332: invokevirtual #396                // Method com/mojang/blaze3d/systems/GpuDevice.createBuffer:(Ljava/util/function/Supplier;ILjava/nio/ByteBuffer;)Lcom/mojang/blaze3d/buffers/GpuBuffer;
+     335: goto          339
+     338: aconst_null
+     339: astore        9
+     341: iconst_0
+     342: istore        8
+     344: aload_1
+     345: invokevirtual #288                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.regions:()Ljava/util/Map;
+     348: invokeinterface #326,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     353: invokeinterface #370,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     358: astore        10
+     360: aload         10
+     362: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     367: ifeq          567
+     370: aload         10
+     372: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     377: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+     380: astore        11
+     382: aload_2
+     383: aload         11
+     385: invokeinterface #400,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     390: pop
+     391: aload         11
+     393: aload_0
+     394: invokevirtual #383                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTextureAtlas:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+     397: aload         11
+     399: invokevirtual #386                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.isAnimated:()Z
+     402: ifeq          564
+     405: aload         9
+     407: ifnull        564
+     410: aload         9
+     412: iload         8
+     414: iload         6
+     416: imul
+     417: i2l
+     418: iload         6
+     420: i2l
+     421: invokevirtual #403                // Method com/mojang/blaze3d/buffers/GpuBuffer.slice:(JJ)Lcom/mojang/blaze3d/buffers/GpuBufferSlice;
+     424: astore        12
+     426: aload         11
+     428: aload         12
+     430: iload         5
+     432: invokevirtual #409                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.createAnimationState:(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;I)Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;
+     435: astore        13
+     437: iinc          8, 1
+     440: aload         13
+     442: ifnull        564
+     445: aload         11
+     447: aload         13
+     449: invokevirtual #413                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTicker:(Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;)V
+     452: aload         11
+     454: aload_3
+     455: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+     460: invokevirtual #418                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setAnimationIndex:(I)V
+     463: aload_3
+     464: aload         13
+     466: invokeinterface #400,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     471: pop
+     472: aload         11
+     474: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     477: astore        14
+     479: aload         14
+     481: ifnull        518
+     484: aload         14
+     486: aload         12
+     488: iload         5
+     490: invokevirtual #409                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.createAnimationState:(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;I)Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;
+     493: astore        15
+     495: aload         15
+     497: ifnull        518
+     500: aload         14
+     502: aload         15
+     504: invokevirtual #413                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTicker:(Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;)V
+     507: aload         14
+     509: aload_3
+     510: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+     515: invokevirtual #418                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setAnimationIndex:(I)V
+     518: aload         11
+     520: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     523: astore        15
+     525: aload         15
+     527: ifnull        564
+     530: aload         15
+     532: aload         12
+     534: iload         5
+     536: invokevirtual #409                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.createAnimationState:(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;I)Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;
+     539: astore        16
+     541: aload         16
+     543: ifnull        564
+     546: aload         15
+     548: aload         16
+     550: invokevirtual #413                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTicker:(Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;)V
+     553: aload         15
+     555: aload_3
+     556: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+     561: invokevirtual #418                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setAnimationIndex:(I)V
+     564: goto          360
+     567: aload_0
+     568: aload         9
+     570: putfield      #427                // Field spriteUbos:Lcom/mojang/blaze3d/buffers/GpuBuffer;
+     573: aload_0
+     574: aload_2
+     575: putfield      #13                 // Field sprites:Ljava/util/List;
+     578: aload_0
+     579: aload_3
+     580: invokestatic  #431                // InterfaceMethod java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+     583: putfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+     586: aload_0
+     587: invokevirtual #434                // Method uploadInitialContents:()V
+     590: aload_0
+     591: invokestatic  #437                // Method net/optifine/util/TextureUtils.refreshCustomSprites:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+     594: aload_0
+     595: getfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+     598: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+     603: invokedynamic #442,  0            // InvokeDynamic #4:makeConcatWithConstants:(I)Ljava/lang/String;
+     608: invokestatic  #445                // Method net/optifine/Config.log:(Ljava/lang/String;)V
+     611: invokestatic  #448                // Method net/optifine/Config.isMultiTexture:()Z
+     614: ifeq          706
+     617: aload_1
+     618: invokevirtual #288                // Method net/minecraft/client/renderer/texture/SpriteLoader$Preparations.regions:()Ljava/util/Map;
+     621: invokeinterface #326,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     626: astore        10
+     628: aload         10
+     630: invokeinterface #370,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     635: astore        11
+     637: aload         11
+     639: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     644: ifeq          699
+     647: aload         11
+     649: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     654: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+     657: astore        12
+     659: aload         12
+     661: invokestatic  #451                // Method uploadMipmapsSingle:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)V
+     664: aload         12
+     666: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     669: ifnull        680
+     672: aload         12
+     674: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     677: invokestatic  #451                // Method uploadMipmapsSingle:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)V
+     680: aload         12
+     682: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     685: ifnull        696
+     688: aload         12
+     690: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     693: invokestatic  #451                // Method uploadMipmapsSingle:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)V
+     696: goto          637
+     699: aload_0
+     700: invokevirtual #455                // Method getGlTextureId:()I
+     703: invokestatic  #458                // Method com/mojang/blaze3d/opengl/GlStateManager._bindTexture:(I)V
+     706: invokestatic  #213                // Method net/optifine/Config.isShaders:()Z
+     709: ifeq          738
+     712: getstatic     #217                // Field net/optifine/shaders/Shaders.configNormalMap:Z
+     715: ifeq          725
+     718: aload_0
+     719: getstatic     #463                // Field net/optifine/shaders/ShadersTextureType.NORMAL:Lnet/optifine/shaders/ShadersTextureType;
+     722: invokevirtual #469                // Method uploadInitialContents:(Lnet/optifine/shaders/ShadersTextureType;)V
+     725: getstatic     #222                // Field net/optifine/shaders/Shaders.configSpecularMap:Z
+     728: ifeq          738
+     731: aload_0
+     732: getstatic     #472                // Field net/optifine/shaders/ShadersTextureType.SPECULAR:Lnet/optifine/shaders/ShadersTextureType;
+     735: invokevirtual #469                // Method uploadInitialContents:(Lnet/optifine/shaders/ShadersTextureType;)V
+     738: getstatic     #475                // Field net/optifine/reflect/Reflector.ForgeHooksClient_onTextureStitchedPost:Lnet/optifine/reflect/ReflectorMethod;
+     741: iconst_1
+     742: anewarray     #152                // class java/lang/Object
+     745: dup
+     746: iconst_0
+     747: aload_0
+     748: aastore
+     749: invokestatic  #481                // Method net/optifine/reflect/Reflector.callVoid:(Lnet/optifine/reflect/ReflectorMethod;[Ljava/lang/Object;)V
+     752: aload_0
+     753: aload_0
+     754: getfield      #78                 // Field atlasWidth:I
+     757: aload_0
+     758: getfield      #81                 // Field atlasHeight:I
+     761: invokevirtual #485                // Method updateIconGrid:(II)V
+     764: ldc_w         #489                // String saveTextureMap
+     767: invokestatic  #491                // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+     770: ldc_w         #497                // String true
+     773: invokestatic  #499                // Method net/optifine/Config.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     776: ifeq          963
+     779: aload_0
+     780: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     783: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     786: invokedynamic #502,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     791: invokestatic  #504                // Method net/optifine/Config.dbg:(Ljava/lang/String;)V
+     794: aload_0
+     795: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     798: invokevirtual #507                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+     801: ldc_w         #511                // String /
+     804: ldc_w         #513                // String _
+     807: invokevirtual #515                // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     810: invokedynamic #519,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     815: aload_0
+     816: invokevirtual #455                // Method getGlTextureId:()I
+     819: aload_0
+     820: getfield      #84                 // Field mipmapLevel:I
+     823: aload_0
+     824: getfield      #78                 // Field atlasWidth:I
+     827: aload_0
+     828: getfield      #81                 // Field atlasHeight:I
+     831: invokestatic  #520                // Method net/optifine/util/TextureUtils.saveGlTexture:(Ljava/lang/String;IIII)V
+     834: invokestatic  #213                // Method net/optifine/Config.isShaders:()Z
+     837: ifeq          963
+     840: getstatic     #217                // Field net/optifine/shaders/Shaders.configNormalMap:Z
+     843: ifeq          898
+     846: aload_0
+     847: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     850: invokevirtual #507                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+     853: ldc_w         #511                // String /
+     856: ldc_w         #513                // String _
+     859: invokevirtual #515                // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     862: ldc_w         #524                // String .png
+     865: ldc_w         #526                // String _n.png
+     868: invokevirtual #528                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     871: invokedynamic #519,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     876: aload_0
+     877: invokevirtual #228                // Method getMultiTexID:()Lnet/optifine/shaders/MultiTexID;
+     880: getfield      #532                // Field net/optifine/shaders/MultiTexID.norm:I
+     883: aload_0
+     884: getfield      #84                 // Field mipmapLevel:I
+     887: aload_0
+     888: getfield      #78                 // Field atlasWidth:I
+     891: aload_0
+     892: getfield      #81                 // Field atlasHeight:I
+     895: invokestatic  #520                // Method net/optifine/util/TextureUtils.saveGlTexture:(Ljava/lang/String;IIII)V
+     898: getstatic     #222                // Field net/optifine/shaders/Shaders.configSpecularMap:Z
+     901: ifeq          956
+     904: aload_0
+     905: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     908: invokevirtual #507                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+     911: ldc_w         #511                // String /
+     914: ldc_w         #513                // String _
+     917: invokevirtual #515                // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     920: ldc_w         #524                // String .png
+     923: ldc_w         #535                // String _s.png
+     926: invokevirtual #528                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     929: invokedynamic #519,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     934: aload_0
+     935: invokevirtual #228                // Method getMultiTexID:()Lnet/optifine/shaders/MultiTexID;
+     938: getfield      #537                // Field net/optifine/shaders/MultiTexID.spec:I
+     941: aload_0
+     942: getfield      #84                 // Field mipmapLevel:I
+     945: aload_0
+     946: getfield      #78                 // Field atlasWidth:I
+     949: aload_0
+     950: getfield      #81                 // Field atlasHeight:I
+     953: invokestatic  #520                // Method net/optifine/util/TextureUtils.saveGlTexture:(Ljava/lang/String;IIII)V
+     956: aload_0
+     957: invokevirtual #455                // Method getGlTextureId:()I
+     960: invokestatic  #458                // Method com/mojang/blaze3d/opengl/GlStateManager._bindTexture:(I)V
+     963: getstatic     #540                // Field net/minecraft/SharedConstants.DEBUG_DUMP_TEXTURE_ATLAS:Z
+     966: ifeq          1012
+     969: invokestatic  #545                // Method com/mojang/blaze3d/platform/TextureUtil.getDebugTexturePath:()Ljava/nio/file/Path;
+     972: astore        10
+     974: aload         10
+     976: iconst_0
+     977: anewarray     #551                // class java/nio/file/attribute/FileAttribute
+     980: invokestatic  #553                // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+     983: pop
+     984: aload_0
+     985: aload_0
+     986: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+     989: aload         10
+     991: invokevirtual #559                // Method dumpContents:(Lnet/minecraft/resources/Identifier;Ljava/nio/file/Path;)V
+     994: goto          1012
+     997: astore        11
+     999: getstatic     #146                // Field LOGGER:Lorg/slf4j/Logger;
+    1002: ldc_w         #565                // String Failed to dump atlas contents to {}
+    1005: aload         10
+    1007: invokeinterface #567,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+    1012: return
+    Exception table:
+       from    to  target type
+         974   994   997   Class java/lang/Exception
+
+  private void uploadInitialContents();
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: invokevirtual #469                // Method uploadInitialContents:(Lnet/optifine/shaders/ShadersTextureType;)V
+       5: return
+
+  private void uploadInitialContents(net.optifine.shaders.ShadersTextureType);
+    Code:
+       0: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+       3: astore_2
+       4: getstatic     #350                // Field net/minecraft/client/renderer/texture/SpriteContents.UBO_SIZE:I
+       7: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+      10: invokevirtual #355                // Method com/mojang/blaze3d/systems/GpuDevice.getUniformOffsetAlignment:()I
+      13: invokestatic  #358                // Method net/minecraft/util/Mth.roundToward:(II)I
+      16: istore_3
+      17: iload_3
+      18: aload_0
+      19: getfield      #210                // Field mipLevelCount:I
+      22: imul
+      23: istore        4
+      25: invokestatic  #268                // Method com/mojang/blaze3d/systems/RenderSystem.getSamplerCache:()Lcom/mojang/blaze3d/systems/SamplerCache;
+      28: getstatic     #272                // Field com/mojang/blaze3d/textures/FilterMode.NEAREST:Lcom/mojang/blaze3d/textures/FilterMode;
+      31: iconst_1
+      32: invokevirtual #571                // Method com/mojang/blaze3d/systems/SamplerCache.getClampToEdge:(Lcom/mojang/blaze3d/textures/FilterMode;Z)Lcom/mojang/blaze3d/textures/GpuSampler;
+      35: astore        5
+      37: aload_0
+      38: getfield      #13                 // Field sprites:Ljava/util/List;
+      41: astore        6
+      43: aload_1
+      44: ifnull        74
+      47: aload_0
+      48: getfield      #13                 // Field sprites:Ljava/util/List;
+      51: invokeinterface #574,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      56: aload_1
+      57: invokedynamic #575,  0            // InvokeDynamic #7:test:(Lnet/optifine/shaders/ShadersTextureType;)Ljava/util/function/Predicate;
+      62: invokeinterface #340,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      67: invokeinterface #578,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      72: astore        6
+      74: new           #87                 // class java/util/ArrayList
+      77: dup
+      78: invokespecial #89                 // Method java/util/ArrayList."<init>":()V
+      81: astore        7
+      83: aload         6
+      85: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+      90: iload         4
+      92: imul
+      93: invokestatic  #364                // Method org/lwjgl/system/MemoryUtil.memAlloc:(I)Ljava/nio/ByteBuffer;
+      96: astore        8
+      98: iconst_0
+      99: istore        9
+     101: iload         9
+     103: aload         6
+     105: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+     110: if_icmpge     257
+     113: aload         6
+     115: iload         9
+     117: invokeinterface #581,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     122: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+     125: aload_1
+     126: invokevirtual #584                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getSubSprite:(Lnet/optifine/shaders/ShadersTextureType;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     129: astore        10
+     131: aload         10
+     133: aload         8
+     135: iload         9
+     137: iload         4
+     139: imul
+     140: aload_0
+     141: getfield      #207                // Field maxMipLevel:I
+     144: aload_0
+     145: getfield      #201                // Field width:I
+     148: aload_0
+     149: getfield      #204                // Field height:I
+     152: iload_3
+     153: invokevirtual #389                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.uploadSpriteUbo:(Ljava/nio/ByteBuffer;IIIII)V
+     156: aload_2
+     157: aload         10
+     159: invokedynamic #588,  0            // InvokeDynamic #8:get:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)Ljava/util/function/Supplier;
+     164: iconst_5
+     165: getstatic     #179                // Field com/mojang/blaze3d/textures/TextureFormat.RGBA8:Lcom/mojang/blaze3d/textures/TextureFormat;
+     168: aload         10
+     170: invokevirtual #591                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.contents:()Lnet/minecraft/client/renderer/texture/SpriteContents;
+     173: invokevirtual #595                // Method net/minecraft/client/renderer/texture/SpriteContents.width:()I
+     176: aload         10
+     178: invokevirtual #591                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.contents:()Lnet/minecraft/client/renderer/texture/SpriteContents;
+     181: invokevirtual #596                // Method net/minecraft/client/renderer/texture/SpriteContents.height:()I
+     184: iconst_1
+     185: aload_0
+     186: getfield      #210                // Field mipLevelCount:I
+     189: invokevirtual #185                // Method com/mojang/blaze3d/systems/GpuDevice.createTexture:(Ljava/util/function/Supplier;ILcom/mojang/blaze3d/textures/TextureFormat;IIII)Lcom/mojang/blaze3d/textures/GpuTexture;
+     192: astore        11
+     194: aload_0
+     195: getfield      #210                // Field mipLevelCount:I
+     198: anewarray     #31                 // class com/mojang/blaze3d/textures/GpuTextureView
+     201: astore        12
+     203: iconst_0
+     204: istore        13
+     206: iload         13
+     208: aload_0
+     209: getfield      #207                // Field maxMipLevel:I
+     212: if_icmpgt     241
+     215: aload         10
+     217: aload         11
+     219: iload         13
+     221: invokevirtual #597                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.uploadFirstFrame:(Lcom/mojang/blaze3d/textures/GpuTexture;I)V
+     224: aload         12
+     226: iload         13
+     228: aload_2
+     229: aload         11
+     231: invokevirtual #193                // Method com/mojang/blaze3d/systems/GpuDevice.createTextureView:(Lcom/mojang/blaze3d/textures/GpuTexture;)Lcom/mojang/blaze3d/textures/GpuTextureView;
+     234: aastore
+     235: iinc          13, 1
+     238: goto          206
+     241: aload         7
+     243: aload         12
+     245: invokeinterface #400,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     250: pop
+     251: iinc          9, 1
+     254: goto          101
+     257: aload_0
+     258: aload_1
+     259: invokevirtual #601                // Method getMipViews:(Lnet/optifine/shaders/ShadersTextureType;)[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     262: astore        9
+     264: aload_2
+     265: invokedynamic #605,  0            // InvokeDynamic #9:get:()Ljava/util/function/Supplier;
+     270: sipush        128
+     273: aload         8
+     275: invokevirtual #396                // Method com/mojang/blaze3d/systems/GpuDevice.createBuffer:(Ljava/util/function/Supplier;ILjava/nio/ByteBuffer;)Lcom/mojang/blaze3d/buffers/GpuBuffer;
+     278: astore        10
+     280: iconst_0
+     281: istore        11
+     283: iload         11
+     285: aload_0
+     286: getfield      #210                // Field mipLevelCount:I
+     289: if_icmpge     453
+     292: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     295: invokevirtual #608                // Method com/mojang/blaze3d/systems/GpuDevice.createCommandEncoder:()Lcom/mojang/blaze3d/systems/CommandEncoder;
+     298: aload_0
+     299: invokedynamic #612,  0            // InvokeDynamic #10:get:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)Ljava/util/function/Supplier;
+     304: aload         9
+     306: iload         11
+     308: aaload
+     309: invokestatic  #613                // Method java/util/OptionalInt.empty:()Ljava/util/OptionalInt;
+     312: invokevirtual #619                // Method com/mojang/blaze3d/systems/CommandEncoder.createRenderPass:(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;)Lcom/mojang/blaze3d/systems/RenderPass;
+     315: astore        12
+     317: aload         12
+     319: getstatic     #625                // Field net/minecraft/client/renderer/RenderPipelines.ANIMATE_SPRITE_BLIT:Lcom/mojang/blaze3d/pipeline/RenderPipeline;
+     322: invokevirtual #631                // Method com/mojang/blaze3d/systems/RenderPass.setPipeline:(Lcom/mojang/blaze3d/pipeline/RenderPipeline;)V
+     325: iconst_0
+     326: istore        13
+     328: iload         13
+     330: aload         6
+     332: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+     337: if_icmpge     407
+     340: aload         12
+     342: ldc_w         #637                // String Sprite
+     345: aload         7
+     347: iload         13
+     349: invokeinterface #581,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     354: checkcast     #639                // class "[Lcom/mojang/blaze3d/textures/GpuTextureView;"
+     357: iload         11
+     359: aaload
+     360: aload         5
+     362: invokevirtual #640                // Method com/mojang/blaze3d/systems/RenderPass.bindTexture:(Ljava/lang/String;Lcom/mojang/blaze3d/textures/GpuTextureView;Lcom/mojang/blaze3d/textures/GpuSampler;)V
+     365: aload         12
+     367: ldc_w         #644                // String SpriteAnimationInfo
+     370: aload         10
+     372: iload         13
+     374: iload         4
+     376: imul
+     377: iload         11
+     379: iload_3
+     380: imul
+     381: iadd
+     382: i2l
+     383: getstatic     #350                // Field net/minecraft/client/renderer/texture/SpriteContents.UBO_SIZE:I
+     386: i2l
+     387: invokevirtual #403                // Method com/mojang/blaze3d/buffers/GpuBuffer.slice:(JJ)Lcom/mojang/blaze3d/buffers/GpuBufferSlice;
+     390: invokevirtual #646                // Method com/mojang/blaze3d/systems/RenderPass.setUniform:(Ljava/lang/String;Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V
+     393: aload         12
+     395: iconst_0
+     396: bipush        6
+     398: invokevirtual #650                // Method com/mojang/blaze3d/systems/RenderPass.draw:(II)V
+     401: iinc          13, 1
+     404: goto          328
+     407: aload         12
+     409: ifnull        447
+     412: aload         12
+     414: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     417: goto          447
+     420: astore        13
+     422: aload         12
+     424: ifnull        444
+     427: aload         12
+     429: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     432: goto          444
+     435: astore        14
+     437: aload         13
+     439: aload         14
+     441: invokevirtual #656                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     444: aload         13
+     446: athrow
+     447: iinc          11, 1
+     450: goto          283
+     453: aload         10
+     455: ifnull        493
+     458: aload         10
+     460: invokevirtual #660                // Method com/mojang/blaze3d/buffers/GpuBuffer.close:()V
+     463: goto          493
+     466: astore        11
+     468: aload         10
+     470: ifnull        490
+     473: aload         10
+     475: invokevirtual #660                // Method com/mojang/blaze3d/buffers/GpuBuffer.close:()V
+     478: goto          490
+     481: astore        12
+     483: aload         11
+     485: aload         12
+     487: invokevirtual #656                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     490: aload         11
+     492: athrow
+     493: aload         7
+     495: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     500: astore        10
+     502: aload         10
+     504: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     509: ifeq          572
+     512: aload         10
+     514: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     519: checkcast     #639                // class "[Lcom/mojang/blaze3d/textures/GpuTextureView;"
+     522: astore        11
+     524: aload         11
+     526: astore        12
+     528: aload         12
+     530: arraylength
+     531: istore        13
+     533: iconst_0
+     534: istore        14
+     536: iload         14
+     538: iload         13
+     540: if_icmpge     569
+     543: aload         12
+     545: iload         14
+     547: aaload
+     548: astore        15
+     550: aload         15
+     552: invokevirtual #662                // Method com/mojang/blaze3d/textures/GpuTextureView.close:()V
+     555: aload         15
+     557: invokevirtual #663                // Method com/mojang/blaze3d/textures/GpuTextureView.texture:()Lcom/mojang/blaze3d/textures/GpuTexture;
+     560: invokevirtual #666                // Method com/mojang/blaze3d/textures/GpuTexture.close:()V
+     563: iinc          14, 1
+     566: goto          536
+     569: goto          502
+     572: aload         8
+     574: invokestatic  #667                // Method org/lwjgl/system/MemoryUtil.memFree:(Ljava/nio/ByteBuffer;)V
+     577: aload_0
+     578: invokevirtual #671                // Method uploadAnimationFrames:()V
+     581: return
+    Exception table:
+       from    to  target type
+         317   407   420   Class java/lang/Throwable
+         427   432   435   Class java/lang/Throwable
+         280   453   466   Class java/lang/Throwable
+         473   478   481   Class java/lang/Throwable
+
+  public void preStitch(java.util.Set<net.minecraft.resources.Identifier>, net.minecraft.server.packs.resources.ResourceManager, int);
+    Code:
+       0: aload_0
+       1: iload_3
+       2: putfield      #84                 // Field mipmapLevel:I
+       5: aload_0
+       6: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       9: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      12: invokedynamic #674,  0            // InvokeDynamic #11:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      17: invokestatic  #504                // Method net/optifine/Config.dbg:(Ljava/lang/String;)V
+      20: aload_0
+      21: invokestatic  #675                // Method net/optifine/TextureProperties.getTextureFormat:()Lnet/optifine/shaders/ITextureFormat;
+      24: putfield      #681                // Field textureFormat:Lnet/optifine/shaders/ITextureFormat;
+      27: aload_0
+      28: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+      31: invokeinterface #685,  1          // InterfaceMethod java/util/Map.clear:()V
+      36: aload_0
+      37: getfield      #43                 // Field mapMissingSprites:Ljava/util/Map;
+      40: invokeinterface #685,  1          // InterfaceMethod java/util/Map.clear:()V
+      45: aload_0
+      46: getfield      #74                 // Field counterIndexInMap:Lnet/optifine/util/CounterInt;
+      49: invokevirtual #688                // Method net/optifine/util/CounterInt.reset:()V
+      52: invokestatic  #448                // Method net/optifine/Config.isMultiTexture:()Z
+      55: invokedynamic #691,  0            // InvokeDynamic #12:makeConcatWithConstants:(Z)Ljava/lang/String;
+      60: invokestatic  #504                // Method net/optifine/Config.dbg:(Ljava/lang/String;)V
+      63: aload_0
+      64: invokevirtual #694                // Method location:()Lnet/minecraft/resources/Identifier;
+      67: aload_1
+      68: invokestatic  #696                // Method net/optifine/util/TextureUtils.registerCustomSpriteLocations:(Lnet/minecraft/resources/Identifier;Ljava/util/Set;)V
+      71: aload_0
+      72: invokestatic  #700                // Method net/optifine/util/TextureUtils.registerCustomSprites:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+      75: aload_1
+      76: aload_0
+      77: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+      80: invokeinterface #703,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+      85: invokeinterface #707,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+      90: pop
+      91: aload_1
+      92: aload_0
+      93: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+      96: invokeinterface #703,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     101: invokestatic  #713                // Method newHashSet:(Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;
+     104: astore        4
+     106: aload_0
+     107: aload         4
+     109: invokestatic  #717                // Method net/optifine/EmissiveTextures.updateIcons:(Lnet/minecraft/client/renderer/texture/TextureAtlas;Ljava/util/Set;)V
+     112: aload_1
+     113: aload_0
+     114: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+     117: invokeinterface #703,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     122: invokeinterface #707,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+     127: pop
+     128: aload_0
+     129: getfield      #84                 // Field mipmapLevel:I
+     132: iconst_4
+     133: if_icmplt     158
+     136: aload_0
+     137: aload_0
+     138: aload_1
+     139: aload_2
+     140: invokevirtual #723                // Method detectMaxMipmapLevel:(Ljava/util/Set;Lnet/minecraft/server/packs/resources/ResourceManager;)I
+     143: putfield      #84                 // Field mipmapLevel:I
+     146: aload_0
+     147: getfield      #84                 // Field mipmapLevel:I
+     150: invokedynamic #727,  0            // InvokeDynamic #13:makeConcatWithConstants:(I)Ljava/lang/String;
+     155: invokestatic  #445                // Method net/optifine/Config.log:(Ljava/lang/String;)V
+     158: aload_0
+     159: getfield      #84                 // Field mipmapLevel:I
+     162: invokestatic  #728                // Method getMinSpriteSize:(I)I
+     165: istore        5
+     167: aload_0
+     168: iload         5
+     170: putfield      #50                 // Field iconGridSize:I
+     173: return
+
+  private com.mojang.blaze3d.textures.GpuTextureView[] getMipViews(net.optifine.shaders.ShadersTextureType);
+    Code:
+       0: aload_1
+       1: getstatic     #463                // Field net/optifine/shaders/ShadersTextureType.NORMAL:Lnet/optifine/shaders/ShadersTextureType;
+       4: if_acmpne     12
+       7: aload_0
+       8: getfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+      11: areturn
+      12: aload_1
+      13: getstatic     #472                // Field net/optifine/shaders/ShadersTextureType.SPECULAR:Lnet/optifine/shaders/ShadersTextureType;
+      16: if_acmpne     24
+      19: aload_0
+      20: getfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+      23: areturn
+      24: aload_0
+      25: getfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+      28: areturn
+
+  public void dumpContents(net.minecraft.resources.Identifier, java.nio.file.Path) throws java.io.IOException;
+    Code:
+       0: aload_1
+       1: invokevirtual #732                // Method net/minecraft/resources/Identifier.toDebugFileName:()Ljava/lang/String;
+       4: astore_3
+       5: aload_2
+       6: aload_3
+       7: aload_0
+       8: invokevirtual #735                // Method getTexture:()Lcom/mojang/blaze3d/textures/GpuTexture;
+      11: aload_0
+      12: getfield      #207                // Field maxMipLevel:I
+      15: invokedynamic #738,  0            // InvokeDynamic #14:applyAsInt:()Ljava/util/function/IntUnaryOperator;
+      20: invokestatic  #742                // Method com/mojang/blaze3d/platform/TextureUtil.writeAsPNG:(Ljava/nio/file/Path;Ljava/lang/String;Lcom/mojang/blaze3d/textures/GpuTexture;ILjava/util/function/IntUnaryOperator;)V
+      23: aload_2
+      24: aload_3
+      25: aload_0
+      26: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+      29: invokestatic  #746                // Method dumpSpriteNames:(Ljava/nio/file/Path;Ljava/lang/String;Ljava/util/Map;)V
+      32: return
+
+  private static void dumpSpriteNames(java.nio.file.Path, java.lang.String, java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.TextureAtlasSprite>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #750,  0            // InvokeDynamic #15:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       7: invokeinterface #751,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      12: astore_3
+      13: aload_3
+      14: iconst_0
+      15: anewarray     #757                // class java/nio/file/OpenOption
+      18: invokestatic  #759                // Method java/nio/file/Files.newBufferedWriter:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;
+      21: astore        4
+      23: aload_2
+      24: invokeinterface #763,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      29: invokeinterface #766,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+      34: invokestatic  #767                // InterfaceMethod java/util/Map$Entry.comparingByKey:()Ljava/util/Comparator;
+      37: invokeinterface #773,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+      42: invokeinterface #578,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      47: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      52: astore        5
+      54: aload         5
+      56: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      61: ifeq          169
+      64: aload         5
+      66: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      71: checkcast     #768                // class java/util/Map$Entry
+      74: astore        6
+      76: aload         6
+      78: invokeinterface #777,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      83: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      86: astore        7
+      88: aload         4
+      90: getstatic     #780                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      93: ldc_w         #786                // String %s\tx=%d\ty=%d\tw=%d\th=%d%n
+      96: iconst_5
+      97: anewarray     #152                // class java/lang/Object
+     100: dup
+     101: iconst_0
+     102: aload         6
+     104: invokeinterface #788,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     109: aastore
+     110: dup
+     111: iconst_1
+     112: aload         7
+     114: invokevirtual #791                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getX:()I
+     117: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     120: aastore
+     121: dup
+     122: iconst_2
+     123: aload         7
+     125: invokevirtual #794                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getY:()I
+     128: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     131: aastore
+     132: dup
+     133: iconst_3
+     134: aload         7
+     136: invokevirtual #591                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.contents:()Lnet/minecraft/client/renderer/texture/SpriteContents;
+     139: invokevirtual #595                // Method net/minecraft/client/renderer/texture/SpriteContents.width:()I
+     142: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     145: aastore
+     146: dup
+     147: iconst_4
+     148: aload         7
+     150: invokevirtual #591                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.contents:()Lnet/minecraft/client/renderer/texture/SpriteContents;
+     153: invokevirtual #596                // Method net/minecraft/client/renderer/texture/SpriteContents.height:()I
+     156: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     159: aastore
+     160: invokestatic  #797                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     163: invokevirtual #801                // Method java/io/Writer.write:(Ljava/lang/String;)V
+     166: goto          54
+     169: aload         4
+     171: ifnull        209
+     174: aload         4
+     176: invokevirtual #806                // Method java/io/Writer.close:()V
+     179: goto          209
+     182: astore        5
+     184: aload         4
+     186: ifnull        206
+     189: aload         4
+     191: invokevirtual #806                // Method java/io/Writer.close:()V
+     194: goto          206
+     197: astore        6
+     199: aload         5
+     201: aload         6
+     203: invokevirtual #656                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     206: aload         5
+     208: athrow
+     209: goto          228
+     212: astore        4
+     214: getstatic     #146                // Field LOGGER:Lorg/slf4j/Logger;
+     217: ldc_w         #809                // String Failed to write file {}
+     220: aload_3
+     221: aload         4
+     223: invokeinterface #811,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     228: return
+    Exception table:
+       from    to  target type
+          23   169   182   Class java/lang/Throwable
+         189   194   197   Class java/lang/Throwable
+          13   209   212   Class java/io/IOException
+
+  public void cycleAnimationFrames();
+    Code:
+       0: aload_0
+       1: getfield      #189                // Field texture:Lcom/mojang/blaze3d/textures/GpuTexture;
+       4: ifnull        47
+       7: aload_0
+       8: getfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+      11: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore_1
+      17: aload_1
+      18: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          43
+      26: aload_1
+      27: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+      35: astore_2
+      36: aload_2
+      37: invokevirtual #816                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.tick:()V
+      40: goto          17
+      43: aload_0
+      44: invokevirtual #671                // Method uploadAnimationFrames:()V
+      47: return
+
+  private void uploadAnimationFrames();
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iconst_0
+       3: istore_2
+       4: iconst_0
+       5: istore_3
+       6: iconst_0
+       7: istore        4
+       9: aload_0
+      10: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+      13: invokeinterface #819,  1          // InterfaceMethod java/util/List.clear:()V
+      18: aload_0
+      19: getfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+      22: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      27: astore        5
+      29: aload         5
+      31: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      36: ifeq          107
+      39: aload         5
+      41: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      46: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+      49: astore        6
+      51: aload         6
+      53: invokevirtual #820                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getSprite:()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      56: astore        7
+      58: aload         7
+      60: ifnull        92
+      63: aload_0
+      64: aload         7
+      66: invokevirtual #824                // Method isAnimationEnabled:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)Z
+      69: ifne          75
+      72: goto          29
+      75: invokestatic  #828                // Method net/optifine/SmartAnimations.isActive:()Z
+      78: ifeq          92
+      81: aload         7
+      83: invokestatic  #833                // Method net/optifine/SmartAnimations.isSpriteRendered:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)Z
+      86: ifne          92
+      89: goto          29
+      92: aload_0
+      93: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+      96: aload         6
+      98: invokeinterface #400,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     103: pop
+     104: goto          29
+     107: aload_0
+     108: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+     111: invokeinterface #836,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     116: ifne          303
+     119: iconst_0
+     120: istore        5
+     122: iload         5
+     124: aload_0
+     125: getfield      #207                // Field maxMipLevel:I
+     128: if_icmpgt     303
+     131: iload         5
+     133: istore        6
+     135: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     138: invokevirtual #608                // Method com/mojang/blaze3d/systems/GpuDevice.createCommandEncoder:()Lcom/mojang/blaze3d/systems/CommandEncoder;
+     141: aload_0
+     142: iload         6
+     144: invokedynamic #839,  0            // InvokeDynamic #16:get:(Lnet/minecraft/client/renderer/texture/TextureAtlas;I)Ljava/util/function/Supplier;
+     149: aload_0
+     150: getfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     153: iload         5
+     155: aaload
+     156: invokestatic  #613                // Method java/util/OptionalInt.empty:()Ljava/util/OptionalInt;
+     159: invokevirtual #619                // Method com/mojang/blaze3d/systems/CommandEncoder.createRenderPass:(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;)Lcom/mojang/blaze3d/systems/RenderPass;
+     162: astore        7
+     164: aload_0
+     165: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+     168: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     173: astore        8
+     175: aload         8
+     177: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     182: ifeq          257
+     185: aload         8
+     187: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     192: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+     195: astore        9
+     197: aload         9
+     199: invokevirtual #842                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.needsToDraw:()Z
+     202: ifeq          219
+     205: aload         9
+     207: aload         7
+     209: aload         9
+     211: iload         5
+     213: invokevirtual #845                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getDrawUbo:(I)Lcom/mojang/blaze3d/buffers/GpuBufferSlice;
+     216: invokevirtual #849                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.drawToAtlas:(Lcom/mojang/blaze3d/systems/RenderPass;Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V
+     219: iinc          4, 1
+     222: aload         9
+     224: invokevirtual #820                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getSprite:()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     227: astore        10
+     229: aload         10
+     231: ifnull        254
+     234: aload         10
+     236: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     239: ifnull        244
+     242: iconst_1
+     243: istore_1
+     244: aload         10
+     246: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     249: ifnull        254
+     252: iconst_1
+     253: istore_2
+     254: goto          175
+     257: aload         7
+     259: ifnull        297
+     262: aload         7
+     264: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     267: goto          297
+     270: astore        8
+     272: aload         7
+     274: ifnull        294
+     277: aload         7
+     279: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     282: goto          294
+     285: astore        9
+     287: aload         8
+     289: aload         9
+     291: invokevirtual #656                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     294: aload         8
+     296: athrow
+     297: iinc          5, 1
+     300: goto          122
+     303: invokestatic  #213                // Method net/optifine/Config.isShaders:()Z
+     306: ifeq          693
+     309: iload_1
+     310: ifeq          501
+     313: iconst_0
+     314: istore        5
+     316: iload         5
+     318: aload_0
+     319: getfield      #207                // Field maxMipLevel:I
+     322: if_icmpgt     501
+     325: iload         5
+     327: istore        6
+     329: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     332: invokevirtual #608                // Method com/mojang/blaze3d/systems/GpuDevice.createCommandEncoder:()Lcom/mojang/blaze3d/systems/CommandEncoder;
+     335: aload_0
+     336: iload         6
+     338: invokedynamic #853,  0            // InvokeDynamic #17:get:(Lnet/minecraft/client/renderer/texture/TextureAtlas;I)Ljava/util/function/Supplier;
+     343: aload_0
+     344: getfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     347: iload         5
+     349: aaload
+     350: invokestatic  #613                // Method java/util/OptionalInt.empty:()Ljava/util/OptionalInt;
+     353: invokevirtual #619                // Method com/mojang/blaze3d/systems/CommandEncoder.createRenderPass:(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;)Lcom/mojang/blaze3d/systems/RenderPass;
+     356: astore        7
+     358: aload_0
+     359: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+     362: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     367: astore        8
+     369: aload         8
+     371: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     376: ifeq          455
+     379: aload         8
+     381: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     386: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+     389: astore        9
+     391: aload         9
+     393: invokevirtual #820                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getSprite:()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     396: astore        10
+     398: aload         10
+     400: ifnonnull     406
+     403: goto          369
+     406: aload         10
+     408: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     411: ifnonnull     417
+     414: goto          369
+     417: aload         10
+     419: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     422: invokevirtual #854                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getSpriteContentsTicker:()Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;
+     425: astore        11
+     427: aload         11
+     429: ifnonnull     435
+     432: goto          369
+     435: aload         11
+     437: aload         7
+     439: aload         11
+     441: iload         5
+     443: invokevirtual #845                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getDrawUbo:(I)Lcom/mojang/blaze3d/buffers/GpuBufferSlice;
+     446: invokevirtual #849                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.drawToAtlas:(Lcom/mojang/blaze3d/systems/RenderPass;Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V
+     449: iinc          4, 1
+     452: goto          369
+     455: aload         7
+     457: ifnull        495
+     460: aload         7
+     462: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     465: goto          495
+     468: astore        8
+     470: aload         7
+     472: ifnull        492
+     475: aload         7
+     477: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     480: goto          492
+     483: astore        9
+     485: aload         8
+     487: aload         9
+     489: invokevirtual #656                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     492: aload         8
+     494: athrow
+     495: iinc          5, 1
+     498: goto          316
+     501: iload_2
+     502: ifeq          693
+     505: iconst_0
+     506: istore        5
+     508: iload         5
+     510: aload_0
+     511: getfield      #207                // Field maxMipLevel:I
+     514: if_icmpgt     693
+     517: iload         5
+     519: istore        6
+     521: invokestatic  #103                // Method com/mojang/blaze3d/systems/RenderSystem.getDevice:()Lcom/mojang/blaze3d/systems/GpuDevice;
+     524: invokevirtual #608                // Method com/mojang/blaze3d/systems/GpuDevice.createCommandEncoder:()Lcom/mojang/blaze3d/systems/CommandEncoder;
+     527: aload_0
+     528: iload         6
+     530: invokedynamic #858,  0            // InvokeDynamic #18:get:(Lnet/minecraft/client/renderer/texture/TextureAtlas;I)Ljava/util/function/Supplier;
+     535: aload_0
+     536: getfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     539: iload         5
+     541: aaload
+     542: invokestatic  #613                // Method java/util/OptionalInt.empty:()Ljava/util/OptionalInt;
+     545: invokevirtual #619                // Method com/mojang/blaze3d/systems/CommandEncoder.createRenderPass:(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;)Lcom/mojang/blaze3d/systems/RenderPass;
+     548: astore        7
+     550: aload_0
+     551: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+     554: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     559: astore        8
+     561: aload         8
+     563: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     568: ifeq          647
+     571: aload         8
+     573: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     578: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+     581: astore        9
+     583: aload         9
+     585: invokevirtual #820                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getSprite:()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     588: astore        10
+     590: aload         10
+     592: ifnonnull     598
+     595: goto          561
+     598: aload         10
+     600: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     603: ifnonnull     609
+     606: goto          561
+     609: aload         10
+     611: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     614: invokevirtual #854                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getSpriteContentsTicker:()Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;
+     617: astore        11
+     619: aload         11
+     621: ifnonnull     627
+     624: goto          561
+     627: aload         11
+     629: aload         7
+     631: aload         11
+     633: iload         5
+     635: invokevirtual #845                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getDrawUbo:(I)Lcom/mojang/blaze3d/buffers/GpuBufferSlice;
+     638: invokevirtual #849                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.drawToAtlas:(Lcom/mojang/blaze3d/systems/RenderPass;Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V
+     641: iinc          4, 1
+     644: goto          561
+     647: aload         7
+     649: ifnull        687
+     652: aload         7
+     654: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     657: goto          687
+     660: astore        8
+     662: aload         7
+     664: ifnull        684
+     667: aload         7
+     669: invokevirtual #653                // Method com/mojang/blaze3d/systems/RenderPass.close:()V
+     672: goto          684
+     675: astore        9
+     677: aload         8
+     679: aload         9
+     681: invokevirtual #656                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     684: aload         8
+     686: athrow
+     687: iinc          5, 1
+     690: goto          508
+     693: invokestatic  #448                // Method net/optifine/Config.isMultiTexture:()Z
+     696: ifeq          860
+     699: invokestatic  #859                // Method com/mojang/blaze3d/systems/RenderSystem.getGlDevice:()Lcom/mojang/blaze3d/opengl/GlDevice;
+     702: invokevirtual #863                // Method com/mojang/blaze3d/opengl/GlDevice.debugLabels:()Lcom/mojang/blaze3d/opengl/GlDebugLabel;
+     705: aload_0
+     706: invokedynamic #869,  0            // InvokeDynamic #19:get:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)Ljava/util/function/Supplier;
+     711: invokevirtual #870                // Method com/mojang/blaze3d/opengl/GlDebugLabel.pushDebugGroup:(Ljava/util/function/Supplier;)V
+     714: aload_0
+     715: getfield      #90                 // Field activeAnimations:Ljava/util/List;
+     718: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     723: astore        5
+     725: aload         5
+     727: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     732: ifeq          851
+     735: aload         5
+     737: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     742: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+     745: astore        6
+     747: aload         6
+     749: invokevirtual #820                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.getSprite:()Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     752: astore        7
+     754: aload         7
+     756: ifnonnull     762
+     759: goto          725
+     762: aload         6
+     764: invokevirtual #842                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.needsToDraw:()Z
+     767: ifeq          780
+     770: aload         7
+     772: aload_0
+     773: getfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     776: invokestatic  #876                // Method updateAnimationSingle:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;[Lcom/mojang/blaze3d/textures/GpuTextureView;)I
+     779: pop
+     780: aload         7
+     782: getfield      #880                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSingle:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     785: ifnull        802
+     788: aload         7
+     790: getfield      #880                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSingle:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     793: invokevirtual #883                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.isAnimationActive:()Z
+     796: ifeq          802
+     799: iinc          3, 1
+     802: aload         7
+     804: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     807: ifnull        825
+     810: iload_3
+     811: aload         7
+     813: getfield      #421                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteNormal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     816: aload_0
+     817: getfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     820: invokestatic  #876                // Method updateAnimationSingle:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;[Lcom/mojang/blaze3d/textures/GpuTextureView;)I
+     823: iadd
+     824: istore_3
+     825: aload         7
+     827: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     830: ifnull        848
+     833: iload_3
+     834: aload         7
+     836: getfield      #424                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSpecular:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     839: aload_0
+     840: getfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+     843: invokestatic  #876                // Method updateAnimationSingle:(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;[Lcom/mojang/blaze3d/textures/GpuTextureView;)I
+     846: iadd
+     847: istore_3
+     848: goto          725
+     851: invokestatic  #859                // Method com/mojang/blaze3d/systems/RenderSystem.getGlDevice:()Lcom/mojang/blaze3d/opengl/GlDevice;
+     854: invokevirtual #863                // Method com/mojang/blaze3d/opengl/GlDevice.debugLabels:()Lcom/mojang/blaze3d/opengl/GlDebugLabel;
+     857: invokevirtual #886                // Method com/mojang/blaze3d/opengl/GlDebugLabel.popDebugGroup:()V
+     860: aload_0
+     861: getfield      #127                // Field terrain:Z
+     864: ifeq          922
+     867: invokestatic  #889                // Method net/optifine/Config.getMinecraft:()Lnet/minecraft/client/Minecraft;
+     870: getfield      #893                // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+     873: invokevirtual #899                // Method net/minecraft/client/renderer/LevelRenderer.getFrameCount:()I
+     876: istore        5
+     878: iload         5
+     880: aload_0
+     881: getfield      #904                // Field frameCountAnimations:I
+     884: if_icmpeq     912
+     887: iload_3
+     888: iload         4
+     890: aload_0
+     891: getfield      #207                // Field maxMipLevel:I
+     894: iconst_1
+     895: iadd
+     896: idiv
+     897: iadd
+     898: istore        6
+     900: aload_0
+     901: iload         6
+     903: putfield      #907                // Field countAnimationsActive:I
+     906: aload_0
+     907: iload         5
+     909: putfield      #904                // Field frameCountAnimations:I
+     912: invokestatic  #828                // Method net/optifine/SmartAnimations.isActive:()Z
+     915: ifeq          922
+     918: aload_0
+     919: invokestatic  #910                // Method net/optifine/SmartAnimations.resetSpritesRendered:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+     922: return
+    Exception table:
+       from    to  target type
+         164   257   270   Class java/lang/Throwable
+         277   282   285   Class java/lang/Throwable
+         358   455   468   Class java/lang/Throwable
+         475   480   483   Class java/lang/Throwable
+         550   647   660   Class java/lang/Throwable
+         667   672   675   Class java/lang/Throwable
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: invokevirtual #913                // Method cycleAnimationFrames:()V
+       4: return
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getSprite(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+       4: aload_1
+       5: aload_0
+       6: getfield      #305                // Field missingSprite:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       9: invokeinterface #916,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      14: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      17: astore_2
+      18: aload_2
+      19: ifnonnull     33
+      22: new           #309                // class java/lang/IllegalStateException
+      25: dup
+      26: ldc_w         #920                // String Tried to lookup sprite, but atlas is not initialized
+      29: invokespecial #323                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      32: athrow
+      33: aload_2
+      34: areturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite missingSprite();
+    Code:
+       0: aload_0
+       1: getfield      #305                // Field missingSprite:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       4: ldc_w         #922                // String Atlas not initialized
+       7: invokestatic  #924                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+      10: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      13: areturn
+
+  public void clearTextureData();
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field sprites:Ljava/util/List;
+       4: invokedynamic #927,  0            // InvokeDynamic #20:accept:()Ljava/util/function/Consumer;
+       9: invokeinterface #931,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      14: aload_0
+      15: invokestatic  #7                  // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      18: putfield      #13                 // Field sprites:Ljava/util/List;
+      21: aload_0
+      22: invokestatic  #7                  // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      25: putfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+      28: aload_0
+      29: invokestatic  #22                 // InterfaceMethod java/util/Map.of:()Ljava/util/Map;
+      32: putfield      #27                 // Field texturesByName:Ljava/util/Map;
+      35: aload_0
+      36: aconst_null
+      37: putfield      #305                // Field missingSprite:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      40: return
+
+  public void close();
+    Code:
+       0: aload_0
+       1: invokespecial #935                // Method net/minecraft/client/renderer/texture/AbstractTexture.close:()V
+       4: aload_0
+       5: getfield      #33                 // Field mipViews:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+       8: astore_1
+       9: aload_1
+      10: arraylength
+      11: istore_2
+      12: iconst_0
+      13: istore_3
+      14: iload_3
+      15: iload_2
+      16: if_icmpge     35
+      19: aload_1
+      20: iload_3
+      21: aaload
+      22: astore        4
+      24: aload         4
+      26: invokevirtual #662                // Method com/mojang/blaze3d/textures/GpuTextureView.close:()V
+      29: iinc          3, 1
+      32: goto          14
+      35: aload_0
+      36: getfield      #93                 // Field mipViewsNormal:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+      39: astore_1
+      40: aload_1
+      41: arraylength
+      42: istore_2
+      43: iconst_0
+      44: istore_3
+      45: iload_3
+      46: iload_2
+      47: if_icmpge     66
+      50: aload_1
+      51: iload_3
+      52: aaload
+      53: astore        4
+      55: aload         4
+      57: invokevirtual #662                // Method com/mojang/blaze3d/textures/GpuTextureView.close:()V
+      60: iinc          3, 1
+      63: goto          45
+      66: aload_0
+      67: getfield      #96                 // Field mipViewsSpecular:[Lcom/mojang/blaze3d/textures/GpuTextureView;
+      70: astore_1
+      71: aload_1
+      72: arraylength
+      73: istore_2
+      74: iconst_0
+      75: istore_3
+      76: iload_3
+      77: iload_2
+      78: if_icmpge     97
+      81: aload_1
+      82: iload_3
+      83: aaload
+      84: astore        4
+      86: aload         4
+      88: invokevirtual #662                // Method com/mojang/blaze3d/textures/GpuTextureView.close:()V
+      91: iinc          3, 1
+      94: goto          76
+      97: aload_0
+      98: getfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+     101: invokeinterface #661,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     106: astore_1
+     107: aload_1
+     108: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     113: ifeq          133
+     116: aload_1
+     117: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     122: checkcast     #814                // class net/minecraft/client/renderer/texture/SpriteContents$AnimationState
+     125: astore_2
+     126: aload_2
+     127: invokevirtual #936                // Method net/minecraft/client/renderer/texture/SpriteContents$AnimationState.close:()V
+     130: goto          107
+     133: aload_0
+     134: getfield      #427                // Field spriteUbos:Lcom/mojang/blaze3d/buffers/GpuBuffer;
+     137: ifnull        152
+     140: aload_0
+     141: getfield      #427                // Field spriteUbos:Lcom/mojang/blaze3d/buffers/GpuBuffer;
+     144: invokevirtual #660                // Method com/mojang/blaze3d/buffers/GpuBuffer.close:()V
+     147: aload_0
+     148: aconst_null
+     149: putfield      #427                // Field spriteUbos:Lcom/mojang/blaze3d/buffers/GpuBuffer;
+     152: return
+
+  public net.minecraft.resources.Identifier location();
+    Code:
+       0: aload_0
+       1: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       4: areturn
+
+  public int maxSupportedTextureSize();
+    Code:
+       0: aload_0
+       1: getfield      #115                // Field maxSupportedTextureSize:I
+       4: ireturn
+
+  public int getWidth();
+    Code:
+       0: aload_0
+       1: getfield      #201                // Field width:I
+       4: ireturn
+
+  public int getHeight();
+    Code:
+       0: aload_0
+       1: getfield      #204                // Field height:I
+       4: ireturn
+
+  public static boolean isAbsoluteLocation(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_0
+       1: invokevirtual #507                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #937                // Method isAbsoluteLocationPath:(Ljava/lang/String;)Z
+       9: ireturn
+
+  private static boolean isAbsoluteLocationPath(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokevirtual #941                // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+       4: astore_1
+       5: aload_1
+       6: ldc_w         #944                // String optifine/
+       9: invokevirtual #946                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      12: ifeq          17
+      15: iconst_1
+      16: ireturn
+      17: iconst_0
+      18: ireturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getRegisteredSprite(java.lang.String);
+    Code:
+       0: new           #122                // class net/minecraft/resources/Identifier
+       3: dup
+       4: aload_1
+       5: invokespecial #949                // Method net/minecraft/resources/Identifier."<init>":(Ljava/lang/String;)V
+       8: astore_2
+       9: aload_0
+      10: aload_2
+      11: invokevirtual #950                // Method getRegisteredSprite:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      14: areturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getRegisteredSprite(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      13: areturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getUploadedSprite(java.lang.String);
+    Code:
+       0: new           #122                // class net/minecraft/resources/Identifier
+       3: dup
+       4: aload_1
+       5: invokespecial #949                // Method net/minecraft/resources/Identifier."<init>":(Ljava/lang/String;)V
+       8: astore_2
+       9: aload_0
+      10: aload_2
+      11: invokevirtual #954                // Method getUploadedSprite:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      14: areturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getUploadedSprite(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      13: areturn
+
+  private boolean isAnimationEnabled(net.minecraft.client.renderer.texture.TextureAtlasSprite);
+    Code:
+       0: aload_0
+       1: getfield      #127                // Field terrain:Z
+       4: ifne          9
+       7: iconst_1
+       8: ireturn
+       9: aload_1
+      10: getstatic     #957                // Field net/optifine/util/TextureUtils.iconWaterStill:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      13: if_acmpeq     23
+      16: aload_1
+      17: getstatic     #960                // Field net/optifine/util/TextureUtils.iconWaterFlow:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      20: if_acmpne     27
+      23: invokestatic  #963                // Method net/optifine/Config.isAnimatedWater:()Z
+      26: ireturn
+      27: aload_1
+      28: getstatic     #966                // Field net/optifine/util/TextureUtils.iconLavaStill:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      31: if_acmpeq     41
+      34: aload_1
+      35: getstatic     #969                // Field net/optifine/util/TextureUtils.iconLavaFlow:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      38: if_acmpne     45
+      41: invokestatic  #972                // Method net/optifine/Config.isAnimatedLava:()Z
+      44: ireturn
+      45: aload_1
+      46: getstatic     #975                // Field net/optifine/util/TextureUtils.iconFireLayer0:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      49: if_acmpeq     59
+      52: aload_1
+      53: getstatic     #978                // Field net/optifine/util/TextureUtils.iconFireLayer1:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      56: if_acmpne     63
+      59: invokestatic  #981                // Method net/optifine/Config.isAnimatedFire:()Z
+      62: ireturn
+      63: aload_1
+      64: getstatic     #984                // Field net/optifine/util/TextureUtils.iconSoulFireLayer0:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      67: if_acmpeq     77
+      70: aload_1
+      71: getstatic     #987                // Field net/optifine/util/TextureUtils.iconSoulFireLayer1:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      74: if_acmpne     81
+      77: invokestatic  #981                // Method net/optifine/Config.isAnimatedFire:()Z
+      80: ireturn
+      81: aload_1
+      82: getstatic     #990                // Field net/optifine/util/TextureUtils.iconCampFire:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      85: if_acmpeq     95
+      88: aload_1
+      89: getstatic     #993                // Field net/optifine/util/TextureUtils.iconCampFireLogLit:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      92: if_acmpne     99
+      95: invokestatic  #981                // Method net/optifine/Config.isAnimatedFire:()Z
+      98: ireturn
+      99: aload_1
+     100: getstatic     #996                // Field net/optifine/util/TextureUtils.iconSoulCampFire:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     103: if_acmpeq     113
+     106: aload_1
+     107: getstatic     #999                // Field net/optifine/util/TextureUtils.iconSoulCampFireLogLit:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     110: if_acmpne     117
+     113: invokestatic  #981                // Method net/optifine/Config.isAnimatedFire:()Z
+     116: ireturn
+     117: aload_1
+     118: getstatic     #1002               // Field net/optifine/util/TextureUtils.iconPortal:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     121: if_acmpne     128
+     124: invokestatic  #1005               // Method net/optifine/Config.isAnimatedPortal:()Z
+     127: ireturn
+     128: invokestatic  #1008               // Method net/optifine/Config.isAnimatedTerrain:()Z
+     131: ireturn
+
+  private static void uploadMipmapsSingle(net.minecraft.client.renderer.texture.TextureAtlasSprite);
+    Code:
+       0: aload_0
+       1: getfield      #880                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSingle:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       4: astore_1
+       5: aload_1
+       6: ifnull        65
+       9: aload_1
+      10: aload_0
+      11: invokevirtual #1011               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getAnimationIndex:()I
+      14: invokevirtual #418                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setAnimationIndex:(I)V
+      17: aload_1
+      18: aconst_null
+      19: iconst_0
+      20: invokevirtual #409                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.createAnimationState:(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;I)Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;
+      23: astore_2
+      24: aload_2
+      25: ifnull        33
+      28: aload_1
+      29: aload_2
+      30: invokevirtual #413                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTicker:(Lnet/minecraft/client/renderer/texture/SpriteContents$AnimationState;)V
+      33: aload_1
+      34: aload_0
+      35: invokevirtual #1014               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getSpriteTexture:()Lcom/mojang/blaze3d/textures/GpuTexture;
+      38: invokevirtual #1017               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.uploadMipmaps:(Lcom/mojang/blaze3d/textures/GpuTexture;)V
+      41: goto          65
+      44: astore_3
+      45: aload_1
+      46: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      49: aload_0
+      50: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      53: invokedynamic #1021,  0           // InvokeDynamic #21:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      58: invokestatic  #504                // Method net/optifine/Config.dbg:(Ljava/lang/String;)V
+      61: aload_3
+      62: invokevirtual #1023               // Method java/lang/Exception.printStackTrace:()V
+      65: return
+    Exception table:
+       from    to  target type
+          33    41    44   Class java/lang/Exception
+
+  private static int updateAnimationSingle(net.minecraft.client.renderer.texture.TextureAtlasSprite, com.mojang.blaze3d.textures.GpuTextureView[]);
+    Code:
+       0: aload_0
+       1: getfield      #880                // Field net/minecraft/client/renderer/texture/TextureAtlasSprite.spriteSingle:Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       4: astore_2
+       5: aload_2
+       6: ifnull        106
+       9: iconst_0
+      10: istore_3
+      11: iload_3
+      12: aload_1
+      13: arraylength
+      14: if_icmpge     97
+      17: aload_1
+      18: iload_3
+      19: aaload
+      20: invokevirtual #663                // Method com/mojang/blaze3d/textures/GpuTextureView.texture:()Lcom/mojang/blaze3d/textures/GpuTexture;
+      23: astore        4
+      25: aload_0
+      26: invokevirtual #1014               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getSpriteTexture:()Lcom/mojang/blaze3d/textures/GpuTexture;
+      29: astore        5
+      31: aload_0
+      32: invokevirtual #1026               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getOriginX:()I
+      35: iconst_0
+      36: iadd
+      37: iload_3
+      38: ishr
+      39: istore        6
+      41: aload_0
+      42: invokevirtual #1029               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getOriginY:()I
+      45: iconst_0
+      46: iadd
+      47: iload_3
+      48: ishr
+      49: istore        7
+      51: aload_0
+      52: invokevirtual #1032               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getWidth:()I
+      55: iload_3
+      56: ishr
+      57: istore        8
+      59: aload_0
+      60: invokevirtual #1035               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getHeight:()I
+      63: iload_3
+      64: ishr
+      65: istore        9
+      67: invokestatic  #859                // Method com/mojang/blaze3d/systems/RenderSystem.getGlDevice:()Lcom/mojang/blaze3d/opengl/GlDevice;
+      70: invokevirtual #1038               // Method com/mojang/blaze3d/opengl/GlDevice.getGlCommandEncoder:()Lcom/mojang/blaze3d/opengl/GlCommandEncoder;
+      73: aload         4
+      75: aload         5
+      77: iload_3
+      78: iconst_0
+      79: iconst_0
+      80: iload         6
+      82: iload         7
+      84: iload         8
+      86: iload         9
+      88: invokevirtual #1042               // Method com/mojang/blaze3d/opengl/GlCommandEncoder.copyTextureToTexture:(Lcom/mojang/blaze3d/textures/GpuTexture;Lcom/mojang/blaze3d/textures/GpuTexture;IIIIIII)V
+      91: iinc          3, 1
+      94: goto          11
+      97: aload_2
+      98: invokevirtual #883                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.isAnimationActive:()Z
+     101: ifeq          106
+     104: iconst_1
+     105: ireturn
+     106: iconst_0
+     107: ireturn
+
+  public int getCountRegisteredSprites();
+    Code:
+       0: aload_0
+       1: getfield      #74                 // Field counterIndexInMap:Lnet/optifine/util/CounterInt;
+       4: invokevirtual #1048               // Method net/optifine/util/CounterInt.getValue:()I
+       7: ireturn
+
+  private int detectMaxMipmapLevel(java.util.Set<net.minecraft.resources.Identifier>, net.minecraft.server.packs.resources.ResourceManager);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: bipush        20
+       5: invokevirtual #1050               // Method detectMinimumSpriteSize:(Ljava/util/Set;Lnet/minecraft/server/packs/resources/ResourceManager;I)I
+       8: istore_3
+       9: iload_3
+      10: bipush        16
+      12: if_icmpge     18
+      15: bipush        16
+      17: istore_3
+      18: iload_3
+      19: invokestatic  #1054               // Method net/minecraft/util/Mth.smallestEncompassingPowerOfTwo:(I)I
+      22: istore_3
+      23: iload_3
+      24: bipush        16
+      26: if_icmple     38
+      29: iload_3
+      30: invokedynamic #1057,  0           // InvokeDynamic #22:makeConcatWithConstants:(I)Ljava/lang/String;
+      35: invokestatic  #445                // Method net/optifine/Config.log:(Ljava/lang/String;)V
+      38: iload_3
+      39: invokestatic  #1058               // Method net/minecraft/util/Mth.log2:(I)I
+      42: istore        4
+      44: iload         4
+      46: iconst_4
+      47: if_icmpge     53
+      50: iconst_4
+      51: istore        4
+      53: iload         4
+      55: ireturn
+
+  private int detectMinimumSpriteSize(java.util.Set<net.minecraft.resources.Identifier>, net.minecraft.server.packs.resources.ResourceManager, int);
+    Code:
+       0: new           #1061               // class java/util/HashMap
+       3: dup
+       4: invokespecial #1063               // Method java/util/HashMap."<init>":()V
+       7: astore        4
+       9: aload_1
+      10: invokeinterface #1064,  1         // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      15: astore        5
+      17: aload         5
+      19: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          203
+      27: aload         5
+      29: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #122                // class net/minecraft/resources/Identifier
+      37: astore        6
+      39: aload_0
+      40: aload         6
+      42: invokevirtual #1065               // Method getSpritePath:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/resources/Identifier;
+      45: astore        7
+      47: aload_2
+      48: aload         7
+      50: invokeinterface #1069,  2         // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.getResourceOrThrow:(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/server/packs/resources/Resource;
+      55: astore        8
+      57: aload         8
+      59: ifnonnull     65
+      62: goto          17
+      65: aload         8
+      67: invokevirtual #1075               // Method net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+      70: astore        9
+      72: aload         9
+      74: ifnonnull     80
+      77: goto          17
+      80: aload         9
+      82: ldc_w         #1081               // String png
+      85: invokestatic  #1083               // Method net/optifine/util/TextureUtils.getImageSize:(Ljava/io/InputStream;Ljava/lang/String;)Ljava/awt/Dimension;
+      88: astore        10
+      90: aload         9
+      92: invokevirtual #1087               // Method java/io/InputStream.close:()V
+      95: aload         10
+      97: ifnonnull     103
+     100: goto          17
+     103: aload         10
+     105: getfield      #1090               // Field java/awt/Dimension.width:I
+     108: istore        11
+     110: iload         11
+     112: invokestatic  #1054               // Method net/minecraft/util/Mth.smallestEncompassingPowerOfTwo:(I)I
+     115: istore        12
+     117: aload         4
+     119: iload         12
+     121: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     124: invokeinterface #1093,  2         // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     129: ifne          152
+     132: aload         4
+     134: iload         12
+     136: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     139: iconst_1
+     140: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     143: invokeinterface #1096,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     148: pop
+     149: goto          17
+     152: aload         4
+     154: iload         12
+     156: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     159: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     164: checkcast     #155                // class java/lang/Integer
+     167: invokevirtual #1099               // Method java/lang/Integer.intValue:()I
+     170: istore        13
+     172: aload         4
+     174: iload         12
+     176: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     179: iload         13
+     181: iconst_1
+     182: iadd
+     183: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     186: invokeinterface #1096,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     191: pop
+     192: goto          200
+     195: astore        8
+     197: goto          17
+     200: goto          17
+     203: iconst_0
+     204: istore        5
+     206: aload         4
+     208: invokeinterface #703,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     213: astore        6
+     215: new           #1102               // class java/util/TreeSet
+     218: dup
+     219: aload         6
+     221: invokespecial #1104               // Method java/util/TreeSet."<init>":(Ljava/util/Collection;)V
+     224: astore        7
+     226: aload         7
+     228: invokeinterface #1064,  1         // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     233: astore        8
+     235: aload         8
+     237: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     242: ifeq          290
+     245: aload         8
+     247: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     252: checkcast     #155                // class java/lang/Integer
+     255: invokevirtual #1099               // Method java/lang/Integer.intValue:()I
+     258: istore        9
+     260: aload         4
+     262: iload         9
+     264: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     267: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     272: checkcast     #155                // class java/lang/Integer
+     275: invokevirtual #1099               // Method java/lang/Integer.intValue:()I
+     278: istore        10
+     280: iload         5
+     282: iload         10
+     284: iadd
+     285: istore        5
+     287: goto          235
+     290: bipush        16
+     292: istore        8
+     294: iconst_0
+     295: istore        9
+     297: iload         5
+     299: iload_3
+     300: imul
+     301: bipush        100
+     303: idiv
+     304: istore        10
+     306: aload         7
+     308: invokeinterface #1064,  1         // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     313: astore        11
+     315: aload         11
+     317: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     322: ifeq          391
+     325: aload         11
+     327: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     332: checkcast     #155                // class java/lang/Integer
+     335: invokevirtual #1099               // Method java/lang/Integer.intValue:()I
+     338: istore        12
+     340: aload         4
+     342: iload         12
+     344: invokestatic  #154                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     347: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     352: checkcast     #155                // class java/lang/Integer
+     355: invokevirtual #1099               // Method java/lang/Integer.intValue:()I
+     358: istore        13
+     360: iload         9
+     362: iload         13
+     364: iadd
+     365: istore        9
+     367: iload         12
+     369: iload         8
+     371: if_icmple     378
+     374: iload         12
+     376: istore        8
+     378: iload         9
+     380: iload         10
+     382: if_icmple     388
+     385: iload         8
+     387: ireturn
+     388: goto          315
+     391: iload         8
+     393: ireturn
+    Exception table:
+       from    to  target type
+          47    62   195   Class java/lang/Exception
+          65    77   195   Class java/lang/Exception
+          80   100   195   Class java/lang/Exception
+         103   149   195   Class java/lang/Exception
+         152   192   195   Class java/lang/Exception
+
+  private static int getMinSpriteSize(int);
+    Code:
+       0: iconst_1
+       1: iload_0
+       2: ishl
+       3: istore_1
+       4: iload_1
+       5: bipush        8
+       7: if_icmpge     13
+      10: bipush        8
+      12: istore_1
+      13: iload_1
+      14: ireturn
+
+  private static net.minecraft.client.resources.metadata.animation.FrameSize fixSpriteSize(net.minecraft.client.resources.metadata.animation.FrameSize, int);
+    Code:
+       0: aload_0
+       1: invokevirtual #1107               // Method net/minecraft/client/resources/metadata/animation/FrameSize.width:()I
+       4: iload_1
+       5: if_icmplt     18
+       8: aload_0
+       9: invokevirtual #1110               // Method net/minecraft/client/resources/metadata/animation/FrameSize.height:()I
+      12: iload_1
+      13: if_icmplt     18
+      16: aload_0
+      17: areturn
+      18: aload_0
+      19: invokevirtual #1107               // Method net/minecraft/client/resources/metadata/animation/FrameSize.width:()I
+      22: iload_1
+      23: invokestatic  #1111               // Method java/lang/Math.max:(II)I
+      26: istore_2
+      27: aload_0
+      28: invokevirtual #1110               // Method net/minecraft/client/resources/metadata/animation/FrameSize.height:()I
+      31: iload_1
+      32: invokestatic  #1111               // Method java/lang/Math.max:(II)I
+      35: istore_3
+      36: new           #1108               // class net/minecraft/client/resources/metadata/animation/FrameSize
+      39: dup
+      40: iload_2
+      41: iload_3
+      42: invokespecial #1116               // Method net/minecraft/client/resources/metadata/animation/FrameSize."<init>":(II)V
+      45: astore        4
+      47: aload         4
+      49: areturn
+
+  public boolean isTextureBound();
+    Code:
+       0: invokestatic  #1118               // Method com/mojang/blaze3d/opengl/GlStateManager.getBoundTexture:()I
+       3: istore_1
+       4: aload_0
+       5: invokevirtual #455                // Method getGlTextureId:()I
+       8: istore_2
+       9: iload_1
+      10: iload_2
+      11: if_icmpne     18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  private void updateIconGrid(int, int);
+    Code:
+       0: aload_0
+       1: iconst_m1
+       2: putfield      #54                 // Field iconGridCountX:I
+       5: aload_0
+       6: iconst_m1
+       7: putfield      #57                 // Field iconGridCountY:I
+      10: aload_0
+      11: aconst_null
+      12: putfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      15: aload_0
+      16: getfield      #50                 // Field iconGridSize:I
+      19: ifgt          23
+      22: return
+      23: aload_0
+      24: iload_1
+      25: aload_0
+      26: getfield      #50                 // Field iconGridSize:I
+      29: idiv
+      30: putfield      #54                 // Field iconGridCountX:I
+      33: aload_0
+      34: iload_2
+      35: aload_0
+      36: getfield      #50                 // Field iconGridSize:I
+      39: idiv
+      40: putfield      #57                 // Field iconGridCountY:I
+      43: aload_0
+      44: aload_0
+      45: getfield      #54                 // Field iconGridCountX:I
+      48: aload_0
+      49: getfield      #57                 // Field iconGridCountY:I
+      52: imul
+      53: anewarray     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      56: putfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      59: aload_0
+      60: dconst_1
+      61: aload_0
+      62: getfield      #54                 // Field iconGridCountX:I
+      65: i2d
+      66: ddiv
+      67: putfield      #62                 // Field iconGridSizeU:D
+      70: aload_0
+      71: dconst_1
+      72: aload_0
+      73: getfield      #57                 // Field iconGridCountY:I
+      76: i2d
+      77: ddiv
+      78: putfield      #66                 // Field iconGridSizeV:D
+      81: aload_0
+      82: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+      85: invokeinterface #326,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      90: invokeinterface #370,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      95: astore_3
+      96: aload_3
+      97: invokeinterface #374,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     102: ifeq          376
+     105: aload_3
+     106: invokeinterface #379,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     111: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+     114: astore        4
+     116: ldc2_w        #1121               // double 0.5d
+     119: iload_1
+     120: i2d
+     121: ddiv
+     122: dstore        5
+     124: ldc2_w        #1121               // double 0.5d
+     127: iload_2
+     128: i2d
+     129: ddiv
+     130: dstore        7
+     132: aload         4
+     134: invokevirtual #1123               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getU0:()F
+     137: aload         4
+     139: invokevirtual #1127               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getU1:()F
+     142: invokestatic  #1130               // Method java/lang/Math.min:(FF)F
+     145: f2d
+     146: dload         5
+     148: dadd
+     149: dstore        9
+     151: aload         4
+     153: invokevirtual #1134               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getV0:()F
+     156: aload         4
+     158: invokevirtual #1137               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getV1:()F
+     161: invokestatic  #1130               // Method java/lang/Math.min:(FF)F
+     164: f2d
+     165: dload         7
+     167: dadd
+     168: dstore        11
+     170: aload         4
+     172: invokevirtual #1123               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getU0:()F
+     175: aload         4
+     177: invokevirtual #1127               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getU1:()F
+     180: invokestatic  #1140               // Method java/lang/Math.max:(FF)F
+     183: f2d
+     184: dload         5
+     186: dsub
+     187: dstore        13
+     189: aload         4
+     191: invokevirtual #1134               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getV0:()F
+     194: aload         4
+     196: invokevirtual #1137               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getV1:()F
+     199: invokestatic  #1140               // Method java/lang/Math.max:(FF)F
+     202: f2d
+     203: dload         7
+     205: dsub
+     206: dstore        15
+     208: dload         9
+     210: aload_0
+     211: getfield      #62                 // Field iconGridSizeU:D
+     214: ddiv
+     215: d2i
+     216: istore        17
+     218: dload         11
+     220: aload_0
+     221: getfield      #66                 // Field iconGridSizeV:D
+     224: ddiv
+     225: d2i
+     226: istore        18
+     228: dload         13
+     230: aload_0
+     231: getfield      #62                 // Field iconGridSizeU:D
+     234: ddiv
+     235: d2i
+     236: istore        19
+     238: dload         15
+     240: aload_0
+     241: getfield      #66                 // Field iconGridSizeV:D
+     244: ddiv
+     245: d2i
+     246: istore        20
+     248: iload         17
+     250: istore        21
+     252: iload         21
+     254: iload         19
+     256: if_icmpgt     373
+     259: iload         21
+     261: iflt          273
+     264: iload         21
+     266: aload_0
+     267: getfield      #54                 // Field iconGridCountX:I
+     270: if_icmplt     294
+     273: iload         21
+     275: aload         4
+     277: invokevirtual #1142               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getName:()Lnet/minecraft/resources/Identifier;
+     280: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     283: invokedynamic #1145,  0           // InvokeDynamic #23:makeConcatWithConstants:(ILjava/lang/String;)Ljava/lang/String;
+     288: invokestatic  #1148               // Method net/optifine/Config.warn:(Ljava/lang/String;)V
+     291: goto          367
+     294: iload         18
+     296: istore        22
+     298: iload         22
+     300: iload         20
+     302: if_icmpgt     367
+     305: iload         22
+     307: iflt          319
+     310: iload         22
+     312: aload_0
+     313: getfield      #54                 // Field iconGridCountX:I
+     316: if_icmplt     340
+     319: iload         22
+     321: aload         4
+     323: invokevirtual #1142               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getName:()Lnet/minecraft/resources/Identifier;
+     326: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     329: invokedynamic #1150,  0           // InvokeDynamic #24:makeConcatWithConstants:(ILjava/lang/String;)Ljava/lang/String;
+     334: invokestatic  #1148               // Method net/optifine/Config.warn:(Ljava/lang/String;)V
+     337: goto          361
+     340: iload         22
+     342: aload_0
+     343: getfield      #54                 // Field iconGridCountX:I
+     346: imul
+     347: iload         21
+     349: iadd
+     350: istore        23
+     352: aload_0
+     353: getfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+     356: iload         23
+     358: aload         4
+     360: aastore
+     361: iinc          22, 1
+     364: goto          298
+     367: iinc          21, 1
+     370: goto          252
+     373: goto          96
+     376: return
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getIconByUV(double, double);
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       4: ifnonnull     9
+       7: aconst_null
+       8: areturn
+       9: dload_1
+      10: aload_0
+      11: getfield      #62                 // Field iconGridSizeU:D
+      14: ddiv
+      15: d2i
+      16: istore        5
+      18: dload_3
+      19: aload_0
+      20: getfield      #66                 // Field iconGridSizeV:D
+      23: ddiv
+      24: d2i
+      25: istore        6
+      27: iload         6
+      29: aload_0
+      30: getfield      #54                 // Field iconGridCountX:I
+      33: imul
+      34: iload         5
+      36: iadd
+      37: istore        7
+      39: iload         7
+      41: iflt          54
+      44: iload         7
+      46: aload_0
+      47: getfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      50: arraylength
+      51: if_icmple     56
+      54: aconst_null
+      55: areturn
+      56: aload_0
+      57: getfield      #46                 // Field iconGrid:[Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+      60: iload         7
+      62: aaload
+      63: areturn
+
+  public int getCountAnimations();
+    Code:
+       0: aload_0
+       1: getfield      #19                 // Field animatedTexturesStates:Ljava/util/List;
+       4: invokeinterface #417,  1          // InterfaceMethod java/util/List.size:()I
+       9: ireturn
+
+  public int getCountAnimationsActive();
+    Code:
+       0: aload_0
+       1: getfield      #907                // Field countAnimationsActive:I
+       4: ireturn
+
+  public int getIconGridSize();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field iconGridSize:I
+       4: ireturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite registerSprite(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_1
+       1: ifnonnull     15
+       4: new           #1151               // class java/lang/IllegalArgumentException
+       7: dup
+       8: ldc_w         #1153               // String Location is null
+      11: invokespecial #1155               // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      14: athrow
+      15: aload_0
+      16: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+      19: aload_1
+      20: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      25: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      28: astore_2
+      29: aload_2
+      30: ifnull        35
+      33: aload_2
+      34: areturn
+      35: new           #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      38: dup
+      39: aload_0
+      40: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+      43: aload_1
+      44: invokespecial #1156               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite."<init>":(Lnet/minecraft/resources/Identifier;Lnet/minecraft/resources/Identifier;)V
+      47: astore_2
+      48: aload_2
+      49: aload_0
+      50: invokevirtual #383                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.setTextureAtlas:(Lnet/minecraft/client/renderer/texture/TextureAtlas;)V
+      53: aload_0
+      54: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+      57: aload_1
+      58: aload_2
+      59: invokeinterface #1096,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      64: pop
+      65: aload_2
+      66: aload_0
+      67: getfield      #74                 // Field counterIndexInMap:Lnet/optifine/util/CounterInt;
+      70: invokevirtual #1159               // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.updateIndexInMap:(Lnet/optifine/util/CounterInt;)V
+      73: aload_2
+      74: areturn
+
+  public java.util.Collection<net.minecraft.client.renderer.texture.TextureAtlasSprite> getRegisteredSprites();
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+       4: invokeinterface #326,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokestatic  #1163               // Method java/util/Collections.unmodifiableCollection:(Ljava/util/Collection;)Ljava/util/Collection;
+      12: areturn
+
+  public java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.TextureAtlasSprite> getMapRegisteredSprites();
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+       4: invokestatic  #1169               // Method java/util/Collections.unmodifiableMap:(Ljava/util/Map;)Ljava/util/Map;
+       7: areturn
+
+  public java.util.Collection<net.minecraft.resources.Identifier> getRegisteredSpriteNames();
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+       4: invokeinterface #703,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       9: invokestatic  #1163               // Method java/util/Collections.unmodifiableCollection:(Ljava/util/Collection;)Ljava/util/Collection;
+      12: areturn
+
+  public boolean isTerrain();
+    Code:
+       0: aload_0
+       1: getfield      #127                // Field terrain:Z
+       4: ireturn
+
+  public boolean isItems();
+    Code:
+       0: aload_0
+       1: getfield      #134                // Field items:Z
+       4: ireturn
+
+  public net.optifine.util.CounterInt getCounterIndexInMap();
+    Code:
+       0: aload_0
+       1: getfield      #74                 // Field counterIndexInMap:Lnet/optifine/util/CounterInt;
+       4: areturn
+
+  private void onSpriteMissing(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field mapRegisteredSprites:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #301,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #303                // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      13: astore_2
+      14: aload_2
+      15: ifnonnull     19
+      18: return
+      19: aload_0
+      20: getfield      #43                 // Field mapMissingSprites:Ljava/util/Map;
+      23: aload_1
+      24: aload_2
+      25: invokeinterface #1096,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      30: pop
+      31: return
+
+  private static <T> java.util.Set<T> newHashSet(java.util.Set<T>, java.util.Set<T>);
+    Code:
+       0: new           #1172               // class java/util/HashSet
+       3: dup
+       4: invokespecial #1174               // Method java/util/HashSet."<init>":()V
+       7: astore_2
+       8: aload_2
+       9: aload_0
+      10: invokeinterface #707,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+      15: pop
+      16: aload_2
+      17: aload_1
+      18: invokeinterface #707,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+      23: pop
+      24: aload_2
+      25: areturn
+
+  public int getMipmapLevel();
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field mipmapLevel:I
+       4: ireturn
+
+  public boolean isMipmaps();
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field mipmapLevel:I
+       4: ifle          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public net.optifine.shaders.ITextureFormat getTextureFormat();
+    Code:
+       0: aload_0
+       1: getfield      #681                // Field textureFormat:Lnet/optifine/shaders/ITextureFormat;
+       4: areturn
+
+  public net.optifine.texture.IColorBlender getShadersColorBlender(net.optifine.shaders.ShadersTextureType);
+    Code:
+       0: aload_1
+       1: ifnonnull     6
+       4: aconst_null
+       5: areturn
+       6: aload_0
+       7: getfield      #681                // Field textureFormat:Lnet/optifine/shaders/ITextureFormat;
+      10: ifnull        24
+      13: aload_0
+      14: getfield      #681                // Field textureFormat:Lnet/optifine/shaders/ITextureFormat;
+      17: aload_1
+      18: invokeinterface #1175,  2         // InterfaceMethod net/optifine/shaders/ITextureFormat.getColorBlender:(Lnet/optifine/shaders/ShadersTextureType;)Lnet/optifine/texture/IColorBlender;
+      23: areturn
+      24: new           #1181               // class net/optifine/texture/ColorBlenderLinear
+      27: dup
+      28: invokespecial #1183               // Method net/optifine/texture/ColorBlenderLinear."<init>":()V
+      31: areturn
+
+  public boolean isTextureBlend(net.optifine.shaders.ShadersTextureType);
+    Code:
+       0: aload_1
+       1: ifnonnull     6
+       4: iconst_1
+       5: ireturn
+       6: aload_0
+       7: getfield      #681                // Field textureFormat:Lnet/optifine/shaders/ITextureFormat;
+      10: ifnull        24
+      13: aload_0
+      14: getfield      #681                // Field textureFormat:Lnet/optifine/shaders/ITextureFormat;
+      17: aload_1
+      18: invokeinterface #1184,  2         // InterfaceMethod net/optifine/shaders/ITextureFormat.isTextureBlend:(Lnet/optifine/shaders/ShadersTextureType;)Z
+      23: ireturn
+      24: iconst_1
+      25: ireturn
+
+  public boolean isNormalBlend();
+    Code:
+       0: aload_0
+       1: getstatic     #463                // Field net/optifine/shaders/ShadersTextureType.NORMAL:Lnet/optifine/shaders/ShadersTextureType;
+       4: invokevirtual #1188               // Method isTextureBlend:(Lnet/optifine/shaders/ShadersTextureType;)Z
+       7: ireturn
+
+  public boolean isSpecularBlend();
+    Code:
+       0: aload_0
+       1: getstatic     #472                // Field net/optifine/shaders/ShadersTextureType.SPECULAR:Lnet/optifine/shaders/ShadersTextureType;
+       4: invokevirtual #1188               // Method isTextureBlend:(Lnet/optifine/shaders/ShadersTextureType;)Z
+       7: ireturn
+
+  public net.minecraft.resources.Identifier getSpritePath(net.minecraft.resources.Identifier);
+    Code:
+       0: aload_1
+       1: invokestatic  #1189               // Method isAbsoluteLocation:(Lnet/minecraft/resources/Identifier;)Z
+       4: ifeq          28
+       7: new           #122                // class net/minecraft/resources/Identifier
+      10: dup
+      11: aload_1
+      12: invokevirtual #1193               // Method net/minecraft/resources/Identifier.getNamespace:()Ljava/lang/String;
+      15: aload_1
+      16: invokevirtual #507                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+      19: invokedynamic #1196,  0           // InvokeDynamic #25:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      24: invokespecial #1197               // Method net/minecraft/resources/Identifier."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      27: areturn
+      28: new           #122                // class net/minecraft/resources/Identifier
+      31: dup
+      32: aload_1
+      33: invokevirtual #1193               // Method net/minecraft/resources/Identifier.getNamespace:()Ljava/lang/String;
+      36: getstatic     #780                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      39: ldc_w         #1200               // String textures/%s%s
+      42: iconst_2
+      43: anewarray     #152                // class java/lang/Object
+      46: dup
+      47: iconst_0
+      48: aload_1
+      49: invokevirtual #507                // Method net/minecraft/resources/Identifier.getPath:()Ljava/lang/String;
+      52: aastore
+      53: dup
+      54: iconst_1
+      55: ldc_w         #524                // String .png
+      58: aastore
+      59: invokestatic  #797                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      62: invokespecial #1197               // Method net/minecraft/resources/Identifier."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+      65: areturn
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       4: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       7: aload_0
+       8: getfield      #189                // Field texture:Lcom/mojang/blaze3d/textures/GpuTexture;
+      11: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      14: invokedynamic #1202,  0           // InvokeDynamic #26:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      19: areturn
+
+  public java.util.Set<net.minecraft.resources.Identifier> getTextureLocations();
+    Code:
+       0: aload_0
+       1: getfield      #27                 // Field texturesByName:Ljava/util/Map;
+       4: invokeinterface #703,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       9: invokestatic  #1203               // Method java/util/Collections.unmodifiableSet:(Ljava/util/Set;)Ljava/util/Set;
+      12: areturn
+
+  private java.lang.String lambda$uploadAnimationFrames$3();
+    Code:
+       0: aload_0
+       1: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       4: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       7: invokedynamic #1207,  0           // InvokeDynamic #27:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      12: areturn
+
+  private java.lang.String lambda$uploadAnimationFrames$2(int);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       5: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       8: invokedynamic #1208,  0           // InvokeDynamic #28:makeConcatWithConstants:(ILjava/lang/String;)Ljava/lang/String;
+      13: areturn
+
+  private java.lang.String lambda$uploadAnimationFrames$1(int);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       5: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       8: invokedynamic #1209,  0           // InvokeDynamic #29:makeConcatWithConstants:(ILjava/lang/String;)Ljava/lang/String;
+      13: areturn
+
+  private java.lang.String lambda$uploadAnimationFrames$0(int);
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       5: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       8: invokedynamic #1210,  0           // InvokeDynamic #30:makeConcatWithConstants:(ILjava/lang/String;)Ljava/lang/String;
+      13: areturn
+
+  private static int lambda$dumpContents$0(int);
+    Code:
+       0: iload_0
+       1: ireturn
+
+  private java.lang.String lambda$uploadInitialContents$3();
+    Code:
+       0: aload_0
+       1: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       4: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       7: invokedynamic #1211,  0           // InvokeDynamic #31:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      12: areturn
+
+  private static java.lang.String lambda$uploadInitialContents$2();
+    Code:
+       0: ldc_w         #644                // String SpriteAnimationInfo
+       3: areturn
+
+  private static java.lang.String lambda$uploadInitialContents$1(net.minecraft.client.renderer.texture.TextureAtlasSprite);
+    Code:
+       0: aload_0
+       1: invokevirtual #591                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.contents:()Lnet/minecraft/client/renderer/texture/SpriteContents;
+       4: invokevirtual #1212               // Method net/minecraft/client/renderer/texture/SpriteContents.name:()Lnet/minecraft/resources/Identifier;
+       7: invokevirtual #1215               // Method net/minecraft/resources/Identifier.toString:()Ljava/lang/String;
+      10: areturn
+
+  private static boolean lambda$uploadInitialContents$0(net.optifine.shaders.ShadersTextureType, net.minecraft.client.renderer.texture.TextureAtlasSprite);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #584                // Method net/minecraft/client/renderer/texture/TextureAtlasSprite.getSubSprite:(Lnet/optifine/shaders/ShadersTextureType;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       5: ifnull        12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: ireturn
+
+  private java.lang.String lambda$upload$0();
+    Code:
+       0: aload_0
+       1: getfield      #99                 // Field location:Lnet/minecraft/resources/Identifier;
+       4: invokestatic  #311                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       7: invokedynamic #1218,  0           // InvokeDynamic #32:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      12: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #1219               // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #146                // Field LOGGER:Lorg/slf4j/Logger;
+       6: ldc_w         #1225               // String textures/atlas/blocks.png
+       9: invokestatic  #1227               // Method net/minecraft/resources/Identifier.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+      12: putstatic     #118                // Field LOCATION_BLOCKS:Lnet/minecraft/resources/Identifier;
+      15: ldc_w         #1231               // String textures/atlas/items.png
+      18: invokestatic  #1227               // Method net/minecraft/resources/Identifier.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+      21: putstatic     #131                // Field LOCATION_ITEMS:Lnet/minecraft/resources/Identifier;
+      24: ldc_w         #1233               // String textures/atlas/particles.png
+      27: invokestatic  #1227               // Method net/minecraft/resources/Identifier.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/Identifier;
+      30: putstatic     #1235               // Field LOCATION_PARTICLES:Lnet/minecraft/resources/Identifier;
+      33: return
+}

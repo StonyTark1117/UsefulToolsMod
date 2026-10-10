@@ -1,0 +1,155 @@
+{
+  "complete": true,
+  "promotable_to_replace": "1.20.2-forge-zenkai-egl-active-BSL_v10.1.2-matrix-native-controls",
+  "gaps": [],
+  "requirements": "scoped-requirements.json",
+  "requirements_sha256": "a7a0a45f8ab6667952d6b9348aeedb56ea3a310bc2f3f6e1e9c4db5353c70a0e",
+  "evidence": {
+    "report": "report.json",
+    "report_sha256": "104599cd363c4503cdd95e9ae5146c2e2f072b69b341caa8531b0c2bfa96b1dd",
+    "review_sheets": "review-sheets.json",
+    "review_sheets_sha256": "bdf9baeed84a59c2794ced5e904b15bc8fb421c4318a38838de3cde66b366bb7",
+    "visual_review": "visual-review.json",
+    "visual_review_sha256": "b3a625955b986c10c41efe6ad5c3c05b0a304c6303b13aacd7c31354a04d58f5"
+  },
+  "exact_inputs": {
+    "artifact_sha256": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7",
+    "artifact_provenance_sha256": "8393012b1653cd84569f598147402edd7821cc80740334a181a4aa4d1823f61c",
+    "oculus_publisher_jar_sha256": "e566bf7783cd66b90fdb25f87f611b7eacb1f62e0b2a1fd122d07a294ce08327",
+    "embeddium_publisher_jar_sha256": "b88979fa4ca1c52b2c15d7b78bf9cbfc418ee1c24fb1bd6dc24611c3ee527ffb",
+    "bsl_publisher_archive_sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7",
+    "probe_sha256": "08e78016a4a94ba715d6a8357e52c4ea68c9d21276373efa0ba50e86944de67f",
+    "source_map_entries": 4567,
+    "source_map_matches_provenance": true,
+    "loader_uid": "net.minecraftforge",
+    "loader_version": "48.1.0",
+    "runtime_loader_pin_acknowledged": "48.1.0",
+    "java_path": "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "world_fixture": "3666dbdb229f02d9e1f6ecadac78a68ce9410e0727f66d7b6b4459698c00b1ea"
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_route_verified": {
+      "game_pids": [
+        1551264
+      ],
+      "egl_device": "egl1",
+      "interposer_loaded": true
+    },
+    "serial_gpu_lock": {
+      "wait_seconds": 0.013530903997889254,
+      "path": "/tmp/useful-tools-spectral-gpu.lock"
+    },
+    "serial_render_lock": {
+      "path": "/tmp/useful-tools-spectral-render.lock",
+      "wait_seconds": 3.5559001844376326e-05
+    }
+  },
+  "active_shader_control": {
+    "mode": "active",
+    "shader_integration": "iris",
+    "shader_pack": {
+      "name": "BSL_v10.1.2.zip",
+      "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+    },
+    "shader_activation_logged": true,
+    "live_shader_state_count": 16,
+    "active_state_count": 14,
+    "disabled_toggle_state_count": 2,
+    "initial_active": true,
+    "both_entity_off_and_restored_controls_captured": true,
+    "toggle_requested": true,
+    "experimental_outline_or_frame_agent_requested": false
+  },
+  "behavioral_gates": {
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "accepted_command_count": 113,
+    "rejected_command_count": 0,
+    "shader_compile_errors": [],
+    "shader_backend_diagnostics": [],
+    "native_damage_checks": [
+      {
+        "entity": "ghost",
+        "request_token": "cfa594f8179f4eb08a28986acdb8bc6c",
+        "time_ms": 1791432364328,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.GhostEntity"
+      },
+      {
+        "entity": "wraith",
+        "request_token": "a9ee440d98694bf5b9b22dc7f2b6e33c",
+        "time_ms": 1791432383132,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.WraithEntity"
+      }
+    ],
+    "native_weather_checks": [
+      {
+        "entity": "ghost",
+        "raining": true,
+        "acknowledged": true
+      },
+      {
+        "entity": "wraith",
+        "raining": true,
+        "acknowledged": true
+      }
+    ],
+    "precipitation_fixture": {
+      "biome": "minecraft:plains",
+      "bounds": [
+        -12,
+        192,
+        -12,
+        12,
+        216,
+        12
+      ],
+      "acknowledged": true
+    },
+    "surface_registry_fixture": [
+      "ectoplasm_lantern",
+      "soul_lantern",
+      "mining_charge",
+      "spectral_infuser",
+      "ectoplasm_block",
+      "refined_ectoplasm_block",
+      "hglow_block"
+    ],
+    "inventory_preview_fixture": {
+      "native_survival_inventory": true,
+      "toasts_absent": true,
+      "armor_slots": 4
+    },
+    "glint_fixture": {
+      "item": "usefultoolsmod:hglowstone_sword",
+      "enchantment": "minecraft:unbreaking",
+      "native_serialization_acknowledged": true
+    },
+    "reviewed_capture_count": 37,
+    "capture_count": 45,
+    "paired_full_framebuffers": true
+  },
+  "cleanup": {
+    "sigkill_after_sigterm": [],
+    "private_launcher_root_retained": true,
+    "private_library_copy_removed": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ],
+    "owned_pids_checked": [
+      1550971,
+      1551264
+    ],
+    "owned_pids_alive_after_run": []
+  },
+  "note": "Scoped audit only. The main precipitation manifest, current matrix audit, and implementation README were intentionally not edited."
+}

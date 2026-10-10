@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-07T22:00:59.598718+00:00",
+  "owned_run": "beddium-native-cache-dirty-scenes-1.7.10-forge-durable-v2",
+  "owned_processes_remaining": [],
+  "other_test_jvms_observed": [],
+  "resource_policy": "One ordinary test or admitted build; two JVM processors; low CPU/idle IO priority; isolated Xvfb and null audio; individually dispatched profiles. Required multiplayer pair is the bounded exception. No unattended batch.",
+  "cleanup_change": "Wrapper now stops remaining members of its private process group after normal harness exit as well as cancellation, with bounded TERM/KILL escalation. Shared desktop/audio and unrelated processes are not targeted.",
+  "tests": {
+    "count": 6,
+    "status": "passed",
+    "log": "validation/dynamic-lighting-2.3.2/resource-cleanup-regression-tests.log",
+    "sha256": "f90aae6783cde89227464bb8c8c20732e19f1dcd2d1eb03c716647e98394470a"
+  },
+  "source_sha256": {
+    "scripts/lighting_client_lifecycle.py": "f4a09004fcd9e07c1ae5a5d23725844c480c016b6955fc61d4aad8f43c39fa1b",
+    "tests/test_lighting_client_lifecycle.py": "02937e4b877250eba9559fd9e5afd5e34fcb81485c34a5cadf5ea9268c993c45"
+  },
+  "goal_status": "incomplete; 24/32 material profiles certified; eight remaining shader-material rows retain original acceptance scope"
+}

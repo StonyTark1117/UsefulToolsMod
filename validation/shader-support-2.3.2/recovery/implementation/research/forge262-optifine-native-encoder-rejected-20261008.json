@@ -1,0 +1,40 @@
+{
+  "target": "26.2-forge",
+  "runtime": "pinned Forge 65.1.2 plus OptiFine K2 pre1 publisher",
+  "artifact_sha256": "a7c6ee9eba16f2269657070bb74bc64075ccdb2b4b8d35fb3346fdfd80a85065",
+  "pack": "BSL 10.1.2",
+  "scope": "Private opt-in encoder diagnostics only; no promotion or exact-stack acceptance. One ordinary client at a time; each run owned Xvfb 1280x720x24 with null audio.",
+  "frozen_candidate_bridge_sha256": "2e079d4f5c12399bfde1ff2d89975c3778203df2fb5cf54910aa7b8fa443cb4f",
+  "frozen_candidate_source_sha256": "6ef071e3650004affbbb7be228539ee2f55e97a8f61ba7c31a455a33e72c3e6c",
+  "trials": [
+    {
+      "trial": "v1",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-bsl-native-encoder-v1/report.json",
+      "report_sha256": "4e7d811ab1105c9b9853c0e00983885bb268a35e406f03a20394c4272d172415",
+      "status": "failed",
+      "error": "Client generated a fresh crash report while entering the world",
+      "clean_client_exit": null
+    },
+    {
+      "trial": "v2",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-bsl-native-encoder-v2/report.json",
+      "report_sha256": "5f43083ad683c7a64205ebd45d5fee9f6095802c7f3b10cffda1c8bfd1b79328",
+      "status": "failed",
+      "error": "Game JVM exited before input; inspect native startup or crash evidence",
+      "clean_client_exit": null,
+      "crash_sha256": "4d216869fd13748890a4d97c947442ac7cde49e01acce35bfe69dd56944f968d",
+      "failure": "ASM frame recomputation merged GlTransientMemory subclasses as Object; JVM VerifyError before world entry."
+    },
+    {
+      "trial": "v3",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-bsl-native-encoder-v3/report.json",
+      "report_sha256": "a732ef456958a09f27caa3cc475ca1322fdaca64dc34d5a6168330ffbb3e3e28",
+      "status": "visual_failed",
+      "error": "Required entity scene captures are fully black: wraith-indoor.png",
+      "clean_client_exit": true,
+      "capture_sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "failure": "Scene remained fully black; 1858 shader-backend diagnostics, dominated by GL_INVALID_OPERATION glUniform1 on gbufferModelView matrix."
+    }
+  ],
+  "disposition": "Rejected. Skipping native world framebuffer bind and rebinding the pack program alone does not port the publisher encoder to Forge 26.2; pack uniform writes conflict with bound program state. The original private QA source was restored."
+}

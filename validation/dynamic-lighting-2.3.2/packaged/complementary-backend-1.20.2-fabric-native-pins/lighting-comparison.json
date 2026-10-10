@@ -1,0 +1,123 @@
+{
+  "target": "1.20.2",
+  "shader": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "artifact_hashes": {
+    "/home/braydon/Useful-Tools/1.20.2/fabric/build/libs/usefultoolsmod-2.3.1+mc.1.20.2.fabric.jar": "1878997eb18ee7819bae282175b4bf70fbca51117876fbf94f10a53e4ba2465d",
+    "/tmp/useful-tools-lighting-qa-packages/1.20.2-fabric-acceptance-only.jar": "767dcf0965e5938df20f95063b58c615a2f64477eb5d1968f73949cb4790305a",
+    "/tmp/useful-tools-lighting-backends/1.20.2-fabric/sodium-fabric-mc1.20.2-0.5.5.jar": "088d26b928866300c76d1b58fccffc9086ff1cdeda435df20b59d55bef7f2017",
+    "/tmp/useful-tools-lighting-backends/1.20.2-fabric/lambdynamiclights-2.3.3+1.20.2.jar": "746e92a959a7da5f2052696ba75c85bbace4520aafc76c4140ee56ab4b3a6cfa",
+    "/tmp/usefultools-shaders-2.3.2/mods/fabric-api-0.91.6+1.20.2.jar": "f907f05b8ecdc0f33e48a79eddc33748cf97d00083185ea3cb452bb3b2e11d19",
+    "/tmp/usefultools-shaders-2.3.2/mods/iris-mc1.20.2-1.6.14.jar": "7dbe9c8b07e24b5ce80790e7451c1f4d55a86cdac9dd89726f06e7443021e5d2"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-3.png",
+          "sha256": "ae2045a3fe5a9e32289c32f3843ab116081e9d982ec6a5487df35f0f95c04806"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-3.png",
+          "sha256": "eb3b8a24e3a06c1fcacbf50dee907028b217c1f44a98be24421bfb89bc60799c"
+        }
+      },
+      "ordinary": 0.5424004694850247,
+      "hardened": 0.7662679986899374,
+      "hardened_to_ordinary_ratio": 1.4127347629648273
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-10.png",
+          "sha256": "429c7dbca63fff97914e18409a789da7bb5b22119d6fcd3f6ffc8d9d95a078d9"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-10.png",
+          "sha256": "35b3b23c5063bfcb6379119d016be322a03b4285df9de57b9f877d5929d49bd4"
+        }
+      },
+      "ordinary": 0.13360192682611507,
+      "hardened": 0.32857672301659124,
+      "hardened_to_ordinary_ratio": 2.459371139491415
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-15.png",
+          "sha256": "eca514eab8509ee34c5fc4d78b0a048cde71afab0afbc750ab07646672fea5f4"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-15.png",
+          "sha256": "c81ef78d996c0bb4b0ac5500a1acf6461d66a0077bb5c3d1b48a24273a6378aa"
+        }
+      },
+      "ordinary": 0.04857794602887308,
+      "hardened": 0.20152659306184012,
+      "hardened_to_ordinary_ratio": 4.14852025530391
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-20.png",
+          "sha256": "9d47dc35f57e998c0f94c2f7a6489795d875da5c881022e8ddf2a5a4c7b7368e"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-20.png",
+          "sha256": "150f36e3cad3e6d190a909a84bb6949699d350a9ea0128340ace6ea9c0a3f3f7"
+        }
+      },
+      "ordinary": 0.043720775556992025,
+      "hardened": 0.13358673216979097,
+      "hardened_to_ordinary_ratio": 3.0554520240761645
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-ordinary-distance-29.png",
+          "sha256": "c7d44c3958baad9b93d99dee006cab2c6a38f2226f52047dc65073812bbe8a33"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-backend-1.20.2-fabric-native-pins/lighting-hardened-distance-29.png",
+          "sha256": "669ca8cf7879a5db635396a2acf0cb03a828d59ee2fc2e39dfed6ff2d50acea2"
+        }
+      },
+      "ordinary": 0.04371753932342168,
+      "hardened": 0.05120026797672915,
+      "hardened_to_ordinary_ratio": 1.171160791963847
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791161466664,
+      "active": false,
+      "wraith_floor": null
+    },
+    {
+      "time_ms": 1791161473137,
+      "active": true,
+      "wraith_floor": null
+    }
+  ]
+}

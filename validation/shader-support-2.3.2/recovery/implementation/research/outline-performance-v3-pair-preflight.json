@@ -1,0 +1,60 @@
+{
+  "runs": {
+    "off": {
+      "manifest_sha256": "9319b99650c13ea2330b9310af132ecd6ad0da53bc266775ba18ed372091ecf5",
+      "name": "1.20.2-forge-optifine-C59-native-mask-shader-durable-perf-off-v3-outlined",
+      "arguments": {
+        "--artifact": "/home/braydon/.cache/useful-tools-spectral-recovery/artifacts/a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7/usefultoolsmod-2.3.1+mc.1.20.2.forge.jar",
+        "--world-source": "/home/braydon/.cache/useful-tools-spectral-recovery/world-fixtures/3666dbdb229f02d9e1f6ecadac78a68ce9410e0727f66d7b6b4459698c00b1ea/saves",
+        "--loader-version": "48.1.0",
+        "--shader-pack": "/home/braydon/.cache/useful-tools-spectral-recovery/packs/fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38/ComplementaryReimagined_r5.9.3.zip",
+        "--output": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-forge-optifine-C59-native-mask-shader-durable-perf-off-v3-outlined"
+      },
+      "input_hashes": {
+        "--artifact": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7",
+        "--shader-pack": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+      },
+      "world_source_exists": true,
+      "client_mod_hashes": [
+        "6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223"
+      ],
+      "frame_agent_hashes": [
+        "f4a2ac645fa6db444a48afc35b7280e872ff088fb523d20ca6a35ae5622f1c6d"
+      ],
+      "native_frame_trials_enabled": true
+    },
+    "on": {
+      "manifest_sha256": "3a33f238e70904edd8b223f14ec7d3c3d6cca8f24404c65ce9e004dd80470ffc",
+      "name": "1.20.2-forge-optifine-C59-native-mask-shader-durable-perf-on-v3-outlined",
+      "arguments": {
+        "--artifact": "/home/braydon/.cache/useful-tools-spectral-recovery/artifacts/a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7/usefultoolsmod-2.3.1+mc.1.20.2.forge.jar",
+        "--world-source": "/home/braydon/.cache/useful-tools-spectral-recovery/world-fixtures/3666dbdb229f02d9e1f6ecadac78a68ce9410e0727f66d7b6b4459698c00b1ea/saves",
+        "--loader-version": "48.1.0",
+        "--shader-pack": "/home/braydon/.cache/useful-tools-spectral-recovery/packs/fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38/ComplementaryReimagined_r5.9.3.zip",
+        "--output": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-forge-optifine-C59-native-mask-shader-durable-perf-on-v3-outlined"
+      },
+      "input_hashes": {
+        "--artifact": "a4e535019407fb691f4154ca53795829d68a5ca3b3c4e23216b9a5adcfa367a7",
+        "--shader-pack": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+      },
+      "world_source_exists": true,
+      "client_mod_hashes": [
+        "6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223"
+      ],
+      "frame_agent_hashes": [
+        "b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee",
+        "f4a2ac645fa6db444a48afc35b7280e872ff088fb523d20ca6a35ae5622f1c6d"
+      ],
+      "native_frame_trials_enabled": true
+    }
+  },
+  "checks": {
+    "artifact_equal": true,
+    "shader_pack_equal": true,
+    "world_equal": true,
+    "loader_equal": true,
+    "client_mods_equal": true,
+    "output_fresh": true
+  },
+  "scope": "Input comparability only; no frame-time or visual result."
+}

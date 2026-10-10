@@ -1,0 +1,26 @@
+{
+  "candidate": "forge262-optifine-gui-v35",
+  "change": "Insert the publisher final shader composite at the matching pinned native screen-effects boundary, with the publisher projection backup, level-projection binding and restore sequence.",
+  "bridge": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a/bridge.jar",
+  "bridge_sha256": "91bea6f99c75d298206635670ec6501db0f6baaad7af7a07ea37879361f4bf0a",
+  "prior_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v34-BSL-indoor/report.json",
+  "prior_failure": "The world and active shader state were acknowledged and the client exited cleanly, but both fresh captures were entirely black because the native bridge never invoked Shaders.renderCompositeFinal().",
+  "source_sha256": {
+    "tests/spectral-qa/probe/OptifineGuiBridge.java": "cbbaad4f5a9ec59bd3e2d5b023ee704f0d511d4bdc53bf5a38c37ef8d0f9b34a",
+    "tests/spectral-qa/probe/Forge262GuiCheck.java": "5c848e68cf28265187061d5717668b90711159109ead317def9e38281b2ed7db"
+  },
+  "strict_compile_passed": true,
+  "offline_gui_check_passed": true,
+  "verified_hooks": [
+    "one Shaders.renderCompositeFinal call",
+    "LevelRenderer.render precedes final composite",
+    "RenderSystem projection backup precedes level projection binding",
+    "final composite precedes projection restore and native screen effects",
+    "Shaders.endRender remains after native screen effects",
+    "all transformed method stacks pass ASM BasicVerifier"
+  ],
+  "runtime_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "runtime_manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine26-gui-26.2-v35-BSL-indoor-admit60-single.json",
+  "runtime_manifest_sha256": "8c1a1cb05f2392e03b7b0bbf928c5faad1512ebabe46b9df4d3f59443abb25de"
+}

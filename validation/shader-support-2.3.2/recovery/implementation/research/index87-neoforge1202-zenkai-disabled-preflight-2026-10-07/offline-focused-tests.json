@@ -1,0 +1,67 @@
+{
+  "status": "passed with expected open acceptance gate",
+  "executed_utc_date": "2026-10-08",
+  "client_launched": false,
+  "gpu_or_client_lock_touched": false,
+  "checks": [
+    {
+      "name": "Python harness compilation",
+      "command": "python3 -m py_compile scripts/build-spectral-oculus1202-neoforge.py scripts/audit-spectral-matrix.py scripts/validate-packaged-spectral.py scripts/spectral_validation.py",
+      "exit_code": 0
+    },
+    {
+      "name": "Focused spectral unit tests",
+      "command": "python3 -m unittest tests.test_spectral_evidence tests.test_spectral_validation tests.test_spectral_lighting tests.test_lighting_shader_diagnostics",
+      "exit_code": 0,
+      "tests_run": 60
+    },
+    {
+      "name": "Strict scoped acceptance audit",
+      "command": "python3 scripts/audit-spectral-matrix.py scoped-manifest.json scoped-acceptance.json --output scoped-preflight-audit.json",
+      "exit_code": 1,
+      "expected_failure": true,
+      "result": "One required target is present; zero complete configurations; exact gap is missing report. This is correct because no client was launched and no partial evidence was promoted."
+    },
+    {
+      "name": "Frozen world canonical digest",
+      "exit_code": 0,
+      "sha256": "67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef",
+      "files": 23,
+      "bytes": 17544992,
+      "session_locks": 0
+    },
+    {
+      "name": "Private native artifact strict namespace inventory",
+      "exit_code": 0,
+      "artifact_entries": 1854,
+      "forge_namespace_files": 0,
+      "neoforge_namespace_files": 26,
+      "neoforge_loading_mod_list_files": 9
+    },
+    {
+      "name": "Canonical disabled-command structural assertions",
+      "exit_code": 0,
+      "assertions": [
+        "ghost and wraith",
+        "six required scenes",
+        "entity states",
+        "surfaces",
+        "native spectral commands",
+        "native damage probe",
+        "disabled mode",
+        "no shader pack",
+        "no shader toggle",
+        "1800-second admission wait",
+        "fresh output absent"
+      ]
+    }
+  ],
+  "existing_version_native_build_evidence": {
+    "record": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-oculus-native-rebuild-offline-check-2026-10-07.json",
+    "build_status": "passed",
+    "complete_upstream_file_integrity_verified": true,
+    "artifact_sha256": "a402decb6cdb3e5dec0b2cdd164e4412b327bd86bb83b0aac1f611d03f46a42e",
+    "matches_previously_tested_qa2_artifact": true,
+    "note": "The source rebuild was not rerun because this task forbids touching the shared client/build admission lock. The current artifact, source archive, reviewed patch, receipt, and strict namespace inventory were reverified offline."
+  }
+}

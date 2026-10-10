@@ -1,0 +1,40 @@
+{
+  "input": "/tmp/usefultools-shaders-2.3.2/qa/8ecc0252f3af9ab5fb8e5513719749385cd2ac5afb6fee960f3ebde458b794aa/OptifiNeoforge-2.0.0-mc1202-native-20293-candidate.jar",
+  "output": "/tmp/usefultools-shaders-2.3.2/qa/fe8a0c81715bd412736c780624a72993d8c2d9902457297511a91599c148282e/OptifiNeoforge-2.0.0-mc1202-native-20293-candidate.jar",
+  "sha256": "fe8a0c81715bd412736c780624a72993d8c2d9902457297511a91599c148282e",
+  "native_source": "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+  "native_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "native_classes": [
+    "net/minecraft/Util$1",
+    "net/minecraft/Util$10",
+    "net/minecraft/Util$11",
+    "net/minecraft/Util$2",
+    "net/minecraft/Util$3",
+    "net/minecraft/Util$4",
+    "net/minecraft/Util$5",
+    "net/minecraft/Util$6",
+    "net/minecraft/Util$7",
+    "net/minecraft/Util$8",
+    "net/minecraft/Util$9",
+    "net/minecraft/Util$IdentityStrategy",
+    "net/minecraft/Util$OS",
+    "net/minecraft/Util$OS$1",
+    "net/minecraft/Util$OS$2"
+  ],
+  "added": [
+    "net/minecraft/Util$1\t*",
+    "net/minecraft/Util$10\t*",
+    "net/minecraft/Util$11\t*",
+    "net/minecraft/Util$2\t*",
+    "net/minecraft/Util$6\t*",
+    "net/minecraft/Util$IdentityStrategy\t*",
+    "net/minecraft/Util$OS$1\t*",
+    "net/minecraft/Util$OS$2\t*"
+  ],
+  "reason": "Keep complete actual native file-operation anonymous class family coherent with retained native Util methods",
+  "concrete_cause": "Native Util$6 deletes an existing backup file; publisher Util$6 only checks whether it is a regular file. Mixing native Util with publisher Util$6 falsely reports deletion success, then Files.move fails with FileAlreadyExists.",
+  "api_evidence": {
+    "native-util6-javap.txt": "b86e3b1a8d85562ff2248a964a6b6085f67fe371f045e7c4be9bd12765eb8126",
+    "publisher-util6-javap.txt": "02e132c31c83fcb66749c86e1aa3da2a49c12961a544f1db4fd43b98a0e4b415"
+  }
+}

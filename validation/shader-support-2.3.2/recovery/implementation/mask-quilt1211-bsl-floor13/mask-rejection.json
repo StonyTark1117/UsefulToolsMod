@@ -1,0 +1,22 @@
+{
+  "production_extra_pass_enabled": false,
+  "decision": "Reject tested eye-edge mask strengths for the selected appearance; retain tuned lit path.",
+  "visual_reason": "At all three strengths the added fullbright eye edges become pale emissive spots. The lit face already shows dark eyes and mouth; the extra pass changes that expression without improving the separated arms or silhouette.",
+  "target": "1.21.1 Fabric artifact on Quilt 0.30.0 / Iris 1.8.8 / BSL 10.1.2",
+  "floor": 13,
+  "evidence": {
+    "wraith-night": "6e771a8dcf77d6f513f6b3408d1419807e90588392b5f6da918e3760492d5864",
+    "wraith-night-mask1": "744915a8763afdd1686d89bb4181fc575eaebdc3a128f8f5138ae405e3f2f74e",
+    "wraith-night-mask2": "3cd009430c0ac78e1d76788ccaed96ce3738358314f219b667ae66676a7934fc",
+    "wraith-night-mask3": "2623e9e58832d975e3e187e9d04d779cbb13ab8998a2edf7a921de3993f01a23"
+  },
+  "limits": [
+    "This is a visual rejection of these tested masks, not a performance pass or all-target completion.",
+    "Fresh sole-GPU EGL trials completed three paired 1800-frame repeats for BSL and Complementary; those profiles failed the old shutdown path, so full native-menu retries remain required.",
+    "No extra production layer is introduced, so its occlusion/state eligibility has not been certified."
+  ],
+  "paired_performance_evidence": [
+    "../mask-sole-egl-1800-BSL_v10.1.2/performance-pairs.json",
+    "../mask-sole-egl-1800-ComplementaryReimagined_r5.9.3/performance-pairs.json"
+  ]
+}

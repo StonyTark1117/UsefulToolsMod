@@ -1,0 +1,51 @@
+{
+  "time_utc": "2026-10-07T20:25:20.096192+00:00",
+  "command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/javac",
+    "-J-XX:ActiveProcessorCount=2",
+    "--release",
+    "8",
+    "-Xlint:all",
+    "-Xlint:-options",
+    "-Werror",
+    "-classpath",
+    "/home/braydon/Useful-Tools/1.7.10/build/rfg/recompiled_minecraft-1.7.10.jar:/home/braydon/Useful-Tools/1.7.10/build/lighting-dev/usefultools-lighting-2.3.1+mc.1.7.10.forge.jar",
+    "-d",
+    "/tmp/lighting-focused-native-compile-rf39kcka",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicBeddiumLightingQa.java",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/menu/com/stonytark/usefultools/lighting/qa/OptifineLightingQaMenuSnapshot.java",
+    "tests/dynamic-lighting/menu-fixture/OptifineMenuSnapshotFixture.java",
+    "tests/dynamic-lighting/menu-fixture/net/optifine/shaders/gui/GuiShaders.java"
+  ],
+  "exit_code": 0,
+  "source_sha256": {
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicBeddiumLightingQa.java": "175093fb141b6d5605376d00ebae96bba27f4537d9c4a9f2050bb5e51b7a934b",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/menu/com/stonytark/usefultools/lighting/qa/OptifineLightingQaMenuSnapshot.java": "dce94e229aecf21050a7a2c91078d2485f05c8e3a8043b6475ba12b2ba7b9d11",
+    "tests/dynamic-lighting/menu-fixture/OptifineMenuSnapshotFixture.java": "aefe18c2761b2b55386855c409559f91ab92991deaaf6fec42d16ca4b3c1c9f3",
+    "tests/dynamic-lighting/menu-fixture/net/optifine/shaders/gui/GuiShaders.java": "2c3b46689d6829e59026b2ea8d48960b4444b8953cee3fc1bedb74bc19107321"
+  },
+  "classpath": {
+    "/home/braydon/Useful-Tools/1.7.10/build/rfg/recompiled_minecraft-1.7.10.jar": "988fc3903e7586826f961cce7559f88558ae099a9ef3b483fb9c7070a828e74e",
+    "/home/braydon/Useful-Tools/1.7.10/build/lighting-dev/usefultools-lighting-2.3.1+mc.1.7.10.forge.jar": "2df441a604502efaf0d74d0f07dc7f83387cf646987470f022ee1a3aa0f26c5d"
+  },
+  "scope": "Focused native MCP/RFG API compilation plus menu fixture; no client or Gradle launched; no runtime compatibility claim",
+  "menu_fixture": {
+    "command": [
+      "/usr/lib/jvm/java-17-openjdk/bin/java",
+      "-XX:ActiveProcessorCount=2",
+      "-cp",
+      "/tmp/lighting-focused-native-compile-rf39kcka",
+      "OptifineMenuSnapshotFixture"
+    ],
+    "exit_code": 0
+  },
+  "class_sha256": {
+    "OptifineMenuSnapshotFixture.class": "2e40d2a52f6ce4b905e1143a58163712a6581e4132e4aa6eb8eebee410ab601a",
+    "com/stonytark/usefultools/lighting/qa/OptifineLightingQaMenuSnapshot.class": "78b6b1096cb3b11d249d3ce40a7d881ec4e7f6193609fdc87bf50cb3847216c8",
+    "com/stonytark/usefultools/lighting/classic/ClassicBeddiumLightingQa.class": "a6d2dfb6f32ad795b7357b3bc21c575d7bd4053b2dfc28ed906a0614c86f6c13",
+    "net/optifine/shaders/gui/GuiShaders.class": "d4026afb707944d5c6b5408b1deaee0bdd40af1056553739a1c20b851f0f3d4b",
+    "net/optifine/shaders/gui/GuiShaders$1.class": "ef717bcf07134dd01aca1220da534d3ef4a9afebf9ca5c0a76630355dfea9c5d",
+    "net/optifine/shaders/gui/GuiShaders$Slot.class": "4394d5daef4764111fc649b12bce17db0e6191bd64b74e719eb4d6cdec2aa24c",
+    "net/optifine/shaders/gui/GuiShaders$Bounds.class": "a64f460b840c34ffea4349beba5cadac8bb07d5b53624106ba32b9a76beb07ca"
+  }
+}

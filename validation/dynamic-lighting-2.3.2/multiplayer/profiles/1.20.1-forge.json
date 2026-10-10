@@ -1,0 +1,40 @@
+{
+  "target": "1.20.1-forge",
+  "invocation": [
+    "scripts/validate-packaged-spectral.py",
+    "--template",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-forge-optifine-47218",
+    "--artifact",
+    "/tmp/useful-tools-lighting-reviewed-artifacts/5eb0cc031943092b88dbec95fb8331bc4f66e1d8d7afe3ea86260ddb95783caf/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar",
+    "--artifact-provenance",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/profiles/1.20.1-forge-artifact-5eb0cc031943092b88dbec95fb8331bc4f66e1d8d7afe3ea86260ddb95783caf.json",
+    "--minecraft-version",
+    "1.20.1",
+    "--java-path",
+    "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "--loader-uid",
+    "net.minecraftforge",
+    "--loader-version",
+    "47.4.10",
+    "--world-source",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-fabric/minecraft/saves",
+    "--mode",
+    "baseline",
+    "--lighting-qa",
+    "--jvm-arg=-DusefulToolsLightingQa=true",
+    "--output",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/1.20.1-forge",
+    "--lighting-direct-client",
+    "--menu-world",
+    "--client-mod",
+    "/tmp/useful-tools-lighting-qa-packages/1.20.1-forge-acceptance-only.jar"
+  ],
+  "components": {
+    "components": [
+      {
+        "uid": "net.minecraft",
+        "version": "1.20.1"
+      }
+    ]
+  }
+}

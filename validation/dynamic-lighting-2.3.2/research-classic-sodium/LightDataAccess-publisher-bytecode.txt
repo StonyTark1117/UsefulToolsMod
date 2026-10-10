@@ -1,0 +1,425 @@
+Compiled from "LightDataAccess.java"
+public abstract class org.embeddedt.embeddium.impl.model.light.data.LightDataAccess {
+  private static final int NEIGHBOR_BLOCK_RADIUS;
+    descriptor: I
+
+  private static final int BLOCK_LENGTH;
+    descriptor: I
+
+  private final int[] light;
+    descriptor: [I
+
+  private int xOffset;
+    descriptor: I
+
+  private int yOffset;
+    descriptor: I
+
+  private int zOffset;
+    descriptor: I
+
+  public static final int FULL_BRIGHT;
+    descriptor: I
+
+  public org.embeddedt.embeddium.impl.model.light.data.LightDataAccess();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #20                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: sipush        8000
+       8: newarray       int
+      10: putfield      #22                 // Field light:[I
+      13: return
+
+  public void reset(int, int, int);
+    descriptor: (III)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_2
+       3: isub
+       4: putfield      #28                 // Field xOffset:I
+       7: aload_0
+       8: iload_2
+       9: iconst_2
+      10: isub
+      11: putfield      #30                 // Field yOffset:I
+      14: aload_0
+      15: iload_3
+      16: iconst_2
+      17: isub
+      18: putfield      #32                 // Field zOffset:I
+      21: aload_0
+      22: getfield      #22                 // Field light:[I
+      25: iconst_0
+      26: invokestatic  #38                 // Method java/util/Arrays.fill:([II)V
+      29: return
+
+  private int index(int, int, int);
+    descriptor: (III)I
+    Code:
+       0: iload_1
+       1: aload_0
+       2: getfield      #28                 // Field xOffset:I
+       5: isub
+       6: istore        4
+       8: iload_2
+       9: aload_0
+      10: getfield      #30                 // Field yOffset:I
+      13: isub
+      14: istore        5
+      16: iload_3
+      17: aload_0
+      18: getfield      #32                 // Field zOffset:I
+      21: isub
+      22: istore        6
+      24: iload         6
+      26: bipush        20
+      28: imul
+      29: bipush        20
+      31: imul
+      32: iload         5
+      34: bipush        20
+      36: imul
+      37: iadd
+      38: iload         4
+      40: iadd
+      41: ireturn
+
+  protected abstract int compute(int, int, int);
+    descriptor: (III)I
+
+  public int get(int, int, int);
+    descriptor: (III)I
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: iload_3
+       4: invokevirtual #53                 // Method index:(III)I
+       7: istore        4
+       9: aload_0
+      10: getfield      #22                 // Field light:[I
+      13: iload         4
+      15: iaload
+      16: istore        5
+      18: iload         5
+      20: ifeq          26
+      23: iload         5
+      25: ireturn
+      26: aload_0
+      27: getfield      #22                 // Field light:[I
+      30: iload         4
+      32: aload_0
+      33: iload_1
+      34: iload_2
+      35: iload_3
+      36: invokevirtual #55                 // Method compute:(III)I
+      39: dup_x2
+      40: iastore
+      41: ireturn
+
+  public int get(int, int, int, org.embeddedt.embeddium.impl.model.quad.properties.ModelQuadFacing, org.embeddedt.embeddium.impl.model.quad.properties.ModelQuadFacing);
+    descriptor: (IIILorg/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing;Lorg/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing;)I
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload         4
+       4: invokevirtual #64                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepX:()I
+       7: iadd
+       8: aload         5
+      10: invokevirtual #64                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepX:()I
+      13: iadd
+      14: iload_2
+      15: aload         4
+      17: invokevirtual #67                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepY:()I
+      20: iadd
+      21: aload         5
+      23: invokevirtual #67                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepY:()I
+      26: iadd
+      27: iload_3
+      28: aload         4
+      30: invokevirtual #70                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepZ:()I
+      33: iadd
+      34: aload         5
+      36: invokevirtual #70                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepZ:()I
+      39: iadd
+      40: invokevirtual #72                 // Method get:(III)I
+      43: ireturn
+
+  public int get(int, int, int, org.embeddedt.embeddium.impl.model.quad.properties.ModelQuadFacing);
+    descriptor: (IIILorg/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing;)I
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload         4
+       4: invokevirtual #64                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepX:()I
+       7: iadd
+       8: iload_2
+       9: aload         4
+      11: invokevirtual #67                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepY:()I
+      14: iadd
+      15: iload_3
+      16: aload         4
+      18: invokevirtual #70                 // Method org/embeddedt/embeddium/impl/model/quad/properties/ModelQuadFacing.getStepZ:()I
+      21: iadd
+      22: invokevirtual #72                 // Method get:(III)I
+      25: ireturn
+
+  public static int packBL(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: bipush        15
+       3: iand
+       4: ireturn
+
+  public static int unpackBL(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: bipush        15
+       3: iand
+       4: ireturn
+
+  public static int packSL(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: bipush        15
+       3: iand
+       4: iconst_4
+       5: ishl
+       6: ireturn
+
+  public static int unpackSL(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: iconst_4
+       2: iushr
+       3: bipush        15
+       5: iand
+       6: ireturn
+
+  public static int packLU(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: bipush        15
+       3: iand
+       4: bipush        8
+       6: ishl
+       7: ireturn
+
+  public static int unpackLU(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: bipush        8
+       3: iushr
+       4: bipush        15
+       6: iand
+       7: ireturn
+
+  public static int packAO(float);
+    descriptor: (F)I
+    Code:
+       0: fload_0
+       1: ldc           #90                 // float 4096.0f
+       3: fmul
+       4: f2i
+       5: istore_1
+       6: iload_1
+       7: ldc           #91                 // int 65535
+       9: iand
+      10: bipush        12
+      12: ishl
+      13: ireturn
+
+  public static float unpackAO(int);
+    descriptor: (I)F
+    Code:
+       0: iload_0
+       1: bipush        12
+       3: iushr
+       4: ldc           #91                 // int 65535
+       6: iand
+       7: istore_1
+       8: iload_1
+       9: i2f
+      10: ldc           #97                 // float 2.4414062E-4f
+      12: fmul
+      13: freturn
+
+  public static int packEM(boolean);
+    descriptor: (Z)I
+    Code:
+       0: iload_0
+       1: ifeq          8
+       4: iconst_1
+       5: goto          9
+       8: iconst_0
+       9: bipush        28
+      11: ishl
+      12: ireturn
+
+  public static boolean unpackEM(int);
+    descriptor: (I)Z
+    Code:
+       0: iload_0
+       1: bipush        28
+       3: iushr
+       4: iconst_1
+       5: iand
+       6: ifeq          13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  public static int packOP(boolean);
+    descriptor: (Z)I
+    Code:
+       0: iload_0
+       1: ifeq          8
+       4: iconst_1
+       5: goto          9
+       8: iconst_0
+       9: bipush        29
+      11: ishl
+      12: ireturn
+
+  public static boolean unpackOP(int);
+    descriptor: (I)Z
+    Code:
+       0: iload_0
+       1: bipush        29
+       3: iushr
+       4: iconst_1
+       5: iand
+       6: ifeq          13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  public static int packFO(boolean);
+    descriptor: (Z)I
+    Code:
+       0: iload_0
+       1: ifeq          8
+       4: iconst_1
+       5: goto          9
+       8: iconst_0
+       9: bipush        30
+      11: ishl
+      12: ireturn
+
+  public static boolean unpackFO(int);
+    descriptor: (I)Z
+    Code:
+       0: iload_0
+       1: bipush        30
+       3: iushr
+       4: iconst_1
+       5: iand
+       6: ifeq          13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  public static int packFC(boolean);
+    descriptor: (Z)I
+    Code:
+       0: iload_0
+       1: ifeq          8
+       4: iconst_1
+       5: goto          9
+       8: iconst_0
+       9: bipush        31
+      11: ishl
+      12: ireturn
+
+  public static boolean unpackFC(int);
+    descriptor: (I)Z
+    Code:
+       0: iload_0
+       1: bipush        31
+       3: iushr
+       4: iconst_1
+       5: iand
+       6: ifeq          13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  public static int pack(int, int);
+    descriptor: (II)I
+    Code:
+       0: iload_0
+       1: iconst_4
+       2: ishl
+       3: iload_1
+       4: bipush        20
+       6: ishl
+       7: ior
+       8: ireturn
+
+  public static int unpackBlock(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: ldc           #91                 // int 65535
+       3: iand
+       4: iconst_4
+       5: ishr
+       6: ireturn
+
+  public static int unpackSky(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: bipush        20
+       3: ishr
+       4: ldc           #91                 // int 65535
+       6: iand
+       7: ireturn
+
+  public static int getLightmap(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: invokestatic  #121                // Method unpackBL:(I)I
+       4: iload_0
+       5: invokestatic  #123                // Method unpackLU:(I)I
+       8: invokestatic  #128                // Method java/lang/Math.max:(II)I
+      11: iload_0
+      12: invokestatic  #130                // Method unpackSL:(I)I
+      15: invokestatic  #132                // Method pack:(II)I
+      18: ireturn
+
+  public static int getEmissiveLightmap(int);
+    descriptor: (I)I
+    Code:
+       0: iload_0
+       1: invokestatic  #135                // Method unpackEM:(I)Z
+       4: ifeq          11
+       7: getstatic     #137                // Field FULL_BRIGHT:I
+      10: ireturn
+      11: iload_0
+      12: invokestatic  #139                // Method getLightmap:(I)I
+      15: ireturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: bipush        15
+       2: bipush        15
+       4: invokestatic  #132                // Method pack:(II)I
+       7: putstatic     #137                // Field FULL_BRIGHT:I
+      10: return
+}

@@ -1,0 +1,15 @@
+{
+  "actual_native_api": "1.7.10/build/rfg/minecraft-src/java/net/minecraft/client/model/ModelRenderer.java",
+  "api_sha256": "1d4d7b3d6d441d8bab93bc32d5230fce0471a4a2a28a5b6bed06cacea0c4a469",
+  "implementation": "1.7.10/src/main/java/com/stonytark/usefultoolsmod/classic/client/ModelWraith.java",
+  "implementation_sha256": "4ddf789570f5d1c253f3c25716286e69ef1db476fad3ba7935cd8f6b2ec4f216",
+  "rebuild": {
+    "previous_sha256": "26b2607979790a05f26f92dcefd1783eae97e2b5217f63afcb78d5d1c49d269b",
+    "artifact_sha256": "52ab3d5b4dc58833bd638955e2f74bfc6a8ba1c96d0d2b7871b9b37fc6fb71ce",
+    "artifact": "/tmp/usefultools-shaders-2.3.2/matrix-artifacts/52ab3d5b4dc58833bd638955e2f74bfc6a8ba1c96d0d2b7871b9b37fc6fb71ce/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+    "provenance": "/tmp/usefultools-shaders-2.3.2/matrix-artifacts/52ab3d5b4dc58833bd638955e2f74bfc6a8ba1c96d0d2b7871b9b37fc6fb71ce/provenance.json",
+    "build_log": "validation/shader-support-2.3.2/recovery/implementation/build/classic-shader-native-uv-current.log",
+    "server_smoke_log": "validation/shader-support-2.3.2/recovery/implementation/build/server-classic-shader-native-uv.log"
+  },
+  "reason": "Old active hood 12x12x12 native UV geometry clipped eyes and distorted mouth on modern 12x11x10 texture. Active branch now uses native modern-equivalent geometry; original inactive geometry unchanged. Five regular native part draws; no emissive facial pass."
+}

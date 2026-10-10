@@ -1,0 +1,248 @@
+{
+  "status": "failed",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "run_id": "782ef2e7cf0a4f7fa2bf683a581e6c5e",
+  "invocation": [
+    "/tmp/usefultools-shaders-2.3.2/harness/51fa8cd30cc9af60570d1515a837bbc388c7f1adfa4955e8b723c849ab68b61e/scripts/validate-packaged-spectral.py",
+    "--template",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1710-forge-optifine",
+    "--artifact",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+    "--minecraft-version",
+    "1.7.10",
+    "--java-path",
+    "/usr/lib/jvm/java-8-openjdk/bin/java",
+    "--loader-uid",
+    "net.minecraftforge",
+    "--loader-version",
+    "10.13.4.1614",
+    "--mode",
+    "baseline",
+    "--lighting-qa",
+    "--lighting-scenes",
+    "--lighting-equipment-scenes",
+    "--lighting-classic-beddium",
+    "--classic-qa",
+    "--menu-world",
+    "--jvm-arg=-DusefulToolsLightingQa=true",
+    "--jvm-arg=-Dfml.coreMods.load=com.stonytark.usefultools.lighting.classic.ClassicQaAudioPlugin",
+    "--client-mod",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar",
+    "--ocr-python",
+    "/home/braydon/.cache/useful-tools-lighting-ocr/bin/python",
+    "--output",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/packaged/beddium-native-cache-dirty-scenes-1.7.10-forge-durable-v1",
+    "--client-mod",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/fc6fc7ec9a526197ba694545083ef09deedf70fbcd659317d2e3caacae2e10e2/beddium-mc1.7.10-1.2.5-j8.jar",
+    "--client-mod",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/bc92d152b2036324b98df0f4510b76b94826b57610f96177e74387b3f399cf39/falsepatternlib-mc1.7.10-1.12.2.jar",
+    "--client-mod",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/ad0ea4f92daf7bf7ec5c10e16258425e47929126954aea5d80df69ce26cd7318/+unimixins-all-1.7.10-0.3.1.jar"
+  ],
+  "mode": "baseline",
+  "shader_integration": "iris",
+  "loader_uid": "net.minecraftforge",
+  "loader_version": "10.13.4.1614",
+  "work_dir": "/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-q5vmd4oe",
+  "framebuffer": "1280x720x24",
+  "audio_backend": "ALSOFT_DRIVERS=null",
+  "wayland_unset": true,
+  "gpu_zink": false,
+  "software_render_threads": "2",
+  "test_active_processors": "2",
+  "commands": [],
+  "captures": [
+    "world-entry-1.png",
+    "world-entry-2.png",
+    "world-entry-2-play.png"
+  ],
+  "visual_verdict": "not reviewed",
+  "process_resource_priority": {
+    "nice": 10,
+    "io": {
+      "requested": "idle",
+      "applied": true,
+      "error": ""
+    },
+    "scope": "Private harness and inherited client/display children only"
+  },
+  "harness_sha256": {
+    "scripts/validate-packaged-spectral.py": "247ec99f42ab828e0480e26fb817a18d2d3a317efac37d0a385f9f55fc9e9079",
+    "scripts/spectral_validation.py": "f7b6004ef8fe53f3fff8f9df87efa804b767cafc27073b5a9cf1e596a4c48f69",
+    "scripts/spectral-menu-ocr.py": "d115a2c05006ea019ecde5fdaf7729e8119a5df18e029f54298b95d6b483a05c",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78"
+  },
+  "harness_source_directory": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/packaged/beddium-native-cache-dirty-scenes-1.7.10-forge-durable-v1/harness-source",
+  "harness_original_source_directory": "/tmp/usefultools-shaders-2.3.2/harness/51fa8cd30cc9af60570d1515a837bbc388c7f1adfa4955e8b723c849ab68b61e/scripts",
+  "working_tree_diff_sha256": "c50057fccb45a02fe64b9b2a2284ed48ee919427f36e4325767ed95b7fa11afe",
+  "private_component_metadata": true,
+  "private_verified_metadata": [
+    {
+      "uid": "org.lwjgl",
+      "version": "2.9.3",
+      "sha256": "12304aa2ed4b4359fa5346cdecc18a31441feefe99b8cd85e9309cfd6fd6b3e8",
+      "restored": false
+    },
+    {
+      "uid": "net.minecraft",
+      "version": "1.7.10",
+      "sha256": "5da6b22bde2571e1e9602f390cf5ba6535f85414fb82dd0d63782f44f33a38d4",
+      "restored": false
+    },
+    {
+      "uid": "net.minecraftforge",
+      "version": "10.13.4.1614",
+      "sha256": "8805569218d16a3d66bf519961d9dbb96da82398c42056345450639b568dd199",
+      "restored": false
+    }
+  ],
+  "prism_loader_version": "10.13.4.1614",
+  "components": {
+    "components": [
+      {
+        "cachedName": "LWJGL 2",
+        "cachedVersion": "2.9.3",
+        "cachedVolatile": true,
+        "dependencyOnly": true,
+        "uid": "org.lwjgl",
+        "version": "2.9.3"
+      },
+      {
+        "cachedName": "Minecraft",
+        "important": true,
+        "uid": "net.minecraft",
+        "version": "1.7.10"
+      },
+      {
+        "uid": "net.minecraftforge",
+        "version": "10.13.4.1614"
+      }
+    ],
+    "formatVersion": 1
+  },
+  "probe_agent_sha256": "1e1a878e5b8c4a028d6601966eeb9d5f370cf55cbc9c42eff70d3d73877082e1",
+  "artifacts": {
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar": "0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar": "f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/fc6fc7ec9a526197ba694545083ef09deedf70fbcd659317d2e3caacae2e10e2/beddium-mc1.7.10-1.2.5-j8.jar": "fc6fc7ec9a526197ba694545083ef09deedf70fbcd659317d2e3caacae2e10e2",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/bc92d152b2036324b98df0f4510b76b94826b57610f96177e74387b3f399cf39/falsepatternlib-mc1.7.10-1.12.2.jar": "bc92d152b2036324b98df0f4510b76b94826b57610f96177e74387b3f399cf39",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/ad0ea4f92daf7bf7ec5c10e16258425e47929126954aea5d80df69ce26cd7318/+unimixins-all-1.7.10-0.3.1.jar": "ad0ea4f92daf7bf7ec5c10e16258425e47929126954aea5d80df69ce26cd7318"
+  },
+  "preserved_inputs": {
+    "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+      "sha256": "0ad6f979e615b07fc437d40a73c1423c290c8680f5974d222862df805759d182"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar",
+      "sha256": "f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/fc6fc7ec9a526197ba694545083ef09deedf70fbcd659317d2e3caacae2e10e2/beddium-mc1.7.10-1.2.5-j8.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/fc6fc7ec9a526197ba694545083ef09deedf70fbcd659317d2e3caacae2e10e2/beddium-mc1.7.10-1.2.5-j8.jar",
+      "sha256": "fc6fc7ec9a526197ba694545083ef09deedf70fbcd659317d2e3caacae2e10e2"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/bc92d152b2036324b98df0f4510b76b94826b57610f96177e74387b3f399cf39/falsepatternlib-mc1.7.10-1.12.2.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/bc92d152b2036324b98df0f4510b76b94826b57610f96177e74387b3f399cf39/falsepatternlib-mc1.7.10-1.12.2.jar",
+      "sha256": "bc92d152b2036324b98df0f4510b76b94826b57610f96177e74387b3f399cf39"
+    },
+    "/home/braydon/.cache/useful-tools-lighting-inputs/ad0ea4f92daf7bf7ec5c10e16258425e47929126954aea5d80df69ce26cd7318/+unimixins-all-1.7.10-0.3.1.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/ad0ea4f92daf7bf7ec5c10e16258425e47929126954aea5d80df69ce26cd7318/+unimixins-all-1.7.10-0.3.1.jar",
+      "sha256": "ad0ea4f92daf7bf7ec5c10e16258425e47929126954aea5d80df69ce26cd7318"
+    },
+    "/home/braydon/Useful-Tools/tests/spectral-qa/build/runtime-probe.jar": {
+      "path": "/home/braydon/.cache/useful-tools-lighting-inputs/1e1a878e5b8c4a028d6601966eeb9d5f370cf55cbc9c42eff70d3d73877082e1/runtime-probe.jar",
+      "sha256": "1e1a878e5b8c4a028d6601966eeb9d5f370cf55cbc9c42eff70d3d73877082e1"
+    }
+  },
+  "native_cloud_control": {
+    "clouds": false,
+    "reason": "Prevent native clouds occluding the entity fixture at height 200"
+  },
+  "shaders_disabled_control": false,
+  "serial_render_lock": {
+    "path": "/tmp/useful-tools-spectral-render.lock",
+    "wait_seconds": 1.79899998329347e-05
+  },
+  "display": ":91",
+  "xvfb_pid": 354096,
+  "copied_world_selection": {
+    "selected_directory": "Useful Tools Q",
+    "unselected_directories_archived": [],
+    "visible_acceptance_worlds": 1
+  },
+  "world_directory": "Useful Tools Q",
+  "world_title": "Useful Tools Q",
+  "world_entry": "normal menu (fresh-frame verified isolated input)",
+  "capture_sha256": {
+    "world-entry-1.png": "f8110d687a7c14f2644ad2b852cc4889d94269244457f47ba536660fab407b8b",
+    "world-entry-2.png": "eb41b2768ec518061555a0295b8cff5e650533a5494f53499dbf49067677d5d0",
+    "world-entry-2-play.png": "bc9a644b8536be0eed8a51ff8fe4294566d7f94311df8358dceea804c47643f3"
+  },
+  "framebuffer_sha256": {
+    "world-entry-1-framebuffer.png": "0ffa822bedbdfcfada59da320d9c261ce42adf0f393fa23e54d6ee33b505a227",
+    "world-entry-2-framebuffer.png": "af4ff88732baab0836332ee57f9b870653fb48c2ef523e5cd1c936f8060bc912",
+    "world-entry-2-play-framebuffer.png": "d6690916a93f1a9bda210e2ba0b81d5bb8aa6bb262da1efb1dec428761168012"
+  },
+  "menu_actions": [
+    {
+      "action": "singleplayer",
+      "control": {
+        "text": "Singleplayer",
+        "x": 426.0,
+        "y": 236.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "world-entry-1.png"
+    },
+    {
+      "action": "open_world",
+      "control": {
+        "text": "Useful Tools Q",
+        "confidence": 0.8683863639831543,
+        "x": 287.0,
+        "y": 186.0
+      },
+      "frame": "world-entry-2.png"
+    }
+  ],
+  "shader_menu_actions": [
+    {
+      "control": {
+        "text": "Play Selected World",
+        "x": 268.0,
+        "y": 396.0,
+        "confidence": 1,
+        "source": "native_acceptance_gui"
+      },
+      "frame": "world-entry-2-play.png"
+    }
+  ],
+  "client_pids": [
+    354555
+  ],
+  "jvm_arguments_verified": [
+    "-DusefulToolsLightingQa=true",
+    "-Dfml.coreMods.load=com.stonytark.usefultools.lighting.classic.ClassicQaAudioPlugin",
+    "-XX:ActiveProcessorCount=2",
+    "-javaagent:/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-q5vmd4oe/runtime-probe.jar=/home/braydon/.cache/useful-tools-lighting-active-runs/spectral-prism-q5vmd4oe/spectral-state.log"
+  ],
+  "runtime_loader_pin_acknowledged": "10.13.4.1614",
+  "error": "Client exited during lighting acceptance",
+  "failure_framebuffer_sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+  "shader_compile_errors": [],
+  "shader_backend_diagnostics": [],
+  "cleanup": {
+    "sigkill_after_sigterm": [
+      354114
+    ],
+    "private_launcher_root_retained": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ]
+  }
+}

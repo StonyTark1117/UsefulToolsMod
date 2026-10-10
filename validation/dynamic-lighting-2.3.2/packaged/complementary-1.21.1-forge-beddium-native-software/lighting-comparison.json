@@ -1,0 +1,211 @@
+{
+  "target": "1.21.1",
+  "shader": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "artifact_hashes": {
+    "/tmp/useful-tools-lighting-reviewed-artifacts/bfe3c4a390205ece7e52cd991cd49fe72aee898bed015d78912b3740d1f62ecc/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "bfe3c4a390205ece7e52cd991cd49fe72aee898bed015d78912b3740d1f62ecc",
+    "/tmp/useful-tools-lighting-qa-packages/1.21.1-forge-acceptance-only.jar": "8578ed6ac7f7cd93c251386f7cef9ac6827f5fa8d21d65d90ff9e3d77140e4de",
+    "/tmp/usefultools-shaders-2.3.2/mods/beddium-1.0.11-mc1.21.1.jar": "fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611",
+    "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-ordinary-distance-3.png",
+          "sha256": "8b7aa39f92a52aa2708c1cfe21552997487f56ccfa7e29bd542ce2f51f47f6ff"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-hardened-distance-3.png",
+          "sha256": "e245c53689ba9ab1e3c08c505c1ec036d97e3cbf768dcd07a09b6b8b29b9ff04"
+        }
+      },
+      "ordinary": 0.5433812972721396,
+      "hardened": 0.7667790874725273,
+      "hardened_to_ordinary_ratio": 1.4111252840719402
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-ordinary-distance-10.png",
+          "sha256": "ec75cd3bae2e57e24388c472a4c5f8cb440766f620964c7092f70fbd89e4be01"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-hardened-distance-10.png",
+          "sha256": "b8a3cdaa96202c8fdbb2b08a70c4d33ba45df950039c7af9f3205fdac9401cbb"
+        }
+      },
+      "ordinary": 0.13386948850678734,
+      "hardened": 0.32968905687567335,
+      "hardened_to_ordinary_ratio": 2.462764746120306
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-ordinary-distance-15.png",
+          "sha256": "c4682405aab74e737033c716dbc112968c17ead0231c81daab83d76fca5c2750"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-hardened-distance-15.png",
+          "sha256": "2ec89af374a276698dd68e06930744132c8f45d9b1923dec271af503b531a088"
+        }
+      },
+      "ordinary": 0.04863163797457445,
+      "hardened": 0.201964986546003,
+      "hardened_to_ordinary_ratio": 4.15295463935626
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-ordinary-distance-20.png",
+          "sha256": "c36bd2b9eb0450850352ce6ce81a52f827879c2d0559778c87a96be0484e459a"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-hardened-distance-20.png",
+          "sha256": "ffe9d56296a36861f25a1eeac2dd6b0a8d0d76fe9bd36ad93f17d667e928369f"
+        }
+      },
+      "ordinary": 0.0438502498944193,
+      "hardened": 0.13387275007972418,
+      "hardened_to_ordinary_ratio": 3.0529529569855836
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-ordinary-distance-29.png",
+          "sha256": "ec2d6fd99a48ef75d0be258c7a9aeee8760d24ec534cb502096eca3faac82f3a"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-1.21.1-forge-beddium-native-software/lighting-hardened-distance-29.png",
+          "sha256": "c6aed6a384527609dcc4791bc793bb31440409f502efa19254d910cd2ab4a884"
+        }
+      },
+      "ordinary": 0.04380502146951088,
+      "hardened": 0.0513188308037061,
+      "hardened_to_ordinary_ratio": 1.1715284933583463
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791167118896,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167125907,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167138420,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167143930,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167149933,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167155451,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167161459,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167166966,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167172474,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167177988,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167183996,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167189505,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167195010,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167201017,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167206520,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167212526,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167218033,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167223536,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167229043,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167234045,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ]
+}

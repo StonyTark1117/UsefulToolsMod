@@ -1,0 +1,12 @@
+{
+  "run_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gltexture-v17-BSL-indoor/report.json",
+  "status": "failed",
+  "captured_frames": 0,
+  "shaderpack_load_logged": true,
+  "client_log_sha256": "cb8570b5cbe75e34f5f4ec94231e1ec7c785cf7ea3ce2a537ce8e092b9e093d2",
+  "crash_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gltexture-v17-BSL-indoor/crash-reports/crash-2026-10-07_16.18.41-client.txt",
+  "crash_sha256": "2020efdec605f6380698434838d4f8f8e820a2b9cee76c134e5742f5f673c41c",
+  "root_cause": "K2 RenderSystem invokes FogRenderer.setShadersFog; pinned Forge 65 lacks method. Publisher fog handoff also requires GpuBuffer.slice(JJ,Object) and GpuBufferSlice metadata access.",
+  "v18_candidate": "Version-matched publisher fog path graft; exact pinned class bytecode verified; no runtime verdict.",
+  "original_stack_qualified": false
+}

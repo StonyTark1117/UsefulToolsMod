@@ -1,0 +1,13 @@
+{
+  "run_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-pack-enable-v15-BSL-indoor/report.json",
+  "status": "failed",
+  "captured_frames": 0,
+  "shaderpack_load_logged": true,
+  "client_log_sha256": "c2f703f11b30d94168c7e5d9b02dee9f15c040a5c151a283cdd37892bffd8cba",
+  "crash_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-pack-enable-v15-BSL-indoor/crash-reports/crash-2026-10-07_16.07.37-client.txt",
+  "crash_sha256": "59ca09e7a4aa70b190962ca2428cdee491e1eeb6be6588b4a32f30320fa013eb",
+  "root_cause": "Private bridge loaded publisher GpuTexture base with null getMultiTexID, but retained native GlTexture without publisher override; active pack dereferenced null at ShadersTex.initTextureNS during first DynamicTexture construction.",
+  "v16_candidate": "Graft only publisher GlTexture shader texture ID fields/methods onto exact Forge 65.1.2 native class; preserve all native lifecycle method bodies.",
+  "v16_offline_check": "research/forge262-gltexture-v16-offline-check.json",
+  "original_stack_qualified": false
+}

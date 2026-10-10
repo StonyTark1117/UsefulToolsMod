@@ -1,0 +1,123 @@
+{
+  "complete": true,
+  "promotable_to_replace": "1.21.1-forge-baseline-iris0-egl0-precipitation-controls",
+  "gaps": [],
+  "requirements": "scoped-requirements.json",
+  "requirements_sha256": "6186bed2bbab1c6615cf7ec4c25919e89eaeb59d0ac8a4e5089576d77e91016c",
+  "evidence": {
+    "report": "report.json",
+    "report_sha256": "e2c0f560cb3c42e6f264dd947503197556ea10ebeb9dda93d20a9b3ed159e320",
+    "review_sheets": "review-sheets.json",
+    "review_sheets_sha256": "3b1aa4fe37259c76318f1cb596fdb1dc97a4f2418bda227f4b05b8e39cdbc591",
+    "visual_review": "visual-review.json",
+    "visual_review_sha256": "26a8e1920db8a7d2d92664924b274f95a53f497d54913727bcb1dddbdf942e0b"
+  },
+  "exact_inputs": {
+    "artifact_sha256": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+    "artifact_reported": {
+      "/home/braydon/.cache/useful-tools-spectral-recovery/artifacts/7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea"
+    },
+    "provenance_sha256": "06a55db92a20db3dbefde0425326f28499e3684d03df15caa3629a6980d4c814",
+    "provenance_reported_sha256": "06a55db92a20db3dbefde0425326f28499e3684d03df15caa3629a6980d4c814",
+    "source_map_entries": 4594,
+    "source_map_matches_provenance": true,
+    "loader_uid": "net.minecraftforge",
+    "loader_version": "52.1.10",
+    "runtime_loader_pin_acknowledged": "52.1.10",
+    "java_path": "/usr/lib/jvm/java-21-openjdk/bin/java"
+  },
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_route_verified": {
+      "game_pids": [
+        1449425
+      ],
+      "egl_device": "egl0",
+      "interposer_loaded": true
+    },
+    "serial_gpu_lock": {
+      "wait_seconds": 0.011929471998882946,
+      "path": "/tmp/useful-tools-spectral-gpu-egl0.lock"
+    },
+    "serial_render_lock": {
+      "path": "/tmp/useful-tools-spectral-render.lock",
+      "wait_seconds": 1.7669997760094702e-05
+    }
+  },
+  "behavioral_gates": {
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "accepted_command_count": 114,
+    "rejected_command_count": 0,
+    "shader_compile_errors": [],
+    "native_damage_checks": [
+      {
+        "entity": "ghost",
+        "request_token": "74d22acc3b2a46c9b5521de897cbe3ea",
+        "time_ms": 1791429203918,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.GhostEntity"
+      },
+      {
+        "entity": "wraith",
+        "request_token": "c857e142f1a54e7ba4e7adb90d87ffdb",
+        "time_ms": 1791429220259,
+        "hurt_ticks": 10,
+        "entity_class": "com.stonytark.usefultoolsmod.entity.custom.WraithEntity"
+      }
+    ],
+    "native_weather_checks": [
+      {
+        "entity": "ghost",
+        "raining": true,
+        "acknowledged": true
+      },
+      {
+        "entity": "wraith",
+        "raining": true,
+        "acknowledged": true
+      }
+    ],
+    "precipitation_fixture": {
+      "biome": "minecraft:plains",
+      "bounds": [
+        -12,
+        192,
+        -12,
+        12,
+        216,
+        12
+      ],
+      "acknowledged": true
+    },
+    "reviewed_capture_count": 33,
+    "capture_count": 42,
+    "paired_full_framebuffers": true
+  },
+  "cleanup": {
+    "sigkill_after_sigterm": [],
+    "private_launcher_root_retained": true,
+    "private_library_copy_removed": true,
+    "private_game_payloads_removed": [
+      "saves",
+      "screenshots",
+      "mods",
+      "shaderpacks",
+      "resourcepacks"
+    ],
+    "owned_pids_checked": [
+      1449425,
+      1448948
+    ],
+    "owned_pids_alive_after_run": []
+  },
+  "harness_repair": {
+    "reason": "Forge 1.21.1 emits no feedback for a no-op gamemode survival command when the validated fixture already starts in survival.",
+    "version_scoped_sequence": "1.21.1 only: creative -> survival -> creative; every transition retained native feedback assertions.",
+    "focused_tests": "47 passed: tests/test_spectral_validation.py and tests/test_spectral_evidence.py"
+  },
+  "note": "Scoped audit only. The main precipitation manifest, current matrix audit, and implementation README were intentionally not edited."
+}

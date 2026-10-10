@@ -1,0 +1,61 @@
+{
+  "agent_sha256": "f7b2aeb0ca6634ddf44a01c2f0854cb3a38c9fcc24128141bf5f080de3eed547",
+  "runs": [
+    {
+      "java": "8",
+      "command": [
+        "/usr/lib/jvm/java-8-openjdk/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-8",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-8"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    },
+    {
+      "java": "17",
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-17",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-17"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    },
+    {
+      "java": "21",
+      "command": [
+        "/usr/lib/jvm/java-21-openjdk/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-21",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-21"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    },
+    {
+      "java": "25",
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-javaagent:/home/braydon/Useful-Tools/tests/dynamic-lighting/material-agent/build/material-control-agent.jar=/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-25",
+        "-cp",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/classes",
+        "com.stonytark.lightingqa.MaterialControlFixture",
+        "/tmp/useful-tools-lighting-material-path-jvm-tuownmp_/flag-25"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS actual agent bytecode, 1000 packed/Sodium metadata samples, unchanged field and restored normal branch\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "target": "26.2-forge",
+  "runtime": "Forge 65.1.2, OptiFine K2 pre1 publisher binary",
+  "scope": "Fresh current-artifact one-scene diagnostics; full acceptance remains incomplete. Commands were acknowledged by the server, but pack rendering failed.",
+  "results": [
+    {
+      "pack": "BSL 10.1.2",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-bsl-indoor-diagnostic-v1/report.json",
+      "report_sha256": "48dab33abf3195d6427066d78d16a1f0f7a0f73868d10090e3a635142a5b2b62",
+      "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-bsl-indoor-diagnostic-v1/wraith-indoor.png",
+      "capture_sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "framebuffer_sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "artifact_sha256": "a7c6ee9eba16f2269657070bb74bc64075ccdb2b4b8d35fb3346fdfd80a85065",
+      "shader_pack_sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7",
+      "checks": {
+        "teleport_acknowledged": true,
+        "wraith_summon_acknowledged": true,
+        "indoor_fill_acknowledged": true,
+        "shader_active": true,
+        "clean_exit": true
+      },
+      "visual_verdict": "fail",
+      "observation": "Active-pack Wraith indoor framebuffer is uniformly black.",
+      "backend_errors": [
+        "[08Oct2026 07:37:29.118] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=2, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniformMatrix(non-matrix uniform)'",
+        "[08Oct2026 07:37:29.119] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_textured_lit (gbuffers_textured), at: gbufferProjectionInverse"
+      ]
+    },
+    {
+      "pack": "Complementary Reimagined 5.7.1",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-complementary-indoor-diagnostic-v1/report.json",
+      "report_sha256": "2182420337590c65c3fadb2d1fa8c019718f0fd1bd1262e03ddce9f1b9a31ddd",
+      "capture": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-current-a7c6-complementary-indoor-diagnostic-v1/wraith-indoor.png",
+      "capture_sha256": "c0440b1a819303797447ce57e672a4a1243c96d00ff7a250983f82f09af4b120",
+      "framebuffer_sha256": "3f493235242879a6f8e9db9a979afc2f0b398b80b5dee293d441807dac7fe155",
+      "artifact_sha256": "a7c6ee9eba16f2269657070bb74bc64075ccdb2b4b8d35fb3346fdfd80a85065",
+      "shader_pack_sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0",
+      "checks": {
+        "teleport_acknowledged": true,
+        "wraith_summon_acknowledged": true,
+        "indoor_fill_acknowledged": true,
+        "shader_active": true,
+        "clean_exit": true
+      },
+      "visual_verdict": "fail",
+      "observation": "Active-pack Wraith indoor framebuffer shows only a flat sky/horizon; room and Wraith are absent.",
+      "backend_errors": [
+        "[08Oct2026 07:53:49.183] [Render thread/INFO] [com.mojang.blaze3d.opengl.GlDebug/]: OpenGL debug message: id=15, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION in glUniformMatrix(location=40)'",
+        "[08Oct2026 07:53:49.184] [Render thread/ERROR] [net.optifine.shaders.SMCLog/]: [Shaders] OpenGL error: 1282 (Invalid operation), program: gbuffers_textured_lit (gbuffers_textured), at: gbufferProjectionInverse"
+      ]
+    }
+  ]
+}

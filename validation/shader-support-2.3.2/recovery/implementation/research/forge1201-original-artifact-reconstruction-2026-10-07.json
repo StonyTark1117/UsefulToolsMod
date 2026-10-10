@@ -1,0 +1,127 @@
+{
+  "scope": "Bounded exact reconstruction of the missing historical 1.20.1 Forge main artifact. Only the recorded full SHA-256 is accepted.",
+  "target": "1.20.1-forge",
+  "expected": {
+    "artifact_sha256": "eed0a7ed8f8014c14ce917ed3caad1f445137d2af653c454ea80854712477d4d",
+    "artifact_name": "usefultoolsmod-2.3.1+mc.1.20.1.forge.jar",
+    "artifact_record": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-floor13-artifacts.json",
+    "artifact_record_sha256": "7f90e8c0e386e799b3a0574704f999be5c1f9b93e67ca02d6bef0f091e7b7596",
+    "recorded_build_log": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-floor13.log",
+    "recorded_build_log_birth_local": "2026-10-04T16:11:22.085365772-07:00",
+    "recorded_build_log_mtime_local": "2026-10-04T16:15:20.429038186-07:00"
+  },
+  "recorded_source_recheck": {
+    "recorded_files": 4572,
+    "current_exact_hash_matches": 4572,
+    "missing": 0,
+    "changed": 0,
+    "canonical_recorded_source_map_sha256": "55735a538ef0b4d2c72d73e183ca7c7cd86239b4128b99faf58fee631e5a0fb6",
+    "conclusion": "The exact recorded source state is the current workspace subset named by the 1.20.1-forge source_sha256 map, including the lighting inputs and generated .cache resources. This is not clean HEAD."
+  },
+  "clean_head_control": {
+    "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+    "worktree": "/tmp/useful-tools-original-1201f",
+    "artifact_sha256": "92e14d63a9843b855d3bfa7bbd739351843d022bcb95aa933fb4a26839468195",
+    "artifact_size": 2211216,
+    "zip_entries": 4628,
+    "recorded_source_comparison": {
+      "matches": 4499,
+      "missing": 39,
+      "changed": 34
+    },
+    "artifact_payload_comparison": {
+      "exact_only_entries": 27,
+      "clean_only_entries": 0,
+      "changed_shared_entries": 127
+    },
+    "conclusion": "Clean HEAD is not a timestamp candidate. It omits recorded lighting, shader-support, generated cache, model and texture inputs and has changed Java/resource payloads."
+  },
+  "exact_source_builds": {
+    "isolated_root": "/tmp/useful-tools-forge1201-forensics.J7Xj9I",
+    "command": "JAVA_HOME=/usr/lib/jvm/java-17-openjdk ./gradlew --no-daemon --max-workers=1 --no-build-cache clean build -I <isolated-root>/scripts/strict-warnings.gradle",
+    "java": "17.0.20.1",
+    "forge_gradle": "6.0.54",
+    "gradle": "8.12.1",
+    "attempts": [
+      {
+        "attempt": 1,
+        "artifact_sha256": "616ae9d54135255eaab0dbd6d9a180c8881374dec97c9b97ba75afacc200f276",
+        "non_epoch_relative_timestamp_groups": {"-4": 2, "-2": 2413, "0": 2162},
+        "build_log_sha256": "7fbe21f4be412faf0a321ea3ca98f0442afd96f078ed154380e31e9fbc699511"
+      },
+      {
+        "attempt": 2,
+        "artifact_sha256": "f5bce9da057c33eb5b66c16d181644b669cc983ab4edf9f4bcf95e48b4f3de79",
+        "non_epoch_relative_timestamp_groups": {"-2": 74, "0": 4503},
+        "build_log_sha256": "617bb82a76032255b0c0a78a910640848114522bf724acb724999f62dd1c3864"
+      },
+      {
+        "attempt": 3,
+        "artifact_sha256": "05b87bed6551f52dfa2cc3e24745d04e48b24c8e1d3477ee277965006f4974f2",
+        "non_epoch_relative_timestamp_groups": {"0": 4577},
+        "build_log_sha256": "617bb82a76032255b0c0a78a910640848114522bf724acb724999f62dd1c3864"
+      },
+      {
+        "attempt": 4,
+        "artifact_sha256": "446df416a5eb6f7a27740e8c6c4e3c2161b2929984e1125cebac336e163e699a",
+        "non_epoch_relative_timestamp_groups": {"-2": 60, "0": 4517},
+        "build_log_sha256": "7fbe21f4be412faf0a321ea3ca98f0442afd96f078ed154380e31e9fbc699511"
+      },
+      {
+        "attempt": 5,
+        "artifact_sha256": "d44c8a5aeb5a19356c69c49d2e2ff3b96f7aec61fab04a1743e5c757cae9bccc",
+        "non_epoch_relative_timestamp_groups": {"-2": 122, "0": 4455},
+        "build_log_sha256": "05ddf7d45b8cde5632249812a44e8f437be43e73f2993f85890dee661d3350a2"
+      }
+    ],
+    "normalized_zip_sha256": "cfb15d559f84c17d4a5e8ab776dd5910f00dc0da27c1114fc41e9117a22fd9de",
+    "normalization": "Only the four DOS date/time bytes in every non-1980 local and central entry header were zeroed.",
+    "stable_properties": {
+      "archive_size": 2415944,
+      "entry_count": 4655,
+      "file_count": 4577,
+      "directory_count": 78,
+      "entry_order_equal": true,
+      "uncompressed_payloads_equal": true,
+      "compressed_payload_and_non_timestamp_zip_bytes_equal": true,
+      "compression_method": "DEFLATED for all 4655 entries",
+      "general_purpose_flag": 2056,
+      "zip_create_system": 0,
+      "forge_reobf_cache_entries": 8,
+      "forge_reobf_cache_names_order_and_payloads_equal": true
+    },
+    "nondeterminism_conclusion": "No archive nondeterminism beyond DOS timestamps was observed across five exact-source clean builds or the retained 9f6ced artifact. ZIP entry order, compression output, flags, attributes, .cache names/content/order and all payload bytes were stable. The nondeterministic detail missed by the earlier search was which files landed in adjacent two-second timestamp groups."
+  },
+  "bounded_reconstruction_search": {
+    "prior_search": {
+      "record": "validation/shader-support-2.3.2/recovery/implementation/research/exact-archive-timestamp-recovery.json",
+      "source_sha256": "9f6ced0110d97245f69cc244d7728abdf833093a6a4e5039ef8f83aaecb924af",
+      "attempts": 960,
+      "result": "no match",
+      "failure_explanation": "That source preserved a different per-file timestamp-group membership. Translating its relative times or making all entries uniform could not represent the historical 122/4455 split."
+    },
+    "new_search": {
+      "window_local": "2026-10-04T16:11:20-07:00 through 2026-10-04T16:13:40-07:00",
+      "step_seconds": 2,
+      "modes": ["relative", "uniform"],
+      "candidate_timestamp_memberships": 5,
+      "attempts": 586,
+      "matching_candidate": 5,
+      "matching_mode": "relative",
+      "matching_non_epoch_timestamps": {
+        "2026-10-04T16:11:52-07:00": 122,
+        "2026-10-04T16:11:54-07:00": 4455
+      },
+      "preserved_epoch_entries": {"1980-01-01T00:00:00": 78},
+      "result_sha256": "eed0a7ed8f8014c14ce917ed3caad1f445137d2af653c454ea80854712477d4d"
+    }
+  },
+  "recovery_result": {
+    "status": "recovered_exact_sha256",
+    "artifact_path": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/eed0a7ed8f8014c14ce917ed3caad1f445137d2af653c454ea80854712477d4d/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar",
+    "artifact_sha256": "eed0a7ed8f8014c14ce917ed3caad1f445137d2af653c454ea80854712477d4d",
+    "artifact_size": 2415944,
+    "full_hash_verified_after_copy": true,
+    "exact_bytes_written": true
+  }
+}

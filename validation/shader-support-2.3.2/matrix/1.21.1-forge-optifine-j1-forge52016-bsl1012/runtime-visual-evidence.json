@@ -1,0 +1,29 @@
+{
+  "target": "1.21.1-forge",
+  "minecraft": "1.21.1",
+  "forge": "52.0.16",
+  "optifine": "OptiFine_1.21.1_HD_U_J1",
+  "shader_pack": "BSL_v10.1.2.zip",
+  "mod_artifact": "usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+  "runtime": "Packaged Prism Launcher client on AMD Radeon RX 7900 XTX",
+  "result": "visual_day_night_rain_indoor_after_optifine_detection_fix",
+  "shader_pipeline": "OptiFine selected and loaded BSL",
+  "world": "Disposable commands-enabled world on Normal difficulty",
+  "pre_fix_captures": [
+    "ghost-day.png",
+    "wraith-day.png"
+  ],
+  "captures": [
+    "ghost-day-fixed.png",
+    "ghost-night-fixed.png",
+    "ghost-rain-fixed.png",
+    "ghost-indoor-fixed.png",
+    "wraith-day-fixed.png",
+    "wraith-night-fixed.png",
+    "wraith-rain-fixed.png",
+    "wraith-indoor-fixed.png"
+  ],
+  "visual_verdict": "Before the fix, OptiFine was not detected and the shader-incompatible vanilla emissive render type made both entity bodies disappear. After the renderer detects OptiFine's live shaderPackLoaded state, both models are recognizable in every captured scene. The Ghost remains bright and clear; the Wraith retains its purple face, separated arms, particles, and silhouette at night, in rain, and indoors.",
+  "capture_method": "Minecraft F2 screenshots were used for the final set because the external X11 surface eventually served stale frames while the internal framebuffer remained current.",
+  "clean_exit": true
+}

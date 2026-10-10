@@ -1,0 +1,25 @@
+{
+  "minecraft": "1.21.1",
+  "loader": "Forge 52.1.16",
+  "mod_jar": "usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+  "shader_runtime": "OptiFine HD U J1 (Build 20240924-134746)",
+  "shader_pack": "BSL 10.1.2",
+  "gpu": "AMD Radeon RX 7900 XTX",
+  "result": "no_visual_verdict",
+  "steps_confirmed": [
+    "Forge and OptiFine launched successfully",
+    "BSL loaded as the active shader pack",
+    "fresh world creation began"
+  ],
+  "failure": {
+    "phase": "integrated server startup, before the player joined and before any mod entity was rendered",
+    "description": "Ticking block entity",
+    "exception": "NoSuchMethodError: net.minecraft.core.Direction.getUpdateOrder()",
+    "block_entity": "minecraft:vault"
+  },
+  "limitations": [
+    "This run used Forge 52.1.16, not the repository pin Forge 52.1.10 or the Forge 52.0.16 version published by OptiFine J1.",
+    "No Ghost or Wraith shader captures were produced.",
+    "The test used the 2.3.1 project jar and does not validate the pending 2.3.2 build."
+  ]
+}

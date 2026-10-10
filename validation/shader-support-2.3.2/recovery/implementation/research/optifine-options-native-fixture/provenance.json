@@ -1,0 +1,29 @@
+{
+  "patch_archive": "/tmp/usefultools-shaders-2.3.2/qa/3b948834ec855b65d550892bbb39d04b99ededbdebd58c69afbd2fc6e2b2a43b/optifine-2612-native-options-qa.jar",
+  "patch_archive_sha256": "3b948834ec855b65d550892bbb39d04b99ededbdebd58c69afbd2fc6e2b2a43b",
+  "agent": "/tmp/usefultools-shaders-2.3.2/qa/8257b6250bda2617af6afcfa631495e2e73aee15be7306cef13b43f0ba7f131d/optifine-options-bridge.jar",
+  "agent_sha256": "8257b6250bda2617af6afcfa631495e2e73aee15be7306cef13b43f0ba7f131d",
+  "sources": {
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineOptionsFixture.java": "736f0acfde810e8faba768102463597d34b902da86cd8fc6227d1cc53284add9",
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineOptionsBridge.java": "29149a88f92387da534d2cd21995f6ca7592100bcb898a0f3e4a88bd42f4bba8",
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineTextureBridge.java": "c2ff393dfd93bf8616bc31a6f4f92f163ca6481b024a7518630064a310537adc",
+    "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineVertexBridge.java": "015b09daa48d2f34d29327daca13f6c467e59480aca54fdaf1d4db1856d55949"
+  },
+  "native_hooks": "Publisher Options includes reflection-based Forge key-conflict contexts, modifier serialization and unknown-key retention. Fixture adds actual pinned native save-during-loading guard and Config.initMinecraft initialization. All other Forge Minecraft hooks stay native.",
+  "status": "Attempted pinned Forge 64.0.8 packaged GPU startup. Options initialization progressed; failed next at missing publisher GpuTexture.setParentTexture native signature.",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-native-options-hooks-fixture-egl1/report.json",
+  "next_failure": "java.lang.NoSuchMethodError: void com.mojang.blaze3d.textures.GpuTexture.setParentTexture(net.minecraft.client.renderer.texture.AbstractTexture)",
+  "texture_api_trial": {
+    "agent_sha256": "513462c3f0462fb9e3d1bc8fe40c9d8445da72c4667e4c4e146414592ddf5f1b",
+    "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-native-texture-api-fixture-egl1-java17-agent/report.json",
+    "result": "Options and GpuTexture progressed; native startup next fails at publisher VertexFormat.duplicate() missing from prematurely loaded native class. Exact native GpuTexture preserves IForgeGpuTexture; no additional Forge methods absent from publisher replacement."
+  },
+  "first_texture_attempt_build_error": "Default javac 27 rejected obsolete Java 8 target warnings under -Werror; empty agent archive from shell continuing incorrectly retained as separate tooling failure. Corrected with Java 17 compilation; never used to claim dependency incompatibility.",
+  "vertex_api_trial": {
+    "agent_sha256": "41c8f1a26acac9e3e63b42e0946565fe941bdf4916e44690e275cea200da7cf7",
+    "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-native-vertex-api-fixture-egl1-java17-agent/report.json",
+    "status": "queued native packaged GPU startup; no pass claimed",
+    "native_source": "validation/shader-support-2.3.2/recovery/implementation/research/optifine-options-native-fixture/ForgeVertexFormat.java",
+    "native_source_sha256": "5fc0b6a6a23a9a44b7c1e11ce9ebc4f6a53ad6c3e8e3b892883848b8bfa71529"
+  }
+}

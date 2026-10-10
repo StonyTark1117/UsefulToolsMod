@@ -1,0 +1,62 @@
+{
+  "status": "passed with expected open runtime acceptance gate",
+  "executed_utc_date": "2026-10-08",
+  "client_launched": false,
+  "gpu_or_client_lock_touched": false,
+  "checks": [
+    {
+      "name": "Deterministic exact-pinned compatibility loader rebuild",
+      "command": "python3 validation/shader-support-2.3.2/recovery/implementation/research/optifineoforge-publisher/1.20.x/freeze_native_http_default.py (twice)",
+      "exit_code": 0,
+      "first_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+      "second_sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+      "records_identical": true,
+      "verifier_result": "Removed unreferenced default HTTP callback; publisher real load callback retained"
+    },
+    {
+      "name": "Python harness compilation",
+      "command": "python3 -m py_compile scripts/audit-spectral-matrix.py scripts/validate-packaged-spectral.py scripts/spectral_validation.py scripts/spectral-menu-ocr.py scripts/lighting_shader_diagnostics.py",
+      "exit_code": 0
+    },
+    {
+      "name": "Focused spectral unit tests",
+      "command": "python3 -m unittest tests.test_spectral_evidence tests.test_spectral_validation tests.test_spectral_lighting tests.test_lighting_shader_diagnostics",
+      "exit_code": 0,
+      "tests_run": 60
+    },
+    {
+      "name": "Strict scoped acceptance audit",
+      "command": "python3 scripts/audit-spectral-matrix.py scoped-manifest.json scoped-acceptance.json --output scoped-preflight-audit.json",
+      "exit_code": 1,
+      "expected_failure": true,
+      "result": "One required target is present; zero complete configurations; sole exact gap is missing report. No prior evidence was promoted."
+    },
+    {
+      "name": "Frozen world canonical digest",
+      "exit_code": 0,
+      "sha256": "67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef",
+      "files": 23,
+      "bytes": 17544992,
+      "session_locks": 0
+    },
+    {
+      "name": "Canonical disabled-command structural assertions",
+      "exit_code": 0,
+      "assertions": [
+        "ghost and wraith",
+        "six required scenes",
+        "entity states",
+        "surfaces",
+        "native spectral commands",
+        "native damage probe",
+        "disabled mode",
+        "no shader pack",
+        "no shader toggle",
+        "egl0",
+        "1800-second admission wait",
+        "1200-second runtime timeout",
+        "fresh output absent"
+      ]
+    }
+  ]
+}

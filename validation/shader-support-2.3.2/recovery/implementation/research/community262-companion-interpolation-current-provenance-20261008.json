@@ -1,0 +1,81 @@
+{
+  "scope": "Current checkout 26.2 Forge lighting companion with optional original community-port final-pass interpolation repair. Main mod jar remains a7c6ee9e. Publisher port and packs unchanged.",
+  "jar": "validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/acb3d11a98ec7ca89e4ba1a2d8441fa3c5f6941c19259cb2318b1ff094848a2d/usefultools-lighting-2.3.1+mc.26.2.forge.jar",
+  "jar_sha256": "acb3d11a98ec7ca89e4ba1a2d8441fa3c5f6941c19259cb2318b1ff094848a2d",
+  "main_artifact_sha256": "a7c6ee9eba16f2269657070bb74bc64075ccdb2b4b8d35fb3346fdfd80a85065",
+  "sources": {
+    "26.2/forge/src/lighting/java/com/stonytark/usefultools/lighting/CommunityPortShaderInterfaces.java": "f1714d3c8f36b21b530c1064e273dda8f011fc13f05407c8acf35706dd9c179d",
+    "26.2/forge/src/lighting/java/com/stonytark/usefultools/lighting/mixin/CommunityPortPackProgramCompilerMixin.java": "6640f13fa953ada2a7c77b31af5d386dc89ad7334ba373bbe81aa22d52648041",
+    "26.2/forge/src/lighting/java/com/stonytark/usefultools/lighting/CompanionMixinPlugin.java": "831fcdf7ad3e3324dc07a9316e7d6d0c6b272e011f73549590cf6d0ae91a55c7",
+    "26.2/forge/src/lighting/resources/usefultools_lighting.mixins.json": "095211c5317beeb5b7d01f830df83aca7d072685047b70688e04ede5b06a65a2"
+  },
+  "warning_gated_build": "validation/shader-support-2.3.2/recovery/implementation/build/forge262-community-interpolation-companion-20261008.log",
+  "warning_gated_build_sha256": "066dd9aae4bd23aaafa05574bd30f7f3cd0ba03a0806f0386b44d7f6961ec8c5",
+  "server_smoke": "validation/shader-support-2.3.2/recovery/implementation/build/forge262-community-interpolation-server-20261008.log",
+  "server_smoke_sha256": "f11d26f38582e37573ef144befd11d7b530d02d699bfea62a4a3a90e95ec05bd",
+  "server_smoke_status": "passed with existing startup diagnostics retained in log",
+  "runtime_status": "Four current-artifact modes pass scoped scene/state/surface visual and evidence audits on pinned Forge 65.1.2. Original publisher port still has no proven pack-driven terrain/entity gbuffers; acceptance rows remain incomplete.",
+  "runtime_evidence": {
+    "baseline": {
+      "report": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-current-baseline-full-v1/report.json",
+        "sha256": "ca9973955198e32e69f40a35d56915e1bab0f331ae3b605aa973c650a645083b"
+      },
+      "scoped_audit": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-current-baseline-full-v1/scoped-audit.json",
+        "sha256": "9a9691f39acdefea8f94e09e41ab0b96c5cdd6a633b3ded607f7351296ad4183"
+      },
+      "scoped_requirements": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-current-baseline-full-v1/scoped-requirements.json",
+        "sha256": "f735f45d189a93be0b5b82d571aae9dc70583f8a67eab99164d79cf1e243a364"
+      }
+    },
+    "installed_disabled": {
+      "report": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-disabled-full-v1/report.json",
+        "sha256": "e6d93e8613ce991d4b22701809b7ad1322d0931f1ab2aeb4f69ed1160a3083bc"
+      },
+      "scoped_audit": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-disabled-full-v1/scoped-audit.json",
+        "sha256": "5d539167192e7285452dbc591ac7f2bdaf9a58d827ea61d94a5b4ab8cdb435ab"
+      },
+      "scoped_requirements": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-disabled-full-v1/scoped-requirements.json",
+        "sha256": "0dd4ac2a973a7d6474cad4c84c4c7779353ce487291b77ee9f3fdc0090096d30"
+      }
+    },
+    "bsl_active": {
+      "report": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-bsl-full-v1/report.json",
+        "sha256": "1409a06314f3f046613da8187db040554404a6a4a128daae4fa8b725b2dd39d2"
+      },
+      "scoped_audit": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-bsl-full-v1/scoped-audit.json",
+        "sha256": "611e38f76fd7590d88257680bcb7eb86fccfebda8f3af7dcb3fe430e3a571244"
+      },
+      "scoped_requirements": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-current-bsl-full-v1/scoped-requirements.json",
+        "sha256": "fa15dfc01619ad1d1fd37f544a82cbb89dfc0004d4ad9b760fa79793f71f680f"
+      }
+    },
+    "complementary_active": {
+      "report": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-full-v2/report.json",
+        "sha256": "ad69ec6e35724d8aae34d63b7b915f614e496a6081e8a6211fac4574aa50d746"
+      },
+      "scoped_audit": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-full-v2/scoped-audit.json",
+        "sha256": "3be486224c50982a67c4a7b5cb2cc16aab653d8d1966f195308695c073630e69"
+      },
+      "scoped_requirements": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-full-v2/scoped-requirements.json",
+        "sha256": "6cfa080f5bb0900d52e8cbef874a4aad983f9a7f1cb73ff1a003fad450ff1c8d"
+      }
+    }
+  },
+  "focused_test": {
+    "path": "tests/test_community_port_shader_interfaces.py",
+    "sha256": "75f067224ff881b9504d7dc7c594ae78f151fc5ec28b4c6c7bd264e3278cf475",
+    "result": "python3 -m unittest tests.test_community_port_shader_interfaces passed"
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "forge_client_sha256": "712277950db1d04987c7affb38ca8b0b5275601b5f11b4d3102b2cb9c1b4ecf5",
+  "publisher_patched_sha256": "0ba35c8a42dd9a55769e856c326edd17a96878ba52874ab2c3a89864d65c030f",
+  "distinct_references": 141,
+  "missing_from_pinned_native": [
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlDevice",
+      "method": "getGlCommandEncoder",
+      "descriptor": "()Lcom/mojang/blaze3d/opengl/GlCommandEncoder;",
+      "publisher_callers": [
+        "com/mojang/blaze3d/systems/RenderSystem.getGlCommandEncoder()Lcom/mojang/blaze3d/opengl/GlCommandEncoder;",
+        "net/minecraft/client/renderer/texture/TextureAtlas.updateAnimationSingle(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;[Lcom/mojang/blaze3d/textures/GpuTextureView;)I"
+      ],
+      "candidate_bridge": "forge262-gui-v23; offline verified only, packaged runtime pending"
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "applySampler",
+      "descriptor": "(Lcom/mojang/blaze3d/opengl/GlSampler;)V",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/GlCommandEncoder.trySetup(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;)Z"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getDepthOrLayers",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getFormat",
+      "descriptor": "()Lcom/mojang/blaze3d/GpuFormat;",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getGlTextureId",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/shaders/MultiTexID.<init>(Lcom/mojang/blaze3d/opengl/GlTexture;Lcom/mojang/blaze3d/opengl/GlTexture;Lcom/mojang/blaze3d/opengl/GlTexture;)V",
+        "net/optifine/shaders/ShadersTex.bindTexture(Lcom/mojang/blaze3d/opengl/GlTexture;Lnet/minecraft/client/renderer/texture/AbstractTexture;)V",
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getHeight",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getHeight",
+      "descriptor": "(I)I",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/GlTexture.toString()Ljava/lang/String;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getLabel",
+      "descriptor": "()Ljava/lang/String;",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/GlCommandEncoder.trySetup(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;)Z",
+        "com/mojang/blaze3d/opengl/GlDebugLabel$Core.applyLabel(Lcom/mojang/blaze3d/opengl/GlTexture;)V",
+        "com/mojang/blaze3d/opengl/GlDebugLabel$Ext.applyLabel(Lcom/mojang/blaze3d/opengl/GlTexture;)V",
+        "com/mojang/blaze3d/opengl/GlTexture.toString()Ljava/lang/String;",
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getMipLevels",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getMultiTexID",
+      "descriptor": "()Lnet/optifine/shaders/MultiTexID;",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.bindTexture(Lcom/mojang/blaze3d/opengl/GlTexture;Lnet/minecraft/client/renderer/texture/AbstractTexture;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getParentTexture",
+      "descriptor": "()Lnet/minecraft/client/renderer/texture/AbstractTexture;",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.bindTexture(Lcom/mojang/blaze3d/opengl/GlTexture;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getWidth",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "getWidth",
+      "descriptor": "(I)I",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/GlTexture.toString()Ljava/lang/String;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "hasFramebuffer",
+      "descriptor": "(I)Z",
+      "publisher_callers": [
+        "com/mojang/blaze3d/pipeline/RenderTarget.hasFramebuffer(I)Z"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "usage",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/GlCommandEncoder.trySetup(Lcom/mojang/blaze3d/opengl/GlRenderPass;Ljava/util/Collection;)Z",
+        "com/mojang/blaze3d/opengl/GlTexture.toString()Ljava/lang/String;",
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/opengl/GlTexture",
+      "method": "usageToString",
+      "descriptor": "(I)Ljava/lang/String;",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/GlTexture.toString()Ljava/lang/String;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "getGlCommandEncoder",
+      "descriptor": "()Lcom/mojang/blaze3d/opengl/GlCommandEncoder;",
+      "publisher_callers": [
+        "net/optifine/shaders/Shaders.renderFinal()V",
+        "net/optifine/shaders/Shaders.useProgram(Lnet/optifine/shaders/Program;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "getGlDevice",
+      "descriptor": "()Lcom/mojang/blaze3d/opengl/GlDevice;",
+      "publisher_callers": [
+        "com/mojang/blaze3d/opengl/FrameBufferCache.createFbo(Lcom/mojang/blaze3d/opengl/FrameBufferCache$CacheKey;Lcom/mojang/blaze3d/opengl/DirectStateAccess;Ljava/util/List;Lcom/mojang/blaze3d/opengl/FrameBufferAttachment;)I",
+        "com/mojang/blaze3d/opengl/GlProgram.setupBindGroupLayouts(Ljava/util/List;)V",
+        "com/mojang/blaze3d/opengl/GlTexture.applySampler(Lcom/mojang/blaze3d/opengl/GlSampler;)V",
+        "com/mojang/blaze3d/systems/RenderSystem.getGlCommandEncoder()Lcom/mojang/blaze3d/opengl/GlCommandEncoder;",
+        "net/minecraft/client/renderer/texture/TextureAtlas.updateAnimationSingle(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;[Lcom/mojang/blaze3d/textures/GpuTextureView;)I",
+        "net/minecraft/client/renderer/texture/TextureAtlas.uploadAnimationFrames()V",
+        "net/minecraft/client/renderer/texture/TextureManager.tick()V",
+        "net/optifine/render/BufferUploader.draw(Lcom/mojang/blaze3d/vertex/MeshData;)V",
+        "net/optifine/render/VboRegion.<init>(Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/client/renderer/chunk/ChunkSectionLayer;)V",
+        "net/optifine/render/VboRegion.expandVbo(I)V",
+        "net/optifine/shaders/FixedFramebuffer.setup()V",
+        "net/optifine/shaders/HFNoiseTexture.<init>(II)V",
+        "net/optifine/shaders/Shaders.createCompShader(Lnet/optifine/shaders/ComputeProgram;Ljava/lang/String;)I",
+        "net/optifine/shaders/Shaders.createFragShader(Lnet/optifine/shaders/Program;Ljava/lang/String;)I",
+        "net/optifine/shaders/Shaders.createGeomShader(Lnet/optifine/shaders/Program;Ljava/lang/String;)I",
+        "net/optifine/shaders/Shaders.createVertShader(Lnet/optifine/shaders/Program;Ljava/lang/String;)I",
+        "net/optifine/shaders/Shaders.setupProgram(Lnet/optifine/shaders/Program;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+        "net/optifine/shaders/ShadersFramebuffer.setup()V",
+        "net/optifine/shaders/ShadersTex.getMultiTexID(Lcom/mojang/blaze3d/opengl/GlTexture;)Lnet/optifine/shaders/MultiTexID;"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "getModelViewMatrix",
+      "descriptor": "()Lorg/joml/Matrix4f;",
+      "publisher_callers": [
+        "net/optifine/shaders/Shaders.init()V",
+        "net/optifine/shaders/Shaders.setUpPosition(Lcom/mojang/blaze3d/vertex/PoseStack;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "getProjectionMatrix",
+      "descriptor": "()Lorg/joml/Matrix4f;",
+      "publisher_callers": [
+        "com/mojang/blaze3d/systems/RenderSystem.restoreProjectionMatrix()V",
+        "com/mojang/blaze3d/systems/RenderSystem.setProjectionMatrix(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lcom/mojang/blaze3d/ProjectionType;)V",
+        "net/minecraft/client/renderer/LevelRenderer.lambda$render$0(Lorg/joml/Vector4f;ZLorg/joml/Matrix4fc;F)V",
+        "net/optifine/shaders/Shaders.updateShadowProjectionMatrix()V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "getShaderColor",
+      "descriptor": "()Lorg/joml/Vector4f;",
+      "publisher_callers": [
+        "net/optifine/render/BufferUploader.draw(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lcom/mojang/blaze3d/vertex/MeshData;Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Lcom/mojang/blaze3d/textures/GpuSampler;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "isColorToAttribute",
+      "descriptor": "()Z",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/SkyRenderer.renderStars(FLcom/mojang/blaze3d/vertex/PoseStack;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "setColorToAttribute",
+      "descriptor": "(Z)V",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/LevelRenderer.lambda$addSkyPass$0(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;Lnet/minecraft/client/renderer/state/level/SkyRenderState;)V",
+        "net/minecraft/client/renderer/SkyRenderer.renderStars(FLcom/mojang/blaze3d/vertex/PoseStack;)V"
+      ]
+    },
+    {
+      "owner": "com/mojang/blaze3d/systems/RenderSystem",
+      "method": "setShaderColor",
+      "descriptor": "(FFFF)V",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/CloudRenderer.render(ILnet/minecraft/client/CloudStatus;FILnet/minecraft/world/phys/Vec3;JFLcom/mojang/blaze3d/buffers/GpuBufferSlice;)V",
+        "net/minecraft/client/renderer/WorldBorderRenderer.render(Lnet/minecraft/client/renderer/state/level/WorldBorderRenderState;Lnet/minecraft/world/phys/Vec3;DD)V",
+        "net/optifine/CustomLoadingScreen.drawBackground(II)V",
+        "net/optifine/Lagometer.renderLines(Lnet/minecraft/client/gui/render/GuiRenderer;)V",
+        "net/optifine/render/Blender.clearBlend()V",
+        "net/optifine/render/Blender.setupBlend(IF)V",
+        "net/optifine/shaders/Shaders.preSkyList(Lcom/mojang/blaze3d/vertex/PoseStack;)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/gui/render/GuiRenderer",
+      "method": "addMeshesToDraw",
+      "descriptor": "(Ljava/util/List;)V",
+      "publisher_callers": [
+        "net/optifine/render/GuiRenderCache.traverseStratumBegin(I)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/gui/render/GuiRenderer",
+      "method": "flushMesh",
+      "descriptor": "()V",
+      "publisher_callers": [
+        "net/optifine/render/GuiRenderCache.traverseStratumBegin(I)V",
+        "net/optifine/render/GuiRenderCache.traverseStratumEnd(I)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/gui/render/GuiRenderer",
+      "method": "getRenderState",
+      "descriptor": "()Lnet/minecraft/client/renderer/state/gui/GuiRenderState;",
+      "publisher_callers": [
+        "net/optifine/render/GuiRenderCache.<init>(Lnet/minecraft/client/gui/render/GuiRenderer;J)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/gui/render/GuiRenderer",
+      "method": "isRenderGui",
+      "descriptor": "()Z",
+      "publisher_callers": [
+        "net/optifine/shaders/SVertexBuilder.endAddVertex(Lcom/mojang/blaze3d/vertex/BufferBuilder;)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "frameFinish",
+      "descriptor": "()V",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/GameRenderer.render(Lnet/minecraft/client/DeltaTracker;Z)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "frameInit",
+      "descriptor": "()V",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/GameRenderer.render(Lnet/minecraft/client/DeltaTracker;Z)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "getFrameCount",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/util/FrameEvent.isActive(Ljava/lang/String;I)Z"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "getGuiRenderer",
+      "descriptor": "()Lnet/minecraft/client/gui/render/GuiRenderer;",
+      "publisher_callers": [
+        "net/minecraft/client/gui/components/DebugScreenOverlay.<init>(Lnet/minecraft/client/Minecraft;)V",
+        "net/optifine/QuickInfo.render(Lnet/minecraft/client/gui/GuiGraphicsExtractor;)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "getRenderDistance",
+      "descriptor": "()I",
+      "publisher_callers": [
+        "net/optifine/shaders/ShadersRender.applyFrustumShadow(Lnet/minecraft/client/renderer/LevelRenderer;Lnet/minecraft/client/renderer/culling/Frustum;)V",
+        "net/optifine/shaders/ShadowFrustum.extendForShadows(Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "getRenderPartialTicks",
+      "descriptor": "()F",
+      "publisher_callers": [
+        "net/optifine/entity/model/anim/RenderEntityParameterFloat.eval()F",
+        "net/optifine/expr/FunctionType.evalFloat([Lnet/optifine/expr/IExpression;)F"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "renderItemInHand",
+      "descriptor": "(Lnet/minecraft/client/renderer/state/level/CameraRenderState;FLorg/joml/Matrix4fc;Z)V",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/GameRenderer.renderItemInHand(Lnet/minecraft/client/renderer/state/level/CameraRenderState;FLorg/joml/Matrix4fc;)V",
+        "net/optifine/shaders/ShadersRender.renderHandSolid(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/state/level/CameraRenderState;Lorg/joml/Matrix4fc;F)V",
+        "net/optifine/shaders/ShadersRender.renderHandTranslucent(Lnet/minecraft/client/renderer/GameRenderer;Lnet/minecraft/client/renderer/state/level/CameraRenderState;Lorg/joml/Matrix4fc;F)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "setFxaaShader",
+      "descriptor": "(I)Z",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/GameRenderer.frameInit()V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/GameRenderer",
+      "method": "waitForServerThread",
+      "descriptor": "()V",
+      "publisher_callers": [
+        "net/minecraft/client/renderer/GameRenderer.render(Lnet/minecraft/client/DeltaTracker;Z)V"
+      ]
+    },
+    {
+      "owner": "net/minecraft/client/renderer/fog/FogRenderer",
+      "method": "setShadersFog",
+      "descriptor": "(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V",
+      "publisher_callers": [
+        "com/mojang/blaze3d/systems/RenderSystem.setShaderFog(Lcom/mojang/blaze3d/buffers/GpuBufferSlice;)V"
+      ]
+    }
+  ],
+  "scope": "Direct calls in exact publisher-patched archive to six inspected owner classes, compared with declarations in pinned Forge 65.1.2. Inherited methods and OptiFine class replacements are not resolved; entries are investigation candidates, not 38 proven runtime failures.",
+  "publisher_method_reference_lines": 668,
+  "distinct_caller_reference_pairs": 568
+}

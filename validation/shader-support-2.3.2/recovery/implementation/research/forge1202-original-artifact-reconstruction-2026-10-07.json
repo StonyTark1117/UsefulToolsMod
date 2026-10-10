@@ -1,0 +1,100 @@
+{
+  "scope": "Bounded exact reconstruction of the missing historical 1.20.2 Forge main artifact. Only the recorded full SHA-256 is accepted; payload-equivalent builds are not restored as substitutes.",
+  "target": "1.20.2-forge",
+  "expected": {
+    "artifact_sha256": "46866f48b32b4531a7baff4a15caef374fa11ec300aaff4b4c97a749580533f4",
+    "artifact_name": "usefultoolsmod-2.3.1+mc.1.20.2.forge.jar",
+    "artifact_record": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-floor13-artifacts.json",
+    "artifact_record_sha256": "7f90e8c0e386e799b3a0574704f999be5c1f9b93e67ca02d6bef0f091e7b7596",
+    "recorded_build_log": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-floor13.log",
+    "recorded_build_log_birth_local": "2026-10-04T16:11:22.085365772-07:00",
+    "recorded_build_log_mtime_local": "2026-10-04T16:15:20.429038186-07:00"
+  },
+  "recorded_source_recheck": {
+    "recorded_files": 4567,
+    "current_exact_hash_matches": 4567,
+    "missing": 0,
+    "changed": 0,
+    "canonical_recorded_source_map_sha256": "ca0728b5b5dc9316dda74009ae8b11704d27c139efc1a5f30b40dd4051bb7acc",
+    "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+    "conclusion": "The current workspace subset named by the 1.20.2-forge source_sha256 map is the exact recorded source state, including generated resources and lighting inputs. This is a hash check of the recorded working tree, not an assumption that clean HEAD is equivalent."
+  },
+  "isolated_pinned_builds": {
+    "isolated_root": "/tmp/useful-tools-forge1202-forensics.r35Sk3",
+    "full_build_command": "JAVA_HOME=/usr/lib/jvm/java-17-openjdk ./gradlew --no-daemon --max-workers=1 --no-build-cache clean build -I <isolated-root>/scripts/strict-warnings.gradle",
+    "additional_candidate_command": "JAVA_HOME=/usr/lib/jvm/java-17-openjdk ./gradlew --no-daemon --max-workers=1 --no-build-cache clean reobfJar -I <isolated-root>/scripts/strict-warnings.gradle",
+    "java": "17.0.20.1",
+    "forge_gradle": "6.0.54",
+    "gradle": "8.12.1",
+    "full_builds_passed": 5,
+    "additional_clean_reobf_builds_passed": 55,
+    "total_clean_candidates": 60,
+    "initial_full_builds": [
+      {"attempt": 1, "artifact_sha256": "d3719b2dd540151c82b77ff4958e373bd2e9329fb266fa08025d0e973e529502", "build_log_sha256": "a82cffa904284b40c3c66b410902933285a6bf462c4849374a21bdefc7aeedcd", "relative_timestamp_groups": {"-2": 94, "0": 4478}},
+      {"attempt": 2, "artifact_sha256": "3b1283fbde6bfe8a6377e444d4dfd5c99f47e1efc91a65cf3f62d80813e0cd74", "build_log_sha256": "ebb1c2bc3a43327351220ebc13728d258fc32744ec96b5e96b12a5f6a5644327", "relative_timestamp_groups": {"-2": 121, "0": 4451}},
+      {"attempt": 3, "artifact_sha256": "8ea5ccf2c49d13abd4f6b3a6137adf115abb949f6c52db37b6df64c62dbfd7d0", "build_log_sha256": "a82cffa904284b40c3c66b410902933285a6bf462c4849374a21bdefc7aeedcd", "relative_timestamp_groups": {"-6": 21, "-4": 100, "0": 4451}},
+      {"attempt": 4, "artifact_sha256": "48a94e5b9234ddcc0643984269f3da59b6c599f70fde4b976ad970ace647dad0", "build_log_sha256": "cc449f4938f2ab330aae955fad9e0223b66dfde228e5928d8abfabffdd01692b", "relative_timestamp_groups": {"-4": 121, "0": 4451}},
+      {"attempt": 5, "artifact_sha256": "1787a73ff4b88d47b6c38f76903c28fb75e11a971489530cf21bfcf3f1024f5f", "build_log_sha256": "ebb1c2bc3a43327351220ebc13728d258fc32744ec96b12a5f6a5644327", "relative_timestamp_groups": {"-2": 73, "0": 4499}}
+    ],
+    "normalized_zip_sha256": "e19ea48fe0a19e2aee9f982f68e0e790bd235cb842e5b9ec4e0e554420047936",
+    "normalization": "Only the four DOS date/time bytes in every non-1980 local and central entry header were zeroed.",
+    "stable_properties": {
+      "archive_size": 2412037,
+      "entry_count": 4646,
+      "file_count": 4572,
+      "directory_count": 74,
+      "entry_order_equal": true,
+      "uncompressed_payloads_equal": true,
+      "compressed_payload_and_non_timestamp_zip_bytes_equal": true,
+      "forge_reobf_cache_entries": 9,
+      "normalized_hashes_across_60_builds": 1,
+      "observed_relative_timestamp_memberships": 26
+    },
+    "conclusion": "Sixty clean pinned builds establish that the source payload, archive order, compression output and every non-timestamp ZIP byte are stable. The only observed archive variation is per-entry DOS timestamps. Repeated builds sampled 26 distinct relative timestamp memberships; none reconstructed the expected full hash."
+  },
+  "bounded_timestamp_search": {
+    "recorded_window_local": "2026-10-04T16:11:20-07:00 through 2026-10-04T16:15:18-07:00",
+    "step_seconds": 2,
+    "modes": ["relative", "uniform"],
+    "isolated_candidates": 60,
+    "attempts_per_candidate": 240,
+    "isolated_candidate_hash_attempts": 14400,
+    "additional_retained_payload_candidates": [
+      "9ae65de647bcaea8409bd89205c4ccca7526406156dfd6428f060dcfa8d20cbf",
+      "62b340f970a33fa705ef0996e7587937d96d93caaa8a5bacdad57c051a0b5401",
+      "0b26eb62e9ebe1d91c30485d3b80b3ee8b4c8693cc8b1290acb83cce7c168510",
+      "e28a35b193557a244b3e9c6d768e90ba3ea7b999fd1a5ce6e7630dc8b6ec1060"
+    ],
+    "additional_retained_candidate_hash_attempts": 960,
+    "two_group_gap_variant_attempts": 2400,
+    "result": "no exact SHA-256 match",
+    "disposition": "No candidate was copied to restored-inputs because none matched the complete expected SHA-256."
+  },
+  "gradle_cache_inspection": {
+    "global_build_cache_root": "/home/braydon/.gradle/caches/build-cache-1",
+    "cache_containers_present": 3157,
+    "cache_container_bytes": 1623989607,
+    "tree_archiveFile_members_hashed": 39,
+    "largest_tree_archiveFile_member_size": 1550780,
+    "expected_archive_size": 2412037,
+    "expected_sha256_matches": 0,
+    "result": "None of the 39 Gradle archive-task cache members is the expected archive or even the expected size. The historical matrix command used --no-build-cache, so absence of a matching :jar output is consistent with the recorded invocation.",
+    "project_task_history": {
+      "execution_history": "1.20.2/forge/.gradle/8.12.1/executionHistory/executionHistory.bin",
+      "execution_history_size": 18990664,
+      "execution_history_sha256": "bf63826254abcd27ef0d3e950b42c01a6f1c82469320de173d076adc7dc87d02",
+      "file_hashes": "1.20.2/forge/.gradle/8.12.1/fileHashes/fileHashes.bin",
+      "file_hashes_size": 860476,
+      "file_hashes_sha256": "4ba06762116fb05662e8451631f282c6c1892868e0298e5e0fba8b86f3034a44",
+      "exact_output_filename_occurrences": 4,
+      "disposition": "Task history retains output paths and current snapshot metadata, not the deleted historical jar bytes. Later builds overwrote the output path."
+    }
+  },
+  "recovery_result": {
+    "status": "not_recovered",
+    "exact_artifact_written": false,
+    "expected_restored_directory_exists": false,
+    "expected_sha256": "46866f48b32b4531a7baff4a15caef374fa11ec300aaff4b4c97a749580533f4",
+    "remaining_uncertainty": "The deleted archive used a per-entry DOS timestamp membership not represented by the 60 clean candidates or four retained payload-identical candidates. The exact non-timestamp bytes are established, but that does not authorize a payload-equivalent substitution."
+  }
+}

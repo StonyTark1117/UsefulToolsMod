@@ -1,0 +1,9 @@
+{
+  "input": "/tmp/usefultools-shaders-2.3.2/qa/a05faaf84cbc18e1e729fc7edfb2e434d4ac5aac59d26805de00a9b1618aa083/OptifiNeoforge-2.0.0-mc1202-native-20293-candidate.jar",
+  "input_sha256": "a05faaf84cbc18e1e729fc7edfb2e434d4ac5aac59d26805de00a9b1618aa083",
+  "output": "/tmp/usefultools-shaders-2.3.2/qa/bc72106c63512c49170b1ef7a6917df1ef379c0b3b54c093e108ce500e43c5e6/OptifiNeoforge-2.0.0-mc1202-native-20293-candidate.jar",
+  "sha256": "bc72106c63512c49170b1ef7a6917df1ef379c0b3b54c093e108ce500e43c5e6",
+  "native_source": "patched-native-integrated-server-javap.txt",
+  "root_cause": "ModConfig.getFullPath null during ConfigSync.syncConfigs because publisher IntegratedServer.initServer dropped native lifecycle config load",
+  "recipe": "keep-runtime exact initServer()Z, native incoming method retained"
+}

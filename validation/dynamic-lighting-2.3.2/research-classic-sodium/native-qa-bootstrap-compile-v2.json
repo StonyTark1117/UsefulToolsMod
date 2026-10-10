@@ -1,0 +1,32 @@
+{
+  "command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/javac",
+    "-J-XX:ActiveProcessorCount=2",
+    "--release",
+    "8",
+    "-Xlint:all",
+    "-Xlint:-options",
+    "-Werror",
+    "-proc:none",
+    "-sourcepath",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v2",
+    "-classpath",
+    "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-universal.jar:/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar:/home/braydon/.local/share/PrismLauncher/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar",
+    "-d",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v2",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicLightingQaPlugin.java"
+  ],
+  "exit_code": 1,
+  "status": "compile failed",
+  "seconds": 0.4645530689995212,
+  "source_sha256": {
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicLightingQaPlugin.java": "2edc77354dfec3bb560798dc35ff0ed19318462f6fe1a7becad17742703b6a18"
+  },
+  "classpath_sha256": {
+    "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-universal.jar": "00d1ca02192c7efb87da95552ebf247021f1e1d642f86d0a03076314def11529",
+    "/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar": "f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97",
+    "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar": "57f402b626d16cc2705bf2a37add7adbb074f0ca3b3102fa6e23aa303dae682f"
+  },
+  "log": "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v2/compile.log",
+  "scope": "Focused Java8 bytecode compilation against actual Forge10.13.4.1614; no Gradle or client launched. Package/audio runtime remains pending."
+}

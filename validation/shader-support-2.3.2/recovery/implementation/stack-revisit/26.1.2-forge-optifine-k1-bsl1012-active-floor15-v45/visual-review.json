@@ -1,0 +1,27 @@
+{
+  "scope": "Private donor-renderer diagnostic only; pinned Forge 64.0.8, official OptiFine K1 pre2, BSL 10.1.2, Wraith floor 15, owned Xvfb/null audio.",
+  "automation_status": "captures_complete",
+  "visual_verdict": "fail",
+  "acceptance_qualified": false,
+  "report": "report.json",
+  "report_sha256": "743f9be12fb11cba6dc5bcb27c9a667011d53951fb0caa59f30f8a03dbf05d0a",
+  "reviews": {
+    "wraith-indoor.png": {
+      "verdict": "fail",
+      "capture_sha256": "f9df33ce28b5818a122b0e75f9e8418d5249c5df27681f44deb464b2800c48d7",
+      "note": "Active BSL 10.1.2: face and separated arms visible but torso/tail silhouette absent against deepslate; floor 15 does not meet readability."
+    },
+    "wraith-shaders-off.png": {
+      "verdict": "fail",
+      "capture_sha256": "cf2b794d54a22bc2b678f944501dabfaf7bd3c5ef585d7b9fd77137e88a20ffb",
+      "note": "Native off toggle: face and arms visible; torso/tail silhouette remains absent. No-shader appearance fails the silhouette requirement."
+    },
+    "wraith-shaders-restored.png": {
+      "verdict": "fail",
+      "capture_sha256": "84b6eebd6bc83938bcac2b91e04b536feece854444cfebcb99973053bfb83ff5",
+      "note": "BSL restored with live shader state true; torso/tail silhouette remains absent. Extra frame contains saving-world overlay."
+    }
+  },
+  "source_texture_sha256": "bc8ff54c85d7518e36fd9cd4b38311f469d93f9741b7eae74c524cec4ac381ac",
+  "texture_observation": "The shared 64x64 Wraith PNG has no opaque pixels in tail rows 35-59 and most body UV pixels transparent; lighting-floor changes cannot reveal these missing texels."
+}

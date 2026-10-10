@@ -1,0 +1,39 @@
+{
+  "input": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/00eef5fbf0b4006cecca46a7e691fe2dbf1563007957408bc3a09244fd676425/OptifiNeoforge-2.0.0-mc1202-native-20293-candidate.jar",
+  "input_sha256": "00eef5fbf0b4006cecca46a7e691fe2dbf1563007957408bc3a09244fd676425",
+  "output": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/5aac88dd02cce90ae668ce99235975cf106a7be1ddc36abf42c59c1027b85149/native-inherited-click-loader.jar",
+  "sha256": "5aac88dd02cce90ae668ce99235975cf106a7be1ddc36abf42c59c1027b85149",
+  "changed_entries": [
+    "optifineoforge/donors/net/minecraft/client/gui/screens/VideoSettingsScreen.class",
+    "optifineoforge/member-restores.txt"
+  ],
+  "commands": [
+    [
+      "/usr/lib/jvm/java-17-openjdk/bin/javac",
+      "--release",
+      "17",
+      "-Xlint:all",
+      "-Werror",
+      "-cp",
+      "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar",
+      "-d",
+      "/home/braydon/.cache/useful-tools-spectral-recovery/native-gui-inheritance-build",
+      "tests/spectral-qa/probe/OptifineNativeGuiInheritance.java"
+    ],
+    [
+      "/usr/lib/jvm/java-17-openjdk/bin/java",
+      "-cp",
+      "/home/braydon/.cache/useful-tools-spectral-recovery/native-gui-inheritance-build:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar",
+      "com.stonytark.usefultoolsmod.spectralqa.OptifineNativeGuiInheritance",
+      "/home/braydon/.cache/useful-tools-spectral-recovery/native-gui-inheritance-build/donor.class",
+      "/home/braydon/.cache/useful-tools-spectral-recovery/native-gui-inheritance-build/parent.class",
+      "/home/braydon/.cache/useful-tools-spectral-recovery/native-gui-inheritance-build/fixed.class"
+    ]
+  ],
+  "runtime_qualified": false,
+  "source_sha256": "47c818654161160d283a6714ad2cbc2208e0956879d65c0a95212abf21b6e5dd",
+  "actual_parent_sha256": "f76a93869df3d3de6ea54a925e0c7866c653baea7e66f97684acc7f13fb4bdc2",
+  "runtime_input": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/4d6abc90a4aaa4159dfeb7882b2adb684251c78f40193281c1e97b062477c1e4/optifine-native-game-layer-classpath.jar",
+  "runtime_input_sha256": "4d6abc90a4aaa4159dfeb7882b2adb684251c78f40193281c1e97b062477c1e4",
+  "behavior": "Remove donor default-return override so the inspected real publisher GuiScreenOF click/action dispatch is inherited. No simulated click or screen replacement."
+}

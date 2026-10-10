@@ -1,0 +1,104 @@
+{
+  "status": "offline preflight passed",
+  "launch_authorized": false,
+  "index": 97,
+  "inputs": {
+    "artifact": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/c0e94e10373ff3a4f2b70afb0ba5c1e9a2f7267a5c62e8de4c0f4bc0684ba6ba/usefultoolsmod-2.3.1+mc.26.1.2.forge.jar",
+      "sha256": "c0e94e10373ff3a4f2b70afb0ba5c1e9a2f7267a5c62e8de4c0f4bc0684ba6ba"
+    },
+    "provenance": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/c0e94e10373ff3a4f2b70afb0ba5c1e9a2f7267a5c62e8de4c0f4bc0684ba6ba/provenance.json",
+      "sha256": "faae54e72a90231a4d18a9c6c3680f849eebd5852aec924004c0886f489e3d84"
+    },
+    "world": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/world-fixtures/494e44db22a7bbefab8cabe365b292d222115e63d5bb3a637ee1a0c8f8c0e45e/saves",
+      "canonical_content_sha256": "494e44db22a7bbefab8cabe365b292d222115e63d5bb3a637ee1a0c8f8c0e45e",
+      "session_lock_excluded": true,
+      "file_count": 39
+    },
+    "probe": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1/runtime-probe.jar",
+      "sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1"
+    },
+    "optifine": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172/preview_OptiFine_26.1.2_HD_U_K1_pre2.jar",
+      "sha256": "f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172",
+      "publisher_archive_unchanged": true
+    },
+    "admission_bridge": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/137b7867f15b475ea31a537313258f579aa20552e539f9ecea182394c3f83950/bridge.jar",
+      "sha256": "137b7867f15b475ea31a537313258f579aa20552e539f9ecea182394c3f83950",
+      "premain": "com.stonytark.usefultoolsmod.spectralqa.Optifine2612K1AdmissionBridge",
+      "deterministic_rebuilds": 2,
+      "strict_verified_classes": 48
+    },
+    "paired_donor": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/89b6c8051570cf76259041ea13ca4ae5c0147b303c30d85c78d39a3f6305c633/native-options-quad-hooks-donor.jar",
+      "sha256": "89b6c8051570cf76259041ea13ca4ae5c0147b303c30d85c78d39a3f6305c633",
+      "paired_sprite_and_outline_classes_present": true
+    },
+    "shader_pack": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7/BSL_v10.1.2.zip",
+      "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7",
+      "publisher_archive_unchanged": true,
+      "shaders_properties_sha256": "4475779600d85c7834afd56e1ed522be79db176aef22a12cecbc3ad68fa1d257",
+      "profile_lines_sha256": "92f27e55b376a13157dbb3afa6b9a4b23907b7d298bb211ff19bdaf6114032d2"
+    }
+  },
+  "current_harness": {
+    "scripts/validate-packaged-spectral.py": "874aee3988da936d513df2a628d00ce5f2053cbd648f14910de5665ec93d5284",
+    "scripts/spectral_validation.py": "23a943f8c479a149bbb9044d96c1bc39428446a5f99866e0a96801dae2a6d55d",
+    "scripts/spectral-menu-ocr.py": "0d77b27c42dfadb755d8723857866c8ec6c1ea3dce5fa5ee539490ac2f07547e",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78"
+  },
+  "checks": {
+    "all_hashes_verified": true,
+    "bridge_manifest_verified": true,
+    "paired_donor_classes_verified": true,
+    "forge_pin_64_0_8": true,
+    "egl0_virtualgl": true,
+    "null_audio_inherited_by_harness": true,
+    "wayland_unset_by_harness": true,
+    "native_commands_damage_rain": true,
+    "full_entity_scenes_states_surfaces": true,
+    "toggle_shaders": true,
+    "admission_wait_1800": true,
+    "timeout_1200": true,
+    "future_output_fresh": true,
+    "canonical_manifest_untouched": true,
+    "exact_bsl_10_1_2": true,
+    "publisher_pipeline_options_verified": true,
+    "warning_policy_defined": true
+  },
+  "publisher_pipeline_options": {
+    "oldHandLight": false,
+    "oldLighting": false,
+    "separateAo": true,
+    "underwaterOverlay": false,
+    "vignette": false,
+    "beacon.beam.depth": true
+  },
+  "warning_expectations": {
+    "shader_compile_errors": 0,
+    "jvm_linkage_errors": 0,
+    "backend_diagnostics": "Preserve all. Zero is acceptable. If present, every OptiFine pack-option warning must match Invalid argument type ... BOOL ... FLOAT; any OpenGL error, crash, or other diagnostic remains a gap requiring investigation."
+  },
+  "required_postrun": {
+    "status": "captures_complete",
+    "clean_client_exit": true,
+    "shader_activation_logged": true,
+    "live_shader_states": [
+      true,
+      false
+    ],
+    "native_damage_checks": 2,
+    "native_weather_checks": 2,
+    "visual_reviews": 57,
+    "manual_review_panels": 10,
+    "shader_compile_errors": 0,
+    "jvm_linkage_errors": 0,
+    "scoped_audit_complete": true
+  },
+  "launch_preflight": "Re-verify the GPU/client lane is clear, future output is absent, immutable hashes still match, and current harness equals recorded hashes or a reviewed newer valid revision; launch only after explicit release, in a foreground PTY, polling the same session until exit."
+}

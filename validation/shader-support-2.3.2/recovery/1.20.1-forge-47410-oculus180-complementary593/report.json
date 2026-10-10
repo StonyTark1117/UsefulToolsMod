@@ -1,0 +1,229 @@
+{
+  "status": "shutdown_failed",
+  "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+  "loader_uid": "net.minecraftforge",
+  "loader_version": "47.4.10",
+  "work_dir": "/tmp/spectral-prism-qsmdk3ox",
+  "framebuffer": "1280x720x24",
+  "audio_backend": "ALSOFT_DRIVERS=null",
+  "wayland_unset": true,
+  "gpu_zink": true,
+  "commands": [
+    {
+      "command": "gamemode survival",
+      "accepted": true
+    },
+    {
+      "command": "gamemode creative",
+      "accepted": true
+    },
+    {
+      "command": "gamerule doMobSpawning false",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=!minecraft:player]",
+      "accepted": true
+    },
+    {
+      "command": "tp @s 0 205 3 180 8",
+      "accepted": true
+    },
+    {
+      "command": "fill -8 199 -8 8 199 8 minecraft:smooth_stone",
+      "accepted": true
+    },
+    {
+      "command": "fill -8 200 -8 8 210 8 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "tp @s 0 200 3 180 8",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:ghost 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "time set midnight",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "weather rain 100000",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:deepslate_tiles",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:white_concrete",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:ghost]",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:wraith 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "time set midnight",
+      "accepted": true
+    },
+    {
+      "command": "time set noon",
+      "accepted": true
+    },
+    {
+      "command": "weather rain 100000",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:deepslate_tiles",
+      "accepted": true
+    },
+    {
+      "command": "weather clear",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:white_concrete",
+      "accepted": true
+    },
+    {
+      "command": "fill -4 201 -5 4 205 -5 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:wraith]",
+      "accepted": true
+    },
+    {
+      "command": "fill -5 199 -8 5 207 4 minecraft:deepslate_bricks hollow",
+      "accepted": true
+    },
+    {
+      "command": "fill -5 200 4 5 206 4 minecraft:air",
+      "accepted": true
+    },
+    {
+      "command": "setblock 0 205 -4 minecraft:sea_lantern",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:ghost 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:ghost]",
+      "accepted": true
+    },
+    {
+      "command": "summon usefultoolsmod:wraith 0 201 -3 {NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b,Rotation:[0f,0f]}",
+      "accepted": true
+    },
+    {
+      "command": "kill @e[type=usefultoolsmod:wraith]",
+      "accepted": true
+    }
+  ],
+  "captures": [
+    "ghost-day.png",
+    "ghost-night.png",
+    "ghost-rain.png",
+    "ghost-dark-background.png",
+    "ghost-bright-background.png",
+    "wraith-day.png",
+    "wraith-night.png",
+    "wraith-rain.png",
+    "wraith-dark-background.png",
+    "wraith-bright-background.png",
+    "ghost-indoor.png",
+    "wraith-indoor.png"
+  ],
+  "visual_verdict": "not reviewed",
+  "components": {
+    "components": [
+      {
+        "cachedName": "LWJGL 3",
+        "cachedVersion": "3.3.1",
+        "cachedVolatile": true,
+        "dependencyOnly": true,
+        "uid": "org.lwjgl3",
+        "version": "3.3.1"
+      },
+      {
+        "cachedName": "Minecraft",
+        "cachedRequires": [
+          {
+            "suggests": "3.3.1",
+            "uid": "org.lwjgl3"
+          }
+        ],
+        "cachedVersion": "1.20.1",
+        "important": true,
+        "uid": "net.minecraft",
+        "version": "1.20.1"
+      },
+      {
+        "uid": "net.minecraftforge",
+        "version": "47.4.10"
+      }
+    ],
+    "formatVersion": 1
+  },
+  "artifacts": {
+    "/tmp/ghost-validation-source-20261004/1.20.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.20.1.forge.jar": "96532734f38bc154cd0daf119da29e1748c3f2d1ab8f3985e6933094cbd656c4",
+    "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.20.1-1.8.0.jar": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+    "/tmp/usefultools-shaders-2.3.2/mods/embeddium-0.3.31+mc1.20.1.jar": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb"
+  },
+  "shader_pack": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "display": ":91",
+  "xvfb_pid": 904992,
+  "client_pids": [
+    905280
+  ],
+  "clean_client_exit": false,
+  "cleanup": {
+    "sigkill_after_sigterm": [],
+    "private_launcher_root_retained": true
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "observed_utc": "2026-10-07T20:15:48.432747+00:00",
+  "process_scan": [
+    {
+      "pid": 189313,
+      "executable": "Xvfb",
+      "display": ":91",
+      "owned_test_marker_present": true,
+      "cwd": "/home/braydon/Useful-Tools"
+    },
+    {
+      "pid": 189380,
+      "executable": "prismlauncher",
+      "display": ":91",
+      "owned_test_marker_present": true,
+      "cwd": "/home/braydon/.cache/useful-tools-spectral-active-runs/spectral-prism-dsvkszqq"
+    },
+    {
+      "pid": 189800,
+      "executable": "java",
+      "display": ":91",
+      "owned_test_marker_present": true,
+      "cwd": "/home/braydon/.cache/useful-tools-spectral-active-runs/spectral-prism-dsvkszqq/instances/spectral/minecraft"
+    }
+  ],
+  "lighting_clients_running": 0,
+  "source_sha256": {
+    "scripts/run-spectral-configurations.py": "57969684c04788207741658b6f871a6723d039b3446f2d4e8de6c224d8f962f6",
+    "scripts/lighting_client_lifecycle.py": "680b87f36cab542aa3e8d93407e711a7591e6fe1f0ba1a4a2a1a18829b64a053",
+    "scripts/validate-packaged-spectral.py": "8c04cc15978b4874a8933ed6d212752c54577f29cdcbedbe81a8d3fa898c691e",
+    "scripts/spectral_validation.py": "7a6f7106e3d98ed6939a7dfeb2e1063d56d1a9fc48b6e30459abd300cd8b425d",
+    "scripts/generate-lighting-qa.py": "354d14c53aca9a65f5fc375aa5ee981e6268a0a6c24c09d7e1652efbe2bbd476",
+    "tests/dynamic-lighting/qa.gradle": "7b1b35ed686d70d1baaee267b8b8f8f84824f41b1de269f97d2c1c66d4649408",
+    "tests/dynamic-lighting/menu/com/stonytark/usefultools/lighting/qa/OptifineMenuSnapshot.java": "38e85ed01fb780e82efbb4db313a5854b0dfe77a39395dfbd50b0b06a1f32ac3",
+    "tests/test_lighting_client_lifecycle.py": "5cd6537e2ec692c188b2920a3fb36f928e661b94297eddb215e98b4e98195573",
+    "tests/test_spectral_validation.py": "02a3b201f317e37880456f01d784293ab24cec61edd39e7093266e2e236509f2"
+  },
+  "changes": [
+    "Configuration runner now waits in a private process session, forwards cancellation, awaits bounded cleanup, retains cancelled status, and stops dispatching remaining rows.",
+    "OptiFine shader-navigation retry matches only the complete Shaders menu label; Shaders Folder is rejected.",
+    "Acceptance-only native OptiFine row reader uses exact list labels, current bounds/scroll state, visibility, and native row hit testing. Modern fixture generator and all 15 modern fixture sources call it."
+  ],
+  "checks": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_lighting_client_lifecycle.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 4,
+      "evidence_tool_chunk": "c88a3f"
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_spectral_validation.py",
+        "-k",
+        "shader_menu_retry",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 1,
+      "evidence_tool_chunk": "1eca51"
+    },
+    {
+      "command": "javac --release 8 -Xlint:all -Xlint:-options -Werror; java -XX:ActiveProcessorCount=2 OptifineMenuSnapshotFixture",
+      "exit_code": 0,
+      "coverage": [
+        "exact native labels",
+        "scaled row coordinates",
+        "scrolling",
+        "clipped rows",
+        "native hit rejection",
+        "hidden and unrelated menus"
+      ],
+      "evidence_tool_chunk": "783e4b"
+    }
+  ],
+  "runtime_status": "No new Minecraft client was launched in this resource review. Forge 1.20.2 BSL normal retry and native compilation of the revised acceptance package remain pending; failed v1 retained.",
+  "policy": {
+    "ordinary_clients": 1,
+    "jvm_active_processors": 2,
+    "minimum_nice": 10,
+    "io_class": "idle",
+    "gui": "Owned Xvfb only",
+    "audio": "ALSOFT_DRIVERS=null",
+    "shutdown": "Verify owned client and display cleanup before next launch or ending turn",
+    "multiplayer": "Required bounded two-client test remains separately coordinated"
+  }
+}

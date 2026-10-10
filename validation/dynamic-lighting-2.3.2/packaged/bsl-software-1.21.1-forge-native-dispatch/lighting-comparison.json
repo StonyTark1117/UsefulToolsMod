@@ -1,0 +1,212 @@
+{
+  "target": "1.21.1",
+  "shader": {
+    "name": "BSL_v10.1.2.zip",
+    "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+  },
+  "settings": [
+    "ADVANCED_MATERIALS=true",
+    "MATERIAL_FORMAT=1",
+    "EXPOSURE=0.00",
+    "AUTO_EXPOSURE=false",
+    "BLOOM_STRENGTH=1.00"
+  ],
+  "artifact_hashes": {
+    "/tmp/useful-tools-lighting-reviewed-artifacts/f11d2e16f6e685acdfe99ec580ad6a1ca1b20d97cdfe808bc1b1cc4ed5a58bff/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "f11d2e16f6e685acdfe99ec580ad6a1ca1b20d97cdfe808bc1b1cc4ed5a58bff",
+    "/tmp/useful-tools-lighting-qa-packages/1.21.1-forge-acceptance-only.jar": "bf716284eede55c9b6ea9ff2214b5b75f642991a2b27f9f275bdde9266649617",
+    "/tmp/usefultools-shaders-2.3.2/mods/beddium-1.0.11-mc1.21.1.jar": "fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611",
+    "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-3.png",
+          "sha256": "321374b6cd2584ea587cafd26c18c597daf1c6b4ddbfd4747ce64dbbe2000b6d"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-3.png",
+          "sha256": "d35fed297c0c76f6bd622d6c7ffda153407eaa82d5cc1016182fee201dcbf07b"
+        }
+      },
+      "ordinary": 0.5354135481491058,
+      "hardened": 0.6995018969015298,
+      "hardened_to_ordinary_ratio": 1.3064702963151904
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-10.png",
+          "sha256": "6a5d991377d8beae4509816419ed054e330ecfe93701a8f2d030ee81ecadb311"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-10.png",
+          "sha256": "92cf11b014a5c848509d47edf6585c5920634257a44613e750c51d5736da544d"
+        }
+      },
+      "ordinary": 0.16249818418444298,
+      "hardened": 0.3184004653824607,
+      "hardened_to_ordinary_ratio": 1.9594093742060612
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-15.png",
+          "sha256": "01b71c6f791c28e361f1b77b29596a56af134865c2012e5a431a93d35d0989f0"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-15.png",
+          "sha256": "c92ffaf1dcb0f63efbb979627277dd7586a23a0c293e61d662c82a8d3b65a7ef"
+        }
+      },
+      "ordinary": 0.05979630376212024,
+      "hardened": 0.22160256237879766,
+      "hardened_to_ordinary_ratio": 3.7059575331005403
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-20.png",
+          "sha256": "64dc2791389d2c5ed26b5d5f33812c54775bf9cec5234256cb7c1dcf3de97474"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-20.png",
+          "sha256": "4c3f1d07f9124159248faaef514830364221100b316f7f8096b2b5d710b26da8"
+        }
+      },
+      "ordinary": 0.04653825761689291,
+      "hardened": 0.1624286804050851,
+      "hardened_to_ordinary_ratio": 3.490218343415701
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-ordinary-distance-29.png",
+          "sha256": "27a16c63d4f8fa28f3556c161b7c9e559bfe7d80a8887eabae5af3068b87cbe6"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/bsl-software-1.21.1-forge-native-dispatch/lighting-hardened-distance-29.png",
+          "sha256": "2e06af84471db416517f157c1ee5709fafc59fba424d0fc0f633246b5cb2ca05"
+        }
+      },
+      "ordinary": 0.046444167825899586,
+      "hardened": 0.06659954006464124,
+      "hardened_to_ordinary_ratio": 1.433969929535523
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791167553832,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167560336,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167567844,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167573848,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167580352,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167586355,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167591860,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167597862,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167603364,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167608865,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167614367,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167620370,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167625872,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167631373,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167637375,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167643379,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167648885,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167654388,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167659889,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791167665391,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ]
+}

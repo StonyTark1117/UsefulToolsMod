@@ -1,0 +1,210 @@
+{
+  "target": "1.7.10",
+  "shader": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "artifact_hashes": {
+    "/home/braydon/Useful-Tools/1.7.10/build/libs/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar": "c662ea8f3ea366bb12082defba70f8459dc85a160af315cf9dec7dc26b608182",
+    "/tmp/useful-tools-lighting-qa-packages/1.7.10-forge-acceptance-only.jar": "8a004e318dd76e7a3817c101bc73b4f909e3ecae26db9b619effcb84417f6cbc",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1710-forge-optifine/minecraft/mods/OptiFine_1.7.10_HD_U_E7.jar": "8bcd9d83de001a0591f498105f369f070c47d2c9192774d5a5b69f646e44fab4"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-ordinary-distance-3.png",
+          "sha256": "9b62a0cf6a73e4056eee8345800da6f9d41e0e602aa33479ceb1559d52ffb4c9"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-hardened-distance-3.png",
+          "sha256": "8dfbc5293496c6d5d032a8f74fa8d23719f2e2d52a0119dbaaddd803c602db5c"
+        }
+      },
+      "ordinary": 0.48632059594053,
+      "hardened": 0.6729084544193061,
+      "hardened_to_ordinary_ratio": 1.3836725403700425
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-ordinary-distance-10.png",
+          "sha256": "342e1d0108cfe199da4e235fda3ac62f9d9bafb5da7b2feba6e42e725e6ee627"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-hardened-distance-10.png",
+          "sha256": "f61cf8bd52b82696e40bc8cf3f718de9d9d15b997b7462753fa8816e7ab0f710"
+        }
+      },
+      "ordinary": 0.10432086733031674,
+      "hardened": 0.2606056253048912,
+      "hardened_to_ordinary_ratio": 2.498115975969809
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-ordinary-distance-15.png",
+          "sha256": "1909a23ad45301c78cea515b243e4819055b2ded6b95742f2ec30cf0d75cebf0"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-hardened-distance-15.png",
+          "sha256": "8edda21f23f29ea21d56b06235a4220240059016378d80b47e452d1c5c68d4ae"
+        }
+      },
+      "ordinary": 0.026396921525533287,
+      "hardened": 0.15541080529196294,
+      "hardened_to_ordinary_ratio": 5.8874594577870285
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-ordinary-distance-20.png",
+          "sha256": "9ea22a6dfc47f9e45510ac0413e03cf58613c409ff39b155c8a9cbb19bbc9821"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-hardened-distance-20.png",
+          "sha256": "2c5888bd55e7baac57380249b35f65787c8e5c0f6a3758e3132e36db6c190e4b"
+        }
+      },
+      "ordinary": 0.020069753622064212,
+      "hardened": 0.0988404700021547,
+      "hardened_to_ordinary_ratio": 4.924847203579612
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-ordinary-distance-29.png",
+          "sha256": "6c9d295304704ea1b01df8fff5f5935e6fdc56741accb0f74b41e4e592cf05bf"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-classic-unobstructed-native-ui-hold/lighting-hardened-distance-29.png",
+          "sha256": "f2b055a4fd2f9a01f2a3ed776d0de07312192822e65ada5befde49b97b68b74e"
+        }
+      },
+      "ordinary": 0.02266843218271924,
+      "hardened": 0.02780255210514975,
+      "hardened_to_ordinary_ratio": 1.2264876494786607
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791168419749,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168458955,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168497227,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168503735,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168510244,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168516754,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168523260,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168529767,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168536275,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168542781,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168549289,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168555795,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168562802,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168569306,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168575812,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168582316,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168588321,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168595331,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168601837,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791168608342,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ]
+}

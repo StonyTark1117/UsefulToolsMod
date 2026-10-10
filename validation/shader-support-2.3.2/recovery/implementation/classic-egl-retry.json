@@ -1,0 +1,42 @@
+[
+  {
+    "name": "1.7.10-forge-baseline-egl-native-shutdown",
+    "target": "1.7.10-forge",
+    "build_pin": "10.13.4.1614",
+    "runtime_pin": "10.13.4.1614",
+    "command": [
+      "python3",
+      "/home/braydon/Useful-Tools/scripts/validate-packaged-spectral.py",
+      "--template",
+      "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1710-forge-no-loader",
+      "--artifact",
+      "/tmp/usefultools-shaders-2.3.2/matrix-artifacts/95a02299bc80adb6d5d95267208396525c401f6daaa6765ddb64b4752de65fe4/usefultoolsmod-2.3.1+mc.1.7.10.forge.jar",
+      "--artifact-provenance",
+      "/tmp/usefultools-shaders-2.3.2/matrix-artifacts/95a02299bc80adb6d5d95267208396525c401f6daaa6765ddb64b4752de65fe4/provenance.json",
+      "--minecraft-version",
+      "1.7.10",
+      "--world-source",
+      "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1710-forge-no-loader/minecraft/saves",
+      "--java-path",
+      "/usr/lib/jvm/java-8-openjdk/bin/java",
+      "--loader-uid",
+      "net.minecraftforge",
+      "--loader-version",
+      "10.13.4.1614",
+      "--menu-world",
+      "--entity-states",
+      "--surfaces",
+      "--classic-qa",
+      "--client-mod",
+      "/tmp/usefultools-shaders-2.3.2/qa/620ed4685e26ac5ad5f1672c430b9b2333c9821245310da12667d31bd28e369a/usefultools-spectral-qa-2.3.1+mc.1.7.10.forge.jar",
+      "--mode",
+      "baseline",
+      "--shader-integration",
+      "optifine",
+      "--output",
+      "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.7.10-forge-baseline-egl-native-shutdown",
+      "--gpu-virtualgl",
+      "/tmp/usefultools-virtualgl"
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/javac",
+        "--release",
+        "17",
+        "-Xlint:all",
+        "-Werror",
+        "-cp",
+        "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "-d",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-bbox-classes",
+        "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineNativeBoundingBoxes.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/lib/jvm/java-17-openjdk/bin/java",
+        "-cp",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-bbox-classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar",
+        "com.stonytark.usefultoolsmod.spectralqa.OptifineNativeBoundingBoxes",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/qa/1dc419d8704c99665380fd89dfe5ac59c1d4b465d2af976c68eaafb08da1b6a4/native-real-gl-backup-loader.jar",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/optifine-patched.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/native-bbox-classes/output"
+      ],
+      "exit_code": 0,
+      "stdout": "Restored pinned native block-entity culling bounds: net/minecraft/client/renderer/blockentity/SignRenderer\nRestored pinned native block-entity culling bounds: net/minecraft/client/renderer/blockentity/SkullBlockRenderer\n",
+      "stderr": ""
+    }
+  ],
+  "source_sha256": "bd3047e4fb123ca754273e862b5ab75289369d4e4ad06c326fa494ba115cb8f9",
+  "native_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "publisher_sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+  "verdict": "Passed exact pinned native body / publisher ABI / ASM BasicVerifier"
+}

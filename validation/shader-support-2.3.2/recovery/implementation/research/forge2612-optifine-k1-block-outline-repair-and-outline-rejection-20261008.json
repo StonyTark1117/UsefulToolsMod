@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "scope": "Pinned Forge 64.0.8 / Minecraft 26.1.2, OptiFine K1 pre2, current mod artifact. Native private admission bridge only; no publisher or global stack completion claim.",
+  "repair": {
+    "source": "tests/spectral-qa/probe/Optifine2612K1AdmissionBridge.java",
+    "source_sha256": "0486d3e4440c1debd61bbc3865e7900e7a93f5d431cb59f587846600ea97810e",
+    "offline_check_source": "tests/spectral-qa/probe/Optifine2612K1AdmissionCheck.java",
+    "offline_check_source_sha256": "897855db8e50abc238a5c4f21e0c5297438ee3f2c8b68dfb1ede73dc2501c548",
+    "bridge": "validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/baf870e245a5566391ecda4f5cb6b419da38a6d23c35bb93430a37bac4ffd972/bridge.jar",
+    "bridge_sha256": "baf870e245a5566391ecda4f5cb6b419da38a6d23c35bb93430a37bac4ffd972",
+    "behavior": "Map K1 five-argument block-outline constructor to pinned Forge four-argument overload, and obtain BlockState from ClientLevel at the outline position for K1 custom-model guard.",
+    "offline_check": "validation/shader-support-2.3.2/recovery/implementation/research/optifine2612-k1-admission/offline-check.json"
+  },
+  "runs": {
+    "bsl": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-current-full-repaired-v4/report.json",
+      "report_sha256": "8f90ae86223ddd60b50daa6750ffbd7c60fca65abb56b57b1225b3383fb6b90f",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captures": 66,
+      "shader_activation_logged": true,
+      "live_shader_states": {
+        "True": 14,
+        "False": 2
+      },
+      "accepted_commands": 119,
+      "rejected_commands": 0,
+      "images_sha256": {
+        "ghost-night.png": "b659dce062aaa398edbfe3f67ad4733948b2cb2624e232860f33fa2fb5c56fe3",
+        "wraith-night.png": "3137a8c93b646ca5ce904089c06cdcba594efa8645a669f551680b61c3d70fba",
+        "ghost-outline.png": "4c0e26e3cb76fcc9341faab92e8d6403fa469cd8f8a2b2c68025a3a0c5a3028b",
+        "wraith-outline.png": "e7f9dee73ce55e746cbccede91e9a9e2da276eb7fbd48a443af687f3c54db60b",
+        "surfaces-blocks-night-lit.png": "86b9075c3848c913f321a567fedef506d4fe4d4f9c757c18134f9a726ee6e1a9",
+        "surfaces-infuser-gui.png": "16a84323bb85a5b9e651dcdbdf672d337e697a02af4edce667d0dd94580701aa"
+      },
+      "artifact_sha256": "d04b22bd3807ff9a073f43c89c9ee5e62fbe4d876d45c0a43181f25fc4f7846f",
+      "display": ":91",
+      "framebuffer": "1280x720x24",
+      "audio_backend": "ALSOFT_DRIVERS=null",
+      "gpu_route_verified": {
+        "game_pids": [
+          2351056
+        ],
+        "egl_device": "egl0",
+        "interposer_loaded": true
+      },
+      "shader_pack": {
+        "name": "BSL_v10.1.2.zip",
+        "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+      }
+    },
+    "complementary": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-current-full-repaired-v1/report.json",
+      "report_sha256": "5d81e36f1ce6e5ef9f82e92e6df863305ee0a35598c15f410c46d1154d373358",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captures": 66,
+      "shader_activation_logged": true,
+      "live_shader_states": {
+        "True": 14,
+        "False": 2
+      },
+      "accepted_commands": 119,
+      "rejected_commands": 0,
+      "images_sha256": {
+        "ghost-night.png": "99b961d5f7f14a8a0e8e5721748c802f6362004bf4fe885a4d483fc910fc12c6",
+        "wraith-night.png": "eb2c8f2d19fcdd2e92b374fcb6ac32e5a0c502023a62e35637dce623902da85f",
+        "ghost-outline.png": "f46ccab6071f170b06433bef947ab78044aa6f4f1678f7858b21be983e5a30cb",
+        "wraith-outline.png": "3461c47e3b1b7a00c88926cc247043c7c6f61cbdace4f5361b6c6f7a96b31c36",
+        "surfaces-blocks-night-lit.png": "490bb60bca0fb771073440e82d66910270a63237f957fbdffe48575c9746db40",
+        "surfaces-infuser-gui.png": "7984a7f16fbe1f83d516bd5f152d8bf387702f627c003ba8c61924c5dd123548"
+      },
+      "artifact_sha256": "d04b22bd3807ff9a073f43c89c9ee5e62fbe4d876d45c0a43181f25fc4f7846f",
+      "display": ":91",
+      "framebuffer": "1280x720x24",
+      "audio_backend": "ALSOFT_DRIVERS=null",
+      "gpu_route_verified": {
+        "game_pids": [
+          2365684
+        ],
+        "egl_device": "egl0",
+        "interposer_loaded": true
+      },
+      "shader_pack": {
+        "name": "ComplementaryReimagined_r5.7.1.zip",
+        "sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0"
+      }
+    },
+    "rejected_outline_trial": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-outline-guard-trial-v1/report.json",
+      "report_sha256": "3c4591d53ea3344aa2952f491d3027b73fde4228adf1874bab4d04579f9e4544",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captures": 39,
+      "shader_activation_logged": true,
+      "live_shader_states": {
+        "True": 2,
+        "False": 1
+      },
+      "accepted_commands": 42,
+      "rejected_commands": 0,
+      "images_sha256": {
+        "wraith-outline-interior-before.png": "e7d8c9a33b6f7fd923c75d198057012cf240ef1d196489f45ccfdb16bea774b9",
+        "wraith-outline.png": "fa779935a9ff454a4f3c9693cf2de8d31f96415d6b7de1b005735845d44ebfe2",
+        "vanilla-sheep-outline-active.png": "3e0660d8985854882185e9bf6da60974937cf6f3d3be6c0b80b479470d19ca6f"
+      },
+      "artifact_sha256": "d04b22bd3807ff9a073f43c89c9ee5e62fbe4d876d45c0a43181f25fc4f7846f",
+      "display": ":91",
+      "framebuffer": "1280x720x24",
+      "audio_backend": "ALSOFT_DRIVERS=null",
+      "gpu_route_verified": {
+        "game_pids": [
+          2383051
+        ],
+        "egl_device": "egl0",
+        "interposer_loaded": true
+      },
+      "shader_pack": {
+        "name": "BSL_v10.1.2.zip",
+        "sha256": "934a1f8fbec9ccec408df783e74ab4d2fdc09f3d4d797de245a07ca92376dde7"
+      }
+    }
+  },
+  "disposition": "Incomplete: active BSL and Complementary hide native glowing outlines for Ghost and Wraith. The repaired bridge fixes the surface-stage JVM crash, not the outline acceptance requirement.",
+  "visual_review": {
+    "bsl": "Ghost and Wraith present; Wraith eyes, mouth and separated arms readable at night. Native glowing outline absent for both in active BSL; disabled-mode prior capture shows an outline.",
+    "complementary": "Ghost and Wraith present; Wraith low-light features readable. Native glowing outline absent for both in active Complementary.",
+    "rejected_outline_trial": "Opt-in shadow-only guard experiment still produced no visible outline on Wraith or vanilla glowing sheep, with similar entity interiors before and after. Reverted from source; no performance promotion."
+  },
+  "unrepaired_failures": [
+    "Active-pack glowing outline missing in both pack runs.",
+    "Full original matrix and other exact configurations remain incomplete."
+  ],
+  "pinned_checkout_checks": {
+    "build_command": "scripts/build-matrix.sh 26.1.2-forge",
+    "build_result": "passed with scripts/strict-warnings.gradle; catalog audit OK",
+    "rebuilt_mod_jar_sha256": "d04b22bd3807ff9a073f43c89c9ee5e62fbe4d876d45c0a43181f25fc4f7846f",
+    "server_report": "validation/server-smoke/26.1.2-forge.json",
+    "server_report_sha256": "fcacee9009c7cb8bf4e1fd732db839ff474f6d2295ab9ccbd8082b14c735ba86",
+    "server_ready": true,
+    "server_clean_shutdown": true,
+    "saved_dimensions": 6,
+    "server_stop_method": "stdin+sigint"
+  },
+  "rejected_outline_trials": [
+    {
+      "candidate_bridge_sha256": "dc0b2390eb394d7ab26f0802763454c1b0609285036de2aab2b56fdaa539b134",
+      "scope": "Guard bypass plus native program for ENTITY_OUTLINE_BLIT only; private opt-in trial, never promoted.",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-native-outline-program-trial-v2/report.json",
+      "report_sha256": "dbc933516ce1b99e389b64b591c26159dcc067899cb6e9a3809f04545be5d682",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "wraith_before_sha256": "dc3d4f54dd015473c42d2264de8ce056080a0387b2645ce82e40b32fa7d4fe32",
+      "wraith_glowing_sha256": "20f7cd0348ac6209374e89d8f2edf115d427f97aabf93171536c63b19ccb0612",
+      "vanilla_sheep_active_sha256": "65d8af6dacff93a4fdcc0c0c9dcd5c451715598e1f3bc34b743324e4817ed517",
+      "vanilla_sheep_disabled_sha256": "9556332cb2f058d2b283e976871ba5e1039dbbd01febfe8f59618ea67983f368",
+      "verdict": "Rejected: neither Wraith nor vanilla sheep has a visible outline with BSL active; disabled sheep does. Wraith interior appears similar, but no readability gain or outline restoration. No performance promotion."
+    }
+  ]
+}

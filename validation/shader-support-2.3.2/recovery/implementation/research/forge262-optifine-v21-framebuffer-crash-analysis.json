@@ -1,0 +1,26 @@
+{
+  "run_report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v21-BSL-indoor/report.json",
+  "status": "failed",
+  "captured_frames": 5,
+  "behavioral_entity_captures": 0,
+  "shaderpack_load_logged": true,
+  "client_log_sha256": "d3822965d18777a88dcf2adb954a0cabdfff46d3e823fdd55e157b55c79f9d79",
+  "crash_report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v21-BSL-indoor/crash-reports/crash-2026-10-07_16.45.07-client.txt",
+  "crash_sha256": "dc1743b13b6fae16a39993615b7f8060f938a3a9e735e5bfac87b3d44efcf29e",
+  "root_cause_observed": "OptiFine Shaders.setViewport dereferenced null Shaders.dfb on first world render frame; pack parsing did not establish framebuffer initialization.",
+  "bridge_gui_and_projection_transforms_logged": true,
+  "original_stack_qualified": false,
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true,
+    "gpu_virtualgl": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/virtualgl-3.1.5",
+      "egl_device": "egl0",
+      "transport": "proxy",
+      "wrapper_sha256": "423385b3bd6cf3ae67d35eadf768e7cdac2c57ed20d3d0c4069bef82be5a997a",
+      "interposer_sha256": "da23d69a5663f5da1cc7eb4383dc5f9467acc237655045d11f305f233fba9386"
+    }
+  }
+}

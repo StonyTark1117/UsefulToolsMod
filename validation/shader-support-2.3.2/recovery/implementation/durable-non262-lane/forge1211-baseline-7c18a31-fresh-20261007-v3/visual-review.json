@@ -1,0 +1,122 @@
+{
+  "status": "pass",
+  "scope": "All 33 required behavioral captures for the fresh Forge 1.21.1 baseline row.",
+  "report": "report.json",
+  "report_sha256": "e2c0f560cb3c42e6f264dd947503197556ea10ebeb9dda93d20a9b3ed159e320",
+  "review_sheets": "review-sheets.json",
+  "review_sheets_sha256": "3b1aa4fe37259c76318f1cb596fdb1dc97a4f2418bda227f4b05b8e39cdbc591",
+  "panels": [
+    {
+      "path": "review-panel-0.jpg",
+      "sha256": "9ac03fa932ec2a15a102f6c96f16ebaeaaef3e562b53d220e440673de9bc2eaa",
+      "sources": [
+        "ghost-day.png",
+        "ghost-night.png",
+        "ghost-rain.png",
+        "ghost-dark-background.png",
+        "ghost-bright-background.png",
+        "wraith-day.png"
+      ]
+    },
+    {
+      "path": "review-panel-1.jpg",
+      "sha256": "b4a79faa4f94b8e8736ec1882fa716b6d89ce7bab5e033b05e35a5c4af805281",
+      "sources": [
+        "wraith-night.png",
+        "wraith-rain.png",
+        "wraith-dark-background.png",
+        "wraith-bright-background.png",
+        "ghost-indoor.png",
+        "wraith-indoor.png"
+      ]
+    },
+    {
+      "path": "review-panel-2.jpg",
+      "sha256": "6434d504f66e1274c2c03792c686998780bbe17ef78635a7f014b62583f3d7bb",
+      "sources": [
+        "ghost-movement-before.png",
+        "ghost-movement-after.png",
+        "ghost-damage.png",
+        "ghost-invisible.png",
+        "ghost-spectator-invisible.png",
+        "ghost-spectator-white-invisible.png"
+      ]
+    },
+    {
+      "path": "review-panel-3.jpg",
+      "sha256": "da97c1505350df7157b09cfa4341cd745ff3484eeff39ac52af0a1942f1c1680",
+      "sources": [
+        "ghost-outline.png",
+        "wraith-movement-before.png",
+        "wraith-movement-after.png",
+        "wraith-damage.png",
+        "wraith-invisible.png",
+        "wraith-spectator-invisible.png"
+      ]
+    },
+    {
+      "path": "review-panel-4.jpg",
+      "sha256": "b5bee74a95a4a20f81df54946c27eb0b824d19f35f6cce436f40ff7dda0b7139",
+      "sources": [
+        "wraith-spectator-white-invisible.png",
+        "wraith-outline.png",
+        "surfaces-blocks-night-unlit.png",
+        "surfaces-blocks-night-lit.png",
+        "surfaces-blocks-day.png",
+        "surfaces-worn-armor-and-glint.png"
+      ]
+    },
+    {
+      "path": "review-panel-5.jpg",
+      "sha256": "2c30aae31b63ceeb619f83c2464c25ae864add2ae2cb8da01c161dcce5e64980",
+      "sources": [
+        "surfaces-inventory-previews.png",
+        "surfaces-projectiles.png",
+        "surfaces-infuser-gui.png"
+      ]
+    }
+  ],
+  "findings": [
+    "Ghost and Wraith identities and geometry are visible in day, night, native rain, dark-background, bright-background, and indoor scenes.",
+    "Movement pairs visibly change entity position; native damage frames show the expected red hurt tint.",
+    "Normal invisibility removes entity geometry while particles remain; native spectator translucency is faint and visible on the acknowledged white-backdrop controls.",
+    "Native white outlines are visible for both entities.",
+    "Seven registered block surfaces are present; mining charge and Spectral Infuser lit-state changes are visible.",
+    "Worn armor, enchanted glint, inventory previews, projectile entities, and the populated Spectral Infuser GUI are present and legible."
+  ],
+  "source_capture_sha256": {
+    "ghost-day.png": "9281ae06ae4eb56d5ac9608b08696130459a238b5f6b4597288dccb48e29458c",
+    "ghost-night.png": "443a8672d7f46a4dab345ff166b1abc784969323fc741afdae1e0bec71e083cf",
+    "ghost-rain.png": "98a71aea758b0a77557504fb7759e837d5583ba340dd8a142b9d89e2ea43407c",
+    "ghost-dark-background.png": "d5743c20d67194b32b1422df62069df248179152c9e8d4dc9edca0b33d547d38",
+    "ghost-bright-background.png": "223c000c1aaa9adf13d6ed9165745cbced736fde63e873a998ff916fa5d3643b",
+    "wraith-day.png": "0035c94b5aa7b3a853a223dd9b701b0994a1584a724ef817d591e61c07c99598",
+    "wraith-night.png": "3a2e9cdcec0df7d094e288c2b166c1ea643139d002d3f8758aecd52c17f681c8",
+    "wraith-rain.png": "bb051939b7eb1fa144206dfbf3a4547e0f3d2dc2a8613fd6f76f75e3eedbe619",
+    "wraith-dark-background.png": "3faa045d5a129c65ebe923fd916be360859b3e076396edd8445efe5990025fd4",
+    "wraith-bright-background.png": "893f0b6cbb9f713590db8b8316fe7930789de1e1da8d11bf8a60e30d840d5ce3",
+    "ghost-indoor.png": "3958b30c2e8a4b0661d4111e77b8398e97f85a575cb097c35c61b597bd5a39f5",
+    "wraith-indoor.png": "892bf0d278bb79fd825a0bec78adb0a23f5e9e76f56c3fefc2c403913541a74e",
+    "ghost-movement-before.png": "1e86dd75d2d4f76424350afbd772b030b5502b7561940b71b61b6fa19845f842",
+    "ghost-movement-after.png": "d295f1b80e05262f2028c54cedc9c9ed04593bc6f0508a48be367c5e13cb3a04",
+    "ghost-damage.png": "717c6515a3a76b4f6751dd9129479bf8e9d5f8fb7bfbe84c4dd3178bf0ed2c45",
+    "ghost-invisible.png": "deebe6bd7ca3de94a9465e7879b9c700970064b1e00661d96cc43adee945c514",
+    "ghost-spectator-invisible.png": "889aad936755fcb9cc7b353d4574c0fdfba4cd213929ebc87363746a44c2cdc7",
+    "ghost-spectator-white-invisible.png": "20e13170a15ece1d27c897da5f4f5e18f5aa5a6600ea51cda9c25f80e3c61f16",
+    "ghost-outline.png": "163472cffe2fbaf219a679f78d9dfd00abbbc3355b5d555e9076b8288fb2feac",
+    "wraith-movement-before.png": "21415479fdc39ac09bd2f5c6e62eed4c9b3afc2ffdae72fefceba1892e7876fb",
+    "wraith-movement-after.png": "28d6c7e28be189afe688e8a7ff7dd9ef8e8ded814b0ff3f24f32deb51cd5f25f",
+    "wraith-damage.png": "7f23033c970a92904345b1b137250f2dde44f58941ed720875905038adfea310",
+    "wraith-invisible.png": "053ed969bfd91f2c4b11b5e4ca793beddae7be1ff74dffcd11146c24db225a6b",
+    "wraith-spectator-invisible.png": "d4aef8665807c605737386884191eaf071cc407da7d4311b5965d569f788e7bc",
+    "wraith-spectator-white-invisible.png": "9840e74f2b769fd94a8cdfe646f526baa5ce5200efd546a03534ab36cbb09deb",
+    "wraith-outline.png": "2dc286b76cab068c5050dc2da4408450ffde75b4220e8baf6c1bc2a201f9e576",
+    "surfaces-blocks-night-unlit.png": "10d764a89ac59fde70ade010600f93a54c8530337fabec598ff02b9e9a84ec94",
+    "surfaces-blocks-night-lit.png": "48e3c7a18cbac70d3c6ca7be0c6b18e3eba8b03afd6e602c4b9a6e064f0be285",
+    "surfaces-blocks-day.png": "9997a80102e87cfb9c5db0b89aff36b767e6bac60cf59306ff709f056a482225",
+    "surfaces-worn-armor-and-glint.png": "8a77854774ee1b43dc91636b19c0ee2f8f20446b9a98bde4ee4677c8611039a4",
+    "surfaces-inventory-previews.png": "f90dc6d2baedb2d4f2ea9907c485ef7dccc9d38d4b3fedb8a5282ac7c633c8e7",
+    "surfaces-projectiles.png": "6ccd7519f426037ae8c528ec530f05a1267fa19465b116e82c6f8e5b7f97eda2",
+    "surfaces-infuser-gui.png": "2d90606fca1dd0882a41eebf8bd812c82b7699306f860492df0c800074f452e3"
+  }
+}

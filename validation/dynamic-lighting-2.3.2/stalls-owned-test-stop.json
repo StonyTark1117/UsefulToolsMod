@@ -1,0 +1,84 @@
+{
+  "reason": "User reports stalls from tests left running; stop owned client batch and prevent queued launches",
+  "batch_pid": 69387,
+  "harness_interrupts": [
+    {
+      "pid": 88080,
+      "command": "/usr/sbin/python /tmp/usefultools-shaders-2.3.2/harness/056d8f35eac9747c451e0d23df8080b0cee0e1060de3553793044f8bbfa20c6a/scripts/validate-packaged-spectral.py --template /home/braydon/.local/share/PrismLauncher/instances/codex-shader-1211-forge-optifine-52016 --artifact /tmp/useful-tools-lighting-emission-controls/1.21.1-forge-published-bridge-durable-serial-v1/baeaff404d76fb4616501fa8062171037b14215be20cac3092874fdadd7909b5/base-zero-emission.jar --artifact-provenance /tmp/useful-tools-lighting-emission-controls/1.21.1-forge-published-bridge-durable-serial-v1/baeaff404d76fb4616501fa8062171037b14215be20cac3092874fdadd7909b5/base-zero-emission.json --minecraft-version 1.21.1 --java-path /usr/lib/jvm/java-21-openjdk/bin/java --loader-uid net.minecraftforge --loader-version 52.1.10 --world-source /home/braydon/.local/share/PrismLauncher/instances/codex-shader-1211-forge-optifine-52016/minecraft/saves --mode active --lighting-qa --jvm-arg=-DusefulToolsLightingQa=true --output /home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/packaged/complementary-material-zero-alpha-1.21.1-forge-published-bridge-durable-serial-v1 --lighting-direct-client --menu-world --client-mod /home/braydon/.cache/useful-tools-lighting-inputs/53a3e6e4dfda63773d0a3e408dd9315066bb96afcfc23e34be1459a8610d699f/1.21.1-forge-acceptance-only.jar --client-mod /home/braydon/.cache/useful-tools-lighting-inputs/fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611/beddium-1.0.11-mc1.21.1.jar --client-mod /home/braydon/.cache/useful-tools-lighting-inputs/f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f/oculus-mc1.21.1-1.8.8.jar --shader-integration iris --lighting-scenes --lighting-equipment-scenes --toggle-shaders --shader-pack /home/braydon/.cache/useful-tools-lighting-inputs/fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38/ComplementaryReimagined_r5.9.3.zip --shader-setting RP_MODE=3 --shader-setting TM_EXPOSURE=1.00 --shader-setting BLOOM_STRENGTH=0.12 --shader-setting CUSTOM_EMISSION_INTENSITY=100 --ocr-python /home/braydon/.cache/useful-tools-lighting-ocr/bin/python --lighting-material-only "
+    }
+  ],
+  "time": 1791401190.6819367,
+  "goal_status": "incomplete; no requirement waived",
+  "incidental_stop_helper_shell_interrupt": 88494,
+  "verification": {
+    "checked_at": 1791401362.2675269,
+    "owned_remaining_processes": [],
+    "other_task_processes": [],
+    "scope": "Exact completed run markers and batch/profile arguments; other tasks left untouched"
+  },
+  "completed_before_stop": [
+    {
+      "profile": "bsl-material-native-1.21.1-forge-published-bridge-durable-serial-v1",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "cleanup": {
+        "sigkill_after_sigterm": [],
+        "private_launcher_root_retained": true,
+        "private_library_copy_removed": true,
+        "private_game_payloads_removed": [
+          "saves",
+          "screenshots",
+          "mods",
+          "shaderpacks",
+          "resourcepacks"
+        ]
+      }
+    },
+    {
+      "profile": "bsl-material-zero-alpha-1.21.1-forge-published-bridge-durable-serial-v1",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "cleanup": {
+        "sigkill_after_sigterm": [],
+        "private_launcher_root_retained": true,
+        "private_library_copy_removed": true,
+        "private_game_payloads_removed": [
+          "saves",
+          "screenshots",
+          "mods",
+          "shaderpacks",
+          "resourcepacks"
+        ]
+      }
+    },
+    {
+      "profile": "complementary-material-native-1.21.1-forge-published-bridge-durable-serial-v1",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "cleanup": {
+        "sigkill_after_sigterm": [],
+        "private_launcher_root_retained": true,
+        "private_library_copy_removed": true,
+        "private_game_payloads_removed": [
+          "saves",
+          "screenshots",
+          "mods",
+          "shaderpacks",
+          "resourcepacks"
+        ]
+      }
+    }
+  ],
+  "unfinished_profile": "complementary-material-zero-alpha-1.21.1-forge-published-bridge-durable-serial-v1",
+  "cancellation_fix": {
+    "files": [
+      "scripts/run-lighting-material-controls.py",
+      "scripts/lighting_client_lifecycle.py",
+      "scripts/validate-packaged-spectral.py"
+    ],
+    "focused_lifecycle_tests": 3,
+    "result": "passed",
+    "py_compile": "passed",
+    "further_gui_tests_this_turn": false
+  }
+}

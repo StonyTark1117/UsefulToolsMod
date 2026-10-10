@@ -1,0 +1,43 @@
+[
+  {
+    "name": "1.21.1-forge-baseline-iris0-egl0-precipitation-controls-menu-confirmation-retry",
+    "target": "1.21.1-forge",
+    "build_pin": "52.1.10",
+    "runtime_pin": "52.1.10",
+    "command": [
+      "python3",
+      "/home/braydon/Useful-Tools/scripts/validate-packaged-spectral.py",
+      "--template",
+      "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-quilt",
+      "--artifact",
+      "/tmp/usefultools-shaders-2.3.2/matrix-artifacts/cc55aeaa6fdf6287493932d3ac3c2ec19e3328f6c2bc76ccc312bc114837e894/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+      "--artifact-provenance",
+      "/tmp/usefultools-shaders-2.3.2/matrix-artifacts/cc55aeaa6fdf6287493932d3ac3c2ec19e3328f6c2bc76ccc312bc114837e894/provenance.json",
+      "--minecraft-version",
+      "1.21.1",
+      "--world-source",
+      "/tmp/spectral-prism-qcq1k1xm/instances/spectral/minecraft/saves",
+      "--java-path",
+      "/usr/lib/jvm/java-21-openjdk/bin/java",
+      "--loader-uid",
+      "net.minecraftforge",
+      "--loader-version",
+      "52.1.10",
+      "--menu-world",
+      "--entity-states",
+      "--surfaces",
+      "--mode",
+      "baseline",
+      "--shader-integration",
+      "iris",
+      "--output",
+      "validation/shader-support-2.3.2/recovery/implementation/precipitation-control-runs/1.21.1-forge-baseline-iris0-egl0-precipitation-controls-menu-confirmation-retry",
+      "--gpu-virtualgl",
+      "/tmp/usefultools-virtualgl",
+      "--egl-device",
+      "egl0"
+    ],
+    "retry_of": "1.21.1-forge-baseline-iris0-egl0-precipitation-controls",
+    "failure_layer": "test automation: OCR omitted spaces in native experimental-world confirmation"
+  }
+]

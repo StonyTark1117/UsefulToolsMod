@@ -1,0 +1,9 @@
+1.21.1 Forge + OptiFine J1 + BSL 10.1.2 GPU runtime attempt
+
+Forge 52.1.16 started with OptiFine HD U J1 (Build 20240924-134746). The OptiFine Shaders screen listed BSL_v10.1.2.zip, and the client log confirmed: "[Shaders] Loaded shaderpack: BSL_v10.1.2.zip". A fresh world was created with commands enabled. The integrated server crashed before the player joined and before any model could render.
+
+Crash: Ticking block entity
+Exception: java.lang.NoSuchMethodError: 'java.util.List net.minecraft.core.Direction.getUpdateOrder()'
+Site: net.minecraft.world.level.block.entity.vault.VaultBlockEntity$Server.tick
+
+This is a runtime compatibility failure, not a shader visual result. The test Forge version (52.1.16) differs from the repository's 52.1.10 pin and OptiFine J1's published 52.0.16 requirement. The test also used the 2.3.1 project jar, so it does not verify the pending 2.3.2 build.

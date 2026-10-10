@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/usr/lib/jvm/java-17-openjdk/bin/javac",
+    "-J-XX:ActiveProcessorCount=2",
+    "--release",
+    "8",
+    "-Xlint:all",
+    "-Xlint:-options",
+    "-Werror",
+    "-proc:none",
+    "-sourcepath",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v3",
+    "-classpath",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v3/native-interfaces:/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar:/home/braydon/.local/share/PrismLauncher/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar",
+    "-d",
+    "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v3",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicLightingQaPlugin.java"
+  ],
+  "exit_code": 0,
+  "status": "strict native bootstrap compilation passed",
+  "seconds": 12.13209099300002,
+  "source_sha256": {
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicLightingQaPlugin.java": "2edc77354dfec3bb560798dc35ff0ed19318462f6fe1a7becad17742703b6a18"
+  },
+  "original_native_forge": "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-universal.jar",
+  "original_native_forge_sha256": "00d1ca02192c7efb87da95552ebf247021f1e1d642f86d0a03076314def11529",
+  "unmodified_native_interface_entries_sha256": {
+    "cpw/mods/fml/relauncher/IFMLLoadingPlugin$DependsOn.class": "3b3459778e04e9e931bd395dcd228fcefeba27ced41c45249c4860ae6a616b39",
+    "cpw/mods/fml/relauncher/IFMLLoadingPlugin$MCVersion.class": "c639e2343ce6de8df79493b0278c86887dbafd4234582e4db298d7fa3d053e10",
+    "cpw/mods/fml/relauncher/IFMLLoadingPlugin$Name.class": "76a3e49da90fd8d4e5fce2ce99acef05ff29758fffc0d5f53173f94839dc652a",
+    "cpw/mods/fml/relauncher/IFMLLoadingPlugin$SortingIndex.class": "e22e1afab273889e2fabd6bf24a5b39d7fcbae142f267c90a65e423ec1e898d1",
+    "cpw/mods/fml/relauncher/IFMLLoadingPlugin$TransformerExclusions.class": "9f1f9529a6c7062e1ec836fea2d4b62f9df9ce43cb100ac193b60655897d90cc",
+    "cpw/mods/fml/relauncher/IFMLLoadingPlugin.class": "63d43888ca93bb02ea55092b9caf4a7bfc3345b104118fe5a00c690a49c1be3f"
+  },
+  "other_classpath_sha256": {
+    "/home/braydon/.cache/useful-tools-lighting-inputs/f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97/1.7.10-forge-acceptance-only.jar": "f195ad46354ce75d680ce745cc164dc88277d97bdedabf6afdae6667d2656a97",
+    "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar": "57f402b626d16cc2705bf2a37add7adbb074f0ca3b3102fa6e23aa303dae682f"
+  },
+  "log": "/home/braydon/.cache/useful-tools-lighting-private-stacks/classic-qa-bootstrap-compile-v3/compile.log",
+  "classpath_reason": "Exact native interface class bytes extracted from Forge10.13.4.1614 to avoid its installer-only relative manifest Class-Path. No stubs or modified dependency interfaces.",
+  "scope": "Focused Java8 bytecode compile; no client or Gradle launched; package/audio runtime pending.",
+  "bootstrap_class_sha256": "e8a1698bbd78d3de838903397744eb62cff6c468ee195f25409809d6100a06d0"
+}

@@ -1,0 +1,59 @@
+{
+  "target": "1.7.10-forge",
+  "command": [
+    "./gradlew",
+    "--no-daemon",
+    "--max-workers=1",
+    "--no-build-cache",
+    "-I",
+    "/home/braydon/Useful-Tools/tests/dynamic-lighting/qa.gradle",
+    "-PusefulToolsLightingQaPackage=true",
+    "reobfLightingJar"
+  ],
+  "java_home": "/usr/lib/jvm/java-21-openjdk",
+  "loader_pin": "10.13.4.1614",
+  "release_jar": "/home/braydon/Useful-Tools/1.7.10/build/libs/usefultools-lighting-2.3.1+mc.1.7.10.forge.jar",
+  "release_sha256": "0fcd8805580c536b68f896a90fb8075699cd0dd15c20b79fa6966548eb518ff9",
+  "production_class_sha256": {
+    "com/stonytark/usefultools/lighting/classic/LightingPlugin.class": "d24f6b01dbf7b01430e5f36e84c2ffb9dfb7865556a7b02e79c66a381419c9e3",
+    "com/stonytark/usefultools/lighting/classic/LightingTransformer.class": "ae064931a732dbc6c5eeb163b327f4f6496bdf25426eac84bb4ac5a7b4d03719",
+    "com/stonytark/usefultools/lighting/classic/LightingMod.class": "3528226e0257e804d5e8c2892eb006765bb87905ad87a937c3342a8107597f2e",
+    "com/stonytark/usefultools/lighting/classic/ClassicClientLighting$ChunkLights.class": "8ff25175cf4b9ebf1773fa457f3117160602e0a3c66459827a1b2fa90ffc73be",
+    "com/stonytark/usefultools/lighting/classic/ClassicClientLighting.class": "093b1230d32277beada10bdbea1367c6aea987160d499c47ef8e971cf589dc01",
+    "com/stonytark/usefultools/lighting/LightField$Source.class": "71cf2e7864624593f6393d7d57c6375145e8907c43464d0f854e4c07977f38f4",
+    "com/stonytark/usefultools/lighting/LightField.class": "6db1ec0e09957d4cd90665b8924090d4a8c2da3915ad9644697d68cf0400c6e8",
+    "com/stonytark/usefultools/lighting/SourcePolicy.class": "be5388e434297e2265700ced9704e41a7c43a843ecc947f335e44669c1df4540"
+  },
+  "source_sha256": {
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicLightingQa.java": "aa9c7471cf2de094650892c0f65720e88b815e5ee2290d0fa8c07051aca1aa68",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/AdvancedLightingQa.java": "a0738f5ab87eda244491b46a961757247deafcdc55f83bdbd225658b91fc24fd",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicQaAudioPlugin.java": "c5552e2b5889895e5c718b1e5f5f6e1563f602affa2724723c64e056d4eea7ec",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/PerformanceLightingQa.java": "bf4791540ba2ce2010f9151cfe7964bb58c49d1a24ad0c88f03e6222d54634f4",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/LightingQaSceneCommand.java": "c01c91a186e5516a2047dcee201bc7a4964da8f34c462c3d849beaae04f24e79",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicMultiplayerLightingQa.java": "6917eb785c67b15ee143aa794ed78e20b6ddf1518a71ff8f063a46359450f43c",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicBeddiumLightingQa.java": "175093fb141b6d5605376d00ebae96bba27f4537d9c4a9f2050bb5e51b7a934b",
+    "tests/dynamic-lighting/targets/1.7.10-forge/com/stonytark/usefultools/lighting/classic/ClassicLightingQaPlugin.java": "2edc77354dfec3bb560798dc35ff0ed19318462f6fe1a7becad17742703b6a18",
+    "tests/dynamic-lighting/menu/com/stonytark/usefultools/lighting/qa/OptifineLightingQaMenuSnapshot.java": "4e148b1a3a9b38e5b3a02d33ecaa34f5d6cb36b286f7ad39b9b80373cbda4109",
+    "1.7.10/src/lighting/resources/mcmod.info": "7da309873a2718b591e7b71ab39aff9b69df5baa3626003d2bb6b1d161c9efe4",
+    "1.7.10/src/lighting/resources/pack.mcmeta": "867bc4eaec7e4997ac1689122a0175a1fc5a389641fa0a672d1f4e28a6c2d6ac",
+    "1.7.10/src/lighting/java/com/stonytark/usefultools/lighting/classic/LightingPlugin.java": "4e5e9a08a5933f9b3fde84e4e1a30fd460166782dfea0aacb5d8fb39f968142e",
+    "1.7.10/src/lighting/java/com/stonytark/usefultools/lighting/classic/LightingTransformer.java": "1487840acc81c4e94efa7170c8596abe0c171887c709ebf90d8bd6ec5139a6cc",
+    "1.7.10/src/lighting/java/com/stonytark/usefultools/lighting/classic/LightingMod.java": "5a7bb204b94a9ab938fc29c8e53d2670101df745be52ca1227457ab8aa5d3e12",
+    "1.7.10/src/lighting/java/com/stonytark/usefultools/lighting/classic/ClassicClientLighting.java": "7c32802a765f9ffbb631cdc5e9633bd10b08db5b771b99180e15563fd19ee438",
+    "lighting/common/java/com/stonytark/usefultools/lighting/LightField.java": "7c14d17477bc3da4a91b853bbdff661c87726f83ead5b5ba74ca04ad619591cd",
+    "lighting/common/java/com/stonytark/usefultools/lighting/SourcePolicy.java": "e93493bbd61982da6b47795327b8b512074b13678e586efba41458c6e3b97c20",
+    "tests/dynamic-lighting/qa.gradle": "206c3ebfcfeb90b9b8a90a64027907f505cb9565fce7337c1d1a447d1e8e0062"
+  },
+  "status": "native acceptance package built and production classes matched",
+  "log": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/1.7.10-forge-qa-build-1791409942060850643.log",
+  "resource_policy": {
+    "nice": 10,
+    "active_processors": 2,
+    "ordinary_client_or_build_slots": 1
+  },
+  "exit_code": 0,
+  "qa_package": "/home/braydon/.cache/useful-tools-lighting-inputs/100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4/1.7.10-forge-acceptance-only.jar",
+  "qa_sha256": "100e92d63f4e898aa30580e28fa79ea024549e61a1c6e8a0bbc53576f5d6c2b4",
+  "distributable_artifact_unchanged": true,
+  "production_class_mismatches": []
+}

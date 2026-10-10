@@ -1,0 +1,39 @@
+{
+  "target": "1.20.1-neoforge",
+  "invocation": [
+    "scripts/validate-packaged-spectral.py",
+    "--template",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-neoforge-oculus",
+    "--artifact",
+    "/tmp/useful-tools-lighting-reviewed-artifacts/6abd522a89cdb10d03bfc1a3932ccc2259f595ae77da086850a13ada97d128a7/usefultoolsmod-2.3.1+mc.1.20.1.neoforge.jar",
+    "--artifact-provenance",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/profiles/1.20.1-neoforge-artifact-6abd522a89cdb10d03bfc1a3932ccc2259f595ae77da086850a13ada97d128a7.json",
+    "--minecraft-version",
+    "1.20.1",
+    "--java-path",
+    "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "--loader-uid",
+    "net.neoforged",
+    "--loader-version",
+    "47.1.106",
+    "--world-source",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-fabric/minecraft/saves",
+    "--mode",
+    "baseline",
+    "--lighting-qa",
+    "--jvm-arg=-DusefulToolsLightingQa=true",
+    "--output",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/1.20.1-neoforge",
+    "--lighting-direct-client",
+    "--client-mod",
+    "/tmp/useful-tools-lighting-qa-packages/1.20.1-neoforge-acceptance-only.jar"
+  ],
+  "components": {
+    "components": [
+      {
+        "uid": "net.minecraft",
+        "version": "1.20.1"
+      }
+    ]
+  }
+}

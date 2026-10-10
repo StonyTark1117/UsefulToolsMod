@@ -1,0 +1,33 @@
+{
+  "observations": [
+    {
+      "phase": "baseline",
+      "adapter_us": 59.866859999999996,
+      "mean_fps": 10.6,
+      "tick_samples": 100,
+      "fps_samples": 5
+    },
+    {
+      "phase": "ordinary_radius_15",
+      "adapter_us": 54.92632,
+      "mean_fps": 11.4,
+      "tick_samples": 100,
+      "fps_samples": 5
+    },
+    {
+      "phase": "hardened_radius_30",
+      "adapter_us": 58.49552,
+      "mean_fps": 11.2,
+      "tick_samples": 100,
+      "fps_samples": 5
+    },
+    {
+      "phase": "hardened_moving_radius_30",
+      "adapter_us": 123.84888000000001,
+      "mean_fps": 9.6,
+      "tick_samples": 100,
+      "fps_samples": 5
+    }
+  ],
+  "method": "Four sequential phases; each has 40 warm-up and 100 timed extra native adapter ticks, with five native FPS-counter samples. Isolated Xvfb; concurrent matrix activity can affect timings. These are observations, not frame-time percentiles or a hardware FPS guarantee."
+}

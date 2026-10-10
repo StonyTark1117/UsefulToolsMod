@@ -1,0 +1,40 @@
+$ /home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/javap -classpath /home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227/oculus-forge-26.2-0.3.0-beta.1.jar -s dev.oculusforge.render.program.LegacyFinalShaderAdapter
+Compiled from "LegacyFinalShaderAdapter.java"
+public final class dev.oculusforge.render.program.LegacyFinalShaderAdapter {
+  public dev.oculusforge.render.program.LegacyFinalShaderAdapter();
+    descriptor: ()V
+
+  public dev.oculusforge.render.program.LegacyFinalShaderAdapter$AdaptedShader adapt(java.lang.String) throws dev.oculusforge.render.program.ShaderCompatibilityException;
+    descriptor: (Ljava/lang/String;)Ldev/oculusforge/render/program/LegacyFinalShaderAdapter$AdaptedShader;
+
+  public dev.oculusforge.render.program.LegacyFinalShaderAdapter$AdaptedShader adapt(java.lang.String, java.util.Map<java.lang.String, java.lang.String>) throws dev.oculusforge.render.program.ShaderCompatibilityException;
+    descriptor: (Ljava/lang/String;Ljava/util/Map;)Ldev/oculusforge/render/program/LegacyFinalShaderAdapter$AdaptedShader;
+
+  static {};
+    descriptor: ()V
+}
+
+$ /home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/javap -classpath /home/braydon/.cache/useful-tools-spectral-recovery/restored-inputs/0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227/oculus-forge-26.2-0.3.0-beta.1.jar -s dev.oculusforge.render.program.LegacyFinalShaderAdapter$AdaptedShader
+Compiled from "LegacyFinalShaderAdapter.java"
+public final class dev.oculusforge.render.program.LegacyFinalShaderAdapter$AdaptedShader extends java.lang.Record {
+  public dev.oculusforge.render.program.LegacyFinalShaderAdapter$AdaptedShader(java.lang.String, java.util.List<dev.oculusforge.render.program.LegacyFinalShaderAdapter$SamplerBinding>, java.util.List<dev.oculusforge.render.program.LegacyFinalShaderAdapter$UniformBinding>);
+    descriptor: (Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+
+  public final java.lang.String toString();
+    descriptor: ()Ljava/lang/String;
+
+  public final int hashCode();
+    descriptor: ()I
+
+  public final boolean equals(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+
+  public java.lang.String source();
+    descriptor: ()Ljava/lang/String;
+
+  public java.util.List<dev.oculusforge.render.program.LegacyFinalShaderAdapter$SamplerBinding> samplers();
+    descriptor: ()Ljava/util/List;
+
+  public java.util.List<dev.oculusforge.render.program.LegacyFinalShaderAdapter$UniformBinding> uniforms();
+    descriptor: ()Ljava/util/List;
+}

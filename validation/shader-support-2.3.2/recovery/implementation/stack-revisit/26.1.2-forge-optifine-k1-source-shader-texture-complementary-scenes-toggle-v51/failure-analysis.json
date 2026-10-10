@@ -1,0 +1,23 @@
+{
+  "failure_layer": "test_automation_ocr",
+  "failed_run": "report.json",
+  "failed_report_sha256": "55e9d778e963788909536b5a1104912a5dfc10ef587bc0a9aa30b5d5e413af78",
+  "frame": "world-entry-4-play.png",
+  "frame_sha256": "f2ba3426186d3a5541a2f77616954f6d325675a8b3ace7f010571a1bbf6def84",
+  "original_ocr_sha256": "053cd157f4104377bd810ef87e1d75a21aac30421d1d5d8c86bbe7be856c5ecc",
+  "observed": "Original OCR omitted the visibly enabled Play Selected World label; world-entry control validation stopped before world load or shader scene.",
+  "repair": "Fresh-frame 3x nearest-neighbor OCR inside a tile bounded by recognized adjacent controls; exact label and click point still come from detected glyphs.",
+  "patched_ocr_source_sha256": "b4b0d200147b9e375135df907ece29dabed4eea36889c82a7b2f3987f6170098",
+  "static_replay_detected_control": {
+    "text": "Play Selected World",
+    "confidence": 0.8085843205451966,
+    "x": 268.6666666666667,
+    "y": 396.6666666666667,
+    "ocr_scale": 3,
+    "ocr_offset": [
+      158,
+      360
+    ]
+  },
+  "acceptance_qualified": false
+}

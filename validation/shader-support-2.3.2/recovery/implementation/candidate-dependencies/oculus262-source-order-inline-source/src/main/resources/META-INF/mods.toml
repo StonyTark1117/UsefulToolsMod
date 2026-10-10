@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[65.1,66)"
+license="LGPL-3.0-only"
+issueTrackerURL="https://github.com/Khaliiid0/Oculus-Community-Port/issues"
+clientSideOnly=true
+
+[[mods]]
+modId="oculus"
+version="${mod_version}"
+displayName="Oculus Forge 26.2 Community Port"
+displayURL="https://github.com/Khaliiid0/Oculus-Community-Port"
+logoFile="oculus-logo.png"
+authors="Original Oculus and Iris contributors; unofficial Forge 26.2 community port contributors"
+description='''Unofficial community port of the LGPL-3.0 Oculus/Iris shader-pack loader to Minecraft Forge 26.2.
+This build is not an official Oculus, Iris, Forge, Sodium, Embeddium, or Mojang release.
+Public beta: tested world0 final passes and compatible deferred/composite/final stages render through Forge's frame graph.
+Pack replacement is transactional, multi-stage rendering uses a lower-bandwidth ping-pong path, and malformed packs fail safely.
+Terrain/entity gbuffers, shadows, extra attachments, and full OptiFine shader-pack semantics are not yet implemented.
+OptiFine is unsupported and incompatible.'''
+
+[[dependencies.oculus]]
+    modId="forge"
+    mandatory=true
+    versionRange="[65.1.0,65.2.0)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.oculus]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[26.2,26.3)"
+    ordering="NONE"
+    side="CLIENT"

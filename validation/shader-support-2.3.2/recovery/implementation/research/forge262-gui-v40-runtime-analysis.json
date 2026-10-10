@@ -1,0 +1,66 @@
+{
+  "candidate": "forge262-optifine-gui-v40",
+  "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v40-BSL-indoor/report.json",
+  "report_sha256": "91390265406c23f4ebe26df294127e745798c027546ec7d99483228a4fac7c38",
+  "status": "captures_complete",
+  "clean_client_exit": true,
+  "shader_activation_logged": true,
+  "live_shader_states": [
+    {
+      "time_ms": 1791425625172,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ],
+  "acceptance_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "captures": [
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v40-BSL-indoor/wraith-indoor.png",
+      "sha256": "585898cca833fd15597ee3b46cd529400f6459b618a8a95d5b9848d9548d324f",
+      "all_black": true,
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v40-BSL-indoor/wraith-indoor-framebuffer.png",
+      "sha256": "5cf9f17946604597012f4742c5354f20df56e0d94de7ff50c84ced7e7b1da67c",
+      "all_black": true,
+      "rgb_extrema": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "visual_verdict": "failed: fresh Wraith game and full-framebuffer images are entirely black",
+  "trace_count": 3280,
+  "unique_trace_lines": {
+    "before fbo=24 status=36053 glProgram=222 activeProgramID=222 readFbo=24 centerRGBA=0": 1640,
+    "after fbo=5 status=36053 glProgram=223 activeProgramID=223 readFbo=5 centerRGBA=-16777216": 1640
+  },
+  "trace_log_sha256": "a1067e975a079394178cedfaec229fa305a6a9bd473d92011a8d3948bff4d611",
+  "trace_disposition": "Final composite entered/exited 1640 times. Center source pixel transparent black before final; center game pixel opaque black after final. Read and draw framebuffer IDs match at both points. Single-pixel evidence does not establish all source attachments are empty.",
+  "later_readback_limitation": "The per-frame glReadPixels(int[]) diagnostic could itself raise GL_INVALID_OPERATION (v44 checkpoint). Its zero source value cannot certify texture contents; rely on the fresh full-framebuffer black capture and later no-readback v45 diagnostics for the visual failure."
+}

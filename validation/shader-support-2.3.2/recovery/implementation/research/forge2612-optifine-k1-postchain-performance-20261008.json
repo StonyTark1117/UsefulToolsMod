@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "scope": "Private 26.1.2 Forge 64.0.8 + publisher OptiFine K1 preview + Complementary 5.7.1 outline postchain trial; no production promotion.",
+  "exact_components": {
+    "maintained_mod_sha256": "d04b22bd3807ff9a073f43c89c9ee5e62fbe4d876d45c0a43181f25fc4f7846f",
+    "optifine_sha256": "f8eb9026e4da2444e18d5601d3dede2bd19cf514d02095ffcdb0e101687c2172",
+    "pack_sha256": "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0",
+    "private_bridge_sha256": "c1b37e899b93881e85b0901f9d92e912cdc0d1c5af97b97a5156a24885e09b3b",
+    "frame_observer_sha256": "cf2e660aeca4ab17c7beed0d966ff36a86fd26f29d352bb68dcdefef6da18fb7"
+  },
+  "isolation": {
+    "client_concurrency": 1,
+    "display_type": "owned Xvfb",
+    "framebuffer": "1280x720x24",
+    "gpu": "VirtualGL EGL egl0",
+    "wayland_unset": true,
+    "audio_backend": "ALSOFT_DRIVERS=null"
+  },
+  "shutdown_control": {
+    "failed_run": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-native-outline-postchain-trial-v1/report.json",
+      "report_sha256": "671f83f7322a4e7e72723ca66ce6c417b2a0b36b571d7bdbb4526215900cc6d0",
+      "status": "failed",
+      "clean_client_exit": null,
+      "captured_frames": 68,
+      "rejected_commands": 0
+    },
+    "corrected_run": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-native-outline-postchain-trial-v2/report.json",
+      "report_sha256": "798885efbcf3e11102da6eb8eafb048fe0b31eb3caebe22170db98da3ea75f92",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captured_frames": 30,
+      "rejected_commands": 0
+    },
+    "cause": "Full-frame OCR missed visible Save and Quit to Title while the saving overlay was present. An anchor-bounded OCR pass recognized the exact button in saved failed frames; the repeated current-artifact run exited cleanly.",
+    "ocr_source_sha256": "8a1019331a2965c166c87bc69a59f42493dd18e8244126b5408387cb47ec34b6"
+  },
+  "performance": {
+    "discarded_capped_baseline": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-outline-perf-off-v1/report.json",
+      "report_sha256": "57a1b6206dacdb5f44b690252fb6dfcdb27d74fa833a86add2d128e4a7a36aa9",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captured_frames": 16,
+      "rejected_commands": 0
+    },
+    "reason_for_discard": "Later repeats clamped at exactly 33.33 ms with native inactivityFpsLimit:\"afk\" despite maxFps:260 and VSync disabled. Pinned 26.1.2 InactivityFpsLimit has only afk/minimized modes.",
+    "options": {
+      "maxFps": 260,
+      "enableVsync": false,
+      "inactivityFpsLimit": "minimized"
+    },
+    "native_logger_source": "26.1.2 Forge 64.0.8 injected-sources.jar net/minecraft/client/gui/components/DebugScreenOverlay.java:454-455",
+    "off": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-outline-perf-off-v2/report.json",
+      "report_sha256": "bb34b21f209e4c9561c10cb17899be69394631a6edc92ff67dce8eab9bfbb88d",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captured_frames": 11,
+      "rejected_commands": 0,
+      "trials": [
+        {
+          "state": "ordinary",
+          "repeat": 0,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.191516,
+          "p95_ms": 18.077286,
+          "raw_file": "wraith-native-frames-0.json",
+          "raw_sha256": "925f960a8f37e9d80a06b8dddea42f78283145b7eebb8e555871b7dc81dd4713"
+        },
+        {
+          "state": "ordinary",
+          "repeat": 1,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.02862,
+          "p95_ms": 18.129415,
+          "raw_file": "wraith-native-frames-1.json",
+          "raw_sha256": "1b581d29ca377d7ba17a416c9367fccba6d32124b94ce72c7504cc8241934b43"
+        },
+        {
+          "state": "ordinary",
+          "repeat": 2,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.145491,
+          "p95_ms": 18.02592,
+          "raw_file": "wraith-native-frames-2.json",
+          "raw_sha256": "5725ec89553d35c94b611b4a15edc7ff85407b088d0b676f6eeff2f0a4420c62"
+        },
+        {
+          "state": "outline",
+          "repeat": 0,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 15.958853,
+          "p95_ms": 17.642682,
+          "raw_file": "wraith-outline-native-frames-0.json",
+          "raw_sha256": "0c74d37012706f53a67241367601e7ecad4d6bdbc7063864a80f9b06228ef66d"
+        },
+        {
+          "state": "outline",
+          "repeat": 1,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 15.803111,
+          "p95_ms": 17.440042,
+          "raw_file": "wraith-outline-native-frames-1.json",
+          "raw_sha256": "8bc0ac9e265a3252f544549b70703e9d89ed0558888481005c6aa7dcc1f8b51a"
+        },
+        {
+          "state": "outline",
+          "repeat": 2,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 15.890674,
+          "p95_ms": 17.465025,
+          "raw_file": "wraith-outline-native-frames-2.json",
+          "raw_sha256": "7d0a3231d6a1ec4532be3e5e8b8c229976d549ce1697542f892f58ebfb01478d"
+        }
+      ],
+      "shader_compile_errors": [],
+      "cleanup": {
+        "sigkill_after_sigterm": [
+          2465235
+        ],
+        "private_launcher_root_retained": true,
+        "private_game_payloads_removed": [
+          "saves",
+          "screenshots",
+          "mods",
+          "shaderpacks",
+          "resourcepacks"
+        ]
+      }
+    },
+    "on": {
+      "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-outline-perf-on-v1/report.json",
+      "report_sha256": "61c4cf08e27f99402dbaf102621c5284c80f7114bbd9e8065387a69a9aa603ba",
+      "status": "captures_complete",
+      "clean_client_exit": true,
+      "captured_frames": 10,
+      "rejected_commands": 0,
+      "trials": [
+        {
+          "state": "ordinary",
+          "repeat": 0,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.63336,
+          "p95_ms": 19.150067,
+          "raw_file": "wraith-native-frames-0.json",
+          "raw_sha256": "b27e9bc381877f7c76d56a209d870fe63c0bceffbfdc35c213d5d66d7e6d9b2c"
+        },
+        {
+          "state": "ordinary",
+          "repeat": 1,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.319575,
+          "p95_ms": 18.483003,
+          "raw_file": "wraith-native-frames-1.json",
+          "raw_sha256": "0faee0e5eb2575e2d9ce606cda094e1f52f5fda771430496368a00994ae8f4f1"
+        },
+        {
+          "state": "ordinary",
+          "repeat": 2,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.341655,
+          "p95_ms": 18.489492,
+          "raw_file": "wraith-native-frames-2.json",
+          "raw_sha256": "33fbfd952bc7ef1cfe1e62a424d7b165673d8260437073b05ea6d60bc18d5447"
+        },
+        {
+          "state": "outline",
+          "repeat": 0,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.709747,
+          "p95_ms": 18.79146,
+          "raw_file": "wraith-outline-native-frames-0.json",
+          "raw_sha256": "82218461693d235cfe42f58087b09af46df8101ac1d18d2cd489b9dd2bcf1bc0"
+        },
+        {
+          "state": "outline",
+          "repeat": 1,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.32861,
+          "p95_ms": 18.307305,
+          "raw_file": "wraith-outline-native-frames-1.json",
+          "raw_sha256": "f843830ccde691dbfcf2859b0af6ec8f9a1cc3a77b776f2547f3508a22a886c1"
+        },
+        {
+          "state": "outline",
+          "repeat": 2,
+          "samples": 1800,
+          "warmup_seconds": 10,
+          "median_ms": 16.427176,
+          "p95_ms": 18.458384,
+          "raw_file": "wraith-outline-native-frames-2.json",
+          "raw_sha256": "13d52fcbd851acf3072686ff58c76f0c2fac9387f6dc90c2d7fe0d837ca9bb9d"
+        }
+      ],
+      "shader_compile_errors": [],
+      "cleanup": {
+        "sigkill_after_sigterm": [
+          2470987
+        ],
+        "private_launcher_root_retained": true,
+        "private_game_payloads_removed": [
+          "saves",
+          "screenshots",
+          "mods",
+          "shaderpacks",
+          "resourcepacks"
+        ]
+      }
+    },
+    "paired": {
+      "ordinary": {
+        "median_frame_time_increase_ms_by_repeat": [
+          0.441844,
+          0.290954,
+          0.196163
+        ],
+        "median_increase_ms": 0.290954,
+        "all_repeats_slower": true
+      },
+      "outline": {
+        "median_frame_time_increase_ms_by_repeat": [
+          0.750895,
+          0.525499,
+          0.536502
+        ],
+        "median_increase_ms": 0.536502,
+        "all_repeats_slower": true
+      }
+    },
+    "harness_source_sha256": "add0a3810b538088720048c2663eb14eb8ef1a77031d7333449d3a83895d90b6"
+  },
+  "visual_captures": {
+    "bsl_visual": {
+      "wraith-outline-interior-before.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-native-outline-postchain-trial-v4/wraith-outline-interior-before.png",
+        "sha256": "de5309359ffad326bcf3f5547b067129e3136845a3dae49d5fd2d44b99352659"
+      },
+      "wraith-outline.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-native-outline-postchain-trial-v4/wraith-outline.png",
+        "sha256": "f026db2db1d53fe883b63a207e464f0026e27916a5b6c5f093e07f75a730cdd5"
+      },
+      "vanilla-sheep-outline-active.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-native-outline-postchain-trial-v4/vanilla-sheep-outline-active.png",
+        "sha256": "f2cb7e45b115f6e4702e8290322edc52fcbf0b5c53ac1b356c5b4ecead61780a"
+      },
+      "vanilla-sheep-outline-disabled.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-bsl-native-outline-postchain-trial-v4/vanilla-sheep-outline-disabled.png",
+        "sha256": "4c16922bb921ae06820ba6a05ff876f60ee812ec4e0e2ee76ac9481bb60ccf46"
+      }
+    },
+    "repaired_shutdown": {
+      "wraith-outline-interior-before.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-native-outline-postchain-trial-v2/wraith-outline-interior-before.png",
+        "sha256": "30b2fdbf44a9fd313d98a0fbec58cbdcf2742e6142e818437b2c5834b5a675a2"
+      },
+      "wraith-outline.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-native-outline-postchain-trial-v2/wraith-outline.png",
+        "sha256": "96a3db2267ff04e03d26deb1b26b3b76a66f761e38f76c2003683f4a7c6a64f4"
+      },
+      "vanilla-sheep-outline-active.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-native-outline-postchain-trial-v2/vanilla-sheep-outline-active.png",
+        "sha256": "d0bb4cdd72579cc18040f4f1d018117d7ea673ceab69b69e16dfc96337548ab3"
+      },
+      "vanilla-sheep-outline-disabled.png": {
+        "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.1.2-forge-optifine-k1-complementary-native-outline-postchain-trial-v2/vanilla-sheep-outline-disabled.png",
+        "sha256": "83b07080a161730883689b294ef2e5630d15ea02b08e8fade288a348b1757f32"
+      }
+    }
+  },
+  "visual_verdict": "BSL and Complementary active-pack Wraith outline and vanilla sheep outline are present, with facial and body interiors retained in the inspected indoor captures. Full scene and surface acceptance is not established.",
+  "disposition": "Unpromoted. The private postchain candidate has a reproducible measured frame-time regression in all six matched 1800-frame pairs; investigate reducing ordinary-path overhead before another promotion decision. Exact publisher OptiFine without this private bridge still lacks the active outline."
+}

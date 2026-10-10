@@ -1,0 +1,233 @@
+Compiled from "ReloadableServerResources.java"
+public class net.minecraft.server.ReloadableServerResources {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final java.util.concurrent.CompletableFuture<net.minecraft.util.Unit> DATA_RELOAD_INITIAL_TASK;
+
+  private final net.minecraft.server.ReloadableServerRegistries$Holder fullRegistryHolder;
+
+  private final net.minecraft.commands.Commands commands;
+
+  private final net.minecraft.world.item.crafting.RecipeManager recipes;
+
+  private final net.minecraft.server.ServerAdvancementManager advancements;
+
+  private final net.minecraft.server.ServerFunctionLibrary functionLibrary;
+
+  private final java.util.List<net.minecraft.core.Registry$PendingTags<?>> postponedTags;
+
+  private final java.util.List<net.minecraft.core.component.DataComponentInitializers$PendingComponents<?>> newComponents;
+
+  private final net.minecraftforge.common.crafting.conditions.ICondition$IContext context;
+
+  private net.minecraft.server.ReloadableServerResources(net.minecraft.core.LayeredRegistryAccess<net.minecraft.server.RegistryLayer>, net.minecraft.core.HolderLookup$Provider, net.minecraft.world.flag.FeatureFlagSet, net.minecraft.commands.Commands$CommandSelection, java.util.List<net.minecraft.core.Registry$PendingTags<?>>, net.minecraft.server.permissions.PermissionSet, java.util.List<net.minecraft.core.component.DataComponentInitializers$PendingComponents<?>>);
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class net/minecraft/server/ReloadableServerRegistries$Holder
+         8: dup
+         9: aload_1
+        10: invokevirtual #9                  // Method net/minecraft/core/LayeredRegistryAccess.compositeAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+        13: invokespecial #15                 // Method net/minecraft/server/ReloadableServerRegistries$Holder."<init>":(Lnet/minecraft/core/HolderLookup$Provider;)V
+        16: putfield      #18                 // Field fullRegistryHolder:Lnet/minecraft/server/ReloadableServerRegistries$Holder;
+        19: aload_0
+        20: aload         5
+        22: putfield      #24                 // Field postponedTags:Ljava/util/List;
+        25: aload_0
+        26: aload         7
+        28: putfield      #28                 // Field newComponents:Ljava/util/List;
+        31: aload_0
+        32: new           #31                 // class net/minecraft/commands/Commands
+        35: dup
+        36: aload         4
+        38: aload_2
+        39: aload_3
+        40: invokestatic  #33                 // InterfaceMethod net/minecraft/commands/CommandBuildContext.simple:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/world/flag/FeatureFlagSet;)Lnet/minecraft/commands/CommandBuildContext;
+        43: invokespecial #39                 // Method net/minecraft/commands/Commands."<init>":(Lnet/minecraft/commands/Commands$CommandSelection;Lnet/minecraft/commands/CommandBuildContext;)V
+        46: putfield      #42                 // Field commands:Lnet/minecraft/commands/Commands;
+        49: aload_0
+        50: new           #46                 // class net/minecraftforge/common/crafting/conditions/ConditionContext
+        53: dup
+        54: aload_0
+        55: getfield      #24                 // Field postponedTags:Ljava/util/List;
+        58: invokespecial #48                 // Method net/minecraftforge/common/crafting/conditions/ConditionContext."<init>":(Ljava/util/List;)V
+        61: putfield      #51                 // Field context:Lnet/minecraftforge/common/crafting/conditions/ICondition$IContext;
+        64: aload_0
+        65: new           #55                 // class net/minecraft/world/item/crafting/RecipeManager
+        68: dup
+        69: aload_2
+        70: aload_0
+        71: getfield      #51                 // Field context:Lnet/minecraftforge/common/crafting/conditions/ICondition$IContext;
+        74: invokespecial #57                 // Method net/minecraft/world/item/crafting/RecipeManager."<init>":(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraftforge/common/crafting/conditions/ICondition$IContext;)V
+        77: putfield      #60                 // Field recipes:Lnet/minecraft/world/item/crafting/RecipeManager;
+        80: aload_0
+        81: new           #64                 // class net/minecraft/server/ServerAdvancementManager
+        84: dup
+        85: aload_2
+        86: aload_0
+        87: getfield      #51                 // Field context:Lnet/minecraftforge/common/crafting/conditions/ICondition$IContext;
+        90: invokespecial #66                 // Method net/minecraft/server/ServerAdvancementManager."<init>":(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraftforge/common/crafting/conditions/ICondition$IContext;)V
+        93: putfield      #67                 // Field advancements:Lnet/minecraft/server/ServerAdvancementManager;
+        96: aload_0
+        97: new           #71                 // class net/minecraft/server/ServerFunctionLibrary
+       100: dup
+       101: aload         6
+       103: aload_0
+       104: getfield      #42                 // Field commands:Lnet/minecraft/commands/Commands;
+       107: invokevirtual #73                 // Method net/minecraft/commands/Commands.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       110: invokespecial #77                 // Method net/minecraft/server/ServerFunctionLibrary."<init>":(Lnet/minecraft/server/permissions/PermissionSet;Lcom/mojang/brigadier/CommandDispatcher;)V
+       113: putfield      #80                 // Field functionLibrary:Lnet/minecraft/server/ServerFunctionLibrary;
+       116: return
+
+  public net.minecraft.server.ServerFunctionLibrary getFunctionLibrary();
+    Code:
+         0: aload_0
+         1: getfield      #80                 // Field functionLibrary:Lnet/minecraft/server/ServerFunctionLibrary;
+         4: areturn
+
+  public net.minecraft.server.ReloadableServerRegistries$Holder fullRegistries();
+    Code:
+         0: aload_0
+         1: getfield      #18                 // Field fullRegistryHolder:Lnet/minecraft/server/ReloadableServerRegistries$Holder;
+         4: areturn
+
+  public net.minecraft.world.item.crafting.RecipeManager getRecipeManager();
+    Code:
+         0: aload_0
+         1: getfield      #60                 // Field recipes:Lnet/minecraft/world/item/crafting/RecipeManager;
+         4: areturn
+
+  public net.minecraft.commands.Commands getCommands();
+    Code:
+         0: aload_0
+         1: getfield      #42                 // Field commands:Lnet/minecraft/commands/Commands;
+         4: areturn
+
+  public net.minecraft.server.ServerAdvancementManager getAdvancements();
+    Code:
+         0: aload_0
+         1: getfield      #67                 // Field advancements:Lnet/minecraft/server/ServerAdvancementManager;
+         4: areturn
+
+  public java.util.List<net.minecraft.server.packs.resources.PreparableReloadListener> listeners();
+    Code:
+         0: aload_0
+         1: getfield      #60                 // Field recipes:Lnet/minecraft/world/item/crafting/RecipeManager;
+         4: aload_0
+         5: getfield      #80                 // Field functionLibrary:Lnet/minecraft/server/ServerFunctionLibrary;
+         8: aload_0
+         9: getfield      #67                 // Field advancements:Lnet/minecraft/server/ServerAdvancementManager;
+        12: invokestatic  #84                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+        15: areturn
+
+  public static java.util.concurrent.CompletableFuture<net.minecraft.server.ReloadableServerResources> loadResources(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.core.LayeredRegistryAccess<net.minecraft.server.RegistryLayer>, java.util.List<net.minecraft.core.Registry$PendingTags<?>>, net.minecraft.world.flag.FeatureFlagSet, net.minecraft.commands.Commands$CommandSelection, net.minecraft.server.permissions.PermissionSet, java.util.concurrent.Executor, java.util.concurrent.Executor);
+    Code:
+         0: aload_1
+         1: aload_2
+         2: aload_0
+         3: aload         6
+         5: invokestatic  #90                 // Method net/minecraft/server/ReloadableServerRegistries.reload:(Lnet/minecraft/core/LayeredRegistryAccess;Ljava/util/List;Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+         8: aload         6
+        10: aload_3
+        11: aload         4
+        13: aload_2
+        14: aload         5
+        16: aload_0
+        17: aload         7
+        19: invokedynamic #96,  0             // InvokeDynamic #0:apply:(Ljava/util/concurrent/Executor;Lnet/minecraft/world/flag/FeatureFlagSet;Lnet/minecraft/commands/Commands$CommandSelection;Ljava/util/List;Lnet/minecraft/server/permissions/PermissionSet;Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/concurrent/Executor;)Ljava/util/function/Function;
+        24: invokevirtual #100                // Method java/util/concurrent/CompletableFuture.thenCompose:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+        27: areturn
+
+  public void updateComponentsAndStaticRegistryTags();
+    Code:
+         0: aload_0
+         1: getfield      #24                 // Field postponedTags:Ljava/util/List;
+         4: invokedynamic #106,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+         9: invokeinterface #110,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+        14: aload_0
+        15: getfield      #28                 // Field newComponents:Ljava/util/List;
+        18: invokedynamic #114,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+        23: invokeinterface #110,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+        28: return
+
+  public net.minecraftforge.common.crafting.conditions.ICondition$IContext getConditionContext();
+    Code:
+         0: aload_0
+         1: getfield      #51                 // Field context:Lnet/minecraftforge/common/crafting/conditions/ICondition$IContext;
+         4: areturn
+
+  private static java.util.concurrent.CompletionStage lambda$loadResources$0(java.util.concurrent.Executor, net.minecraft.world.flag.FeatureFlagSet, net.minecraft.commands.Commands$CommandSelection, java.util.List, net.minecraft.server.permissions.PermissionSet, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor, net.minecraft.server.ReloadableServerRegistries$LoadResult);
+    Code:
+         0: aload         7
+         2: invokedynamic #115,  0            // InvokeDynamic #3:get:(Lnet/minecraft/server/ReloadableServerRegistries$LoadResult;)Ljava/util/function/Supplier;
+         7: aload_0
+         8: invokestatic  #119                // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        11: aload         7
+        13: aload_1
+        14: aload_2
+        15: aload_3
+        16: aload         4
+        18: aload         5
+        20: aload_0
+        21: aload         6
+        23: invokedynamic #123,  0            // InvokeDynamic #4:apply:(Lnet/minecraft/server/ReloadableServerRegistries$LoadResult;Lnet/minecraft/world/flag/FeatureFlagSet;Lnet/minecraft/commands/Commands$CommandSelection;Ljava/util/List;Lnet/minecraft/server/permissions/PermissionSet;Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;)Ljava/util/function/Function;
+        28: invokevirtual #100                // Method java/util/concurrent/CompletableFuture.thenCompose:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+        31: areturn
+
+  private static java.util.concurrent.CompletionStage lambda$loadResources$2(net.minecraft.server.ReloadableServerRegistries$LoadResult, net.minecraft.world.flag.FeatureFlagSet, net.minecraft.commands.Commands$CommandSelection, java.util.List, net.minecraft.server.permissions.PermissionSet, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor, java.util.concurrent.Executor, java.util.List);
+    Code:
+         0: new           #19                 // class net/minecraft/server/ReloadableServerResources
+         3: dup
+         4: aload_0
+         5: invokevirtual #126                // Method net/minecraft/server/ReloadableServerRegistries$LoadResult.layers:()Lnet/minecraft/core/LayeredRegistryAccess;
+         8: aload_0
+         9: invokevirtual #132                // Method net/minecraft/server/ReloadableServerRegistries$LoadResult.lookupWithUpdatedTags:()Lnet/minecraft/core/HolderLookup$Provider;
+        12: aload_1
+        13: aload_2
+        14: aload_3
+        15: aload         4
+        17: aload         8
+        19: invokespecial #136                // Method "<init>":(Lnet/minecraft/core/LayeredRegistryAccess;Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/world/flag/FeatureFlagSet;Lnet/minecraft/commands/Commands$CommandSelection;Ljava/util/List;Lnet/minecraft/server/permissions/PermissionSet;Ljava/util/List;)V
+        22: astore        9
+        24: aload         5
+        26: aload         9
+        28: aload_0
+        29: invokevirtual #132                // Method net/minecraft/server/ReloadableServerRegistries$LoadResult.lookupWithUpdatedTags:()Lnet/minecraft/core/HolderLookup$Provider;
+        32: aload         9
+        34: invokevirtual #139                // Method listeners:()Ljava/util/List;
+        37: invokestatic  #143                // Method net/minecraftforge/event/ForgeEventFactory.onResourceReload:(Lnet/minecraft/server/ReloadableServerResources;Lnet/minecraft/core/HolderLookup$Provider;Ljava/util/List;)Ljava/util/List;
+        40: aload         6
+        42: aload         7
+        44: getstatic     #149                // Field DATA_RELOAD_INITIAL_TASK:Ljava/util/concurrent/CompletableFuture;
+        47: getstatic     #153                // Field LOGGER:Lorg/slf4j/Logger;
+        50: invokeinterface #157,  1          // InterfaceMethod org/slf4j/Logger.isDebugEnabled:()Z
+        55: invokestatic  #163                // Method net/minecraft/server/packs/resources/SimpleReloadInstance.create:(Lnet/minecraft/server/packs/resources/ResourceManager;Ljava/util/List;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Ljava/util/concurrent/CompletableFuture;Z)Lnet/minecraft/server/packs/resources/ReloadInstance;
+        58: invokeinterface #169,  1          // InterfaceMethod net/minecraft/server/packs/resources/ReloadInstance.done:()Ljava/util/concurrent/CompletableFuture;
+        63: aload         9
+        65: invokedynamic #175,  0            // InvokeDynamic #5:apply:(Lnet/minecraft/server/ReloadableServerResources;)Ljava/util/function/Function;
+        70: invokevirtual #178                // Method java/util/concurrent/CompletableFuture.thenApply:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+        73: areturn
+
+  private static net.minecraft.server.ReloadableServerResources lambda$loadResources$3(net.minecraft.server.ReloadableServerResources, java.lang.Object);
+    Code:
+         0: aload_0
+         1: areturn
+
+  private static java.util.List lambda$loadResources$1(net.minecraft.server.ReloadableServerRegistries$LoadResult);
+    Code:
+         0: getstatic     #181                // Field net/minecraft/core/registries/BuiltInRegistries.DATA_COMPONENT_INITIALIZERS:Lnet/minecraft/core/component/DataComponentInitializers;
+         3: aload_0
+         4: invokevirtual #132                // Method net/minecraft/server/ReloadableServerRegistries$LoadResult.lookupWithUpdatedTags:()Lnet/minecraft/core/HolderLookup$Provider;
+         7: invokevirtual #187                // Method net/minecraft/core/component/DataComponentInitializers.build:(Lnet/minecraft/core/HolderLookup$Provider;)Ljava/util/List;
+        10: areturn
+
+  static {};
+    Code:
+         0: invokestatic  #193                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+         3: putstatic     #153                // Field LOGGER:Lorg/slf4j/Logger;
+         6: getstatic     #199                // Field net/minecraft/util/Unit.INSTANCE:Lnet/minecraft/util/Unit;
+         9: invokestatic  #205                // Method java/util/concurrent/CompletableFuture.completedFuture:(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+        12: putstatic     #149                // Field DATA_RELOAD_INITIAL_TASK:Ljava/util/concurrent/CompletableFuture;
+        15: return
+}

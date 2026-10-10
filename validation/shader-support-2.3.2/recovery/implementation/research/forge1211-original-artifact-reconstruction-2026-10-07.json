@@ -1,0 +1,235 @@
+{
+  "scope": "Bounded reconstruction of the missing historical 1.21.1 Forge main artifact. Only an exact SHA-256 match is accepted; payload-equivalent jars are not substitutions.",
+  "target": "1.21.1-forge",
+  "expected": {
+    "artifact_sha256": "62af86decc943cc0f48d7f595803f43c91a32588aacead01e69a6da9fa7b5818",
+    "artifact_name": "usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+    "record": "validation/shader-support-2.3.2/recovery/implementation/build/matrix-current-artifacts.json",
+    "recorded_build_log": "validation/shader-support-2.3.2/recovery/implementation/build/forge-1211-native-direction-compatibility.log",
+    "recorded_build_log_mtime_local": "2026-10-05T03:55:49.084277872-07:00",
+    "historical_payload_comparison": "validation/shader-support-2.3.2/recovery/implementation/build/forge1211-current-companion-jar-comparison.json",
+    "historical_payload_comparison_result": {
+      "rebuilt_sha256": "49542c491ea0048d8c15e954d0cb53b495c05796428641a331cbb720dd18e4ee",
+      "file_entries": 4596,
+      "changed_entries": [],
+      "byte_contents_equal": true
+    }
+  },
+  "clean_detached_build": {
+    "worktree": "/tmp/useful-tools-forge1211-recovery-0444fab",
+    "revision": "0444fab7b0f5619e02cbe5b81d0df556124a5e6d",
+    "command": "scripts/build-matrix.sh 1.21.1-forge",
+    "result": "passed",
+    "java": "21.0.12.1",
+    "forge_gradle": "6.0.54",
+    "gradle": "8.12.1",
+    "build_log_sha256": "27b8e27659d5e9959fe18204f95b6c92ae1e707c0cb6c27581f9ea6be536dec1",
+    "artifact_sha256": "920c1c58c319e5c0acea786e750b44199b9f9183b14c84b3a89a8d52857cda6a",
+    "artifact_size": 2194720,
+    "zip_entries": 4646,
+    "file_entries": 4568,
+    "payload_disposition": {
+      "comparison_candidate": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+      "candidate_only_entries": 30,
+      "changed_shared_entries": 14,
+      "conclusion": "The clean HEAD build is not a timestamp/order candidate for the historical artifact. It predates the recorded shader and Forge direction changes."
+    }
+  },
+  "recorded_source_recheck": {
+    "recorded_files": 4592,
+    "current_exact_hash_matches": 4591,
+    "missing": [],
+    "changed": [
+      {
+        "path": "1.21.1/forge/src/lighting/resources/usefultools_lighting.mixins.json",
+        "recorded_sha256": "c12ac977585a764ab6093631d185e047086b1adffac87bafcf028dd407663c16",
+        "current_sha256": "573d41f18118bfd19a3519912d7c06d4042cddc292d218f8855f646c964c2548",
+        "main_artifact_effect": "none; this belongs to the separate lighting companion source set"
+      }
+    ],
+    "conclusion": "Every source recorded for the historical main jar still matches. The only source mismatch is outside the main artifact."
+  },
+  "payload_candidate": {
+    "path": "/home/braydon/.cache/useful-tools-spectral-recovery/artifacts/7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+    "sha256": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+    "size": 2329824,
+    "zip_entries": 4676,
+    "file_entries": 4596,
+    "payload_relation": "All entry names and uncompressed bytes match the current d00ac88591c343aaee644dce498480686ab00b3f1f4b751e7d75d877789b56a2 jar. Both normalize to SHA-256 1d9723c4414278dead776df2bd680a7886ad928ab9756389d83de9b25debcdd2 when only local and central DOS timestamps are zeroed, proving their compressed payload and ZIP order are otherwise identical.",
+    "historical_relation": "The saved historical comparison reports the expected artifact and its immediate 49542c491e rebuild have all 4596 file payloads byte-identical. The deleted historical bytes do not expose their timestamp membership, so payload equality alone cannot prove exact archive identity."
+  },
+  "bounded_reconstruction_searches": [
+    {
+      "candidate": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+      "timestamp_membership": "preserved four-group pattern",
+      "modes": ["relative", "uniform"],
+      "newest_window": "2026-10-05T03:00:00-07:00 through 2026-10-05T04:59:58-07:00",
+      "attempts": 7200,
+      "result": "no exact SHA-256 match"
+    },
+    {
+      "candidate": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+      "timestamp_membership": "preserved four-group pattern",
+      "modes": ["relative", "uniform"],
+      "newest_window": "2026-10-05T10:30:00 through 2026-10-05T11:29:58",
+      "attempts": 3600,
+      "result": "no exact SHA-256 match; UTC-offset hypothesis rejected for this pattern"
+    },
+    {
+      "candidate": "d00ac88591c343aaee644dce498480686ab00b3f1f4b751e7d75d877789b56a2",
+      "timestamp_membership": "preserved two-group pattern",
+      "modes": ["relative", "uniform"],
+      "newest_window": "2026-10-05T03:40:00-07:00 through 2026-10-05T04:09:58-07:00",
+      "attempts": 1800,
+      "result": "no exact SHA-256 match"
+    },
+    {
+      "candidate": "5697845db02bc5591fc29569b700dd9f6786b2105d04e943f59e6ead99c9bab4",
+      "source": "exact recorded main-source snapshot built with pinned tooling in /tmp/useful-tools-forge1211-reconstruction-snapshot",
+      "archive_order": "fresh scratch-filesystem order",
+      "modes": ["relative", "uniform"],
+      "newest_window": "2026-10-05T03:00:00-07:00 through 2026-10-05T04:59:58-07:00",
+      "attempts": 7200,
+      "result": "no exact SHA-256 match; scratch build payload names/bytes match but normalized ZIP order differs"
+    },
+    {
+      "candidate": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+      "archive_order": "preserved stable candidate order",
+      "timestamp_membership": "mapped by filename from exact-source scratch build 1",
+      "newest_window": "2026-10-05T03:00:00-07:00 through 2026-10-05T04:59:58-07:00",
+      "attempts": 3600,
+      "result": "no exact SHA-256 match"
+    },
+    {
+      "candidate": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+      "archive_order": "preserved stable candidate order",
+      "timestamp_membership": "preserved four membership groups with every monotonic combination of -16 through 0 seconds in two-second DOS increments",
+      "newest_window": "2026-10-05T03:54:00-07:00 through 2026-10-05T03:56:58-07:00",
+      "attempts": 14850,
+      "result": "no exact SHA-256 match"
+    },
+    {
+      "candidate": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea",
+      "archive_order": "preserved stable candidate order",
+      "timestamp_membership": "mapped by filename from three additional exact-source pinned builds",
+      "newest_window": "2026-10-05T03:54:00-07:00 through 2026-10-05T03:56:58-07:00",
+      "attempts": 270,
+      "result": "no exact SHA-256 match"
+    }
+  ],
+  "total_recorded_attempts": 38520,
+  "gradle_cache_mining": {
+    "method": "Read-only inspection of Gradle cache containers and task-history metadata. Cached archive members were streamed directly from their original tar.gz entries for SHA-256 verification; no ZIP member was rewritten and no timestamp permutation was attempted.",
+    "global_build_cache": {
+      "root": "/home/braydon/.gradle/caches/build-cache-1",
+      "cache_containers_scanned": 3155,
+      "cache_container_bytes": 1623989590,
+      "jar_remap_reobf_shadow_task_identities": 44,
+      "tree_archiveFile_members_hashed": 39,
+      "largest_tree_archiveFile_member": {
+        "cache_key": "f31982e94c9fb7dc316a682ab83b4dd1",
+        "identity": ":reobfJar",
+        "size": 1550780,
+        "sha256": "6adbfcaf4805d1ed098f9fb6c0102f9547fdd0aca2ed34b7e4f4fb546adc31ac"
+      },
+      "reference_payload_candidate_size": 2329824,
+      "member_size_scan": {
+        "selection": "Every tree-archiveFile member plus every other regular member from 2,000,000 through 2,500,000 bytes in all 3,155 cache containers",
+        "selected_members": 42,
+        "tree_archiveFile_members": 39,
+        "other_members_in_size_band": 3,
+        "exact_size_members": 0,
+        "expected_sha256_matches": 0
+      },
+      "result": "No cached archive member has SHA-256 62af86decc943cc0f48d7f595803f43c91a32588aacead01e69a6da9fa7b5818. No exact bytes were extracted to restored-inputs."
+    },
+    "recorded_build_window": {
+      "window_local": "2026-10-05T03:00:00-07:00 through 2026-10-05T04:59:59-07:00",
+      "recorded_log_mtime_local": "2026-10-05T03:55:49.084277872-07:00",
+      "cache_entries": [
+        {
+          "cache_key": "74ad27e24c5d81fe100c1157e31f4b26",
+          "creation_time_epoch_ms": 1791200030678,
+          "gradle_version": "9.6.1",
+          "identity": ":shadowJar",
+          "archive_member": "tree-archiveFile",
+          "archive_size": 248263,
+          "archive_sha256": "d8bda6e989c491f4a83c0841c769ea364ea77e7b0e23919d57f05e3c65f47bba"
+        },
+        {
+          "cache_key": "059d29df8105e54a9fa44fbebcfc9e50",
+          "creation_time_epoch_ms": 1791200031457,
+          "gradle_version": "9.6.1",
+          "identity": ":compileTestJava",
+          "archive_member": null
+        },
+        {
+          "cache_key": "e9cf9b5ce99f3153c014079ce5fad765",
+          "creation_time_epoch_ms": 1791200050187,
+          "gradle_version": "9.6.1",
+          "identity": ":test",
+          "archive_member": null
+        },
+        {
+          "cache_key": "8b14a9049495c86d9574b1fddf649fd9",
+          "creation_time_epoch_ms": 1791200609942,
+          "gradle_version": "9.6.1",
+          "identity": ":shadowJar",
+          "archive_member": "tree-archiveFile",
+          "archive_size": 248391,
+          "archive_sha256": "d8099a68b2a9309aae40879d2689ec83bc991a2df2d4d771608c612735ce0e86"
+        },
+        {
+          "cache_key": "c31d063e52320196fd2fb0843a2abca8",
+          "creation_time_epoch_ms": 1791200610182,
+          "gradle_version": "9.6.1",
+          "identity": ":compileTestJava",
+          "archive_member": null
+        },
+        {
+          "cache_key": "685f3ff9ec489e4b0a8b7a0607b9a2fe",
+          "creation_time_epoch_ms": 1791200610976,
+          "gradle_version": "9.6.1",
+          "identity": ":test",
+          "archive_member": null
+        }
+      ],
+      "disposition": "All six entries are unrelated Gradle 9.6.x shadow/test tasks. There is no Gradle 8.12.1 :jar cache entry in the recorded build window."
+    },
+    "project_task_history": {
+      "execution_history": "/home/braydon/Useful-Tools/1.21.1/forge/.gradle/8.12.1/executionHistory/executionHistory.bin",
+      "execution_history_size": 28605528,
+      "execution_history_sha256": "a7c5f7801a4e3c2f23e396b9b8fa089611752f3a5f03f4eca5238aee1f807ff3",
+      "file_hashes": "/home/braydon/Useful-Tools/1.21.1/forge/.gradle/8.12.1/fileHashes/fileHashes.bin",
+      "file_hashes_size": 2911379,
+      "file_hashes_sha256": "538dfe06ec4ac1444b37b5b2b257b64d0992a2e4a16a1e82562bb6fd72c8285a",
+      "exact_output_path_occurrences": 1,
+      "retained_output_path": "/home/braydon/Useful-Tools/1.21.1/forge/build/libs/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar",
+      "disposition": "Gradle task history retains current task snapshots and output metadata, not historical output bytes. The single retained output path has been overwritten by later builds, so this store cannot supply the deleted archive member."
+    },
+    "build_cache_policy_evidence": {
+      "matrix_command": "scripts/build-matrix.sh 1.21.1-forge",
+      "matrix_gradle_arguments": "--no-daemon --max-workers=1 --no-build-cache clean build",
+      "recorded_log_task": ":jar",
+      "recorded_log_task_outcome": "executed",
+      "conclusion": "The historical matrix invocation explicitly bypassed the shared build cache. This agrees with the absence of a Gradle 8.12.1 :jar entry in both the creation window and the complete jar-like identity scan."
+    }
+  },
+  "local_exact_filename_search": {
+    "roots": [
+      "/home/braydon/.cache/useful-tools-spectral-recovery",
+      "/tmp",
+      "/home/braydon/Useful-Tools"
+    ],
+    "expected_sha256_found": false,
+    "durable_candidate_found": "7c18a31bc61cfe4f0ca52837b96acfd03d739c9392b277e9fddfad27979fc5ea"
+  },
+  "recovery_result": {
+    "status": "not_recovered",
+    "exact_artifact_written": false,
+    "expected_restored_directory_exists": false,
+    "provenance_written": false,
+    "provenance_reason": "A reconstructed provenance document is not emitted as matching provenance while the exact artifact bytes remain absent. The authoritative source inventory remains in matrix-current-artifacts.json.",
+    "remaining_uncertainty": "The deleted historical archive used a per-entry DOS timestamp membership not represented by the preserved candidate builds or bounded membership variants. Alternate ZIP order is also possible, although two later preserved builds have byte-identical normalized order and compressed payload."
+  }
+}

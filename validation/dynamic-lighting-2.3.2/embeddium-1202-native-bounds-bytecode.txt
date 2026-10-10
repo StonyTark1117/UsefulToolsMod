@@ -1,0 +1,1569 @@
+Compiled from "SodiumWorldRenderer.java"
+public class me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer {
+  private final net.minecraft.client.Minecraft client;
+
+  private net.minecraft.client.multiplayer.ClientLevel world;
+
+  private int renderDistance;
+
+  private double lastCameraX;
+
+  private double lastCameraY;
+
+  private double lastCameraZ;
+
+  private double lastCameraPitch;
+
+  private double lastCameraYaw;
+
+  private float lastFogDistance;
+
+  private boolean useEntityCulling;
+
+  private net.minecraft.client.renderer.culling.Frustum vanillaFrustum;
+
+  private me.jellysquid.mods.sodium.client.render.chunk.RenderSectionManager renderSectionManager;
+
+  public static me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer instance();
+    Code:
+       0: invokestatic  #55                 // Method instanceNullable:()Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+       3: astore_0
+       4: aload_0
+       5: ifnonnull     18
+       8: new           #57                 // class java/lang/IllegalStateException
+      11: dup
+      12: ldc           #59                 // String No renderer attached to active world
+      14: invokespecial #63                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      17: athrow
+      18: aload_0
+      19: areturn
+    LineNumberTable:
+      line 58: 0
+      line 60: 4
+      line 61: 8
+      line 64: 18
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          4      16     0 instance   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public static me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer instanceNullable();
+    Code:
+       0: invokestatic  #70                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: getfield      #74                 // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+       6: astore_0
+       7: aload_0
+       8: instanceof    #76                 // class me/jellysquid/mods/sodium/client/world/WorldRendererExtended
+      11: ifeq          24
+      14: aload_0
+      15: checkcast     #76                 // class me/jellysquid/mods/sodium/client/world/WorldRendererExtended
+      18: invokeinterface #79,  1           // InterfaceMethod me/jellysquid/mods/sodium/client/world/WorldRendererExtended.sodium$getWorldRenderer:()Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+      23: areturn
+      24: aconst_null
+      25: areturn
+    LineNumberTable:
+      line 71: 0
+      line 73: 7
+      line 74: 14
+      line 77: 24
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          7      19     0 world   Lnet/minecraft/client/renderer/LevelRenderer;
+
+  public me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer(net.minecraft.client.Minecraft);
+    Code:
+       0: aload_0
+       1: invokespecial #85                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+       9: return
+    LineNumberTable:
+      line 80: 0
+      line 81: 4
+      line 82: 9
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      10     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      10     1 client   Lnet/minecraft/client/Minecraft;
+
+  public void setWorld(net.minecraft.client.multiplayer.ClientLevel);
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       4: aload_1
+       5: if_acmpne     9
+       8: return
+       9: aload_0
+      10: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+      13: ifnull        20
+      16: aload_0
+      17: invokevirtual #95                 // Method unloadWorld:()V
+      20: aload_1
+      21: ifnull        29
+      24: aload_0
+      25: aload_1
+      26: invokevirtual #98                 // Method loadWorld:(Lnet/minecraft/client/multiplayer/ClientLevel;)V
+      29: return
+    LineNumberTable:
+      line 86: 0
+      line 87: 8
+      line 91: 9
+      line 92: 16
+      line 96: 20
+      line 97: 24
+      line 99: 29
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      30     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      30     1 world   Lnet/minecraft/client/multiplayer/ClientLevel;
+
+  private void loadWorld(net.minecraft.client.multiplayer.ClientLevel);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       5: getstatic     #106                // Field me/jellysquid/mods/sodium/client/gl/device/RenderDevice.INSTANCE:Lme/jellysquid/mods/sodium/client/gl/device/RenderDevice;
+       8: invokeinterface #110,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/gl/device/RenderDevice.createCommandList:()Lme/jellysquid/mods/sodium/client/gl/device/CommandList;
+      13: astore_2
+      14: aload_0
+      15: aload_2
+      16: invokevirtual #114                // Method initRenderer:(Lme/jellysquid/mods/sodium/client/gl/device/CommandList;)V
+      19: aload_2
+      20: ifnull        56
+      23: aload_2
+      24: invokeinterface #119,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/gl/device/CommandList.close:()V
+      29: goto          56
+      32: astore_3
+      33: aload_2
+      34: ifnull        54
+      37: aload_2
+      38: invokeinterface #119,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/gl/device/CommandList.close:()V
+      43: goto          54
+      46: astore        4
+      48: aload_3
+      49: aload         4
+      51: invokevirtual #125                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      54: aload_3
+      55: athrow
+      56: return
+    Exception table:
+       from    to  target type
+          14    19    32   Class java/lang/Throwable
+          37    43    46   Class java/lang/Throwable
+    LineNumberTable:
+      line 102: 0
+      line 104: 5
+      line 105: 14
+      line 106: 19
+      line 104: 32
+      line 107: 56
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         14      42     2 commandList   Lme/jellysquid/mods/sodium/client/gl/device/CommandList;
+          0      57     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      57     1 world   Lnet/minecraft/client/multiplayer/ClientLevel;
+
+  private void unloadWorld();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: ifnull        19
+       7: aload_0
+       8: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      11: invokevirtual #134                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.destroy:()V
+      14: aload_0
+      15: aconst_null
+      16: putfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      19: aload_0
+      20: aconst_null
+      21: putfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+      24: return
+    LineNumberTable:
+      line 110: 0
+      line 111: 7
+      line 112: 14
+      line 115: 19
+      line 116: 24
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      25     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public int getVisibleChunkCount();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: invokevirtual #138                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getVisibleChunkCount:()I
+       7: ireturn
+    LineNumberTable:
+      line 122: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       8     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public void scheduleTerrainUpdate();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: ifnull        14
+       7: aload_0
+       8: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      11: invokevirtual #142                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.markGraphDirty:()V
+      14: return
+    LineNumberTable:
+      line 130: 0
+      line 131: 7
+      line 133: 14
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      15     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public boolean isTerrainRenderComplete();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: invokevirtual #148                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getBuilder:()Lme/jellysquid/mods/sodium/client/render/chunk/compile/executor/ChunkBuilder;
+       7: invokevirtual #153                // Method me/jellysquid/mods/sodium/client/render/chunk/compile/executor/ChunkBuilder.isBuildQueueEmpty:()Z
+      10: ireturn
+    LineNumberTable:
+      line 139: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      11     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public void setupTerrain(net.minecraft.client.Camera, me.jellysquid.mods.sodium.client.render.viewport.Viewport, int, boolean, boolean);
+    Code:
+       0: iconst_0
+       1: invokestatic  #169                // Method me/jellysquid/mods/sodium/client/util/NativeBuffer.reclaim:(Z)V
+       4: aload_0
+       5: invokevirtual #172                // Method processChunkEvents:()V
+       8: aload_0
+       9: invokestatic  #178                // Method me/jellysquid/mods/sodium/client/SodiumClientMod.options:()Lme/jellysquid/mods/sodium/client/gui/SodiumGameOptions;
+      12: getfield      #182                // Field me/jellysquid/mods/sodium/client/gui/SodiumGameOptions.performance:Lme/jellysquid/mods/sodium/client/gui/SodiumGameOptions$PerformanceSettings;
+      15: getfield      #184                // Field me/jellysquid/mods/sodium/client/gui/SodiumGameOptions$PerformanceSettings.useEntityCulling:Z
+      18: putfield      #185                // Field useEntityCulling:Z
+      21: aload_0
+      22: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+      25: getfield      #188                // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+      28: invokevirtual #193                // Method net/minecraft/client/Options.getEffectiveRenderDistance:()I
+      31: aload_0
+      32: getfield      #195                // Field renderDistance:I
+      35: if_icmpeq     42
+      38: aload_0
+      39: invokevirtual #198                // Method reload:()V
+      42: aload_0
+      43: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+      46: invokevirtual #202                // Method net/minecraft/client/Minecraft.getProfiler:()Lnet/minecraft/util/profiling/ProfilerFiller;
+      49: astore        6
+      51: aload         6
+      53: ldc           #204                // String camera_setup
+      55: invokeinterface #209,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V
+      60: aload_0
+      61: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+      64: getfield      #213                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      67: astore        7
+      69: aload         7
+      71: ifnonnull     84
+      74: new           #57                 // class java/lang/IllegalStateException
+      77: dup
+      78: ldc           #215                // String Client instance has no active player entity
+      80: invokespecial #63                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      83: athrow
+      84: aload_1
+      85: invokevirtual #223                // Method net/minecraft/client/Camera.getPosition:()Lnet/minecraft/world/phys/Vec3;
+      88: astore        8
+      90: aload_1
+      91: invokevirtual #227                // Method net/minecraft/client/Camera.getXRot:()F
+      94: fstore        9
+      96: aload_1
+      97: invokevirtual #230                // Method net/minecraft/client/Camera.getYRot:()F
+     100: fstore        10
+     102: invokestatic  #235                // Method com/mojang/blaze3d/systems/RenderSystem.getShaderFogEnd:()F
+     105: fstore        11
+     107: aload         8
+     109: getfield      #240                // Field net/minecraft/world/phys/Vec3.x:D
+     112: aload_0
+     113: getfield      #242                // Field lastCameraX:D
+     116: dcmpl
+     117: ifne          178
+     120: aload         8
+     122: getfield      #245                // Field net/minecraft/world/phys/Vec3.y:D
+     125: aload_0
+     126: getfield      #247                // Field lastCameraY:D
+     129: dcmpl
+     130: ifne          178
+     133: aload         8
+     135: getfield      #250                // Field net/minecraft/world/phys/Vec3.z:D
+     138: aload_0
+     139: getfield      #252                // Field lastCameraZ:D
+     142: dcmpl
+     143: ifne          178
+     146: fload         9
+     148: f2d
+     149: aload_0
+     150: getfield      #254                // Field lastCameraPitch:D
+     153: dcmpl
+     154: ifne          178
+     157: fload         10
+     159: f2d
+     160: aload_0
+     161: getfield      #256                // Field lastCameraYaw:D
+     164: dcmpl
+     165: ifne          178
+     168: fload         11
+     170: aload_0
+     171: getfield      #258                // Field lastFogDistance:F
+     174: fcmpl
+     175: ifeq          182
+     178: iconst_1
+     179: goto          183
+     182: iconst_0
+     183: istore        12
+     185: iload         12
+     187: ifeq          197
+     190: aload_0
+     191: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     194: invokevirtual #142                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.markGraphDirty:()V
+     197: aload_0
+     198: invokestatic  #70                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+     201: getfield      #74                 // Field net/minecraft/client/Minecraft.levelRenderer:Lnet/minecraft/client/renderer/LevelRenderer;
+     204: invokevirtual #264                // Method net/minecraft/client/renderer/LevelRenderer.getFrustum:()Lnet/minecraft/client/renderer/culling/Frustum;
+     207: putfield      #266                // Field vanillaFrustum:Lnet/minecraft/client/renderer/culling/Frustum;
+     210: aload_0
+     211: aload         8
+     213: getfield      #240                // Field net/minecraft/world/phys/Vec3.x:D
+     216: putfield      #242                // Field lastCameraX:D
+     219: aload_0
+     220: aload         8
+     222: getfield      #245                // Field net/minecraft/world/phys/Vec3.y:D
+     225: putfield      #247                // Field lastCameraY:D
+     228: aload_0
+     229: aload         8
+     231: getfield      #250                // Field net/minecraft/world/phys/Vec3.z:D
+     234: putfield      #252                // Field lastCameraZ:D
+     237: aload_0
+     238: fload         9
+     240: f2d
+     241: putfield      #254                // Field lastCameraPitch:D
+     244: aload_0
+     245: fload         10
+     247: f2d
+     248: putfield      #256                // Field lastCameraYaw:D
+     251: aload_0
+     252: fload         11
+     254: putfield      #258                // Field lastFogDistance:F
+     257: aload         6
+     259: ldc_w         #268                // String chunk_update
+     262: invokeinterface #271,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.popPush:(Ljava/lang/String;)V
+     267: aload_0
+     268: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     271: iload         5
+     273: invokevirtual #274                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.updateChunks:(Z)V
+     276: aload         6
+     278: ldc_w         #276                // String chunk_upload
+     281: invokeinterface #271,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.popPush:(Ljava/lang/String;)V
+     286: aload_0
+     287: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     290: invokevirtual #279                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.uploadChunks:()V
+     293: aload_0
+     294: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     297: invokevirtual #282                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.needsUpdate:()Z
+     300: ifeq          325
+     303: aload         6
+     305: ldc_w         #284                // String chunk_render_lists
+     308: invokeinterface #271,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.popPush:(Ljava/lang/String;)V
+     313: aload_0
+     314: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     317: aload_1
+     318: aload_2
+     319: iload_3
+     320: iload         4
+     322: invokevirtual #288                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.update:(Lnet/minecraft/client/Camera;Lme/jellysquid/mods/sodium/client/render/viewport/Viewport;IZ)V
+     325: iload         5
+     327: ifeq          347
+     330: aload         6
+     332: ldc_w         #290                // String chunk_upload_immediately
+     335: invokeinterface #271,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.popPush:(Ljava/lang/String;)V
+     340: aload_0
+     341: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     344: invokevirtual #279                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.uploadChunks:()V
+     347: aload         6
+     349: ldc_w         #292                // String chunk_render_tick
+     352: invokeinterface #271,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.popPush:(Ljava/lang/String;)V
+     357: aload_0
+     358: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     361: invokevirtual #295                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.tickVisibleRenders:()V
+     364: aload         6
+     366: invokeinterface #298,  1          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.pop:()V
+     371: aload_0
+     372: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+     375: getfield      #188                // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+     378: invokevirtual #193                // Method net/minecraft/client/Options.getEffectiveRenderDistance:()I
+     381: i2d
+     382: ldc2_w        #299                // double 8.0d
+     385: ddiv
+     386: dconst_1
+     387: ldc2_w        #301                // double 2.5d
+     390: invokestatic  #308                // Method net/minecraft/util/Mth.clamp:(DDD)D
+     393: aload_0
+     394: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+     397: getfield      #188                // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+     400: invokevirtual #312                // Method net/minecraft/client/Options.entityDistanceScaling:()Lnet/minecraft/client/OptionInstance;
+     403: invokevirtual #318                // Method net/minecraft/client/OptionInstance.get:()Ljava/lang/Object;
+     406: checkcast     #320                // class java/lang/Double
+     409: invokevirtual #324                // Method java/lang/Double.doubleValue:()D
+     412: dmul
+     413: invokestatic  #330                // Method net/minecraft/world/entity/Entity.setViewScale:(D)V
+     416: return
+    LineNumberTable:
+      line 150: 0
+      line 152: 4
+      line 154: 8
+      line 156: 21
+      line 157: 38
+      line 160: 42
+      line 161: 51
+      line 163: 60
+      line 165: 69
+      line 166: 74
+      line 169: 84
+      line 170: 90
+      line 171: 96
+      line 172: 102
+      line 174: 107
+      line 177: 185
+      line 178: 190
+      line 181: 197
+      line 183: 210
+      line 184: 219
+      line 185: 228
+      line 186: 237
+      line 187: 244
+      line 188: 251
+      line 190: 257
+      line 192: 267
+      line 194: 276
+      line 196: 286
+      line 198: 293
+      line 199: 303
+      line 201: 313
+      line 204: 325
+      line 205: 330
+      line 207: 340
+      line 210: 347
+      line 212: 357
+      line 214: 364
+      line 216: 371
+      line 217: 416
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0     417     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0     417     1 camera   Lnet/minecraft/client/Camera;
+          0     417     2 viewport   Lme/jellysquid/mods/sodium/client/render/viewport/Viewport;
+          0     417     3 frame   I
+          0     417     4 spectator   Z
+          0     417     5 updateChunksImmediately   Z
+         51     366     6 profiler   Lnet/minecraft/util/profiling/ProfilerFiller;
+         69     348     7 player   Lnet/minecraft/client/player/LocalPlayer;
+         90     327     8   pos   Lnet/minecraft/world/phys/Vec3;
+         96     321     9 pitch   F
+        102     315    10   yaw   F
+        107     310    11 fogDistance   F
+        185     232    12 dirty   Z
+
+  private void processChunkEvents();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       4: invokestatic  #345                // InterfaceMethod me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTrackerHolder.get:(Lnet/minecraft/client/multiplayer/ClientLevel;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+       7: astore_1
+       8: aload_1
+       9: aload_0
+      10: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      13: dup
+      14: invokestatic  #351                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      17: pop
+      18: invokedynamic #368,  0            // InvokeDynamic #0:apply:(Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker$ChunkEventHandler;
+      23: aload_0
+      24: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      27: dup
+      28: invokestatic  #351                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      31: pop
+      32: invokedynamic #373,  0            // InvokeDynamic #1:apply:(Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker$ChunkEventHandler;
+      37: invokevirtual #377                // Method me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker.forEachEvent:(Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker$ChunkEventHandler;Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker$ChunkEventHandler;)V
+      40: return
+    LineNumberTable:
+      line 220: 0
+      line 221: 8
+      line 222: 40
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      41     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          8      33     1 tracker   Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+
+  public void drawChunkLayer(net.minecraft.client.renderer.RenderType, com.mojang.blaze3d.vertex.PoseStack, double, double, double);
+    Code:
+       0: aload_2
+       1: invokestatic  #389                // Method me/jellysquid/mods/sodium/client/render/chunk/ChunkRenderMatrices.from:(Lcom/mojang/blaze3d/vertex/PoseStack;)Lme/jellysquid/mods/sodium/client/render/chunk/ChunkRenderMatrices;
+       4: astore        9
+       6: aload_1
+       7: invokestatic  #395                // Method net/minecraft/client/renderer/RenderType.solid:()Lnet/minecraft/client/renderer/RenderType;
+      10: if_acmpne     50
+      13: aload_0
+      14: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      17: aload         9
+      19: getstatic     #401                // Field me/jellysquid/mods/sodium/client/render/chunk/terrain/DefaultTerrainRenderPasses.SOLID:Lme/jellysquid/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;
+      22: dload_3
+      23: dload         5
+      25: dload         7
+      27: invokevirtual #404                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.renderLayer:(Lme/jellysquid/mods/sodium/client/render/chunk/ChunkRenderMatrices;Lme/jellysquid/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;DDD)V
+      30: aload_0
+      31: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      34: aload         9
+      36: getstatic     #407                // Field me/jellysquid/mods/sodium/client/render/chunk/terrain/DefaultTerrainRenderPasses.CUTOUT:Lme/jellysquid/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;
+      39: dload_3
+      40: dload         5
+      42: dload         7
+      44: invokevirtual #404                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.renderLayer:(Lme/jellysquid/mods/sodium/client/render/chunk/ChunkRenderMatrices;Lme/jellysquid/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;DDD)V
+      47: goto          74
+      50: aload_1
+      51: invokestatic  #410                // Method net/minecraft/client/renderer/RenderType.translucent:()Lnet/minecraft/client/renderer/RenderType;
+      54: if_acmpne     74
+      57: aload_0
+      58: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      61: aload         9
+      63: getstatic     #413                // Field me/jellysquid/mods/sodium/client/render/chunk/terrain/DefaultTerrainRenderPasses.TRANSLUCENT:Lme/jellysquid/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;
+      66: dload_3
+      67: dload         5
+      69: dload         7
+      71: invokevirtual #404                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.renderLayer:(Lme/jellysquid/mods/sodium/client/render/chunk/ChunkRenderMatrices;Lme/jellysquid/mods/sodium/client/render/chunk/terrain/TerrainRenderPass;DDD)V
+      74: return
+    LineNumberTable:
+      line 228: 0
+      line 230: 6
+      line 231: 13
+      line 232: 30
+      line 233: 50
+      line 234: 57
+      line 236: 74
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      75     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      75     1 renderLayer   Lnet/minecraft/client/renderer/RenderType;
+          0      75     2 matrixStack   Lcom/mojang/blaze3d/vertex/PoseStack;
+          0      75     3     x   D
+          0      75     5     y   D
+          0      75     7     z   D
+          6      69     9 matrices   Lme/jellysquid/mods/sodium/client/render/chunk/ChunkRenderMatrices;
+
+  public void reload();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       4: ifnonnull     8
+       7: return
+       8: getstatic     #106                // Field me/jellysquid/mods/sodium/client/gl/device/RenderDevice.INSTANCE:Lme/jellysquid/mods/sodium/client/gl/device/RenderDevice;
+      11: invokeinterface #110,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/gl/device/RenderDevice.createCommandList:()Lme/jellysquid/mods/sodium/client/gl/device/CommandList;
+      16: astore_1
+      17: aload_0
+      18: aload_1
+      19: invokevirtual #114                // Method initRenderer:(Lme/jellysquid/mods/sodium/client/gl/device/CommandList;)V
+      22: aload_1
+      23: ifnull        57
+      26: aload_1
+      27: invokeinterface #119,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/gl/device/CommandList.close:()V
+      32: goto          57
+      35: astore_2
+      36: aload_1
+      37: ifnull        55
+      40: aload_1
+      41: invokeinterface #119,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/gl/device/CommandList.close:()V
+      46: goto          55
+      49: astore_3
+      50: aload_2
+      51: aload_3
+      52: invokevirtual #125                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      55: aload_2
+      56: athrow
+      57: return
+    Exception table:
+       from    to  target type
+          17    22    35   Class java/lang/Throwable
+          40    46    49   Class java/lang/Throwable
+    LineNumberTable:
+      line 239: 0
+      line 240: 7
+      line 243: 8
+      line 244: 17
+      line 245: 22
+      line 243: 35
+      line 246: 57
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         17      40     1 commandList   Lme/jellysquid/mods/sodium/client/gl/device/CommandList;
+          0      58     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  private void initRenderer(me.jellysquid.mods.sodium.client.gl.device.CommandList);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: ifnull        19
+       7: aload_0
+       8: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      11: invokevirtual #134                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.destroy:()V
+      14: aload_0
+      15: aconst_null
+      16: putfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      19: aload_0
+      20: aload_0
+      21: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+      24: getfield      #188                // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+      27: invokevirtual #193                // Method net/minecraft/client/Options.getEffectiveRenderDistance:()I
+      30: putfield      #195                // Field renderDistance:I
+      33: aload_0
+      34: new           #131                // class me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager
+      37: dup
+      38: aload_0
+      39: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+      42: aload_0
+      43: getfield      #195                // Field renderDistance:I
+      46: aload_1
+      47: invokespecial #420                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager."<init>":(Lnet/minecraft/client/multiplayer/ClientLevel;ILme/jellysquid/mods/sodium/client/gl/device/CommandList;)V
+      50: putfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      53: aload_0
+      54: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+      57: invokestatic  #345                // InterfaceMethod me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTrackerHolder.get:(Lnet/minecraft/client/multiplayer/ClientLevel;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+      60: astore_2
+      61: aload_2
+      62: invokevirtual #424                // Method me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker.getReadyChunks:()Lit/unimi/dsi/fastutil/longs/LongCollection;
+      65: aload_0
+      66: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      69: dup
+      70: invokestatic  #351                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      73: pop
+      74: invokedynamic #368,  0            // InvokeDynamic #0:apply:(Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker$ChunkEventHandler;
+      79: invokestatic  #428                // Method me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker.forEachChunk:(Lit/unimi/dsi/fastutil/longs/LongCollection;Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker$ChunkEventHandler;)V
+      82: invokestatic  #70                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      85: invokevirtual #432                // Method net/minecraft/client/Minecraft.getWindow:()Lcom/mojang/blaze3d/platform/Window;
+      88: astore_3
+      89: aload_3
+      90: ifnull        115
+      93: aload_3
+      94: invokestatic  #70                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      97: getfield      #188                // Field net/minecraft/client/Minecraft.options:Lnet/minecraft/client/Options;
+     100: invokevirtual #435                // Method net/minecraft/client/Options.enableVsync:()Lnet/minecraft/client/OptionInstance;
+     103: invokevirtual #318                // Method net/minecraft/client/OptionInstance.get:()Ljava/lang/Object;
+     106: checkcast     #437                // class java/lang/Boolean
+     109: invokevirtual #440                // Method java/lang/Boolean.booleanValue:()Z
+     112: invokevirtual #445                // Method com/mojang/blaze3d/platform/Window.updateVsync:(Z)V
+     115: return
+    LineNumberTable:
+      line 249: 0
+      line 250: 7
+      line 251: 14
+      line 254: 19
+      line 256: 33
+      line 258: 53
+      line 259: 61
+      line 262: 82
+      line 263: 89
+      line 264: 93
+      line 265: 115
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0     116     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0     116     1 commandList   Lme/jellysquid/mods/sodium/client/gl/device/CommandList;
+         61      55     2 tracker   Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+         89      27     3 window   Lcom/mojang/blaze3d/platform/Window;
+
+  public void renderBlockEntities(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.RenderBuffers, it.unimi.dsi.fastutil.longs.Long2ObjectMap<java.util.SortedSet<net.minecraft.server.level.BlockDestructionProgress>>, net.minecraft.client.Camera, float);
+    Code:
+       0: aload_2
+       1: invokevirtual #459                // Method net/minecraft/client/renderer/RenderBuffers.bufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+       4: astore        6
+       6: aload         4
+       8: invokevirtual #223                // Method net/minecraft/client/Camera.getPosition:()Lnet/minecraft/world/phys/Vec3;
+      11: astore        7
+      13: aload         7
+      15: invokevirtual #461                // Method net/minecraft/world/phys/Vec3.x:()D
+      18: dstore        8
+      20: aload         7
+      22: invokevirtual #463                // Method net/minecraft/world/phys/Vec3.y:()D
+      25: dstore        10
+      27: aload         7
+      29: invokevirtual #465                // Method net/minecraft/world/phys/Vec3.z:()D
+      32: dstore        12
+      34: invokestatic  #70                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      37: invokevirtual #469                // Method net/minecraft/client/Minecraft.getBlockEntityRenderDispatcher:()Lnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;
+      40: astore        14
+      42: aload_0
+      43: aload_1
+      44: aload_2
+      45: aload_3
+      46: fload         5
+      48: aload         6
+      50: dload         8
+      52: dload         10
+      54: dload         12
+      56: aload         14
+      58: invokevirtual #472                // Method renderBlockEntities:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/RenderBuffers;Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;FLnet/minecraft/client/renderer/MultiBufferSource$BufferSource;DDDLnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;)V
+      61: aload_0
+      62: aload_1
+      63: aload_2
+      64: aload_3
+      65: fload         5
+      67: aload         6
+      69: dload         8
+      71: dload         10
+      73: dload         12
+      75: aload         14
+      77: invokevirtual #475                // Method renderGlobalBlockEntities:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/RenderBuffers;Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;FLnet/minecraft/client/renderer/MultiBufferSource$BufferSource;DDDLnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;)V
+      80: return
+    LineNumberTable:
+      line 272: 0
+      line 274: 6
+      line 275: 13
+      line 276: 20
+      line 277: 27
+      line 279: 34
+      line 281: 42
+      line 282: 61
+      line 283: 80
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      81     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      81     1 matrices   Lcom/mojang/blaze3d/vertex/PoseStack;
+          0      81     2 bufferBuilders   Lnet/minecraft/client/renderer/RenderBuffers;
+          0      81     3 blockBreakingProgressions   Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+          0      81     4 camera   Lnet/minecraft/client/Camera;
+          0      81     5 tickDelta   F
+          6      75     6 immediate   Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+         13      68     7 cameraPos   Lnet/minecraft/world/phys/Vec3;
+         20      61     8     x   D
+         27      54    10     y   D
+         34      47    12     z   D
+         42      39    14 blockEntityRenderer   Lnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;
+
+  private void renderBlockEntities(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.RenderBuffers, it.unimi.dsi.fastutil.longs.Long2ObjectMap<java.util.SortedSet<net.minecraft.server.level.BlockDestructionProgress>>, float, net.minecraft.client.renderer.MultiBufferSource$BufferSource, double, double, double, net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: invokevirtual #488                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getRenderLists:()Lme/jellysquid/mods/sodium/client/render/chunk/lists/SortedRenderLists;
+       7: astore        13
+       9: aload         13
+      11: invokevirtual #494                // Method me/jellysquid/mods/sodium/client/render/chunk/lists/SortedRenderLists.iterator:()Ljava/util/Iterator;
+      14: astore        14
+      16: aload         14
+      18: invokeinterface #499,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          179
+      26: aload         14
+      28: invokeinterface #502,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #504                // class me/jellysquid/mods/sodium/client/render/chunk/lists/ChunkRenderList
+      36: astore        15
+      38: aload         15
+      40: invokevirtual #508                // Method me/jellysquid/mods/sodium/client/render/chunk/lists/ChunkRenderList.getRegion:()Lme/jellysquid/mods/sodium/client/render/chunk/region/RenderRegion;
+      43: astore        16
+      45: aload         15
+      47: invokevirtual #512                // Method me/jellysquid/mods/sodium/client/render/chunk/lists/ChunkRenderList.sectionsWithEntitiesIterator:()Lme/jellysquid/mods/sodium/client/util/iterator/ByteIterator;
+      50: astore        17
+      52: aload         17
+      54: ifnonnull     60
+      57: goto          16
+      60: aload         17
+      62: invokeinterface #517,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/util/iterator/ByteIterator.hasNext:()Z
+      67: ifeq          176
+      70: aload         17
+      72: invokeinterface #520,  1          // InterfaceMethod me/jellysquid/mods/sodium/client/util/iterator/ByteIterator.nextByteAsInt:()I
+      77: istore        18
+      79: aload         16
+      81: iload         18
+      83: invokevirtual #524                // Method me/jellysquid/mods/sodium/client/render/chunk/region/RenderRegion.getSection:(I)Lme/jellysquid/mods/sodium/client/render/chunk/RenderSection;
+      86: astore        19
+      88: aload         19
+      90: invokevirtual #530                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSection.getCulledBlockEntities:()[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      93: astore        20
+      95: aload         20
+      97: ifnonnull     103
+     100: goto          60
+     103: aload         20
+     105: astore        21
+     107: aload         21
+     109: arraylength
+     110: istore        22
+     112: iconst_0
+     113: istore        23
+     115: iload         23
+     117: iload         22
+     119: if_icmpge     173
+     122: aload         21
+     124: iload         23
+     126: aaload
+     127: astore        24
+     129: aload_0
+     130: getfield      #266                // Field vanillaFrustum:Lnet/minecraft/client/renderer/culling/Frustum;
+     133: aload         24
+     135: invokevirtual #538                // Method net/minecraft/world/level/block/entity/BlockEntity.getRenderBoundingBox:()Lnet/minecraft/world/phys/AABB;
+     138: invokevirtual #544                // Method net/minecraft/client/renderer/culling/Frustum.isVisible:(Lnet/minecraft/world/phys/AABB;)Z
+     141: ifne          147
+     144: goto          167
+     147: aload_1
+     148: aload_2
+     149: aload_3
+     150: fload         4
+     152: aload         5
+     154: dload         6
+     156: dload         8
+     158: dload         10
+     160: aload         12
+     162: aload         24
+     164: invokestatic  #548                // Method renderBlockEntity:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/RenderBuffers;Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;FLnet/minecraft/client/renderer/MultiBufferSource$BufferSource;DDDLnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+     167: iinc          23, 1
+     170: goto          115
+     173: goto          60
+     176: goto          16
+     179: return
+    LineNumberTable:
+      line 294: 0
+      line 295: 9
+      line 297: 16
+      line 298: 26
+      line 300: 38
+      line 301: 45
+      line 303: 52
+      line 304: 57
+      line 307: 60
+      line 308: 70
+      line 309: 79
+      line 311: 88
+      line 313: 95
+      line 314: 100
+      line 317: 103
+      line 318: 129
+      line 319: 144
+      line 320: 147
+      line 317: 167
+      line 322: 173
+      line 323: 176
+      line 324: 179
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+        129      38    24 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+         79      94    18 renderSectionId   I
+         88      85    19 renderSection   Lme/jellysquid/mods/sodium/client/render/chunk/RenderSection;
+         95      78    20 blockEntities   [Lnet/minecraft/world/level/block/entity/BlockEntity;
+         38     138    15 renderList   Lme/jellysquid/mods/sodium/client/render/chunk/lists/ChunkRenderList;
+         45     131    16 renderRegion   Lme/jellysquid/mods/sodium/client/render/chunk/region/RenderRegion;
+         52     124    17 renderSectionIterator   Lme/jellysquid/mods/sodium/client/util/iterator/ByteIterator;
+          0     180     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0     180     1 matrices   Lcom/mojang/blaze3d/vertex/PoseStack;
+          0     180     2 bufferBuilders   Lnet/minecraft/client/renderer/RenderBuffers;
+          0     180     3 blockBreakingProgressions   Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+          0     180     4 tickDelta   F
+          0     180     5 immediate   Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+          0     180     6     x   D
+          0     180     8     y   D
+          0     180    10     z   D
+          0     180    12 blockEntityRenderer   Lnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;
+          9     171    13 renderLists   Lme/jellysquid/mods/sodium/client/render/chunk/lists/SortedRenderLists;
+         16     164    14 renderListIterator   Ljava/util/Iterator;
+
+  private void renderGlobalBlockEntities(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.RenderBuffers, it.unimi.dsi.fastutil.longs.Long2ObjectMap<java.util.SortedSet<net.minecraft.server.level.BlockDestructionProgress>>, float, net.minecraft.client.renderer.MultiBufferSource$BufferSource, double, double, double, net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: invokevirtual #573                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getSectionsWithGlobalEntities:()Ljava/util/Collection;
+       7: invokeinterface #576,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      12: astore        13
+      14: aload         13
+      16: invokeinterface #499,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      21: ifeq          124
+      24: aload         13
+      26: invokeinterface #502,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      31: checkcast     #526                // class me/jellysquid/mods/sodium/client/render/chunk/RenderSection
+      34: astore        14
+      36: aload         14
+      38: invokevirtual #579                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSection.getGlobalBlockEntities:()[Lnet/minecraft/world/level/block/entity/BlockEntity;
+      41: astore        15
+      43: aload         15
+      45: ifnonnull     51
+      48: goto          14
+      51: aload         15
+      53: astore        16
+      55: aload         16
+      57: arraylength
+      58: istore        17
+      60: iconst_0
+      61: istore        18
+      63: iload         18
+      65: iload         17
+      67: if_icmpge     121
+      70: aload         16
+      72: iload         18
+      74: aaload
+      75: astore        19
+      77: aload_0
+      78: getfield      #266                // Field vanillaFrustum:Lnet/minecraft/client/renderer/culling/Frustum;
+      81: aload         19
+      83: invokevirtual #538                // Method net/minecraft/world/level/block/entity/BlockEntity.getRenderBoundingBox:()Lnet/minecraft/world/phys/AABB;
+      86: invokevirtual #544                // Method net/minecraft/client/renderer/culling/Frustum.isVisible:(Lnet/minecraft/world/phys/AABB;)Z
+      89: ifne          95
+      92: goto          115
+      95: aload_1
+      96: aload_2
+      97: aload_3
+      98: fload         4
+     100: aload         5
+     102: dload         6
+     104: dload         8
+     106: dload         10
+     108: aload         12
+     110: aload         19
+     112: invokestatic  #548                // Method renderBlockEntity:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/RenderBuffers;Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;FLnet/minecraft/client/renderer/MultiBufferSource$BufferSource;DDDLnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+     115: iinc          18, 1
+     118: goto          63
+     121: goto          14
+     124: return
+    LineNumberTable:
+      line 335: 0
+      line 336: 36
+      line 338: 43
+      line 339: 48
+      line 342: 51
+      line 343: 77
+      line 344: 92
+      line 345: 95
+      line 342: 115
+      line 347: 121
+      line 348: 124
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         77      38    19 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+         43      78    15 blockEntities   [Lnet/minecraft/world/level/block/entity/BlockEntity;
+         36      85    14 renderSection   Lme/jellysquid/mods/sodium/client/render/chunk/RenderSection;
+          0     125     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0     125     1 matrices   Lcom/mojang/blaze3d/vertex/PoseStack;
+          0     125     2 bufferBuilders   Lnet/minecraft/client/renderer/RenderBuffers;
+          0     125     3 blockBreakingProgressions   Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+          0     125     4 tickDelta   F
+          0     125     5 immediate   Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+          0     125     6     x   D
+          0     125     8     y   D
+          0     125    10     z   D
+          0     125    12 blockEntityRenderer   Lnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;
+
+  private static void renderBlockEntity(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.RenderBuffers, it.unimi.dsi.fastutil.longs.Long2ObjectMap<java.util.SortedSet<net.minecraft.server.level.BlockDestructionProgress>>, float, net.minecraft.client.renderer.MultiBufferSource$BufferSource, double, double, double, net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload         12
+       2: invokevirtual #588                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       5: astore        13
+       7: aload_0
+       8: invokevirtual #591                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+      11: aload_0
+      12: aload         13
+      14: invokevirtual #596                // Method net/minecraft/core/BlockPos.getX:()I
+      17: i2d
+      18: dload         5
+      20: dsub
+      21: aload         13
+      23: invokevirtual #599                // Method net/minecraft/core/BlockPos.getY:()I
+      26: i2d
+      27: dload         7
+      29: dsub
+      30: aload         13
+      32: invokevirtual #602                // Method net/minecraft/core/BlockPos.getZ:()I
+      35: i2d
+      36: dload         9
+      38: dsub
+      39: invokevirtual #606                // Method com/mojang/blaze3d/vertex/PoseStack.translate:(DDD)V
+      42: aload         4
+      44: astore        14
+      46: aload_2
+      47: aload         13
+      49: invokevirtual #610                // Method net/minecraft/core/BlockPos.asLong:()J
+      52: invokeinterface #613,  3          // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2ObjectMap.get:(J)Ljava/lang/Object;
+      57: checkcast     #615                // class java/util/SortedSet
+      60: astore        15
+      62: aload         15
+      64: ifnull        158
+      67: aload         15
+      69: invokeinterface #618,  1          // InterfaceMethod java/util/SortedSet.isEmpty:()Z
+      74: ifne          158
+      77: aload         15
+      79: invokeinterface #621,  1          // InterfaceMethod java/util/SortedSet.last:()Ljava/lang/Object;
+      84: checkcast     #623                // class net/minecraft/server/level/BlockDestructionProgress
+      87: invokevirtual #626                // Method net/minecraft/server/level/BlockDestructionProgress.getProgress:()I
+      90: istore        16
+      92: iload         16
+      94: iflt          158
+      97: aload_1
+      98: invokevirtual #629                // Method net/minecraft/client/renderer/RenderBuffers.crumblingBufferSource:()Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+     101: getstatic     #635                // Field net/minecraft/client/resources/model/ModelBakery.DESTROY_TYPES:Ljava/util/List;
+     104: iload         16
+     106: invokeinterface #640,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     111: checkcast     #391                // class net/minecraft/client/renderer/RenderType
+     114: invokevirtual #644                // Method net/minecraft/client/renderer/MultiBufferSource$BufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+     117: astore        17
+     119: aload_0
+     120: invokevirtual #647                // Method com/mojang/blaze3d/vertex/PoseStack.last:()Lcom/mojang/blaze3d/vertex/PoseStack$Pose;
+     123: astore        18
+     125: new           #649                // class com/mojang/blaze3d/vertex/SheetedDecalTextureGenerator
+     128: dup
+     129: aload         17
+     131: aload         18
+     133: invokevirtual #653                // Method com/mojang/blaze3d/vertex/PoseStack$Pose.pose:()Lorg/joml/Matrix4f;
+     136: aload         18
+     138: invokevirtual #657                // Method com/mojang/blaze3d/vertex/PoseStack$Pose.normal:()Lorg/joml/Matrix3f;
+     141: fconst_1
+     142: invokespecial #660                // Method com/mojang/blaze3d/vertex/SheetedDecalTextureGenerator."<init>":(Lcom/mojang/blaze3d/vertex/VertexConsumer;Lorg/joml/Matrix4f;Lorg/joml/Matrix3f;F)V
+     145: astore        19
+     147: aload         19
+     149: aload         4
+     151: invokedynamic #669,  0            // InvokeDynamic #2:getBuffer:(Lcom/mojang/blaze3d/vertex/VertexConsumer;Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;)Lnet/minecraft/client/renderer/MultiBufferSource;
+     156: astore        14
+     158: aload         11
+     160: aload         12
+     162: fload_3
+     163: aload_0
+     164: aload         14
+     166: invokevirtual #673                // Method net/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher.render:(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;)V
+     169: goto          198
+     172: astore        16
+     174: aload         12
+     176: invokevirtual #676                // Method net/minecraft/world/level/block/entity/BlockEntity.isRemoved:()Z
+     179: ifne          185
+     182: aload         16
+     184: athrow
+     185: invokestatic  #680                // Method me/jellysquid/mods/sodium/client/SodiumClientMod.logger:()Lorg/slf4j/Logger;
+     188: ldc_w         #682                // String Suppressing crash from removed block entity
+     191: aload         16
+     193: invokeinterface #688,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     198: aload_0
+     199: invokevirtual #691                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+     202: return
+    Exception table:
+       from    to  target type
+         158   169   172   Class java/lang/RuntimeException
+    LineNumberTable:
+      line 360: 0
+      line 362: 7
+      line 363: 11
+      line 365: 42
+      line 366: 46
+      line 368: 62
+      line 369: 77
+      line 371: 92
+      line 372: 97
+      line 373: 106
+      line 375: 119
+      line 376: 125
+      line 377: 133
+      line 379: 147
+      line 384: 158
+      line 394: 169
+      line 385: 172
+      line 389: 174
+      line 390: 182
+      line 392: 185
+      line 396: 198
+      line 397: 202
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+        119      39    17 bufferBuilder   Lcom/mojang/blaze3d/vertex/VertexConsumer;
+        125      33    18 entry   Lcom/mojang/blaze3d/vertex/PoseStack$Pose;
+        147      11    19 transformer   Lcom/mojang/blaze3d/vertex/VertexConsumer;
+         92      66    16 stage   I
+        174      24    16     e   Ljava/lang/RuntimeException;
+          0     203     0 matrices   Lcom/mojang/blaze3d/vertex/PoseStack;
+          0     203     1 bufferBuilders   Lnet/minecraft/client/renderer/RenderBuffers;
+          0     203     2 blockBreakingProgressions   Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+          0     203     3 tickDelta   F
+          0     203     4 immediate   Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+          0     203     5     x   D
+          0     203     7     y   D
+          0     203     9     z   D
+          0     203    11 dispatcher   Lnet/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher;
+          0     203    12 entity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+          7     196    13   pos   Lnet/minecraft/core/BlockPos;
+         46     157    14 consumer   Lnet/minecraft/client/renderer/MultiBufferSource;
+         62     141    15 breakingInfo   Ljava/util/SortedSet;
+
+  private static boolean isInfiniteExtentsBox(net.minecraft.world.phys.AABB);
+    Code:
+       0: aload_0
+       1: getfield      #712                // Field net/minecraft/world/phys/AABB.minX:D
+       4: invokestatic  #716                // Method java/lang/Double.isInfinite:(D)Z
+       7: ifne          60
+      10: aload_0
+      11: getfield      #719                // Field net/minecraft/world/phys/AABB.minY:D
+      14: invokestatic  #716                // Method java/lang/Double.isInfinite:(D)Z
+      17: ifne          60
+      20: aload_0
+      21: getfield      #722                // Field net/minecraft/world/phys/AABB.minZ:D
+      24: invokestatic  #716                // Method java/lang/Double.isInfinite:(D)Z
+      27: ifne          60
+      30: aload_0
+      31: getfield      #725                // Field net/minecraft/world/phys/AABB.maxX:D
+      34: invokestatic  #716                // Method java/lang/Double.isInfinite:(D)Z
+      37: ifne          60
+      40: aload_0
+      41: getfield      #728                // Field net/minecraft/world/phys/AABB.maxY:D
+      44: invokestatic  #716                // Method java/lang/Double.isInfinite:(D)Z
+      47: ifne          60
+      50: aload_0
+      51: getfield      #731                // Field net/minecraft/world/phys/AABB.maxZ:D
+      54: invokestatic  #716                // Method java/lang/Double.isInfinite:(D)Z
+      57: ifeq          64
+      60: iconst_1
+      61: goto          65
+      64: iconst_0
+      65: ireturn
+    LineNumberTable:
+      line 401: 0
+      line 402: 34
+      line 401: 65
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      66     0   box   Lnet/minecraft/world/phys/AABB;
+
+  public boolean isEntityVisible(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: getfield      #185                // Field useEntityCulling:Z
+       4: ifne          9
+       7: iconst_1
+       8: ireturn
+       9: aload_0
+      10: getfield      #87                 // Field client:Lnet/minecraft/client/Minecraft;
+      13: aload_1
+      14: invokevirtual #737                // Method net/minecraft/client/Minecraft.shouldEntityAppearGlowing:(Lnet/minecraft/world/entity/Entity;)Z
+      17: ifne          27
+      20: aload_1
+      21: invokevirtual #740                // Method net/minecraft/world/entity/Entity.shouldShowName:()Z
+      24: ifeq          29
+      27: iconst_1
+      28: ireturn
+      29: aload_1
+      30: invokevirtual #743                // Method net/minecraft/world/entity/Entity.getBoundingBoxForCulling:()Lnet/minecraft/world/phys/AABB;
+      33: astore_2
+      34: aload_2
+      35: invokestatic  #745                // Method isInfiniteExtentsBox:(Lnet/minecraft/world/phys/AABB;)Z
+      38: ifeq          43
+      41: iconst_1
+      42: ireturn
+      43: aload_0
+      44: aload_2
+      45: getfield      #712                // Field net/minecraft/world/phys/AABB.minX:D
+      48: aload_2
+      49: getfield      #719                // Field net/minecraft/world/phys/AABB.minY:D
+      52: aload_2
+      53: getfield      #722                // Field net/minecraft/world/phys/AABB.minZ:D
+      56: aload_2
+      57: getfield      #725                // Field net/minecraft/world/phys/AABB.maxX:D
+      60: aload_2
+      61: getfield      #728                // Field net/minecraft/world/phys/AABB.maxY:D
+      64: aload_2
+      65: getfield      #731                // Field net/minecraft/world/phys/AABB.maxZ:D
+      68: invokevirtual #749                // Method isBoxVisible:(DDDDDD)Z
+      71: ireturn
+    LineNumberTable:
+      line 410: 0
+      line 411: 7
+      line 415: 9
+      line 416: 27
+      line 419: 29
+      line 421: 34
+      line 422: 41
+      line 425: 43
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      72     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      72     1 entity   Lnet/minecraft/world/entity/Entity;
+         34      38     2   box   Lnet/minecraft/world/phys/AABB;
+
+  public boolean isBoxVisible(double, double, double, double, double, double);
+    Code:
+       0: dload         9
+       2: aload_0
+       3: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       6: invokevirtual #759                // Method net/minecraft/client/multiplayer/ClientLevel.getMinBuildHeight:()I
+       9: i2d
+      10: ldc2_w        #760                // double 0.5d
+      13: dadd
+      14: dcmpg
+      15: iflt          35
+      18: dload_3
+      19: aload_0
+      20: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+      23: invokevirtual #764                // Method net/minecraft/client/multiplayer/ClientLevel.getMaxBuildHeight:()I
+      26: i2d
+      27: ldc2_w        #760                // double 0.5d
+      30: dsub
+      31: dcmpl
+      32: ifle          37
+      35: iconst_1
+      36: ireturn
+      37: dload_1
+      38: ldc2_w        #760                // double 0.5d
+      41: dsub
+      42: invokestatic  #770                // Method net/minecraft/core/SectionPos.posToSectionCoord:(D)I
+      45: istore        13
+      47: dload_3
+      48: ldc2_w        #760                // double 0.5d
+      51: dsub
+      52: invokestatic  #770                // Method net/minecraft/core/SectionPos.posToSectionCoord:(D)I
+      55: istore        14
+      57: dload         5
+      59: ldc2_w        #760                // double 0.5d
+      62: dsub
+      63: invokestatic  #770                // Method net/minecraft/core/SectionPos.posToSectionCoord:(D)I
+      66: istore        15
+      68: dload         7
+      70: ldc2_w        #760                // double 0.5d
+      73: dadd
+      74: invokestatic  #770                // Method net/minecraft/core/SectionPos.posToSectionCoord:(D)I
+      77: istore        16
+      79: dload         9
+      81: ldc2_w        #760                // double 0.5d
+      84: dadd
+      85: invokestatic  #770                // Method net/minecraft/core/SectionPos.posToSectionCoord:(D)I
+      88: istore        17
+      90: dload         11
+      92: ldc2_w        #760                // double 0.5d
+      95: dadd
+      96: invokestatic  #770                // Method net/minecraft/core/SectionPos.posToSectionCoord:(D)I
+      99: istore        18
+     101: iload         13
+     103: istore        19
+     105: iload         19
+     107: iload         16
+     109: if_icmpgt     170
+     112: iload         15
+     114: istore        20
+     116: iload         20
+     118: iload         18
+     120: if_icmpgt     164
+     123: iload         14
+     125: istore        21
+     127: iload         21
+     129: iload         17
+     131: if_icmpgt     158
+     134: aload_0
+     135: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+     138: iload         19
+     140: iload         21
+     142: iload         20
+     144: invokevirtual #774                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.isSectionVisible:(III)Z
+     147: ifeq          152
+     150: iconst_1
+     151: ireturn
+     152: iinc          21, 1
+     155: goto          127
+     158: iinc          20, 1
+     161: goto          116
+     164: iinc          19, 1
+     167: goto          105
+     170: iconst_0
+     171: ireturn
+    LineNumberTable:
+      line 431: 0
+      line 432: 35
+      line 435: 37
+      line 436: 47
+      line 437: 57
+      line 439: 68
+      line 440: 79
+      line 441: 90
+      line 443: 101
+      line 444: 112
+      line 445: 123
+      line 446: 134
+      line 447: 150
+      line 445: 152
+      line 444: 158
+      line 443: 164
+      line 453: 170
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+        127      31    21     y   I
+        116      48    20     z   I
+        105      65    19     x   I
+          0     172     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0     172     1    x1   D
+          0     172     3    y1   D
+          0     172     5    z1   D
+          0     172     7    x2   D
+          0     172     9    y2   D
+          0     172    11    z2   D
+         47     125    13  minX   I
+         57     115    14  minY   I
+         68     104    15  minZ   I
+         79      93    16  maxX   I
+         90      82    17  maxY   I
+        101      71    18  maxZ   I
+
+  public java.lang.String getChunksDebugString();
+    Code:
+       0: ldc_w         #778                // String C: %d/%d D: %d
+       3: iconst_3
+       4: anewarray     #4                  // class java/lang/Object
+       7: dup
+       8: iconst_0
+       9: aload_0
+      10: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      13: invokevirtual #138                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getVisibleChunkCount:()I
+      16: invokestatic  #784                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      19: aastore
+      20: dup
+      21: iconst_1
+      22: aload_0
+      23: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+      26: invokevirtual #787                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getTotalSections:()I
+      29: invokestatic  #784                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      32: aastore
+      33: dup
+      34: iconst_2
+      35: aload_0
+      36: getfield      #195                // Field renderDistance:I
+      39: invokestatic  #784                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      42: aastore
+      43: invokestatic  #793                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      46: areturn
+    LineNumberTable:
+      line 459: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      47     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public void scheduleRebuildForBlockArea(int, int, int, int, int, int, boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_4
+       3: ishr
+       4: iload_2
+       5: iconst_4
+       6: ishr
+       7: iload_3
+       8: iconst_4
+       9: ishr
+      10: iload         4
+      12: iconst_4
+      13: ishr
+      14: iload         5
+      16: iconst_4
+      17: ishr
+      18: iload         6
+      20: iconst_4
+      21: ishr
+      22: iload         7
+      24: invokevirtual #799                // Method scheduleRebuildForChunks:(IIIIIIZ)V
+      27: return
+    LineNumberTable:
+      line 466: 0
+      line 467: 27
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      28     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      28     1  minX   I
+          0      28     2  minY   I
+          0      28     3  minZ   I
+          0      28     4  maxX   I
+          0      28     5  maxY   I
+          0      28     6  maxZ   I
+          0      28     7 important   Z
+
+  public void scheduleRebuildForChunks(int, int, int, int, int, int, boolean);
+    Code:
+       0: iload_1
+       1: istore        8
+       3: iload         8
+       5: iload         4
+       7: if_icmpgt     60
+      10: iload_2
+      11: istore        9
+      13: iload         9
+      15: iload         5
+      17: if_icmpgt     54
+      20: iload_3
+      21: istore        10
+      23: iload         10
+      25: iload         6
+      27: if_icmpgt     48
+      30: aload_0
+      31: iload         8
+      33: iload         9
+      35: iload         10
+      37: iload         7
+      39: invokevirtual #803                // Method scheduleRebuildForChunk:(IIIZ)V
+      42: iinc          10, 1
+      45: goto          23
+      48: iinc          9, 1
+      51: goto          13
+      54: iinc          8, 1
+      57: goto          3
+      60: return
+    LineNumberTable:
+      line 473: 0
+      line 474: 10
+      line 475: 20
+      line 476: 30
+      line 475: 42
+      line 474: 48
+      line 473: 54
+      line 480: 60
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         23      25    10 chunkZ   I
+         13      41     9 chunkY   I
+          3      57     8 chunkX   I
+          0      61     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      61     1  minX   I
+          0      61     2  minY   I
+          0      61     3  minZ   I
+          0      61     4  maxX   I
+          0      61     5  maxY   I
+          0      61     6  maxZ   I
+          0      61     7 important   Z
+
+  public void scheduleRebuildForChunk(int, int, int, boolean);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: iload_1
+       5: iload_2
+       6: iload_3
+       7: iload         4
+       9: invokevirtual #809                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.scheduleRebuild:(IIIZ)V
+      12: return
+    LineNumberTable:
+      line 486: 0
+      line 487: 12
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      13     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      13     1     x   I
+          0      13     2     y   I
+          0      13     3     z   I
+          0      13     4 important   Z
+
+  public java.util.Collection<java.lang.String> getDebugStrings();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: invokevirtual #813                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.getDebugStrings:()Ljava/util/Collection;
+       7: areturn
+    LineNumberTable:
+      line 490: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       8     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+
+  public boolean isSectionReady(int, int, int);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field renderSectionManager:Lme/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager;
+       4: iload_1
+       5: iload_2
+       6: iload_3
+       7: invokevirtual #817                // Method me/jellysquid/mods/sodium/client/render/chunk/RenderSectionManager.isSectionBuilt:(III)Z
+      10: ireturn
+    LineNumberTable:
+      line 494: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      11     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      11     1     x   I
+          0      11     2     y   I
+          0      11     3     z   I
+
+  public void onChunkAdded(int, int);
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       4: invokestatic  #345                // InterfaceMethod me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTrackerHolder.get:(Lnet/minecraft/client/multiplayer/ClientLevel;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+       7: astore_3
+       8: aload_3
+       9: iload_1
+      10: iload_2
+      11: iconst_1
+      12: invokevirtual #821                // Method me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker.onChunkStatusAdded:(III)V
+      15: return
+    LineNumberTable:
+      line 500: 0
+      line 501: 8
+      line 502: 15
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      16     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      16     1     x   I
+          0      16     2     z   I
+          8       8     3 tracker   Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+
+  public void onChunkLightAdded(int, int);
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       4: invokestatic  #345                // InterfaceMethod me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTrackerHolder.get:(Lnet/minecraft/client/multiplayer/ClientLevel;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+       7: astore_3
+       8: aload_3
+       9: iload_1
+      10: iload_2
+      11: iconst_2
+      12: invokevirtual #821                // Method me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker.onChunkStatusAdded:(III)V
+      15: return
+    LineNumberTable:
+      line 506: 0
+      line 507: 8
+      line 508: 15
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      16     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      16     1     x   I
+          0      16     2     z   I
+          8       8     3 tracker   Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+
+  public void onChunkRemoved(int, int);
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field world:Lnet/minecraft/client/multiplayer/ClientLevel;
+       4: invokestatic  #345                // InterfaceMethod me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTrackerHolder.get:(Lnet/minecraft/client/multiplayer/ClientLevel;)Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+       7: astore_3
+       8: aload_3
+       9: iload_1
+      10: iload_2
+      11: iconst_3
+      12: invokevirtual #825                // Method me/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker.onChunkStatusRemoved:(III)V
+      15: return
+    LineNumberTable:
+      line 512: 0
+      line 513: 8
+      line 514: 15
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      16     0  this   Lme/jellysquid/mods/sodium/client/render/SodiumWorldRenderer;
+          0      16     1     x   I
+          0      16     2     z   I
+          8       8     3 tracker   Lme/jellysquid/mods/sodium/client/render/chunk/map/ChunkTracker;
+
+  private static com.mojang.blaze3d.vertex.VertexConsumer lambda$renderBlockEntity$0(com.mojang.blaze3d.vertex.VertexConsumer, net.minecraft.client.renderer.MultiBufferSource$BufferSource, net.minecraft.client.renderer.RenderType);
+    Code:
+       0: aload_2
+       1: invokevirtual #829                // Method net/minecraft/client/renderer/RenderType.affectsCrumbling:()Z
+       4: ifeq          19
+       7: aload_0
+       8: aload_1
+       9: aload_2
+      10: invokevirtual #644                // Method net/minecraft/client/renderer/MultiBufferSource$BufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+      13: invokestatic  #835                // Method com/mojang/blaze3d/vertex/VertexMultiConsumer.create:(Lcom/mojang/blaze3d/vertex/VertexConsumer;Lcom/mojang/blaze3d/vertex/VertexConsumer;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+      16: goto          24
+      19: aload_1
+      20: aload_2
+      21: invokevirtual #644                // Method net/minecraft/client/renderer/MultiBufferSource$BufferSource.getBuffer:(Lnet/minecraft/client/renderer/RenderType;)Lcom/mojang/blaze3d/vertex/VertexConsumer;
+      24: areturn
+    LineNumberTable:
+      line 379: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      25     0 transformer   Lcom/mojang/blaze3d/vertex/VertexConsumer;
+          0      25     1 immediate   Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+          0      25     2 layer   Lnet/minecraft/client/renderer/RenderType;
+}

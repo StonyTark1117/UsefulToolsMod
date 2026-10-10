@@ -1,0 +1,23 @@
+{
+  "status": "pass",
+  "scope": "Frozen v7 BSL 10.1.2 native OptiFine pack-control OCR alias",
+  "pattern": "^\\s*[B6]SL_[v4w]10\\.1\\.2\\.zip\\s*$",
+  "positive_cases": [
+    "BSL_v10.1.2.zip",
+    "BSL_410.1.2.zip",
+    "6SL_w10.1.2.zip"
+  ],
+  "negative_cases": [
+    "BSL_v10.1.1.zip",
+    "BSL_v10.1.20.zip",
+    "BSL_v10.1.2.jar",
+    "6SL_w10.1.1.zip",
+    "ASL_w10.1.2.zip",
+    "ComplementaryReimagined_r5.9.3.zip"
+  ],
+  "all_positive_cases_matched": true,
+  "all_negative_cases_rejected": true,
+  "frozen_harness_source": "harness-source/spectral_validation.py",
+  "frozen_harness_source_sha256": "a3730a57a42b01deab3e21ab472c39ba6eabee82ff9d92ea6b8017a4661d7938",
+  "evidence": "The failed predecessor OCR read exact visible BSL_v10.1.2.zip as 6SL_w10.1.2.zip. The alias permits only those observed B/v glyph confusions while retaining exact SL marker, numeric version 10.1.2, and .zip suffix."
+}

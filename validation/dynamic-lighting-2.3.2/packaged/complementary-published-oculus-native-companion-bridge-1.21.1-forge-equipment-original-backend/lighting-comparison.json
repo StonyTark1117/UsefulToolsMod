@@ -1,0 +1,211 @@
+{
+  "target": "1.21.1",
+  "shader": {
+    "name": "ComplementaryReimagined_r5.9.3.zip",
+    "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38"
+  },
+  "settings": [
+    "RP_MODE=3",
+    "TM_EXPOSURE=1.00",
+    "BLOOM_STRENGTH=0.12",
+    "CUSTOM_EMISSION_INTENSITY=100"
+  ],
+  "artifact_hashes": {
+    "/tmp/useful-tools-lighting-reviewed-artifacts/0f3a76096f70571d7a883b4464a820ad948976ab285aa8b4730e5dd433373bd3/usefultoolsmod-2.3.1+mc.1.21.1.forge.jar": "0f3a76096f70571d7a883b4464a820ad948976ab285aa8b4730e5dd433373bd3",
+    "/tmp/useful-tools-lighting-qa-packages/b1ac8f005df70031029d9b01b94150078e4919f0d0f2d672939071e3009c870c/1.21.1-forge-acceptance-only.jar": "dc63274bc2e172da00fcd32e7d2f21def3bc104d1fa3fcf52243709241c75f52",
+    "/tmp/usefultools-shaders-2.3.2/mods/beddium-1.0.11-mc1.21.1.jar": "fd17b856129e50f1c158a22284360b9eb433416bdeb02066be46e7e0c02a1611",
+    "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f"
+  },
+  "roi": [
+    250,
+    355,
+    600,
+    420
+  ],
+  "method": "Mean Rec.709-weighted RGB code values in the matched lower-floor screen region. This compares rendered illumination; it is not physical radiance or a measurement isolating shader emission from companion lighting.",
+  "distances": [
+    {
+      "distance": 3,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-ordinary-distance-3.png",
+          "sha256": "c0bafdb7e05cf62d54f9470ebd54b352fa8cf9977d1506291f7e47aded1e9f98"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-hardened-distance-3.png",
+          "sha256": "27206281536520f69564ada0d83abd9958d27decd7322325e323689e8cb152cb"
+        }
+      },
+      "ordinary": 0.5429408894634776,
+      "hardened": 0.767639251299289,
+      "hardened_to_ordinary_ratio": 1.413854189648257
+    },
+    {
+      "distance": 10,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-ordinary-distance-10.png",
+          "sha256": "b77ea1c16b4920f475c3380c6d00994baf4e02dc79ccc4e6bfdee325e6733ca4"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-hardened-distance-10.png",
+          "sha256": "53b18f5fb1f0f83df9fef2e9476f195d58b364732387ba2d041b6ba507ccb17f"
+        }
+      },
+      "ordinary": 0.13390227385477269,
+      "hardened": 0.32948576648136174,
+      "hardened_to_ordinary_ratio": 2.4606435499274224
+    },
+    {
+      "distance": 15,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-ordinary-distance-15.png",
+          "sha256": "8a8d85e19a84a5a1d31c22850446e1c25b937780fd496c61fb8a0914e6960f47"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-hardened-distance-15.png",
+          "sha256": "8f6d0afc11ee0cef2c1eef8433bc239632d7c5b13f86eea8f87f7ece1210eff0"
+        }
+      },
+      "ordinary": 0.04863107806076277,
+      "hardened": 0.20197014284852402,
+      "hardened_to_ordinary_ratio": 4.153108483348233
+    },
+    {
+      "distance": 20,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-ordinary-distance-20.png",
+          "sha256": "b0744d9cde3076f28856cccee44639c2dc3ddba2c5e2ba6bc34ec346f953b345"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-hardened-distance-20.png",
+          "sha256": "b2d97e060d3981e962eb2f9edd4ae2d55e8aebc8a9821ee8992a22d84f1cd701"
+        }
+      },
+      "ordinary": 0.043850618435681964,
+      "hardened": 0.1338994536694678,
+      "hardened_to_ordinary_ratio": 3.053536265762483
+    },
+    {
+      "distance": 29,
+      "captures": {
+        "ordinary": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-ordinary-distance-29.png",
+          "sha256": "b94feb0c163f912d2d7b6d6ca3592615e1036c84de963acfa3056683e96bedf4"
+        },
+        "hardened": {
+          "path": "validation/dynamic-lighting-2.3.2/packaged/complementary-published-oculus-native-companion-bridge-1.21.1-forge-equipment-original-backend/lighting-hardened-distance-29.png",
+          "sha256": "75693785e281ffd47a53ce3b6f6b9860ddf58217c8826a2a711dd16c7b7a6e64"
+        }
+      },
+      "ordinary": 0.04380242247791424,
+      "hardened": 0.05131811957767723,
+      "hardened_to_ordinary_ratio": 1.171581768189933
+    }
+  ],
+  "all_requested_distances_brighter": true,
+  "shader_toggle_states": [
+    {
+      "time_ms": 1791209325295,
+      "active": false,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209331798,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209338300,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209343802,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209349304,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209354806,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209360308,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209365810,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209371312,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209376813,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209382315,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209387817,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209393319,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209399320,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209404822,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209410324,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209415826,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209421328,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209426831,
+      "active": true,
+      "wraith_floor": 13
+    },
+    {
+      "time_ms": 1791209431832,
+      "active": true,
+      "wraith_floor": 13
+    }
+  ]
+}

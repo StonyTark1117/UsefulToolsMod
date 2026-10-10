@@ -1,0 +1,31 @@
+{
+  "candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/a15ba9ba882a9ac605e2962f97541b901f1f5c3d3fa85cca0a7a7f43604da428/native-chunk-callbacks-loader.jar",
+  "candidate_sha256": "a15ba9ba882a9ac605e2962f97541b901f1f5c3d3fa85cca0a7a7f43604da428",
+  "prior_candidate": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/5c137c17604fb68951c5d7838037a3d25b23185c9480a082b88eaf70be758cfe/native-title-actions-loader.jar",
+  "prior_candidate_sha256": "5c137c17604fb68951c5d7838037a3d25b23185c9480a082b88eaf70be758cfe",
+  "replaced_entries": [
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$RebuildTask.class",
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$ResortTransparencyTask.class"
+  ],
+  "replaced_class_sha256": {
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$RebuildTask.class": "ab09248d01ca26549f5e70c1690589daf5bd7f62ba8b4f283730162ca7479991",
+    "optifineoforge/donors/net/minecraft/client/renderer/chunk/SectionRenderDispatcher$RenderSection$ResortTransparencyTask.class": "dbaccc355c1caabfbbbb606843cb66979b056dd65589131880deb62e995b4d7f"
+  },
+  "checker_source": "/home/braydon/Useful-Tools/tests/spectral-qa/probe/OptifineNativeChunkCallbacks.java",
+  "checker_source_sha256": "7f7cc6f3bcc8a37c45d2e930c49378e0e73abed804a3b9e9ce8285f25c27c82a",
+  "native_input": "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+  "native_sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45",
+  "publisher_input": "/home/braydon/.cache/useful-tools-spectral-recovery/neo1202-payload/optifine-patched.jar",
+  "publisher_sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+  "restored_exact_native_chunk_callbacks": 2,
+  "qualification": "private bytecode candidate only; fresh packaged world/render validation required",
+  "offline_verification": {
+    "strict_java_compile": "passed with --release 17 -Xlint:all -Werror",
+    "asm_basic_verifier": "passed for both donor classes after exact native callback substitution",
+    "zip_integrity": "passed; exactly two changed donor entries",
+    "constant_return_donor_findings_before": 10,
+    "constant_return_donor_findings_after": 8
+  },
+  "superseded_by": "validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-native-mapped-callbacks-candidate.json",
+  "later_mapping_correction": "Raw publisher payload is SRG-named; absence of a Mojmap name in that archive did not establish runtime absence. The corrected candidate verifies officialToSrg aliases and restores all six title actions plus two chunk callbacks and the server halt callback."
+}

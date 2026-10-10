@@ -1,0 +1,41 @@
+{
+  "classification": "harness manifest configuration error, not OptiFine or mod incompatibility",
+  "cause": "The durable bridge path was substituted into the agent log filename while the agent path remained the cache copy. Premain could not create the nested log path; no game log or world capture was produced.",
+  "failed_trials": [
+    {
+      "candidate": "v2-durable",
+      "manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine1211-native-outline-mask-shader-full-current-v2-durable-single.json",
+      "manifest_sha256": "35d8a62af3633851c617a60b515dc3beada3d68e8ea7a89b218974e6d3a6d00d",
+      "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-native-outline-mask-shader-full-current-v2-durable/report.json",
+      "report_sha256": "68e7b78838d707cf474fbb539850b33f5d21e2814fac4079de5c3e534162363e",
+      "status": "failed",
+      "error": "Game JVM exited before world entry; see native logs and owned launcher console",
+      "malformed_agent_argument": "--jvm-arg=-javaagent:/home/braydon/.cache/useful-tools-spectral-recovery/qa/b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee/bridge.jar=/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit//home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee/bridge.jar/native-outline.log"
+    },
+    {
+      "candidate": "v3-working-template",
+      "manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine1211-native-outline-mask-shader-full-current-v3-working-template-single.json",
+      "manifest_sha256": "e1bc69a72106884ab5caf07abc8b2dddc7a10e1e6a1f8e36d11162315f8b0423",
+      "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.21.1-forge-optifine-native-outline-mask-shader-full-current-v3-working-template/report.json",
+      "report_sha256": "21da416d702335e817eb6cd4ee37444ad2981c6ec467da218a27bcf96cd07711",
+      "status": "failed",
+      "error": "Game JVM exited before world entry; see native logs and owned launcher console",
+      "malformed_agent_argument": "--jvm-arg=-javaagent:/home/braydon/.cache/useful-tools-spectral-recovery/qa/b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee/bridge.jar=/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit//home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee/bridge.jar/native-outline.log"
+    }
+  ],
+  "corrected_manifest": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/optifine1211-native-outline-mask-shader-full-current-v4-corrected-agent-single.json",
+  "runtime_qualified": false,
+  "isolated_reproduction": {
+    "command_scope": "Java 21 -javaagent:<exact v2 malformed argument> -version, no GUI client",
+    "exit_code": -6,
+    "exception": "java.io.FileNotFoundException for nested native-outline.log path, followed by JVM native agent startup failure"
+  },
+  "corrected_preflight": {
+    "manifest_sha256": "7eb1ff0fe9bca460fa01261ca202ff621e0b025830c2cce8c64b5b9a56552136",
+    "agent_sha256": "b38f19a958ea3aa166698c0b5b023c74d287c4fcf9e6de1042f4496e2afe80ee",
+    "java_21_premain_exit_code": 0,
+    "agent_log_created": true,
+    "preflight_log_removed_before_packaged_run": true,
+    "runtime_qualified": false
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "source_commit": "eaceddf7084868fba459572de8672c885e8c3cd8",
+  "source_archive_sha256": "cdf61716d1706be75dfc46ee51e07fa51566dce6273fc6de340bf8aacc34868b",
+  "reviewed_patch_sha256": "3589f9c48b4172b78489b73f1d612589693fc4208825d5e9651d549293a9987d",
+  "runtime": {
+    "neoforge": "20.2.93",
+    "neoforge_universal_sha256": "14738ecbf2b5322536c78c0a1de678ba457b3244a891f31efb5bac89eadee172",
+    "fml_loader": "1.0.16",
+    "fml_loader_sha256": "a335ee8d684ad57b028956a5350c85940e6e3dd16dd1884a2914d53fc6acee79"
+  },
+  "families": [
+    {
+      "forge": "net.minecraftforge.fml.loading.LoadingModList",
+      "neoforge": "net.neoforged.fml.loading.LoadingModList",
+      "verified_signatures": ["static get()", "getModFileById(String)"],
+      "locations": [
+        "src/main/java/net/irisshaders/iris/Iris.java",
+        "src/main/java/net/irisshaders/iris/compat/dh/DHCompat.java",
+        "src/main/java/net/irisshaders/iris/compat/dh/mixin/OculusDHCompatMixinPlugin.java",
+        "src/main/java/net/irisshaders/iris/gl/shader/StandardMacros.java",
+        "src/main/java/net/irisshaders/iris/mixin/OculusMixinPlugin.java",
+        "src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/IrisSodiumCompatMixinPlugin.java"
+      ]
+    },
+    {
+      "forge": "net.minecraftforge.fml.loading.FMLLoader",
+      "neoforge": "net.neoforged.fml.loading.FMLLoader",
+      "verified_signatures": ["getDist()", "getLoadingModList()", "isProduction()"],
+      "locations": [
+        "src/main/java/net/irisshaders/iris/compat/indigo/mixin/IrisIndigoCompatMixinPlugin.java",
+        "src/main/java/net/irisshaders/iris/compat/indium/mixin/IrisIndiumCompatMixinPlugin.java",
+        "src/main/java/net/irisshaders/iris/compat/pixelmon/mixin/OculusPixelmonCompatMixinPlugin.java",
+        "src/main/java/net/irisshaders/iris/mixin/MixinQuickPlayDev.java"
+      ]
+    },
+    {
+      "forge": "net.minecraftforge.fml.loading.FMLPaths",
+      "neoforge": "net.neoforged.fml.loading.FMLPaths",
+      "verified_signatures": ["GAMEDIR", "get()"],
+      "locations": [
+        "src/main/java/net/irisshaders/iris/Iris.java",
+        "src/main/java/net/irisshaders/iris/pipeline/programs/ShaderCreator.java",
+        "src/main/java/net/irisshaders/iris/pipeline/transform/ShaderPrinter.java",
+        "src/main/java/net/irisshaders/iris/shaderpack/IdMap.java",
+        "src/main/java/net/irisshaders/iris/shaderpack/properties/ShaderProperties.java"
+      ]
+    },
+    {
+      "forge": "net.minecraftforge.fml.loading.FMLEnvironment",
+      "neoforge": "net.neoforged.fml.loading.FMLEnvironment",
+      "locations": [
+        "src/main/java/net/irisshaders/iris/Iris.java",
+        "src/main/java/net/irisshaders/iris/gui/screen/ShaderPackScreen.java"
+      ]
+    },
+    {
+      "forge": "Forge mod lifecycle, event bus, extension point, mod list and environment namespaces",
+      "neoforge": "Corresponding net.neoforged.fml and net.neoforged.neoforge types; MinecraftForge.EVENT_BUS becomes NeoForge.EVENT_BUS",
+      "verified_signatures": ["NeoForge.EVENT_BUS", "ConfigScreenHandler.getScreenFactoryFor(IModInfo)"],
+      "locations": ["src/main/java/net/irisshaders/iris/Iris.java"]
+    },
+    {
+      "forge": "net.minecraftforge.api.distmarker.Dist and OnlyIn",
+      "neoforge": "net.neoforged.api.distmarker.Dist and OnlyIn",
+      "locations": ["src/main/java/net/irisshaders/iris/gui/OldImageButton.java"]
+    },
+    {
+      "forge": "net.minecraftforge.client.ChunkRenderTypeSet and model.data.ModelData",
+      "neoforge": "net.neoforged.neoforge.client.ChunkRenderTypeSet and client.model.data.ModelData",
+      "verified_signatures": ["ChunkRenderTypeSet.of(RenderType...)", "ChunkRenderTypeSet.asList()", "ModelData.EMPTY", "ModelData.builder()"],
+      "locations": [
+        "src/main/java/net/irisshaders/iris/mixin/MixinChunkRenderDispatcherRebuildTask.java",
+        "src/main/java/net/irisshaders/iris/mixin/MixinItemBlockRenderTypes.java",
+        "src/main/java/net/irisshaders/iris/mixin/fantastic/MixinStationaryItemParticle.java",
+        "src/main/java/net/irisshaders/iris/mixin/fantastic/MixinTerrainParticle.java",
+        "src/main/java/net/irisshaders/iris/mixin/vertices/block_rendering/MixinChunkRebuildTask.java",
+        "src/main/java/net/irisshaders/iris/pathways/HandRenderer.java",
+        "src/main/java/net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.java",
+        "src/main/java/net/irisshaders/iris/shaderpack/materialmap/WorldRenderingSettings.java",
+        "src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/shader_overrides/MixinChunkBuilderMeshingTask.java"
+      ]
+    },
+    {
+      "forge": "ForgeRegistries.BLOCKS holder delegates",
+      "neoforge": "BuiltInRegistries.BLOCK holders addressed by ResourceKey<Registries.BLOCK>",
+      "locations": [
+        "src/main/java/net/irisshaders/iris/mixin/MixinChunkRenderDispatcherRebuildTask.java",
+        "src/main/java/net/irisshaders/iris/mixin/MixinItemBlockRenderTypes.java",
+        "src/main/java/net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.java",
+        "src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/shader_overrides/MixinChunkBuilderMeshingTask.java"
+      ]
+    },
+    {
+      "forge": "net.minecraftforge.client.gui.overlay.ForgeGui",
+      "neoforge": "net.neoforged.neoforge.client.gui.overlay.ExtendedGui",
+      "verified_signatures": ["ExtendedGui(Minecraft)", "render(GuiGraphics,float)", "shouldDrawSurvivalElements()"],
+      "locations": ["src/main/java/net/irisshaders/iris/mixin/gui/MixinForgeGui.java"]
+    },
+    {
+      "forge": "Forge mixin manifest configuration",
+      "neoforge": "Eleven explicit [[mixins]] entries and exact NeoForge [20.2.93] dependency in META-INF/mods.toml",
+      "locations": ["src/main/resources/META-INF/mods.toml", "build.gradle", "gradle.properties"]
+    }
+  ],
+  "source_files_with_forge_couplings": 26,
+  "changed_files_total": 29,
+  "post_port_forge_namespace_files": 0
+}

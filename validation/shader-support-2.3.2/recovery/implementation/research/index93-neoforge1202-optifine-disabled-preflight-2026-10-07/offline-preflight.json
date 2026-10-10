@@ -1,0 +1,105 @@
+{
+  "status": "offline deterministic native compatibility stack ready; fresh canonical-artifact runtime acceptance not run",
+  "launch_authorized": false,
+  "index": 93,
+  "inputs": {
+    "artifact": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/3df68c4c0cc84f8c320447cc8c815202167b68d9ca97f30becfbdfa1e454460a/usefultoolsmod-2.3.1+mc.1.20.2.neoforge.jar",
+      "sha256": "3df68c4c0cc84f8c320447cc8c815202167b68d9ca97f30becfbdfa1e454460a"
+    },
+    "provenance": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/44f8c79bd044759194c2b214f56ff68708c49c7f33724d1196ecfa242fbf8899/provenance.json",
+      "sha256": "44f8c79bd044759194c2b214f56ff68708c49c7f33724d1196ecfa242fbf8899"
+    },
+    "publisher_optifine": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223/preview_OptiFine_1.20.2_HD_U_I7_pre1.jar",
+      "sha256": "6b2293a6eeed777f56620154369b660d2632303660f85a0577ffac1443738223",
+      "publisher_archive_unchanged": true,
+      "role": "publisher source retained for lineage; direct NeoForge loading is not used"
+    },
+    "patched_publisher_payload": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854/optifine-patched.jar",
+      "sha256": "0b9fea83d7d66e0c1cf8d2445a4c6c4db74563389045512f8ed466743820d854",
+      "minecraft_client_sha256": "fa1a19be56a506426308abbc1cad85f299a7fc6dae4335559351ba0246713fda"
+    },
+    "compatibility_loader": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441/native-http-defaults-loader.jar",
+      "sha256": "70d057ac243cf637f25dcdbfc35b40f5867c7726c11cbdd99caf031550458441",
+      "deterministic_rebuilds": 2,
+      "rebuilds_byte_identical": true,
+      "qualification": "private bytecode candidate; runtime acceptance remains required"
+    },
+    "optifine_game_layer": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/4d6abc90a4aaa4159dfeb7882b2adb684251c78f40193281c1e97b062477c1e4/optifine-native-game-layer-classpath.jar",
+      "sha256": "4d6abc90a4aaa4159dfeb7882b2adb684251c78f40193281c1e97b062477c1e4"
+    },
+    "probe": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/qa/08e78016a4a94ba715d6a8357e52c4ea68c9d21276373efa0ba50e86944de67f/runtime-probe.jar",
+      "sha256": "08e78016a4a94ba715d6a8357e52c4ea68c9d21276373efa0ba50e86944de67f"
+    },
+    "fml_config": {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/optifineoforge-publisher/1.20.x/native-early-window-disabled-fml.toml",
+      "sha256": "bc598803b6969d2220036f670df0495de79552c1f905a08fb69b2072635cac8d"
+    },
+    "native_client": {
+      "path": "/home/braydon/.local/share/PrismLauncher/libraries/net/neoforged/neoforge/20.2.93/neoforge-20.2.93-client.jar",
+      "sha256": "f3490c884ea442e5581ef2305f17c2a1bfa469d2a3c70a5b54b4853e84a9af45"
+    },
+    "world": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/world-fixtures/67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef/saves",
+      "canonical_content_sha256": "67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef",
+      "digest_framing": "sorted entries; uint64be path length, path UTF-8, uint64be content length, content",
+      "session_lock_excluded": true,
+      "file_count": 23,
+      "bytes": 17544992
+    }
+  },
+  "api_and_mapping_evidence": {
+    "payload_recipe": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/optifineoforge-publisher/1.20.x/payload-patch-current-command.json",
+    "http_transform_record": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-native-http-default-candidate.json",
+    "native_body_verifier": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-native-bbox-body-check.json",
+    "finding": "The 70d057 compatibility loader is already the newest exact-pinned transform: it restores verified 20.2.93 native bodies while retaining the publisher HTTP load callback. Rebuilding it twice produced the same SHA-256, so no new transform is evidence-backed."
+  },
+  "preserved_failures": [
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-preview-disabled-egl0-precipitation-controls-publisher-native-20293-candidate/report.json",
+      "result": "Game JVM exited before world entry; zero captures"
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-preview-disabled-egl0-precipitation-controls-publisher-native-20293-candidate-runtime-patcher-restored-native-api-aliases-publisher-game-layer-prefix-native-event-api-native-face-data-native-early-window-disabled/report.json",
+      "result": "World entry timeout after 38 captures"
+    },
+    {
+      "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-durable-disabled-v5/report.json",
+      "result": "Native pause-menu shutdown control did not become ready after 50 captures"
+    }
+  ],
+  "closest_success": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-native-durable-disabled-v6/report.json",
+    "status": "captures_complete",
+    "captures": 41,
+    "clean_client_exit": true,
+    "why_not_promotable": "It used artifact 44c8e5e9..., not row 93's exact artifact 3df68c4c..."
+  },
+  "current_harness": {
+    "scripts/validate-packaged-spectral.py": "874aee3988da936d513df2a628d00ce5f2053cbd648f14910de5665ec93d5284",
+    "scripts/spectral_validation.py": "23a943f8c479a149bbb9044d96c1bc39428446a5f99866e0a96801dae2a6d55d",
+    "scripts/spectral-menu-ocr.py": "0d77b27c42dfadb755d8723857866c8ec6c1ea3dce5fa5ee539490ac2f07547e",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78",
+    "scripts/audit-spectral-matrix.py": "4e1a3199f6567e7c17230839353c2f97e04023271a64147abb57187bacd2060a"
+  },
+  "checks": {
+    "all_immutable_hashes_verified": true,
+    "exact_neoforge_pin_20_2_93": true,
+    "full_entities_scenes_states_surfaces": true,
+    "native_commands_damage_and_rain": true,
+    "disabled_has_no_shader_pack_or_toggle": true,
+    "future_output_fresh": true,
+    "world_frozen_and_rehashed": true,
+    "gpu_lock_untouched": true,
+    "client_launched": false,
+    "canonical_manifest_audit_readme_untouched": true
+  },
+  "future_output": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/neoforge1202-optifine-disabled-3df68c-index93-20261007",
+  "remaining_gap": "Fresh packaged-client report for the exact 3df68c4c... artifact, including hash-bound manual visual review and full/scoped audit."
+}

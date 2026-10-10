@@ -1,0 +1,9 @@
+{
+  "native_source_jar": "/home/braydon/.gradle/caches/minecraftforge/forgegradle/mavenizer/caches/forge/net/minecraftforge/forge/26.2-65.1.2/injected-sources.jar",
+  "native_source_jar_sha256": "2362a1796c00bbe4c36a6d3200776f1cf108cdff90e35dcd8a3deba9aa99fe08",
+  "extracted_source": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/262-native-WeatherEffectRenderer.java",
+  "extracted_source_sha256": "dc1c9115dcf037e532b8b2ab75093c67eb6e0fb96af8d314a5f97d632801cb7a",
+  "signature": "public void render(final Vec3 cameraPos, final WeatherRenderState renderState) {",
+  "native_call": "Minecraft.getInstance().gameRenderer.gameRenderState().useShaderTransparency()",
+  "fix": "Target two-argument native render method with an instance redirect, retaining Iris weather depth-buffer policy."
+}

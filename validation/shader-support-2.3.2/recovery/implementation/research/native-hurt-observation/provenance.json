@@ -1,0 +1,52 @@
+{
+  "purpose": "Read-only observation of actual native hurtTime on the client thread before transient capture; never extends or sets damage state.",
+  "probe_sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1",
+  "source_sha256": {
+    "tests/spectral-qa/probe/SpectralHurtObserver.java": "eded1bcaaa6c0943bd9308f2edbfce1a5c9cc9b85d144d864742d49943f6766b",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-command-transport/1.21.1-srg.tsrg": "05a1858bd08e9cd82ad5888699452d0d0875a92542659438fd692ee5f3e3b3d6",
+    "validation/shader-support-2.3.2/recovery/implementation/research/native-command-transport/1.21.1-intermediary.tiny": "abf653bbc2cf9b6424f7f474e72cd78f210871990f47d76a07380393971aa8cc"
+  },
+  "native_fields": [
+    "hurtTime",
+    "f_20916_",
+    "field_6235"
+  ],
+  "native_entity_iteration": [
+    "entitiesForRendering",
+    "m_104735_",
+    "method_18112"
+  ],
+  "packaged_diagnostics": [
+    {
+      "name": "1.20.2-forge-native-command-transport-diagnostic-native-hurt-proof-arguments-fixed",
+      "exit_code": 0,
+      "target": "1.20.2-forge",
+      "manifest_sha256": "ab7f999b69eb2651aa3e8c4cf729845d8fd714248a4274abb14731dca027708d",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/native-hurt-diagnostics/1.20.2-forge-native-command-transport-diagnostic-native-hurt-proof-arguments-fixed/report.json",
+      "status": "captures_complete",
+      "error": null,
+      "captures": 21
+    },
+    {
+      "name": "1.21.1-fabric-native-command-transport-diagnostic-native-hurt-proof-arguments-fixed",
+      "exit_code": 0,
+      "target": "1.21.1-fabric",
+      "manifest_sha256": "ab7f999b69eb2651aa3e8c4cf729845d8fd714248a4274abb14731dca027708d",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/native-hurt-diagnostics/1.21.1-fabric-native-command-transport-diagnostic-native-hurt-proof-arguments-fixed/report.json",
+      "status": "captures_complete",
+      "error": null,
+      "captures": 22
+    },
+    {
+      "name": "26.1.2-forge-native-command-transport-diagnostic-native-hurt-proof-arguments-fixed",
+      "exit_code": 0,
+      "target": "26.1.2-forge",
+      "manifest_sha256": "ab7f999b69eb2651aa3e8c4cf729845d8fd714248a4274abb14731dca027708d",
+      "report": "validation/shader-support-2.3.2/recovery/implementation/native-hurt-diagnostics/26.1.2-forge-native-command-transport-diagnostic-native-hurt-proof-arguments-fixed/report.json",
+      "status": "captures_complete",
+      "error": null,
+      "captures": 22
+    }
+  ],
+  "scope": "Software captures verify transport and timing only; required GPU configurations need their own fresh full-scene capture and manual review."
+}

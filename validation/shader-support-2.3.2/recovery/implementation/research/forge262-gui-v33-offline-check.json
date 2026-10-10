@@ -1,0 +1,82 @@
+{
+  "candidate": "forge262-optifine-gui-v33",
+  "change": "Populate publisher EntityRenderState.entity during pinned native EntityRenderer.extractRenderState, preserving original extraction and rendering state.",
+  "bridge": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/b35023576ea1c407db0583cbdd6ef431c3aa74a73afbd214ce0380ff809caded/bridge.jar",
+  "bridge_sha256": "b35023576ea1c407db0583cbdd6ef431c3aa74a73afbd214ce0380ff809caded",
+  "prior_report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-optifine-native-gui-v32-BSL-indoor/report.json",
+  "commands": [
+    {
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/javac",
+        "--release",
+        "17",
+        "-Xlint:all",
+        "-Werror",
+        "-cp",
+        "/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/f9a1c24644762077e7c144a3b7c004e4968d70ce/asm-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/9f9a96aa17fd1113b218fa2dd6c4dc075192aa2e/asm-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/74f8124353236bac3870dd9964aff7cb5ec9d8c/asm-commons-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/3925366ce827acc4c6bca218f380a3636e1a0bc2/asm-commons-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/cd1b0e38c494f17caee94a9a06f17bfaee1625f2/asm-tree-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/868e297f64cade189fff6600060ae8418b77bb92/asm-tree-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/ce7945892f4c8376b381d9dbc81887a610a849e3/asm-util-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/a18ec55bd1dceeb27f5d02e5ae3f9ac76239926e/asm-util-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/bbc1319731a4edcb18181f41e86bd904faa20043/asm-analysis-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/dc5795b6a72aba9b953aebb3707afff61d34b640/asm-analysis-9.10.1-sources.jar",
+        "-d",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/classes",
+        "tests/spectral-qa/probe/OptifineGuiBridge.java",
+        "tests/spectral-qa/probe/Forge262GuiCheck.java"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-cp",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/classes:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/f9a1c24644762077e7c144a3b7c004e4968d70ce/asm-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/9f9a96aa17fd1113b218fa2dd6c4dc075192aa2e/asm-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/74f8124353236bac3870dd9964aff7cb5ec9d8c/asm-commons-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/3925366ce827acc4c6bca218f380a3636e1a0bc2/asm-commons-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/cd1b0e38c494f17caee94a9a06f17bfaee1625f2/asm-tree-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/868e297f64cade189fff6600060ae8418b77bb92/asm-tree-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/ce7945892f4c8376b381d9dbc81887a610a849e3/asm-util-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/a18ec55bd1dceeb27f5d02e5ae3f9ac76239926e/asm-util-9.10.1-sources.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/bbc1319731a4edcb18181f41e86bd904faa20043/asm-analysis-9.10.1-javadoc.jar:/home/braydon/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/dc5795b6a72aba9b953aebb3707afff61d34b640/asm-analysis-9.10.1-sources.jar",
+        "com.stonytark.usefultoolsmod.spectralqa.Forge262GuiCheck",
+        "/home/braydon/.local/share/PrismLauncher/libraries/net/minecraftforge/forge/26.2-65.1.2/forge-26.2-65.1.2-client.jar",
+        "/home/braydon/.cache/useful-tools-spectral-recovery/optifine-26.2-payload/optifine-patched.jar"
+      ],
+      "exit_code": 0,
+      "stdout": "Verified K2 GUI enter/exit and state accessor on pinned Forge 65; all method stacks valid.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/jar",
+        "uf",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/raw.jar",
+        "-C",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/classes",
+        "com/stonytark/usefultoolsmod/spectralqa/OptifineGuiBridge.class",
+        "-C",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/classes",
+        "com/stonytark/usefultoolsmod/spectralqa/OptifineGuiBridge$1.class",
+        "-C",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/classes",
+        "com/stonytark/usefultoolsmod/spectralqa/OptifineGuiBridge$2.class"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2/bin/java",
+        "-cp",
+        "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/9202c3868fe4d44ccaa0a72fc6994cc0525165dcd7d80f88a4ec804640250d73/bridge.jar",
+        "com.stonytark.usefultoolsmod.spectralqa.RelocateDiagnosticAsm",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/raw.jar",
+        "/tmp/usefultools-shaders-2.3.2/forge262-gui-v33/relocated.jar"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "source_sha256": {
+    "tests/spectral-qa/probe/OptifineGuiBridge.java": "a954b7af0f6bc3d6dddac1f339e050a3d49a42ac2ab81841d771c142bdc915d1",
+    "tests/spectral-qa/probe/Forge262GuiCheck.java": "08a5de4d28da99eee4c7c119b5bb39b3377927ecc74b81abb1da413be9155bcc"
+  },
+  "runtime_qualified": false,
+  "publisher_exact_stack_qualified": false,
+  "runtime_manifest": "validation/shader-support-2.3.2/recovery/implementation/optifine26-gui-26.2-v33-BSL-indoor-admit60-single.json",
+  "runtime_manifest_sha256": "62077488576e2770acf645d8dc00adb12be807e3a3b50e23e04d771dfb58cb4a",
+  "offline_gui_check_passed": true,
+  "archive_relocation_verified": true
+}

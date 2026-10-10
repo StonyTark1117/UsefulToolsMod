@@ -1,0 +1,25 @@
+{
+  "canonical_row": "26.2-forge-active-community0-BSL_v10.1.1-egl0-precipitation-controls",
+  "evidence_audit": {
+    "command": "python3 scripts/audit-spectral-evidence.py <v5-output> <v5-output>/scoped-requirements.json",
+    "complete": true,
+    "gaps": []
+  },
+  "full_matrix_layer": {
+    "command": "python3 scripts/audit-spectral-matrix.py scoped-matrix-manifest.json scoped-matrix-acceptance.json --output scoped-matrix-audit.json",
+    "complete": false,
+    "gaps": [
+      "Oculus community 0.3.0-beta.1 has no terrain/entity gbuffers; pack activation cannot certify the required entity pipeline"
+    ]
+  },
+  "promotable_to_canonical_row": false,
+  "promotability_reason": "The run satisfies the complete canonical capture/review/control evidence shape, but the repository's full matrix acceptance layer independently rejects active Oculus community 0.3.0-beta.1 because it has no terrain/entity gbuffer implementation. The private exact-input source-order bridge only repairs final-pass shader compilation and does not add that entity pipeline.",
+  "bindings": {
+    "report_sha256": "8d4817a23e365418d18ec0988b9bb1d0cd82d5fe4faec4bc7de5b68559639088",
+    "review_sheets_sha256": "c6a82b653d93d01faa243d9a12d4c1ac9126c1b42ebaae0438beb140917c8557",
+    "visual_review_sha256": "ddcc0fe99fc7c52b176744c8e69fbc6d759cb33e9fd468dc31f8d426c07fdea9",
+    "scoped_requirements_sha256": "8b1b47fcb235431a7020a67a9a1f22a975f82081c2fbedb4b5d278a886fdf077",
+    "scoped_matrix_audit_sha256": "827eb42274b457fc33e08d02f5d7da28a562447d1b3442fbd576e93cc33c873c",
+    "runtime_bridge_sha256": "c519d4509ce88d7c498b0ffc870a94ff2e8f6bca8b282196f4a3423c9067d625"
+  }
+}

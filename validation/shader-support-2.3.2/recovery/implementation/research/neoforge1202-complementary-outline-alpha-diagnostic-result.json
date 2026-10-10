@@ -1,0 +1,49 @@
+{
+  "classification": "failed diagnostic pack trial; not an acceptance configuration",
+  "hypothesis": "Removing the glColor.a > 0.99 condition from Complementary glowing vertex depth shift might restore native outlines.",
+  "result": "falsified: Ghost and Wraith original-resolution outline frames still lack white outlines. Vanilla sheep also lacks its white outline with the modified pack active, while the same sheep has a white outline after shaders are disabled. No pack or source change promoted.",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/report.json",
+  "report_sha256": "542e133e18f24a9c802add011c3ac211850e92744e456574f377985465f2fbbf",
+  "pack_manifest": "validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-complementary-outline-alpha-diagnostic-pack.json",
+  "pack_sha256": "c616f1a408dbcdf03eb79f000fb32ac01ce573368d1c0678ee8bfc890b41ad85",
+  "images": {
+    "ghost-outline-interior-before.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/ghost-outline-interior-before.png",
+      "sha256": "5b8226d7b96b116a4964c87a0eb034ce8dfa55b8a926a5cc0ac17324265c5b1f"
+    },
+    "ghost-outline.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/ghost-outline.png",
+      "sha256": "55a651ef7f777238574aa9130e6846e19432d97f880e3453f0dd45bcb47098bd"
+    },
+    "wraith-outline-interior-before.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/wraith-outline-interior-before.png",
+      "sha256": "64b7fec199666ee6b93bc3f5e837fe52ec14c3cddc97b0b128f8089c5e9fe7a2"
+    },
+    "wraith-outline.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/wraith-outline.png",
+      "sha256": "23e6ae6a6f8f76542dc0951b02a03a21aa5ffccc26a799753501e98f9d85b792"
+    },
+    "vanilla-sheep-outline-interior-before.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/vanilla-sheep-outline-interior-before.png",
+      "sha256": "b4103db22fc3b90fa472f6783c94febac42010156eb1be5a6ce0ead70de69ca5"
+    },
+    "vanilla-sheep-outline-active.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/vanilla-sheep-outline-active.png",
+      "sha256": "7458e134090e25549acfa8bb3c8ea85c25189895661a69b7c466ff75309073b9"
+    },
+    "vanilla-sheep-outline-disabled.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/1.20.2-neoforge-optifine-complementary-outline-alpha-diagnostic-current-v1/vanilla-sheep-outline-disabled.png",
+      "sha256": "3a9ad6b4450a2487a3e16b6fb2e81707fe54a365221d1fd2d26b6b75f93726f3"
+    }
+  },
+  "controls": {
+    "commands_total": 62,
+    "commands_accepted": 62,
+    "clean_client_exit": true,
+    "shader_active_logged": true,
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null"
+  },
+  "next_action": "Test the untouched Complementary pack with the same vanilla sheep active/off control; investigate OptiFine native outline framebuffer/composite rather than entity-specific alpha."
+}

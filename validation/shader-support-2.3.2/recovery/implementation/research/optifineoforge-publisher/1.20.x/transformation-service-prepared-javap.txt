@@ -1,0 +1,365 @@
+Compiled from "OptiFineTransformationService.java"
+public class optifine.OptiFineTransformationService implements cpw.mods.modlauncher.api.ITransformationService {
+  private static final org.apache.logging.log4j.Logger LOGGER;
+
+  private static java.net.URL ofZipFileUrl;
+
+  private static java.util.zip.ZipFile ofZipFile;
+
+  private static java.nio.file.Path ofZipFilePath;
+
+  private static optifine.OptiFineTransformer transformer;
+
+  static {};
+    Code:
+       0: invokestatic  #48                 // Method org/apache/logging/log4j/LogManager.getLogger:()Lorg/apache/logging/log4j/Logger;
+       3: putstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       6: return
+
+  public optifine.OptiFineTransformationService();
+    Code:
+       0: aload_0
+       1: invokespecial #53                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.lang.String name();
+    Code:
+       0: ldc           #59                 // String OptiFine
+       2: areturn
+
+  public void initialize(cpw.mods.modlauncher.api.IEnvironment);
+    Code:
+       0: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       3: ldc           #63                 // String OptiFineTransformationService.initialize
+       5: invokeinterface #69,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      10: return
+
+  public java.util.List<cpw.mods.modlauncher.api.ITransformationService$Resource> beginScanning(cpw.mods.modlauncher.api.IEnvironment);
+    Code:
+       0: invokestatic  #80                 // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       3: areturn
+
+  public java.util.List<cpw.mods.modlauncher.api.ITransformationService$Resource> completeScan(cpw.mods.modlauncher.api.IModuleLayerManager);
+    Code:
+       0: new           #85                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #86                 // Method java/util/ArrayList."<init>":()V
+       7: astore_2
+       8: new           #85                 // class java/util/ArrayList
+      11: dup
+      12: invokespecial #86                 // Method java/util/ArrayList."<init>":()V
+      15: astore_3
+      16: aload_3
+      17: new           #88                 // class optifine/OptiFineJar
+      20: dup
+      21: iconst_1
+      22: anewarray     #90                 // class java/nio/file/Path
+      25: dup
+      26: iconst_0
+      27: getstatic     #92                 // Field ofZipFilePath:Ljava/nio/file/Path;
+      30: aastore
+      31: invokespecial #95                 // Method optifine/OptiFineJar."<init>":([Ljava/nio/file/Path;)V
+      34: invokeinterface #99,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      39: pop
+      40: aload_2
+      41: new           #14                 // class cpw/mods/modlauncher/api/ITransformationService$Resource
+      44: dup
+      45: getstatic     #103                // Field cpw/mods/modlauncher/api/IModuleLayerManager$Layer.GAME:Lcpw/mods/modlauncher/api/IModuleLayerManager$Layer;
+      48: aload_3
+      49: invokespecial #106                // Method cpw/mods/modlauncher/api/ITransformationService$Resource."<init>":(Lcpw/mods/modlauncher/api/IModuleLayerManager$Layer;Ljava/util/List;)V
+      52: invokeinterface #99,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      57: pop
+      58: aload_2
+      59: areturn
+
+  public void onLoad(cpw.mods.modlauncher.api.IEnvironment, java.util.Set<java.lang.String>) throws cpw.mods.modlauncher.api.IncompatibleEnvironmentException;
+    Code:
+       0: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       3: ldc           #122                // String OptiFineTransformationService.onLoad
+       5: invokeinterface #69,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      10: ldc           #124                // class optifine/OptiFineTransformer
+      12: invokevirtual #130                // Method java/lang/Class.getProtectionDomain:()Ljava/security/ProtectionDomain;
+      15: invokevirtual #136                // Method java/security/ProtectionDomain.getCodeSource:()Ljava/security/CodeSource;
+      18: invokevirtual #142                // Method java/security/CodeSource.getLocation:()Ljava/net/URL;
+      21: putstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+      24: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+      27: new           #146                // class java/lang/StringBuilder
+      30: dup
+      31: ldc           #148                // String OptiFine ZIP file URL:
+      33: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      36: getstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+      39: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      42: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      45: invokeinterface #69,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      50: getstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+      53: invokevirtual #163                // Method java/net/URL.toURI:()Ljava/net/URI;
+      56: astore_3
+      57: aload_3
+      58: invokestatic  #167                // Method toFile:(Ljava/net/URI;)Ljava/io/File;
+      61: astore        4
+      63: new           #169                // class java/util/zip/ZipFile
+      66: dup
+      67: aload         4
+      69: invokespecial #172                // Method java/util/zip/ZipFile."<init>":(Ljava/io/File;)V
+      72: putstatic     #174                // Field ofZipFile:Ljava/util/zip/ZipFile;
+      75: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+      78: new           #146                // class java/lang/StringBuilder
+      81: dup
+      82: ldc           #176                // String OptiFine ZIP file:
+      84: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      87: aload         4
+      89: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      92: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      95: invokeinterface #69,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+     100: aload         4
+     102: invokevirtual #182                // Method java/io/File.toPath:()Ljava/nio/file/Path;
+     105: putstatic     #92                 // Field ofZipFilePath:Ljava/nio/file/Path;
+     108: new           #124                // class optifine/OptiFineTransformer
+     111: dup
+     112: getstatic     #174                // Field ofZipFile:Ljava/util/zip/ZipFile;
+     115: aload_1
+     116: invokespecial #185                // Method optifine/OptiFineTransformer."<init>":(Ljava/util/zip/ZipFile;Lcpw/mods/modlauncher/api/IEnvironment;)V
+     119: putstatic     #187                // Field transformer:Loptifine/OptiFineTransformer;
+     122: getstatic     #187                // Field transformer:Loptifine/OptiFineTransformer;
+     125: invokestatic  #193                // Method optifine/OptiFineResourceLocator.setResourceLocator:(Loptifine/IOptiFineResourceLocator;)V
+     128: goto          185
+     131: astore_3
+     132: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+     135: new           #146                // class java/lang/StringBuilder
+     138: dup
+     139: ldc           #195                // String Error loading OptiFine ZIP file:
+     141: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+     144: getstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+     147: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     150: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     153: aload_3
+     154: invokeinterface #199,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     159: new           #118                // class cpw/mods/modlauncher/api/IncompatibleEnvironmentException
+     162: dup
+     163: new           #146                // class java/lang/StringBuilder
+     166: dup
+     167: ldc           #195                // String Error loading OptiFine ZIP file:
+     169: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+     172: getstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+     175: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     178: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     181: invokespecial #200                // Method cpw/mods/modlauncher/api/IncompatibleEnvironmentException."<init>":(Ljava/lang/String;)V
+     184: athrow
+     185: return
+    Exception table:
+       from    to  target type
+          50   128   131   Class java/lang/Exception
+
+  public static java.io.File toFile(java.net.URI);
+    Code:
+       0: ldc           #212                // String union
+       2: aload_0
+       3: invokevirtual #217                // Method java/net/URI.getScheme:()Ljava/lang/String;
+       6: invokevirtual #222                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       9: ifne          21
+      12: new           #178                // class java/io/File
+      15: dup
+      16: aload_0
+      17: invokespecial #225                // Method java/io/File."<init>":(Ljava/net/URI;)V
+      20: areturn
+      21: aload_0
+      22: invokevirtual #228                // Method java/net/URI.getPath:()Ljava/lang/String;
+      25: astore_1
+      26: aload_1
+      27: ldc           #230                // String #
+      29: invokevirtual #234                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      32: ifeq          69
+      35: aload_1
+      36: iconst_0
+      37: aload_1
+      38: ldc           #230                // String #
+      40: invokevirtual #238                // Method java/lang/String.lastIndexOf:(Ljava/lang/String;)I
+      43: invokevirtual #242                // Method java/lang/String.substring:(II)Ljava/lang/String;
+      46: astore_1
+      47: aload_1
+      48: ldc_w         #404                // String !
+      51: invokevirtual #407                // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+      54: istore        4
+      56: iload         4
+      58: iflt          69
+      61: aload_1
+      62: iconst_0
+      63: iload         4
+      65: invokevirtual #242                // Method java/lang/String.substring:(II)Ljava/lang/String;
+      68: astore_1
+      69: new           #178                // class java/io/File
+      72: dup
+      73: aload_1
+      74: invokespecial #243                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      77: astore_2
+      78: aload_2
+      79: invokevirtual #244                // Method java/io/File.toURI:()Ljava/net/URI;
+      82: invokevirtual #247                // Method java/net/URI.toURL:()Ljava/net/URL;
+      85: putstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+      88: new           #249                // class java/util/HashMap
+      91: dup
+      92: invokespecial #250                // Method java/util/HashMap."<init>":()V
+      95: astore_3
+      96: aload_3
+      97: ldc           #252                // String create
+      99: ldc           #254                // String true
+     101: invokeinterface #258,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     106: pop
+     107: new           #146                // class java/lang/StringBuilder
+     110: dup
+     111: ldc_w         #260                // String jar:
+     114: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+     117: getstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+     120: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     123: ldc_w         #262                // String !/
+     126: invokevirtual #265                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     129: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     132: invokestatic  #268                // Method java/net/URI.create:(Ljava/lang/String;)Ljava/net/URI;
+     135: aload_3
+     136: invokestatic  #274                // Method java/nio/file/FileSystems.newFileSystem:(Ljava/net/URI;Ljava/util/Map;)Ljava/nio/file/FileSystem;
+     139: pop
+     140: aload_2
+     141: areturn
+     142: astore_1
+     143: aload_1
+     144: invokevirtual #277                // Method java/lang/Exception.printStackTrace:()V
+     147: aconst_null
+     148: areturn
+    Exception table:
+       from    to  target type
+          21   141   142   Class java/lang/Exception
+
+  public java.util.Map$Entry<java.util.Set<java.lang.String>, java.util.function.Supplier<java.util.function.Function<java.lang.String, java.util.Optional<java.net.URL>>>> additionalResourcesLocator();
+    Code:
+       0: aload_0
+       1: invokespecial #287                // InterfaceMethod cpw/mods/modlauncher/api/ITransformationService.additionalResourcesLocator:()Ljava/util/Map$Entry;
+       4: areturn
+
+  public java.util.Map$Entry<java.util.Set<java.lang.String>, java.util.function.Supplier<java.util.function.Function<java.lang.String, java.util.Optional<java.net.URL>>>> additionalClassesLocator();
+    Code:
+       0: new           #290                // class java/util/HashSet
+       3: dup
+       4: invokespecial #291                // Method java/util/HashSet."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: ldc_w         #293                // String net.optifine.
+      12: invokeinterface #296,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      17: pop
+      18: aload_1
+      19: ldc_w         #298                // String optifine.
+      22: invokeinterface #296,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: invokedynamic #317,  0            // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      33: astore_2
+      34: new           #22                 // class java/util/AbstractMap$SimpleEntry
+      37: dup
+      38: aload_1
+      39: aload_2
+      40: invokespecial #320                // Method java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+      43: astore_3
+      44: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+      47: new           #146                // class java/lang/StringBuilder
+      50: dup
+      51: ldc_w         #322                // String additionalClassesLocator:
+      54: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      57: aload_1
+      58: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      61: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      64: invokeinterface #69,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      69: aload_3
+      70: areturn
+
+  public static java.util.Optional<java.net.URL> getResourceUrl(java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc_w         #336                // String .class
+       4: invokevirtual #340                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+       7: ifeq          38
+      10: aload_0
+      11: ldc_w         #342                // String optifine/
+      14: invokevirtual #345                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      17: ifne          38
+      20: new           #146                // class java/lang/StringBuilder
+      23: dup
+      24: ldc_w         #347                // String srg/
+      27: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      30: aload_0
+      31: invokevirtual #265                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      37: astore_0
+      38: getstatic     #187                // Field transformer:Loptifine/OptiFineTransformer;
+      41: ifnonnull     48
+      44: invokestatic  #353                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      47: areturn
+      48: getstatic     #174                // Field ofZipFile:Ljava/util/zip/ZipFile;
+      51: aload_0
+      52: invokevirtual #357                // Method java/util/zip/ZipFile.getEntry:(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+      55: astore_1
+      56: aload_1
+      57: ifnonnull     64
+      60: invokestatic  #353                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      63: areturn
+      64: getstatic     #144                // Field ofZipFileUrl:Ljava/net/URL;
+      67: invokevirtual #362                // Method java/net/URL.toExternalForm:()Ljava/lang/String;
+      70: astore_2
+      71: new           #159                // class java/net/URL
+      74: dup
+      75: new           #146                // class java/lang/StringBuilder
+      78: dup
+      79: ldc_w         #260                // String jar:
+      82: invokespecial #150                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      85: aload_2
+      86: invokevirtual #265                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      89: ldc_w         #262                // String !/
+      92: invokevirtual #265                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      95: aload_0
+      96: invokevirtual #265                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      99: invokevirtual #157                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     102: invokespecial #363                // Method java/net/URL."<init>":(Ljava/lang/String;)V
+     105: astore_3
+     106: aload_3
+     107: invokestatic  #366                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     110: areturn
+     111: astore_2
+     112: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+     115: aload_2
+     116: invokeinterface #369,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/Object;)V
+     121: invokestatic  #353                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     124: areturn
+    Exception table:
+       from    to  target type
+          64   110   111   Class java/io/IOException
+
+  public java.util.List<cpw.mods.modlauncher.api.ITransformer> transformers();
+    Code:
+       0: getstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       3: ldc_w         #378                // String OptiFineTransformationService.transformers
+       6: invokeinterface #69,  2           // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      11: new           #85                 // class java/util/ArrayList
+      14: dup
+      15: invokespecial #86                 // Method java/util/ArrayList."<init>":()V
+      18: astore_1
+      19: getstatic     #187                // Field transformer:Loptifine/OptiFineTransformer;
+      22: ifnull        35
+      25: aload_1
+      26: getstatic     #187                // Field transformer:Loptifine/OptiFineTransformer;
+      29: invokeinterface #99,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      34: pop
+      35: aload_1
+      36: areturn
+
+  public static optifine.OptiFineTransformer getTransformer();
+    Code:
+       0: getstatic     #187                // Field transformer:Loptifine/OptiFineTransformer;
+       3: areturn
+
+  public static java.util.zip.ZipFile getOfZipFile();
+    Code:
+       0: getstatic     #174                // Field ofZipFile:Ljava/util/zip/ZipFile;
+       3: areturn
+
+  private static java.util.function.Function lambda$0();
+    Code:
+       0: invokedynamic #392,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       5: areturn
+}

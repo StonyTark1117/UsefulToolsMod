@@ -1,0 +1,25 @@
+{
+  "source": "/tmp/usefultools-shaders-2.3.2/mods/oculus-mc1.21.1-1.8.8.jar",
+  "source_sha256": "f8de8e621ac74a108cc7d26d7815611bdb848b79130994f576299a191c38c18f",
+  "artifact": "/tmp/useful-tools-lighting-native-port-repairs/oculus-1.21.1-1.8.8-private-unified-pbr-tracker.jar",
+  "artifact_sha256": "c7f9ff7f8df48c51fab2810fd8b1455d8a1568b28ee96a94992502a36dcbd700",
+  "changed_classes": [
+    {
+      "path": "net/irisshaders/iris/mixin/MixinRenderSystem.class",
+      "constant_pool_references": 2
+    },
+    {
+      "path": "net/irisshaders/iris/mixin/texture/MixinAbstractTexture.class",
+      "constant_pool_references": 2
+    },
+    {
+      "path": "net/irisshaders/iris/mixin/texture/MixinGlStateManager.class",
+      "constant_pool_references": 2
+    }
+  ],
+  "method": "Replace only constant-pool tracker owner/descriptors outside the unused old tracker class. No methods, world lighting, shader code, culling, metadata, or resources changed.",
+  "source_locations": [
+    "https://github.com/peaksuperior885/ForgeOculus/blob/Forge-1.21.1/src/main/java/net/irisshaders/iris/mixin/texture/MixinAbstractTexture.java",
+    "https://github.com/peaksuperior885/ForgeOculus/blob/Forge-1.21.1/src/main/java/net/irisshaders/iris/pbr/texture/PBRTextureManager.java"
+  ]
+}

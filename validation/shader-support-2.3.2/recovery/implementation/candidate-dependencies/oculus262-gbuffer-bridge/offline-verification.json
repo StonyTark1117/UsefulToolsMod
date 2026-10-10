@@ -1,0 +1,39 @@
+{
+  "status": "offline_verified_runtime_not_run",
+  "scope": "26.2 Forge 65.1.2, canonical publisher Oculus 0.3.0-beta.1 and canonical BSL 10.1.1",
+  "unchanged_inputs": {
+    "publisher_oculus_sha256": "0592d342653804260aa4c8047102ff3fc9eef2e0a8fb3bec26820f95c49fb227",
+    "bsl_10_1_1_sha256": "131ca6b56b100e60577ffdb0dd51bfab2ee6e334564eeee324e5422026891668"
+  },
+  "bridge": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/oculus262-gbuffer-bridge/bridge-v1.jar",
+    "sha256": "f0eb770c263b879e44960ae79c2fd0315c0a181381da20089b0f7428b02b7743",
+    "deterministic_rebuild_sha256": "f0eb770c263b879e44960ae79c2fd0315c0a181381da20089b0f7428b02b7743",
+    "build_script": "build.sh",
+    "forge_compile_pin": "65.1.2",
+    "java": "25"
+  },
+  "exact_transformations": [
+    {"class":"dev/oculusforge/render/program/LegacyFinalShaderAdapter","before":"a38310c597c0b03d7e2fec3737ed3f5ceb6db520e388ff11502819ace6fc306d","after":"a53f461cee4134d4d5147d830d17d6259e2ccb6eff1cef326603a9249b81ddba"},
+    {"class":"dev/oculusforge/render/program/PackProgramCompiler","before":"c72fbbf4e6f0d320c14600f36241cd9716e57a5876890812ccfee49fae99ac3a","after":"e2d50346be8421804d60965881d0861018db0c7b3db0522c48b98a4d26f64f09"},
+    {"class":"dev/oculusforge/render/program/PreparedPackPipeline","before":"c8e6ca7f3c7ee1c2a569c2421445d51885c65cb88a35e00017d05e96f7fd829b","after":"f25ab1fb5959d739c7cde745cab0ad3b1dc5bdcf30dcb11ce6cf3a53fec22cc6"},
+    {"class":"dev/oculusforge/render/program/PackShaderPipeline","before":"8d27d0de070039e3ee3f1ba76a057a3d14f76e690a83d6747ec0f93384ef9fa8","after":"45875cdd0a5b91bfa726d0088ab0b712d8c6cb59c289fb8be754a0cf285af5fa"},
+    {"class":"com/mojang/blaze3d/opengl/GlRenderPass","before":"7ad9eed06cc24d3a5c8db45a57d9bb6691cf354b07774036316046cb3acc10fa","after":"e2de6aa0f24780fcc8d73c0784d0623773ad5d29dfd5b5c8dd042d2e24cc6ed6"}
+  ],
+  "pipeline_design": {
+    "preparation": "Requires and preprocesses both world0/gbuffers_terrain vertex+fragment and world0/gbuffers_entities vertex+fragment; every pack and adapted source receives a full SHA-256.",
+    "compilation": "Clears the device cache transactionally, precompiles BSL-bound replacements under Minecraft's real terrain/entity RenderPipeline identities, then compiles the fullscreen chain without invalidating either family.",
+    "render_use": "The exact GlRenderPass backend records a bind only after the real pipeline is acquired and records a nonempty draw only after the OpenGL encoder call returns, carrying the same program SHA as compilation.",
+    "deactivation": "Clears activation properties and the GPU pipeline cache before vanilla lazy recompilation.",
+    "failure_policy": "Missing source pairs, changed native shader anchors, invalid OpenGL compilation, input class hash mismatch, missing render-pass transform sentinel, and proof-log write failure all fail closed."
+  },
+  "offline_checks": {
+    "source_tests": "24 tests passed under exact Forge 65.1.2/Java 25, including first-line #version ordering and exact render-bridge sentinel rejection",
+    "repository_tests": "58 focused tests passed, including positive and forged/stale/missing/reordered gbuffer-proof rejection",
+    "bsl_preparation": "BUILD SUCCESSFUL; exact BSL 10.1.1 world0 source pairs prepared",
+    "class_loading": "A Java 25 offline class-load check transformed the exact canonical Minecraft 26.2 GlRenderPass input and observed the exact donor sentinel without initializing a client",
+    "glrenderpass_transform_log": "offline-glrenderpass-transform.log",
+    "glrenderpass_transform_log_sha256": "cf0a3205a10877d61d6f9419084967440c72f7d510615e1fea8f461c32f671b1"
+  },
+  "runtime_acceptance": "Not claimed. A fresh isolated client must produce exact prepared, compiled, bound, and rendered events for both terrain and entity before the strengthened matrix auditor can clear the row."
+}

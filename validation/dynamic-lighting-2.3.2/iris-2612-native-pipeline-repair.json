@@ -1,0 +1,11 @@
+{
+  "artifact": "/tmp/useful-tools-lighting-native-port-repairs/4d9213c950d4d5ca3af12f703fdb05a883a47a205bd13e6a0b159692931ff607/iris-forge-2612-qa2-native-pipeline.jar",
+  "sha256": "4d9213c950d4d5ca3af12f703fdb05a883a47a205bd13e6a0b159692931ff607",
+  "original_artifact": "/tmp/useful-tools-lighting-native-port-repairs/427854d5a714194d661ae4b083d38acdd56bbdc703d2fe251426da4ed21ffea2/iris-forge-2612-qa2-runtime-at.jar",
+  "original_sha256": "427854d5a714194d661ae4b083d38acdd56bbdc703d2fe251426da4ed21ffea2",
+  "change": "Omit only the two NeoForge-specific pipeline-clone integration Mixins. Exact Forge RenderPipeline has no toBuilder; only those two Mixins use PipelineBuilderStorage. Common native RenderPipeline/Iris pipeline hooks remain present.",
+  "native_source": "/home/braydon/Useful-Tools/26.1.2/forge/build/minecraftforge/forgegradle/mavenizer/net/minecraftforge/forge/26.1.2-64.0.8/forge-26.1.2-64.0.8-ated.jar",
+  "status": "Runtime failed at subsequent native LevelRenderer block-entity frustum invoker; pipeline clone issue cleared",
+  "native_source_sha256": "d59fa07793307dc7294377e87e98594b3f8567d95150ce5990121c03abf77247",
+  "signature_evidence": "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/iris-2612-native-api-signatures.txt"
+}

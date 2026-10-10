@@ -1,0 +1,41 @@
+{
+  "target": "1.21.1-fabric",
+  "invocation": [
+    "scripts/validate-packaged-spectral.py",
+    "--template",
+    "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1201-fabric",
+    "--artifact",
+    "/tmp/useful-tools-lighting-reviewed-artifacts/a9a37982f0fd19787e478eb816d8245cc5312d1cd641477144a342e986b2797a/usefultoolsmod-2.3.1+mc.1.21.1.fabric.jar",
+    "--artifact-provenance",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/profiles/1.21.1-fabric-artifact-a9a37982f0fd19787e478eb816d8245cc5312d1cd641477144a342e986b2797a.json",
+    "--minecraft-version",
+    "1.21.1",
+    "--java-path",
+    "/usr/lib/jvm/java-21-openjdk/bin/java",
+    "--loader-uid",
+    "net.fabricmc.fabric-loader",
+    "--loader-version",
+    "0.18.4",
+    "--world-source",
+    "/tmp/spectral-prism-qcq1k1xm/instances/spectral/minecraft/saves",
+    "--mode",
+    "baseline",
+    "--lighting-qa",
+    "--jvm-arg=-DusefulToolsLightingQa=true",
+    "--output",
+    "/home/braydon/Useful-Tools/validation/dynamic-lighting-2.3.2/multiplayer/1.21.1-fabric",
+    "--lighting-direct-client",
+    "--client-mod",
+    "/tmp/useful-tools-lighting-qa-packages/1.21.1-fabric-acceptance-only.jar",
+    "--client-mod",
+    "/tmp/usefultools-shaders-2.3.2/mods/fabric-api-0.116.9+1.21.1.jar"
+  ],
+  "components": {
+    "components": [
+      {
+        "uid": "net.minecraft",
+        "version": "1.21.1"
+      }
+    ]
+  }
+}

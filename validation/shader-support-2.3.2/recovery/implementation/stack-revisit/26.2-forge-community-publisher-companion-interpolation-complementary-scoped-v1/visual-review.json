@@ -1,0 +1,24 @@
+{
+  "scope": "Scoped indoor activation only on pinned Forge 65.1.2, original community-port 0.3.0-beta.1, rebuilt main mod a7c6ee9e and optional companion acb3d11a, original Complementary 5.7.1.",
+  "report": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-scoped-v1/report.json",
+  "report_sha256": "fbefdeb395c04c0d9508b545c818cd680a5ebc27f1c0973a2403d82581b53b24",
+  "client_log_sha256": "fb8081c028b5fd72349dae2ff4e43f2321848dcd759a47fc383072714eef6078",
+  "images": {
+    "ghost-indoor.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-scoped-v1/ghost-indoor.png",
+      "sha256": "bb68ad5beee0dd2edfdd00f2df1d2529dbf920f55d2d2a913f507d9ab310f1ad"
+    },
+    "wraith-indoor.png": {
+      "path": "validation/shader-support-2.3.2/recovery/implementation/stack-revisit/26.2-forge-community-publisher-companion-interpolation-complementary-scoped-v1/wraith-indoor.png",
+      "sha256": "c3bb3cd373b1487fe9329558c9c8018fe561880eb455ea71a28d93b36edf928b"
+    }
+  },
+  "result": "Scoped pass: one final-stage interpolation interface adjusted; pack activated; both Ghost and Wraith visible indoors, Wraith dark with readable face and separated arms; all 26 commands accepted and game exited cleanly.",
+  "limits": "Only one Forge frame-graph full-screen stage is reported. This does not establish terrain/entity gbuffer coverage, all six scenes, states, materials, toggles, baseline or installed-disabled mode.",
+  "isolation": {
+    "display": ":91",
+    "framebuffer": "1280x720x24",
+    "audio_backend": "ALSOFT_DRIVERS=null",
+    "wayland_unset": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "classification": "diagnostic modified pack; not an acceptance stack",
+  "original": "/home/braydon/.cache/useful-tools-spectral-recovery/packs/fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38/ComplementaryReimagined_r5.9.3.zip",
+  "original_sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38",
+  "candidate": "validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/c616f1a408dbcdf03eb79f000fb32ac01ce573368d1c0678ee8bfc890b41ad85/ComplementaryReimagined_r5.9.3.zip",
+  "candidate_sha256": "c616f1a408dbcdf03eb79f000fb32ac01ce573368d1c0678ee8bfc890b41ad85",
+  "changed_entry": "shaders/program/gbuffers_entities.glsl",
+  "old_line": "if (glColor.a > 0.99) gl_Position.z *= 0.01;",
+  "new_line": "gl_Position.z *= 0.01;",
+  "unchanged_entry_count": 467,
+  "hypothesis": "Conditional depth shift in Complementary glowing vertex shader may suppress Ghost/Wraith native outlines when vertex alpha is not >0.99."
+}

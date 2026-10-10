@@ -1,0 +1,106 @@
+{
+  "status": "offline publisher-derived compatibility implementation ready; runtime acceptance not run",
+  "launch_authorized": false,
+  "index": 87,
+  "inputs": {
+    "artifact": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/3df68c4c0cc84f8c320447cc8c815202167b68d9ca97f30becfbdfa1e454460a/usefultoolsmod-2.3.1+mc.1.20.2.neoforge.jar",
+      "sha256": "3df68c4c0cc84f8c320447cc8c815202167b68d9ca97f30becfbdfa1e454460a"
+    },
+    "provenance": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/44f8c79bd044759194c2b214f56ff68708c49c7f33724d1196ecfa242fbf8899/provenance.json",
+      "sha256": "44f8c79bd044759194c2b214f56ff68708c49c7f33724d1196ecfa242fbf8899"
+    },
+    "publisher_oculus": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/e566bf7783cd66b90fdb25f87f611b7eacb1f62e0b2a1fd122d07a294ce08327/oculus-mc1.20.2-1.8.0.jar",
+      "sha256": "e566bf7783cd66b90fdb25f87f611b7eacb1f62e0b2a1fd122d07a294ce08327",
+      "publisher": "Zenkai",
+      "publisher_loader": "forge",
+      "publisher_file_id": 8644015,
+      "publisher_archive_unchanged": true
+    },
+    "publisher_embeddium": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947/embeddium-neoforge-0.2.10+mc1.20.2.jar",
+      "sha256": "bdffb201a9452c05469ddcabd8bf24f87bba4529f65168aee2428d74e20d9947",
+      "publisher_loader": "neoforge",
+      "modrinth_version_id": "J5gD4WO0",
+      "publisher_archive_unchanged": true
+    },
+    "probe": {
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/matrix-inputs/11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1/runtime-probe.jar",
+      "sha256": "11c3e02f4c501aab04e276c3910bf187a51583c297fa0aaf9be61df8efbb38b1"
+    },
+    "world": {
+      "source": "/home/braydon/.local/share/PrismLauncher/instances/codex-shader-1202-quilt/minecraft/saves",
+      "path": "/home/braydon/.cache/useful-tools-spectral-recovery/world-fixtures/67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef/saves",
+      "canonical_content_sha256": "67bcb2defaa596b55e921f3d2c095100ce4dfd0f49a930215833e1149320ffef",
+      "digest_framing": "sorted entries; uint64be path length, path UTF-8, uint64be content length, content",
+      "session_lock_excluded": true,
+      "file_count": 23
+    }
+  },
+  "runtime": {
+    "minecraft": "1.20.2",
+    "loader_uid": "net.neoforged",
+    "loader_version": "20.2.93",
+    "java": "/usr/lib/jvm/java-17-openjdk/bin/java",
+    "java_version_observed": "17.0.20.1",
+    "display": "isolated Xvfb 1280x720x24 supplied by harness",
+    "audio": "ALSOFT_DRIVERS=null supplied by harness",
+    "wayland": "unset by harness",
+    "egl_device": "egl0"
+  },
+  "preserved_failure": {
+    "report": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/runs/1.20.2-neoforge-zenkai-disabled/report.json",
+    "exceptions": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/runs/1.20.2-neoforge-zenkai-disabled/launcher-native-exceptions.txt",
+    "failure_layer": "dependency linkage",
+    "terminal_error": "java.lang.NoClassDefFoundError: net/minecraftforge/fml/loading/LoadingModList",
+    "origin": "net.irisshaders.iris.compat.sodium.mixin.IrisSodiumCompatMixinPlugin.onLoad(IrisSodiumCompatMixinPlugin.java:23)",
+    "captures": 0,
+    "promotable": false
+  },
+  "api_research": {
+    "record": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/research/neoforge1202-oculus-native-rebuild-offline-check-2026-10-07.json",
+    "source_url": "https://codeload.github.com/LuanDCS/Oculus-1.20.2/tar.gz/eaceddf7084868fba459572de8672c885e8c3cd8",
+    "source_commit": "eaceddf7084868fba459572de8672c885e8c3cd8",
+    "source_archive_sha256": "cdf61716d1706be75dfc46ee51e07fa51566dce6273fc6de340bf8aacc34868b",
+    "upstream_source_files_with_forge_references": 26,
+    "upstream_loading_mod_list_files": 6,
+    "finding": "The first absent Forge class is not an isolated ABI gap. All 26 Forge-coupled sources are now covered by the reviewed version-native source port recorded in publisher-port-map.json; no single-class shim is used."
+  },
+  "private_candidate": {
+    "path": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/candidate-dependencies/a402decb6cdb3e5dec0b2cdd164e4412b327bd86bb83b0aac1f611d03f46a42e/oculus-mc1.20.2-1.8.0-neoforge-qa2.jar",
+    "sha256": "a402decb6cdb3e5dec0b2cdd164e4412b327bd86bb83b0aac1f611d03f46a42e",
+    "metadata_version": "1.8.0-neoforge-qa2",
+    "neoforge_range": "[20.2.93]",
+    "class_or_resource_files_with_forge_references": 0,
+    "class_or_resource_files_with_neoforge_references": 26,
+    "loading_mod_list_references": 9,
+    "disposition": "Version-native deterministic compiled input used by the fail-closed publisher-derived compatibility packager."
+  },
+  "current_harness": {
+    "scripts/validate-packaged-spectral.py": "874aee3988da936d513df2a628d00ce5f2053cbd648f14910de5665ec93d5284",
+    "scripts/spectral_validation.py": "23a943f8c479a149bbb9044d96c1bc39428446a5f99866e0a96801dae2a6d55d",
+    "scripts/spectral-menu-ocr.py": "0d77b27c42dfadb755d8723857866c8ec6c1ea3dce5fa5ee539490ac2f07547e",
+    "scripts/lighting_shader_diagnostics.py": "582c22c5658014d3e1e04af139af335c53869dc8ef3eb9fb85642ecdebf89a78",
+    "scripts/audit-spectral-matrix.py": "04143aafc710678fb6810d8217581f7070fef573a2a7162d113ff072e329bf39",
+    "scripts/build-spectral-oculus1202-neoforge.py": "ea5cbf917818d872ea49e219f62b203297eb2a01056b1753aa379c6ec27322cf"
+  },
+  "checks": {
+    "all_immutable_hashes_verified": true,
+    "exact_neoforge_pin_20_2_93": true,
+    "java_17_verified": true,
+    "full_entities_scenes_states_surfaces": true,
+    "native_commands_damage_and_rain": true,
+    "disabled_has_no_shader_pack_or_toggle": true,
+    "future_output_fresh": true,
+    "world_frozen_and_rehashed": true,
+    "gpu_lock_untouched": true,
+    "client_launched": false,
+    "canonical_manifest_audit_readme_untouched": true,
+    "publisher_derived_compatibility_row_launch_ready": true,
+    "unchanged_publisher_binary_launch_ready": false
+  },
+  "future_output": "/home/braydon/Useful-Tools/validation/shader-support-2.3.2/recovery/implementation/durable-non262-lane/neoforge1202-zenkai-disabled-3df68c-index87-20261007",
+  "required_resolution": "Run the prepared publisher-derived compatibility row when the GPU lane is explicitly released. Preserve the artifact's explicit publisher_binary_unchanged=false provenance; do not represent it as the unchanged Forge archive."
+}
