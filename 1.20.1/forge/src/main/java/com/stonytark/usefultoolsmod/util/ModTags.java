@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.util;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -32,13 +34,13 @@ public class ModTags {
         public static TagKey<Block> INCORRECT_ECTO_TOOL = createTag("incorrect_ecto_tool");
 
         private static TagKey<Block> createTag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+            return BlockTags.create(CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
         }
     }
 
     public static class Items {
         private static TagKey<Item> createTag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+            return ItemTags.create(CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
         }
     }
 }

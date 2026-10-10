@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.util;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.Config;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.core.BlockPos;
@@ -21,7 +23,7 @@ import net.minecraft.world.phys.Vec3;
 /** Mining-safe destruction shared by Mining Charges and Sticky Dynamite. */
 public final class ControlledExplosion {
     public static final TagKey<Block> IMMUNE = BlockTags.create(
-            ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "controlled_explosion_immune"));
+            CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "controlled_explosion_immune"));
 
     private ControlledExplosion() {}
 

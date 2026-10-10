@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.compat.jade;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
 import com.stonytark.usefultoolsmod.item.custom.EctoplasmArmorHelper;
@@ -18,7 +20,7 @@ public class GhostComponentProvider implements IEntityComponentProvider {
 
     @Override
     public ResourceLocation getUid() {
-        return ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "ghost_info");
+        return CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "ghost_info");
     }
 
     @Override

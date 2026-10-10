@@ -57,20 +57,20 @@ public class ModItemModelProvider extends ModelProvider {
      *  the {@code items/foo.json} dispatcher via {@code declareCustomModelItem} so the
      *  validator is satisfied. Path-relative names (e.g. {@code "grenade"}). */
     private static final java.util.Set<String> CUSTOM_GEOMETRY_ITEMS =
-            java.util.Set.of("grenade", "dynamite");
+            java.util.Set.of("grenade", "dynamite", "sticky_dynamite", "remote_detonator", "spectral_resonator", "mining_charge", "ectoplasm_lantern", "soul_lantern");
 
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         for (DeferredItem<? extends Item> entry : ModItems.ITEMS.getEntries().stream()
                 .map(holder -> (DeferredItem<? extends Item>) holder).toList()) {
             Item item = entry.get();
-            if (item instanceof BlockItem) {
-                // BlockItem → auto-bridged to the parent block's model by ModelProvider.
-                continue;
-            }
             String path = entry.getId().getPath();
             if (CUSTOM_GEOMETRY_ITEMS.contains(path)) {
                 itemModels.declareCustomModelItem(item);
+                continue;
+            }
+            if (item instanceof BlockItem) {
+                // BlockItem → auto-bridged to the parent block's model by ModelProvider.
                 continue;
             }
             ModelTemplate template = isHandheldTool(path)

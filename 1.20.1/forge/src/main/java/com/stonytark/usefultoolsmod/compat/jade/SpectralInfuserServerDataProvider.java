@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.compat.jade;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.entity.SpectralInfuserBlockEntity;
 import net.minecraft.nbt.CompoundTag;
@@ -12,7 +14,7 @@ public class SpectralInfuserServerDataProvider implements IServerDataProvider<Bl
 
     @Override
     public ResourceLocation getUid() {
-        return ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser_data");
+        return CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser_data");
     }
 
     @Override

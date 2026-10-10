@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.worldgen;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.ModEntities;
 import net.minecraft.core.HolderSet;
@@ -49,6 +51,6 @@ public class ModBiomeModifiers {
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {
-        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
     }
 }

@@ -80,7 +80,7 @@ public class SpectralInfuserBlock extends BaseEntityBlock {
         if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof SpectralInfuserBlockEntity sibe) {
-                serverPlayer.openMenu(sibe, pos);
+                serverPlayer.openMenu(sibe);
             }
         }
         return InteractionResult.SUCCESS;

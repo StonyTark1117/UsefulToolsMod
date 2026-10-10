@@ -9,9 +9,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.IBlockAccess;
 
 public class ClassicSpectralInfuserBlock extends BlockContainer {
     public static final int GUI_ID = 230;
+    public static final int LIT_FLAG = 8;
 
     public ClassicSpectralInfuserBlock() {
         super(Material.rock);
@@ -26,6 +28,11 @@ public class ClassicSpectralInfuserBlock extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
         return new TileSpectralInfuser();
+    }
+
+    @Override
+    public int getLightValue(IBlockAccess world, int x, int y, int z) {
+        return (world.getBlockMetadata(x, y, z) & LIT_FLAG) != 0 ? 13 : 0;
     }
 
     @Override

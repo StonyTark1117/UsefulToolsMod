@@ -200,9 +200,8 @@ def audit_modern(version: str, loader: str) -> None:
 
     for name in ("ectoplasm_lantern", "mining_charge"):
         item = load(assets / f"models/item/{name}.json")
-        assert item.get("parent") == "minecraft:item/generated", f"{target}: {name} item reuses world geometry"
+        assert item.get("parent") == f"usefultoolsmod:block/{name}", f"{target}: {name} item does not reuse bounded world geometry"
         texture_name = "soul_lantern" if name == "ectoplasm_lantern" else name
-        assert item.get("textures", {}).get("layer0") == f"usefultoolsmod:block/{texture_name}", f"{target}: {name} item sprite unresolved"
         assert (assets / f"textures/block/{texture_name}.png").is_file(), f"{target}: missing {name} sprite"
 
     lang = load(assets / "lang/en_us.json")

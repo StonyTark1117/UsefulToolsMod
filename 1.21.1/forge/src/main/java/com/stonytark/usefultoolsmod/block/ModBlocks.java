@@ -64,7 +64,7 @@ public class ModBlocks {
     // Storage blocks
     public static final RegistryObject<Block> HGLOW_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.HGLOW_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+                    .lightLevel(state -> 15).strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> RAW_RGOLD_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.RAW_RGOLD_BLOCK,
             () -> new Block(BlockBehaviour.Properties.of()

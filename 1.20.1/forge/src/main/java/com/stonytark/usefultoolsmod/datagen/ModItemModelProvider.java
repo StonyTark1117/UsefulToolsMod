@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.datagen;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.item.ModItems;
@@ -523,9 +525,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 String armorItemPath = itemDeferredHolder.getId().toString();
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
-                ResourceLocation armorItemResLoc = ResourceLocation.parse(armorItemPath);
-                ResourceLocation trimResLoc = ResourceLocation.parse(trimPath); // minecraft namespace
-                ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
+                ResourceLocation armorItemResLoc = CompatibleResourceLocations.parse(armorItemPath);
+                ResourceLocation trimResLoc = CompatibleResourceLocations.parse(trimPath); // minecraft namespace
+                ResourceLocation trimNameResLoc = CompatibleResourceLocations.parse(currentTrimName);
 
                 // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will
                 // avoid an IllegalArgumentException
@@ -544,35 +546,35 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace()  + ":item/" + trimNameResLoc.getPath()))
                         .predicate(mcLoc("trim_type"), trimValue).end()
                         .texture("layer0",
-                                ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + itemDeferredHolder.getId().getPath()));
+                                CompatibleResourceLocations.fromNamespaceAndPath(MOD_ID, "item/" + itemDeferredHolder.getId().getPath()));
             });
         }
     }
 
     private ItemModelBuilder handheldItem(RegistryObject<? extends Item> item) {
         return withExistingParent(item.getId().getPath(),
-                ResourceLocation.parse("item/handheld")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "item/" + item.getId().getPath()));
+                CompatibleResourceLocations.parse("item/handheld")).texture("layer0",
+                CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "item/" + item.getId().getPath()));
     }
 
     public void buttonItem(RegistryObject<? extends Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/button_inventory"))
-                .texture("texture",  ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("texture",  CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     public void fenceItem(RegistryObject<? extends Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/fence_inventory"))
-                .texture("texture",  ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("texture",  CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     public void wallItem(RegistryObject<? extends Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))
-                .texture("wall",  ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("wall",  CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     private ItemModelBuilder simpleBlockItem(RegistryObject<? extends Block> item) {
         return withExistingParent(item.getId().getPath(),
-                ResourceLocation.parse("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "item/" + item.getId().getPath()));
+                CompatibleResourceLocations.parse("item/generated")).texture("layer0",
+                CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "item/" + item.getId().getPath()));
     }
 }

@@ -1,0 +1,27 @@
+// Packaged experimental QA mod; never inject these classes/resources into the base jar.
+gradle.afterProject { project, state ->
+    if (project.projectDir.name != 'fabric' || project.projectDir.parentFile.name != '1.21.1') return
+    def root = project.rootDir.parentFile.parentFile
+    def qa = project.sourceSets.create('spectralQa')
+    qa.java.srcDir new File(root, 'tests/spectral-qa/1.21.1-fabric/src/main/java')
+    qa.resources.srcDir new File(root, 'tests/spectral-qa/1.21.1-fabric/src/main/resources')
+    qa.compileClasspath += project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+    project.tasks.named(qa.compileJavaTaskName) { dependsOn 'classes' }
+    def archive = project.tasks.register('spectralQaJar', Jar) {
+        dependsOn qa.classesTaskName
+        archiveBaseName = 'usefultools-spectral-qa'
+        archiveClassifier = 'dev'
+        destinationDirectory = project.layout.buildDirectory.dir('spectral-qa-dev')
+        from qa.output
+    }
+    project.tasks.register('remapSpectralQaJar', project.tasks.named('remapJar').get().class.superclass) {
+        dependsOn archive
+        inputFile = archive.flatMap { it.archiveFile }
+        archiveBaseName = 'usefultools-spectral-qa'
+        archiveClassifier = ''
+        destinationDirectory = project.layout.buildDirectory.dir('spectral-qa')
+        sourceNamespace = 'named'
+        targetNamespace = 'intermediary'
+        addNestedDependencies = false
+    }
+}

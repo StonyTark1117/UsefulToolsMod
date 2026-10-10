@@ -33,7 +33,7 @@ public class UsefultoolsModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.GHOST, GhostRenderer::new);
         EntityRendererRegistry.register(ModEntities.GRENADE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.WRAITH, WraithRenderer::new);
-        EntityRendererRegistry.register(ModEntities.STICKY_DYNAMITE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STICKY_DYNAMITE, com.stonytark.usefultoolsmod.entity.client.StickyDynamiteRenderer::new);
 
         // Register screen handlers
         HandledScreens.register(ModMenuTypes.SPECTRAL_INFUSER_MENU, SpectralInfuserScreen::new);

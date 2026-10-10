@@ -1,5 +1,31 @@
 # Changelog
 
+## 2.3.2 - Unreleased
+
+- Restored Forge 1.7.10 block lighting parity: Ectoplasm Lantern and its legacy
+  Soul Lantern alias emit level 12; Spectral Infuser emits level 13 while
+  processing and turns off when idle, powered, or disabled. Lit-state changes
+  preserve inventory and synchronize through vanilla block updates.
+
+- Added shared 3D Dynamite and Grenade item models across every maintained target,
+  including both hands, inventory, dropped items, and thrown Grenades. Forge
+  1.7.10 renders the same geometry for canonical and legacy item registrations.
+- Preserved regular Dynamite's instant detonation, explosive strength, and
+  existing recipes and configuration. Regular Dynamite has no thrown entity.
+- Added 3D Sticky Dynamite, Remote Detonator, and Spectral Resonator models on
+  every maintained target. Adhesive straps distinguish the throwable bundle,
+  and the handheld devices expose their trigger/display and crystal cage.
+- Reused bounded Mining Charge and Ectoplasm Lantern geometry for modern held,
+  inventory, and dropped items, with matching native held silhouettes on 1.7.10.
+  Their placed models and collision behavior are preserved.
+- Kept attached Sticky Dynamite visible outside block faces and entity bodies
+  using separate visual metadata and lighting. Fuse timing, attachment
+  coordinates, explosive strength, and the explosion centre remain unchanged.
+- Made Ghost and Wraith shader-aware on modern Forge and NeoForge targets:
+  preserve the emissive look without an active pack and use vanilla entity
+  lighting with a modest minimum block light when Iris reports a pack active.
+  Shader-loader detection remains optional and is checked while rendering.
+
 ## 2.3.1 - 2026-08-27
 
 - Renamed the former Soul Lantern to Ectoplasm Lantern. New content uses

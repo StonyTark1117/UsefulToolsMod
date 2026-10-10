@@ -1,0 +1,52 @@
+// Acceptance-only source set. Native game code is used; no fixtures enter release jars.
+gradle.afterProject { project, state ->
+    def classic = project.projectDir.name == '1.7.10'
+    def root = classic ? project.rootDir.parentFile : project.rootDir.parentFile.parentFile
+    def target = classic ? '1.7.10-forge' : project.projectDir.parentFile.name + '-' + project.projectDir.name
+    if (project.plugins.hasPlugin('net.neoforged.gradle.userdev')) project.runs.client.systemProperty 'usefulToolsLightingQa', 'true'
+    if (project.plugins.hasPlugin('net.neoforged.moddev.legacyforge')) project.legacyForge.runs.client.systemProperty 'usefulToolsLightingQa', 'true'
+    def qa = project.sourceSets.create('dynamicLightingQa')
+    qa.java.srcDir new File(root, 'tests/dynamic-lighting/targets/' + target)
+    qa.java.srcDir new File(root, 'tests/dynamic-lighting/menu')
+    qa.compileClasspath += project.files(project.provider { project.tasks.named('compileLightingJava').get().destinationDirectory.get().asFile }) + project.sourceSets.main.compileClasspath
+    project.tasks.named(qa.compileJavaTaskName) { dependsOn project.tasks.named('lightingClasses') }
+    // Forge's bootstrap module finder cannot accept two directories exporting
+    // the same package. Stage fixtures in the companion's single class root.
+    def stage = project.tasks.register('stageDynamicLightingQa', Copy) {
+        dependsOn qa.classesTaskName, project.tasks.named('lightingClasses')
+        from qa.output.classesDirs
+        into project.tasks.named('compileLightingJava').flatMap { it.destinationDirectory }
+    }
+    if (project.findProperty('usefulToolsLightingQaPackage') == 'true') {
+        // Production selectors and acceptance selectors must use the same
+        // exact native mapping. This extra input is acceptance-package-only.
+        project.tasks.matching { it.name == 'generateLightingRefmap' }.configureEach {
+            def fixtures = new File(root, 'tests/dynamic-lighting/targets/' + target)
+            inputs.dir fixtures
+            commandLine = commandLine + [fixtures.absolutePath]
+        }
+        project.tasks.named('lightingJar') {
+            dependsOn stage
+            setExcludes([])
+            archiveBaseName = 'usefultools-lighting-acceptance-only'
+            if (classic) {
+                // Mod-JAR coremod discovery provides the audio fixture classes
+                // before loading this package-only bootstrap. Command-line
+                // coremods are resolved too early in a packaged classic game.
+                manifest.attributes('FMLCorePlugin':
+                    'com.stonytark.usefultools.lighting.classic.ClassicLightingQaPlugin')
+            }
+        }
+        project.tasks.matching { it.name in ['remapLightingJar', 'reobfLightingJar'] }.configureEach { task ->
+            if (task.hasProperty('archiveBaseName')) task.archiveBaseName = 'usefultools-lighting-acceptance-only'
+        }
+    }
+    project.tasks.matching { it.name == 'runClient' }.configureEach {
+        dependsOn stage
+        jvmArgs '-DusefulToolsLightingQa=true', '-Dmixin.debug.export=true'
+        if (classic) {
+            workingDir = project.file(project.findProperty('usefulToolsSmokeGameDir') ?: 'run')
+            jvmArgs '-Dfml.coreMods.load=com.stonytark.usefultools.lighting.classic.LightingPlugin,com.stonytark.usefultools.lighting.classic.ClassicQaAudioPlugin'
+        }
+    }
+}

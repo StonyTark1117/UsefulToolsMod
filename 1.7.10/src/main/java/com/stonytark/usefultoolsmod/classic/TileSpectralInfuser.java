@@ -14,6 +14,9 @@ import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.block.Block;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.World;
 
 public class TileSpectralInfuser extends TileEntity implements IInventory {
     private final ItemStack[] inventory = new ItemStack[3];
@@ -24,12 +27,34 @@ public class TileSpectralInfuser extends TileEntity implements IInventory {
     @Override
     public void updateEntity() {
         if (worldObj.isRemote) return;
-        if (!worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) && hasRecipe()) {
+        boolean working = ClassicGeneratedConfig.booleanValue("spectralInfuserEnabled")
+                && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord) && hasRecipe();
+        setLit(working);
+        if (working) {
             if (++progress >= MAX_PROGRESS) craft();
         } else if (progress != 0) {
             progress = 0;
         }
         markDirty();
+    }
+
+    private void setLit(boolean lit) {
+        int metadata = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+        int updated = lit ? metadata | ClassicSpectralInfuserBlock.LIT_FLAG
+                : metadata & ~ClassicSpectralInfuserBlock.LIT_FLAG;
+        if (metadata != updated) {
+            // Metadata persists in the chunk and travels in vanilla block updates.
+            // Unlike setBlock, this does not call breakBlock or drop the inventory.
+            worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, updated, 3);
+            worldObj.updateLightByType(EnumSkyBlock.Block, xCoord, yCoord, zCoord);
+        }
+    }
+
+    @Override
+    public boolean shouldRefresh(Block oldBlock, Block newBlock, int oldMeta, int newMeta,
+                                 World world, int x, int y, int z) {
+        // Client block-update packets apply metadata through setBlock.
+        return oldBlock != newBlock;
     }
 
     private boolean hasRecipe() {

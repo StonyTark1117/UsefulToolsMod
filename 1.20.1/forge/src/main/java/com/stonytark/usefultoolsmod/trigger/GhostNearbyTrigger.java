@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.trigger;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.DeserializationContext;
@@ -14,7 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
  */
 public class GhostNearbyTrigger extends SimpleCriterionTrigger<GhostNearbyTrigger.TriggerInstance> {
 
-    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath("usefultoolsmod", "ghost_nearby");
+    private static final ResourceLocation ID = CompatibleResourceLocations.fromNamespaceAndPath("usefultoolsmod", "ghost_nearby");
 
     @Override
     public ResourceLocation getId() {

@@ -1,0 +1,29 @@
+gradle.afterProject { project, state ->
+    if (project.projectDir.name != '1.7.10') return
+    def qa = project.sourceSets.create('spectralQa')
+    qa.java.srcDir new File(project.rootDir.parentFile, 'tests/spectral-qa/classic/java')
+    qa.compileClasspath += project.sourceSets.main.compileClasspath + project.sourceSets.main.output
+    project.tasks.named(qa.compileJavaTaskName) { dependsOn 'classes' }
+    def archive = project.tasks.register('spectralQaJar', Jar) {
+        dependsOn qa.classesTaskName
+        archiveBaseName = 'usefultools-spectral-qa'
+        archiveClassifier = ''
+        destinationDirectory = project.layout.buildDirectory.dir('spectral-qa-dev')
+        from qa.output
+    }
+    def reference = project.tasks.named('reobfJar').get()
+    project.tasks.register('reobfSpectralQaJar', reference.class.superclass) {
+        inputJar = archive.flatMap { it.archiveFile }
+        mcVersion = reference.mcVersion
+        srg = reference.srg
+        fieldCsv = reference.fieldCsv
+        methodCsv = reference.methodCsv
+        exceptorCfg = reference.exceptorCfg
+        recompMcJar = reference.recompMcJar
+        referenceClasspath.from(qa.compileClasspath)
+        archiveBaseName = 'usefultools-spectral-qa'
+        archiveClassifier = ''
+        destinationDirectory = project.layout.buildDirectory.dir('spectral-qa')
+        dependsOn archive, reference.taskDependencies.getDependencies(reference)
+    }
+}

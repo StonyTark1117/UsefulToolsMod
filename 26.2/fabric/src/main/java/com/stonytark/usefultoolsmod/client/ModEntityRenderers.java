@@ -17,7 +17,7 @@ public final class ModEntityRenderers {
         EntityRenderers.register(ModEntities.GRENADE, ThrownItemRenderer::new);
         EntityRenderers.register(ModEntities.GHOST, GhostRenderer::new);
         EntityRenderers.register(ModEntities.WRAITH, WraithRenderer::new);
-        EntityRenderers.register(ModEntities.STICKY_DYNAMITE, ThrownItemRenderer::new);
+        EntityRenderers.register(ModEntities.STICKY_DYNAMITE, com.stonytark.usefultoolsmod.entity.client.StickyDynamiteRenderer::new);
 
         // Model layers
         ModelLayerRegistry.registerModelLayer(GhostModel.LAYER_LOCATION, GhostModel::createBodyLayer);

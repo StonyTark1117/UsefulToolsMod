@@ -17,7 +17,7 @@ public class ModEntityRenderers {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.GRENADE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(ModEntities.STICKY_DYNAMITE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.STICKY_DYNAMITE.get(), com.stonytark.usefultoolsmod.entity.client.StickyDynamiteRenderer::new);
     }
 
     @SubscribeEvent

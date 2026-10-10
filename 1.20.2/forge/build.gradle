@@ -35,8 +35,9 @@ minecraft {
     // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'official', version: minecraft_version
 
-    // Tell FG to not automtically create the reobf tasks, as we now use Official mappings at runtime, If you don't use them at dev time then you'll have to fix your reobf yourself.
-    reobf = false
+    // Forge 48's packaged client uses SRG names even with official development
+    // mappings. Named references fail at startup (e.g. CREATIVE_MODE_TAB).
+    reobf = true
 
     // When true, this property will have all Eclipse/IntelliJ IDEA run configurations run the "prepareX" task for the given run configuration before launching the game.
     // In most cases, it is not necessary to enable.
@@ -248,3 +249,7 @@ sourceSets.each {
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
 }
+
+tasks.named('jar') { finalizedBy 'reobfJar' }
+
+apply from: "../../lighting/companion.gradle"

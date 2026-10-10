@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.worldgen;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -34,7 +36,7 @@ public class ModPlacedFeatures {
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
     }
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,

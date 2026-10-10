@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.compat.jei;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import mezz.jei.api.constants.VanillaTypes;
@@ -22,11 +24,11 @@ import org.jetbrains.annotations.Nullable;
 public class SpectralInfuserRecipeCategory implements IRecipeCategory<SpectralInfuserRecipe> {
 
     public static final RecipeType<SpectralInfuserRecipe> TYPE =
-            new RecipeType<>(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infusion"),
+            new RecipeType<>(CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infusion"),
                     SpectralInfuserRecipe.class);
 
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "textures/gui/spectral_infuser.png");
+            CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "textures/gui/spectral_infuser.png");
 
     private final IDrawable background;
     private final IDrawable icon;

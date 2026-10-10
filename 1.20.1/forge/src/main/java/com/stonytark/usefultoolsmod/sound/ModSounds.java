@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.sound;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -18,7 +20,7 @@ public final class ModSounds {
     public static final RegistryObject<SoundEvent> WRAITH_DEATH = sound("entity.wraith.death");
     private ModSounds() {}
     private static RegistryObject<SoundEvent> sound(String id) {
-        return SOUNDS.register(id, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, id)));
+        return SOUNDS.register(id, () -> SoundEvent.createVariableRangeEvent(CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, id)));
     }
     public static void register(IEventBus bus) { SOUNDS.register(bus); }
 }

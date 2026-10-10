@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.entity.client;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
@@ -18,7 +20,7 @@ import net.minecraft.util.Mth;
 
 public class WraithModel extends HierarchicalModel<WraithEntity> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "wraith"), "main");
+            CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "wraith"), "main");
     private final ModelPart root;
     private final ModelPart head;
     private final ModelPart leftArm;

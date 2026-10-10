@@ -216,3 +216,5 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 idea.module { downloadJavadoc = downloadSources = true }
+
+apply from: "../../lighting/companion.gradle"

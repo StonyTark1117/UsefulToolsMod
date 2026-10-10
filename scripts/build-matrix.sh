@@ -32,10 +32,10 @@ run_build "1.21.1-forge"   "1.21.1/forge"           "/usr/lib/jvm/java-21-openjd
 run_build "1.21.1-fabric"  "1.21.1/fabric"          "/usr/lib/jvm/java-21-openjdk"
 run_build "1.21.1-neoforge" "1.21.1/neoforge"        "/usr/lib/jvm/java-21-openjdk"
 run_build "26.1.2-forge"   "26.1.2/forge"           "/usr/lib/jvm/java-21-openjdk"
-run_build "26.1.2-fabric"  "26.1.2/fabric"          "/usr/lib/jvm/java-26-openjdk"
+run_build "26.1.2-fabric"  "26.1.2/fabric"          "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2"
 run_build "26.1.2-neoforge" "26.1.2/neoforge"        "/usr/lib/jvm/java-21-openjdk"
 run_build "26.2-forge"     "26.2/forge"             "/usr/lib/jvm/java-21-openjdk"
-run_build "26.2-fabric"    "26.2/fabric"            "/usr/lib/jvm/java-26-openjdk"
+run_build "26.2-fabric"    "26.2/fabric"            "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2"
 run_build "26.2-neoforge"  "26.2/neoforge"          "/usr/lib/jvm/java-21-openjdk"
 
 "$repo_root/scripts/audit_catalog.py"

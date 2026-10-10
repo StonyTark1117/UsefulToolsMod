@@ -54,10 +54,10 @@ TARGETS = {
     "1.21.1-forge": ("1.21.1/forge", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
     "1.21.1-neoforge": ("1.21.1/neoforge", "runServer", "/usr/lib/jvm/java-21-openjdk", "runs/server"),
     "26.1.2-forge": ("26.1.2/forge", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
-    "26.1.2-fabric": ("26.1.2/fabric", "runServer", "/usr/lib/jvm/java-26-openjdk", "run"),
+    "26.1.2-fabric": ("26.1.2/fabric", "runServer", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "run"),
     "26.1.2-neoforge": ("26.1.2/neoforge", "runServer", "/usr/lib/jvm/java-21-openjdk", "runs/server"),
     "26.2-forge": ("26.2/forge", "runServer", "/usr/lib/jvm/java-21-openjdk", "run"),
-    "26.2-fabric": ("26.2/fabric", "runServer", "/usr/lib/jvm/java-26-openjdk", "run"),
+    "26.2-fabric": ("26.2/fabric", "runServer", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "run"),
     "26.2-neoforge": ("26.2/neoforge", "runServer", "/usr/lib/jvm/java-21-openjdk", "runs/server"),
 }
 
@@ -278,6 +278,12 @@ def main() -> int:
         )
     for launch_directory in launch_directories:
         launch_directory.mkdir(parents=True, exist_ok=True)
+        # RFG otherwise prompts Gradle stdin before the isolated server exists.
+        # This disposable validation world never needs account authentication.
+        if args.isolated_game_dir:
+            (launch_directory / "server.properties").write_text(
+                "online-mode=false\nserver-ip=127.0.0.1\nserver-port=" + str(args.port) + "\n",
+                encoding="utf-8")
         (launch_directory / "eula.txt").write_text(
             "# Local Useful Tools release validation\neula=true\n", encoding="utf-8"
         )
@@ -492,6 +498,7 @@ def main() -> int:
         "target": args.target,
         "command": command,
         "java_home": java_home,
+        "requested_port": args.port,
         "isolated_game_dir": args.isolated_game_dir,
         "external_game_dir": external_game_dir is not None,
         "kept_isolated_game_dir": args.keep_isolated_game_dir,

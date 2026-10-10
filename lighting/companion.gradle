@@ -1,0 +1,149 @@
+// Applied by every maintained base target. Companion output never enters the base jar.
+// FG7 searches the alphabetically first source set for its default AT path. Pin
+// the base file explicitly before adding a source set named lighting.
+if (plugins.hasPlugin('net.minecraftforge.gradle') && projectDir.parentFile.name.startsWith('26.')) {
+    minecraft.accessTransformer.from(file('src/main/resources/META-INF/accesstransformer.cfg'))
+}
+sourceSets {
+    lighting {
+        java.srcDir file(projectDir.name == '1.7.10' ? '../lighting/common/java' : '../../lighting/common/java')
+        compileClasspath = sourceSets.main.compileClasspath + configurations.lightingCompileClasspath
+        runtimeClasspath = output + sourceSets.main.runtimeClasspath
+    }
+}
+// Forge 1.21 discovers each module from one directory. Match the base target's
+// native merged output layout, including source sets added after its build file.
+if (plugins.hasPlugin('net.minecraftforge.gradle') && projectDir.parentFile.name == '1.21.1') {
+    def mergedLighting = layout.buildDirectory.dir('sourcesSets/lighting')
+    sourceSets.lighting.output.resourcesDir = mergedLighting
+    sourceSets.lighting.java.destinationDirectory = mergedLighting
+}
+
+def companionVersion = project.version.toString()
+tasks.named('processLightingResources', ProcessResources) {
+    inputs.property 'version', project.version
+    filesMatching(['fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', 'mcmod.info']) {
+        expand version: companionVersion
+    }
+}
+def lightingJar = tasks.register('lightingJar', Jar) {
+    dependsOn tasks.named('lightingClasses')
+    archiveBaseName = 'usefultools-lighting'
+    archiveClassifier = ''
+    from sourceSets.lighting.output
+    manifest.attributes('MixinConfigs': 'usefultools_lighting.mixins.json')
+}
+if (plugins.hasPlugin('fabric-loom') && !projectDir.parentFile.name.startsWith('26.')) {
+    tasks.register('remapLightingJar', tasks.named('remapJar').get().class.superclass) {
+        dependsOn lightingJar
+        inputFile = lightingJar.flatMap { it.archiveFile }
+        archiveBaseName = 'usefultools-lighting'
+        archiveClassifier = ''
+        sourceNamespace = 'named'
+        targetNamespace = 'intermediary'
+        addNestedDependencies = false
+    }
+    lightingJar.configure { destinationDirectory = layout.buildDirectory.dir('lighting-dev') }
+    tasks.named('build') { dependsOn 'remapLightingJar' }
+} else {
+    tasks.named('build') { dependsOn lightingJar }
+    if (plugins.hasPlugin('net.minecraftforge.gradle') && projectDir.parentFile.name.startsWith('1.20.')) {
+        reobf { create('lightingJar') }
+        lightingJar.configure { finalizedBy 'reobfLightingJar' }
+    }
+}
+if (providers.gradleProperty('usefulToolsLighting').orElse('false').get().toBoolean()) {
+    tasks.withType(JavaExec).configureEach { if (name.toLowerCase().contains('client')) classpath += sourceSets.lighting.output }
+    if (plugins.hasPlugin('net.neoforged.gradle.userdev')) runs.client { modSources.add('usefultools_lighting', sourceSets.lighting) }
+    if (plugins.hasPlugin('net.minecraftforge.gradle')) minecraft.runs.client.mods { usefultoolsmod { source sourceSets.main }; usefultools_lighting { source sourceSets.lighting } }
+}
+if (plugins.hasPlugin('com.gtnewhorizons.retrofuturagradle')) {
+    lightingJar.configure {
+        destinationDirectory = layout.buildDirectory.dir('lighting-dev')
+        manifest.attributes('FMLCorePlugin': 'com.stonytark.usefultools/lighting/classic/LightingPlugin'.replace('/', '.'), 'FMLCorePluginContainsFMLMod': 'true')
+        manifest.attributes.remove('MixinConfigs')
+    }
+    def reference = tasks.named('reobfJar').get()
+    tasks.register('reobfLightingJar', reference.class.superclass) {
+        inputJar = lightingJar.flatMap { it.archiveFile }
+        mcVersion = reference.mcVersion
+        srg = reference.srg
+        fieldCsv = reference.fieldCsv
+        methodCsv = reference.methodCsv
+        exceptorCfg = reference.exceptorCfg
+        recompMcJar = reference.recompMcJar
+        referenceClasspath.from(sourceSets.lighting.compileClasspath)
+        archiveBaseName = 'usefultools-lighting'
+        archiveClassifier = ''
+        destinationDirectory = layout.buildDirectory.dir('libs')
+        dependsOn lightingJar, reference.taskDependencies.getDependencies(reference)
+    }
+    tasks.named('build') { dependsOn 'reobfLightingJar' }
+}
+if (plugins.hasPlugin('net.minecraftforge.gradle') && projectDir.parentFile.name.startsWith('1.20.')) {
+    def refmapDir = layout.buildDirectory.dir('generated/lighting-refmap')
+    sourceSets.lighting.resources.srcDir refmapDir
+    tasks.register('generateLightingRefmap', Exec) {
+        dependsOn 'createMcpToSrg'
+        inputs.file layout.buildDirectory.file('createMcpToSrg/output.tsrg')
+        inputs.dir 'src/lighting/java'
+        inputs.file file('../../scripts/generate-lighting-refmap.py')
+        outputs.file refmapDir.map { it.file('usefultools_lighting.refmap.json') }
+        commandLine 'python3', file('../../scripts/generate-lighting-refmap.py'),
+            layout.buildDirectory.file('createMcpToSrg/output.tsrg').get().asFile,
+            file('src/lighting/java'), refmapDir.get().file('usefultools_lighting.refmap.json').asFile
+    }
+    tasks.named('processLightingResources') { dependsOn 'generateLightingRefmap' }
+}
+
+if (plugins.hasPlugin('fabric-loom') && providers.gradleProperty('usefulToolsLighting').orElse('false').get().toBoolean()) {
+    loom { mods { usefultools_lighting { sourceSet sourceSets.lighting } } }
+}
+
+if (plugins.hasPlugin('com.gtnewhorizons.retrofuturagradle') && providers.gradleProperty('usefulToolsLighting').orElse('false').get().toBoolean()) {
+    tasks.named('runClient') { jvmArgs '-Dfml.coreMods.load=com.stonytark.usefultools.lighting.classic.LightingPlugin' }
+}
+if (projectDir.name != '1.7.10') apply from: '../../lighting/lamb-integration.gradle'
+
+if (plugins.hasPlugin('net.minecraftforge.gradle') && providers.gradleProperty('usefulToolsLighting').orElse('false').get().toBoolean()) {
+    minecraft.runs.client { args '--mixin', 'usefultools_lighting.mixins.json' }
+}
+// Acceptance fixtures may join the development module, but can never enter a distributable companion.
+tasks.named('lightingJar') { exclude '**/LightingQaMixin*', '**/ClassicLightingQa*', '**/AdvancedLightingQa*' }
+
+if (plugins.hasPlugin('net.neoforged.gradle.userdev') && projectDir.parentFile.name in ['1.20.1', '1.20.2'] && providers.gradleProperty('usefulToolsLighting').orElse('false').get().toBoolean()) {
+    runs.client { arguments.addAll '--mixin', 'usefultools_lighting.mixins.json' }
+}
+// NeoForge 1.20.1 uses ModDev's LegacyForge adapter, with native named-to-SRG remapping.
+if (plugins.hasPlugin('net.neoforged.moddev.legacyforge')) {
+    def remapType = Class.forName('net.neoforged.moddevgradle.legacyforge.tasks.RemapJar', true, obfuscation.class.classLoader)
+    def reobfuscatedLighting = tasks.register('reobfLightingJar', remapType) {
+        input = lightingJar.flatMap { it.archiveFile }
+        libraries.from(sourceSets.lighting.compileClasspath)
+        obfuscation.configureNamedToSrgOperation(remapOperation)
+        archiveBaseName = 'usefultools-lighting'
+        archiveClassifier = ''
+        destinationDirectory = layout.buildDirectory.dir('libs')
+        dependsOn lightingJar
+    }
+    lightingJar.configure { destinationDirectory = layout.buildDirectory.dir('lighting-dev') }
+    tasks.named('build') { dependsOn reobfuscatedLighting }
+    def refmapDir = layout.buildDirectory.dir('generated/lighting-refmap')
+    sourceSets.lighting.resources.srcDir refmapDir
+    tasks.register('generateLightingRefmap', Exec) {
+        dependsOn tasks.named('createMinecraftArtifacts')
+        inputs.file obfuscation.namedToSrgMappings
+        inputs.dir 'src/lighting/java'
+        inputs.file file('../../scripts/generate-lighting-refmap.py')
+        outputs.file refmapDir.map { it.file('usefultools_lighting.refmap.json') }
+        commandLine 'python3', file('../../scripts/generate-lighting-refmap.py'),
+            obfuscation.namedToSrgMappings.get().asFile, file('src/lighting/java'),
+            refmapDir.get().file('usefultools_lighting.refmap.json').asFile
+    }
+    tasks.named('processLightingResources') { dependsOn 'generateLightingRefmap' }
+    if (providers.gradleProperty('usefulToolsLighting').orElse('false').get().toBoolean()) {
+        legacyForge.mods { usefultools_lighting { sourceSet sourceSets.lighting } }
+        legacyForge.runs.client { programArguments.addAll '--mixin', 'usefultools_lighting.mixins.json' }
+    }
+}
+tasks.named('lightingJar') { exclude '**/*LightingQa*', '**/ClassicQaAudioPlugin*' }

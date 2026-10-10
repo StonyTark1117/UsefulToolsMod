@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.worldgen;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
@@ -41,7 +43,7 @@ public class ModConfiguredFeatures {
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, name));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context,

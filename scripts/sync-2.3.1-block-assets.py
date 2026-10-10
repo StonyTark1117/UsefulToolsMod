@@ -125,9 +125,27 @@ def mining_charge_blockstate() -> dict[str, object]:
     return {"variants": variants}
 
 
+def block_item_model(name: str) -> dict:
+    # In 2.3.2 these task-specific block items also use their placed geometry in
+    # hand. Center the low-profile charge independently of the full-height lantern.
+    charge = name == "mining_charge"
+    return {
+        "parent": f"usefultoolsmod:block/{name}",
+        "display": {
+            "gui": {"rotation": [30, 225, 0], "translation": [0, 2 if charge else 0, 0], "scale": [.9 if charge else .75] * 3},
+            "ground": {"translation": [0, 3, 0], "scale": [.5] * 3},
+            "fixed": {"scale": [.65] * 3},
+            "thirdperson_righthand": {"rotation": [75, 45, 0], "translation": [0, 3, 0], "scale": [.5] * 3},
+            "thirdperson_lefthand": {"rotation": [75, -45, 0], "translation": [0, 3, 0], "scale": [.5] * 3},
+            "firstperson_righthand": {"rotation": [15 if charge else 0, 45, 0], "translation": [0, 6, -1], "scale": [.5 if charge else .4] * 3},
+            "firstperson_lefthand": {"rotation": [15 if charge else 0, -45, 0], "translation": [0, 6, -1], "scale": [.5 if charge else .4] * 3},
+        },
+    }
+
+
 ITEM_MODELS = {
-    "soul_lantern": {"parent": "minecraft:item/generated", "textures": {"layer0": "usefultoolsmod:block/soul_lantern"}},
-    "mining_charge": {"parent": "minecraft:item/generated", "textures": {"layer0": "usefultoolsmod:block/mining_charge"}},
+    "soul_lantern": block_item_model("ectoplasm_lantern"),
+    "mining_charge": block_item_model("mining_charge"),
 }
 
 WRAITH_WTHIT_TRANSLATIONS = {

@@ -43,7 +43,7 @@ public class ModItemModelProvider extends ModelProvider {
      *  {@code src/main/resources/assets/usefultoolsmod/models/item/} — only the
      *  dispatcher is registered here so the validator stays satisfied. */
     private static final java.util.Set<String> CUSTOM_GEOMETRY_ITEMS =
-            java.util.Set.of("grenade", "dynamite");
+            java.util.Set.of("grenade", "dynamite", "sticky_dynamite", "remote_detonator", "spectral_resonator", "mining_charge", "ectoplasm_lantern", "soul_lantern");
 
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output);

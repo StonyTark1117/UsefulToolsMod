@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.compat.rei;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import me.shedaniel.math.Point;
@@ -20,7 +22,7 @@ import java.util.List;
 public class SpectralInfuserReiCategory implements DisplayCategory<SpectralInfuserReiDisplay> {
 
     public static final CategoryIdentifier<SpectralInfuserReiDisplay> ID =
-            CategoryIdentifier.of(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infusion"));
+            CategoryIdentifier.of(CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infusion"));
 
     @Override
     public CategoryIdentifier<? extends SpectralInfuserReiDisplay> getCategoryIdentifier() {

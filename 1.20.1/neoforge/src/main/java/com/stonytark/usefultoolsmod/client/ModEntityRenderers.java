@@ -14,7 +14,7 @@ public class ModEntityRenderers {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         // Registers the grenade entity to use the ThrownItemRenderer
         event.registerEntityRenderer(ModEntities.GRENADE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(ModEntities.STICKY_DYNAMITE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.STICKY_DYNAMITE.get(), com.stonytark.usefultoolsmod.entity.client.StickyDynamiteRenderer::new);
     }
 
 }

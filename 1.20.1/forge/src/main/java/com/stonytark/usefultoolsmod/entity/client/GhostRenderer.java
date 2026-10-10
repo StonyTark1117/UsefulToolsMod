@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.entity.client;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.entity.custom.GhostEntity;
@@ -7,6 +9,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,12 +22,20 @@ public class GhostRenderer extends MobRenderer<GhostEntity, GhostModel<GhostEnti
     @Nullable
     @Override
     protected RenderType getRenderType(GhostEntity entity, boolean visible, boolean translucent, boolean glowing) {
+        if (!SpectralShaderSupport.shouldUseVanillaEmissive(visible, translucent, glowing)) {
+            return super.getRenderType(entity, visible, translucent, glowing);
+        }
         return RenderType.entityTranslucentEmissive(getTextureLocation(entity));
     }
 
     @Override
+    protected int getBlockLightLevel(GhostEntity entity, BlockPos pos) {
+        return SpectralShaderSupport.blockLightLevel(super.getBlockLightLevel(entity, pos));
+    }
+
+    @Override
     public ResourceLocation getTextureLocation(GhostEntity pEntity) {
-        return ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "textures/entity/ghost/ghost_white.png");
+        return CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "textures/entity/ghost/ghost_white.png");
     }
 
     @Override

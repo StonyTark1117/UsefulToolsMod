@@ -1,6 +1,8 @@
 // Override development-run working directories for isolated smoke worlds.
 // The path is supplied by scripts/smoke-server.py and contains no credentials.
 def smokeGameDir = gradle.startParameter.projectProperties['usefulToolsSmokeGameDir']
+def smokeAssetSource = gradle.startParameter.projectProperties['usefulToolsSmokeAssetSource']
+def smokeJvmArgs = gradle.startParameter.projectProperties['usefulToolsSmokeJvmArgs']
 if (smokeGameDir != null) {
     allprojects {
         tasks.matching { it.name in ['runServer', 'runGameTestServer', 'runClient'] }.configureEach { task ->
@@ -15,8 +17,27 @@ if (smokeGameDir != null) {
             }
             if (task instanceof JavaExec) {
                 task.workingDir = file(smokeGameDir)
+                if (task.name == 'runClient' && smokeJvmArgs != null) {
+                    task.jvmArgs smokeJvmArgs.split(',')
+                }
             }
             task.doFirst {
+                if (task.name == 'runClient' && smokeAssetSource != null) {
+                    def source = java.nio.file.Path.of(smokeAssetSource)
+                    def destination = gradle.gradleUserHomeDir.toPath()
+                            .resolve('caches/minecraft/assets/objects')
+                    java.nio.file.Files.walk(source).withCloseable { paths ->
+                        paths.forEach { path ->
+                            def target = destination.resolve(source.relativize(path))
+                            if (java.nio.file.Files.isDirectory(path)) {
+                                java.nio.file.Files.createDirectories(target)
+                            } else if (!java.nio.file.Files.exists(target)) {
+                                java.nio.file.Files.createLink(target, path)
+                            }
+                        }
+                    }
+                    logger.lifecycle("Useful Tools restored cached client asset objects from ${source}")
+                }
                 if (task instanceof JavaExec) {
                     def runArgs = task.args == null ? [] : new ArrayList(task.args)
                     def gameDirIndex = runArgs.indexOf('--gameDir')
@@ -27,6 +48,16 @@ if (smokeGameDir != null) {
                 }
                 logger.lifecycle("Useful Tools isolated game directory: ${smokeGameDir}; task=${task.class.name}; workingDir=${task.hasProperty('workingDir') ? task.workingDir : 'n/a'}")
             }
+        }
+    }
+}
+// RFG calls RunMinecraftTask.setup after the early configureEach callback and
+// assigns its default run directory there. Pin the isolated directory after
+// project configuration so classic server/client launches cannot use that default.
+gradle.afterProject { project, state ->
+    if (smokeGameDir != null && project.plugins.hasPlugin('com.gtnewhorizons.retrofuturagradle')) {
+        project.tasks.matching { it.name in ['runServer', 'runClient'] }.configureEach {
+            workingDir = project.file(smokeGameDir)
         }
     }
 }

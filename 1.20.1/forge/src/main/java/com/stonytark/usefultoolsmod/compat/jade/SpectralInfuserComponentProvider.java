@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.compat.jade;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -14,7 +16,7 @@ public class SpectralInfuserComponentProvider implements IBlockComponentProvider
 
     @Override
     public ResourceLocation getUid() {
-        return ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser");
+        return CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser");
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.entity.client;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
@@ -14,7 +16,7 @@ import net.minecraft.util.Mth;
 
 public class GhostModel<T extends GhostEntity> extends HierarchicalModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION =
-            new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "ghost"), "main");
+            new ModelLayerLocation(CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "ghost"), "main");
     private final ModelPart body;
     private final ModelPart head;
     private final ModelPart babyFace;

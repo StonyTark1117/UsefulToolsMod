@@ -61,7 +61,7 @@ public class ModBlocks {
     // Storage blocks
     public static final Block HGLOW_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.HGLOW_BLOCK,
             props -> new Block(props
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+                    .lightLevel(state -> 15).strength(4f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
     public static final Block RAW_RGOLD_BLOCK = registerBlock(GeneratedRegistrationIds.Blocks.RAW_RGOLD_BLOCK,
             props -> new Block(props

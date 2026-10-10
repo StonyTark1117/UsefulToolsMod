@@ -18,18 +18,34 @@ import com.stonytark.usefultoolsmod.classic.EntityWraith;
 import com.stonytark.usefultoolsmod.classic.EntityStickyDynamite;
 import com.stonytark.usefultoolsmod.classic.ClassicFeatureRegistry;
 import com.stonytark.usefultoolsmod.classic.client.RenderWraith;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderSnowball;
+import com.stonytark.usefultoolsmod.classic.ClassicGeneratedCatalog;
+import com.stonytark.usefultoolsmod.classic.client.ExplosiveItemRenderer;
+import com.stonytark.usefultoolsmod.classic.client.RenderGrenade;
+import com.stonytark.usefultoolsmod.classic.client.DeviceItemRenderer;
+import com.stonytark.usefultoolsmod.classic.client.RenderStickyDynamite;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy
 extends ServerProxy {
     @Override
     public void registerRenderInfo() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityGrenade.class, (Render)new RenderSnowball(MItems.Grenade));
+        RenderingRegistry.registerEntityRenderingHandler(EntityGrenade.class, new RenderGrenade());
+        // Both the old mixed-case items and the canonical catalog remain usable.
+        MinecraftForgeClient.registerItemRenderer(MItems.Dynamite, new ExplosiveItemRenderer(true));
+        MinecraftForgeClient.registerItemRenderer(MItems.Grenade, new ExplosiveItemRenderer(false));
+        MinecraftForgeClient.registerItemRenderer(ClassicGeneratedCatalog.ITEMS.get("dynamite"), new ExplosiveItemRenderer(true));
+        MinecraftForgeClient.registerItemRenderer(ClassicGeneratedCatalog.ITEMS.get("grenade"), new ExplosiveItemRenderer(false));
+        for (String name : new String[] {"sticky_dynamite", "remote_detonator", "spectral_resonator"}) {
+            MinecraftForgeClient.registerItemRenderer(ClassicGeneratedCatalog.ITEMS.get(name), new DeviceItemRenderer(name));
+        }
+        for (String name : new String[] {"mining_charge", "ectoplasm_lantern", "soul_lantern"}) {
+            MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ClassicGeneratedCatalog.BLOCKS.get(name)), new DeviceItemRenderer(name));
+        }
         RenderingRegistry.registerEntityRenderingHandler(EntityGhost.class, new RenderGhost());
         RenderingRegistry.registerEntityRenderingHandler(EntityWraith.class, new RenderWraith());
         RenderingRegistry.registerEntityRenderingHandler(EntityStickyDynamite.class,
-                (Render)new RenderSnowball(ClassicFeatureRegistry.stickyDynamite));
+                new RenderStickyDynamite());
     }
 
     public int addArmor(String armor) {

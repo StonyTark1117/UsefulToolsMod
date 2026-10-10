@@ -1,0 +1,18 @@
+// Test-only classes live outside main and are never packaged in release JARs.
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def gameDir = project.file(project.findProperty('usefulToolsSmokeGameDir'))
+    if (!new File(gameDir, 'server.properties').exists()) {
+        new File(gameDir, 'server.properties').text = 'online-mode=false\nserver-port=25672\nlevel-type=FLAT\nspawn-protection=0\n'
+    }
+    def qa = project.sourceSets.create('lightingQa')
+    qa.java.srcDir new File(project.rootDir.parentFile, 'tests/classic-lighting/java')
+    qa.compileClasspath += project.sourceSets.main.output + project.sourceSets.main.compileClasspath
+    qa.runtimeClasspath += project.sourceSets.main.runtimeClasspath
+    project.tasks.matching { it.name in ['runServer', 'runClient'] }.configureEach {
+        dependsOn qa.classesTaskName
+        classpath += qa.output
+        // RFG setup overwrites early workingDir assignments. Apply after setup.
+        workingDir project.file(project.findProperty('usefulToolsSmokeGameDir'))
+    }
+}

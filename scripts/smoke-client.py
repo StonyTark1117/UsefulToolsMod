@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import queue
 import re
+import shutil
 import signal
 import subprocess
 import sys
@@ -29,10 +30,12 @@ JOIN_RE = re.compile(
 CRASH_RE = re.compile(
     r"Unknown config option|critical issue trying to build the config GUI|"
     r"Failed to start|Failed to create mod instance|Minecraft has crashed|"
-    r"Mixin apply failed|Mod loading has failed|Warning while loading mods|"
+    r"Mixin apply.*failed|InvalidMixinException|Mod loading has failed|Warning while loading mods|"
+    r"Failed to resolve uniform|Unknown variable:"
     r"deprecated [`']logoFile",
     re.I,
 )
+LOG_BYTE_LIMIT = 8 * 1024 * 1024
 
 
 @dataclass(frozen=True)
@@ -58,12 +61,12 @@ TARGETS = {
     "1.21.1-forge": Target("1.21.1/forge", "runClient", "/usr/lib/jvm/java-21-openjdk", "forge"),
     "1.21.1-fabric": Target("1.21.1/fabric", "runClient", "/usr/lib/jvm/java-21-openjdk", "fabric"),
     "1.21.1-neoforge": Target("1.21.1/neoforge", "runClient", "/usr/lib/jvm/java-21-openjdk", "neoforge"),
-    "26.1.2-forge": Target("26.1.2/forge", "runClient", "/usr/lib/jvm/java-26-openjdk", "forge"),
+    "26.1.2-forge": Target("26.1.2/forge", "runClient", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "forge"),
     "26.1.2-fabric": Target("26.1.2/fabric", "runClient", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "fabric"),
-    "26.1.2-neoforge": Target("26.1.2/neoforge", "runClient", "/usr/lib/jvm/java-21-openjdk", "neoforge"),
-    "26.2-forge": Target("26.2/forge", "runClient", "/usr/lib/jvm/java-26-openjdk", "forge"),
+    "26.1.2-neoforge": Target("26.1.2/neoforge", "runClient", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "neoforge"),
+    "26.2-forge": Target("26.2/forge", "runClient", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "forge"),
     "26.2-fabric": Target("26.2/fabric", "runClient", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "fabric"),
-    "26.2-neoforge": Target("26.2/neoforge", "runClient", "/usr/lib/jvm/java-21-openjdk", "neoforge"),
+    "26.2-neoforge": Target("26.2/neoforge", "runClient", "/home/braydon/.gradle/jdks/eclipse_adoptium-25-amd64-linux.2", "neoforge"),
 }
 
 
@@ -71,6 +74,18 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("target", choices=(*TARGETS, "all", "verify-existing"))
     parser.add_argument("--timeout", type=int, default=300)
+    parser.add_argument(
+        "--offline", action="store_true",
+        help="use cached Gradle and Minecraft assets without network checks",
+    )
+    parser.add_argument(
+        "--skip-asset-download", action="store_true",
+        help="use asset objects supplied from --asset-cache-source for NeoGradle clients",
+    )
+    parser.add_argument(
+        "--asset-cache-source", type=Path, metavar="OBJECTS_DIR",
+        help="restore cached Minecraft asset objects immediately before client launch",
+    )
     parser.add_argument("--output-dir", type=Path, default=ROOT / "validation/client-smoke")
     parser.add_argument(
         "--gradle-property", action="append", default=[], metavar="NAME=VALUE",
@@ -88,8 +103,40 @@ def parse_args() -> argparse.Namespace:
         "--visual-showcase", action="store_true",
         help="stage and capture the 2.3.1 block and WTHIT showcase (1.21.1 NeoForge)",
     )
+    parser.add_argument(
+        "--client-mod", action="append", type=Path, default=[], metavar="JAR",
+        help="copy a client-only mod into the disposable game directory",
+    )
+    parser.add_argument(
+        "--shader-pack", type=Path, metavar="ZIP",
+        help="enable this shader pack in the disposable game directory (requires a shader loader)",
+    )
+    parser.add_argument(
+        "--disable-shaders", action="store_true",
+        help="install Iris/Sodium but explicitly disable shader packs in iris.properties",
+    )
+    parser.add_argument(
+        "--retain-spectral-entities", action="store_true",
+        help="move spectral entities out of view instead of removing them after capture",
+    )
+    parser.add_argument(
+        "--ignore-sodium-lwjgl-check", action="store_true",
+        help=("skip Sodium's LWJGL version check in a dev run where Loom substitutes "
+              "a snapshot; use only when the target Minecraft metadata pins Sodium's required version"),
+    )
+    parser.add_argument(
+        "--display", metavar="DISPLAY",
+        help="use an existing X11 display instead of a software-rendered Xvfb display",
+    )
+    parser.add_argument(
+        "--spectral-render-check", action="store_true",
+        help="capture Ghost and Wraith across a fixed lighting scene on a modern client target",
+    )
     parser.add_argument("--verbose", action="store_true")
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.shader_pack and args.disable_shaders:
+        parser.error("--shader-pack and --disable-shaders are mutually exclusive")
+    return args
 
 
 def read_proc(pid: int, name: str) -> bytes:
@@ -146,35 +193,79 @@ def window_id(display: str, timeout: float) -> str:
         ids = [line for line in result.stdout.splitlines() if line.isdigit()]
         if ids:
             return ids[-1]
+        # Minecraft can briefly replace its titled window while changing from
+        # the title screen to an integrated world. During that transition the
+        # focused top-level window remains the game but its name may not yet
+        # match the search expression.
+        active = xdo(display, "getactivewindow", check=False).stdout.strip()
+        if active.isdigit():
+            title = xdo(display, "getwindowname", active, check=False).stdout
+            if "minecraft" in title.lower():
+                return active
         time.sleep(0.5)
-    raise RuntimeError("Minecraft window did not appear")
+    raise RuntimeError("Minecraft window did not appear or regain its title")
+
+
+def scaled_window_point(display: str, window: str, x: int, y: int) -> tuple[int, int]:
+    """Map the harness's 854x480 GUI coordinates to the current X11 window."""
+    result = xdo(display, "getwindowgeometry", "--shell", window)
+    values = dict(
+        line.split("=", 1)
+        for line in result.stdout.splitlines()
+        if "=" in line
+    )
+    width = int(values["WIDTH"])
+    offset_x, offset_y = int(values.get("X", 0)), int(values.get("Y", 0))
+    # Minecraft's GUI scale follows the framebuffer width. Xwayland may report
+    # a much taller framebuffer, but scaling y independently stretches clicks
+    # away from the button the screenshot shows.
+    scale = width / 854
+    return offset_x + round(x * scale), offset_y + round(y * scale)
 
 
 def click(display: str, window: str, x: int, y: int) -> None:
     # Loader splash windows may be replaced without invalidating the old XID.
     # Resolve the currently visible Minecraft window at the moment of input.
     current_window = window_id(display, 2)
+    # Xwayland can place the window on a secondary monitor in the host's wide
+    # desktop. scaled_window_point includes that root offset.
+    x, y = scaled_window_point(display, current_window, x, y)
     xdo(display, "windowfocus", "--sync", current_window)
-    xdo(display, "mousemove", "--sync", "--window", current_window, str(x), str(y))
-    time.sleep(0.1)
-    # Hold the button across at least one low-FPS software-rendered frame.
-    xdo(display, "mousedown", "1")
-    time.sleep(0.2)
-    xdo(display, "mouseup", "1")
+    xdo(display, "mousemove", "--sync", str(x), str(y))
+    xdo(display, "click", "1")
+
+
+def focus_and_enter(display: str, window: str, x: int, y: int) -> None:
+    """Activate a menu button after mapping it to the current X11 window."""
+    click(display, window, x, y)
 
 
 def quick_click(display: str, x: int, y: int) -> None:
     """Use the LWJGL 2-compatible press/release event pair."""
     current_window = window_id(display, 2)
+    x, y = scaled_window_point(display, current_window, x, y)
     xdo(display, "windowfocus", "--sync", current_window)
     time.sleep(0.5)
-    xdo(display, "mousemove", "--window", current_window, str(x), str(y), "click", "1")
+    xdo(display, "mousemove", str(x), str(y))
+    xdo(display, "click", "1")
 
 
-def screenshot(display: str, path: Path) -> None:
-    subprocess.run(
-        ["scrot", "-o", str(path)], env={**os.environ, "DISPLAY": display}, check=True
-    )
+def screenshot(display: str, path: Path, window: str, game_dir: Path) -> None:
+    """Capture Minecraft's framebuffer, including on accelerated Xwayland."""
+    current_window = window_id(display, 5)
+    screenshots_dir = game_dir / "screenshots"
+    before = set(screenshots_dir.glob("*.png")) if screenshots_dir.exists() else set()
+    xdo(display, "key", "--window", current_window, "F2")
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        candidates = set(screenshots_dir.glob("*.png")) - before
+        if candidates:
+            capture = max(candidates, key=lambda item: item.stat().st_mtime_ns)
+            if capture.stat().st_size > 5_000:
+                shutil.copy2(capture, path)
+                return
+        time.sleep(0.1)
+    raise RuntimeError(f"Minecraft did not save its framebuffer screenshot: {path.name}")
 
 
 def image_is_substantial(path: Path) -> bool:
@@ -239,6 +330,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     config_image = output_dir / f"{name}-config.png"
     title_image = output_dir / f"{name}-title.png"
     creation_image = output_dir / f"{name}-world-creation.png"
+    cheats_image = output_dir / f"{name}-world-cheats.png"
     world_image = output_dir / f"{name}-world.png"
     pause_image = output_dir / f"{name}-pause.png"
     inventory_image = output_dir / f"{name}-inventory.png"
@@ -258,19 +350,50 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     wraith_warded_ordinary_image = output_dir / f"{name}-wraith-warded-ordinary-wthit.png"
     wraith_warded_infused_image = output_dir / f"{name}-wraith-warded-infused-wthit.png"
     ghost_image = output_dir / f"{name}-ghost-wthit.png"
-    display_number = free_display()
-    display = f":{display_number}"
+    spectral_images = {
+        (entity, lighting): output_dir / f"{name}-{entity}-{lighting}.png"
+        for entity in ("ghost", "wraith") for lighting in ("day", "night")
+    }
+    spectral_environment_images = {
+        (entity, environment): output_dir / f"{name}-{entity}-{environment}.png"
+        for entity in ("ghost", "wraith")
+        for environment in ("rain", "dark-background", "bright-background", "indoor")
+    }
+    display = args.display or f":{free_display()}"
     game_temp = tempfile.TemporaryDirectory(prefix="usefultools-client-", dir="/dev/shm")
     game_dir = Path(game_temp.name)
+    if args.client_mod:
+        mods_dir = game_dir / "mods"
+        mods_dir.mkdir()
+        for mod in args.client_mod:
+            shutil.copy2(mod, mods_dir / mod.name)
+    if args.shader_pack or args.disable_shaders:
+        packs_dir = game_dir / "shaderpacks"
+        if args.shader_pack:
+            packs_dir.mkdir()
+            shutil.copy2(args.shader_pack, packs_dir / args.shader_pack.name)
+        config_dir = game_dir / "config"
+        config_dir.mkdir(exist_ok=True)
+        (config_dir / "iris.properties").write_text(
+            f"enableShaders={'false' if args.disable_shaders else 'true'}\n"
+            f"shaderPack={args.shader_pack.name if args.shader_pack else ''}\n",
+            encoding="utf-8",
+        )
+    if args.shader_pack and args.disable_shaders:
+        raise SystemExit("--shader-pack and --disable-shaders are mutually exclusive")
     if target.loader != "classic":
         # Accessibility onboarding is Minecraft UI, not part of the mod under
         # test, and its first-run button can be temporarily disabled while a
         # loader splash hands off to GLFW. Seed the vanilla completion flag so
         # automation begins deterministically on the title screen.
         (game_dir / "options.txt").write_text(
-            "onboardAccessibility:false\ntutorialStep:none\nrenderClouds:false\n", encoding="utf-8"
+            "onboardAccessibility:false\ntutorialStep:none\nrenderClouds:false\n"
+            "fullscreen:false\n", encoding="utf-8"
         )
     env = os.environ.copy()
+    # Route every game launch exclusively through its agent-owned Xvfb display.
+    env.pop("WAYLAND_DISPLAY", None)
+    env.pop("WAYLAND_SOCKET", None)
     env.update(
         {
             "DISPLAY": display,
@@ -285,11 +408,28 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         "--init-script", str(ROOT / "scripts/smoke-isolated.gradle"),
         f"-PusefulToolsSmokeGameDir={game_dir}",
     ]
+    if args.offline:
+        command.append("--offline")
+    if args.skip_asset_download:
+        asset_download_tasks = {
+            "1.20.2-neoforge": "neoFormJoined1.20.2-20231019.002635DownloadAssets",
+            "1.21.1-neoforge": "neoFormJoined1.21.1-20240808.144430DownloadAssets",
+            "26.1.2-neoforge": "neoFormJoined26.1.2-1DownloadAssets",
+            "26.2-neoforge": "neoFormJoined26.2-2DownloadAssets",
+        }
+        asset_task = asset_download_tasks.get(args.target)
+        if asset_task is None:
+            parser.error("--skip-asset-download is supported only for NeoForge targets with a known asset task")
+        command.extend(("-x", asset_task))
+    if args.asset_cache_source:
+        command.append(f"-PusefulToolsSmokeAssetSource={args.asset_cache_source.resolve()}")
+    if args.ignore_sodium_lwjgl_check:
+        command.append("-PusefulToolsSmokeJvmArgs=-Dsodium.checks.issue2561=false")
     command.extend(f"-P{value}" for value in args.gradle_property)
     if target.loader == "fabric":
         command.append("-PusefulToolsModMenuRuntime=true")
     command.append(target.task)
-    xvfb = subprocess.Popen(
+    xvfb = None if args.display else subprocess.Popen(
         ["Xvfb", display, "-screen", "0", "1280x720x24", "-nolisten", "tcp"],
         env={**env, RUN_ID_ENV: run_id}, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
     )
@@ -301,10 +441,13 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
     config_opened = False
     clean_exit = False
     showcase_commands_succeeded = False
+    spectral_commands_succeeded = False
     try:
         time.sleep(0.5)
         print(f"==> {name}: client smoke", flush=True)
         with log_path.open("w", encoding="utf-8") as log:
+            logged_bytes = 0
+            log_truncated = False
             process = subprocess.Popen(
                 command, cwd=ROOT / target.directory, env=env,
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
@@ -320,6 +463,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
             threading.Thread(target=reader, daemon=True).start()
 
             def drain() -> None:
+                nonlocal logged_bytes, log_truncated
                 while True:
                     try:
                         line = lines.get_nowait()
@@ -329,13 +473,37 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                         break
                     clean = ANSI_RE.sub("", line)
                     all_output.append(clean)
-                    log.write(clean)
-                    log.flush()
+                    line_bytes = len(clean.encode("utf-8"))
+                    if logged_bytes + line_bytes <= LOG_BYTE_LIMIT:
+                        log.write(clean)
+                        logged_bytes += line_bytes
+                        log.flush()
+                    elif not log_truncated:
+                        log.write("\\n[smoke-client] Log truncated at 8 MiB; live output monitoring continues.\\n")
+                        log.flush()
+                        log_truncated = True
                     if args.verbose or JOIN_RE.search(clean) or CRASH_RE.search(clean):
                         sys.stdout.write(clean)
                         sys.stdout.flush()
 
-            window = window_id(display, min(120, args.timeout))
+            # Gradle may spend several minutes resolving a fresh optional
+            # shader loader before GLFW creates its first window. Drain logs
+            # throughout that wait so a failed launch leaves diagnostics.
+            window = None
+            window_deadline = time.monotonic() + min(300, args.timeout)
+            while time.monotonic() < window_deadline:
+                drain()
+                result = xdo(display, "search", "--onlyvisible", "--name", "Minecraft", check=False)
+                ids = [line for line in result.stdout.splitlines() if line.isdigit()]
+                if ids:
+                    window = ids[-1]
+                    break
+                if process.poll() is not None:
+                    break
+                time.sleep(0.5)
+            if window is None:
+                drain()
+                raise RuntimeError("Minecraft window did not appear")
             # Wait for the resource reload/title screen, then harmlessly dismiss
             # first-run accessibility onboarding if it exists.
             deadline = time.monotonic() + 90
@@ -356,17 +524,39 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
             # GLFW game window during startup, so refresh the id immediately
             # before input instead of before the post-atlas transition.
             window = window_id(display, 10)
+            # Desktop window managers may launch Minecraft maximized even
+            # when the disposable options request windowed mode. Clear those
+            # states before resizing so click coordinates share the harness's
+            # landscape 854x480 reference aspect ratio.
+            xdo(display, "windowstate", "--remove", "MAXIMIZED_HORZ", window, check=False)
+            xdo(display, "windowstate", "--remove", "MAXIMIZED_VERT", window, check=False)
+            xdo(display, "windowsize", "--sync", window, "1280", "720")
+            # Keep the entire test window inside the bounded Xvfb framebuffer.
+            xdo(display, "windowmove", "--sync", window, "0", "0")
+            window_geometry = xdo(display, "getwindowgeometry", "--shell", window).stdout
+            print(f"{name}: game window geometry after normalization: {window_geometry.strip().replace(chr(10), ', ')}", flush=True)
+            time.sleep(2)
+            if name == "26.2-neoforge" and any(
+                "iris" in mod_path.name.lower() for mod_path in args.client_mod
+            ):
+                # Iris/Sodium's current 26.2 mod metadata triggers NeoForge's
+                # one-time deprecated-metadata screen before the title menu.
+                # Traverse to its third button, Proceed to Main Menu, without
+                # relying on a pointer event during Iris' initial compilation.
+                for _ in range(5):
+                    xdo(display, "key", "--window", window, "Tab")
+                xdo(display, "key", "--window", window, "Return")
+                time.sleep(3)
+                window = window_id(display, 10)
             print(f"{name}: title screen ready", flush=True)
-            # The first-run onboarding can remain visually present for a few
-            # seconds after the final resource-atlas log marker. Repeating the
-            # Continue click is harmless on the title screen (the same point
-            # is empty there) and avoids racing the still-disabled button.
-            for _ in range(1):
-                click(display, window, 427, 448)
-                time.sleep(2)
-
             is_26 = name.startswith("26.")
-            if target.loader == "fabric":
+            if args.spectral_render_check:
+                # Shader QA is concerned with the rendered entity path, so
+                # bypass the loader-specific config screens and use keyboard
+                # focus on the stable title-screen Singleplayer action.
+                config_opened = True
+                print(f"{name}: config screen skipped for spectral render QA", flush=True)
+            elif target.loader == "fabric":
                 mod_menu_x, mod_menu_y = (
                     (498, 380) if name == "26.2-fabric" else (427, 356)
                 )
@@ -407,34 +597,38 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     click(display, window, 130, 90)
                     time.sleep(2)
                     click(display, window, 130, 397)
-            time.sleep(3)
-            drain()
-            xdo(display, "mousemove", "--sync", "--window", window, "10", "10")
-            time.sleep(1)
-            screenshot(display, config_image)
-            config_opened = image_is_substantial(config_image) and not any(
-                CRASH_RE.search(line) for line in all_output
-            )
-            if not config_opened:
-                failure = "config screen did not open cleanly"
-            print(f"{name}: config screen {'OK' if config_opened else 'FAILED'}", flush=True)
+            if not args.spectral_render_check:
+                time.sleep(3)
+                drain()
+                xdo(display, "mousemove", "--sync", "--window", window, "10", "10")
+                time.sleep(1)
+                screenshot(display, config_image, window, game_dir)
+                config_opened = image_is_substantial(config_image) and not any(
+                    CRASH_RE.search(line) for line in all_output
+                )
+                if not config_opened:
+                    failure = "config screen did not open cleanly"
+                print(f"{name}: config screen {'OK' if config_opened else 'FAILED'}", flush=True)
 
             # Cancel back through the config and mod-list screens.
-            xdo(display, "key", "--window", window, "Escape")
-            time.sleep(1)
-            xdo(display, "key", "--window", window, "Escape")
-            if target.loader == "fabric":
+            if not args.spectral_render_check:
+                xdo(display, "key", "--window", window, "Escape")
+                time.sleep(1)
+                xdo(display, "key", "--window", window, "Escape")
+            if not args.spectral_render_check and target.loader == "fabric":
                 # Mod Menu has a separate selected-mod detail screen between
                 # the config screen and its list, so Fabric needs one more
                 # level of cancellation before returning to the title screen.
                 time.sleep(1)
                 xdo(display, "key", "--window", window, "Escape")
-            if name == "26.2-neoforge":
+            if args.spectral_render_check:
+                pass
+            elif name == "26.2-neoforge":
                 wait_for_button(display, 427, 204, 60)
             elif target.loader == "classic":
                 window = wait_for_window_replacement(display, window, 45)
                 wait_for_button(display, 427, 237, 15)
-            else:
+            elif not args.spectral_render_check:
                 time.sleep(2)
             # Create the first disposable singleplayer world.
             singleplayer_y = (
@@ -442,8 +636,43 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                 else 204 if (is_26 and target.loader == "neoforge") or name == "1.21.1-neoforge"
                 else (211 if target.loader == "fabric" else 237)
             )
+            if args.spectral_render_check:
+                geometry = xdo(display, "getwindowgeometry", "--shell", window).stdout
+                dimensions = dict(
+                    line.split("=", 1) for line in geometry.splitlines() if "=" in line
+                )
+                # The UI is scaled from the window width, while this host can
+                # expose a much taller Xwayland surface than the game's normal
+                # 16:9 reference. Center the title-button stack in that extra
+                # vertical space instead of choosing an arbitrary portrait y.
+                logical_height = int(dimensions["HEIGHT"]) * 854 / int(dimensions["WIDTH"])
+                singleplayer_y += round((logical_height - 480) * 0.276)
+                world_action_y = 443 + round((logical_height - 480) * 0.98)
+                # Keep the cheats click on the center of the toggle; placing it
+                # too low can land on the create action on tall Xwayland windows.
+                cheats_y = 284 + round((logical_height - 480) * 0.23)
+            else:
+                world_action_y, cheats_y = 443, 284
             print(f"{name}: creating disposable world", flush=True)
-            if name == "26.2-neoforge":
+            if args.spectral_render_check:
+                # Advance one screen at a time. Repeating the title-screen
+                # coordinate after opening the world list can leave the click
+                # on an inert row, especially on high-DPI portrait surfaces.
+                focus_and_enter(display, window, 427, singleplayer_y)
+                time.sleep(2)
+                # The world-list screen's Create New World button is on the
+                # left; the right-hand button returns to the title screen.
+                focus_and_enter(display, window, 267, world_action_y)
+                time.sleep(2)
+                screenshot(display, creation_image, window, game_dir)
+                # Allow Cheats toggle on the Game tab; keep a capture after
+                # the toggle so a failed click is visible in the QA artifact.
+                click(display, window, 427, cheats_y)
+                time.sleep(0.5)
+                screenshot(display, cheats_image, window, game_dir)
+                create_world_x = 727 if target.loader == "classic" else 267
+                click(display, window, create_world_x, world_action_y)
+            elif name == "26.2-neoforge":
                 # This beta intermittently drops synthetic mouse clicks on
                 # the animated title screen, while keyboard focus remains
                 # deterministic: Tab selects Singleplayer and Return accepts
@@ -454,7 +683,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                 time.sleep(3)
                 xdo(display, "key", "--window", window, "Return")
             elif target.loader == "classic":
-                screenshot(display, title_image)
+                screenshot(display,  title_image, window, game_dir)
                 quick_click(display, 427, singleplayer_y)
                 time.sleep(3)
                 quick_click(display, 584, 397)
@@ -467,8 +696,8 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                 for _ in range(3):
                     click(display, window, 427, singleplayer_y)
                     time.sleep(2)
-                if args.visual_showcase:
-                    screenshot(display, creation_image)
+                if args.visual_showcase or args.spectral_render_check:
+                    screenshot(display,  creation_image, window, game_dir)
                     # Vanilla 1.21.1's Allow Commands toggle on the Game tab.
                     click(display, window, 427, 284)
                     time.sleep(1)
@@ -491,8 +720,150 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     break
                 time.sleep(0.25)
             if joined:
-                time.sleep(2)
-                screenshot(display, world_image)
+                # Some Fabric versions replace the top-level window when the
+                # integrated server opens. Do not keep using the title-screen
+                # XID for in-world captures or command entry.
+                window = window_id(display, 30)
+                # Iris compiles its first world pipeline during the initial
+                # frame on 26.2; give that work time to finish before F2.
+                time.sleep(30 if name == "26.2-neoforge" and args.shader_pack else 2)
+                screenshot(display,  world_image, window, game_dir)
+                if args.spectral_render_check:
+                    def spectral_command(command: str, expected: tuple[str, ...]) -> None:
+                        for _ in range(3):
+                            start = len(all_output)
+                            xdo(display, "key", "--window", window, "t")
+                            time.sleep(0.8)
+                            xdo(display, "type", "--window", window, "--delay", "8", f"/{command}")
+                            xdo(display, "key", "--window", window, "Return")
+                            deadline = time.monotonic() + 12
+                            while time.monotonic() < deadline:
+                                drain()
+                                if any(
+                                    marker in line for line in all_output[start:]
+                                    for marker in expected
+                                ):
+                                    return
+                                time.sleep(0.3)
+                        raise RuntimeError(f"scene command was not accepted: {command}")
+
+                    time.sleep(8)  # Let shader compilation and the first world frames settle.
+                    spawn_rule = (
+                        "minecraft:spawn_mobs"
+                        if args.target.startswith(("26.1.2-", "26.2-"))
+                        else "doMobSpawning"
+                    )
+                    for command, expected in (
+                        ("gamemode creative", ("Set own game mode to Creative Mode",)),
+                        (
+                            f"gamerule {spawn_rule} false",
+                            (
+                                f"Gamerule {spawn_rule.rsplit(':', 1)[-1]}",
+                                f"Game rule {spawn_rule.rsplit(':', 1)[-1]}",
+                            ),
+                        ),
+                        ("weather clear", ("Set the weather to clear",)),
+                        ("effect clear @s", ("Target has no effects", "Removed every effect")),
+                        ("kill @e[type=!minecraft:player]", ("Killed ", "No entity was found")),
+                        ("tp @s 0 205 3 180 8", ("205.000000",)),
+                    ):
+                        spectral_command(command, expected)
+                    time.sleep(2)  # Let the destination chunks load before /fill.
+                    for command, expected in (
+                        ("fill -8 199 -8 8 199 8 minecraft:smooth_stone",
+                         ("Successfully filled", "No blocks were filled")),
+                        ("fill -8 200 -8 8 210 8 minecraft:air",
+                         ("Successfully filled", "No blocks were filled")),
+                        ("tp @s 0 200 3 180 8", ("200.000000",)),
+                    ):
+                        spectral_command(command, expected)
+                    xdo(display, "key", "--window", window, "F1")
+                    for entity in ("ghost", "wraith"):
+                        spectral_command(
+                            f"summon usefultoolsmod:{entity} 0 201 -3 "
+                            "{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}",
+                            (f"Summoned new {entity.title()}",),
+                        )
+                        for lighting, clock_time, expected_time in (
+                            ("day", "noon", "6000"), ("night", "midnight", "18000")
+                        ):
+                            time_message = (
+                                f"Set minecraft:overworld to time marker minecraft:{clock_time}"
+                                if args.target.startswith(("26.1.2-", "26.2-"))
+                                else f"Set the time to {expected_time}"
+                            )
+                            spectral_command(
+                                f"time set {clock_time}", (time_message,)
+                            )
+                            time.sleep(2)
+                            screenshot(display,  spectral_images[entity, lighting], window, game_dir)
+                        noon_message = (
+                            "Set minecraft:overworld to time marker minecraft:noon"
+                            if args.target.startswith(("26.1.2-", "26.2-"))
+                            else "Set the time to 6000"
+                        )
+                        spectral_command("time set noon", (noon_message,))
+                        spectral_command("weather rain 100000", ("Set the weather to rain",))
+                        time.sleep(3)
+                        screenshot(display,  spectral_environment_images[entity, "rain"], window, game_dir)
+                        spectral_command("weather clear", ("Set the weather to clear",))
+                        spectral_command(
+                            "fill -4 201 -5 4 205 -5 minecraft:deepslate_tiles",
+                            ("Successfully filled", "No blocks were filled"),
+                        )
+                        time.sleep(1)
+                        screenshot(display,  spectral_environment_images[entity, "dark-background"], window, game_dir)
+                        spectral_command(
+                            "fill -4 201 -5 4 205 -5 minecraft:white_concrete",
+                            ("Successfully filled", "No blocks were filled"),
+                        )
+                        time.sleep(1)
+                        screenshot(display,  spectral_environment_images[entity, "bright-background"], window, game_dir)
+                        spectral_command("fill -4 201 -5 4 205 -5 minecraft:air",
+                                         ("Successfully filled", "No blocks were filled"))
+                        if args.retain_spectral_entities:
+                            spectral_command(
+                                f"tp @e[type=usefultoolsmod:{entity},distance=..16] 1000 200 1000",
+                                ("Teleported",),
+                            )
+                        else:
+                            spectral_command(
+                                f"kill @e[type=usefultoolsmod:{entity},distance=..16]",
+                                (f"Killed {entity.title()}",),
+                            )
+                    xdo(display, "key", "--window", window, "F1")
+                    spectral_command(
+                        "fill -5 199 -8 5 207 4 minecraft:deepslate_bricks hollow",
+                        ("Successfully filled", "No blocks were filled"),
+                    )
+                    spectral_command("fill -5 200 4 5 206 4 minecraft:air",
+                                     ("Successfully filled", "No blocks were filled"))
+                    spectral_command(
+                        "setblock 0 205 -4 minecraft:sea_lantern",
+                        ("Block placed", "Changed the block at"),
+                    )
+                    spectral_command("tp @s 0 200 3 180 8", ("200.000000",))
+                    xdo(display, "key", "--window", window, "F1")
+                    for entity in ("ghost", "wraith"):
+                        spectral_command(
+                            f"summon usefultoolsmod:{entity} 0 201 -3 "
+                            "{NoAI:1b,NoGravity:1b,Silent:1b,PersistenceRequired:1b,Invulnerable:1b}",
+                            (f"Summoned new {entity.title()}",),
+                        )
+                        time.sleep(1)
+                        screenshot(display,  spectral_environment_images[entity, "indoor"], window, game_dir)
+                        if args.retain_spectral_entities:
+                            spectral_command(
+                                f"tp @e[type=usefultoolsmod:{entity},distance=..16] 1000 200 1000",
+                                ("Teleported",),
+                            )
+                        else:
+                            spectral_command(
+                                f"kill @e[type=usefultoolsmod:{entity},distance=..16]",
+                                (f"Killed {entity.title()}",),
+                            )
+                    xdo(display, "key", "--window", window, "F1")
+                    spectral_commands_succeeded = True
                 if args.visual_showcase:
                     def chat_command(command: str, delay: float = 0.6) -> None:
                         xdo(display, "key", "--window", window, "t")
@@ -578,7 +949,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     time.sleep(8)
                     chat_command("tp @s 0 203 0 180 20", 0.2)
                     time.sleep(1)
-                    screenshot(display, blocks_image)
+                    screenshot(display,  blocks_image, window, game_dir)
 
                     # Dedicated Ectoplasm Lantern proof from every face. The
                     # invisible barrier support makes the lower cage and core
@@ -600,7 +971,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     for teleport, lantern_image in lantern_views:
                         chat_command(teleport, 0.2)
                         time.sleep(1)
-                        screenshot(display, lantern_image)
+                        screenshot(display,  lantern_image, window, game_dir)
 
                     # Dedicated Mining Charge proof. Each capture uses a clean
                     # scene, labels all six facing states, and keeps vanilla
@@ -620,7 +991,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                         chat_command(text_display_command(x, 202, 5, direction.upper()), 0.1)
                     chat_command("tp @s 0 200 11 180 11", 0.2)
                     time.sleep(2)
-                    screenshot(display, mining_unlit_image)
+                    screenshot(display,  mining_unlit_image, window, game_dir)
 
                     for index, direction in enumerate(directions):
                         x = -5 + index * 2
@@ -630,7 +1001,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                             0.1,
                         )
                     time.sleep(2)
-                    screenshot(display, mining_lit_image)
+                    screenshot(display,  mining_lit_image, window, game_dir)
 
                     chat_command("kill @e[type=minecraft:text_display,tag=usefultools_visual_label]")
                     chat_command("fill -7 199 3 7 203 7 minecraft:air")
@@ -641,7 +1012,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     chat_command(text_display_command(1, 202, 5, "LIT", "red"), 0.1)
                     chat_command("tp @s 0 200 9 180 15", 0.2)
                     time.sleep(2)
-                    screenshot(display, mining_glass_image)
+                    screenshot(display,  mining_glass_image, window, game_dir)
                     chat_command("kill @e[type=minecraft:text_display,tag=usefultools_visual_label]")
                     chat_command("fill -7 199 3 7 203 7 minecraft:air")
 
@@ -657,23 +1028,23 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     , 0.3)
                     ensure_world_view()
                     time.sleep(2)
-                    screenshot(display, wraith_hunting_ordinary_image)
+                    screenshot(display,  wraith_hunting_ordinary_image, window, game_dir)
                     chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
                     ensure_world_view()
                     time.sleep(1)
-                    screenshot(display, wraith_hunting_infused_image)
+                    screenshot(display,  wraith_hunting_infused_image, window, game_dir)
                     chat_command("setblock 2 200 -3 usefultoolsmod:ectoplasm_lantern")
                     chat_command("item replace entity @s weapon.mainhand with minecraft:iron_sword")
                     ensure_world_view()
                     time.sleep(1)
-                    screenshot(display, wraith_warded_ordinary_image)
+                    screenshot(display,  wraith_warded_ordinary_image, window, game_dir)
                     chat_command("item replace entity @s weapon.mainhand with usefultoolsmod:ecto_sword")
                     ensure_world_view()
                     time.sleep(1)
-                    screenshot(display, wraith_warded_infused_image)
+                    screenshot(display,  wraith_warded_infused_image, window, game_dir)
                     # Retain the original report field as a compatibility alias
                     # for the strongest warded+infused acceptance state.
-                    screenshot(display, wraith_image)
+                    screenshot(display,  wraith_image, window, game_dir)
                     chat_command("kill @e[type=usefultoolsmod:wraith,distance=..16]")
                     chat_command("kill @e[type=minecraft:item,distance=..16]")
                     chat_command("setblock 2 200 -3 minecraft:air")
@@ -683,7 +1054,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     , 0.3)
                     ensure_world_view()
                     time.sleep(2)
-                    screenshot(display, ghost_image)
+                    screenshot(display,  ghost_image, window, game_dir)
                     chat_command("kill @e[type=usefultoolsmod:ghost,distance=..16]")
                 if args.inventory_probe:
                     xdo(display, "key", "--window", window, "e")
@@ -693,7 +1064,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                         xdo(display, "key", "--window", window, "ctrl+a")
                         xdo(display, "type", "--window", window, "--delay", "25", args.inventory_search)
                         time.sleep(3)
-                    screenshot(display, inventory_image)
+                    screenshot(display,  inventory_image, window, game_dir)
                     if args.inventory_search:
                         # JEI consumes the first Escape while its search box
                         # owns focus; a second one closes the inventory.
@@ -703,7 +1074,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     time.sleep(1)
                 xdo(display, "key", "--window", window, "Escape")
                 time.sleep(1)
-                screenshot(display, pause_image)
+                screenshot(display,  pause_image, window, game_dir)
                 # Forge and NeoForge add a full-width Mods button above the
                 # vanilla Save and Quit button. Fabric keeps the vanilla
                 # pause-menu layout.
@@ -712,7 +1083,10 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     if target.loader in ("fabric", "classic") or name == "26.2-neoforge"
                     else 383
                 )
-                click(display, window, 427, save_quit_y)
+                if args.spectral_render_check:
+                    focus_and_enter(display, window, 427, save_quit_y)
+                else:
+                    click(display, window, 427, save_quit_y)
                 time.sleep(20)
                 quit_y = (
                     428 if name == "26.2-forge"
@@ -720,11 +1094,17 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                     else 420 if is_26 and target.loader == "neoforge"
                     else (429 if target.loader == "fabric" else 404)
                 )
-                click(display, window, 527, quit_y)
+                if args.spectral_render_check:
+                    focus_and_enter(display, window, 527, quit_y)
+                else:
+                    click(display, window, 527, quit_y)
                 try:
                     process.wait(timeout=30)
                 except subprocess.TimeoutExpired:
-                    click(display, window, 527, quit_y)
+                    if args.spectral_render_check:
+                        focus_and_enter(display, window, 527, quit_y)
+                    else:
+                        click(display, window, 527, quit_y)
                     process.wait(timeout=30)
                 drain()
                 clean_exit = process.returncode == 0
@@ -738,7 +1118,7 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         if process is not None and process.poll() is None:
             cleanup(run_id)
         remaining = cleanup(run_id)
-        if xvfb.poll() is None:
+        if xvfb is not None and xvfb.poll() is None:
             xvfb.terminate()
             try:
                 xvfb.wait(timeout=3)
@@ -746,7 +1126,22 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
                 xvfb.kill()
         game_temp.cleanup()
 
+    shader_pack_loaded = (
+        any(f"Using shaderpack: {args.shader_pack.name}" in line for line in all_output)
+        if args.shader_pack else None
+    )
+    shader_loader_disabled = (
+        any("Shaders are disabled because enableShaders is set to false" in line
+            for line in all_output)
+        if args.disable_shaders else None
+    )
     success = config_opened and joined and clean_exit and not remaining and failure is None
+    if args.shader_pack and not shader_pack_loaded:
+        success = False
+        failure = failure or "shader pack was not reported as loaded"
+    if args.disable_shaders and not shader_loader_disabled:
+        success = False
+        failure = failure or "Iris did not report that shaders were explicitly disabled"
     if args.inventory_probe and not image_is_substantial(inventory_image):
         success = False
         failure = failure or "inventory probe screenshot was empty"
@@ -768,6 +1163,15 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         elif not showcase_commands_succeeded:
             success = False
             failure = failure or "visual showcase commands were not accepted by the server"
+    if args.spectral_render_check:
+        if not all(image_is_substantial(path) for path in (
+            *spectral_images.values(), *spectral_environment_images.values()
+        )):
+            success = False
+            failure = failure or "spectral lighting/context screenshot was empty"
+        elif not spectral_commands_succeeded:
+            success = False
+            failure = failure or "spectral render scene commands were not accepted"
     report = {
         "target": name,
         "command": command,
@@ -778,11 +1182,32 @@ def run_target(name: str, target: Target, args: argparse.Namespace) -> bool:
         "clean_exit": clean_exit,
         "remaining_owned_pids": remaining,
         "failure": failure,
+        "client_mods": [mod.name for mod in args.client_mod],
+        "shader_pack": args.shader_pack.name if args.shader_pack else None,
+        "shader_pack_loaded": shader_pack_loaded,
+        "shaders_explicitly_disabled": args.disable_shaders,
+        "shader_loader_disabled_reported": shader_loader_disabled,
+        "sodium_lwjgl_check_ignored": args.ignore_sodium_lwjgl_check,
+        "display": display,
+        "spectral_render_check_requested": args.spectral_render_check,
+        "spectral_entities_retained_after_capture": args.retain_spectral_entities,
+        "spectral_render_commands_succeeded": spectral_commands_succeeded,
+        "spectral_render_screenshots": (
+            [str(path.relative_to(ROOT)) for path in (
+                *spectral_images.values(), *spectral_environment_images.values()
+            ) if path.exists()]
+            if args.spectral_render_check else []
+        ),
         "log": str(log_path.relative_to(ROOT)),
         "config_screenshot": str(config_image.relative_to(ROOT)),
         "title_screenshot": str(title_image.relative_to(ROOT)),
         "world_creation_screenshot": (
-            str(creation_image.relative_to(ROOT)) if args.visual_showcase else None
+            str(creation_image.relative_to(ROOT))
+            if args.visual_showcase or args.spectral_render_check else None
+        ),
+        "world_cheats_screenshot": (
+            str(cheats_image.relative_to(ROOT))
+            if args.spectral_render_check else None
         ),
         "world_screenshot": str(world_image.relative_to(ROOT)),
         "pause_screenshot": str(pause_image.relative_to(ROOT)),

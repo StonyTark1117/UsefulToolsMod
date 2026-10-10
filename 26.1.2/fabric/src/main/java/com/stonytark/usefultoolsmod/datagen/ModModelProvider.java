@@ -44,7 +44,7 @@ import java.util.Set;
  */
 public class ModModelProvider extends FabricModelProvider {
 
-    private static final Set<String> CUSTOM_GEOMETRY_ITEMS = Set.of("grenade", "dynamite");
+    private static final Set<String> CUSTOM_GEOMETRY_ITEMS = Set.of("grenade", "dynamite", "sticky_dynamite", "remote_detonator", "spectral_resonator", "mining_charge", "ectoplasm_lantern", "soul_lantern");
 
     public ModModelProvider(FabricPackOutput output) {
         super(output);
@@ -93,15 +93,15 @@ public class ModModelProvider extends FabricModelProvider {
             if (!UsefultoolsMod.MOD_ID.equals(id.getNamespace())) {
                 continue;
             }
+            String path = id.getPath();
+            if (CUSTOM_GEOMETRY_ITEMS.contains(path)) {
+                itemModels.declareCustomModelItem(item);
+                continue;
+            }
             if (item instanceof BlockItem blockItem) {
                 // The other 20 BlockItems are auto-bridged to their cube model by
                 // ItemInfoCollector. SPECTRAL_INFUSER was handled above.
                 if (blockItem.getBlock() == ModBlocks.SPECTRAL_INFUSER) continue;
-                continue;
-            }
-            String path = id.getPath();
-            if (CUSTOM_GEOMETRY_ITEMS.contains(path)) {
-                itemModels.declareCustomModelItem(item);
                 continue;
             }
             ModelTemplate template = isHandheldTool(path)

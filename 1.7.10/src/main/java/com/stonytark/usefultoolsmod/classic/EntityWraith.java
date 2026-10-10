@@ -12,9 +12,18 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import com.stonytark.usefultoolsmod.classic.client.SpectralShaderSupport;
 
 public class EntityWraith extends EntityMob {
     private int lungeCooldown;
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getBrightnessForRender(float partialTick) {
+        return SpectralShaderSupport.wraithPackedLight(super.getBrightnessForRender(partialTick));
+    }
 
     public EntityWraith(World world) {
         super(world); setSize(1.2F, 2.25F); noClip = true; isImmuneToFire = true;
@@ -33,7 +42,10 @@ public class EntityWraith extends EntityMob {
     }
 
     @Override public void onLivingUpdate() {
-        super.onLivingUpdate(); noClip = true; fallDistance = 0; extinguish(); motionY *= .6D;
+        super.onLivingUpdate(); noClip = true; fallDistance = 0; extinguish();
+        // Vanilla applies gravity even to noClip mobs. Cancel that tick's
+        // gravity before damping motion, or the Wraith sinks through terrain.
+        motionY = (motionY + .0784D) * .6D;
         if (!worldObj.isRemote && ticksExisted % 20 == 0) {
             EntityPlayer player = worldObj.getClosestPlayerToEntity(this, 16D);
             if (player != null) player.addStat(ClassicAchievements.encounterWraith, 1);

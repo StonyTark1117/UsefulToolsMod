@@ -10,11 +10,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import com.stonytark.usefultoolsmod.classic.client.SpectralShaderSupport;
 
 /** Forge 1.7.10 equivalent of the modern Ghost lifecycle and damage contract. */
 public class EntityGhost extends EntityAnimal {
     private static final int MAX_LIFETIME = 5 * 60 * 20;
     private int lifetime;
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getBrightnessForRender(float partialTick) {
+        return SpectralShaderSupport.packedLight(super.getBrightnessForRender(partialTick));
+    }
 
     public EntityGhost(World world) {
         super(world);

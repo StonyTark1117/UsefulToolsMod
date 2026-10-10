@@ -11,6 +11,7 @@ public class ClassicSoulLantern extends Block {
 
     public ClassicSoulLantern(Material material) {
         super(material);
+        setLightLevel(12.0F / 15.0F);
         setBlockBounds(.25F, 0F, .25F, .75F, 1F, .75F);
     }
 

@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="CC0-1.0"
+[[mods]]
+modId="usefultools_lighting"
+version="${version}"
+displayName="Useful Tools Lighting"
+description="Render-only held, worn, and extended Hardened Glowstone lighting."
+[[mixins]]
+config="usefultools_lighting.mixins.json"
+
+[modproperties."usefultools_lighting"."yumi:entrypoints"]
+"lambdynlights:initializer"="com.stonytark.usefultools.lighting.LambLightingIntegration"

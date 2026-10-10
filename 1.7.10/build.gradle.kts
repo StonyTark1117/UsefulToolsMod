@@ -43,3 +43,5 @@ tasks.processResources.configure {
 tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
 }
+
+apply(from = "../lighting/companion.gradle")

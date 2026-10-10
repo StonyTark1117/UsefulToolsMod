@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.datagen;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.item.ModItems;
@@ -44,7 +46,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
     static class UsefulToolsAdvancements implements AdvancementSubProvider {
 
         private static final ResourceLocation BACKGROUND =
-                ResourceLocation.parse("textures/block/netherrack.png");
+                CompatibleResourceLocations.parse("textures/block/netherrack.png");
 
         @Override
         public void generate(HolderLookup.Provider registries,

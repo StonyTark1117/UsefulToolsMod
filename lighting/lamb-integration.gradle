@@ -1,0 +1,24 @@
+// The API is compile-only; installing the base or companion never installs another lighting backend.
+def targetMc = projectDir.parentFile.name
+def lambVersion = ['1.20.1':'4.4.0+1.20.1', '1.21.1':'4.8.0+1.21.1', '26.1.2':'4.11.2+26.1.2', '26.2':'4.12.4+26.2'][targetMc]
+if (lambVersion != null && (projectDir.name == 'fabric' || projectDir.name == 'neoforge' && targetMc != '1.20.1')) {
+    repositories { maven { url 'https://maven.gegy.dev' } }
+    if (projectDir.name == 'fabric' && !targetMc.startsWith('26.')) {
+        // Loom remaps this optional API into the same native namespace as the adapter.
+        dependencies { modCompileOnly "dev.lambdaurora.lambdynamiclights:lambdynamiclights-api:${lambVersion}" }
+    } else {
+        def mappingsAttribute = Attribute.of('net.minecraft.mappings', String)
+        dependencies.attributesSchema.attribute(mappingsAttribute)
+        dependencies.add('lightingCompileOnly', "dev.lambdaurora.lambdynamiclights:lambdynamiclights-api:${lambVersion}") {
+            if (!targetMc.startsWith('26.')) attributes { attribute(mappingsAttribute, 'mojmap') }
+        }
+    }
+}
+if (projectDir.name == 'neoforge' && targetMc == '1.21.1') {
+    // Upstream's mojmap variant omits the event dependency present on its intermediary variant.
+    dependencies { lightingCompileOnly 'dev.yumi.commons:yumi-commons-event:1.0.0-beta.5' }
+}
+if (projectDir.name == 'fabric' && targetMc == '1.20.2') {
+    repositories { maven { url 'https://api.modrinth.com/maven' } }
+    dependencies { modCompileOnly 'maven.modrinth:lambdynamiclights:2.3.3+1.20.2' }
+}

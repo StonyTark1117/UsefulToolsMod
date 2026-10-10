@@ -201,6 +201,7 @@ tasks.named('processResources', ProcessResources).configure {
 tasks.named('jar', Jar).configure {
     manifest {
         attributes([
+            'MixinConfigs': 'usefultoolsmod.client-compat.mixins.json',
             'Specification-Title'     : mod_id,
             'Specification-Vendor'    : mod_authors,
             'Specification-Version'   : '1', // We are version 1 of ourselves
@@ -249,3 +250,5 @@ sourceSets.each {
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
 }
+
+apply from: "../../lighting/companion.gradle"

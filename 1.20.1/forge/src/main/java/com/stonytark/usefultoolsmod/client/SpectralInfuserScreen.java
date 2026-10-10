@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.client;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.entity.SpectralInfuserMenu;
 import net.minecraft.client.gui.GuiGraphics;
@@ -10,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class SpectralInfuserScreen extends AbstractContainerScreen<SpectralInfuserMenu> {
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "textures/gui/spectral_infuser.png");
+            CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "textures/gui/spectral_infuser.png");
 
     public SpectralInfuserScreen(SpectralInfuserMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);

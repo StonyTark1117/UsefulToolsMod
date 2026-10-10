@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.compat.jei;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.item.ModItems;
@@ -24,7 +26,7 @@ public class UsefulToolsJeiPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "jei_plugin");
+        return CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "jei_plugin");
     }
 
     @Override

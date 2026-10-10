@@ -8,6 +8,21 @@ import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 
 public class EntityStickyDynamite extends EntityThrowable {
+    // Separate visual metadata keeps a bundle visible outside an attached body.
+    @Override protected void entityInit() {
+        super.entityInit();
+        dataWatcher.addObject(20, Integer.valueOf(-1));
+        dataWatcher.addObject(21, Float.valueOf(.7F));
+    }
+
+    public net.minecraft.util.Vec3 getModelOffset() {
+        int side = dataWatcher.getWatchableObjectInt(20);
+        if (side < 0) return net.minecraft.util.Vec3.createVectorHelper(0, 0, 0);
+        float radius = dataWatcher.getWatchableObjectFloat(21);
+        return net.minecraft.util.Vec3.createVectorHelper(
+                Facing.offsetsXForSide[side] * radius, 0, Facing.offsetsZForSide[side] * radius);
+    }
+
     private int fuse = 80;
     private boolean stuck;
     private int attachedEntity = -1;
@@ -24,6 +39,10 @@ public class EntityStickyDynamite extends EntityThrowable {
         if (hit.entityHit != null) {
             attachedEntity = hit.entityHit.getEntityId();
             attachedUuid = hit.entityHit.getPersistentID().toString();
+            double dx = posX - hit.entityHit.posX, dz = posZ - hit.entityHit.posZ;
+            dataWatcher.updateObject(20, Integer.valueOf(Math.abs(dx) > Math.abs(dz)
+                    ? (dx > 0 ? 5 : 4) : (dz > 0 ? 3 : 2)));
+            dataWatcher.updateObject(21, Float.valueOf(Math.max(.7F, hit.entityHit.width * .5F + .25F)));
         }
         else setPosition(hit.blockX + .5 + Facing.offsetsXForSide[hit.sideHit] * .51,
                 hit.blockY + .5 + Facing.offsetsYForSide[hit.sideHit] * .51,
@@ -52,11 +71,11 @@ public class EntityStickyDynamite extends EntityThrowable {
     }
 
     @Override public void writeEntityToNBT(NBTTagCompound tag) {
-        super.writeEntityToNBT(tag); tag.setInteger("Fuse", fuse); tag.setBoolean("Stuck", stuck);
+        super.writeEntityToNBT(tag); tag.setInteger("ModelFace", dataWatcher.getWatchableObjectInt(20)); tag.setFloat("ModelRadius", dataWatcher.getWatchableObjectFloat(21)); tag.setInteger("Fuse", fuse); tag.setBoolean("Stuck", stuck);
         tag.setInteger("Attached", attachedEntity); tag.setString("AttachedUuid", attachedUuid);
     }
     @Override public void readEntityFromNBT(NBTTagCompound tag) {
-        super.readEntityFromNBT(tag); fuse = tag.getInteger("Fuse"); stuck = tag.getBoolean("Stuck");
+        super.readEntityFromNBT(tag); dataWatcher.updateObject(20, Integer.valueOf(tag.hasKey("ModelFace") ? tag.getInteger("ModelFace") : -1)); dataWatcher.updateObject(21, Float.valueOf(tag.hasKey("ModelRadius") ? tag.getFloat("ModelRadius") : .7F)); fuse = tag.getInteger("Fuse"); stuck = tag.getBoolean("Stuck");
         attachedEntity = tag.getInteger("Attached"); attachedUuid = tag.getString("AttachedUuid");
     }
 }

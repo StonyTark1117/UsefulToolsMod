@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,7 +20,15 @@ public class GhostRenderer extends MobRenderer<GhostEntity, GhostModel<GhostEnti
     @Nullable
     @Override
     protected RenderType getRenderType(GhostEntity entity, boolean visible, boolean translucent, boolean glowing) {
+        if (!SpectralShaderSupport.shouldUseVanillaEmissive(visible, translucent, glowing)) {
+            return super.getRenderType(entity, visible, translucent, glowing);
+        }
         return RenderType.entityTranslucentEmissive(getTextureLocation(entity));
+    }
+
+    @Override
+    protected int getBlockLightLevel(GhostEntity entity, BlockPos pos) {
+        return SpectralShaderSupport.blockLightLevel(super.getBlockLightLevel(entity, pos));
     }
 
     @Override

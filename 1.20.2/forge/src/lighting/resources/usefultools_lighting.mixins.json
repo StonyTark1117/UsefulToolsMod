@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.stonytark.usefultools.lighting.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "com.stonytark.usefultools.lighting.CompanionMixinPlugin",
+  "client": [
+    "ClientTickMixin",
+    "LightmapMixin",
+    "BlockUpdateMixin",
+    "EntityLightMixin",
+    "ChunkDataMixin",
+    "SodiumLegacyMixin",
+    "SodiumMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "usefultools_lighting.refmap.json"
+}

@@ -7,6 +7,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 
 public class GhostRenderer extends MobEntityRenderer<GhostEntity, GhostModel<GhostEntity>> {
 
@@ -26,5 +27,9 @@ public class GhostRenderer extends MobEntityRenderer<GhostEntity, GhostModel<Gho
             matrices.scale(0.5f, 0.5f, 0.5f);
         }
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
+    }
+    @Override
+    protected int getBlockLight(GhostEntity entity, BlockPos pos) {
+        return SpectralShaderSupport.blockLightLevel(super.getBlockLight(entity, pos));
     }
 }

@@ -840,6 +840,7 @@ public final class ClassicGeneratedCatalog {
 
     private static void registerBlock(String id) {
         Block block = (id.equals("spectral_infuser") ? new ClassicSpectralInfuserBlock() : id.equals("ectoplasm_lantern") ? new ClassicSoulLantern(Material.iron) : id.equals("mining_charge") ? new ClassicMiningCharge(Material.cloth) : new ClassicBlock()).setBlockName(id).setBlockTextureName("usefultoolsmod:" + id).setCreativeTab(MCreativeTabs.tabToolsMod);
+        if (id.equals("hglow_block")) block.setLightLevel(1.0F);
         if (id.equals("ectoplasm_lantern") || id.equals("mining_charge")) {
             GameRegistry.registerBlock(block, ClassicFeatureItemBlock.class, id);
         } else {

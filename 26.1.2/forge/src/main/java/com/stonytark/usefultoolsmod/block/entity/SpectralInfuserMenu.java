@@ -2,13 +2,13 @@ package com.stonytark.usefultoolsmod.block.entity;
 
 import com.stonytark.usefultoolsmod.block.ModBlocks;
 import com.stonytark.usefultoolsmod.item.ModItems;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class SpectralInfuserMenu extends AbstractContainerMenu {
     private final SpectralInfuserBlockEntity blockEntity;
@@ -26,6 +26,11 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
     // Server-side constructor
     public SpectralInfuserMenu(int containerId, Inventory inv,
                                SpectralInfuserBlockEntity be, ContainerData data) {
+        this(containerId, inv, be, data, be);
+    }
+
+    private SpectralInfuserMenu(int containerId, Inventory inv,
+                               SpectralInfuserBlockEntity be, ContainerData data, Container contents) {
         super(ModMenuTypes.SPECTRAL_INFUSER_MENU.get(), containerId);
         this.blockEntity = be;
         this.level = inv.player.level();
@@ -34,20 +39,20 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        // Block entity slots — use the Container directly
-        this.addSlot(new Slot(be, 0, 56, 17) {                                  // input (top)
+        // Server slots use the persisted block entity; client slots receive native menu packets.
+        this.addSlot(new Slot(contents, 0, 56, 17) {                                  // input (top)
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return be.isItemValidForSlot(0, stack);
+                return SpectralInfuserBlockEntity.isInfusable(stack);
             }
         });
-        this.addSlot(new Slot(be, 1, 56, 53) {                                  // ectoplasm (bottom)
+        this.addSlot(new Slot(contents, 1, 56, 53) {                                  // ectoplasm (bottom)
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return be.isItemValidForSlot(1, stack);
+                return stack.is(ModItems.ECTOPLASM.get()) || stack.is(ModItems.CONDENSED_ECTOPLASM.get());
             }
         });
-        this.addSlot(new Slot(be, 2, 116, 35) {                                 // output (right)
+        this.addSlot(new Slot(contents, 2, 116, 35) {                                 // output (right)
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false; // output-only
@@ -57,17 +62,10 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
-    // Client-side constructor (from network)
-    public SpectralInfuserMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, getBlockEntity(inv, extraData), new SimpleContainerData(3));
-    }
-
-    private static SpectralInfuserBlockEntity getBlockEntity(Inventory inv, FriendlyByteBuf data) {
-        BlockEntity be = inv.player.level().getBlockEntity(data.readBlockPos());
-        if (be instanceof SpectralInfuserBlockEntity sibe) {
-            return sibe;
-        }
-        throw new IllegalStateException("Block entity is not correct at " + be);
+    // The native menu-open and contents packets share Minecraft's packet queue.
+    // Client rendering needs synchronized slots, not a block-entity position.
+    public SpectralInfuserMenu(int containerId, Inventory inv) {
+        this(containerId, inv, null, new SimpleContainerData(3), new SimpleContainer(3));
     }
 
     public boolean isCrafting() {
@@ -142,6 +140,7 @@ public class SpectralInfuserMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
+        if (blockEntity == null) return level.isClientSide();
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
                 player, ModBlocks.SPECTRAL_INFUSER.get());
     }

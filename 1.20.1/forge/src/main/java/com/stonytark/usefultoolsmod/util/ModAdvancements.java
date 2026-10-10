@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.util;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -9,7 +11,7 @@ public final class ModAdvancements {
 
     public static void award(ServerPlayer player, String path) {
         var advancement = player.server.getAdvancements().getAdvancement(
-                ResourceLocation.fromNamespaceAndPath("usefultoolsmod", path));
+                CompatibleResourceLocations.fromNamespaceAndPath("usefultoolsmod", path));
         if (advancement != null) {
             for (String criterion : player.getAdvancements().getOrStartProgress(advancement)
                     .getRemainingCriteria())

@@ -1,5 +1,7 @@
 package com.stonytark.usefultoolsmod.gametest;
 
+import com.stonytark.usefultoolsmod.util.CompatibleResourceLocations;
+
 import com.stonytark.usefultoolsmod.UsefultoolsMod;
 import com.stonytark.usefultoolsmod.Config;
 import com.stonytark.usefultoolsmod.block.ModBlocks;
@@ -41,7 +43,7 @@ public final class UsefulToolsGameTests {
         helper.assertTrue(items == 662L, "registered item count including block items");
         helper.assertTrue(entities == 4L, "registered entity count");
         helper.assertTrue(helper.getLevel().getServer().getRecipeManager().byKey(
-                ResourceLocation.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser")).isPresent(),
+                CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral_infuser")).isPresent(),
                 "spectral_infuser recipe must load");
         helper.succeed();
     }
@@ -229,7 +231,7 @@ public final class UsefulToolsGameTests {
         wraith.setTarget(null);
         wraith.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
         var encounter = player.server.getAdvancements().getAdvancement(
-                new ResourceLocation(UsefultoolsMod.MOD_ID, "spectral/encounter_wraith"));
+                CompatibleResourceLocations.fromNamespaceAndPath(UsefultoolsMod.MOD_ID, "spectral/encounter_wraith"));
         helper.assertTrue(encounter != null, "Wraith encounter advancement must load");
         try {
             com.stonytark.usefultoolsmod.util.ModAdvancements.award(
