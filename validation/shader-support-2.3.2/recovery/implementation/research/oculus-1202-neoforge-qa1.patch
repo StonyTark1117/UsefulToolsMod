@@ -1,0 +1,528 @@
+--- a/build.gradle
++++ b/build.gradle
+@@ -8,23 +8,6 @@
+ 	silentMojangMappingsLicense()
+ 	accessWidenerPath = file("src/main/resources/iris.accesswidener")
+ 
+-	forge {
+-		convertAccessWideners = true
+-		mixinConfigs = [
+-				"mixins.oculus.json",
+-				"mixins.oculus.fantastic.json",
+-				"mixins.oculus.vertexformat.json",
+-				"mixins.oculus.bettermipmaps.json",
+-				"mixins.oculus.fixes.maxfpscrash.json",
+-				"oculus-batched-entity-rendering.mixins.json",
+-				"mixins.oculus.compat.sodium.json",
+-				"mixins.oculus.compat.indigo.json",
+-				"mixins.oculus.compat.indium.json",
+-				"mixins.oculus.compat.dh.json",
+-				"mixins.oculus.compat.pixelmon.json"
+-		]
+-	}
+-	mixin.defaultRefmapName = "oculus-mixins-refmap.json"
+ }
+ 
+ configurations {
+@@ -85,6 +68,7 @@
+ 	maven {
+ 		name = "CurseForge"
+ 		url = "https://cursemaven.com"
++        content { includeGroup "curse.maven" }
+ 		content {
+ 			includeGroup "curse.maven"
+ 		}
+@@ -92,6 +76,7 @@
+ 	maven {
+ 		name = "Modrinth"
+ 		url = "https://api.modrinth.com/maven"
++        content { includeGroup "maven.modrinth" }
+ 		content {
+ 			includeGroup "maven.modrinth"
+ 		}
+@@ -111,9 +96,9 @@
+ dependencies {
+ 	minecraft "com.mojang:minecraft:${minecraft_version}"
+ 	mappings loom.officialMojangMappings()
+-	forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
++	neoForge "net.neoforged:neoforge:${neoforge_version}"
+ 
+-	modImplementation "maven.modrinth:embeddium:${embeddium_version}"
++	modImplementation files("/tmp/usefultools-shaders-2.3.2/mods/embeddium-neoforge-0.2.10+mc1.20.2.jar")
+ 	modCompileOnly("maven.modrinth:distanthorizonsapi:3.0.0")
+ 
+ 	forgeRuntimeLibrary(implementation(shadow(project(path: ":glsl-relocated", configuration: "bundledJar")))) {
+@@ -147,6 +132,7 @@
+ }
+ 
+ remapJar {
++	atAccessWideners.add("iris.accesswidener")
+ 	inputFile.set shadowJar.archiveFile
+ 	dependsOn shadowJar
+ }
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -1,15 +1,15 @@
+ # Done to increase the memory available to gradle.
+ org.gradle.jvmargs=-Xmx3G
+ 
+-loom.platform = forge
++loom.platform = neoforge
+ 
+ # Fabric Properties
+ 	# check these on https://fabricmc.net/develop
+ 	minecraft_version=1.20.2
+-	forge_version=48.1.0
++	neoforge_version=20.2.93
+ 
+ # Mod Properties
+-	mod_version = 1.8.0
++	mod_version = 1.8.0-neoforge-qa1
+ 	maven_group = net.coderbot
+ 	archives_base_name = oculus
+ 
+--- a/src/main/java/net/irisshaders/iris/Iris.java
++++ b/src/main/java/net/irisshaders/iris/Iris.java
+@@ -34,18 +34,18 @@
+ import net.minecraft.client.multiplayer.ClientLevel;
+ import net.minecraft.network.chat.ClickEvent;
+ import net.minecraft.network.chat.Component;
+-import net.minecraftforge.client.ConfigScreenHandler;
+-import net.minecraftforge.client.event.InputEvent;
+-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+-import net.minecraftforge.common.MinecraftForge;
+-import net.minecraftforge.fml.IExtensionPoint;
+-import net.minecraftforge.fml.ModList;
+-import net.minecraftforge.fml.ModLoadingContext;
+-import net.minecraftforge.fml.common.Mod;
+-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+-import net.minecraftforge.fml.loading.FMLEnvironment;
+-import net.minecraftforge.fml.loading.FMLPaths;
+-import net.minecraftforge.fml.loading.LoadingModList;
++import net.neoforged.neoforge.client.ConfigScreenHandler;
++import net.neoforged.neoforge.client.event.InputEvent;
++import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
++import net.neoforged.neoforge.common.NeoForge;
++import net.neoforged.fml.IExtensionPoint;
++import net.neoforged.fml.ModList;
++import net.neoforged.fml.ModLoadingContext;
++import net.neoforged.fml.common.Mod;
++import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
++import net.neoforged.fml.loading.FMLEnvironment;
++import net.neoforged.fml.loading.FMLPaths;
++import net.neoforged.fml.loading.LoadingModList;
+ import org.jetbrains.annotations.NotNull;
+ import org.lwjgl.glfw.GLFW;
+ import org.lwjgl.system.Configuration;
+@@ -111,7 +111,7 @@
+ 	public Iris() {
+ 		try {
+ 			FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onKeyRegister);
+-			MinecraftForge.EVENT_BUS.addListener(this::onKeyInput);
++			NeoForge.EVENT_BUS.addListener(this::onKeyInput);
+ 
+ 			IRIS_VERSION = ModList.get().getModContainerById(MODID).get().getModInfo().getVersion().toString();
+ 
+--- a/src/main/java/net/irisshaders/iris/compat/dh/DHCompat.java
++++ b/src/main/java/net/irisshaders/iris/compat/dh/DHCompat.java
+@@ -5,7 +5,7 @@
+ import net.irisshaders.iris.pipeline.IrisRenderingPipeline;
+ import net.irisshaders.iris.uniforms.CapturedRenderingState;
+ import net.minecraft.client.Minecraft;
+-import net.minecraftforge.fml.loading.LoadingModList;
++import net.neoforged.fml.loading.LoadingModList;
+ import org.joml.Matrix4f;
+ 
+ import java.lang.invoke.MethodHandle;
+--- a/src/main/java/net/irisshaders/iris/compat/dh/mixin/OculusDHCompatMixinPlugin.java
++++ b/src/main/java/net/irisshaders/iris/compat/dh/mixin/OculusDHCompatMixinPlugin.java
+@@ -1,6 +1,6 @@
+ package net.irisshaders.iris.compat.dh.mixin;
+ 
+-import net.minecraftforge.fml.loading.LoadingModList;
++import net.neoforged.fml.loading.LoadingModList;
+ import org.objectweb.asm.tree.ClassNode;
+ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+--- a/src/main/java/net/irisshaders/iris/compat/indigo/mixin/IrisIndigoCompatMixinPlugin.java
++++ b/src/main/java/net/irisshaders/iris/compat/indigo/mixin/IrisIndigoCompatMixinPlugin.java
+@@ -1,6 +1,6 @@
+ package net.irisshaders.iris.compat.indigo.mixin;
+ 
+-import net.minecraftforge.fml.loading.FMLLoader;
++import net.neoforged.fml.loading.FMLLoader;
+ import org.objectweb.asm.tree.ClassNode;
+ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+--- a/src/main/java/net/irisshaders/iris/compat/indium/mixin/IrisIndiumCompatMixinPlugin.java
++++ b/src/main/java/net/irisshaders/iris/compat/indium/mixin/IrisIndiumCompatMixinPlugin.java
+@@ -1,6 +1,6 @@
+ package net.irisshaders.iris.compat.indium.mixin;
+ 
+-import net.minecraftforge.fml.loading.FMLLoader;
++import net.neoforged.fml.loading.FMLLoader;
+ import org.objectweb.asm.tree.ClassNode;
+ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+--- a/src/main/java/net/irisshaders/iris/compat/pixelmon/mixin/OculusPixelmonCompatMixinPlugin.java
++++ b/src/main/java/net/irisshaders/iris/compat/pixelmon/mixin/OculusPixelmonCompatMixinPlugin.java
+@@ -1,6 +1,6 @@
+ package net.irisshaders.iris.compat.pixelmon.mixin;
+ 
+-import net.minecraftforge.fml.loading.FMLLoader;
++import net.neoforged.fml.loading.FMLLoader;
+ import org.objectweb.asm.tree.ClassNode;
+ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+--- a/src/main/java/net/irisshaders/iris/gl/shader/StandardMacros.java
++++ b/src/main/java/net/irisshaders/iris/gl/shader/StandardMacros.java
+@@ -11,7 +11,7 @@
+ import net.irisshaders.iris.texture.format.TextureFormat;
+ import net.irisshaders.iris.texture.format.TextureFormatLoader;
+ import net.minecraft.Util;
+-import net.minecraftforge.fml.loading.LoadingModList;
++import net.neoforged.fml.loading.LoadingModList;
+ import org.lwjgl.opengl.GL11;
+ import org.lwjgl.opengl.GL20C;
+ import org.lwjgl.opengl.GL30C;
+--- a/src/main/java/net/irisshaders/iris/gui/OldImageButton.java
++++ b/src/main/java/net/irisshaders/iris/gui/OldImageButton.java
+@@ -6,8 +6,8 @@
+ import net.minecraft.network.chat.CommonComponents;
+ import net.minecraft.network.chat.Component;
+ import net.minecraft.resources.ResourceLocation;
+-import net.minecraftforge.api.distmarker.Dist;
+-import net.minecraftforge.api.distmarker.OnlyIn;
++import net.neoforged.api.distmarker.Dist;
++import net.neoforged.api.distmarker.OnlyIn;
+ 
+ @OnlyIn(Dist.CLIENT)
+ public class OldImageButton extends Button {
+--- a/src/main/java/net/irisshaders/iris/gui/screen/ShaderPackScreen.java
++++ b/src/main/java/net/irisshaders/iris/gui/screen/ShaderPackScreen.java
+@@ -23,7 +23,7 @@
+ import net.minecraft.network.chat.Component;
+ import net.minecraft.network.chat.MutableComponent;
+ import net.minecraft.util.FormattedCharSequence;
+-import net.minecraftforge.fml.loading.FMLEnvironment;
++import net.neoforged.fml.loading.FMLEnvironment;
+ import org.jetbrains.annotations.Nullable;
+ import org.lwjgl.glfw.GLFW;
+ 
+--- a/src/main/java/net/irisshaders/iris/mixin/MixinChunkRenderDispatcherRebuildTask.java
++++ b/src/main/java/net/irisshaders/iris/mixin/MixinChunkRenderDispatcherRebuildTask.java
+@@ -7,9 +7,9 @@
+ import net.minecraft.util.RandomSource;
+ import net.minecraft.world.level.block.Block;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
+-import net.minecraftforge.client.model.data.ModelData;
+-import net.minecraftforge.registries.ForgeRegistries;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
++import net.neoforged.neoforge.client.model.data.ModelData;
++import net.minecraft.core.registries.BuiltInRegistries;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Redirect;
+@@ -22,7 +22,7 @@
+     private ChunkRenderTypeSet oculus$overrideRenderTypes(BakedModel instance, BlockState blockState, RandomSource randomSource, ModelData modelData) {
+         Map<Holder.Reference<Block>, ChunkRenderTypeSet> idMap = WorldRenderingSettings.INSTANCE.getBlockTypeIds();
+         if (idMap != null) {
+-            ChunkRenderTypeSet type = idMap.get(ForgeRegistries.BLOCKS.getDelegateOrThrow(blockState.getBlock()));
++            ChunkRenderTypeSet type = idMap.get(BuiltInRegistries.BLOCK.getHolderOrThrow(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.BLOCK, BuiltInRegistries.BLOCK.getKey(blockState.getBlock()))));
+             if (type != null) {
+                 return type;
+             }
+--- a/src/main/java/net/irisshaders/iris/mixin/MixinItemBlockRenderTypes.java
++++ b/src/main/java/net/irisshaders/iris/mixin/MixinItemBlockRenderTypes.java
+@@ -6,8 +6,8 @@
+ import net.minecraft.core.Holder;
+ import net.minecraft.world.level.block.Block;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
+-import net.minecraftforge.registries.ForgeRegistries;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
++import net.minecraft.core.registries.BuiltInRegistries;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Inject;
+@@ -21,7 +21,7 @@
+ 	private static void iris$setCustomRenderType(BlockState arg, CallbackInfoReturnable<ChunkRenderTypeSet> cir) {
+ 		Map<Holder.Reference<Block>, ChunkRenderTypeSet> idMap = WorldRenderingSettings.INSTANCE.getBlockTypeIds();
+ 		if (idMap != null) {
+-			ChunkRenderTypeSet type = idMap.get(ForgeRegistries.BLOCKS.getDelegateOrThrow(arg.getBlock()));
++			ChunkRenderTypeSet type = idMap.get(BuiltInRegistries.BLOCK.getHolderOrThrow(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.BLOCK, BuiltInRegistries.BLOCK.getKey(arg.getBlock()))));
+ 			if (type != null) {
+ 				cir.setReturnValue(type);
+ 			}
+--- a/src/main/java/net/irisshaders/iris/mixin/MixinQuickPlayDev.java
++++ b/src/main/java/net/irisshaders/iris/mixin/MixinQuickPlayDev.java
+@@ -12,7 +12,7 @@
+ import net.minecraft.world.level.WorldDataConfiguration;
+ import net.minecraft.world.level.levelgen.WorldOptions;
+ import net.minecraft.world.level.levelgen.presets.WorldPresets;
+-import net.minecraftforge.fml.loading.FMLLoader;
++import net.neoforged.fml.loading.FMLLoader;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Inject;
+--- a/src/main/java/net/irisshaders/iris/mixin/OculusMixinPlugin.java
++++ b/src/main/java/net/irisshaders/iris/mixin/OculusMixinPlugin.java
+@@ -1,6 +1,6 @@
+ package net.irisshaders.iris.mixin;
+ 
+-import net.minecraftforge.fml.loading.LoadingModList;
++import net.neoforged.fml.loading.LoadingModList;
+ import org.objectweb.asm.tree.ClassNode;
+ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+--- a/src/main/java/net/irisshaders/iris/mixin/fantastic/MixinStationaryItemParticle.java
++++ b/src/main/java/net/irisshaders/iris/mixin/fantastic/MixinStationaryItemParticle.java
+@@ -9,8 +9,8 @@
+ import net.minecraft.client.resources.model.BakedModel;
+ import net.minecraft.world.item.BlockItem;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
+-import net.minecraftforge.client.model.data.ModelData;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
++import net.neoforged.neoforge.client.model.data.ModelData;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.Unique;
+ import org.spongepowered.asm.mixin.injection.At;
+--- a/src/main/java/net/irisshaders/iris/mixin/fantastic/MixinTerrainParticle.java
++++ b/src/main/java/net/irisshaders/iris/mixin/fantastic/MixinTerrainParticle.java
+@@ -9,8 +9,8 @@
+ import net.minecraft.client.resources.model.BakedModel;
+ import net.minecraft.core.BlockPos;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
+-import net.minecraftforge.client.model.data.ModelData;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
++import net.neoforged.neoforge.client.model.data.ModelData;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.Unique;
+ import org.spongepowered.asm.mixin.injection.At;
+--- a/src/main/java/net/irisshaders/iris/mixin/gui/MixinForgeGui.java
++++ b/src/main/java/net/irisshaders/iris/mixin/gui/MixinForgeGui.java
+@@ -4,14 +4,14 @@
+ import net.minecraft.client.Minecraft;
+ import net.minecraft.client.gui.GuiGraphics;
+ import net.minecraft.client.gui.screens.Screen;
+-import net.minecraftforge.client.gui.overlay.ForgeGui;
++import net.neoforged.neoforge.client.gui.overlay.ExtendedGui;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.Shadow;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Inject;
+ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+ 
+-@Mixin(ForgeGui.class)
++@Mixin(ExtendedGui.class)
+ public class MixinForgeGui {
+ 
+     @Shadow
+--- a/src/main/java/net/irisshaders/iris/mixin/vertices/block_rendering/MixinChunkRebuildTask.java
++++ b/src/main/java/net/irisshaders/iris/mixin/vertices/block_rendering/MixinChunkRebuildTask.java
+@@ -17,7 +17,7 @@
+ import net.minecraft.util.RandomSource;
+ import net.minecraft.world.level.block.state.BlockState;
+ import net.minecraft.world.level.material.FluidState;
+-import net.minecraftforge.client.model.data.ModelData;
++import net.neoforged.neoforge.client.model.data.ModelData;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.Unique;
+ import org.spongepowered.asm.mixin.injection.At;
+--- a/src/main/java/net/irisshaders/iris/pathways/HandRenderer.java
++++ b/src/main/java/net/irisshaders/iris/pathways/HandRenderer.java
+@@ -3,7 +3,7 @@
+ import com.mojang.blaze3d.vertex.PoseStack;
+ import net.minecraft.client.resources.model.BakedModel;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.model.data.ModelData;
++import net.neoforged.neoforge.client.model.data.ModelData;
+ import org.joml.Matrix4f;
+ import net.irisshaders.batchedentityrendering.impl.FullyBufferedMultiBufferSource;
+ import net.irisshaders.iris.api.v0.IrisApi;
+--- a/src/main/java/net/irisshaders/iris/pipeline/programs/ShaderCreator.java
++++ b/src/main/java/net/irisshaders/iris/pipeline/programs/ShaderCreator.java
+@@ -27,7 +27,7 @@
+ import net.minecraft.server.packs.PathPackResources;
+ import net.minecraft.server.packs.resources.Resource;
+ import net.minecraft.server.packs.resources.ResourceProvider;
+-import net.minecraftforge.fml.loading.FMLPaths;
++import net.neoforged.fml.loading.FMLPaths;
+ import org.apache.commons.io.IOUtils;
+ 
+ import java.io.ByteArrayInputStream;
+--- a/src/main/java/net/irisshaders/iris/pipeline/transform/ShaderPrinter.java
++++ b/src/main/java/net/irisshaders/iris/pipeline/transform/ShaderPrinter.java
+@@ -11,7 +11,7 @@
+ import java.util.Map;
+ import java.util.stream.Stream;
+ 
+-import net.minecraftforge.fml.loading.FMLPaths;
++import net.neoforged.fml.loading.FMLPaths;
+ 
+ /**
+  * Static class that deals with printing the patched_shader folder.
+--- a/src/main/java/net/irisshaders/iris/shaderpack/IdMap.java
++++ b/src/main/java/net/irisshaders/iris/shaderpack/IdMap.java
+@@ -18,7 +18,7 @@
+ import net.irisshaders.iris.shaderpack.option.OrderBackedProperties;
+ import net.irisshaders.iris.shaderpack.option.ShaderPackOptions;
+ import net.irisshaders.iris.shaderpack.preprocessor.PropertiesPreprocessor;
+-import net.minecraftforge.fml.loading.FMLPaths;
++import net.neoforged.fml.loading.FMLPaths;
+ 
+ import java.io.IOException;
+ import java.io.OutputStream;
+--- a/src/main/java/net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.java
++++ b/src/main/java/net/irisshaders/iris/shaderpack/materialmap/BlockMaterialMapping.java
+@@ -8,6 +8,8 @@
+ import net.irisshaders.iris.Iris;
+ import net.minecraft.client.renderer.RenderType;
+ import net.minecraft.core.Holder;
++import net.minecraft.resources.ResourceKey;
++import net.minecraft.core.registries.Registries;
+ import net.minecraft.core.registries.BuiltInRegistries;
+ import net.minecraft.resources.ResourceLocation;
+ import net.minecraft.world.level.block.Block;
+@@ -15,8 +17,7 @@
+ import net.minecraft.world.level.block.state.BlockState;
+ import net.minecraft.world.level.block.state.StateDefinition;
+ import net.minecraft.world.level.block.state.properties.Property;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
+-import net.minecraftforge.registries.ForgeRegistries;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
+ 
+ import java.util.HashMap;
+ import java.util.List;
+@@ -42,7 +43,7 @@
+ 		blockPropertiesMap.forEach((id, blockType) -> {
+ 			ResourceLocation resourceLocation = new ResourceLocation(id.getNamespace(), id.getName());
+ 
+-			ForgeRegistries.BLOCKS.getDelegate(resourceLocation).ifPresent(
++			BuiltInRegistries.BLOCK.getHolder(ResourceKey.create(Registries.BLOCK, resourceLocation)).ifPresent(
+ 					block -> blockTypeIds.put(block, ChunkRenderTypeSet.of(convertBlockToRenderType(blockType)))
+ 			);
+ 		});
+@@ -72,14 +73,14 @@
+ 			throw new IllegalStateException("Failed to get entry for " + intId, exception);
+ 		}
+ 
+-		Optional<Holder.Reference<Block>> delegateOpt = ForgeRegistries.BLOCKS.getDelegate(resourceLocation);
++		Optional<Holder.Reference<Block>> delegateOpt = BuiltInRegistries.BLOCK.getHolder(ResourceKey.create(Registries.BLOCK, resourceLocation));
+ 
+ 		// If the block doesn't exist, by default the registry will return AIR. That probably isn't what we want.
+ 		if (delegateOpt.isEmpty() || !delegateOpt.get().isBound()) {
+ 			return;
+ 		}
+ 
+-		Block block = delegateOpt.get().get();
++		Block block = delegateOpt.get().value();
+ 
+ 		Map<String, String> propertyPredicates = entry.propertyPredicates();
+ 
+--- a/src/main/java/net/irisshaders/iris/shaderpack/materialmap/WorldRenderingSettings.java
++++ b/src/main/java/net/irisshaders/iris/shaderpack/materialmap/WorldRenderingSettings.java
+@@ -6,7 +6,7 @@
+ import net.minecraft.core.Holder;
+ import net.minecraft.world.level.block.Block;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
+ import org.jetbrains.annotations.Nullable;
+ 
+ import java.util.Map;
+--- a/src/main/java/net/irisshaders/iris/shaderpack/properties/ShaderProperties.java
++++ b/src/main/java/net/irisshaders/iris/shaderpack/properties/ShaderProperties.java
+@@ -6,7 +6,7 @@
+ import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+ import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+-import net.minecraftforge.fml.loading.FMLPaths;
++import net.neoforged.fml.loading.FMLPaths;
+ import net.irisshaders.iris.Iris;
+ import net.irisshaders.iris.gl.IrisRenderSystem;
+ import net.irisshaders.iris.gl.blending.AlphaTest;
+--- a/src/main/resources/META-INF/mods.toml
++++ b/src/main/resources/META-INF/mods.toml
+@@ -32,4 +32,44 @@
+ mandatory = true
+ versionRange = "[0.2,)"
+ ordering = "NONE"
+-side = "CLIENT"+side = "CLIENT"
++
++[[mixins]]
++config="mixins.oculus.json"
++
++[[mixins]]
++config="mixins.oculus.fantastic.json"
++
++[[mixins]]
++config="mixins.oculus.vertexformat.json"
++
++[[mixins]]
++config="mixins.oculus.bettermipmaps.json"
++
++[[mixins]]
++config="mixins.oculus.fixes.maxfpscrash.json"
++
++[[mixins]]
++config="oculus-batched-entity-rendering.mixins.json"
++
++[[mixins]]
++config="mixins.oculus.compat.sodium.json"
++
++[[mixins]]
++config="mixins.oculus.compat.indigo.json"
++
++[[mixins]]
++config="mixins.oculus.compat.indium.json"
++
++[[mixins]]
++config="mixins.oculus.compat.dh.json"
++
++[[mixins]]
++config="mixins.oculus.compat.pixelmon.json"
++
++[[dependencies.oculus]]
++modId="neoforge"
++mandatory=true
++versionRange="[20.2.93]"
++ordering="NONE"
++side="CLIENT"
+--- a/src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/IrisSodiumCompatMixinPlugin.java
++++ b/src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/IrisSodiumCompatMixinPlugin.java
+@@ -1,6 +1,6 @@
+ package net.irisshaders.iris.compat.sodium.mixin;
+ 
+-import net.minecraftforge.fml.loading.LoadingModList;
++import net.neoforged.fml.loading.LoadingModList;
+ import org.objectweb.asm.tree.ClassNode;
+ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+--- a/src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/shader_overrides/MixinChunkBuilderMeshingTask.java
++++ b/src/sodiumCompatibility/java/net/irisshaders/iris/compat/sodium/mixin/shader_overrides/MixinChunkBuilderMeshingTask.java
+@@ -7,9 +7,9 @@
+ import net.minecraft.util.RandomSource;
+ import net.minecraft.world.level.block.Block;
+ import net.minecraft.world.level.block.state.BlockState;
+-import net.minecraftforge.client.ChunkRenderTypeSet;
+-import net.minecraftforge.client.model.data.ModelData;
+-import net.minecraftforge.registries.ForgeRegistries;
++import net.neoforged.neoforge.client.ChunkRenderTypeSet;
++import net.neoforged.neoforge.client.model.data.ModelData;
++import net.minecraft.core.registries.BuiltInRegistries;
+ import org.spongepowered.asm.mixin.Mixin;
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Redirect;
+@@ -31,7 +31,7 @@
+     private ChunkRenderTypeSet oculus$overrideRenderTypes(BakedModel instance, BlockState blockState, RandomSource randomSource, ModelData modelData) {
+         Map<Holder.Reference<Block>, ChunkRenderTypeSet> idMap = WorldRenderingSettings.INSTANCE.getBlockTypeIds();
+         if (idMap != null) {
+-            ChunkRenderTypeSet type = idMap.get(ForgeRegistries.BLOCKS.getDelegateOrThrow(blockState.getBlock()));
++            ChunkRenderTypeSet type = idMap.get(BuiltInRegistries.BLOCK.getHolderOrThrow(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.BLOCK, BuiltInRegistries.BLOCK.getKey(blockState.getBlock()))));
+             if (type != null) {
+                 return type;
+             }
